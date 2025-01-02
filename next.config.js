@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/quakesettings',
-  assetPrefix: '/quakesettings/',
+  basePath: '/quakesettings', // Replace with your repository name
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
 }
 
 module.exports = nextConfig

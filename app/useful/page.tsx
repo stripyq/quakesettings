@@ -1,8 +1,17 @@
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function UsefulPage() {
   return (
     <div className="space-y-12 p-6">
+      <section className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Featured Guide</h2>
+        <Button asChild className="w-full md:w-auto">
+          <Link href="/useful/infographic">
+            View Quake Live Infographic Guide
+          </Link>
+        </Button>
+      </section>
       <section>
         <h1 className="text-4xl font-bold mb-6">Community Discord Servers</h1>
         <div className="space-y-2">
@@ -53,6 +62,12 @@ export default function UsefulPage() {
             className="text-blue-500 hover:underline block text-lg"
           >
             TrueSkill™ Ranking System explained
+          </Link>
+          <Link 
+            href="/useful/infographic"
+            className="text-blue-500 hover:underline block text-lg"
+          >
+            pickup players snapshot '24 infographic
           </Link>
         </div>
       </section>
