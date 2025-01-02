@@ -5,6 +5,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Add trailingSlash to ensure consistent routing
+  trailingSlash: true,
+  // Disable unnecessary features for static export
+  experimental: {
+    appDir: true,
+    serverActions: false
+  }
 }
 
 module.exports = nextConfig

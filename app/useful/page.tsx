@@ -8,6 +8,8 @@ export default function InfographicPage() {
           alt="HoQ Infographic"
           className="w-full h-auto"
           loading="lazy"
+          // Add key prop to force remount on route change
+          key="infographic"
         />
       </div>
     </div>
