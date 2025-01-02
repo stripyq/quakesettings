@@ -1,13 +1,13 @@
 import React from 'react';
-import GearList from './GearList';
+import GearList from '@/components/gear-list';
 
-const MyComponent = () => {
+const ListPage = () => {
   return (
     <div>
-      <div className="mb-4"> {/* Reduced bottom margin */}
+      <div className="mb-4">
         <GearList />
       </div>
-      <div className="mt-4"> {/* Adjusted top margin */}
+      <div className="mt-4">
         <h2 className="text-2xl font-bold mb-2">Sensitivity Terms</h2>
         <p>This section contains important information about sensitivity terms.</p>
       </div>
@@ -15,5 +15,5 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default ListPage;
 
