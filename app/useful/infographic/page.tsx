@@ -4,9 +4,10 @@ export default function InfographicPage() {
       <h1 className="text-3xl font-bold mb-6">Quake Live Infographic Guide</h1>
       <div className="w-full max-w-[2500px] relative">
         <img
-          src="/quakesettings/infographic.png"
+          src="./infographic.png"
           alt="Quake Live Infographic"
           className="w-full h-auto"
+          loading="lazy"
         />
       </div>
     </div>
