@@ -8,11 +8,11 @@ export function MainNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="flex items-center space-x-4 lg:space-x-6 pl-[100px]">
+    <nav className="flex items-center space-x-4 lg:space-x-6">
       <Link
         href="/"
         className={cn(
-          "text-sm font-medium transition-colors hover:text-blue-200",
+          "text-xs sm:text-sm font-medium transition-colors hover:text-blue-200",
           pathname === "/" && "text-blue-200 underline underline-offset-4"
         )}
       >
@@ -21,7 +21,7 @@ export function MainNav() {
       <Link
         href="/useful"
         className={cn(
-          "text-sm font-medium transition-colors hover:text-blue-200",
+          "text-xs sm:text-sm font-medium transition-colors hover:text-blue-200",
           pathname === "/useful" && "text-blue-200 underline underline-offset-4"
         )}
       >
@@ -30,7 +30,7 @@ export function MainNav() {
       <Link
         href="/recommendations"
         className={cn(
-          "text-sm font-medium transition-colors hover:text-blue-200",
+          "text-xs sm:text-sm font-medium transition-colors hover:text-blue-200",
           pathname === "/recommendations" && "text-blue-200 underline underline-offset-4"
         )}
       >
