@@ -1,4 +1,4 @@
-/** @type {import('[v0-no-op-code-block-prefix]next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   basePath: '/quakesettings',
@@ -6,9 +6,6 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  experimental: {
-    serverActions: false,
-  }
 }
 
 module.exports = nextConfig
