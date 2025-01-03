@@ -7,8 +7,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'QL Gear & Settings',
-  description: 'Quake Live gear and settings',
+  description: "Quake Live players' gear and settings",
   openGraph: {
+    title: "QL players' Gear & Settings",
+    description: 'Quake Live gear and settings, recommendations for best peripherals',
+    type: 'website',
     images: [
       {
         url: '/quakesettings/og',
