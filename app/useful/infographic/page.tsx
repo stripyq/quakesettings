@@ -14,12 +14,15 @@ export default function InfographicPage() {
         <h1 className="text-3xl font-bold mb-6">QL players snapshot 2024</h1>
       </div>
       <div className="w-full max-w-[2500px] relative">
-        <img
+        <Image
           src="/quakesettings/useful/infographic.png"
-          alt="HoQ infographic 2024"
+          alt="Quake Live Players Snapshot 2024"
+          width={2500}
+          height={1406}
+          sizes="(max-width: 2500px) 100vw, 2500px"
           className="w-full h-auto"
-          loading="eager"
-          priority="true"
+          priority
+          quality={75}
         />
       </div>
     </div>
