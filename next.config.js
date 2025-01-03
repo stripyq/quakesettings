@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('[v0-no-op-code-block-prefix]next').NextConfig} */
 const nextConfig = {
   output: 'export',
   basePath: '/quakesettings',
@@ -7,8 +7,7 @@ const nextConfig = {
   },
   trailingSlash: true,
   experimental: {
-    appDir: true,
-    serverActions: false
+    serverActions: false,
   }
 }
 
