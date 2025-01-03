@@ -1,5 +1,23 @@
 import Link from "next/link"
 import Image from "next/image"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'QL Players Snapshot 2024 - Infographic',
+  description: 'A comprehensive overview of EU Quake Live player gear preferences and statistics for 2024',
+  openGraph: {
+    title: 'QL Players Snapshot 2024 - Infographic',
+    description: 'A comprehensive overview of Quake Live player gear preferences and statistics for 2024',
+    type: 'article',
+    images: [
+      {
+        url: '/quakesettings/useful/infographic/opengraph-image',
+        width: 1200,
+        height: 600,
+      },
+    ],
+  },
+}
 
 export default function InfographicPage() {
   return (
@@ -16,7 +34,7 @@ export default function InfographicPage() {
       <div className="w-full max-w-[2500px] relative">
         <Image
           src="/quakesettings/useful/infographic.png"
-          alt="Quake Live Players Snapshot 2024"
+          alt="Quake Live infographic 2024"
           width={2500}
           height={1406}
           sizes="(max-width: 2500px) 100vw, 2500px"

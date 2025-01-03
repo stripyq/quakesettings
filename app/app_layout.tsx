@@ -12,13 +12,6 @@ export const metadata: Metadata = {
     title: "QL players' Gear & Settings",
     description: 'Quake Live gear and settings, recommendations for best peripherals',
     type: 'website',
-    images: [
-      {
-        url: '/quakesettings/og/opengraph-image.png',
-        width: 1200,
-        height: 600,
-      },
-    ],
   },
 }
 
