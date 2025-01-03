@@ -8,9 +8,10 @@ export default function InfographicPage() {
           alt="HoQ Infographic"
           className="w-full h-auto"
           loading="lazy"
+          key="infographic"
         />
       </div>
     </div>
-  )
+  );
 }
 
