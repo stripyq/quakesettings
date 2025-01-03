@@ -41,7 +41,7 @@ export default function UsefulPage() {
             Community Winter CTF [NA]
           </Link>
           <Link 
-            href="https://discord.gg/quakectf"
+            href="https://discord.gg/TguZhygXEy"
             className="text-blue-500 hover:underline block text-lg"
             target="_blank"
             rel="noopener noreferrer"
