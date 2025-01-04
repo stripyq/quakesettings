@@ -585,7 +585,7 @@ export const gearData: GearItem[] = [
     fov: "90",
     crosshair: "2, 3, 10, 13, 18",
     crosshairColor: "",
-    movementBinds: "uparrow downarrow leftarrow rightarrow Mouse1 Space",
+    movementBinds: "w a s d Mouse1 Space",
     cfgLinks: "nan",
   },
   {
@@ -967,7 +967,7 @@ export const gearData: GearItem[] = [
     cfgLinks: "nan",
   },
   {
-    nickname: "^Wood",
+    nickname: "Wood",
     mouse: "Razer DeathAdder V3",
     mousepad: "Artisan ZERO 零",
     keyboard: "Akko 7th Anniversary MOD 007 PC",
@@ -1177,7 +1177,7 @@ export const gearData: GearItem[] = [
     cfgLinks: "nan",
   },
   {
-    nickname: "Okay.",
+    nickname: "Okay",
     mouse: "Razer Viper Mini",
     mousepad: "A4TECH AP20S",
     keyboard: "Logitech G413",
