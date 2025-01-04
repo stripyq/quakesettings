@@ -417,7 +417,7 @@ const columns: ColumnDef<GearItem>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           className="px-2 h-full flex flex-col items-center justify-between"
         >
-          <span className="font-bold">Movement Binds</span>
+          <span className="font-bold">forward, left, back, right, fire, jump binds</span>
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -469,21 +469,21 @@ export default function GearList() {
   return (
     <div className="flex flex-col h-screen">
       <h1 className="text-3xl font-bold mb-6">Quake Live Setups and Settings</h1>
-      <div className="flex items-center justify-between px-2 py-4 mb-4">
-        <div className="flex-1 text-xs text-muted-foreground">
+      <div className="flex items-center justify-between px-2 py-4">
+        <div className="text-sm text-muted-foreground">
           Showing {table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1} to{" "}
           {Math.min((table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize, table.getFilteredRowModel().rows.length)}{" "}
           of {table.getFilteredRowModel().rows.length} entries
         </div>
-        <div className="flex items-center space-x-6 lg:space-x-8">
+        <div className="flex items-center gap-2">
           <div className="flex items-center space-x-2">
-            <p className="text-xs font-medium">Rows per page</p>
+            <span className="text-sm">Rows per page</span>
             <select
               value={table.getState().pagination.pageSize}
               onChange={(e) => {
                 table.setPageSize(Number(e.target.value))
               }}
-              className="h-8 w-[70px] rounded-md border border-input bg-transparent px-2 py-1 text-xs"
+              className="h-8 w-16 rounded-md border border-input bg-transparent px-2 py-1 text-sm"
             >
               {[10, 20, 30, 40, 50].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
@@ -492,7 +492,7 @@ export default function GearList() {
               ))}
             </select>
           </div>
-          <div className="flex w-[100px] items-center justify-center text-xs font-medium">
+          <div className="flex w-[100px] items-center justify-center text-sm">
             Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
           </div>
           <div className="flex items-center space-x-2">
@@ -538,7 +538,7 @@ export default function GearList() {
       <div className="flex-grow overflow-auto">
         <div className="overflow-x-auto max-w-[1100px]">
           <Table className="w-auto">
-              <TableHeader className="sticky top-0 z-10 bg-white">
+              <TableHeader className="sticky top-0 z-10 bg-white border-b">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id} className="border-b-2 border-gray-200">
                     {headerGroup.headers.map((header, index) => (
@@ -570,7 +570,7 @@ export default function GearList() {
                       {row.getVisibleCells().map((cell, cellIndex) => (
                         <TableCell 
                           key={cell.id}
-                          className={`${cellIndex === 0 ? "sticky left-0 bg-background" : ""} text-xs`}
+                          className={`${cellIndex === 0 ? "sticky left-0 bg-background" : ""} p-3 text-sm`}
                         >
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </TableCell>
