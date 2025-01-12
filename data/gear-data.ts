@@ -161,7 +161,7 @@ export const gearData: GearItem[] = [
     inGameSensitivity: "4.25",
     eDPI: "nan",
     cm360: "26.6",
-    acceleration: "0.1",
+    acceleration: "0.08",
     fov: "93",
     crosshair: "2",
     crosshairColor: "",
