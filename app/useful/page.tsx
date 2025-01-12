@@ -112,6 +112,14 @@ export default function UsefulPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
+            Pro QUAKE players rankings based on tournament wins by Ins
+          </Link>
+          <Link 
+            href="https://iiiiins.github.io/quakerankings/"
+            className="text-blue-500 hover:underline block text-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             web QL server browser
           </Link>
           <Link 
