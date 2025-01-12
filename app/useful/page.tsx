@@ -107,7 +107,7 @@ export default function UsefulPage() {
             HoQ TDM rankings
           </Link>
           <Link 
-            href="https://ql.syncore.org/"
+            href="https://iiiiins.github.io/quakerankings/"
             className="text-blue-500 hover:underline block text-lg"
             target="_blank"
             rel="noopener noreferrer"
@@ -115,7 +115,7 @@ export default function UsefulPage() {
             Pro QUAKE players rankings based on tournament wins by Ins
           </Link>
           <Link 
-            href="https://iiiiins.github.io/quakerankings/"
+            href="https://ql.syncore.org"
             className="text-blue-500 hover:underline block text-lg"
             target="_blank"
             rel="noopener noreferrer"
