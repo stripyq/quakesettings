@@ -1,0 +1,15 @@
+nickname: "Pettern"
+mouse: "logitech-g-pro"
+mousepad: "artisan-hayate-otsu"
+keyboard: "logitech-g513"
+monitor: "asus-tuf-gaming-vg279qm"
+headphones: "steelseries-arctis-nova-7-wireless"
+invertedMouse: true
+mouseDPI: 1600
+inGameSensitivity: 1.15
+eDPI: 1840
+cm360: 22.58
+acceleration: 0.3
+fov: 105
+crosshair: "2"
+movementBinds: "Mouse2 z alt x Mouse1 Space"

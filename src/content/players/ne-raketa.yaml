@@ -1,0 +1,15 @@
+nickname: "ne_raketa"
+mouse: "attack-shark-r6"
+mousepad: "pulsar-paracontrol-v2"
+keyboard: "dark-project-kd87a"
+monitor: "benq-zowie-xl2546"
+headphones: "hyperx-cloud-alpha-s"
+invertedMouse: false
+mouseDPI: 400
+inGameSensitivity: 2.7
+eDPI: 1080
+cm360: 38.48
+acceleration: 0.053
+fov: 98
+crosshair: "2"
+movementBinds: "e s d f Mouse1 Mouse2"

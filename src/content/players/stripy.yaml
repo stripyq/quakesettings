@@ -1,0 +1,15 @@
+nickname: "stripy"
+mouse: "lamzu-maya-x"
+mousepad: "artisan-hayate-otsu"
+keyboard: "wooting-80he"
+monitor: "lg-32gs95ue-b"
+headphones: "drop-sennheiser-pc37x"
+invertedMouse: true
+mouseDPI: 1600
+inGameSensitivity: 0.75
+eDPI: 1200
+cm360: 34.63
+acceleration: 0.005
+fov: 102.5
+crosshair: "2"
+movementBinds: "Mouse2 a s d Mouse1 Space"

@@ -1,0 +1,154 @@
+backend:
+  name: github
+  repo: stripyq/quakesettings
+  branch: main
+  base_url: https://stripyq.github.io
+  auth_endpoint: /quakesettings/api/auth
+
+media_folder: public/images
+public_folder: /quakesettings/images
+
+site_url: https://stripyq.github.io/quakesettings
+
+collections:
+  # Hardware Collections (for dropdown selection)
+  - name: mice
+    label: Mice
+    folder: src/content/mice
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Shape", name: "shape", widget: "string", required: false }
+      - { label: "Weight", name: "weight", widget: "string", required: false }
+      - { label: "Connection", name: "connection", widget: "select", options: ["wired", "wireless", "both"], required: false }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string", required: false }
+
+  - name: monitors
+    label: Monitors
+    folder: src/content/monitors
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Size", name: "size", widget: "string", required: false }
+      - { label: "Refresh Rate", name: "refreshRate", widget: "string", required: false }
+      - { label: "Panel", name: "panel", widget: "string", required: false }
+      - { label: "Resolution", name: "resolution", widget: "string", required: false }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string", required: false }
+
+  - name: keyboards
+    label: Keyboards
+    folder: src/content/keyboards
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Size", name: "size", widget: "select", options: ["full", "tkl", "75%", "65%", "60%"], required: false }
+      - { label: "Switches", name: "switches", widget: "string", required: false }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string", required: false }
+
+  - name: mousepads
+    label: Mousepads
+    folder: src/content/mousepads
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Surface", name: "surface", widget: "select", options: ["cloth", "hybrid", "glass", "hard"], required: false }
+      - { label: "Size", name: "size", widget: "string", required: false }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string", required: false }
+
+  - name: headphones
+    label: Headphones
+    folder: src/content/headphones
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["over-ear", "on-ear", "in-ear", "speakers"], required: false }
+      - { label: "Connection", name: "connection", widget: "select", options: ["wired", "wireless", "both"], required: false }
+      - { label: "Amazon URL", name: "amazonUrl", widget: "string", required: false }
+
+  # Players Collection (with relation widgets for hardware)
+  - name: players
+    label: Players
+    folder: src/content/players
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nickname
+    fields:
+      - { label: "Nickname", name: "nickname", widget: "string" }
+      - label: "Mouse"
+        name: "mouse"
+        widget: "relation"
+        collection: "mice"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Mousepad"
+        name: "mousepad"
+        widget: "relation"
+        collection: "mousepads"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Keyboard"
+        name: "keyboard"
+        widget: "relation"
+        collection: "keyboards"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Monitor"
+        name: "monitor"
+        widget: "relation"
+        collection: "monitors"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Headphones"
+        name: "headphones"
+        widget: "relation"
+        collection: "headphones"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false }
+      - { label: "Mouse DPI", name: "mouseDPI", widget: "number", required: false }
+      - { label: "In-Game Sensitivity", name: "inGameSensitivity", widget: "number", value_type: "float", required: false }
+      - { label: "eDPI", name: "eDPI", widget: "number", value_type: "float", required: false }
+      - { label: "cm/360", name: "cm360", widget: "number", value_type: "float", required: false }
+      - { label: "Acceleration", name: "acceleration", widget: "number", value_type: "float", required: false }
+      - { label: "FOV", name: "fov", widget: "number", value_type: "float", required: false }
+      - { label: "Crosshair", name: "crosshair", widget: "string", required: false }
+      - { label: "Crosshair Color", name: "crosshairColor", widget: "string", required: false }
+      - { label: "Movement Binds", name: "movementBinds", widget: "string", required: false }
+      - { label: "Config Links", name: "cfgLinks", widget: "string", required: false }
