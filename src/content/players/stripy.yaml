@@ -1,15 +1,29 @@
-nickname: "stripy"
-mouse: "lamzu-maya-x"
+name: "stripy"
+country: "UK"
+category: "duel"
+
+dpi: 1600
+sensitivity: 0.75
+edpi: 1200
+cm360: 34.63
+acceleration: true
+rawInput: true
+
+fov: 102
+crosshair: "2"
+invertedMouse: true
+
+forward: "W"
+back: "S"
+left: "A"
+right: "D"
+jump: "Space"
+crouch: "Ctrl"
+attack: "Mouse1"
+zoom: "Mouse2"
+
+mouse: "g-pro-superlight"
 mousepad: "artisan-hayate-otsu"
 keyboard: "wooting-80he"
-monitor: "lg-32gs95ue-b"
-headphones: "drop-sennheiser-pc37x"
-invertedMouse: true
-mouseDPI: 1600
-inGameSensitivity: 0.75
-eDPI: 1200
-cm360: 34.63
-acceleration: 0.005
-fov: 102.5
-crosshair: "2"
-movementBinds: "Mouse2 a s d Mouse1 Space"
+monitor: "lg-32gs95ue"
+headset: "sennheiser-pc37x"

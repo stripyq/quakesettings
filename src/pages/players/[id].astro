@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const players = await getCollection('players');
+  return players.map((player) => ({
+    params: { id: player.id },
+    props: { player },
+  }));
+}
+
+const { player } = Astro.props;
+const p = player.data;
+
+// Get hardware collections
+const mice = await getCollection('mice');
+const mousepads = await getCollection('mousepads');
+const keyboards = await getCollection('keyboards');
+const monitors = await getCollection('monitors');
+const headsets = await getCollection('headsets');
+
+// Create lookup maps
+const miceMap = new Map(mice.map(m => [m.id, m.data]));
+const mousepadsMap = new Map(mousepads.map(m => [m.id, m.data]));
+const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
+const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
+const headsetsMap = new Map(headsets.map(h => [h.id, h.data]));
+
+// Get this player's hardware
+const mouseData = miceMap.get(p.mouse);
+const mousepadData = p.mousepad ? mousepadsMap.get(p.mousepad) : null;
+const keyboardData = p.keyboard ? keyboardsMap.get(p.keyboard) : null;
+const monitorData = p.monitor ? monitorsMap.get(p.monitor) : null;
+const headsetData = p.headset ? headsetsMap.get(p.headset) : null;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={p.name}>
+  <div class="player-page">
+    <div class="player-header">
+      <h1>{p.name}</h1>
+      {p.realName && <p class="real-name">{p.realName}</p>}
+      <div class="player-meta">
+        <span class="country">{p.country}</span>
+        {p.team && <span class="team">{p.team}</span>}
+        {p.rating && <span class="rating">Rating: {p.rating}</span>}
+        <span class="category">{p.category.toUpperCase()}</span>
+      </div>
+    </div>
+
+    <div class="settings-grid">
+
+      <!-- Mouse Settings -->
+      <section class="settings-section">
+        <h2>Mouse Settings</h2>
+        <table class="settings-table">
+          <tr><td>DPI</td><td>{p.dpi}</td></tr>
+          <tr><td>In-game Sensitivity</td><td>{p.sensitivity}</td></tr>
+          <tr><td>eDPI</td><td>{p.edpi}</td></tr>
+          <tr><td>cm/360°</td><td>{p.cm360 || 'N/A'}</td></tr>
+          <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
+          <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
+        </table>
+      </section>
+
+      <!-- Game Settings -->
+      <section class="settings-section">
+        <h2>Game Settings</h2>
+        <table class="settings-table">
+          <tr><td>FOV</td><td>{p.fov}</td></tr>
+          <tr><td>Crosshair</td><td>{p.crosshair}</td></tr>
+          <tr><td>Crosshair Size</td><td>{p.crosshairSize || 'N/A'}</td></tr>
+          <tr><td>Inverted Mouse</td><td>{p.invertedMouse ? 'Yes' : 'No'}</td></tr>
+        </table>
+      </section>
+
+      <!-- Key Bindings -->
+      <section class="settings-section">
+        <h2>Key Bindings</h2>
+        <table class="settings-table">
+          <tr><td>Forward</td><td>{p.forward}</td></tr>
+          <tr><td>Back</td><td>{p.back}</td></tr>
+          <tr><td>Left</td><td>{p.left}</td></tr>
+          <tr><td>Right</td><td>{p.right}</td></tr>
+          <tr><td>Jump</td><td>{p.jump}</td></tr>
+          <tr><td>Crouch</td><td>{p.crouch}</td></tr>
+          <tr><td>Attack</td><td>{p.attack}</td></tr>
+          <tr><td>Zoom</td><td>{p.zoom}</td></tr>
+          {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
+          {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
+        </table>
+      </section>
+
+      <!-- Hardware -->
+      <section class="settings-section hardware-section">
+        <h2>Hardware</h2>
+
+        {mouseData && (
+          <div class="hardware-item">
+            <h3>Mouse</h3>
+            <p class="hardware-name">{mouseData.name}</p>
+            <table class="hardware-specs">
+              <tr><td>Brand</td><td>{mouseData.brand}</td></tr>
+              <tr><td>Weight</td><td>{mouseData.weight}</td></tr>
+              <tr><td>Shape</td><td>{mouseData.shape}</td></tr>
+              <tr><td>Sensor</td><td>{mouseData.sensor}</td></tr>
+              <tr><td>Connection</td><td>{mouseData.connection}</td></tr>
+            </table>
+          </div>
+        )}
+
+        {mousepadData && (
+          <div class="hardware-item">
+            <h3>Mousepad</h3>
+            <p class="hardware-name">{mousepadData.name}</p>
+            <table class="hardware-specs">
+              <tr><td>Size</td><td>{mousepadData.size}</td></tr>
+              <tr><td>Surface</td><td>{mousepadData.surface}</td></tr>
+              <tr><td>Type</td><td>{mousepadData.speedType}</td></tr>
+            </table>
+          </div>
+        )}
+
+        {keyboardData && (
+          <div class="hardware-item">
+            <h3>Keyboard</h3>
+            <p class="hardware-name">{keyboardData.name}</p>
+            <table class="hardware-specs">
+              <tr><td>Format</td><td>{keyboardData.format}</td></tr>
+              <tr><td>Switches</td><td>{keyboardData.switches}</td></tr>
+            </table>
+          </div>
+        )}
+
+        {monitorData && (
+          <div class="hardware-item">
+            <h3>Monitor</h3>
+            <p class="hardware-name">{monitorData.name}</p>
+            <table class="hardware-specs">
+              <tr><td>Size</td><td>{monitorData.size}</td></tr>
+              <tr><td>Refresh Rate</td><td>{monitorData.refreshRate}</td></tr>
+              <tr><td>Panel</td><td>{monitorData.panel}</td></tr>
+              <tr><td>Resolution</td><td>{monitorData.resolution}</td></tr>
+            </table>
+          </div>
+        )}
+
+        {headsetData && (
+          <div class="hardware-item">
+            <h3>Headset</h3>
+            <p class="hardware-name">{headsetData.name}</p>
+            <table class="hardware-specs">
+              <tr><td>Type</td><td>{headsetData.type}</td></tr>
+              <tr><td>Driver</td><td>{headsetData.driver}</td></tr>
+              <tr><td>Connection</td><td>{headsetData.connection}</td></tr>
+            </table>
+          </div>
+        )}
+      </section>
+    </div>
+
+    <!-- Config Download -->
+    {p.configFile && (
+      <section class="config-section">
+        <h2>Config File</h2>
+        <a href={`${base}${p.configFile.replace(/^\//, '')}`} download class="download-btn">
+          Download {p.name}'s Config
+        </a>
+      </section>
+    )}
+
+    <a href={base} class="back-link">← Back to all players</a>
+  </div>
+</BaseLayout>

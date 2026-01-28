@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const players = await getCollection('players');
+const mice = await getCollection('mice');
+
+// Calculate statistics
+const edpiValues = players.map(p => p.data.edpi).filter(v => v);
+const avgEdpi = Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length);
+const minEdpi = Math.min(...edpiValues);
+const maxEdpi = Math.max(...edpiValues);
+
+const dpiValues = players.map(p => p.data.dpi).filter(v => v);
+const avgDpi = Math.round(dpiValues.reduce((a, b) => a + b, 0) / dpiValues.length);
+
+const fovValues = players.map(p => p.data.fov).filter(v => v);
+const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
+
+// Count mice usage
+const miceMap = new Map(mice.map(m => [m.id, m.data]));
+const mouseUsage = new Map<string, number>();
+players.forEach(p => {
+  const current = mouseUsage.get(p.data.mouse) || 0;
+  mouseUsage.set(p.data.mouse, current + 1);
+});
+
+// Sort by usage
+const topMice = [...mouseUsage.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5)
+  .map(([id, count]) => ({
+    name: miceMap.get(id)?.name || id,
+    count,
+    percentage: Math.round((count / players.length) * 100)
+  }));
+
+// Sensitivity distribution
+const lowSens = players.filter(p => p.data.edpi < 800).length;
+const midSens = players.filter(p => p.data.edpi >= 800 && p.data.edpi <= 1500).length;
+const highSens = players.filter(p => p.data.edpi > 1500).length;
+---
+
+<BaseLayout title="Statistics">
+  <div class="page-header">
+    <h1>Player Statistics</h1>
+    <p>Aggregated data from {players.length} professional players</p>
+  </div>
+
+  <div class="stats-grid">
+    <section class="stat-card">
+      <h2>Sensitivity Overview</h2>
+      <div class="big-stat">
+        <span class="stat-number">{avgEdpi}</span>
+        <span class="stat-label">Average eDPI</span>
+      </div>
+      <div class="stat-details">
+        <div><strong>Range:</strong> {minEdpi} - {maxEdpi}</div>
+        <div><strong>Average DPI:</strong> {avgDpi}</div>
+        <div><strong>Average FOV:</strong> {avgFov}°</div>
+      </div>
+    </section>
+
+    <section class="stat-card">
+      <h2>Sensitivity Distribution</h2>
+      <div class="distribution">
+        <div class="dist-bar">
+          <div class="dist-fill low" style={`width: ${(lowSens / players.length) * 100}%`}></div>
+          <span>Low (&lt;800): {lowSens} ({Math.round((lowSens / players.length) * 100)}%)</span>
+        </div>
+        <div class="dist-bar">
+          <div class="dist-fill mid" style={`width: ${(midSens / players.length) * 100}%`}></div>
+          <span>Medium (800-1500): {midSens} ({Math.round((midSens / players.length) * 100)}%)</span>
+        </div>
+        <div class="dist-bar">
+          <div class="dist-fill high" style={`width: ${(highSens / players.length) * 100}%`}></div>
+          <span>High (&gt;1500): {highSens} ({Math.round((highSens / players.length) * 100)}%)</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="stat-card">
+      <h2>Most Popular Mice</h2>
+      <div class="popularity-list">
+        {topMice.map((mouse, i) => (
+          <div class="popularity-item">
+            <span class="rank">#{i + 1}</span>
+            <span class="name">{mouse.name}</span>
+            <span class="count">{mouse.count} players ({mouse.percentage}%)</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

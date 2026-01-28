@@ -1,166 +1,111 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all collections
+// Get all players and hardware
 const players = await getCollection('players');
 const mice = await getCollection('mice');
-const monitors = await getCollection('monitors');
-const keyboards = await getCollection('keyboards');
-const mousepads = await getCollection('mousepads');
-const headphones = await getCollection('headphones');
 
-// Create lookup maps
+// Create lookup maps for hardware
 const miceMap = new Map(mice.map(m => [m.id, m.data]));
-const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
-const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
-const mousepadsMap = new Map(mousepads.map(m => [m.id, m.data]));
-const headphonesMap = new Map(headphones.map(h => [h.id, h.data]));
 
-// Build player data with resolved hardware names
-const playerData = players.map(player => {
-  const p = player.data;
-  return {
-    nickname: p.nickname,
-    mouse: p.mouse ? miceMap.get(p.mouse.id)?.name || p.mouse.id : '-',
-    mousepad: p.mousepad ? mousepadsMap.get(p.mousepad.id)?.name || p.mousepad.id : '-',
-    keyboard: p.keyboard ? keyboardsMap.get(p.keyboard.id)?.name || p.keyboard.id : '-',
-    monitor: p.monitor ? monitorsMap.get(p.monitor.id)?.name || p.monitor.id : '-',
-    headphones: p.headphones ? headphonesMap.get(p.headphones.id)?.name || p.headphones.id : '-',
-    invertedMouse: p.invertedMouse ? 'Yes' : 'No',
-    mouseDPI: p.mouseDPI || '-',
-    inGameSensitivity: p.inGameSensitivity || '-',
-    eDPI: p.eDPI || '-',
-    cm360: p.cm360 || '-',
-    acceleration: p.acceleration || '-',
-    fov: p.fov || '-',
-    crosshair: p.crosshair || '-',
-    movementBinds: p.movementBinds || '-',
-  };
-}).sort((a, b) => a.nickname.localeCompare(b.nickname));
+// Sort players by rating (highest first)
+const sortedPlayers = players.sort((a, b) => (b.data.rating || 0) - (a.data.rating || 0));
+
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Player Settings">
-  <h1>Quake Live Player Settings</h1>
-
-  <div class="info-box">
-    <h3>Sensitivity Terms</h3>
-    <p>
-      <strong>DPI:</strong> Dots Per Inch - hardware mouse sensitivity setting.
-      <strong>In-Game Sens:</strong> Sensitivity multiplier in Quake Live.
-      <strong>eDPI:</strong> DPI x In-Game Sensitivity - effective sensitivity.
-      <strong>cm/360:</strong> Centimeters to complete a 360° turn - lower = faster.
-    </p>
+<BaseLayout title="Player Database">
+  <div class="page-header">
+    <h1>Professional Player Settings</h1>
+    <p>Mouse settings, hardware, and configs from {players.length} pro players</p>
   </div>
 
-  <div class="controls">
-    <input
-      type="text"
-      class="search-input"
-      placeholder="Search players, mice, monitors..."
-      id="search"
-    />
+  <div class="filters">
+    <div class="filter-group">
+      <label for="category-filter">Category:</label>
+      <select id="category-filter">
+        <option value="all">All Players</option>
+        <option value="duel">Duel</option>
+        <option value="ctf">CTF</option>
+        <option value="tdm">TDM</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="sens-filter">Sensitivity Range:</label>
+      <select id="sens-filter">
+        <option value="all">All</option>
+        <option value="low">Low (&lt; 800 eDPI)</option>
+        <option value="medium">Medium (800-1500 eDPI)</option>
+        <option value="high">High (&gt; 1500 eDPI)</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="sort-by">Sort by:</label>
+      <select id="sort-by">
+        <option value="rating">Rating</option>
+        <option value="edpi-asc">eDPI (Low to High)</option>
+        <option value="edpi-desc">eDPI (High to Low)</option>
+        <option value="name">Name</option>
+      </select>
+    </div>
   </div>
 
-  <div class="table-container">
-    <table id="gear-table">
-      <thead>
-        <tr>
-          <th data-sort="nickname">Player</th>
-          <th data-sort="mouse">Mouse</th>
-          <th data-sort="mousepad">Mousepad</th>
-          <th data-sort="keyboard">Keyboard</th>
-          <th data-sort="monitor">Monitor</th>
-          <th data-sort="headphones">Headphones</th>
-          <th data-sort="mouseDPI">DPI</th>
-          <th data-sort="inGameSensitivity">Sens</th>
-          <th data-sort="eDPI">eDPI</th>
-          <th data-sort="cm360">cm/360</th>
-          <th data-sort="acceleration">Accel</th>
-          <th data-sort="fov">FOV</th>
-          <th data-sort="crosshair">Crosshair</th>
-          <th data-sort="movementBinds">Binds</th>
-          <th data-sort="invertedMouse">Inv</th>
-        </tr>
-      </thead>
-      <tbody id="table-body">
-        {playerData.map(player => (
-          <tr>
-            <td>{player.nickname}</td>
-            <td>{player.mouse}</td>
-            <td>{player.mousepad}</td>
-            <td>{player.keyboard}</td>
-            <td>{player.monitor}</td>
-            <td>{player.headphones}</td>
-            <td>{player.mouseDPI}</td>
-            <td>{player.inGameSensitivity}</td>
-            <td>{player.eDPI}</td>
-            <td>{player.cm360}</td>
-            <td>{player.acceleration}</td>
-            <td>{player.fov}</td>
-            <td>{player.crosshair}</td>
-            <td>{player.movementBinds}</td>
-            <td>{player.invertedMouse}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+  <div class="player-grid" id="player-grid">
+    {sortedPlayers.map((player) => {
+      const mouseData = miceMap.get(player.data.mouse);
+      return (
+        <a
+          href={`${base}players/${player.id}/`}
+          class="player-card"
+          data-name={player.data.name.toLowerCase()}
+          data-category={player.data.category}
+          data-edpi={player.data.edpi}
+          data-dpi={player.data.dpi}
+          data-rating={player.data.rating || 0}
+          data-mouse={player.data.mouse}
+        >
+          <div class="player-card-header">
+            <span class="player-name">{player.data.name}</span>
+            <span class="player-country">{player.data.country}</span>
+          </div>
+
+          <div class="player-card-stats">
+            <div class="stat">
+              <span class="stat-label">DPI</span>
+              <span class="stat-value">{player.data.dpi}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Sens</span>
+              <span class="stat-value">{player.data.sensitivity}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">eDPI</span>
+              <span class="stat-value">{player.data.edpi}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">cm/360</span>
+              <span class="stat-value">{player.data.cm360 || '—'}</span>
+            </div>
+          </div>
+
+          {mouseData && (
+            <div class="player-card-hardware">
+              <span class="hardware-tag">{mouseData.name}</span>
+            </div>
+          )}
+
+          {player.data.rating && (
+            <div class="player-rating">
+              Rating: {player.data.rating}
+            </div>
+          )}
+        </a>
+      );
+    })}
   </div>
 
-  <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
-    Showing {playerData.length} players. Add your settings via the <a href="/quakesettings/admin/">CMS</a>.
-  </p>
-</Layout>
-
-<script>
-  const searchInput = document.getElementById('search') as HTMLInputElement;
-  const tableBody = document.getElementById('table-body') as HTMLTableSectionElement;
-  const headers = document.querySelectorAll('th[data-sort]');
-  const rows = Array.from(tableBody.querySelectorAll('tr'));
-
-  // Search functionality
-  searchInput?.addEventListener('input', (e) => {
-    const query = (e.target as HTMLInputElement).value.toLowerCase();
-    rows.forEach(row => {
-      const text = row.textContent?.toLowerCase() || '';
-      row.style.display = text.includes(query) ? '' : 'none';
-    });
-  });
-
-  // Sort functionality
-  let currentSort = { column: '', ascending: true };
-
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const column = header.getAttribute('data-sort') || '';
-      const columnIndex = Array.from(headers).indexOf(header);
-
-      if (currentSort.column === column) {
-        currentSort.ascending = !currentSort.ascending;
-      } else {
-        currentSort = { column, ascending: true };
-      }
-
-      const sortedRows = rows.sort((a, b) => {
-        const aValue = a.cells[columnIndex]?.textContent || '';
-        const bValue = b.cells[columnIndex]?.textContent || '';
-
-        // Try numeric sort first
-        const aNum = parseFloat(aValue);
-        const bNum = parseFloat(bValue);
-
-        if (!isNaN(aNum) && !isNaN(bNum)) {
-          return currentSort.ascending ? aNum - bNum : bNum - aNum;
-        }
-
-        // Fall back to string sort
-        return currentSort.ascending
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
-      });
-
-      tableBody.innerHTML = '';
-      sortedRows.forEach(row => tableBody.appendChild(row));
-    });
-  });
-</script>
+  <script src={`${base}scripts/filter.js`}></script>
+</BaseLayout>

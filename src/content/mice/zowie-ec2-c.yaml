@@ -1,0 +1,10 @@
+name: "Zowie EC2-C"
+brand: "BenQ Zowie"
+weight: "73g"
+shape: "Ergonomic (Right)"
+dimensions: "120 x 64 x 40mm"
+sensor: "3360"
+dpiRange: "400-3200"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wired"
