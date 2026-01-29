@@ -1,0 +1,10 @@
+name = "quakesettings-oauth"
+main = "oauth-worker.js"
+compatibility_date = "2024-01-01"
+
+# After deployment, set these secrets with:
+# wrangler secret put GITHUB_CLIENT_ID
+# wrangler secret put GITHUB_CLIENT_SECRET
+
+# Uncomment and set your account_id if needed
+# account_id = "your-cloudflare-account-id"
