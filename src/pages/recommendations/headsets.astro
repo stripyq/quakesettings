@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const headsetData = [
+  { name: "Sennheiser HD 560S", type: "Open-back", connection: "Wired", mic: false, notes: "Excellent imaging, neutral" },
+  { name: "Beyerdynamic DT 900 Pro X", type: "Open-back", connection: "Wired", mic: false, notes: "Great soundstage" },
+  { name: "Audio-Technica ATH-R70x", type: "Open-back", connection: "Wired", mic: false, notes: "Audiophile gaming" },
+  { name: "HyperX Cloud II", type: "Closed-back", connection: "Wired", mic: true, notes: "Best value gaming headset" },
+  { name: "SteelSeries Arctis Nova Pro", type: "Closed-back", connection: "Wireless", mic: true, notes: "Premium wireless" },
+  { name: "Logitech G Pro X", type: "Closed-back", connection: "Wired", mic: true, notes: "Esports focused" },
+  { name: "Drop + Sennheiser PC38X", type: "Open-back", connection: "Wired", mic: true, notes: "Best open-back with mic" },
+  { name: "Beyerdynamic DT 770 Pro", type: "Closed-back", connection: "Wired", mic: false, notes: "Studio classic" },
+  { name: "AKG K712 Pro", type: "Open-back", connection: "Wired", mic: false, notes: "Wide soundstage" },
+  { name: "Philips SHP9500", type: "Open-back", connection: "Wired", mic: false, notes: "Budget open-back" },
+];
+---
+
+<BaseLayout title="Headset Recommendations">
+  <div class="page-header">
+    <h1>Headset Recommendations</h1>
+    <p>Audio gear for competitive gaming</p>
+  </div>
+
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Headset</th>
+          <th>Type</th>
+          <th>Connection</th>
+          <th>Mic</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {headsetData.map(h => (
+          <tr>
+            <td class="headset-name">{h.name}</td>
+            <td><span class={`type-badge ${h.type.toLowerCase().replace('-', '')}`}>{h.type}</span></td>
+            <td>{h.connection}</td>
+            <td class="center">{h.mic ? '✓' : '—'}</td>
+            <td class="notes">{h.notes}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-link">
+    <a href={`${base}recommendations/`}>← Back to Recommendations</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .table-container { overflow-x: auto; }
+  .rec-table { width: 100%; border-collapse: collapse; }
+  .rec-table th, .rec-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color, #2a2a3a); }
+  .rec-table th { background: var(--bg-secondary, #12121a); font-weight: 600; color: var(--text-secondary, #888); text-transform: uppercase; font-size: 0.75rem; }
+  .rec-table tbody tr:hover { background: var(--bg-secondary, #12121a); }
+  .headset-name { font-weight: 500; color: var(--accent-primary, #ff6b35); }
+  .type-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; }
+  .type-badge.openback { background: #6bcb77; color: #000; }
+  .type-badge.closedback { background: #4a9eff; color: #fff; }
+  .center { text-align: center; color: var(--accent-primary, #ff6b35); }
+  .notes { color: var(--text-secondary, #888); font-size: 0.875rem; }
+  .back-link { margin-top: 2rem; }
+  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
+  .back-link a:hover { text-decoration: underline; }
+</style>
