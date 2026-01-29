@@ -34,7 +34,8 @@ const keyboardData = p.keyboard ? keyboardsMap.get(p.keyboard) : null;
 const monitorData = p.monitor ? monitorsMap.get(p.monitor) : null;
 const headsetData = p.headset ? headsetsMap.get(p.headset) : null;
 
-const base = import.meta.env.BASE_URL;
+// Ensure base URL has trailing slash for path concatenation
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout title={p.name}>
