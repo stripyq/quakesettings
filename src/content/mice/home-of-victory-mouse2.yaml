@@ -1,0 +1,9 @@
+name: Home of Victory Mouse2
+brand: Home
+weight: "Unknown"
+shape: "Ambidextrous"
+sensor: "Unknown"
+dpiRange: "Unknown"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wired"

@@ -1,0 +1,23 @@
+name: p5ych0
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 1.4
+edpi: 1120
+cm360: 37.11
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "2, 1"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Space
+mouse: glorious-model-o
+mousepad: steelseries-qck
+keyboard: a4tech
+monitor: asus-tuf-vg259qm
+headset: creative-fatal1ty

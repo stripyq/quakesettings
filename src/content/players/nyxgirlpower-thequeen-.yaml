@@ -1,0 +1,23 @@
+name: NyxGirlPower TheQueen ♥
+country: "Unknown"
+category: "duel"
+dpi: 1800
+sensitivity: 3
+edpi: 5400
+cm360: 7.69
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "2"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Space
+mouse: razer-hello-kitty-viper-mini
+mousepad: razer-goliathus-chroma-extended
+keyboard: razer-blackwidow-v4-pro
+monitor: asus-tuf-vg259qm
+headset: razer-kraken-kitty

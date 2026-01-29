@@ -1,0 +1,23 @@
+name: XXXL
+country: "Unknown"
+category: "duel"
+dpi: 600
+sensitivity: 1.66
+edpi: 996
+cm360: 41.73
+acceleration: true
+accelValue: 0.044
+rawInput: true
+fov: 100
+crosshair: "6, 5, 15"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Space
+mouse: logitech-g305-lightspeed
+mousepad: logitech-g240
+monitor: acer-v193hql
+headset: akg-k99

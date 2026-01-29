@@ -1,0 +1,23 @@
+name: proZaC
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 28
+edpi: 22400
+cm360: 12
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "7, 2"
+invertedMouse: true
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Mouse2
+mouse: home-of-victory-mouse2
+mousepad: steelseries-qck
+keyboard: logitech-g413
+monitor: asus-rog-strix-xg248q
+headset: zon-home-of-victory-headset1

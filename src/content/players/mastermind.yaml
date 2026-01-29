@@ -1,0 +1,23 @@
+name: MASTERMIND
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 4
+edpi: 3200
+cm360: 12.988636363636365
+acceleration: true
+accelValue: 0.055
+rawInput: true
+fov: 110
+crosshair: "6, 2"
+invertedMouse: true
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Mouse2
+mouse: razer-deathadder-v3-pro
+mousepad: artisan-zero-
+monitor: samsung-odyssey-g7-c32g75t
+headset: logitech-g-pro-x-wireless-headset

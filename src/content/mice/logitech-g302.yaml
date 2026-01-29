@@ -1,0 +1,9 @@
+name: Logitech G302
+brand: Logitech
+weight: "Unknown"
+shape: "Ambidextrous"
+sensor: "Unknown"
+dpiRange: "Unknown"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wired"

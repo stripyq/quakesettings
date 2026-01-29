@@ -1,0 +1,23 @@
+name: ani
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 1.5
+edpi: 1200
+cm360: 34.63
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "1, 13, 7, 6"
+invertedMouse: false
+forward: Mouse2
+back: d
+left: s
+right: f
+attack: Mouse1
+jump: e
+mouse: logitech-g-pro-wireless
+mousepad: steelseries-qck-heavy
+keyboard: microsoft
+monitor: benq-xl2420t
+headset: hyperx-cloud-mix

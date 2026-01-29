@@ -1,7 +1,6 @@
-name: "HyperX Cloud II"
-brand: "HyperX"
-type: "Over-ear (Closed)"
-driver: "53mm"
-connection: "Wired USB/3.5mm"
-microphone: "Detachable"
-features: "7.1 Virtual Surround"
+name: HyperX Cloud II
+brand: HyperX
+type: "Closed-back"
+driverSize: "Unknown"
+connection: "Wired"
+microphone: false

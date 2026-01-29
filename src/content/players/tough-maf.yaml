@@ -1,0 +1,22 @@
+name: tough maf
+country: "Unknown"
+category: "duel"
+dpi: 1600
+sensitivity: 1
+edpi: 1600
+cm360: 25.97
+acceleration: false
+rawInput: true
+fov: 105
+crosshair: "6"
+invertedMouse: false
+forward: e
+back: d
+left: s
+right: f
+attack: Mouse1
+jump: Mouse2
+mouse: logitech-g-pro-x-superlight
+keyboard: steelseries-apex-3
+monitor: msi-optix-mag251rx
+headset: beyerdynamic-dt-770-pro
