@@ -1,6 +1,5 @@
-name: "Logitech G640"
-brand: "Logitech"
-size: "460 x 400 x 3mm"
+name: Logitech G640
+brand: Logitech
 surface: "Cloth"
-base: "Rubber"
-speedType: "Balanced"
+speed: "Balanced"
+dimensions: "Unknown"

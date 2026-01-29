@@ -1,6 +1,5 @@
-name: "HyperX Alloy Origins"
-brand: "HyperX"
-format: "TKL"
-switches: "HyperX Red"
-connection: "Wired USB-C"
-features: "RGB, Aircraft-grade Aluminum"
+name: HyperX Alloy Origins
+brand: HyperX
+size: "TKL"
+switches: "Mechanical"
+connection: "Wired"

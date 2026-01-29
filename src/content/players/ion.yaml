@@ -1,0 +1,23 @@
+name: ion
+country: "Unknown"
+category: "duel"
+dpi: 3200
+sensitivity: 0.4
+edpi: 1280
+cm360: 32.471590909090914
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "2, 7, 3, 1, 9, 13"
+invertedMouse: false
+forward: e
+back: d
+left: s
+right: f
+attack: Mouse1
+jump: Space
+mouse: pulsar-feinmann-f01
+mousepad: pulsar-superglide-mousepad
+keyboard: steelseries-apex-pro-mini-wireless
+monitor: asus-rog-swift-oled-pg32ucdp
+headset: astro-a50-wireless

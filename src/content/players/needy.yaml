@@ -1,0 +1,24 @@
+name: Needy
+country: "Unknown"
+category: "duel"
+dpi: 1000
+sensitivity: 3.3
+edpi: 3300
+cm360: 12.59
+acceleration: true
+accelValue: 0.11
+rawInput: true
+fov: 103
+crosshair: "2, 7, 13"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: CAPSLOCK
+mouse: logitech-g-pro-x-superlight
+mousepad: artisan-raiden-
+keyboard: logitech-g-pro
+monitor: samsung-odyssey-g3-lf24g35t
+headset: hyperx-cloud-ii

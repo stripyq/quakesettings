@@ -1,0 +1,24 @@
+name: randall
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 2.8
+edpi: 2240
+cm360: 18.55
+acceleration: true
+accelValue: 0.04
+rawInput: true
+fov: 99
+crosshair: "2, 7, 6"
+invertedMouse: false
+forward: r
+back: d
+left: f
+right: g
+attack: Mouse1
+jump: Space
+mouse: razer-viper-v3-pro
+mousepad: lethal-gaming-gear-venus-pro
+keyboard: corsair-k65-plus-wireless
+monitor: asus-tuf-gaming-vg279qm
+headset: philips-fidelio-x3

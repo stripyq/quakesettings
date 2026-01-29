@@ -1,6 +1,5 @@
-name: "SteelSeries QcK Heavy"
-brand: "SteelSeries"
-size: "450 x 400 x 6mm"
+name: SteelSeries QcK Heavy
+brand: SteelSeries
 surface: "Cloth"
-base: "Rubber"
-speedType: "Control"
+speed: "Balanced"
+dimensions: "Unknown"

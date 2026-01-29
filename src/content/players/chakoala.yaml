@@ -1,0 +1,17 @@
+name: chakoala
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 1.9
+edpi: 1520
+cm360: 27.344497607655505
+acceleration: false
+rawInput: true
+fov: 103
+crosshair: "2"
+invertedMouse: false
+mouse: razer-viper-8khz
+mousepad: glorious-ice
+keyboard: razer-cynosa-v2
+monitor: benq-zowie-xl2411t
+headset: razer-blackshark-v2

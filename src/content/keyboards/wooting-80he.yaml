@@ -1,6 +1,5 @@
-name: "Wooting 80HE"
-brand: "Wooting"
-format: "TKL"
-switches: "Lekker (Hall Effect)"
-connection: "Wired USB-C"
-features: "Analog Input, Rapid Trigger"
+name: Wooting 80HE
+brand: Wooting
+size: "TKL"
+switches: "Mechanical"
+connection: "Wired"

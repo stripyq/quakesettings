@@ -1,0 +1,23 @@
+name: deisma
+country: "Unknown"
+category: "duel"
+dpi: 3200
+sensitivity: 0.9
+edpi: 2880
+cm360: 14.43
+acceleration: false
+rawInput: true
+fov: 90
+crosshair: "2, 3, 10, 13, 18"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Space
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: logitech-g640
+keyboard: razer-huntsman-mini
+monitor: asus-tuf-gaming-vg279qm
+headset: apple-airpods-pro-2nd-gen

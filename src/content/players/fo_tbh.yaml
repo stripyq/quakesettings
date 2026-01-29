@@ -1,0 +1,22 @@
+name: fo_tbh
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 1.36
+edpi: 1088
+cm360: 38.20187165775401
+acceleration: false
+rawInput: true
+fov: 100
+crosshair: "2, 7"
+invertedMouse: false
+forward: w
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Mouse2
+mouse: pulsar-xlite-v3-medium
+mousepad: esptiger-eba
+monitor: msi-mpg-271qrx-qd-oled
+headset: drop-sennheiser-pc37x

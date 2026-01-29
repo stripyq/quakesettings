@@ -1,29 +1,24 @@
-name: "stripy"
-country: "UK"
+name: stripy
+country: "Unknown"
 category: "duel"
-
 dpi: 1600
 sensitivity: 0.75
 edpi: 1200
 cm360: 34.63
 acceleration: true
+accelValue: 0.005
 rawInput: true
-
-fov: 102
-crosshair: "2"
+fov: 103
+crosshair: "2, 7, 6, 1, 9, 14, 22, 4"
 invertedMouse: true
-
-forward: "W"
-back: "S"
-left: "A"
-right: "D"
-jump: "Space"
-crouch: "Ctrl"
-attack: "Mouse1"
-zoom: "Mouse2"
-
-mouse: "g-pro-superlight"
-mousepad: "artisan-hayate-otsu"
-keyboard: "wooting-80he"
-monitor: "lg-32gs95ue"
-headset: "sennheiser-pc37x"
+forward: Mouse2
+back: s
+left: a
+right: d
+attack: Mouse1
+jump: Space
+mouse: lamzu-maya-x
+mousepad: artisan-hayate-otsu-
+keyboard: wooting-80he
+monitor: lg-32gs95ue-b
+headset: drop-sennheiser-pc37x

@@ -1,0 +1,24 @@
+name: tr1x0
+country: "Unknown"
+category: "duel"
+dpi: 800
+sensitivity: 3.2
+edpi: 2560
+cm360: 16.23
+acceleration: true
+accelValue: 0.02
+rawInput: true
+fov: 100
+crosshair: "2, 6, 3"
+invertedMouse: false
+forward: e
+back: d
+left: s
+right: f
+attack: Mouse1
+jump: Mouse2
+mouse: logitech-g-pro
+mousepad: steelseries-qck
+keyboard: sharkoon-skiller-sgk3
+monitor: msi-optix-g271
+headset: hyperx-cloud-ii

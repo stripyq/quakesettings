@@ -1,0 +1,24 @@
+name: St3f4N
+country: "Unknown"
+category: "duel"
+dpi: 1600
+sensitivity: 0.7
+edpi: 1120
+cm360: 37.11
+acceleration: true
+accelValue: 0.011
+rawInput: true
+fov: 100
+crosshair: "2, 7, 9"
+invertedMouse: false
+forward: KP_5
+back: KP_DOWNARROW
+left: KP_END
+right: KP_PGDN
+attack: Mouse1
+jump: Mouse2
+mouse: finalmouse-ultralightx-lion-m
+mousepad: x-raypad-aqua-control-pro-
+keyboard: nuphy-field75-he
+monitor: asus-tuf-gaming-vg279qm
+headset: drop-sennheiser-pc37x
