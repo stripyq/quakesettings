@@ -1,0 +1,31 @@
+name: "Serious"
+realName: "Nikita Gusev"
+country: "Russia"
+rating: 2650
+category: "duel"
+
+dpi: 800
+sensitivity: 1.5
+edpi: 1200
+cm360: 34.6
+acceleration: false
+rawInput: true
+
+fov: 120
+crosshair: "Circle"
+crosshairSize: "Small"
+invertedMouse: false
+
+forward: "W"
+back: "S"
+left: "A"
+right: "D"
+jump: "Space"
+crouch: "Ctrl"
+attack: "Mouse1"
+zoom: "Mouse2"
+
+mouse: "g-pro-wireless"
+mousepad: "logitech-g640"
+keyboard: "wooting-60he"
+monitor: "asus-pg259qn"

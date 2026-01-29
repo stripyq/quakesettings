@@ -1,0 +1,35 @@
+name: "Cypher"
+realName: "Alexey Yanushevsky"
+country: "Belarus"
+team: "Retired"
+rating: 2720
+category: "duel"
+
+dpi: 400
+sensitivity: 3.0
+edpi: 1200
+cm360: 34.6
+acceleration: false
+rawInput: true
+
+fov: 106
+crosshair: "Dot"
+crosshairSize: "Small"
+invertedMouse: false
+
+forward: "W"
+back: "S"
+left: "A"
+right: "D"
+jump: "Space"
+crouch: "C"
+attack: "Mouse1"
+zoom: "Mouse2"
+weaponNext: "Mwheel Down"
+weaponPrev: "Mwheel Up"
+
+mouse: "zowie-ec2-c"
+mousepad: "artisan-hien"
+keyboard: "hyperx-alloy-origins"
+monitor: "benq-xl2546k"
+headset: "beyerdynamic-dt990-pro"

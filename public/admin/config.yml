@@ -1,0 +1,196 @@
+backend:
+  name: github
+  repo: stripyq/quakesettings
+  branch: main
+  base_url: https://quakesettings-oauth.YOUR-SUBDOMAIN.workers.dev
+  auth_endpoint: /auth
+
+media_folder: public/images
+public_folder: /quakesettings/images
+
+site_url: https://stripyq.github.io/quakesettings
+
+collections:
+  # Hardware Collections (for dropdown selection)
+  - name: mice
+    label: Mice
+    folder: src/content/mice
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Weight", name: "weight", widget: "string" }
+      - { label: "Shape", name: "shape", widget: "select", options: ["Ambidextrous", "Ergonomic (Right)", "Ergonomic (Left)"] }
+      - { label: "Dimensions", name: "dimensions", widget: "string", required: false }
+      - { label: "Sensor", name: "sensor", widget: "string" }
+      - { label: "DPI Range", name: "dpiRange", widget: "string" }
+      - { label: "Polling Rate", name: "pollingRate", widget: "string", default: "1000Hz" }
+      - { label: "Buttons", name: "buttons", widget: "number" }
+      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  - name: monitors
+    label: Monitors
+    folder: src/content/monitors
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Size", name: "size", widget: "string" }
+      - { label: "Resolution", name: "resolution", widget: "string" }
+      - { label: "Refresh Rate", name: "refreshRate", widget: "string" }
+      - { label: "Panel Type", name: "panelType", widget: "select", options: ["IPS", "TN", "VA", "OLED"] }
+      - { label: "Response Time", name: "responseTime", widget: "string" }
+      - { label: "Adaptive Sync", name: "adaptiveSync", widget: "select", options: ["G-Sync", "FreeSync", "G-Sync Compatible", "None"], required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  - name: keyboards
+    label: Keyboards
+    folder: src/content/keyboards
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Size", name: "size", widget: "select", options: ["Full", "TKL", "75%", "65%", "60%"] }
+      - { label: "Switches", name: "switches", widget: "string" }
+      - { label: "Actuation", name: "actuation", widget: "string", required: false }
+      - { label: "Features", name: "features", widget: "string", required: false }
+      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  - name: mousepads
+    label: Mousepads
+    folder: src/content/mousepads
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Surface", name: "surface", widget: "select", options: ["Cloth", "Hybrid", "Glass", "Hard"] }
+      - { label: "Speed", name: "speed", widget: "select", options: ["Control", "Balanced", "Speed"] }
+      - { label: "Dimensions", name: "dimensions", widget: "string" }
+      - { label: "Thickness", name: "thickness", widget: "string", required: false }
+      - { label: "Base", name: "base", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  - name: headsets
+    label: Headsets
+    folder: src/content/headsets
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Brand", name: "brand", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["Open-back", "Closed-back", "In-ear"] }
+      - { label: "Driver Size", name: "driverSize", widget: "string" }
+      - { label: "Frequency Response", name: "frequencyResponse", widget: "string", required: false }
+      - { label: "Impedance", name: "impedance", widget: "string", required: false }
+      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
+      - { label: "Microphone", name: "microphone", widget: "boolean", default: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Players Collection (with relation widgets for hardware)
+  - name: players
+    label: Players
+    folder: src/content/players
+    extension: yaml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      # Basic Info
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Real Name", name: "realName", widget: "string", required: false }
+      - { label: "Country", name: "country", widget: "string" }
+      - { label: "Team", name: "team", widget: "string", required: false }
+      - { label: "Rating", name: "rating", widget: "number", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
+
+      # Mouse Settings
+      - { label: "DPI", name: "dpi", widget: "number" }
+      - { label: "Sensitivity", name: "sensitivity", widget: "number", value_type: "float" }
+      - { label: "eDPI", name: "edpi", widget: "number" }
+      - { label: "cm/360", name: "cm360", widget: "number", value_type: "float", required: false }
+      - { label: "Acceleration", name: "acceleration", widget: "boolean", default: false }
+      - { label: "Raw Input", name: "rawInput", widget: "boolean", default: true }
+
+      # Game Settings
+      - { label: "FOV", name: "fov", widget: "number", min: 90, max: 130 }
+      - { label: "Crosshair", name: "crosshair", widget: "string" }
+      - { label: "Crosshair Size", name: "crosshairSize", widget: "select", options: ["Small", "Medium", "Large"], required: false }
+      - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false }
+
+      # Key Bindings
+      - { label: "Forward", name: "forward", widget: "string", default: "W", required: false }
+      - { label: "Back", name: "back", widget: "string", default: "S", required: false }
+      - { label: "Left", name: "left", widget: "string", default: "A", required: false }
+      - { label: "Right", name: "right", widget: "string", default: "D", required: false }
+      - { label: "Jump", name: "jump", widget: "string", default: "Space", required: false }
+      - { label: "Crouch", name: "crouch", widget: "string", default: "Ctrl", required: false }
+      - { label: "Attack", name: "attack", widget: "string", default: "Mouse1", required: false }
+      - { label: "Zoom", name: "zoom", widget: "string", default: "Mouse2", required: false }
+      - { label: "Next Weapon", name: "weaponNext", widget: "string", required: false }
+      - { label: "Prev Weapon", name: "weaponPrev", widget: "string", required: false }
+
+      # Hardware (relation widgets for dropdown selection)
+      - label: "Mouse"
+        name: "mouse"
+        widget: "relation"
+        collection: "mice"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+      - label: "Mousepad"
+        name: "mousepad"
+        widget: "relation"
+        collection: "mousepads"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Keyboard"
+        name: "keyboard"
+        widget: "relation"
+        collection: "keyboards"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Monitor"
+        name: "monitor"
+        widget: "relation"
+        collection: "monitors"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+      - label: "Headset"
+        name: "headset"
+        widget: "relation"
+        collection: "headsets"
+        search_fields: ["name", "brand"]
+        value_field: "{{slug}}"
+        display_fields: ["name"]
+        required: false
+
+      # Config File
+      - { label: "Config File", name: "configFile", widget: "file", required: false }

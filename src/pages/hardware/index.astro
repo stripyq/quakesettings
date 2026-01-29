@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all hardware
+const mice = await getCollection('mice');
+const monitors = await getCollection('monitors');
+const keyboards = await getCollection('keyboards');
+const mousepads = await getCollection('mousepads');
+const headsets = await getCollection('headsets');
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Count hardware usage
+function countUsage(hardwareId: string, field: string) {
+  return players.filter(p => p.data[field] === hardwareId).length;
+}
+
+// Sort mice by popularity
+const miceWithUsage = mice.map(m => ({
+  ...m,
+  usage: countUsage(m.id, 'mouse')
+})).sort((a, b) => b.usage - a.usage);
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Hardware Database">
+  <div class="page-header">
+    <h1>Hardware Database</h1>
+    <p>Gaming peripherals used by professional Quake Live players</p>
+  </div>
+
+  <section class="hardware-category">
+    <h2>Mice ({mice.length})</h2>
+    <div class="hardware-grid">
+      {miceWithUsage.map((mouse) => (
+        <div class="hardware-card">
+          <h3>{mouse.data.name}</h3>
+          <div class="hardware-brand">{mouse.data.brand}</div>
+          <table class="hardware-mini-specs">
+            <tr><td>Weight</td><td>{mouse.data.weight}</td></tr>
+            <tr><td>Shape</td><td>{mouse.data.shape}</td></tr>
+            <tr><td>Sensor</td><td>{mouse.data.sensor}</td></tr>
+            <tr><td>Connection</td><td>{mouse.data.connection}</td></tr>
+          </table>
+          <div class="usage-count">
+            Used by {mouse.usage} player{mouse.usage !== 1 ? 's' : ''}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="hardware-category">
+    <h2>Monitors ({monitors.length})</h2>
+    <div class="hardware-grid">
+      {monitors.map((monitor) => (
+        <div class="hardware-card">
+          <h3>{monitor.data.name}</h3>
+          <div class="hardware-brand">{monitor.data.brand}</div>
+          <table class="hardware-mini-specs">
+            <tr><td>Size</td><td>{monitor.data.size}</td></tr>
+            <tr><td>Refresh</td><td>{monitor.data.refreshRate}</td></tr>
+            <tr><td>Panel</td><td>{monitor.data.panel}</td></tr>
+          </table>
+          <div class="usage-count">
+            Used by {countUsage(monitor.id, 'monitor')} player(s)
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="hardware-category">
+    <h2>Keyboards ({keyboards.length})</h2>
+    <div class="hardware-grid">
+      {keyboards.map((kb) => (
+        <div class="hardware-card">
+          <h3>{kb.data.name}</h3>
+          <div class="hardware-brand">{kb.data.brand}</div>
+          <table class="hardware-mini-specs">
+            <tr><td>Format</td><td>{kb.data.format}</td></tr>
+            <tr><td>Switches</td><td>{kb.data.switches}</td></tr>
+          </table>
+          <div class="usage-count">
+            Used by {countUsage(kb.id, 'keyboard')} player(s)
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="hardware-category">
+    <h2>Mousepads ({mousepads.length})</h2>
+    <div class="hardware-grid">
+      {mousepads.map((pad) => (
+        <div class="hardware-card">
+          <h3>{pad.data.name}</h3>
+          <div class="hardware-brand">{pad.data.brand}</div>
+          <table class="hardware-mini-specs">
+            <tr><td>Size</td><td>{pad.data.size}</td></tr>
+            <tr><td>Type</td><td>{pad.data.speedType}</td></tr>
+          </table>
+          <div class="usage-count">
+            Used by {countUsage(pad.id, 'mousepad')} player(s)
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="hardware-category">
+    <h2>Headsets ({headsets.length})</h2>
+    <div class="hardware-grid">
+      {headsets.map((hs) => (
+        <div class="hardware-card">
+          <h3>{hs.data.name}</h3>
+          <div class="hardware-brand">{hs.data.brand}</div>
+          <table class="hardware-mini-specs">
+            <tr><td>Type</td><td>{hs.data.type}</td></tr>
+            <tr><td>Driver</td><td>{hs.data.driver}</td></tr>
+          </table>
+          <div class="usage-count">
+            Used by {countUsage(hs.id, 'headset')} player(s)
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,35 @@
+name: "Rapha"
+realName: "Shane Hendrixson"
+country: "USA"
+team: "Retired"
+rating: 2850
+category: "duel"
+
+dpi: 450
+sensitivity: 2.4
+edpi: 1080
+cm360: 38.5
+acceleration: false
+rawInput: true
+
+fov: 110
+crosshair: "Cross"
+crosshairSize: "Medium"
+invertedMouse: false
+
+forward: "W"
+back: "S"
+left: "A"
+right: "D"
+jump: "Space"
+crouch: "Ctrl"
+attack: "Mouse1"
+zoom: "Mouse2"
+weaponNext: "Mwheel Down"
+weaponPrev: "Mwheel Up"
+
+mouse: "g-pro-superlight"
+mousepad: "steelseries-qck-heavy"
+keyboard: "ducky-one-2-mini"
+monitor: "benq-xl2546k"
+headset: "hyperx-cloud-ii"

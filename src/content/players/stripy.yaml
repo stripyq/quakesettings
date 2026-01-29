@@ -1,0 +1,29 @@
+name: "stripy"
+country: "UK"
+category: "duel"
+
+dpi: 1600
+sensitivity: 0.75
+edpi: 1200
+cm360: 34.63
+acceleration: true
+rawInput: true
+
+fov: 102
+crosshair: "2"
+invertedMouse: true
+
+forward: "W"
+back: "S"
+left: "A"
+right: "D"
+jump: "Space"
+crouch: "Ctrl"
+attack: "Mouse1"
+zoom: "Mouse2"
+
+mouse: "g-pro-superlight"
+mousepad: "artisan-hayate-otsu"
+keyboard: "wooting-80he"
+monitor: "lg-32gs95ue"
+headset: "sennheiser-pc37x"
