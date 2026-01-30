@@ -49,10 +49,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {p.rating && <span class="rating">Rating: {p.rating}</span>}
         <span class="category">{p.category.toUpperCase()}</span>
       </div>
+      <div class="player-actions">
+        <a href={`${base}compare/?p1=${player.id}`} class="compare-btn">Compare with another player</a>
+      </div>
     </div>
 
+    <!-- Settings Cards -->
     <div class="settings-grid">
-
       <!-- Mouse Settings -->
       <section class="settings-section">
         <h2>Mouse Settings</h2>
@@ -60,7 +63,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <tr><td>DPI</td><td>{p.dpi}</td></tr>
           <tr><td>In-game Sensitivity</td><td>{p.sensitivity}</td></tr>
           <tr><td>eDPI</td><td>{p.edpi}</td></tr>
-          <tr><td>cm/360°</td><td>{p.cm360 || 'N/A'}</td></tr>
+          <tr><td>cm/360</td><td>{p.cm360 || 'N/A'}</td></tr>
           <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
           <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
         </table>
@@ -93,11 +96,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
         </table>
       </section>
+    </div>
 
-      <!-- Hardware -->
-      <section class="settings-section hardware-section">
-        <h2>Hardware</h2>
-
+    <!-- Hardware Section (separate from settings) -->
+    <section class="hardware-full-section">
+      <h2>Hardware</h2>
+      <div class="hardware-items-grid">
         {mouseData && (
           <div class="hardware-item">
             <h3>Mouse</h3>
@@ -117,9 +121,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <h3>Mousepad</h3>
             <p class="hardware-name">{mousepadData.name}</p>
             <table class="hardware-specs">
-              <tr><td>Size</td><td>{mousepadData.size}</td></tr>
               <tr><td>Surface</td><td>{mousepadData.surface}</td></tr>
-              <tr><td>Type</td><td>{mousepadData.speedType}</td></tr>
+              <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || 'N/A'}</td></tr>
+              <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || 'N/A'}</td></tr>
             </table>
           </div>
         )}
@@ -129,8 +133,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <h3>Keyboard</h3>
             <p class="hardware-name">{keyboardData.name}</p>
             <table class="hardware-specs">
-              <tr><td>Format</td><td>{keyboardData.format}</td></tr>
+              <tr><td>Size</td><td>{keyboardData.size || keyboardData.format || 'N/A'}</td></tr>
               <tr><td>Switches</td><td>{keyboardData.switches}</td></tr>
+              <tr><td>Connection</td><td>{keyboardData.connection}</td></tr>
             </table>
           </div>
         )}
@@ -142,7 +147,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <table class="hardware-specs">
               <tr><td>Size</td><td>{monitorData.size}</td></tr>
               <tr><td>Refresh Rate</td><td>{monitorData.refreshRate}</td></tr>
-              <tr><td>Panel</td><td>{monitorData.panel}</td></tr>
+              <tr><td>Panel</td><td>{monitorData.panelType || monitorData.panel || 'N/A'}</td></tr>
               <tr><td>Resolution</td><td>{monitorData.resolution}</td></tr>
             </table>
           </div>
@@ -154,13 +159,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <p class="hardware-name">{headsetData.name}</p>
             <table class="hardware-specs">
               <tr><td>Type</td><td>{headsetData.type}</td></tr>
-              <tr><td>Driver</td><td>{headsetData.driver}</td></tr>
+              <tr><td>Driver Size</td><td>{headsetData.driverSize || headsetData.driver || 'N/A'}</td></tr>
               <tr><td>Connection</td><td>{headsetData.connection}</td></tr>
             </table>
           </div>
         )}
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- Config Download -->
     {p.configFile && (
@@ -175,3 +180,91 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <a href={base} class="back-link">← Back to all players</a>
   </div>
 </BaseLayout>
+
+<style>
+  .player-actions {
+    margin-top: 1rem;
+  }
+
+  .compare-btn {
+    display: inline-block;
+    background: var(--bg-card, #1a1a24);
+    color: var(--accent-secondary, #4ecdc4);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    transition: all 0.2s;
+  }
+
+  .compare-btn:hover {
+    background: var(--accent-secondary, #4ecdc4);
+    color: var(--bg-primary, #0a0a0f);
+  }
+
+  .hardware-full-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .hardware-full-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hardware-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .hardware-item {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    padding: 1rem;
+  }
+
+  .hardware-item h3 {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hardware-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-secondary, #4ecdc4);
+    margin-bottom: 0.75rem;
+  }
+
+  .hardware-specs {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .hardware-specs td {
+    padding: 0.2rem 0;
+  }
+
+  .hardware-specs td:first-child {
+    color: var(--text-secondary, #9090a0);
+    width: 45%;
+  }
+
+  @media (max-width: 768px) {
+    .hardware-items-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

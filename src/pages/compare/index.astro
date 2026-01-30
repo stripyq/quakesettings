@@ -1,0 +1,432 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all data for client-side comparison
+const players = await getCollection('players');
+const mice = await getCollection('mice');
+const mousepads = await getCollection('mousepads');
+const keyboards = await getCollection('keyboards');
+const monitors = await getCollection('monitors');
+const headsets = await getCollection('headsets');
+
+// Create lookup maps
+const miceMap = Object.fromEntries(mice.map(m => [m.id, m.data]));
+const mousepadsMap = Object.fromEntries(mousepads.map(m => [m.id, m.data]));
+const keyboardsMap = Object.fromEntries(keyboards.map(k => [k.id, k.data]));
+const monitorsMap = Object.fromEntries(monitors.map(m => [m.id, m.data]));
+const headsetsMap = Object.fromEntries(headsets.map(h => [h.id, h.data]));
+
+// Prepare player data for client
+const playersData = Object.fromEntries(
+  players.map(p => [p.id, {
+    ...p.data,
+    id: p.id,
+    mouseData: miceMap[p.data.mouse] || null,
+    mousepadData: mousepadsMap[p.data.mousepad] || null,
+    keyboardData: keyboardsMap[p.data.keyboard] || null,
+    monitorData: monitorsMap[p.data.monitor] || null,
+    headsetData: headsetsMap[p.data.headset] || null,
+  }])
+);
+
+const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout title="Compare Players">
+  <div class="page-header">
+    <h1>Compare Players</h1>
+    <p>Select two players to compare their settings side by side</p>
+  </div>
+
+  <div class="compare-selectors">
+    <div class="selector-group">
+      <label for="player1">Player 1</label>
+      <select id="player1">
+        <option value="">Select a player...</option>
+        {sortedPlayers.map(p => (
+          <option value={p.id}>{p.data.name}</option>
+        ))}
+      </select>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="selector-group">
+      <label for="player2">Player 2</label>
+      <select id="player2">
+        <option value="">Select a player...</option>
+        {sortedPlayers.map(p => (
+          <option value={p.id}>{p.data.name}</option>
+        ))}
+      </select>
+    </div>
+  </div>
+
+  <div id="comparison-container" class="comparison-container hidden">
+    <div class="comparison-grid">
+      <!-- Player 1 Column -->
+      <div class="player-column" id="player1-data">
+        <div class="player-header-card">
+          <h2 id="p1-name">-</h2>
+          <p id="p1-meta" class="player-meta-text">-</p>
+        </div>
+      </div>
+
+      <!-- Settings Labels Column -->
+      <div class="labels-column">
+        <div class="label-section">
+          <h3>Mouse Settings</h3>
+          <div class="label-row">DPI</div>
+          <div class="label-row">Sensitivity</div>
+          <div class="label-row">eDPI</div>
+          <div class="label-row">cm/360</div>
+          <div class="label-row">Acceleration</div>
+          <div class="label-row">Raw Input</div>
+        </div>
+        <div class="label-section">
+          <h3>Game Settings</h3>
+          <div class="label-row">FOV</div>
+          <div class="label-row">Crosshair</div>
+        </div>
+        <div class="label-section">
+          <h3>Hardware</h3>
+          <div class="label-row">Mouse</div>
+          <div class="label-row">Mousepad</div>
+          <div class="label-row">Keyboard</div>
+          <div class="label-row">Monitor</div>
+          <div class="label-row">Headset</div>
+        </div>
+      </div>
+
+      <!-- Player 2 Column -->
+      <div class="player-column" id="player2-data">
+        <div class="player-header-card">
+          <h2 id="p2-name">-</h2>
+          <p id="p2-meta" class="player-meta-text">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="empty-state" class="empty-state">
+    <p>Select two players above to compare their settings</p>
+  </div>
+
+  <script define:vars={{ playersData, base }}>
+    document.addEventListener('DOMContentLoaded', function() {
+      const player1Select = document.getElementById('player1');
+      const player2Select = document.getElementById('player2');
+      const comparisonContainer = document.getElementById('comparison-container');
+      const emptyState = document.getElementById('empty-state');
+
+      // Check URL params for pre-selected players
+      const urlParams = new URLSearchParams(window.location.search);
+      const p1Param = urlParams.get('p1');
+      const p2Param = urlParams.get('p2');
+
+      if (p1Param && playersData[p1Param]) {
+        player1Select.value = p1Param;
+      }
+      if (p2Param && playersData[p2Param]) {
+        player2Select.value = p2Param;
+      }
+
+      function updateComparison() {
+        const p1Id = player1Select.value;
+        const p2Id = player2Select.value;
+
+        if (!p1Id || !p2Id) {
+          comparisonContainer.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+          return;
+        }
+
+        const p1 = playersData[p1Id];
+        const p2 = playersData[p2Id];
+
+        if (!p1 || !p2) return;
+
+        comparisonContainer.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+
+        // Update URL
+        const newUrl = `${window.location.pathname}?p1=${p1Id}&p2=${p2Id}`;
+        window.history.replaceState({}, '', newUrl);
+
+        // Update player headers
+        document.getElementById('p1-name').textContent = p1.name;
+        document.getElementById('p1-meta').textContent = `${p1.country || 'Unknown'} ${p1.team ? '| ' + p1.team : ''}`;
+        document.getElementById('p2-name').textContent = p2.name;
+        document.getElementById('p2-meta').textContent = `${p2.country || 'Unknown'} ${p2.team ? '| ' + p2.team : ''}`;
+
+        // Build comparison rows
+        const p1Column = document.getElementById('player1-data');
+        const p2Column = document.getElementById('player2-data');
+
+        // Clear existing content (keep headers)
+        p1Column.innerHTML = `<div class="player-header-card"><h2>${p1.name}</h2><p class="player-meta-text">${p1.country || 'Unknown'} ${p1.team ? '| ' + p1.team : ''}</p></div>`;
+        p2Column.innerHTML = `<div class="player-header-card"><h2>${p2.name}</h2><p class="player-meta-text">${p2.country || 'Unknown'} ${p2.team ? '| ' + p2.team : ''}</p></div>`;
+
+        // Mouse Settings
+        p1Column.innerHTML += createSection([
+          { val: p1.dpi, diff: p1.dpi !== p2.dpi },
+          { val: p1.sensitivity, diff: p1.sensitivity !== p2.sensitivity },
+          { val: p1.edpi, diff: p1.edpi !== p2.edpi },
+          { val: p1.cm360 || 'N/A', diff: p1.cm360 !== p2.cm360 },
+          { val: p1.acceleration ? 'On' : 'Off', diff: p1.acceleration !== p2.acceleration },
+          { val: p1.rawInput ? 'On' : 'Off', diff: p1.rawInput !== p2.rawInput },
+        ]);
+        p2Column.innerHTML += createSection([
+          { val: p2.dpi, diff: p1.dpi !== p2.dpi },
+          { val: p2.sensitivity, diff: p1.sensitivity !== p2.sensitivity },
+          { val: p2.edpi, diff: p1.edpi !== p2.edpi },
+          { val: p2.cm360 || 'N/A', diff: p1.cm360 !== p2.cm360 },
+          { val: p2.acceleration ? 'On' : 'Off', diff: p1.acceleration !== p2.acceleration },
+          { val: p2.rawInput ? 'On' : 'Off', diff: p1.rawInput !== p2.rawInput },
+        ]);
+
+        // Game Settings
+        p1Column.innerHTML += createSection([
+          { val: p1.fov, diff: p1.fov !== p2.fov },
+          { val: p1.crosshair || 'N/A', diff: p1.crosshair !== p2.crosshair },
+        ]);
+        p2Column.innerHTML += createSection([
+          { val: p2.fov, diff: p1.fov !== p2.fov },
+          { val: p2.crosshair || 'N/A', diff: p1.crosshair !== p2.crosshair },
+        ]);
+
+        // Hardware
+        const p1Mouse = p1.mouseData?.name || p1.mouse || 'N/A';
+        const p2Mouse = p2.mouseData?.name || p2.mouse || 'N/A';
+        const p1Pad = p1.mousepadData?.name || p1.mousepad || 'N/A';
+        const p2Pad = p2.mousepadData?.name || p2.mousepad || 'N/A';
+        const p1Kb = p1.keyboardData?.name || p1.keyboard || 'N/A';
+        const p2Kb = p2.keyboardData?.name || p2.keyboard || 'N/A';
+        const p1Mon = p1.monitorData?.name || p1.monitor || 'N/A';
+        const p2Mon = p2.monitorData?.name || p2.monitor || 'N/A';
+        const p1Hs = p1.headsetData?.name || p1.headset || 'N/A';
+        const p2Hs = p2.headsetData?.name || p2.headset || 'N/A';
+
+        p1Column.innerHTML += createSection([
+          { val: p1Mouse, diff: p1Mouse !== p2Mouse },
+          { val: p1Pad, diff: p1Pad !== p2Pad },
+          { val: p1Kb, diff: p1Kb !== p2Kb },
+          { val: p1Mon, diff: p1Mon !== p2Mon },
+          { val: p1Hs, diff: p1Hs !== p2Hs },
+        ]);
+        p2Column.innerHTML += createSection([
+          { val: p2Mouse, diff: p1Mouse !== p2Mouse },
+          { val: p2Pad, diff: p1Pad !== p2Pad },
+          { val: p2Kb, diff: p1Kb !== p2Kb },
+          { val: p2Mon, diff: p1Mon !== p2Mon },
+          { val: p2Hs, diff: p1Hs !== p2Hs },
+        ]);
+      }
+
+      function createSection(rows) {
+        let html = '<div class="value-section">';
+        rows.forEach(row => {
+          const diffClass = row.diff ? 'diff' : 'same';
+          html += `<div class="value-row ${diffClass}">${row.val}</div>`;
+        });
+        html += '</div>';
+        return html;
+      }
+
+      player1Select.addEventListener('change', updateComparison);
+      player2Select.addEventListener('change', updateComparison);
+
+      // Initial update if params provided
+      if (p1Param || p2Param) {
+        updateComparison();
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .compare-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .selector-group label {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.875rem;
+  }
+
+  .selector-group select {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    color: var(--text-primary, #e8e8f0);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    min-width: 200px;
+    font-size: 1rem;
+  }
+
+  .vs-badge {
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .comparison-container {
+    margin-top: 2rem;
+  }
+
+  .comparison-container.hidden {
+    display: none;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .empty-state.hidden {
+    display: none;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #2a2a35);
+    overflow: hidden;
+  }
+
+  .player-column {
+    padding: 0;
+  }
+
+  .player-header-card {
+    background: var(--bg-secondary, #12121a);
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .player-header-card h2 {
+    color: var(--accent-secondary, #4ecdc4);
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+  }
+
+  .player-meta-text {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.875rem;
+  }
+
+  .labels-column {
+    background: var(--bg-secondary, #12121a);
+    border-left: 1px solid var(--border-color, #2a2a35);
+    border-right: 1px solid var(--border-color, #2a2a35);
+    min-width: 140px;
+  }
+
+  .labels-column h3 {
+    padding: 1.5rem 1rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .labels-column h3:first-child {
+    padding-top: calc(1.5rem + 2.5rem + 1rem); /* Match player header height */
+  }
+
+  .label-section {
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .label-section:last-child {
+    border-bottom: none;
+  }
+
+  .label-row {
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .label-row:last-child {
+    border-bottom: none;
+  }
+
+  .value-section {
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .value-section:last-child {
+    border-bottom: none;
+  }
+
+  .value-row {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .value-row:last-child {
+    border-bottom: none;
+  }
+
+  .value-row.diff {
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 500;
+  }
+
+  .value-row.same {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  @media (max-width: 768px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .labels-column {
+      display: none;
+    }
+
+    .compare-selectors {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .vs-badge {
+      order: 2;
+    }
+
+    .selector-group:first-child {
+      order: 1;
+    }
+
+    .selector-group:last-child {
+      order: 3;
+    }
+  }
+</style>
