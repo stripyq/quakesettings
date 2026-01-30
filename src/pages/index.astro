@@ -5,9 +5,13 @@ import { getCollection } from 'astro:content';
 // Get all players and hardware
 const players = await getCollection('players');
 const mice = await getCollection('mice');
+const keyboards = await getCollection('keyboards');
+const headsets = await getCollection('headsets');
 
 // Create lookup maps for hardware
 const miceMap = new Map(mice.map(m => [m.id, m.data]));
+const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
+const headsetsMap = new Map(headsets.map(h => [h.id, h.data]));
 
 // Sort players by name
 const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.name));
@@ -34,17 +38,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     </div>
 
     <div class="filter-group">
-      <label for="sens-filter">Sensitivity Range:</label>
-      <select id="sens-filter">
-        <option value="all">All</option>
-        <option value="low">Low (&lt; 800 eDPI)</option>
-        <option value="medium">Medium (800-1500 eDPI)</option>
-        <option value="high">High (&gt; 1500 eDPI)</option>
-      </select>
-    </div>
-
-    <div class="filter-group">
-      <input type="text" id="player-search" placeholder="Search players..." class="search-input">
+      <input type="text" id="player-search" placeholder="Search players or hardware..." class="search-input">
     </div>
   </div>
 
@@ -56,41 +50,44 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <th class="sortable" data-sort="mouse">Mouse</th>
           <th class="sortable" data-sort="dpi">DPI</th>
           <th class="sortable" data-sort="sens">Sens</th>
-          <th class="sortable" data-sort="edpi">eDPI</th>
-          <th class="sortable" data-sort="cm360">cm/360</th>
           <th class="sortable" data-sort="fov">FOV</th>
           <th>Accel</th>
-          <th>Monitor</th>
+          <th>Keyboard</th>
+          <th>Headset</th>
+          <th class="sortable" data-sort="updated">Updated</th>
         </tr>
       </thead>
       <tbody id="player-tbody">
         {sortedPlayers.map((player) => {
           const mouseData = miceMap.get(player.data.mouse);
+          const keyboardData = keyboardsMap.get(player.data.keyboard);
+          const headsetData = headsetsMap.get(player.data.headset);
           return (
             <tr
               class="player-row"
               data-name={player.data.name.toLowerCase()}
               data-category={player.data.category}
-              data-edpi={player.data.edpi}
               data-dpi={player.data.dpi}
               data-sens={player.data.sensitivity}
-              data-cm360={player.data.cm360 || 0}
               data-fov={player.data.fov}
-              data-mouse={mouseData?.name?.toLowerCase() || ''}
+              data-mouse={mouseData?.name?.toLowerCase() || player.data.mouse?.toLowerCase() || ''}
+              data-keyboard={keyboardData?.name?.toLowerCase() || player.data.keyboard?.toLowerCase() || ''}
+              data-headset={headsetData?.name?.toLowerCase() || player.data.headset?.toLowerCase() || ''}
+              data-updated={player.data.lastUpdated || ''}
             >
               <td>
                 <a href={`${base}players/${player.id}/`} class="player-link">
                   {player.data.name}
                 </a>
               </td>
-              <td class="mouse-cell">{mouseData?.name || player.data.mouse || '—'}</td>
+              <td class="hw-cell">{mouseData?.name || player.data.mouse || '—'}</td>
               <td class="num">{player.data.dpi}</td>
               <td class="num">{player.data.sensitivity}</td>
-              <td class="num highlight">{player.data.edpi}</td>
-              <td class="num">{player.data.cm360?.toFixed(1) || '—'}</td>
               <td class="num">{player.data.fov}</td>
               <td class="center">{player.data.acceleration ? '✓' : '—'}</td>
-              <td class="monitor-cell">{player.data.monitor || '—'}</td>
+              <td class="hw-cell">{keyboardData?.name || player.data.keyboard || '—'}</td>
+              <td class="hw-cell">{headsetData?.name || player.data.headset || '—'}</td>
+              <td class="date-cell">{player.data.lastUpdated || '—'}</td>
             </tr>
           );
         })}
@@ -102,7 +99,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     document.addEventListener('DOMContentLoaded', function() {
       const searchInput = document.getElementById('player-search');
       const categoryFilter = document.getElementById('category-filter');
-      const sensFilter = document.getElementById('sens-filter');
       const tbody = document.getElementById('player-tbody');
       const headers = document.querySelectorAll('th.sortable');
 
@@ -112,20 +108,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       function filterAndSort() {
         const search = searchInput?.value.toLowerCase() || '';
         const category = categoryFilter?.value || 'all';
-        const sens = sensFilter?.value || 'all';
 
         const rows = Array.from(tbody?.querySelectorAll('tr') || []);
 
         rows.forEach(row => {
           const name = row.dataset.name || '';
           const mouse = row.dataset.mouse || '';
+          const keyboard = row.dataset.keyboard || '';
+          const headset = row.dataset.headset || '';
           const cat = row.dataset.category || '';
-          const edpi = parseInt(row.dataset.edpi) || 0;
 
           let show = true;
 
-          // Search filter
-          if (search && !name.includes(search) && !mouse.includes(search)) {
+          // Search filter (searches player name and hardware)
+          if (search && !name.includes(search) && !mouse.includes(search) && !keyboard.includes(search) && !headset.includes(search)) {
             show = false;
           }
 
@@ -133,11 +129,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           if (category !== 'all' && cat !== category) {
             show = false;
           }
-
-          // Sensitivity filter
-          if (sens === 'low' && edpi >= 800) show = false;
-          if (sens === 'medium' && (edpi < 800 || edpi > 1500)) show = false;
-          if (sens === 'high' && edpi <= 1500) show = false;
 
           row.style.display = show ? '' : 'none';
         });
@@ -163,17 +154,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               aVal = parseFloat(a.dataset.sens) || 0;
               bVal = parseFloat(b.dataset.sens) || 0;
               break;
-            case 'edpi':
-              aVal = parseInt(a.dataset.edpi) || 0;
-              bVal = parseInt(b.dataset.edpi) || 0;
-              break;
-            case 'cm360':
-              aVal = parseFloat(a.dataset.cm360) || 0;
-              bVal = parseFloat(b.dataset.cm360) || 0;
-              break;
             case 'fov':
               aVal = parseInt(a.dataset.fov) || 0;
               bVal = parseInt(b.dataset.fov) || 0;
+              break;
+            case 'updated':
+              aVal = a.dataset.updated || '';
+              bVal = b.dataset.updated || '';
               break;
             default:
               aVal = a.dataset.name || '';
@@ -192,7 +179,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       // Event listeners
       searchInput?.addEventListener('input', filterAndSort);
       categoryFilter?.addEventListener('change', filterAndSort);
-      sensFilter?.addEventListener('change', filterAndSort);
 
       headers.forEach(header => {
         header.addEventListener('click', () => {
@@ -224,12 +210,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .player-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .player-table th,
   .player-table td {
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.75rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
   }
@@ -239,8 +225,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     font-weight: 600;
     color: var(--text-secondary, #888);
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   .player-table th.sortable {
@@ -286,20 +273,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     text-align: right;
   }
 
-  .highlight {
-    color: var(--accent-primary, #ff6b35);
-    font-weight: 600;
-  }
-
   .center {
     text-align: center;
   }
 
-  .mouse-cell,
-  .monitor-cell {
-    max-width: 200px;
+  .hw-cell {
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.8rem;
+  }
+
+  .date-cell {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
     white-space: nowrap;
   }
 
@@ -332,22 +320,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   }
 
   .search-input {
-    min-width: 200px;
+    min-width: 250px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .player-table {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .player-table th,
     .player-table td {
-      padding: 0.5rem;
+      padding: 0.4rem 0.5rem;
     }
 
-    .mouse-cell,
-    .monitor-cell {
-      max-width: 120px;
+    .hw-cell {
+      max-width: 100px;
     }
   }
 </style>

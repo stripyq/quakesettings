@@ -124,6 +124,7 @@ collections:
       - { label: "Team", name: "team", widget: "string", required: false }
       - { label: "Rating", name: "rating", widget: "number", required: false }
       - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
+      - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
 
       # Mouse Settings
       - { label: "DPI", name: "dpi", widget: "number" }
