@@ -17,10 +17,30 @@ function countUsage(hardwareId: string, field: string) {
   return players.filter(p => p.data[field] === hardwareId).length;
 }
 
-// Sort mice by popularity
+// Sort all hardware by popularity (usage count)
 const miceWithUsage = mice.map(m => ({
   ...m,
   usage: countUsage(m.id, 'mouse')
+})).sort((a, b) => b.usage - a.usage);
+
+const monitorsWithUsage = monitors.map(m => ({
+  ...m,
+  usage: countUsage(m.id, 'monitor')
+})).sort((a, b) => b.usage - a.usage);
+
+const keyboardsWithUsage = keyboards.map(k => ({
+  ...k,
+  usage: countUsage(k.id, 'keyboard')
+})).sort((a, b) => b.usage - a.usage);
+
+const mousepadsWithUsage = mousepads.map(p => ({
+  ...p,
+  usage: countUsage(p.id, 'mousepad')
+})).sort((a, b) => b.usage - a.usage);
+
+const headsetsWithUsage = headsets.map(h => ({
+  ...h,
+  usage: countUsage(h.id, 'headset')
 })).sort((a, b) => b.usage - a.usage);
 
 // Ensure base URL has trailing slash for path concatenation
@@ -33,130 +53,495 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <p>Gaming peripherals used by professional Quake Live players</p>
   </div>
 
-  <section class="hardware-category">
-    <h2>Mice ({mice.length})</h2>
-    <div class="hardware-grid">
-      {miceWithUsage.map((mouse) => (
-        <div class="hardware-card">
-          <h3>{mouse.data.name}</h3>
-          <div class="hardware-brand">{mouse.data.brand}</div>
-          <table class="hardware-mini-specs">
-            <tr><td>Weight</td><td>{mouse.data.weight}</td></tr>
-            <tr><td>Shape</td><td>{mouse.data.shape}</td></tr>
-            <tr><td>Sensor</td><td>{mouse.data.sensor}</td></tr>
-            <tr><td>Connection</td><td>{mouse.data.connection}</td></tr>
-          </table>
-          <div class="card-footer">
-            <span class="usage-count">Used by {mouse.usage} player{mouse.usage !== 1 ? 's' : ''}</span>
-            {mouse.data.affiliateLink && <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
-          </div>
-        </div>
-      ))}
+  <div class="hardware-nav">
+    <a href="#mice" class="nav-pill">Mice ({mice.length})</a>
+    <a href="#monitors" class="nav-pill">Monitors ({monitors.length})</a>
+    <a href="#keyboards" class="nav-pill">Keyboards ({keyboards.length})</a>
+    <a href="#mousepads" class="nav-pill">Mousepads ({mousepads.length})</a>
+    <a href="#headsets" class="nav-pill">Headsets ({headsets.length})</a>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <input type="text" id="hardware-search" placeholder="Search hardware..." class="search-input">
+    </div>
+  </div>
+
+  <!-- MICE TABLE -->
+  <section class="hardware-category" id="mice">
+    <h2>Mice <span class="count">({mice.length})</span></h2>
+    <div class="table-container">
+      <table class="hardware-table" data-type="mice">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="brand">Brand</th>
+            <th class="sortable" data-sort="weight">Weight</th>
+            <th class="sortable" data-sort="shape">Shape</th>
+            <th class="sortable" data-sort="sensor">Sensor</th>
+            <th class="sortable" data-sort="connection">Connection</th>
+            <th class="sortable num" data-sort="usage">Players</th>
+            <th>Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {miceWithUsage.map((mouse) => (
+            <tr
+              data-name={mouse.data.name.toLowerCase()}
+              data-brand={mouse.data.brand.toLowerCase()}
+              data-weight={mouse.data.weight}
+              data-shape={mouse.data.shape?.toLowerCase() || ''}
+              data-sensor={mouse.data.sensor?.toLowerCase() || ''}
+              data-connection={mouse.data.connection?.toLowerCase() || ''}
+              data-usage={mouse.usage}
+            >
+              <td class="name-cell">{mouse.data.name}</td>
+              <td>{mouse.data.brand}</td>
+              <td class="spec-cell">{mouse.data.weight}</td>
+              <td class="spec-cell">{mouse.data.shape}</td>
+              <td class="spec-cell">{mouse.data.sensor}</td>
+              <td class="spec-cell">{mouse.data.connection}</td>
+              <td class="num usage-cell">{mouse.usage > 0 ? mouse.usage : '—'}</td>
+              <td class="buy-cell">
+                {mouse.data.affiliateLink && <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="hardware-category">
-    <h2>Monitors ({monitors.length})</h2>
-    <div class="hardware-grid">
-      {monitors.map((monitor) => (
-        <div class="hardware-card">
-          <h3>{monitor.data.name}</h3>
-          <div class="hardware-brand">{monitor.data.brand}</div>
-          <table class="hardware-mini-specs">
-            <tr><td>Size</td><td>{monitor.data.size}</td></tr>
-            <tr><td>Refresh</td><td>{monitor.data.refreshRate}</td></tr>
-            <tr><td>Panel</td><td>{monitor.data.panelType || monitor.data.panel}</td></tr>
-          </table>
-          <div class="card-footer">
-            <span class="usage-count">Used by {countUsage(monitor.id, 'monitor')} player(s)</span>
-            {monitor.data.affiliateLink && <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
-          </div>
-        </div>
-      ))}
+  <!-- MONITORS TABLE -->
+  <section class="hardware-category" id="monitors">
+    <h2>Monitors <span class="count">({monitors.length})</span></h2>
+    <div class="table-container">
+      <table class="hardware-table" data-type="monitors">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="brand">Brand</th>
+            <th class="sortable" data-sort="size">Size</th>
+            <th class="sortable" data-sort="refresh">Refresh Rate</th>
+            <th class="sortable" data-sort="panel">Panel</th>
+            <th class="sortable" data-sort="resolution">Resolution</th>
+            <th class="sortable num" data-sort="usage">Players</th>
+            <th>Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {monitorsWithUsage.map((monitor) => (
+            <tr
+              data-name={monitor.data.name.toLowerCase()}
+              data-brand={monitor.data.brand.toLowerCase()}
+              data-size={monitor.data.size}
+              data-refresh={monitor.data.refreshRate}
+              data-panel={(monitor.data.panelType || monitor.data.panel || '').toLowerCase()}
+              data-resolution={monitor.data.resolution}
+              data-usage={monitor.usage}
+            >
+              <td class="name-cell">{monitor.data.name}</td>
+              <td>{monitor.data.brand}</td>
+              <td class="spec-cell">{monitor.data.size}</td>
+              <td class="spec-cell">{monitor.data.refreshRate}</td>
+              <td class="spec-cell">{monitor.data.panelType || monitor.data.panel}</td>
+              <td class="spec-cell">{monitor.data.resolution}</td>
+              <td class="num usage-cell">{monitor.usage > 0 ? monitor.usage : '—'}</td>
+              <td class="buy-cell">
+                {monitor.data.affiliateLink && <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="hardware-category">
-    <h2>Keyboards ({keyboards.length})</h2>
-    <div class="hardware-grid">
-      {keyboards.map((kb) => (
-        <div class="hardware-card">
-          <h3>{kb.data.name}</h3>
-          <div class="hardware-brand">{kb.data.brand}</div>
-          <table class="hardware-mini-specs">
-            <tr><td>Size</td><td>{kb.data.size || kb.data.format}</td></tr>
-            <tr><td>Switches</td><td>{kb.data.switches}</td></tr>
-          </table>
-          <div class="card-footer">
-            <span class="usage-count">Used by {countUsage(kb.id, 'keyboard')} player(s)</span>
-            {kb.data.affiliateLink && <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
-          </div>
-        </div>
-      ))}
+  <!-- KEYBOARDS TABLE -->
+  <section class="hardware-category" id="keyboards">
+    <h2>Keyboards <span class="count">({keyboards.length})</span></h2>
+    <div class="table-container">
+      <table class="hardware-table" data-type="keyboards">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="brand">Brand</th>
+            <th class="sortable" data-sort="size">Size</th>
+            <th class="sortable" data-sort="switches">Switches</th>
+            <th class="sortable" data-sort="connection">Connection</th>
+            <th class="sortable num" data-sort="usage">Players</th>
+            <th>Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {keyboardsWithUsage.map((kb) => (
+            <tr
+              data-name={kb.data.name.toLowerCase()}
+              data-brand={kb.data.brand.toLowerCase()}
+              data-size={(kb.data.size || kb.data.format || '').toLowerCase()}
+              data-switches={(kb.data.switches || '').toLowerCase()}
+              data-connection={(kb.data.connection || '').toLowerCase()}
+              data-usage={kb.usage}
+            >
+              <td class="name-cell">{kb.data.name}</td>
+              <td>{kb.data.brand}</td>
+              <td class="spec-cell">{kb.data.size || kb.data.format}</td>
+              <td class="spec-cell">{kb.data.switches}</td>
+              <td class="spec-cell">{kb.data.connection}</td>
+              <td class="num usage-cell">{kb.usage > 0 ? kb.usage : '—'}</td>
+              <td class="buy-cell">
+                {kb.data.affiliateLink && <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="hardware-category">
-    <h2>Mousepads ({mousepads.length})</h2>
-    <div class="hardware-grid">
-      {mousepads.map((pad) => (
-        <div class="hardware-card">
-          <h3>{pad.data.name}</h3>
-          <div class="hardware-brand">{pad.data.brand}</div>
-          <table class="hardware-mini-specs">
-            <tr><td>Dimensions</td><td>{pad.data.dimensions || pad.data.size}</td></tr>
-            <tr><td>Speed</td><td>{pad.data.speed || pad.data.speedType}</td></tr>
-          </table>
-          <div class="card-footer">
-            <span class="usage-count">Used by {countUsage(pad.id, 'mousepad')} player(s)</span>
-            {pad.data.affiliateLink && <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
-          </div>
-        </div>
-      ))}
+  <!-- MOUSEPADS TABLE -->
+  <section class="hardware-category" id="mousepads">
+    <h2>Mousepads <span class="count">({mousepads.length})</span></h2>
+    <div class="table-container">
+      <table class="hardware-table" data-type="mousepads">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="brand">Brand</th>
+            <th class="sortable" data-sort="surface">Surface</th>
+            <th class="sortable" data-sort="speed">Speed</th>
+            <th class="sortable" data-sort="dimensions">Dimensions</th>
+            <th class="sortable num" data-sort="usage">Players</th>
+            <th>Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mousepadsWithUsage.map((pad) => (
+            <tr
+              data-name={pad.data.name.toLowerCase()}
+              data-brand={pad.data.brand.toLowerCase()}
+              data-surface={(pad.data.surface || '').toLowerCase()}
+              data-speed={(pad.data.speed || pad.data.speedType || '').toLowerCase()}
+              data-dimensions={(pad.data.dimensions || pad.data.size || '')}
+              data-usage={pad.usage}
+            >
+              <td class="name-cell">{pad.data.name}</td>
+              <td>{pad.data.brand}</td>
+              <td class="spec-cell">{pad.data.surface}</td>
+              <td class="spec-cell">{pad.data.speed || pad.data.speedType}</td>
+              <td class="spec-cell">{pad.data.dimensions || pad.data.size}</td>
+              <td class="num usage-cell">{pad.usage > 0 ? pad.usage : '—'}</td>
+              <td class="buy-cell">
+                {pad.data.affiliateLink && <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="hardware-category">
-    <h2>Headsets ({headsets.length})</h2>
-    <div class="hardware-grid">
-      {headsets.map((hs) => (
-        <div class="hardware-card">
-          <h3>{hs.data.name}</h3>
-          <div class="hardware-brand">{hs.data.brand}</div>
-          <table class="hardware-mini-specs">
-            <tr><td>Type</td><td>{hs.data.type}</td></tr>
-            <tr><td>Driver</td><td>{hs.data.driverSize || hs.data.driver}</td></tr>
-          </table>
-          <div class="card-footer">
-            <span class="usage-count">Used by {countUsage(hs.id, 'headset')} player(s)</span>
-            {hs.data.affiliateLink && <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
-          </div>
-        </div>
-      ))}
+  <!-- HEADSETS TABLE -->
+  <section class="hardware-category" id="headsets">
+    <h2>Headsets <span class="count">({headsets.length})</span></h2>
+    <div class="table-container">
+      <table class="hardware-table" data-type="headsets">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="brand">Brand</th>
+            <th class="sortable" data-sort="type">Type</th>
+            <th class="sortable" data-sort="driver">Driver</th>
+            <th class="sortable" data-sort="connection">Connection</th>
+            <th class="sortable" data-sort="microphone">Mic</th>
+            <th class="sortable num" data-sort="usage">Players</th>
+            <th>Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {headsetsWithUsage.map((hs) => (
+            <tr
+              data-name={hs.data.name.toLowerCase()}
+              data-brand={hs.data.brand.toLowerCase()}
+              data-type={(hs.data.type || '').toLowerCase()}
+              data-driver={(hs.data.driverSize || hs.data.driver || '')}
+              data-connection={(hs.data.connection || '').toLowerCase()}
+              data-microphone={hs.data.microphone ? 'yes' : 'no'}
+              data-usage={hs.usage}
+            >
+              <td class="name-cell">{hs.data.name}</td>
+              <td>{hs.data.brand}</td>
+              <td class="spec-cell">{hs.data.type}</td>
+              <td class="spec-cell">{hs.data.driverSize || hs.data.driver}</td>
+              <td class="spec-cell">{hs.data.connection}</td>
+              <td class="center">{hs.data.microphone ? '✓' : '—'}</td>
+              <td class="num usage-cell">{hs.usage > 0 ? hs.usage : '—'}</td>
+              <td class="buy-cell">
+                {hs.data.affiliateLink && <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
+
+  <div class="data-sources">
+    <h3>Data Sources</h3>
+    <p>Hardware specifications can be verified at:</p>
+    <ul>
+      <li><a href="https://www.eloshapes.com/mouse/browse" target="_blank" rel="noopener">Eloshapes</a> - Mice specs and comparisons</li>
+      <li><a href="https://www.eloshapes.com/mousepads/browse" target="_blank" rel="noopener">Eloshapes Mousepads</a> - Mousepad specs</li>
+      <li><a href="https://www.rtings.com/headphones" target="_blank" rel="noopener">RTings Headphones</a> - Headphone reviews and specs</li>
+      <li><a href="https://www.rtings.com/monitor" target="_blank" rel="noopener">RTings Monitors</a> - Monitor reviews and specs</li>
+      <li><a href="https://www.rtings.com/keyboard" target="_blank" rel="noopener">RTings Keyboards</a> - Keyboard reviews and specs</li>
+    </ul>
+  </div>
 </BaseLayout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('hardware-search') as HTMLInputElement;
+    const tables = document.querySelectorAll('.hardware-table');
+
+    // Track sort state per table
+    const sortState: Record<string, { col: string; asc: boolean }> = {};
+
+    function filterTables() {
+      const search = searchInput?.value.toLowerCase() || '';
+
+      tables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const rows = tbody?.querySelectorAll('tr') || [];
+
+        rows.forEach(row => {
+          const name = row.getAttribute('data-name') || '';
+          const brand = row.getAttribute('data-brand') || '';
+
+          const show = !search || name.includes(search) || brand.includes(search);
+          (row as HTMLElement).style.display = show ? '' : 'none';
+        });
+      });
+    }
+
+    function sortTable(table: Element, col: string, asc: boolean) {
+      const tbody = table.querySelector('tbody');
+      if (!tbody) return;
+
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      rows.sort((a, b) => {
+        let aVal: string | number = a.getAttribute(`data-${col}`) || '';
+        let bVal: string | number = b.getAttribute(`data-${col}`) || '';
+
+        // Handle numeric columns
+        if (col === 'usage') {
+          aVal = parseInt(aVal as string) || 0;
+          bVal = parseInt(bVal as string) || 0;
+          return asc ? (aVal as number) - (bVal as number) : (bVal as number) - (aVal as number);
+        }
+
+        // Handle weight (extract numeric value)
+        if (col === 'weight') {
+          const aNum = parseFloat((aVal as string).replace(/[^\d.]/g, '')) || 0;
+          const bNum = parseFloat((bVal as string).replace(/[^\d.]/g, '')) || 0;
+          return asc ? aNum - bNum : bNum - aNum;
+        }
+
+        // String comparison
+        return asc
+          ? (aVal as string).localeCompare(bVal as string)
+          : (bVal as string).localeCompare(aVal as string);
+      });
+
+      rows.forEach(row => tbody.appendChild(row));
+    }
+
+    // Set up event listeners
+    searchInput?.addEventListener('input', filterTables);
+
+    tables.forEach(table => {
+      const tableType = table.getAttribute('data-type') || '';
+      sortState[tableType] = { col: 'usage', asc: false };
+
+      const headers = table.querySelectorAll('th.sortable');
+      headers.forEach(header => {
+        header.addEventListener('click', () => {
+          const col = header.getAttribute('data-sort') || '';
+          const state = sortState[tableType];
+
+          if (state.col === col) {
+            state.asc = !state.asc;
+          } else {
+            state.col = col;
+            state.asc = true;
+          }
+
+          // Update header styles
+          headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+          header.classList.add(state.asc ? 'sort-asc' : 'sort-desc');
+
+          sortTable(table, col, state.asc);
+        });
+      });
+    });
+  });
+</script>
+
 <style>
-  .card-footer {
+  .hardware-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    gap: 0.5rem;
     flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-pill {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: 20px;
+    color: var(--text-primary, #fff);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .nav-pill:hover {
+    background: var(--accent-primary, #ff6b35);
+    border-color: var(--accent-primary, #ff6b35);
+  }
+
+  .filters {
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .search-input {
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #2a2a3a);
+    color: var(--text-primary, #fff);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    min-width: 300px;
+  }
+
+  .hardware-category {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .hardware-category h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .hardware-category h2 .count {
+    font-weight: normal;
+    color: var(--text-secondary, #888);
+    font-size: 0.9em;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .hardware-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .hardware-table th,
+  .hardware-table td {
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .hardware-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+  }
+
+  .hardware-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .hardware-table th.sortable:hover {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .hardware-table th.sortable::after {
+    content: ' ↕';
+    opacity: 0.3;
+  }
+
+  .hardware-table th.sort-asc::after {
+    content: ' ↑';
+    opacity: 1;
+  }
+
+  .hardware-table th.sort-desc::after {
+    content: ' ↓';
+    opacity: 1;
+  }
+
+  .hardware-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .name-cell {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .spec-cell {
+    color: var(--text-secondary, #ccc);
+    font-size: 0.8rem;
+  }
+
+  .num {
+    text-align: right;
+    font-family: monospace;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .usage-cell {
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 500;
+  }
+
+  .buy-cell {
+    text-align: center;
   }
 
   .buy-link {
     display: inline-block;
-    padding: 0.35rem 0.6rem;
+    padding: 0.25rem 0.5rem;
     background: var(--accent-primary, #ff6b35);
     color: white;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     transition: all 0.2s;
   }
@@ -164,5 +549,64 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .buy-link:hover {
     background: #ff8c5a;
     transform: translateY(-1px);
+  }
+
+  .data-sources {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .data-sources h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #fff);
+  }
+
+  .data-sources p {
+    color: var(--text-secondary, #888);
+    margin-bottom: 0.75rem;
+  }
+
+  .data-sources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .data-sources li {
+    padding: 0.25rem 0;
+  }
+
+  .data-sources a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .data-sources a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1024px) {
+    .hardware-table {
+      font-size: 0.75rem;
+    }
+
+    .hardware-table th,
+    .hardware-table td {
+      padding: 0.4rem 0.5rem;
+    }
+
+    .search-input {
+      min-width: 200px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-pill {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.75rem;
+    }
   }
 </style>
