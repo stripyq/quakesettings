@@ -64,49 +64,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </div>
 
   <div id="comparison-container" class="comparison-container hidden">
-    <div class="comparison-grid">
-      <!-- Player 1 Column -->
-      <div class="player-column" id="player1-data">
-        <div class="player-header-card">
-          <h2 id="p1-name">-</h2>
-          <p id="p1-meta" class="player-meta-text">-</p>
-        </div>
-      </div>
-
-      <!-- Settings Labels Column -->
-      <div class="labels-column">
-        <div class="label-section">
-          <h3>Mouse Settings</h3>
-          <div class="label-row">DPI</div>
-          <div class="label-row">Sensitivity</div>
-          <div class="label-row">eDPI</div>
-          <div class="label-row">cm/360</div>
-          <div class="label-row">Acceleration</div>
-          <div class="label-row">Raw Input</div>
-        </div>
-        <div class="label-section">
-          <h3>Game Settings</h3>
-          <div class="label-row">FOV</div>
-          <div class="label-row">Crosshair</div>
-        </div>
-        <div class="label-section">
-          <h3>Hardware</h3>
-          <div class="label-row">Mouse</div>
-          <div class="label-row">Mousepad</div>
-          <div class="label-row">Keyboard</div>
-          <div class="label-row">Monitor</div>
-          <div class="label-row">Headset</div>
-        </div>
-      </div>
-
-      <!-- Player 2 Column -->
-      <div class="player-column" id="player2-data">
-        <div class="player-header-card">
-          <h2 id="p2-name">-</h2>
-          <p id="p2-meta" class="player-meta-text">-</p>
-        </div>
-      </div>
-    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th id="p1-header" class="player-header">Player 1</th>
+          <th class="label-header">Setting</th>
+          <th id="p2-header" class="player-header">Player 2</th>
+        </tr>
+      </thead>
+      <tbody id="compare-body">
+        <!-- Populated by JavaScript -->
+      </tbody>
+    </table>
   </div>
 
   <div id="empty-state" class="empty-state">
@@ -119,6 +88,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       const player2Select = document.getElementById('player2');
       const comparisonContainer = document.getElementById('comparison-container');
       const emptyState = document.getElementById('empty-state');
+      const compareBody = document.getElementById('compare-body');
+      const p1Header = document.getElementById('p1-header');
+      const p2Header = document.getElementById('p2-header');
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -130,6 +102,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       }
       if (p2Param && playersData[p2Param]) {
         player2Select.value = p2Param;
+      }
+
+      function formatValue(val) {
+        if (val === null || val === undefined || val === '' || val === 'Unknown') return '';
+        return val;
       }
 
       function updateComparison() {
@@ -154,84 +131,65 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         const newUrl = `${window.location.pathname}?p1=${p1Id}&p2=${p2Id}`;
         window.history.replaceState({}, '', newUrl);
 
-        // Update player headers
-        document.getElementById('p1-name').textContent = p1.name;
-        document.getElementById('p1-meta').textContent = `${p1.country || 'Unknown'} ${p1.team ? '| ' + p1.team : ''}`;
-        document.getElementById('p2-name').textContent = p2.name;
-        document.getElementById('p2-meta').textContent = `${p2.country || 'Unknown'} ${p2.team ? '| ' + p2.team : ''}`;
+        // Update headers
+        const p1Country = p1.country && p1.country !== 'Unknown' ? p1.country : '';
+        const p2Country = p2.country && p2.country !== 'Unknown' ? p2.country : '';
+        p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Country ? `<span class="header-country">${p1Country}</span>` : ''}`;
+        p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Country ? `<span class="header-country">${p2Country}</span>` : ''}`;
 
-        // Build comparison rows
-        const p1Column = document.getElementById('player1-data');
-        const p2Column = document.getElementById('player2-data');
+        // Build comparison table
+        let html = '';
 
-        // Clear existing content (keep headers)
-        p1Column.innerHTML = `<div class="player-header-card"><h2>${p1.name}</h2><p class="player-meta-text">${p1.country || 'Unknown'} ${p1.team ? '| ' + p1.team : ''}</p></div>`;
-        p2Column.innerHTML = `<div class="player-header-card"><h2>${p2.name}</h2><p class="player-meta-text">${p2.country || 'Unknown'} ${p2.team ? '| ' + p2.team : ''}</p></div>`;
+        // Section: Mouse Settings
+        html += sectionHeader('Mouse Settings');
+        html += compareRow('DPI', p1.dpi, p2.dpi);
+        html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity);
+        html += compareRow('eDPI', p1.edpi, p2.edpi);
+        html += compareRow('cm/360', formatValue(p1.cm360), formatValue(p2.cm360));
+        html += compareRow('Acceleration', p1.acceleration ? 'Yes' : 'No', p2.acceleration ? 'Yes' : 'No');
+        html += compareRow('Raw Input', p1.rawInput ? 'Yes' : 'No', p2.rawInput ? 'Yes' : 'No');
 
-        // Mouse Settings
-        p1Column.innerHTML += createSection([
-          { val: p1.dpi, diff: p1.dpi !== p2.dpi },
-          { val: p1.sensitivity, diff: p1.sensitivity !== p2.sensitivity },
-          { val: p1.edpi, diff: p1.edpi !== p2.edpi },
-          { val: p1.cm360 || 'N/A', diff: p1.cm360 !== p2.cm360 },
-          { val: p1.acceleration ? 'On' : 'Off', diff: p1.acceleration !== p2.acceleration },
-          { val: p1.rawInput ? 'On' : 'Off', diff: p1.rawInput !== p2.rawInput },
-        ]);
-        p2Column.innerHTML += createSection([
-          { val: p2.dpi, diff: p1.dpi !== p2.dpi },
-          { val: p2.sensitivity, diff: p1.sensitivity !== p2.sensitivity },
-          { val: p2.edpi, diff: p1.edpi !== p2.edpi },
-          { val: p2.cm360 || 'N/A', diff: p1.cm360 !== p2.cm360 },
-          { val: p2.acceleration ? 'On' : 'Off', diff: p1.acceleration !== p2.acceleration },
-          { val: p2.rawInput ? 'On' : 'Off', diff: p1.rawInput !== p2.rawInput },
-        ]);
+        // Section: Game Settings
+        html += sectionHeader('Game Settings');
+        html += compareRow('FOV', p1.fov, p2.fov);
+        html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair));
 
-        // Game Settings
-        p1Column.innerHTML += createSection([
-          { val: p1.fov, diff: p1.fov !== p2.fov },
-          { val: p1.crosshair || 'N/A', diff: p1.crosshair !== p2.crosshair },
-        ]);
-        p2Column.innerHTML += createSection([
-          { val: p2.fov, diff: p1.fov !== p2.fov },
-          { val: p2.crosshair || 'N/A', diff: p1.crosshair !== p2.crosshair },
-        ]);
+        // Section: Hardware
+        html += sectionHeader('Hardware');
+        const p1Mouse = p1.mouseData?.name || '';
+        const p2Mouse = p2.mouseData?.name || '';
+        const p1Pad = p1.mousepadData?.name || '';
+        const p2Pad = p2.mousepadData?.name || '';
+        const p1Kb = p1.keyboardData?.name || '';
+        const p2Kb = p2.keyboardData?.name || '';
+        const p1Mon = p1.monitorData?.name || '';
+        const p2Mon = p2.monitorData?.name || '';
+        const p1Hs = p1.headsetData?.name || '';
+        const p2Hs = p2.headsetData?.name || '';
 
-        // Hardware
-        const p1Mouse = p1.mouseData?.name || p1.mouse || 'N/A';
-        const p2Mouse = p2.mouseData?.name || p2.mouse || 'N/A';
-        const p1Pad = p1.mousepadData?.name || p1.mousepad || 'N/A';
-        const p2Pad = p2.mousepadData?.name || p2.mousepad || 'N/A';
-        const p1Kb = p1.keyboardData?.name || p1.keyboard || 'N/A';
-        const p2Kb = p2.keyboardData?.name || p2.keyboard || 'N/A';
-        const p1Mon = p1.monitorData?.name || p1.monitor || 'N/A';
-        const p2Mon = p2.monitorData?.name || p2.monitor || 'N/A';
-        const p1Hs = p1.headsetData?.name || p1.headset || 'N/A';
-        const p2Hs = p2.headsetData?.name || p2.headset || 'N/A';
+        html += compareRow('Mouse', p1Mouse, p2Mouse);
+        html += compareRow('Mousepad', p1Pad, p2Pad);
+        html += compareRow('Keyboard', p1Kb, p2Kb);
+        html += compareRow('Monitor', p1Mon, p2Mon);
+        html += compareRow('Headset', p1Hs, p2Hs);
 
-        p1Column.innerHTML += createSection([
-          { val: p1Mouse, diff: p1Mouse !== p2Mouse },
-          { val: p1Pad, diff: p1Pad !== p2Pad },
-          { val: p1Kb, diff: p1Kb !== p2Kb },
-          { val: p1Mon, diff: p1Mon !== p2Mon },
-          { val: p1Hs, diff: p1Hs !== p2Hs },
-        ]);
-        p2Column.innerHTML += createSection([
-          { val: p2Mouse, diff: p1Mouse !== p2Mouse },
-          { val: p2Pad, diff: p1Pad !== p2Pad },
-          { val: p2Kb, diff: p1Kb !== p2Kb },
-          { val: p2Mon, diff: p1Mon !== p2Mon },
-          { val: p2Hs, diff: p1Hs !== p2Hs },
-        ]);
+        compareBody.innerHTML = html;
       }
 
-      function createSection(rows) {
-        let html = '<div class="value-section">';
-        rows.forEach(row => {
-          const diffClass = row.diff ? 'diff' : 'same';
-          html += `<div class="value-row ${diffClass}">${row.val}</div>`;
-        });
-        html += '</div>';
-        return html;
+      function sectionHeader(title) {
+        return `<tr class="section-row"><td colspan="3">${title}</td></tr>`;
+      }
+
+      function compareRow(label, val1, val2) {
+        const v1 = val1 !== undefined && val1 !== null ? String(val1) : '';
+        const v2 = val2 !== undefined && val2 !== null ? String(val2) : '';
+        const isDiff = v1 !== v2;
+        const diffClass = isDiff ? 'diff' : 'same';
+        return `<tr class="data-row">
+          <td class="value-cell ${diffClass}">${v1}</td>
+          <td class="label-cell">${label}</td>
+          <td class="value-cell ${diffClass}">${v2}</td>
+        </tr>`;
       }
 
       player1Select.addEventListener('change', updateComparison);
@@ -303,115 +261,94 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     display: none;
   }
 
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0;
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
     background: var(--bg-card, #1a1a24);
     border-radius: 8px;
-    border: 1px solid var(--border-color, #2a2a35);
     overflow: hidden;
+    border: 1px solid var(--border-color, #2a2a35);
   }
 
-  .player-column {
-    padding: 0;
-  }
-
-  .player-header-card {
+  .compare-table thead {
     background: var(--bg-secondary, #12121a);
-    padding: 1.5rem;
+  }
+
+  .compare-table th {
+    padding: 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .player-header-card h2 {
-    color: var(--accent-secondary, #4ecdc4);
-    margin-bottom: 0.25rem;
-    font-size: 1.25rem;
+  .player-header {
+    width: 35%;
   }
 
-  .player-meta-text {
+  .player-header :global(.header-name) {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .player-header :global(.header-country) {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    margin-top: 0.25rem;
+  }
+
+  .label-header {
+    width: 30%;
     color: var(--text-secondary, #9090a0);
     font-size: 0.875rem;
   }
 
-  .labels-column {
+  .section-row td {
+    padding: 0.75rem 1rem;
     background: var(--bg-secondary, #12121a);
-    border-left: 1px solid var(--border-color, #2a2a35);
-    border-right: 1px solid var(--border-color, #2a2a35);
-    min-width: 140px;
-  }
-
-  .labels-column h3 {
-    padding: 1.5rem 1rem 0.5rem;
-    font-size: 0.75rem;
     color: var(--accent-primary, #ff6b35);
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    text-align: center;
     border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .labels-column h3:first-child {
-    padding-top: calc(1.5rem + 2.5rem + 1rem); /* Match player header height */
-  }
-
-  .label-section {
+  .data-row td {
+    padding: 0.6rem 1rem;
     border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .label-section:last-child {
+  .data-row:last-child td {
     border-bottom: none;
   }
 
-  .label-row {
-    padding: 0.75rem 1rem;
+  .label-cell {
+    text-align: center;
     color: var(--text-secondary, #9090a0);
-    font-size: 0.875rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.85rem;
+    background: var(--bg-secondary, #12121a);
   }
 
-  .label-row:last-child {
-    border-bottom: none;
-  }
-
-  .value-section {
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-  }
-
-  .value-section:last-child {
-    border-bottom: none;
-  }
-
-  .value-row {
-    padding: 0.75rem 1rem;
+  .value-cell {
     text-align: center;
     font-size: 0.9rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .value-row:last-child {
-    border-bottom: none;
-  }
-
-  .value-row.diff {
+  .value-cell.diff {
     background: rgba(255, 107, 53, 0.1);
     color: var(--accent-primary, #ff6b35);
     font-weight: 500;
   }
 
-  .value-row.same {
+  .value-cell.same {
     color: var(--text-primary, #e8e8f0);
   }
 
   @media (max-width: 768px) {
-    .comparison-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .labels-column {
-      display: none;
-    }
-
     .compare-selectors {
       flex-direction: column;
       gap: 1rem;
@@ -427,6 +364,19 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     .selector-group:last-child {
       order: 3;
+    }
+
+    .compare-table {
+      font-size: 0.85rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 0.5rem;
+    }
+
+    .player-header :global(.header-name) {
+      font-size: 1rem;
     }
   }
 </style>
