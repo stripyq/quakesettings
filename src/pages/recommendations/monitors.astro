@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const monitorData = [
+  { name: "ASUS ROG Swift PG27AQN", size: '27"', resolution: "1440p", refresh: "360Hz", panel: "IPS", notes: "Top esports 1440p" },
+  { name: "BenQ Zowie XL2566K", size: '24.5"', resolution: "1080p", refresh: "360Hz", panel: "TN", notes: "Esports standard" },
+  { name: "BenQ Zowie XL2546K", size: '24.5"', resolution: "1080p", refresh: "240Hz", panel: "TN", notes: "DyAc+, pro favorite" },
+  { name: "Alienware AW2524HF", size: '24.5"', resolution: "1080p", refresh: "500Hz", panel: "IPS", notes: "Fastest refresh" },
+  { name: "ASUS ROG Swift OLED PG27AQDM", size: '27"', resolution: "1440p", refresh: "240Hz", panel: "OLED", notes: "Best image quality" },
+  { name: "LG 27GR95QE", size: '27"', resolution: "1440p", refresh: "240Hz", panel: "OLED", notes: "OLED gaming" },
+  { name: "Samsung Odyssey G7", size: '27"/32"', resolution: "1440p", refresh: "240Hz", panel: "VA", notes: "Curved, good contrast" },
+  { name: "Dell Alienware AW2723DF", size: '27"', resolution: "1440p", refresh: "280Hz", panel: "IPS", notes: "QD-IPS, great colors" },
+  { name: "Gigabyte M28U", size: '28"', resolution: "4K", refresh: "144Hz", panel: "IPS", notes: "Budget 4K gaming" },
+  { name: "AOC 24G2", size: '24"', resolution: "1080p", refresh: "144Hz", panel: "IPS", notes: "Budget king" },
+];
+---
+
+<BaseLayout title="Monitor Recommendations">
+  <div class="page-header">
+    <h1>Monitor Recommendations</h1>
+    <p>High refresh rate gaming monitors</p>
+  </div>
+
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Monitor</th>
+          <th>Size</th>
+          <th>Resolution</th>
+          <th>Refresh</th>
+          <th>Panel</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {monitorData.map(m => (
+          <tr>
+            <td class="monitor-name">{m.name}</td>
+            <td>{m.size}</td>
+            <td>{m.resolution}</td>
+            <td class="highlight">{m.refresh}</td>
+            <td>{m.panel}</td>
+            <td class="notes">{m.notes}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-link">
+    <a href={`${base}recommendations/`}>← Back to Recommendations</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .table-container { overflow-x: auto; }
+  .rec-table { width: 100%; border-collapse: collapse; }
+  .rec-table th, .rec-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color, #2a2a3a); }
+  .rec-table th { background: var(--bg-secondary, #12121a); font-weight: 600; color: var(--text-secondary, #888); text-transform: uppercase; font-size: 0.75rem; }
+  .rec-table tbody tr:hover { background: var(--bg-secondary, #12121a); }
+  .monitor-name { font-weight: 500; color: var(--accent-primary, #ff6b35); }
+  .highlight { color: var(--accent-primary, #ff6b35); font-weight: 600; }
+  .notes { color: var(--text-secondary, #888); font-size: 0.875rem; }
+  .back-link { margin-top: 2rem; }
+  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
+  .back-link a:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const categories = [
+  { name: 'Mice', slug: 'mice', desc: 'Gaming mice recommendations from top reviewers' },
+  { name: 'Mousepads', slug: 'mousepads', desc: 'Control vs speed pads for different playstyles' },
+  { name: 'Keyboards', slug: 'keyboards', desc: 'Mechanical keyboards and switches' },
+  { name: 'Monitors', slug: 'monitors', desc: 'High refresh rate gaming monitors' },
+  { name: 'Headsets', slug: 'headsets', desc: 'Audio gear for competitive gaming' },
+];
+---
+
+<BaseLayout title="Gear Recommendations">
+  <div class="page-header">
+    <h1>Gear Recommendations</h1>
+    <p>Various reviewers' recommendations for gaming PC peripherals at the end of 2024. You DON'T need this, but it's nice :)</p>
+  </div>
+
+  <div class="category-grid">
+    {categories.map(cat => (
+      <a href={`${base}recommendations/${cat.slug}/`} class="category-card">
+        <h2>{cat.name}</h2>
+        <p>{cat.desc}</p>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .category-card {
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .category-card:hover {
+    border-color: var(--accent-primary, #ff6b35);
+    transform: translateY(-2px);
+  }
+
+  .category-card h2 {
+    color: var(--accent-primary, #ff6b35);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .category-card p {
+    color: var(--text-secondary, #888);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+</style>

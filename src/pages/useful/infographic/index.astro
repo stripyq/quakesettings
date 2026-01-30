@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout title="Pickup Players Infographic">
+  <div class="page-header">
+    <h1>Pickup Players Snapshot '24</h1>
+    <p>Quake Live community infographic</p>
+  </div>
+
+  <div class="infographic-container">
+    <a href={`${base}images/infographic.png`} target="_blank" rel="noopener noreferrer">
+      <img
+        src={`${base}images/infographic.png`}
+        alt="Quake Live Pickup Players Infographic 2024"
+        class="infographic-image"
+      />
+    </a>
+    <p class="click-hint">Click image to view full size</p>
+  </div>
+
+  <div class="back-link">
+    <a href={`${base}useful/`}>← Back to Useful Links</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .infographic-container {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .infographic-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .infographic-image:hover {
+    transform: scale(1.01);
+  }
+
+  .click-hint {
+    color: var(--text-secondary, #888);
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+</style>

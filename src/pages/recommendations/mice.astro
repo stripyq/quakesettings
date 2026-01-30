@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const mouseData = [
+  { mouse: "Razer DeathAdder V3 Pro", shape: "Ergonomic", weight: 63, diamondLobby: true, techless: true, boardzy: true, rocketJumpNinja: true },
+  { mouse: "Lamzu Maya X", shape: "Symmetrical", weight: 40, diamondLobby: true, techless: false, boardzy: true, rocketJumpNinja: true },
+  { mouse: "Zowie U2", shape: "Symmetrical", weight: 58, diamondLobby: true, techless: true, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Endgame Gear OP1 8k", shape: "Symmetrical", weight: 53, diamondLobby: true, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Lamzu Maya", shape: "Symmetrical", weight: 55, diamondLobby: true, techless: false, boardzy: false, rocketJumpNinja: true },
+  { mouse: "Logitech G Pro X Superlight II", shape: "Symmetrical", weight: 60, diamondLobby: false, techless: true, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Razer Viper V2 Pro", shape: "Symmetrical", weight: 58, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: true },
+  { mouse: "ASUS ROG Harpe Ace", shape: "Symmetrical", weight: 54, diamondLobby: false, techless: false, boardzy: false, rocketJumpNinja: true },
+  { mouse: "ATK X1 Ultimate", shape: "Symmetrical", weight: 49, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Endgame Gear XM2w 4k", shape: "Symmetrical", weight: 52, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Fantech Helios II Pro S", shape: "Symmetrical", weight: 48, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Finalmouse UltralightX", shape: "Symmetrical", weight: 29, diamondLobby: false, techless: false, boardzy: false, rocketJumpNinja: true },
+  { mouse: "Logitech G Pro X Superlight", shape: "Symmetrical", weight: 63, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Logitech G203 Lightsync", shape: "Symmetrical", weight: 85, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Logitech G305 Lightspeed", shape: "Symmetrical", weight: 99, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Ninjutso Sora V2", shape: "Symmetrical", weight: 45, diamondLobby: false, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "Pulsar X2H", shape: "Symmetrical", weight: 55, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Pulsar X2H Mini", shape: "Symmetrical", weight: 51, diamondLobby: false, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "Pulsar X2H Medium", shape: "Symmetrical", weight: 56, diamondLobby: true, techless: false, boardzy: false, rocketJumpNinja: false },
+  { mouse: "Pulsar X2V2", shape: "Symmetrical", weight: 52, diamondLobby: false, techless: false, boardzy: true, rocketJumpNinja: false },
+  { mouse: "Pwnage StormBreaker", shape: "Ergonomic", weight: 56, diamondLobby: false, techless: false, boardzy: false, rocketJumpNinja: true },
+  { mouse: "Razer Viper V3 Pro", shape: "Symmetrical", weight: 55, diamondLobby: false, techless: false, boardzy: false, rocketJumpNinja: true },
+  { mouse: "Scyrox V8", shape: "Symmetrical", weight: 36, diamondLobby: true, techless: false, boardzy: false, rocketJumpNinja: false },
+  { mouse: "VAXEE XE Wireless 4K", shape: "Symmetrical", weight: 56, diamondLobby: true, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "VAXEE ZYGEN NP-01S Wireless 4K", shape: "Hybrid", weight: 60, diamondLobby: false, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "Waizowl Cloud", shape: "Symmetrical", weight: 35, diamondLobby: false, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "WLMouse Beast X", shape: "Symmetrical", weight: 35, diamondLobby: true, techless: true, boardzy: false, rocketJumpNinja: false },
+  { mouse: "Zowie EC3-CW", shape: "Ergonomic", weight: 74, diamondLobby: false, techless: true, boardzy: false, rocketJumpNinja: false },
+];
+
+function countRecommendations(m) {
+  return (m.diamondLobby ? 1 : 0) + (m.techless ? 1 : 0) + (m.boardzy ? 1 : 0) + (m.rocketJumpNinja ? 1 : 0);
+}
+
+const sortedMice = mouseData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
+---
+
+<BaseLayout title="Mice Recommendations">
+  <div class="page-header">
+    <h1>Gaming Mice Recommendations</h1>
+    <p>Recommended mice from top reviewers (end of 2024)</p>
+  </div>
+
+  <div class="reviewer-legend">
+    <span class="legend-item"><span class="badge dl">DL</span> Diamond Lobby</span>
+    <span class="legend-item"><span class="badge tl">TL</span> Techless</span>
+    <span class="legend-item"><span class="badge bz">BZ</span> Boardzy</span>
+    <span class="legend-item"><span class="badge rjn">RJN</span> RocketJumpNinja</span>
+  </div>
+
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Mouse</th>
+          <th>Shape</th>
+          <th>Weight</th>
+          <th>DL</th>
+          <th>TL</th>
+          <th>BZ</th>
+          <th>RJN</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sortedMice.map(m => (
+          <tr>
+            <td class="mouse-name">{m.mouse}</td>
+            <td>{m.shape}</td>
+            <td class="num">{m.weight}g</td>
+            <td class="center">{m.diamondLobby ? '✓' : ''}</td>
+            <td class="center">{m.techless ? '✓' : ''}</td>
+            <td class="center">{m.boardzy ? '✓' : ''}</td>
+            <td class="center">{m.rocketJumpNinja ? '✓' : ''}</td>
+            <td class="center total">{countRecommendations(m)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-link">
+    <a href={`${base}recommendations/`}>← Back to Recommendations</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .reviewer-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .badge.dl { background: #4a9eff; color: #fff; }
+  .badge.tl { background: #ff6b6b; color: #fff; }
+  .badge.bz { background: #ffd93d; color: #000; }
+  .badge.rjn { background: #6bcb77; color: #000; }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rec-table th,
+  .rec-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .rec-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .rec-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .mouse-name {
+    font-weight: 500;
+    color: var(--text-primary, #fff);
+  }
+
+  .num {
+    font-family: monospace;
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+</style>

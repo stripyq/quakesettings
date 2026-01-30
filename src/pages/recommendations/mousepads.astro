@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const mousepadData = [
+  { name: "Artisan Hien", type: "Cloth", speed: "Speed", recommended: ["Boardzy", "Techless", "Optimum Tech"] },
+  { name: "Artisan Zero", type: "Cloth", speed: "Control", recommended: ["RocketJumpNinja", "Boardzy"] },
+  { name: "Artisan Hayate Otsu", type: "Cloth", speed: "Balanced", recommended: ["Techless", "Optimum Tech"] },
+  { name: "LGG Saturn Pro", type: "Cloth", speed: "Control", recommended: ["Boardzy", "RocketJumpNinja"] },
+  { name: "LGG Venus Pro", type: "Cloth", speed: "Speed", recommended: ["Boardzy"] },
+  { name: "Pulsar Paracontrol V2", type: "Cloth", speed: "Control", recommended: ["Techless"] },
+  { name: "X-raypad Aqua Control+", type: "Cloth", speed: "Control", recommended: ["Boardzy", "RocketJumpNinja"] },
+  { name: "Skypad 3.0", type: "Glass", speed: "Speed", recommended: ["Boardzy"] },
+  { name: "Razer Strider", type: "Hybrid", speed: "Balanced", recommended: ["RocketJumpNinja"] },
+  { name: "SteelSeries QcK Heavy", type: "Cloth", speed: "Control", recommended: ["Classic choice"] },
+  { name: "Zowie G-SR", type: "Cloth", speed: "Control", recommended: ["Pro standard"] },
+  { name: "Zowie G-SR-SE", type: "Cloth", speed: "Balanced", recommended: ["Pro standard"] },
+];
+---
+
+<BaseLayout title="Mousepad Recommendations">
+  <div class="page-header">
+    <h1>Mousepad Recommendations</h1>
+    <p>Control vs speed pads for different playstyles</p>
+  </div>
+
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Mousepad</th>
+          <th>Type</th>
+          <th>Speed</th>
+          <th>Recommended By</th>
+        </tr>
+      </thead>
+      <tbody>
+        {mousepadData.map(p => (
+          <tr>
+            <td class="pad-name">{p.name}</td>
+            <td>{p.type}</td>
+            <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
+            <td>{p.recommended.join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-link">
+    <a href={`${base}recommendations/`}>← Back to Recommendations</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .table-container { overflow-x: auto; }
+
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rec-table th, .rec-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .rec-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .rec-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .pad-name {
+    font-weight: 500;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .speed-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .speed-badge.control { background: #4a9eff; color: #fff; }
+  .speed-badge.balanced { background: #ffd93d; color: #000; }
+  .speed-badge.speed { background: #ff6b6b; color: #fff; }
+
+  .back-link { margin-top: 2rem; }
+  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
+  .back-link a:hover { text-decoration: underline; }
+</style>
