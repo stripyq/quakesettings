@@ -99,6 +99,7 @@ const playersCollection = defineCollection({
     team: z.string().optional(),
     rating: z.number().optional(),
     category: z.string().optional().default('duel'),
+    lastUpdated: z.string().optional(), // Date string YYYY-MM-DD
 
     // Mouse Settings
     dpi: z.number(),
