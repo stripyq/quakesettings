@@ -18,6 +18,7 @@ const miceCollection = defineCollection({
     buttons: z.number().optional().default(5),
     connection: z.string().optional().default('Wired'),
     image: z.string().optional(),
+    affiliateLink: z.string().optional(), // Amazon affiliate link
   }),
 });
 
@@ -34,6 +35,7 @@ const monitorsCollection = defineCollection({
     responseTime: z.string().optional().default('1ms'),
     adaptiveSync: z.string().optional(),
     image: z.string().optional(),
+    affiliateLink: z.string().optional(), // Amazon affiliate link
   }),
 });
 
@@ -49,6 +51,7 @@ const keyboardsCollection = defineCollection({
     connection: z.string().optional().default('Wired'),
     features: z.string().optional(),
     image: z.string().optional(),
+    affiliateLink: z.string().optional(), // Amazon affiliate link
   }),
 });
 
@@ -65,6 +68,7 @@ const mousepadsCollection = defineCollection({
     thickness: z.string().optional(),
     base: z.string().optional(),
     image: z.string().optional(),
+    affiliateLink: z.string().optional(), // Amazon affiliate link
   }),
 });
 
@@ -82,6 +86,7 @@ const headsetsCollection = defineCollection({
     microphone: z.union([z.boolean(), z.string()]).optional().default(false),
     features: z.string().optional(),
     image: z.string().optional(),
+    affiliateLink: z.string().optional(), // Amazon affiliate link
   }),
 });
 
@@ -100,6 +105,10 @@ const playersCollection = defineCollection({
     rating: z.number().optional(),
     category: z.string().optional().default('duel'),
     lastUpdated: z.string().optional(), // Date string YYYY-MM-DD
+
+    // Data Source
+    source: z.string().optional(), // e.g., "Player submission", "Interview", "Stream"
+    sourceUrl: z.string().optional(), // Link to source (stream VOD, interview, etc.)
 
     // Mouse Settings
     dpi: z.number(),

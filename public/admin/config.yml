@@ -32,6 +32,7 @@ collections:
       - { label: "Buttons", name: "buttons", widget: "number" }
       - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
   - name: monitors
     label: Monitors
@@ -51,6 +52,7 @@ collections:
       - { label: "Response Time", name: "responseTime", widget: "string" }
       - { label: "Adaptive Sync", name: "adaptiveSync", widget: "select", options: ["G-Sync", "FreeSync", "G-Sync Compatible", "None"], required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
   - name: keyboards
     label: Keyboards
@@ -69,6 +71,7 @@ collections:
       - { label: "Features", name: "features", widget: "string", required: false }
       - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
   - name: mousepads
     label: Mousepads
@@ -87,6 +90,7 @@ collections:
       - { label: "Thickness", name: "thickness", widget: "string", required: false }
       - { label: "Base", name: "base", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
   - name: headsets
     label: Headsets
@@ -106,6 +110,7 @@ collections:
       - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
       - { label: "Microphone", name: "microphone", widget: "boolean", default: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
   # Players Collection (with relation widgets for hardware)
   - name: players
@@ -125,6 +130,10 @@ collections:
       - { label: "Rating", name: "rating", widget: "number", required: false }
       - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
       - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+
+      # Data Source
+      - { label: "Source", name: "source", widget: "string", required: false, hint: "Where data was gathered from (e.g., Player submission, Stream, Interview)" }
+      - { label: "Source URL", name: "sourceUrl", widget: "string", required: false, hint: "Link to source (stream VOD, interview article, etc.)" }
 
       # Mouse Settings
       - { label: "DPI", name: "dpi", widget: "number" }

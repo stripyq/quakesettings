@@ -113,6 +113,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <tr><td>Sensor</td><td>{mouseData.sensor}</td></tr>
               <tr><td>Connection</td><td>{mouseData.connection}</td></tr>
             </table>
+            {mouseData.affiliateLink && <a href={mouseData.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         )}
 
@@ -125,6 +126,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || 'N/A'}</td></tr>
               <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || 'N/A'}</td></tr>
             </table>
+            {mousepadData.affiliateLink && <a href={mousepadData.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         )}
 
@@ -137,6 +139,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <tr><td>Switches</td><td>{keyboardData.switches}</td></tr>
               <tr><td>Connection</td><td>{keyboardData.connection}</td></tr>
             </table>
+            {keyboardData.affiliateLink && <a href={keyboardData.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         )}
 
@@ -150,6 +153,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <tr><td>Panel</td><td>{monitorData.panelType || monitorData.panel || 'N/A'}</td></tr>
               <tr><td>Resolution</td><td>{monitorData.resolution}</td></tr>
             </table>
+            {monitorData.affiliateLink && <a href={monitorData.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         )}
 
@@ -162,6 +166,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <tr><td>Driver Size</td><td>{headsetData.driverSize || headsetData.driver || 'N/A'}</td></tr>
               <tr><td>Connection</td><td>{headsetData.connection}</td></tr>
             </table>
+            {headsetData.affiliateLink && <a href={headsetData.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         )}
       </div>
@@ -174,6 +179,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <a href={`${base}${p.configFile.replace(/^\//, '')}`} download class="download-btn">
           Download {p.name}'s Config
         </a>
+      </section>
+    )}
+
+    <!-- Data Source -->
+    {(p.source || p.lastUpdated) && (
+      <section class="source-section">
+        <h2>Data Source</h2>
+        <div class="source-info">
+          {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
+          {p.lastUpdated && <p><strong>Last Updated:</strong> {p.lastUpdated}</p>}
+        </div>
       </section>
     )}
 
@@ -260,6 +276,58 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hardware-specs td:first-child {
     color: var(--text-secondary, #9090a0);
     width: 45%;
+  }
+
+  .buy-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .buy-link:hover {
+    background: #ff8c5a;
+    transform: translateY(-1px);
+  }
+
+  .source-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .source-section h2 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .source-info {
+    font-size: 0.9rem;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .source-info p {
+    margin-bottom: 0.25rem;
+  }
+
+  .source-info a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .source-info a:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
