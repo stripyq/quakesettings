@@ -46,8 +46,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <tr><td>Sensor</td><td>{mouse.data.sensor}</td></tr>
             <tr><td>Connection</td><td>{mouse.data.connection}</td></tr>
           </table>
-          <div class="usage-count">
-            Used by {mouse.usage} player{mouse.usage !== 1 ? 's' : ''}
+          <div class="card-footer">
+            <span class="usage-count">Used by {mouse.usage} player{mouse.usage !== 1 ? 's' : ''}</span>
+            {mouse.data.affiliateLink && <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         </div>
       ))}
@@ -64,10 +65,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <table class="hardware-mini-specs">
             <tr><td>Size</td><td>{monitor.data.size}</td></tr>
             <tr><td>Refresh</td><td>{monitor.data.refreshRate}</td></tr>
-            <tr><td>Panel</td><td>{monitor.data.panel}</td></tr>
+            <tr><td>Panel</td><td>{monitor.data.panelType || monitor.data.panel}</td></tr>
           </table>
-          <div class="usage-count">
-            Used by {countUsage(monitor.id, 'monitor')} player(s)
+          <div class="card-footer">
+            <span class="usage-count">Used by {countUsage(monitor.id, 'monitor')} player(s)</span>
+            {monitor.data.affiliateLink && <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         </div>
       ))}
@@ -82,11 +84,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <h3>{kb.data.name}</h3>
           <div class="hardware-brand">{kb.data.brand}</div>
           <table class="hardware-mini-specs">
-            <tr><td>Format</td><td>{kb.data.format}</td></tr>
+            <tr><td>Size</td><td>{kb.data.size || kb.data.format}</td></tr>
             <tr><td>Switches</td><td>{kb.data.switches}</td></tr>
           </table>
-          <div class="usage-count">
-            Used by {countUsage(kb.id, 'keyboard')} player(s)
+          <div class="card-footer">
+            <span class="usage-count">Used by {countUsage(kb.id, 'keyboard')} player(s)</span>
+            {kb.data.affiliateLink && <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         </div>
       ))}
@@ -101,11 +104,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <h3>{pad.data.name}</h3>
           <div class="hardware-brand">{pad.data.brand}</div>
           <table class="hardware-mini-specs">
-            <tr><td>Size</td><td>{pad.data.size}</td></tr>
-            <tr><td>Type</td><td>{pad.data.speedType}</td></tr>
+            <tr><td>Dimensions</td><td>{pad.data.dimensions || pad.data.size}</td></tr>
+            <tr><td>Speed</td><td>{pad.data.speed || pad.data.speedType}</td></tr>
           </table>
-          <div class="usage-count">
-            Used by {countUsage(pad.id, 'mousepad')} player(s)
+          <div class="card-footer">
+            <span class="usage-count">Used by {countUsage(pad.id, 'mousepad')} player(s)</span>
+            {pad.data.affiliateLink && <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         </div>
       ))}
@@ -121,13 +125,44 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <div class="hardware-brand">{hs.data.brand}</div>
           <table class="hardware-mini-specs">
             <tr><td>Type</td><td>{hs.data.type}</td></tr>
-            <tr><td>Driver</td><td>{hs.data.driver}</td></tr>
+            <tr><td>Driver</td><td>{hs.data.driverSize || hs.data.driver}</td></tr>
           </table>
-          <div class="usage-count">
-            Used by {countUsage(hs.id, 'headset')} player(s)
+          <div class="card-footer">
+            <span class="usage-count">Used by {countUsage(hs.id, 'headset')} player(s)</span>
+            {hs.data.affiliateLink && <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Buy on Amazon</a>}
           </div>
         </div>
       ))}
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .buy-link {
+    display: inline-block;
+    padding: 0.35rem 0.6rem;
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .buy-link:hover {
+    background: #ff8c5a;
+    transform: translateY(-1px);
+  }
+</style>
