@@ -2,11 +2,11 @@ name: sno
 country: "Unknown"
 category: "duel"
 duelRating: 1438
+duelRatingUpdated: "2026-01-31"
 ctfRating: 21.21
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 19.29
 tdmRatingUpdated: "2026-01-31"
-duelRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800

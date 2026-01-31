@@ -3,6 +3,10 @@ country: "Unknown"
 category: "duel"
 duelRating: 1254
 duelRatingUpdated: "2026-01-31"
+ctfRating: 14.63
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 15.03
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 5000
