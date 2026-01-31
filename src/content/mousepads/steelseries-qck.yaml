@@ -1,5 +1,7 @@
-name: SteelSeries QcK
-brand: SteelSeries
+name: "SteelSeries QcK"
+brand: "SteelSeries"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "320 x 270 x 2mm"
+thickness: "2mm"
+base: "Rubber"

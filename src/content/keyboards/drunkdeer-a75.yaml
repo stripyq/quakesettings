@@ -1,5 +1,7 @@
-name: DrunkDeer A75
-brand: DrunkDeer
-size: "TKL"
-switches: "Mechanical"
+name: "DrunkDeer A75"
+brand: "DrunkDeer"
+size: "75%"
+switches: "Magnetic Hall Effect"
+actuation: "0.2-3.8mm Adjustable"
 connection: "Wired"
+features: "Rapid Trigger"

@@ -1,9 +1,9 @@
-name: Endgame Gear OP1 8k
-brand: Endgame
-weight: "Unknown"
+name: "Endgame Gear OP1 8K"
+brand: "Endgame Gear"
+weight: "59g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
-buttons: 5
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "8000Hz"
 connection: "Wired"
+buttons: 5

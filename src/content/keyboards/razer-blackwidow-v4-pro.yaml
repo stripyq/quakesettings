@@ -1,5 +1,7 @@
-name: Razer Blackwidow V4 Pro
-brand: Razer
-size: "TKL"
-switches: "Mechanical"
+name: "Razer BlackWidow V4 Pro"
+brand: "Razer"
+size: "Full-size"
+switches: "Razer Green/Yellow"
+actuation: "1.9mm"
 connection: "Wired"
+features: "RGB, Media Keys"

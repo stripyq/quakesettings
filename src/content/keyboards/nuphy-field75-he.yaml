@@ -1,5 +1,7 @@
-name: NuPhy Field75 HE
-brand: NuPhy
-size: "TKL"
-switches: "Mechanical"
-connection: "Wired"
+name: "NuPhy Field75 HE"
+brand: "NuPhy"
+size: "75%"
+switches: "Magnetic Hall Effect"
+actuation: "0.1-4.0mm Adjustable"
+connection: "Wireless"
+features: "Rapid Trigger"

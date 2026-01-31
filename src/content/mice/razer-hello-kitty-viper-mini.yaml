@@ -1,9 +1,9 @@
-name: Razer Hello Kitty Viper Mini
-brand: Razer
-weight: "Unknown"
+name: "Razer Hello Kitty Viper Mini"
+brand: "Razer"
+weight: "61g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+sensor: "PMW3359"
+dpiRange: "200-8500"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 6

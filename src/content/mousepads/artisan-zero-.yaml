@@ -1,5 +1,7 @@
-name: Artisan ZERO 零
-brand: Artisan
+name: "Artisan Zero"
+brand: "Artisan"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "420 x 330 x 4mm"
+thickness: "4mm"
+base: "Foam"

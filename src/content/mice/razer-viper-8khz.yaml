@@ -1,9 +1,9 @@
-name: Razer Viper 8KHz
-brand: Razer
-weight: "Unknown"
+name: "Razer Viper 8KHz"
+brand: "Razer"
+weight: "71g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
-buttons: 5
+sensor: "Focus+"
+dpiRange: "100-20000"
+pollingRate: "8000Hz"
 connection: "Wired"
+buttons: 8

@@ -1,6 +1,8 @@
-name: HyperX Cloud Mix
-brand: HyperX
+name: "HyperX Cloud MIX"
+brand: "HyperX"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "40mm"
+frequencyResponse: "10Hz - 40kHz"
+impedance: "40 Ohm"
+connection: "Wired/Wireless"
+microphone: true

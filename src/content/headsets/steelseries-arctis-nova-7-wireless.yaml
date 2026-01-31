@@ -1,6 +1,8 @@
-name: SteelSeries Arctis Nova 7 Wireless
-brand: SteelSeries
+name: "SteelSeries Arctis Nova 7 Wireless"
+brand: "SteelSeries"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "40mm"
+frequencyResponse: "20Hz - 22kHz"
+impedance: "36 Ohm"
+connection: "Wireless"
+microphone: true

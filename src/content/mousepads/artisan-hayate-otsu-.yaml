@@ -1,5 +1,7 @@
-name: Artisan HAYATE-OTSU 疾風乙
-brand: Artisan
-surface: "Cloth"
+name: "Artisan Hayate Otsu"
+brand: "Artisan"
+surface: "Hybrid Cloth"
 speed: "Balanced"
-dimensions: "Unknown"
+dimensions: "420 x 330 x 4mm"
+thickness: "4mm"
+base: "Foam"

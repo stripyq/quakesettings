@@ -1,9 +1,9 @@
-name: Pulsar Xlite Wireless
-brand: Pulsar
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Pulsar Xlite Wireless"
+brand: "Pulsar"
+weight: "59g"
+shape: "Ergonomic"
+sensor: "PAW3370"
+dpiRange: "50-19000"
 pollingRate: "1000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

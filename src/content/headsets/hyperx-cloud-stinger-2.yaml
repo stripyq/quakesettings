@@ -1,6 +1,8 @@
-name: HyperX Cloud Stinger 2
-brand: HyperX
+name: "HyperX Cloud Stinger 2"
+brand: "HyperX"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "10Hz - 28kHz"
+impedance: "32 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

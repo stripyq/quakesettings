@@ -1,6 +1,8 @@
-name: Philips Fidelio x2
-brand: Philips
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Philips Fidelio X2"
+brand: "Philips"
+type: "Open-back"
+driverSize: "50mm"
+frequencyResponse: "5Hz - 40kHz"
+impedance: "30 Ohm"
 connection: "Wired"
 microphone: false

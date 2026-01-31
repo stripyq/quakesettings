@@ -1,6 +1,8 @@
-name: Sony MDR-7506
-brand: Sony
+name: "Sony MDR-7506"
+brand: "Sony"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "40mm"
+frequencyResponse: "10Hz - 20kHz"
+impedance: "63 Ohm"
 connection: "Wired"
 microphone: false

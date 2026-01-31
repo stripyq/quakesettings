@@ -1,5 +1,7 @@
-name: Dark Project KD87A
-brand: Dark
+name: "Dark Project KD87A"
+brand: "Dark Project"
 size: "TKL"
-switches: "Mechanical"
+switches: "Gateron"
+actuation: "2.0mm"
 connection: "Wired"
+features: "RGB"

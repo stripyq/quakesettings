@@ -1,6 +1,8 @@
-name: Sennheiser PC 350
-brand: Sennheiser
+name: "Sennheiser PC 350"
+brand: "Sennheiser"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "40mm"
+frequencyResponse: "10Hz - 26kHz"
+impedance: "150 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

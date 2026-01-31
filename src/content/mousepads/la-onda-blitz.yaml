@@ -1,5 +1,7 @@
-name: La Onda BLITZ
-brand: La
+name: "La Onda Blitz"
+brand: "La Onda"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Speed"
+dimensions: "500 x 500 x 3mm"
+thickness: "3mm"
+base: "Rubber"

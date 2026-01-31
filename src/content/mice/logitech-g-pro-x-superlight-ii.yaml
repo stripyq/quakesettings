@@ -1,9 +1,9 @@
-name: Logitech G Pro X Superlight II
-brand: Logitech
-weight: "Unknown"
+name: "Logitech G Pro X Superlight 2"
+brand: "Logitech"
+weight: "60g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+sensor: "HERO 2"
+dpiRange: "100-32000"
+pollingRate: "2000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

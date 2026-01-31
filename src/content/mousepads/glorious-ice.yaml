@@ -1,5 +1,7 @@
-name: Glorious Ice
-brand: Glorious
-surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+name: "Glorious Ice"
+brand: "Glorious"
+surface: "Glass"
+speed: "Speed"
+dimensions: "406 x 457 x 4mm"
+thickness: "4mm"
+base: "Silicone"

@@ -1,9 +1,9 @@
-name: Glorious Model O
-brand: Glorious
-weight: "Unknown"
+name: "Glorious Model O"
+brand: "Glorious"
+weight: "67g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+sensor: "PMW3360"
+dpiRange: "400-12000"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 6

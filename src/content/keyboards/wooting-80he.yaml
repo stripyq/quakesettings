@@ -1,5 +1,7 @@
-name: Wooting 80HE
-brand: Wooting
+name: "Wooting 80HE"
+brand: "Wooting"
 size: "TKL"
-switches: "Mechanical"
+switches: "Lekker Hall Effect"
+actuation: "0.1-4.0mm Adjustable"
 connection: "Wired"
+features: "Rapid Trigger, Analog Input"

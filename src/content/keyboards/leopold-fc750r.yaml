@@ -1,5 +1,7 @@
-name: Leopold FC750R
-brand: Leopold
+name: "Leopold FC750R"
+brand: "Leopold"
 size: "TKL"
-switches: "Mechanical"
+switches: "Cherry MX"
+actuation: "2.0mm"
 connection: "Wired"
+features: "PBT Keycaps, Sound Dampening"

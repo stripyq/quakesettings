@@ -1,9 +1,9 @@
-name: Razer Viper V3 Pro
-brand: Razer
-weight: "Unknown"
+name: "Razer Viper V3 Pro"
+brand: "Razer"
+weight: "54g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+sensor: "Focus Pro 35K Gen-2"
+dpiRange: "100-35000"
+pollingRate: "8000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

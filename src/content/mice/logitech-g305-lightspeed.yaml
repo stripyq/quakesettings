@@ -1,9 +1,9 @@
-name: Logitech G305 Lightspeed
-brand: Logitech
-weight: "Unknown"
+name: "Logitech G305 Lightspeed"
+brand: "Logitech"
+weight: "99g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+sensor: "HERO 12K"
+dpiRange: "200-12000"
 pollingRate: "1000Hz"
-buttons: 5
-connection: "Wired"
+connection: "Wireless"
+buttons: 6

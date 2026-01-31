@@ -1,5 +1,7 @@
-name: Keychron K8
-brand: Keychron
+name: "Keychron K8"
+brand: "Keychron"
 size: "TKL"
-switches: "Mechanical"
-connection: "Wired"
+switches: "Gateron"
+actuation: "2.0mm"
+connection: "Wireless"
+features: "RGB, Hot-swappable"

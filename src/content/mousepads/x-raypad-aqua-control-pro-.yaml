@@ -1,5 +1,7 @@
-name: X-raypad Aqua Control Pro 
-brand: X-raypad
+name: "X-raypad Aqua Control Pro"
+brand: "X-raypad"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "500 x 500 x 4mm"
+thickness: "4mm"
+base: "Rubber"

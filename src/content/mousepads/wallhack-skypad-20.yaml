@@ -1,5 +1,7 @@
-name: Wallhack SkyPAD 2.0
-brand: Wallhack
-surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+name: "Skypad 2.0"
+brand: "Wallhack"
+surface: "Glass"
+speed: "Speed"
+dimensions: "400 x 500 x 3.7mm"
+thickness: "3.7mm"
+base: "Silicone"

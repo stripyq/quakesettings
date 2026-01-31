@@ -1,6 +1,8 @@
-name: Astro A50 Wireless
-brand: Astro
+name: "Astro A50 Wireless"
+brand: "Astro"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "40mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "36 Ohm"
+connection: "Wireless"
+microphone: true

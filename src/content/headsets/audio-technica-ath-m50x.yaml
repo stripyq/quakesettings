@@ -1,6 +1,8 @@
-name: Audio-Technica ATH-M50X
-brand: Audio-Technica
+name: "Audio-Technica ATH-M50x"
+brand: "Audio-Technica"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "45mm"
+frequencyResponse: "15Hz - 28kHz"
+impedance: "38 Ohm"
 connection: "Wired"
 microphone: false

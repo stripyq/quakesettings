@@ -1,9 +1,9 @@
-name: Razer DeathAdder V3 Pro
-brand: Razer
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+name: "Razer DeathAdder V3 Pro"
+brand: "Razer"
+weight: "63g"
+shape: "Ergonomic"
+sensor: "Focus Pro 30K"
+dpiRange: "100-30000"
+pollingRate: "4000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

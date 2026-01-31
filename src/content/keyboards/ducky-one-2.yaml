@@ -1,5 +1,7 @@
-name: Ducky One 2
-brand: Ducky
-size: "TKL"
-switches: "Mechanical"
+name: "Ducky One 2"
+brand: "Ducky"
+size: "Full-size"
+switches: "Cherry MX"
+actuation: "2.0mm"
 connection: "Wired"
+features: "RGB, PBT Keycaps"

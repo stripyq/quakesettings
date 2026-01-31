@@ -1,6 +1,8 @@
-name: Sennheiser HD 280 Pro
-brand: Sennheiser
+name: "Sennheiser HD 280 Pro"
+brand: "Sennheiser"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "40mm"
+frequencyResponse: "8Hz - 25kHz"
+impedance: "64 Ohm"
 connection: "Wired"
 microphone: false

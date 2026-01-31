@@ -1,5 +1,7 @@
-name: Logitech G512 Carbon
-brand: Logitech
-size: "TKL"
-switches: "Mechanical"
+name: "Logitech G512 Carbon"
+brand: "Logitech"
+size: "Full-size"
+switches: "GX Blue/Brown/Red"
+actuation: "1.9mm"
 connection: "Wired"
+features: "RGB, Aluminum Top"

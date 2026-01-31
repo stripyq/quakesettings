@@ -1,5 +1,7 @@
-name: Endgame Gear MPC 450
-brand: Endgame
-surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+name: "Endgame Gear MPC 450"
+brand: "Endgame Gear"
+surface: "Cordura"
+speed: "Speed"
+dimensions: "450 x 400 x 3mm"
+thickness: "3mm"
+base: "Rubber"

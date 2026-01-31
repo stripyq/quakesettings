@@ -1,5 +1,7 @@
-name: Corsair K95 RGB PLATINUM
-brand: Corsair
-size: "TKL"
-switches: "Mechanical"
+name: "Corsair K95 RGB Platinum"
+brand: "Corsair"
+size: "Full-size"
+switches: "Cherry MX Speed/Brown"
+actuation: "1.2mm"
 connection: "Wired"
+features: "RGB, Macro Keys"

@@ -1,9 +1,9 @@
-name: HyperX Pulsefire Haste 2 Wired
-brand: HyperX
-weight: "Unknown"
+name: "HyperX Pulsefire Haste 2 Wired"
+brand: "HyperX"
+weight: "53g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
-buttons: 5
+sensor: "PAW3399"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
 connection: "Wired"
+buttons: 6

@@ -1,5 +1,7 @@
-name: Razer Gigantus
-brand: Razer
+name: "Razer Gigantus V2"
+brand: "Razer"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "450 x 400 x 3mm"
+thickness: "3mm"
+base: "Rubber"

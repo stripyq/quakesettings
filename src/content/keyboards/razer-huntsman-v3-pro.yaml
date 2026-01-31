@@ -1,5 +1,7 @@
-name: Razer Huntsman V3 Pro
-brand: Razer
-size: "TKL"
-switches: "Mechanical"
+name: "Razer Huntsman V3 Pro"
+brand: "Razer"
+size: "Full-size"
+switches: "Razer Optical Gen-3"
+actuation: "0.1-4.0mm Adjustable"
 connection: "Wired"
+features: "Rapid Trigger, Analog Input"

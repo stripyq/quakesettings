@@ -1,9 +1,9 @@
-name: Razer DeathAdder Essential
-brand: Razer
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Razer DeathAdder Essential"
+brand: "Razer"
+weight: "96g"
+shape: "Ergonomic"
+sensor: "PMW3327"
+dpiRange: "100-6400"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 5

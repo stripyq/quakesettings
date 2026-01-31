@@ -1,6 +1,8 @@
-name: Logitech G432
-brand: Logitech
+name: "Logitech G432"
+brand: "Logitech"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "39 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

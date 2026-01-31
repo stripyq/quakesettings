@@ -1,6 +1,8 @@
-name: Logitech G Pro X Wireless Headset
-brand: Logitech
+name: "Logitech G Pro X Wireless"
+brand: "Logitech"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "50mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "32 Ohm"
+connection: "Wireless"
+microphone: true

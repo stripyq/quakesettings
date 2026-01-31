@@ -1,9 +1,9 @@
-name: Razer DeathAdder V2
-brand: Razer
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Razer DeathAdder V2"
+brand: "Razer"
+weight: "82g"
+shape: "Ergonomic"
+sensor: "Focus+"
+dpiRange: "100-20000"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 8

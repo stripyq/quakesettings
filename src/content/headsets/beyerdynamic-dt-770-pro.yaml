@@ -1,6 +1,8 @@
-name: Beyerdynamic DT 770 Pro
-brand: Beyerdynamic
+name: "Beyerdynamic DT 770 Pro"
+brand: "Beyerdynamic"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "45mm"
+frequencyResponse: "5Hz - 35kHz"
+impedance: "80 Ohm"
 connection: "Wired"
 microphone: false

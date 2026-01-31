@@ -1,5 +1,7 @@
-name: Lethal Gaming Gear Venus Pro
-brand: Lethal
+name: "Lethal Gaming Gear Venus Pro"
+brand: "Lethal Gaming Gear"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "500 x 500 x 4mm"
+thickness: "4mm"
+base: "Rubber"
