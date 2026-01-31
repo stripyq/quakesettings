@@ -10,123 +10,264 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <p>Community resources, guides, and tools for Quake Live</p>
   </div>
 
-  <section class="link-section">
-    <h2>Featured Guide</h2>
-    <a href={`${base}useful/infographic/`} class="featured-link">
-      View Quake Live Infographic Guide
+  <!-- Section 0: Featured -->
+  <section class="featured-section">
+    <h2>⭐ Featured</h2>
+    <a href={`${base}useful/performance/`} class="featured-card">
+      <div class="featured-header">
+        <span class="featured-title">🎯 Performance Settings</span>
+        <span class="new-badge">NEW</span>
+      </div>
+      <p class="featured-description">
+        Optimal driver, in-game, and Windows settings for maximum performance on 240Hz+ monitors. Includes NVIDIA, AMD, and Intel presets.
+      </p>
+      <span class="featured-button">View Guide →</span>
     </a>
   </section>
 
+  <!-- Section 1: Site Guides -->
   <section class="link-section">
-    <h2>Community Discord Servers</h2>
-    <ul class="link-list">
-      <li>
-        <a href="https://discord.gg/7xSpGJ5" target="_blank" rel="noopener noreferrer">
-          House of Quake [EU]
-        </a>
-      </li>
-      <li>
-        <a href="https://discord.gg/KYpxv3p" target="_blank" rel="noopener noreferrer">
-          CSQL [EU]
-        </a>
-      </li>
-      <li>
-        <a href="https://discord.gg/GRJUswk" target="_blank" rel="noopener noreferrer">
-          Community Winter CTF [NA]
-        </a>
-      </li>
-      <li>
-        <a href="https://discord.gg/TguZhygXEy" target="_blank" rel="noopener noreferrer">
-          quakectf.com (currently freeze tag) [NA]
-        </a>
-      </li>
-    </ul>
+    <h2>📄 Guides</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href={`${base}useful/performance/`}>Performance Settings</a></td>
+            <td>Optimal driver, in-game & Windows settings for 240Hz+</td>
+          </tr>
+          <tr>
+            <td><a href={`${base}useful/infographic/`}>Pickup Players Infographic</a></td>
+            <td>Visual guide to community player settings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
+  <!-- Section 2: Community Discord Servers -->
   <section class="link-section">
-    <h2>Guides & Support</h2>
-    <ul class="link-list">
-      <li>
-        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3145278073" target="_blank" rel="noopener noreferrer">
-          QL CTF 5v5 guide by APH3X
-        </a>
-      </li>
-      <li>
-        <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=560709175" target="_blank" rel="noopener noreferrer">
-          Quake Live Issues & Errors support F.A.Q By Yakumo
-        </a>
-      </li>
-      <li>
-        <a href="https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/" target="_blank" rel="noopener noreferrer">
-          TrueSkill Ranking System explained
-        </a>
-      </li>
-      <li>
-        <a href={`${base}useful/infographic/`}>
-          Pickup players snapshot '24 infographic
-        </a>
-      </li>
-      <li>
-        <a href={`${base}useful/performance/`}>
-          Optimal Performance Settings Guide
-        </a>
-      </li>
-    </ul>
+    <h2>💬 Community Discord Servers</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Server</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://discord.gg/7xSpGJ5" target="_blank" rel="noopener noreferrer">House of Quake <span class="external-icon">↗</span></a></td>
+            <td>🇪🇺 EU pickups, tournaments, community hub</td>
+          </tr>
+          <tr>
+            <td><a href="https://discord.gg/KYpxv3p" target="_blank" rel="noopener noreferrer">CSQL <span class="external-icon">↗</span></a></td>
+            <td>🇪🇺 EU competitive scene</td>
+          </tr>
+          <tr>
+            <td><a href="https://discord.gg/GRJUswk" target="_blank" rel="noopener noreferrer">Community Winter CTF <span class="external-icon">↗</span></a></td>
+            <td>🇺🇸 NA CTF community</td>
+          </tr>
+          <tr>
+            <td><a href="https://discord.gg/TguZhygXEy" target="_blank" rel="noopener noreferrer">quakectf.com <span class="external-icon">↗</span></a></td>
+            <td>🇺🇸 NA freeze tag & CTF</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
+  <!-- Section 3: Guides & Learning -->
   <section class="link-section">
-    <h2>Rankings & Tools</h2>
-    <ul class="link-list">
-      <li>
-        <a href="http://88.214.20.58/ratings/ctf/" target="_blank" rel="noopener noreferrer">
-          HoQ CTF rankings
-        </a>
-      </li>
-      <li>
-        <a href="http://88.214.20.58/ratings/tdm/" target="_blank" rel="noopener noreferrer">
-          HoQ TDM rankings
-        </a>
-      </li>
-      <li>
-        <a href="https://iiiiins.github.io/quakerankings/" target="_blank" rel="noopener noreferrer">
-          Pro QUAKE players rankings based on tournament wins by Ins
-        </a>
-      </li>
-      <li>
-        <a href="https://ql.syncore.org" target="_blank" rel="noopener noreferrer">
-          Web QL server browser
-        </a>
-      </li>
-      <li>
-        <a href="https://funender.com/quake/mouse/index.html" target="_blank" rel="noopener noreferrer">
-          cm/360 calculation
-        </a>
-      </li>
-      <li>
-        <a href="https://www.mouse-sensitivity.com/" target="_blank" rel="noopener noreferrer">
-          Mouse Sensitivity Calculator/Converter
-        </a>
-      </li>
-      <li>
-        <a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">
-          Cloudflare Speed Test
-        </a>
-      </li>
-      <li>
-        <a href="https://packetlosstest.com" target="_blank" rel="noopener noreferrer">
-          Packet Loss Test
-        </a>
-      </li>
-      <li>
-        <a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener noreferrer">
-          WinMTR - Visual Traceroute Tool
-        </a>
-      </li>
-    </ul>
+    <h2>📚 Guides & Learning</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3145278073" target="_blank" rel="noopener noreferrer">QL CTF 5v5 Guide <span class="external-icon">↗</span></a></td>
+            <td>Comprehensive CTF strategy guide by APH3X</td>
+          </tr>
+          <tr>
+            <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=560709175" target="_blank" rel="noopener noreferrer">Issues & Errors FAQ <span class="external-icon">↗</span></a></td>
+            <td>Troubleshooting common QL problems by Yakumo</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/" target="_blank" rel="noopener noreferrer">TrueSkill Explained <span class="external-icon">↗</span></a></td>
+            <td>How the ranking system works (Microsoft Research)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 4: Rankings & Stats -->
+  <section class="link-section">
+    <h2>🏆 Rankings & Stats</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="http://88.214.20.58/ratings/ctf/" target="_blank" rel="noopener noreferrer">HoQ CTF Rankings <span class="external-icon">↗</span></a></td>
+            <td>TrueSkill ratings for CTF players</td>
+          </tr>
+          <tr>
+            <td><a href="http://88.214.20.58/ratings/tdm/" target="_blank" rel="noopener noreferrer">HoQ TDM Rankings <span class="external-icon">↗</span></a></td>
+            <td>TrueSkill ratings for TDM players</td>
+          </tr>
+          <tr>
+            <td><a href="https://iiiiins.github.io/quakerankings/" target="_blank" rel="noopener noreferrer">Tournament Rankings <span class="external-icon">↗</span></a></td>
+            <td>Pro player rankings based on tournament wins by Ins</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 5: Tools -->
+  <section class="link-section">
+    <h2>🔧 Tools</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://ql.syncore.org" target="_blank" rel="noopener noreferrer">QL Server Browser <span class="external-icon">↗</span></a></td>
+            <td>Web-based server browser</td>
+          </tr>
+          <tr>
+            <td><a href="https://funender.com/quake/mouse/index.html" target="_blank" rel="noopener noreferrer">cm/360 Calculator <span class="external-icon">↗</span></a></td>
+            <td>Calculate your sensitivity in cm per 360°</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.mouse-sensitivity.com/" target="_blank" rel="noopener noreferrer">Mouse Sensitivity Converter <span class="external-icon">↗</span></a></td>
+            <td>Convert sensitivity between games</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 6: Network Diagnostics -->
+  <section class="link-section">
+    <h2>🌐 Network Diagnostics</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Speed Test <span class="external-icon">↗</span></a></td>
+            <td>Test your internet speed and latency</td>
+          </tr>
+          <tr>
+            <td><a href="https://packetlosstest.com" target="_blank" rel="noopener noreferrer">Packet Loss Test <span class="external-icon">↗</span></a></td>
+            <td>Check for packet loss issues</td>
+          </tr>
+          <tr>
+            <td><a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener noreferrer">WinMTR Download <span class="external-icon">↗</span></a></td>
+            <td>Visual traceroute tool for diagnosing routing problems</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* Featured Section */
+  .featured-section {
+    margin-bottom: 3rem;
+  }
+
+  .featured-section h2 {
+    color: var(--accent-primary, #ff6b35);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .featured-card {
+    display: block;
+    background: var(--card-bg, #1a1a2e);
+    border: 2px solid var(--accent-primary, #ff6b35);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+  }
+
+  .featured-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+  }
+
+  .new-badge {
+    background: var(--accent-primary, #ff6b35);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .featured-description {
+    color: var(--text-secondary, #9090a0);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+  }
+
+  .featured-button {
+    display: inline-block;
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* Link Sections */
   .link-section {
     margin-bottom: 3rem;
   }
@@ -139,40 +280,81 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     border-bottom: 1px solid var(--border-color, #2a2a3a);
   }
 
-  .featured-link {
-    display: inline-block;
-    background: var(--accent-primary, #ff6b35);
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 6px;
-    text-decoration: none;
+  /* Table Styling */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg, #1a1a2e);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  thead {
+    background: var(--table-header-bg, #252540);
+  }
+
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary, #9090a0);
     font-weight: 600;
-    transition: background 0.2s;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .featured-link:hover {
-    background: var(--accent-secondary, #ff8c5a);
+  td {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border-color, #2a2a3a);
+    color: var(--text-secondary, #9090a0);
   }
 
-  .link-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  tr:hover td {
+    background: var(--table-row-hover, rgba(255, 255, 255, 0.03));
   }
 
-  .link-list li {
-    margin-bottom: 0.75rem;
+  td:first-child {
+    white-space: nowrap;
   }
 
-  .link-list a {
+  td a {
     color: var(--text-link, #6ea8fe);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-weight: 500;
     transition: color 0.2s;
   }
 
-  .link-list a:hover {
+  td a:hover {
     color: var(--accent-primary, #ff6b35);
-    text-decoration: underline;
+  }
+
+  .external-icon {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+    opacity: 0.7;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 640px) {
+    th:last-child,
+    td:last-child {
+      min-width: 200px;
+    }
+
+    .featured-card {
+      padding: 1rem;
+    }
+
+    .featured-title {
+      font-size: 1.1rem;
+    }
+
+    .featured-description {
+      font-size: 0.9rem;
+    }
   }
 </style>
