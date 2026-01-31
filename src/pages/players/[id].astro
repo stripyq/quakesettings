@@ -79,11 +79,23 @@ function formatRating(rating: number | undefined, type: 'duel' | 'ctf' | 'tdm'):
   return rating.toFixed(1); // TrueSkill: one decimal
 }
 
-// Check if player has any ratings
-const hasRatings = p.duelRating || p.ctfRating || p.tdmRating;
+// Get team rating (higher of CTF or TDM)
+function getTeamRating(): { rating: number | null; type: 'ctf' | 'tdm' | null } {
+  const ctf = p.ctfRating || 0;
+  const tdm = p.tdmRating || 0;
+  if (ctf === 0 && tdm === 0) return { rating: null, type: null };
+  if (ctf >= tdm) return { rating: p.ctfRating!, type: 'ctf' };
+  return { rating: p.tdmRating!, type: 'tdm' };
+}
 
-// Check if player has any rating history
-const hasRatingHistory = p.duelRatingPeak || p.ctfRatingPeak || p.tdmRatingPeak;
+const teamInfo = getTeamRating();
+
+// Check if player has duel rating history
+const hasDuelHistory = p.duelRatingPeak || p.duelRatingLow;
+
+// Check if player has team rating history
+const hasTeamHistory = (teamInfo.type === 'ctf' && (p.ctfRatingPeak || p.ctfRatingLow)) ||
+                       (teamInfo.type === 'tdm' && (p.tdmRatingPeak || p.tdmRatingLow));
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -94,55 +106,45 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="player-header">
       <h1>{p.name}</h1>
       {p.realName && <p class="real-name">{p.realName}</p>}
+
+      <div class="player-ratings-display">
+        <div class="rating-item">
+          <span class="rating-label">Duel:</span>
+          <span class="rating-value duel">{formatRating(p.duelRating, 'duel')}</span>
+          {hasDuelHistory && (
+            <span class="rating-history-inline">
+              {p.duelRatingPeak && <span class="peak" title={`Peak: ${p.duelRatingPeakDate || ''}`}>{formatRating(p.duelRatingPeak, 'duel')}</span>}
+              {p.duelRatingLow && <span class="low" title={`Low: ${p.duelRatingLowDate || ''}`}>{formatRating(p.duelRatingLow, 'duel')}</span>}
+            </span>
+          )}
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">Team:</span>
+          <span class="rating-value team">
+            {teamInfo.rating ? formatRating(teamInfo.rating, teamInfo.type!) : '—'}
+            {teamInfo.type && <span class="team-mode">({teamInfo.type.toUpperCase()})</span>}
+          </span>
+          {hasTeamHistory && teamInfo.type === 'ctf' && (
+            <span class="rating-history-inline">
+              {p.ctfRatingPeak && <span class="peak" title={`Peak: ${p.ctfRatingPeakDate || ''}`}>{formatRating(p.ctfRatingPeak, 'ctf')}</span>}
+              {p.ctfRatingLow && <span class="low" title={`Low: ${p.ctfRatingLowDate || ''}`}>{formatRating(p.ctfRatingLow, 'ctf')}</span>}
+            </span>
+          )}
+          {hasTeamHistory && teamInfo.type === 'tdm' && (
+            <span class="rating-history-inline">
+              {p.tdmRatingPeak && <span class="peak" title={`Peak: ${p.tdmRatingPeakDate || ''}`}>{formatRating(p.tdmRatingPeak, 'tdm')}</span>}
+              {p.tdmRatingLow && <span class="low" title={`Low: ${p.tdmRatingLowDate || ''}`}>{formatRating(p.tdmRatingLow, 'tdm')}</span>}
+            </span>
+          )}
+        </div>
+      </div>
+
       <div class="player-meta">
-        <span class="category">{p.category.toUpperCase()}</span>
-        {p.dataSource === 'player' && <span class="data-source source-player" title="Settings self-submitted by the player">👤 Self-submitted</span>}
+        {p.dataSource === 'player' && <span class="data-source source-player" title="Settings self-submitted by the player">👤 Submitted</span>}
         {p.dataSource === 'verified' && <span class="data-source source-verified" title="Settings verified by the player">✓ Verified</span>}
         {(!p.dataSource || p.dataSource === 'collected') && <span class="data-source source-collected" title="Settings collected from public sources">📋 Collected</span>}
       </div>
-      {hasRatings && (
-        <div class="player-ratings">
-          {p.duelRating && (
-            <div class="rating-group">
-              <span class="rating-badge duel" title={`Duel rating from QLStats${p.duelRatingUpdated ? ` (${p.duelRatingUpdated})` : ''}`}>
-                Duel: {formatRating(p.duelRating, 'duel')}
-              </span>
-              {(p.duelRatingPeak || p.duelRatingLow) && (
-                <span class="rating-history">
-                  {p.duelRatingPeak && <span class="peak" title={p.duelRatingPeakDate || ''}>Peak: {formatRating(p.duelRatingPeak, 'duel')}</span>}
-                  {p.duelRatingLow && <span class="low" title={p.duelRatingLowDate || ''}>Low: {formatRating(p.duelRatingLow, 'duel')}</span>}
-                </span>
-              )}
-            </div>
-          )}
-          {p.ctfRating && (
-            <div class="rating-group">
-              <span class="rating-badge ctf" title={`CTF rating${p.ctfRatingUpdated ? ` (${p.ctfRatingUpdated})` : ''}`}>
-                CTF: {formatRating(p.ctfRating, 'ctf')}
-              </span>
-              {(p.ctfRatingPeak || p.ctfRatingLow) && (
-                <span class="rating-history">
-                  {p.ctfRatingPeak && <span class="peak" title={p.ctfRatingPeakDate || ''}>Peak: {formatRating(p.ctfRatingPeak, 'ctf')}</span>}
-                  {p.ctfRatingLow && <span class="low" title={p.ctfRatingLowDate || ''}>Low: {formatRating(p.ctfRatingLow, 'ctf')}</span>}
-                </span>
-              )}
-            </div>
-          )}
-          {p.tdmRating && (
-            <div class="rating-group">
-              <span class="rating-badge tdm" title={`TDM rating${p.tdmRatingUpdated ? ` (${p.tdmRatingUpdated})` : ''}`}>
-                TDM: {formatRating(p.tdmRating, 'tdm')}
-              </span>
-              {(p.tdmRatingPeak || p.tdmRatingLow) && (
-                <span class="rating-history">
-                  {p.tdmRatingPeak && <span class="peak" title={p.tdmRatingPeakDate || ''}>Peak: {formatRating(p.tdmRatingPeak, 'tdm')}</span>}
-                  {p.tdmRatingLow && <span class="low" title={p.tdmRatingLowDate || ''}>Low: {formatRating(p.tdmRatingLow, 'tdm')}</span>}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+
       <div class="player-actions">
         <a href={`${base}compare/?p1=${player.id}`} class="compare-btn">Compare with another player</a>
       </div>
@@ -359,21 +361,86 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     margin-bottom: 0.5rem;
   }
 
+  .player-ratings-display {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card, #1a1a24);
+    border-radius: 6px;
+    border: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .rating-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .rating-label {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.9rem;
+  }
+
+  .rating-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  .rating-value.duel {
+    color: #3498db;
+  }
+
+  .rating-value.team {
+    color: #2ecc71;
+  }
+
+  .team-mode {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary, #9090a0);
+    margin-left: 0.25rem;
+  }
+
+  .rating-history-inline {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .rating-history-inline .peak {
+    color: #27ae60;
+    cursor: help;
+  }
+
+  .rating-history-inline .peak::before {
+    content: '▲';
+    margin-right: 0.2rem;
+    font-size: 0.6rem;
+  }
+
+  .rating-history-inline .low {
+    color: #e74c3c;
+    cursor: help;
+  }
+
+  .rating-history-inline .low::before {
+    content: '▼';
+    margin-right: 0.2rem;
+    font-size: 0.6rem;
+  }
+
   .player-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--text-secondary, #9090a0);
-  }
-
-  .category {
-    background: var(--accent-primary, #ff6b35);
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 
   .data-source {
@@ -400,62 +467,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     background: rgba(136, 136, 136, 0.15);
     color: var(--text-secondary, #888);
     border: 1px solid var(--text-secondary, #888);
-  }
-
-  .player-ratings {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-
-  .rating-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .rating-badge {
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: help;
-  }
-
-  .rating-badge.duel {
-    background: rgba(52, 152, 219, 0.15);
-    color: #3498db;
-    border: 1px solid #3498db;
-  }
-
-  .rating-badge.ctf {
-    background: rgba(46, 204, 113, 0.15);
-    color: #2ecc71;
-    border: 1px solid #2ecc71;
-  }
-
-  .rating-badge.tdm {
-    background: rgba(155, 89, 182, 0.15);
-    color: #9b59b6;
-    border: 1px solid #9b59b6;
-  }
-
-  .rating-history {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.7rem;
-    padding-left: 0.25rem;
-  }
-
-  .rating-history .peak {
-    color: #27ae60;
-    cursor: help;
-  }
-
-  .rating-history .low {
-    color: #e74c3c;
-    cursor: help;
   }
 
   .settings-grid {
