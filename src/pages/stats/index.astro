@@ -4,92 +4,795 @@ import { getCollection } from 'astro:content';
 
 const players = await getCollection('players');
 const mice = await getCollection('mice');
+const monitors = await getCollection('monitors');
+const keyboards = await getCollection('keyboards');
+const mousepads = await getCollection('mousepads');
 
-// Calculate statistics
+// Create lookup maps
+const miceMap = new Map(mice.map(m => [m.id, m.data]));
+const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
+const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
+const mousepadsMap = new Map(mousepads.map(p => [p.id, p.data]));
+
+// Calculate cm/360 for a player
+function calculateCm360(playerData: any): number {
+  if (playerData.cm360) return playerData.cm360;
+  if (playerData.m_cpi) {
+    return Math.round((360 / playerData.sensitivity) * 100) / 100;
+  }
+  return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
+}
+
+// ===========================================
+// SENSITIVITY STATS
+// ===========================================
+
+// cm/360 calculations (excluding accel users for meaningful comparison)
+const nonAccelPlayers = players.filter(p => !p.data.acceleration);
+const cm360Values = nonAccelPlayers.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
+const avgCm360 = cm360Values.length > 0
+  ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
+  : 0;
+const medianCm360 = cm360Values.length > 0
+  ? cm360Values[Math.floor(cm360Values.length / 2)]
+  : 0;
+const minCm360 = cm360Values.length > 0 ? Math.min(...cm360Values) : 0;
+const maxCm360 = cm360Values.length > 0 ? Math.max(...cm360Values) : 0;
+
+// eDPI stats
 const edpiValues = players.map(p => p.data.edpi).filter(v => v);
 const avgEdpi = Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length);
 const minEdpi = Math.min(...edpiValues);
 const maxEdpi = Math.max(...edpiValues);
 
+// DPI distribution
 const dpiValues = players.map(p => p.data.dpi).filter(v => v);
 const avgDpi = Math.round(dpiValues.reduce((a, b) => a + b, 0) / dpiValues.length);
+const dpiDistribution = new Map<number, number>();
+dpiValues.forEach(dpi => {
+  // Round to common DPI values
+  const rounded = [400, 800, 1600, 3200].reduce((prev, curr) =>
+    Math.abs(curr - dpi) < Math.abs(prev - dpi) ? curr : prev
+  );
+  dpiDistribution.set(rounded, (dpiDistribution.get(rounded) || 0) + 1);
+});
+const topDpiValues = [...dpiDistribution.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 4);
 
-const fovValues = players.map(p => p.data.fov).filter(v => v);
-const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
+// Sensitivity distribution by cm/360
+const lowSens = cm360Values.filter(v => v > 35).length; // High cm/360 = low sens
+const midSens = cm360Values.filter(v => v >= 20 && v <= 35).length;
+const highSens = cm360Values.filter(v => v < 20).length; // Low cm/360 = high sens
 
-// Count mice usage
-const miceMap = new Map(mice.map(m => [m.id, m.data]));
+// ===========================================
+// HARDWARE POPULARITY
+// ===========================================
+
+// Mice
 const mouseUsage = new Map<string, number>();
 players.forEach(p => {
-  const current = mouseUsage.get(p.data.mouse) || 0;
-  mouseUsage.set(p.data.mouse, current + 1);
+  if (p.data.mouse) {
+    mouseUsage.set(p.data.mouse, (mouseUsage.get(p.data.mouse) || 0) + 1);
+  }
 });
-
-// Sort by usage
 const topMice = [...mouseUsage.entries()]
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 5)
+  .slice(0, 10)
   .map(([id, count]) => ({
     name: miceMap.get(id)?.name || id,
     count,
     percentage: Math.round((count / players.length) * 100)
   }));
 
-// Sensitivity distribution
-const lowSens = players.filter(p => p.data.edpi < 800).length;
-const midSens = players.filter(p => p.data.edpi >= 800 && p.data.edpi <= 1500).length;
-const highSens = players.filter(p => p.data.edpi > 1500).length;
+// Monitors by refresh rate
+const monitorRefreshRates = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.monitor) {
+    const monitor = monitorsMap.get(p.data.monitor);
+    const refreshRate = monitor?.refreshRate || 'Unknown';
+    monitorRefreshRates.set(refreshRate, (monitorRefreshRates.get(refreshRate) || 0) + 1);
+  }
+});
+const topRefreshRates = [...monitorRefreshRates.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+// Keyboard brands
+const keyboardBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.keyboard) {
+    const kb = keyboardsMap.get(p.data.keyboard);
+    const brand = kb?.brand || 'Unknown';
+    keyboardBrands.set(brand, (keyboardBrands.get(brand) || 0) + 1);
+  }
+});
+const topKeyboardBrands = [...keyboardBrands.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+// Mousepad brands
+const mousepadBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.mousepad) {
+    const pad = mousepadsMap.get(p.data.mousepad);
+    const brand = pad?.brand || 'Unknown';
+    mousepadBrands.set(brand, (mousepadBrands.get(brand) || 0) + 1);
+  }
+});
+const topMousepadBrands = [...mousepadBrands.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+// ===========================================
+// SETTINGS TRENDS
+// ===========================================
+
+// FOV distribution
+const fovValues = players.map(p => p.data.fov).filter(v => v);
+const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
+const fovDistribution = new Map<number, number>();
+fovValues.forEach(fov => {
+  fovDistribution.set(fov, (fovDistribution.get(fov) || 0) + 1);
+});
+const topFovValues = [...fovDistribution.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+// Acceleration users
+const accelUsers = players.filter(p => p.data.acceleration).length;
+const accelPercentage = Math.round((accelUsers / players.length) * 100);
+
+// m_cpi users
+const mcpiUsers = players.filter(p => p.data.m_cpi).length;
+const mcpiPercentage = Math.round((mcpiUsers / players.length) * 100);
+
+// Crosshair types
+const crosshairTypes = new Map<string, number>();
+players.forEach(p => {
+  const ch = p.data.crosshair || 'Unknown';
+  crosshairTypes.set(ch, (crosshairTypes.get(ch) || 0) + 1);
+});
+const topCrosshairs = [...crosshairTypes.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+// ===========================================
+// PLAYER STATS
+// ===========================================
+
+// Categories
+const categoryDuel = players.filter(p => p.data.category === 'duel').length;
+const categoryCTF = players.filter(p => p.data.category === 'ctf').length;
+const categoryTDM = players.filter(p => p.data.category === 'tdm').length;
+const categoryOther = players.length - categoryDuel - categoryCTF - categoryTDM;
+
+// Recently updated (sort by lastUpdated)
+const recentPlayers = [...players]
+  .filter(p => p.data.lastUpdated)
+  .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
+  .slice(0, 5);
+
+// ===========================================
+// INTERESTING FACTS
+// ===========================================
+
+// Lowest sens player (highest cm/360)
+const lowestSensPlayer = nonAccelPlayers.reduce((prev, curr) =>
+  calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
+);
+
+// Highest sens player (lowest cm/360)
+const highestSensPlayer = nonAccelPlayers.reduce((prev, curr) =>
+  calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
+);
+
+// Ensure base URL has trailing slash
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout title="Statistics">
   <div class="page-header">
     <h1>Player Statistics</h1>
-    <p>Aggregated data from {players.length} professional players</p>
+    <p>Aggregated data from {players.length} Quake Live players</p>
   </div>
 
   <div class="stats-grid">
-    <section class="stat-card">
+    <!-- SENSITIVITY STATS -->
+    <section class="stat-card wide">
       <h2>Sensitivity Overview</h2>
-      <div class="big-stat">
-        <span class="stat-number">{avgEdpi}</span>
-        <span class="stat-label">Average eDPI</span>
+      <div class="stat-row">
+        <div class="big-stat">
+          <span class="stat-number">{avgCm360.toFixed(2)}</span>
+          <span class="stat-label">Average cm/360</span>
+        </div>
+        <div class="big-stat">
+          <span class="stat-number">{medianCm360.toFixed(2)}</span>
+          <span class="stat-label">Median cm/360</span>
+        </div>
+        <div class="big-stat">
+          <span class="stat-number">{avgEdpi}</span>
+          <span class="stat-label">Average eDPI</span>
+        </div>
+        <div class="big-stat">
+          <span class="stat-number">{avgDpi}</span>
+          <span class="stat-label">Average DPI</span>
+        </div>
       </div>
       <div class="stat-details">
-        <div><strong>Range:</strong> {minEdpi} - {maxEdpi}</div>
-        <div><strong>Average DPI:</strong> {avgDpi}</div>
-        <div><strong>Average FOV:</strong> {avgFov}°</div>
+        <div><strong>cm/360 Range:</strong> {minCm360.toFixed(2)} - {maxCm360.toFixed(2)}</div>
+        <div><strong>eDPI Range:</strong> {minEdpi} - {maxEdpi}</div>
+        <p class="stat-note">* cm/360 stats exclude {accelUsers} acceleration users for accurate comparison</p>
       </div>
     </section>
 
+    <!-- SENSITIVITY DISTRIBUTION -->
     <section class="stat-card">
       <h2>Sensitivity Distribution</h2>
+      <p class="card-subtitle">Based on cm/360 values</p>
       <div class="distribution">
         <div class="dist-bar">
-          <div class="dist-fill low" style={`width: ${(lowSens / players.length) * 100}%`}></div>
-          <span>Low (&lt;800): {lowSens} ({Math.round((lowSens / players.length) * 100)}%)</span>
+          <div class="dist-fill low" style={`width: ${(lowSens / nonAccelPlayers.length) * 100}%`}></div>
+          <span>Low (&gt;35cm): {lowSens} ({Math.round((lowSens / nonAccelPlayers.length) * 100)}%)</span>
         </div>
         <div class="dist-bar">
-          <div class="dist-fill mid" style={`width: ${(midSens / players.length) * 100}%`}></div>
-          <span>Medium (800-1500): {midSens} ({Math.round((midSens / players.length) * 100)}%)</span>
+          <div class="dist-fill mid" style={`width: ${(midSens / nonAccelPlayers.length) * 100}%`}></div>
+          <span>Medium (20-35cm): {midSens} ({Math.round((midSens / nonAccelPlayers.length) * 100)}%)</span>
         </div>
         <div class="dist-bar">
-          <div class="dist-fill high" style={`width: ${(highSens / players.length) * 100}%`}></div>
-          <span>High (&gt;1500): {highSens} ({Math.round((highSens / players.length) * 100)}%)</span>
+          <div class="dist-fill high" style={`width: ${(highSens / nonAccelPlayers.length) * 100}%`}></div>
+          <span>High (&lt;20cm): {highSens} ({Math.round((highSens / nonAccelPlayers.length) * 100)}%)</span>
         </div>
       </div>
     </section>
 
+    <!-- DPI DISTRIBUTION -->
     <section class="stat-card">
-      <h2>Most Popular Mice</h2>
+      <h2>DPI Distribution</h2>
       <div class="popularity-list">
-        {topMice.map((mouse, i) => (
+        {topDpiValues.map(([dpi, count]) => (
           <div class="popularity-item">
-            <span class="rank">#{i + 1}</span>
-            <span class="name">{mouse.name}</span>
-            <span class="count">{mouse.count} players ({mouse.percentage}%)</span>
+            <span class="name">{dpi} DPI</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
           </div>
         ))}
       </div>
     </section>
+
+    <!-- TOP MICE -->
+    <section class="stat-card">
+      <h2>Most Popular Mice</h2>
+      <div class="popularity-list">
+        {topMice.slice(0, 5).map((mouse, i) => (
+          <div class="popularity-item">
+            <span class="rank">#{i + 1}</span>
+            <span class="name">{mouse.name}</span>
+            <span class="count">{mouse.count} ({mouse.percentage}%)</span>
+          </div>
+        ))}
+      </div>
+      {topMice.length > 5 && (
+        <details class="more-items">
+          <summary>Show more</summary>
+          <div class="popularity-list">
+            {topMice.slice(5).map((mouse, i) => (
+              <div class="popularity-item">
+                <span class="rank">#{i + 6}</span>
+                <span class="name">{mouse.name}</span>
+                <span class="count">{mouse.count} ({mouse.percentage}%)</span>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+    </section>
+
+    <!-- MONITOR REFRESH RATES -->
+    <section class="stat-card">
+      <h2>Monitor Refresh Rates</h2>
+      <div class="popularity-list">
+        {topRefreshRates.map(([rate, count]) => (
+          <div class="popularity-item">
+            <span class="name">{rate}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- KEYBOARD & MOUSEPAD BRANDS -->
+    <section class="stat-card">
+      <h2>Top Keyboard Brands</h2>
+      <div class="popularity-list compact">
+        {topKeyboardBrands.map(([brand, count]) => (
+          <div class="popularity-item">
+            <span class="name">{brand}</span>
+            <span class="count">{count}</span>
+          </div>
+        ))}
+      </div>
+      <h3 class="subsection-title">Top Mousepad Brands</h3>
+      <div class="popularity-list compact">
+        {topMousepadBrands.map(([brand, count]) => (
+          <div class="popularity-item">
+            <span class="name">{brand}</span>
+            <span class="count">{count}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- SETTINGS TRENDS -->
+    <section class="stat-card">
+      <h2>Settings Trends</h2>
+      <div class="trend-stats">
+        <div class="trend-item">
+          <span class="trend-value">{avgFov}°</span>
+          <span class="trend-label">Average FOV</span>
+        </div>
+        <div class="trend-item">
+          <span class="trend-value">{accelPercentage}%</span>
+          <span class="trend-label">Use Acceleration</span>
+        </div>
+        <div class="trend-item">
+          <span class="trend-value">{mcpiPercentage}%</span>
+          <span class="trend-label">Use m_cpi</span>
+        </div>
+      </div>
+      <h3 class="subsection-title">Top FOV Values</h3>
+      <div class="popularity-list compact">
+        {topFovValues.map(([fov, count]) => (
+          <div class="popularity-item">
+            <span class="name">{fov}°</span>
+            <span class="count">{count} players</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CROSSHAIR TYPES -->
+    <section class="stat-card">
+      <h2>Crosshair Types</h2>
+      <div class="popularity-list">
+        {topCrosshairs.map(([type, count]) => (
+          <div class="popularity-item">
+            <span class="name">Type {type}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PLAYER CATEGORIES -->
+    <section class="stat-card">
+      <h2>Players by Category</h2>
+      <div class="category-grid">
+        <div class="category-item">
+          <span class="category-count">{categoryDuel}</span>
+          <span class="category-label">Duel</span>
+        </div>
+        <div class="category-item">
+          <span class="category-count">{categoryCTF}</span>
+          <span class="category-label">CTF</span>
+        </div>
+        <div class="category-item">
+          <span class="category-count">{categoryTDM}</span>
+          <span class="category-label">TDM</span>
+        </div>
+        {categoryOther > 0 && (
+          <div class="category-item">
+            <span class="category-count">{categoryOther}</span>
+            <span class="category-label">Other</span>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- INTERESTING FACTS -->
+    <section class="stat-card highlight">
+      <h2>Interesting Facts</h2>
+      <div class="facts-list">
+        <div class="fact-item">
+          <span class="fact-icon">🐢</span>
+          <div class="fact-content">
+            <strong>Lowest Sensitivity</strong>
+            <p>
+              <a href={`${base}players/${lowestSensPlayer.id}/`}>{lowestSensPlayer.data.name}</a>
+              uses {calculateCm360(lowestSensPlayer.data).toFixed(2)} cm/360
+            </p>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">⚡</span>
+          <div class="fact-content">
+            <strong>Highest Sensitivity</strong>
+            <p>
+              <a href={`${base}players/${highestSensPlayer.id}/`}>{highestSensPlayer.data.name}</a>
+              uses {calculateCm360(highestSensPlayer.data).toFixed(2)} cm/360
+            </p>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">📊</span>
+          <div class="fact-content">
+            <strong>Total Players</strong>
+            <p>{players.length} players in the database</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENTLY UPDATED -->
+    {recentPlayers.length > 0 && (
+      <section class="stat-card">
+        <h2>Recently Updated</h2>
+        <div class="recent-list">
+          {recentPlayers.map(p => (
+            <div class="recent-item">
+              <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+              <span class="date">{p.data.lastUpdated}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 </BaseLayout>
+
+<style>
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .stat-card.wide {
+    grid-column: 1 / -1;
+  }
+
+  .stat-card.highlight {
+    border-color: var(--accent-primary, #ff6b35);
+    background: linear-gradient(135deg, var(--bg-card, #1a1a24) 0%, rgba(255, 107, 53, 0.05) 100%);
+  }
+
+  .stat-card h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .big-stat {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .stat-details {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+  }
+
+  .stat-details div {
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-note {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #666);
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  .distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .dist-bar {
+    position: relative;
+    height: 2rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .dist-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .dist-fill.low { background: #3498db; }
+  .dist-fill.mid { background: #2ecc71; }
+  .dist-fill.high { background: #e74c3c; }
+
+  .dist-bar span {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+
+  .popularity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .popularity-list.compact {
+    gap: 0.35rem;
+  }
+
+  .popularity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .popularity-item:last-child {
+    border-bottom: none;
+  }
+
+  .rank {
+    font-weight: 700;
+    color: var(--accent-primary, #ff6b35);
+    min-width: 2rem;
+  }
+
+  .name {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+
+  .count {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
+    text-align: right;
+  }
+
+  .bar-wrapper {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 0.5rem;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: var(--accent-secondary, #4ecdc4);
+    border-radius: 3px;
+  }
+
+  .bar-fill.accent {
+    background: var(--accent-primary, #ff6b35);
+  }
+
+  .subsection-title {
+    font-size: 0.85rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .trend-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .trend-item {
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .trend-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .trend-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+  }
+
+  .category-item {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .category-count {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .category-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fact-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .fact-icon {
+    font-size: 1.5rem;
+  }
+
+  .fact-content strong {
+    display: block;
+    color: var(--text-primary, #fff);
+    margin-bottom: 0.25rem;
+  }
+
+  .fact-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    margin: 0;
+  }
+
+  .fact-content a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .fact-content a:hover {
+    text-decoration: underline;
+  }
+
+  .recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .recent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .recent-item:last-child {
+    border-bottom: none;
+  }
+
+  .recent-item a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .recent-item a:hover {
+    text-decoration: underline;
+  }
+
+  .recent-item .date {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .more-items {
+    margin-top: 0.75rem;
+  }
+
+  .more-items summary {
+    cursor: pointer;
+    color: var(--accent-secondary, #4ecdc4);
+    font-size: 0.85rem;
+  }
+
+  .more-items summary:hover {
+    text-decoration: underline;
+  }
+
+  .more-items .popularity-list {
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trend-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

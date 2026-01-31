@@ -107,7 +107,11 @@ const playersCollection = defineCollection({
     lastUpdated: z.string().optional(), // Date string YYYY-MM-DD
 
     // Data Source
-    source: z.string().optional(), // e.g., "Player submission", "Interview", "Stream"
+    dataSource: z.enum(['player', 'verified', 'collected']).optional().default('collected'),
+    // player = self-submitted by the player
+    // verified = confirmed/verified by the player
+    // collected = gathered from public sources (streams, interviews, etc.)
+    source: z.string().optional(), // Description of source e.g., "Player submission", "Interview", "Stream"
     sourceUrl: z.string().optional(), // Link to source (stream VOD, interview, etc.)
 
     // Mouse Settings
