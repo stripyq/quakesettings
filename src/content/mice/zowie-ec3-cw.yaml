@@ -1,0 +1,9 @@
+name: "Zowie EC3-CW"
+brand: "Zowie"
+weight: "77g"
+shape: "Ergonomic"
+sensor: "3370"
+dpiRange: "400-3200"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5

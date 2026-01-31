@@ -1,0 +1,9 @@
+name: "WLMouse Beast X"
+brand: "WLMouse"
+weight: "35g"
+shape: "Symmetrical"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

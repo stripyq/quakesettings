@@ -102,9 +102,16 @@ const playersCollection = defineCollection({
     realName: z.string().optional(),
     country: z.string().optional().default('Unknown'),
     team: z.string().optional(),
-    rating: z.number().optional(),
     category: z.string().optional().default('duel'),
-    lastUpdated: z.string().optional(), // Date string YYYY-MM-DD
+    lastUpdated: z.string().optional(), // Date string YYYY-MM
+
+    // Player Identity (for external data matching)
+    steamId: z.string().optional(), // Steam64 ID (e.g., "76561198012345678")
+    qlstatsNick: z.string().optional(), // Nickname on QLStats if different from name
+
+    // Ratings (cached from external sources)
+    qlstatsRating: z.number().optional(), // Duel rating from QLStats
+    qlstatsRatingLastUpdated: z.string().optional(), // When rating was last fetched (YYYY-MM-DD)
 
     // Data Source
     dataSource: z.enum(['player', 'verified', 'collected']).optional().default('collected'),
