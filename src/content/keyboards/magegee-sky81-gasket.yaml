@@ -1,5 +1,7 @@
-name: MageGee SKY81 Gasket
-brand: MageGee
-size: "TKL"
+name: "MageGee Sky81 Gasket"
+brand: "MageGee"
+size: "75%"
 switches: "Mechanical"
+actuation: "2.0mm"
 connection: "Wired"
+features: "RGB, Gasket Mount"

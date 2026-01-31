@@ -1,6 +1,8 @@
-name: HyperX Cloud Alpha Wireless
-brand: HyperX
+name: "HyperX Cloud Alpha Wireless"
+brand: "HyperX"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "50mm"
+frequencyResponse: "15Hz - 21kHz"
+impedance: "62 Ohm"
+connection: "Wireless"
+microphone: true

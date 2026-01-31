@@ -1,9 +1,9 @@
-name: WLmouse Sword X
-brand: WLmouse
-weight: "Unknown"
+name: "WLMouse Sword X"
+brand: "WLMouse"
+weight: "48g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

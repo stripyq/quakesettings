@@ -1,6 +1,8 @@
-name: HyperX Cloud Alpha S
-brand: HyperX
+name: "HyperX Cloud Alpha S"
+brand: "HyperX"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "13Hz - 27kHz"
+impedance: "65 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

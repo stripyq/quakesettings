@@ -1,5 +1,7 @@
-name: Logitech G240
-brand: Logitech
+name: "Logitech G240"
+brand: "Logitech"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "340 x 280 x 1mm"
+thickness: "1mm"
+base: "Rubber"

@@ -1,6 +1,8 @@
-name: Beyerdynamic DT 700 PRO X
-brand: Beyerdynamic
+name: "Beyerdynamic DT 700 Pro X"
+brand: "Beyerdynamic"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "45mm"
+frequencyResponse: "5Hz - 40kHz"
+impedance: "48 Ohm"
 connection: "Wired"
 microphone: false

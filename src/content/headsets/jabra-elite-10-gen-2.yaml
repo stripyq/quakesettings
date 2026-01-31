@@ -1,6 +1,8 @@
-name: Jabra Elite 10 Gen 2
-brand: Jabra
-type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+name: "Jabra Elite 10 Gen 2"
+brand: "Jabra"
+type: "In-ear"
+driverSize: "10mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "N/A"
+connection: "Wireless"
+microphone: true

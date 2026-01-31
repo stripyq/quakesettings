@@ -1,6 +1,8 @@
-name: Sennheiser HD 599
-brand: Sennheiser
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Sennheiser HD 599"
+brand: "Sennheiser"
+type: "Open-back"
+driverSize: "38mm"
+frequencyResponse: "12Hz - 38.5kHz"
+impedance: "50 Ohm"
 connection: "Wired"
 microphone: false

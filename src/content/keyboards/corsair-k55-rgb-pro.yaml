@@ -1,5 +1,7 @@
-name: Corsair K55 RGB Pro
-brand: Corsair
-size: "TKL"
-switches: "Mechanical"
+name: "Corsair K55 RGB Pro"
+brand: "Corsair"
+size: "Full-size"
+switches: "Membrane"
+actuation: "N/A"
 connection: "Wired"
+features: "RGB, Macro Keys"

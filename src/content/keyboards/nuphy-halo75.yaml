@@ -1,5 +1,7 @@
-name: NuPhy Halo75
-brand: NuPhy
-size: "TKL"
-switches: "Mechanical"
-connection: "Wired"
+name: "NuPhy Halo75"
+brand: "NuPhy"
+size: "75%"
+switches: "Gateron"
+actuation: "2.0mm"
+connection: "Wireless"
+features: "RGB, Hot-swappable"

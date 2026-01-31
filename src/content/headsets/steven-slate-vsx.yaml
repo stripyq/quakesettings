@@ -1,6 +1,8 @@
-name: Steven Slate VSX
-brand: Steven
+name: "Steven Slate VSX"
+brand: "Steven Slate"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "38 Ohm"
 connection: "Wired"
 microphone: false

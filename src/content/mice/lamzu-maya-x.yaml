@@ -1,9 +1,9 @@
-name: Lamzu MAYA X
-brand: Lamzu
-weight: "Unknown"
+name: "Lamzu Maya X"
+brand: "Lamzu"
+weight: "43g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

@@ -1,5 +1,7 @@
-name: Logitech G413
-brand: Logitech
-size: "TKL"
-switches: "Mechanical"
+name: "Logitech G413"
+brand: "Logitech"
+size: "Full-size"
+switches: "Romer-G Tactile"
+actuation: "1.5mm"
 connection: "Wired"
+features: "Red Backlight, Aluminum"

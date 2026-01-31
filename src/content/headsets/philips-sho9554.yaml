@@ -1,6 +1,8 @@
-name: Philips SHO9554
-brand: Philips
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Philips SHO9554"
+brand: "Philips"
+type: "Over-ear"
+driverSize: "40mm"
+frequencyResponse: "10Hz - 23kHz"
+impedance: "32 Ohm"
 connection: "Wired"
 microphone: false

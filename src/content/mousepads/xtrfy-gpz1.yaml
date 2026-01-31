@@ -1,5 +1,7 @@
-name: Xtrfy GPZ1
-brand: Xtrfy
+name: "Xtrfy GPZ1"
+brand: "Xtrfy"
 surface: "Cloth"
 speed: "Balanced"
-dimensions: "Unknown"
+dimensions: "460 x 400 x 4mm"
+thickness: "4mm"
+base: "Rubber"

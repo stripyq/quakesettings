@@ -1,5 +1,7 @@
-name: Das Keyboard 4 Ultimate
-brand: Das
-size: "TKL"
-switches: "Mechanical"
+name: "Das Keyboard 4 Ultimate"
+brand: "Das Keyboard"
+size: "Full-size"
+switches: "Cherry MX Blue"
+actuation: "2.2mm"
 connection: "Wired"
+features: "Blank Keycaps, USB Hub"

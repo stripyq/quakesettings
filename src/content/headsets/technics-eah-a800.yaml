@@ -1,6 +1,8 @@
-name: Technics EAH-A800
-brand: Technics
+name: "Technics EAH-A800"
+brand: "Technics"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "40mm"
+frequencyResponse: "4Hz - 40kHz"
+impedance: "35 Ohm"
+connection: "Wireless"
+microphone: true

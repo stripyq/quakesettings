@@ -1,5 +1,7 @@
-name: A4TECH
-brand: A4TECH
-size: "TKL"
-switches: "Mechanical"
+name: "A4Tech"
+brand: "A4Tech"
+size: "Full-size"
+switches: "Membrane"
+actuation: "3.0mm"
 connection: "Wired"
+features: "Budget"

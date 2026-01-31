@@ -1,6 +1,8 @@
-name: Sennheiser HD 600
-brand: Sennheiser
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Sennheiser HD 600"
+brand: "Sennheiser"
+type: "Open-back"
+driverSize: "42mm"
+frequencyResponse: "12Hz - 39kHz"
+impedance: "300 Ohm"
 connection: "Wired"
 microphone: false

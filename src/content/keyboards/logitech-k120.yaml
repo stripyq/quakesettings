@@ -1,5 +1,7 @@
-name: Logitech K120
-brand: Logitech
-size: "TKL"
-switches: "Mechanical"
+name: "Logitech K120"
+brand: "Logitech"
+size: "Full-size"
+switches: "Membrane"
+actuation: "3.0mm"
 connection: "Wired"
+features: "Quiet, Spill Resistant"

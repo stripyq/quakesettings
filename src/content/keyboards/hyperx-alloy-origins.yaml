@@ -1,5 +1,7 @@
-name: HyperX Alloy Origins
-brand: HyperX
-size: "TKL"
-switches: "Mechanical"
+name: "HyperX Alloy Origins"
+brand: "HyperX"
+size: "Full-size"
+switches: "HyperX Red/Aqua"
+actuation: "1.8mm"
 connection: "Wired"
+features: "RGB, Aircraft Aluminum"

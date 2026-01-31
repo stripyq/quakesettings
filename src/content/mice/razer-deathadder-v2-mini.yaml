@@ -1,9 +1,9 @@
-name: Razer DeathAdder V2 Mini
-brand: Razer
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Razer DeathAdder V2 Mini"
+brand: "Razer"
+weight: "62g"
+shape: "Ergonomic"
+sensor: "PMW3359"
+dpiRange: "200-8500"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 6

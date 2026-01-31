@@ -1,5 +1,7 @@
-name: Corsair K65 Plus Wireless
-brand: Corsair
-size: "TKL"
-switches: "Mechanical"
-connection: "Wired"
+name: "Corsair K65 Plus Wireless"
+brand: "Corsair"
+size: "75%"
+switches: "MLX Red"
+actuation: "1.0mm"
+connection: "Wireless"
+features: "RGB, Pre-Lubed"

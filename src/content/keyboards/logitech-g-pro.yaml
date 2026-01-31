@@ -1,5 +1,7 @@
-name: Logitech G Pro
-brand: Logitech
+name: "Logitech G Pro"
+brand: "Logitech"
 size: "TKL"
-switches: "Mechanical"
+switches: "GX Blue Clicky"
+actuation: "2.0mm"
 connection: "Wired"
+features: "RGB, Detachable Cable"

@@ -1,6 +1,8 @@
-name: ZON - Home of Victory headset1
-brand: ZON
+name: "Zon Home of Victory Headset"
+brand: "Home of Victory"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "32 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

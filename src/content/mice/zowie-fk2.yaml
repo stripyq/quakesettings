@@ -1,9 +1,9 @@
-name: Zowie FK2
-brand: Zowie
-weight: "Unknown"
+name: "Zowie FK2"
+brand: "Zowie"
+weight: "85g"
 shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+sensor: "PMW3310"
+dpiRange: "400-3200"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 7

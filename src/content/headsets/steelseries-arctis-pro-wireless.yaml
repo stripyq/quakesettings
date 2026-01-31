@@ -1,6 +1,8 @@
-name: SteelSeries Arctis Pro Wireless
-brand: SteelSeries
+name: "SteelSeries Arctis Pro Wireless"
+brand: "SteelSeries"
 type: "Closed-back"
-driverSize: "Unknown"
-connection: "Wired"
-microphone: false
+driverSize: "40mm"
+frequencyResponse: "10Hz - 40kHz"
+impedance: "32 Ohm"
+connection: "Wireless"
+microphone: true

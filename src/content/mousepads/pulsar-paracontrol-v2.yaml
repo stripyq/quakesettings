@@ -1,5 +1,7 @@
-name: Pulsar ParaControl V2
-brand: Pulsar
+name: "Pulsar ParaControl V2"
+brand: "Pulsar"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Control"
+dimensions: "490 x 420 x 4mm"
+thickness: "4mm"
+base: "Rubber"

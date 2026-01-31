@@ -1,5 +1,7 @@
-name: Artisan RAIDEN 雷電
-brand: Artisan
+name: "Artisan Raiden"
+brand: "Artisan"
 surface: "Cloth"
-speed: "Balanced"
-dimensions: "Unknown"
+speed: "Speed"
+dimensions: "420 x 330 x 4mm"
+thickness: "4mm"
+base: "Foam"

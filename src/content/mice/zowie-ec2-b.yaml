@@ -1,9 +1,9 @@
-name: ZOWIE EC2-B
-brand: ZOWIE
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Zowie EC2-B"
+brand: "Zowie"
+weight: "90g"
+shape: "Ergonomic"
+sensor: "PMW3360"
+dpiRange: "400-3200"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 5

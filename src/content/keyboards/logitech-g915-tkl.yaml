@@ -1,5 +1,7 @@
-name: Logitech G915 TKL
-brand: Logitech
+name: "Logitech G915 TKL"
+brand: "Logitech"
 size: "TKL"
-switches: "Mechanical"
-connection: "Wired"
+switches: "GL Tactile/Linear/Clicky"
+actuation: "1.5mm"
+connection: "Wireless"
+features: "RGB, Low Profile"

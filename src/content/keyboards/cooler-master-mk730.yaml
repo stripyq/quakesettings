@@ -1,5 +1,7 @@
-name: Cooler Master MK730
-brand: Cooler
+name: "Cooler Master MK730"
+brand: "Cooler Master"
 size: "TKL"
-switches: "Mechanical"
+switches: "Cherry MX"
+actuation: "2.0mm"
 connection: "Wired"
+features: "RGB, Brushed Aluminum"

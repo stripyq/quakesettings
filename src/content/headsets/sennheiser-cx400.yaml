@@ -1,6 +1,8 @@
-name: Sennheiser CX400
-brand: Sennheiser
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Sennheiser CX400"
+brand: "Sennheiser"
+type: "In-ear"
+driverSize: "7mm"
+frequencyResponse: "15Hz - 21kHz"
+impedance: "28 Ohm"
 connection: "Wired"
 microphone: false

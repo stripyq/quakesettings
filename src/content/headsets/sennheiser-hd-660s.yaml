@@ -1,6 +1,8 @@
-name: Sennheiser HD 660S
-brand: Sennheiser
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Sennheiser HD 660S"
+brand: "Sennheiser"
+type: "Open-back"
+driverSize: "40mm"
+frequencyResponse: "10Hz - 41kHz"
+impedance: "150 Ohm"
 connection: "Wired"
 microphone: false

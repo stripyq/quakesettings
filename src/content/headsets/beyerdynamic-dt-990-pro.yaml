@@ -1,6 +1,8 @@
-name: Beyerdynamic DT 990 Pro
-brand: Beyerdynamic
-type: "Closed-back"
-driverSize: "Unknown"
+name: "Beyerdynamic DT 990 Pro"
+brand: "Beyerdynamic"
+type: "Open-back"
+driverSize: "45mm"
+frequencyResponse: "5Hz - 35kHz"
+impedance: "250 Ohm"
 connection: "Wired"
 microphone: false

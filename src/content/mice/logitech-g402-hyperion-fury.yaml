@@ -1,9 +1,9 @@
-name: Logitech G402 Hyperion Fury
-brand: Logitech
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
+name: "Logitech G402 Hyperion Fury"
+brand: "Logitech"
+weight: "108g"
+shape: "Ergonomic"
+sensor: "AM010"
+dpiRange: "240-4000"
 pollingRate: "1000Hz"
-buttons: 5
 connection: "Wired"
+buttons: 8

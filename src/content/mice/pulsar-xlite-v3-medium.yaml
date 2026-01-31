@@ -1,9 +1,9 @@
-name: Pulsar Xlite v3 Medium
-brand: Pulsar
-weight: "Unknown"
-shape: "Ambidextrous"
-sensor: "Unknown"
-dpiRange: "Unknown"
-pollingRate: "1000Hz"
+name: "Pulsar Xlite V3 Medium"
+brand: "Pulsar"
+weight: "52g"
+shape: "Ergonomic"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+connection: "Wireless"
 buttons: 5
-connection: "Wired"

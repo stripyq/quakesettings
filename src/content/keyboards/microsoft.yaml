@@ -1,5 +1,7 @@
-name: Microsoft
-brand: Microsoft
-size: "TKL"
-switches: "Mechanical"
+name: "Microsoft Keyboard"
+brand: "Microsoft"
+size: "Full-size"
+switches: "Membrane"
+actuation: "3.0mm"
 connection: "Wired"
+features: "Ergonomic"

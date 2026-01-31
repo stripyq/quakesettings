@@ -1,6 +1,8 @@
-name: AKG K99
-brand: AKG
-type: "Closed-back"
-driverSize: "Unknown"
+name: "AKG K99"
+brand: "AKG"
+type: "Open-back"
+driverSize: "40mm"
+frequencyResponse: "16Hz - 22kHz"
+impedance: "32 Ohm"
 connection: "Wired"
 microphone: false

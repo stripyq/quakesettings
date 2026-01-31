@@ -1,6 +1,8 @@
-name: Razer Kraken Kitty
-brand: Razer
+name: "Razer Kraken Kitty"
+brand: "Razer"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "50mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "32 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

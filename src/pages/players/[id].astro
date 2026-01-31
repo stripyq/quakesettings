@@ -44,9 +44,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <h1>{p.name}</h1>
       {p.realName && <p class="real-name">{p.realName}</p>}
       <div class="player-meta">
-        <span class="country">{p.country}</span>
-        {p.team && <span class="team">{p.team}</span>}
-        {p.rating && <span class="rating">Rating: {p.rating}</span>}
         <span class="category">{p.category.toUpperCase()}</span>
       </div>
       <div class="player-actions">

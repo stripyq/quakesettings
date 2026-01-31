@@ -1,6 +1,8 @@
-name: Creative Fatal1ty
-brand: Creative
+name: "Creative Fatal1ty"
+brand: "Creative"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "40mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "32 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true

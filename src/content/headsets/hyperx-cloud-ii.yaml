@@ -1,6 +1,8 @@
-name: HyperX Cloud II
-brand: HyperX
+name: "HyperX Cloud II"
+brand: "HyperX"
 type: "Closed-back"
-driverSize: "Unknown"
+driverSize: "53mm"
+frequencyResponse: "15Hz - 25kHz"
+impedance: "60 Ohm"
 connection: "Wired"
-microphone: false
+microphone: true
