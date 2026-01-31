@@ -63,12 +63,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <th class="sortable" data-sort="mouse">Mouse</th>
           <th class="sortable" data-sort="dpi">DPI</th>
           <th class="sortable" data-sort="sens">Sens</th>
-          <th class="sortable" data-sort="cm360" title="cm/360° - distance to complete one full turn">
-            cm/360
-            <span class="header-info" title="Standard: 41563.6 / (DPI × sens)&#10;m_cpi users: 360 / sens">ⓘ</span>
-          </th>
+          <th class="sortable" data-sort="cm360" title="cm/360° - distance to complete one full turn">cm/360</th>
+          <th class="sortable" data-sort="accel">Accel</th>
           <th class="sortable" data-sort="fov">FOV</th>
-          <th title="⚡ = Mouse Acceleration enabled&#10;📐 = m_cpi setting used">Flags</th>
           <th>Monitor</th>
           <th>Keyboard</th>
           <th>Headset</th>
@@ -76,17 +73,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </tr>
       </thead>
       <tbody id="player-tbody">
-        {sortedPlayers.map((player, index) => {
+        {sortedPlayers.map((player) => {
           const mouseData = miceMap.get(player.data.mouse);
           const keyboardData = keyboardsMap.get(player.data.keyboard);
           const headsetData = headsetsMap.get(player.data.headset);
           const monitorData = monitorsMap.get(player.data.monitor);
           const cm360 = calculateCm360(player.data);
           const hasAccel = player.data.acceleration;
-          const hasMcpi = player.data.m_cpi;
           return (
             <tr
-              class:list={["player-row", { "has-accel": hasAccel, "has-mcpi": hasMcpi }]}
+              class="player-row"
               data-name={player.data.name.toLowerCase()}
               data-category={player.data.category}
               data-dpi={player.data.dpi}
@@ -94,7 +90,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-cm360={cm360}
               data-fov={player.data.fov}
               data-accel={hasAccel ? "1" : "0"}
-              data-mcpi={hasMcpi ? "1" : "0"}
               data-mouse={mouseData?.name?.toLowerCase() || player.data.mouse?.toLowerCase() || ''}
               data-monitor={monitorData?.name?.toLowerCase() || player.data.monitor?.toLowerCase() || ''}
               data-keyboard={keyboardData?.name?.toLowerCase() || player.data.keyboard?.toLowerCase() || ''}
@@ -105,20 +100,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 <a href={`${base}players/${player.id}/`} class="player-link">
                   {player.data.name}
                 </a>
+                {player.data.dataSource === 'player' && <span class="source-badge source-player" title="Self-submitted">👤</span>}
+                {player.data.dataSource === 'verified' && <span class="source-badge source-verified" title="Verified by player">✓</span>}
               </td>
               <td class="hw-cell">{mouseData?.name || player.data.mouse || '—'}</td>
               <td class="num">{player.data.dpi}</td>
               <td class="num">{player.data.sensitivity}</td>
-              <td class="num cm360-cell">
-                {cm360}
-                {hasMcpi && <span class="mcpi-marker" title="Uses m_cpi setting">*</span>}
-              </td>
+              <td class="num">{cm360.toFixed(2)}</td>
+              <td class="accel-cell">{hasAccel ? 'Yes' : 'No'}</td>
               <td class="num">{player.data.fov}</td>
-              <td class="flags-cell">
-                {hasAccel && <span class="flag accel-flag" title={`Acceleration: ${player.data.accelValue || 'On'}`}>⚡</span>}
-                {hasMcpi && <span class="flag mcpi-flag" title={`m_cpi: ${player.data.m_cpi}`}>📐</span>}
-                {!hasAccel && !hasMcpi && <span class="no-flags">—</span>}
-              </td>
               <td class="hw-cell">{monitorData?.name || player.data.monitor || '—'}</td>
               <td class="hw-cell">{keyboardData?.name || player.data.keyboard || '—'}</td>
               <td class="hw-cell">{headsetData?.name || player.data.headset || '—'}</td>
@@ -128,11 +118,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         })}
       </tbody>
     </table>
-  </div>
-
-  <div class="legend">
-    <span class="legend-item"><span class="flag accel-flag">⚡</span> Mouse Acceleration</span>
-    <span class="legend-item"><span class="flag mcpi-flag">📐</span> m_cpi Setting</span>
   </div>
 
   <script>
@@ -202,6 +187,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             case 'fov':
               aVal = parseInt(a.dataset.fov || '0') || 0;
               bVal = parseInt(b.dataset.fov || '0') || 0;
+              break;
+            case 'accel':
+              aVal = a.dataset.accel || '0';
+              bVal = b.dataset.accel || '0';
               break;
             case 'updated':
               aVal = a.dataset.updated || '';
@@ -323,20 +312,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     background: var(--bg-secondary, #12121a);
   }
 
-  /* Highlight rows with special settings */
-  .player-table tbody tr.has-accel {
-    border-left: 3px solid #ffd700;
-  }
-
-  .player-table tbody tr.has-mcpi {
-    border-left: 3px solid #9b59b6;
-  }
-
-  .player-table tbody tr.has-accel.has-mcpi {
-    border-left: 3px solid;
-    border-image: linear-gradient(180deg, #ffd700 50%, #9b59b6 50%) 1;
-  }
-
   .player-link {
     color: var(--accent-primary, #ff6b35);
     text-decoration: none;
@@ -345,6 +320,23 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .player-link:hover {
     text-decoration: underline;
+  }
+
+  .source-badge {
+    display: inline-block;
+    margin-left: 0.35rem;
+    font-size: 0.7rem;
+    vertical-align: middle;
+    cursor: help;
+  }
+
+  .source-player {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .source-verified {
+    color: #2ecc71;
+    font-weight: 700;
   }
 
   .num {
@@ -356,37 +348,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     text-align: center;
   }
 
-  .flags-cell {
+  .accel-cell {
     text-align: center;
-    white-space: nowrap;
-  }
-
-  .flag {
-    display: inline-block;
-    margin: 0 0.1rem;
-    font-size: 0.9rem;
-  }
-
-  .accel-flag {
-    color: #ffd700;
-  }
-
-  .mcpi-flag {
-    color: #9b59b6;
-  }
-
-  .no-flags {
-    color: var(--text-secondary, #666);
-  }
-
-  .cm360-cell {
-    position: relative;
-  }
-
-  .mcpi-marker {
-    color: #9b59b6;
-    font-size: 0.7rem;
-    vertical-align: super;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
   }
 
   .hw-cell {
@@ -435,23 +400,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     min-width: 250px;
   }
 
-  .legend {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
   @media (max-width: 1024px) {
     .player-table {
       font-size: 0.75rem;
@@ -479,11 +427,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     .search-input {
       min-width: 100%;
-    }
-
-    .legend {
-      flex-direction: column;
-      gap: 0.5rem;
     }
   }
 </style>
