@@ -362,17 +362,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     </div>
   </section>
 
-  <div class="data-sources">
-    <h3>Data Sources</h3>
-    <p>Hardware specifications can be verified at:</p>
-    <ul>
-      <li><a href="https://www.eloshapes.com/mouse/browse" target="_blank" rel="noopener">Eloshapes</a> - Mice specs and comparisons</li>
-      <li><a href="https://www.eloshapes.com/mousepads/browse" target="_blank" rel="noopener">Eloshapes Mousepads</a> - Mousepad specs</li>
-      <li><a href="https://www.rtings.com/headphones" target="_blank" rel="noopener">RTings Headphones</a> - Headphone reviews and specs</li>
-      <li><a href="https://www.rtings.com/monitor" target="_blank" rel="noopener">RTings Monitors</a> - Monitor reviews and specs</li>
-      <li><a href="https://www.rtings.com/keyboard" target="_blank" rel="noopener">RTings Keyboards</a> - Keyboard reviews and specs</li>
-    </ul>
-  </div>
 </BaseLayout>
 
 <script>
@@ -688,43 +677,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .buy-link:hover {
     background: #ff8c5a;
     transform: translateY(-1px);
-  }
-
-  .data-sources {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 8px;
-    border: 1px solid var(--border-color, #2a2a3a);
-  }
-
-  .data-sources h3 {
-    margin-bottom: 0.5rem;
-    color: var(--text-primary, #fff);
-  }
-
-  .data-sources p {
-    color: var(--text-secondary, #888);
-    margin-bottom: 0.75rem;
-  }
-
-  .data-sources ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .data-sources li {
-    padding: 0.25rem 0;
-  }
-
-  .data-sources a {
-    color: var(--accent-primary, #ff6b35);
-    text-decoration: none;
-  }
-
-  .data-sources a:hover {
-    text-decoration: underline;
   }
 
   @media (max-width: 1024px) {
