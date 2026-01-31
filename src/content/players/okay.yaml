@@ -1,6 +1,7 @@
 name: Okay.
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 2000
 sensitivity: 3.8

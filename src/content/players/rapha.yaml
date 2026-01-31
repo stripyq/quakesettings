@@ -4,6 +4,7 @@ country: "USA"
 team: "Retired"
 rating: 2850
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 
 dpi: 450

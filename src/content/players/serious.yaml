@@ -3,6 +3,7 @@ realName: "Nikita Gusev"
 country: "Russia"
 rating: 2650
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 
 dpi: 800

@@ -1,6 +1,7 @@
 name: Bolland
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 850
 sensitivity: 6.5

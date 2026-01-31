@@ -1,6 +1,7 @@
 name: ne_raketa
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 400
 sensitivity: 2.7

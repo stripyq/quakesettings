@@ -1,6 +1,7 @@
 name: b1ohazzard
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1200
 sensitivity: 2.75

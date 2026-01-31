@@ -1,6 +1,7 @@
 name: drki
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800
 sensitivity: 3

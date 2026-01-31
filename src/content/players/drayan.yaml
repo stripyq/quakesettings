@@ -1,6 +1,7 @@
 name: Drayan
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 3200
 sensitivity: 18

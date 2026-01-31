@@ -1,6 +1,7 @@
 name: re4
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800
 sensitivity: 0.05
