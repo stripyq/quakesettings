@@ -2,7 +2,7 @@ backend:
   name: github
   repo: stripyq/quakesettings
   branch: main
-  base_url: https://quakesettings.workers.dev
+  base_url: https://quakesettings-oauth.quakesettings.workers.dev
   auth_endpoint: /auth
 
 media_folder: public/images
