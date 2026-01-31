@@ -10,24 +10,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <p>Community resources, guides, and tools for Quake Live</p>
   </div>
 
-  <!-- Section 0: Featured -->
-  <section class="featured-section">
-    <h2>⭐ Featured</h2>
-    <a href={`${base}useful/performance/`} class="featured-card">
-      <div class="featured-header">
-        <span class="featured-title">🎯 Performance Settings</span>
-        <span class="new-badge">NEW</span>
-      </div>
-      <p class="featured-description">
-        Optimal driver, in-game, and Windows settings for maximum performance on 240Hz+ monitors. Includes NVIDIA, AMD, and Intel presets.
-      </p>
-      <span class="featured-button">View Guide →</span>
-    </a>
-  </section>
-
-  <!-- Section 1: Site Guides -->
+  <!-- Section 1: Player Data -->
   <section class="link-section">
-    <h2>📄 Guides</h2>
+    <h2>📊 Player Data</h2>
     <div class="table-wrapper">
       <table>
         <thead>
@@ -38,12 +23,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </thead>
         <tbody>
           <tr>
-            <td><a href={`${base}useful/performance/`}>Performance Settings</a></td>
-            <td>Optimal driver, in-game & Windows settings for 240Hz+</td>
-          </tr>
-          <tr>
             <td><a href={`${base}useful/infographic/`}>Pickup Players Infographic</a></td>
-            <td>Visual guide to community player settings</td>
+            <td>Visual snapshot of community player settings</td>
           </tr>
         </tbody>
       </table>
@@ -64,19 +45,19 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <tbody>
           <tr>
             <td><a href="https://discord.gg/7xSpGJ5" target="_blank" rel="noopener noreferrer">House of Quake <span class="external-icon">↗</span></a></td>
-            <td>🇪🇺 EU pickups, tournaments, community hub</td>
+            <td><span class="region-badge eu">EU</span> Pickups, tournaments, community hub</td>
           </tr>
           <tr>
             <td><a href="https://discord.gg/KYpxv3p" target="_blank" rel="noopener noreferrer">CSQL <span class="external-icon">↗</span></a></td>
-            <td>🇪🇺 EU competitive scene</td>
+            <td><span class="region-badge eu">EU</span> Competitive scene</td>
           </tr>
           <tr>
             <td><a href="https://discord.gg/GRJUswk" target="_blank" rel="noopener noreferrer">Community Winter CTF <span class="external-icon">↗</span></a></td>
-            <td>🇺🇸 NA CTF community</td>
+            <td><span class="region-badge na">NA</span> CTF community</td>
           </tr>
           <tr>
             <td><a href="https://discord.gg/TguZhygXEy" target="_blank" rel="noopener noreferrer">quakectf.com <span class="external-icon">↗</span></a></td>
-            <td>🇺🇸 NA freeze tag & CTF</td>
+            <td><span class="region-badge na">NA</span> Freeze tag & CTF</td>
           </tr>
         </tbody>
       </table>
@@ -96,6 +77,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </thead>
         <tbody>
           <tr>
+            <td><a href={`${base}useful/performance/`}>Performance Settings</a></td>
+            <td>Optimal driver, in-game & Windows settings for 240Hz+</td>
+          </tr>
+          <tr>
             <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3145278073" target="_blank" rel="noopener noreferrer">QL CTF 5v5 Guide <span class="external-icon">↗</span></a></td>
             <td>Comprehensive CTF strategy guide by APH3X</td>
           </tr>
@@ -105,7 +90,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </tr>
           <tr>
             <td><a href="https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/" target="_blank" rel="noopener noreferrer">TrueSkill Explained <span class="external-icon">↗</span></a></td>
-            <td>How the ranking system works (Microsoft Research)</td>
+            <td>About the ranking system in HoQ pickup</td>
           </tr>
         </tbody>
       </table>
@@ -131,6 +116,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <tr>
             <td><a href="http://88.214.20.58/ratings/tdm/" target="_blank" rel="noopener noreferrer">HoQ TDM Rankings <span class="external-icon">↗</span></a></td>
             <td>TrueSkill ratings for TDM players</td>
+          </tr>
+          <tr>
+            <td><a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener noreferrer">HoQ Seasonal Stats <span class="external-icon">↗</span></a></td>
+            <td>Seasonal HoQ rankings and additional statistics by KISA</td>
           </tr>
           <tr>
             <td><a href="https://iiiiins.github.io/quakerankings/" target="_blank" rel="noopener noreferrer">Tournament Rankings <span class="external-icon">↗</span></a></td>
@@ -201,72 +190,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 </BaseLayout>
 
 <style>
-  /* Featured Section */
-  .featured-section {
-    margin-bottom: 3rem;
-  }
-
-  .featured-section h2 {
-    color: var(--accent-primary, #ff6b35);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a3a);
-  }
-
-  .featured-card {
-    display: block;
-    background: var(--card-bg, #1a1a2e);
-    border: 2px solid var(--accent-primary, #ff6b35);
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .featured-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
-  }
-
-  .featured-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .featured-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary, #fff);
-  }
-
-  .new-badge {
-    background: var(--accent-primary, #ff6b35);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .featured-description {
-    color: var(--text-secondary, #9090a0);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0 0 1rem 0;
-  }
-
-  .featured-button {
-    display: inline-block;
-    color: var(--accent-primary, #ff6b35);
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
   /* Link Sections */
   .link-section {
     margin-bottom: 3rem;
@@ -338,23 +261,33 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     opacity: 0.7;
   }
 
+  /* Region Badges */
+  .region-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .region-badge.eu {
+    background: #3498db;
+    color: #fff;
+  }
+
+  .region-badge.na {
+    background: #e74c3c;
+    color: #fff;
+  }
+
   /* Mobile Responsive */
   @media (max-width: 640px) {
     th:last-child,
     td:last-child {
       min-width: 200px;
-    }
-
-    .featured-card {
-      padding: 1rem;
-    }
-
-    .featured-title {
-      font-size: 1.1rem;
-    }
-
-    .featured-description {
-      font-size: 0.9rem;
     }
   }
 </style>
