@@ -180,21 +180,22 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <section class="settings-section">
         <h2>Key Bindings</h2>
         <table class="settings-table">
-          <tr><td>Forward</td><td>{p.forward}</td></tr>
-          <tr><td>Back</td><td>{p.back}</td></tr>
-          <tr><td>Left</td><td>{p.left}</td></tr>
-          <tr><td>Right</td><td>{p.right}</td></tr>
-          <tr><td>Jump</td><td>{p.jump}</td></tr>
-          <tr><td>Crouch</td><td>{p.crouch}</td></tr>
-          <tr><td>Attack</td><td>{p.attack}</td></tr>
-          <tr><td>Zoom</td><td>{p.zoom}</td></tr>
-          {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
-          {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
+          <tbody>
+            <tr><td>Forward</td><td>{p.forward}</td></tr>
+            <tr><td>Back</td><td>{p.back}</td></tr>
+            <tr><td>Left</td><td>{p.left}</td></tr>
+            <tr><td>Right</td><td>{p.right}</td></tr>
+            <tr><td>Jump</td><td>{p.jump}</td></tr>
+            <tr><td>Crouch</td><td>{p.crouch}</td></tr>
+            <tr><td>Attack</td><td>{p.attack}</td></tr>
+            <tr><td>Zoom</td><td>{p.zoom}</td></tr>
+            {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
+            {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
+          </tbody>
         </table>
       </section>
     </div>
 
-    <!-- Hardware Section (separate from settings) -->
     <section class="hardware-full-section">
       <h2>Hardware</h2>
       <div class="hardware-items-grid">
