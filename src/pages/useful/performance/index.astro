@@ -36,7 +36,7 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <ul>
           <li><strong>Best for:</strong> Clean visuals without sacrificing much latency</li>
           <li><strong>VRR:</strong> On, <strong>V-Sync:</strong> On in driver (backstop), Off in-game</li>
-          <li><strong>240 Hz:</strong> Use com_maxfps 200, or 250 + external cap at 237</li>
+          <li><strong>240 Hz:</strong> Use com_maxfps 250 + external cap at 237 (or 200 without cap)</li>
           <li><strong>360/480 Hz:</strong> Use com_maxfps 250 (well within VRR range)</li>
         </ul>
       </div>
@@ -153,7 +153,7 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <table class="settings-table">
           <tr><td>V-Sync</td><td>On (with VRR/Adaptive Sync enabled)</td></tr>
           <tr><td>External frame limiter</td><td>None - use in-game com_maxfps only</td></tr>
-          <tr><td>For 240 Hz</td><td>Use com_maxfps 200 to stay in VRR range</td></tr>
+          <tr><td>For 240 Hz</td><td>Use com_maxfps 250 + RTSS at 237 (or 200 without cap)</td></tr>
           <tr><td>Scaling / post-processing</td><td>Disable all</td></tr>
         </table>
       </div>
@@ -174,12 +174,15 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
       <pre><code>// Essential settings
-com_maxfps 250          // valid values: 125, 200, 250, 333
+r_mode -1               // custom resolution
+r_fullscreen 1          // exclusive fullscreen (important!)
+com_maxfps 250          // standard (use 200 for stronger footstep audio)
 r_swapInterval 0        // in-game V-Sync off (always)
 com_idleSleep 0         // prevent CPU idle
+r_displayRefresh 0      // auto-detect (or set manually: 144/240/360/480)
 
-// Match your monitor
-r_displayRefresh 240    // change to your Hz: 144/240/360/480
+// Apply changes
+vid_restart
 
 // Optional: Maximum performance visuals
 r_vertexLight 1
@@ -188,7 +191,7 @@ r_shadows 0
 r_postprocess 0</code></pre>
     </div>
 
-    <p class="setting-note">Use <code>200</code> for consistent footstep audio timing, <code>250</code> for slightly higher responsiveness.</p>
+    <p class="setting-note">Use <code>com_maxfps 250</code> (standard). Use <code>200</code> if you prefer stronger footstep audio.</p>
   </section>
 
   <!-- SECTION 6: Windows Settings -->
@@ -242,7 +245,88 @@ r_postprocess 0</code></pre>
     </ul>
   </section>
 
-  <!-- SECTION 7: VRR & Frame Rate Guide -->
+  <!-- SECTION 7: Troubleshooting 142 FPS -->
+  <section class="settings-section collapsible" id="troubleshooting">
+    <h2>🔧 Troubleshooting: Stuck at 142 FPS?</h2>
+    <p class="section-subtitle">Common issue when game thinks it's running at lower refresh rate</p>
+
+    <ol class="troubleshoot-list">
+      <li>
+        <strong>Windows Refresh Rate</strong>
+        <ul>
+          <li>Settings → System → Display → Advanced display → Set to max Hz (240/360/480)</li>
+          <li>If using two displays, match refresh rates or disable 2nd monitor while testing</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Exclusive Fullscreen + QL Cvars</strong>
+        <div class="code-block small">
+          <pre><code>r_mode -1
+r_fullscreen 1
+com_maxfps 250
+r_swapInterval 0
+com_idleSleep 0
+vid_restart</code></pre>
+        </div>
+      </li>
+
+      <li>
+        <strong>NVIDIA Control Panel</strong> (Program Settings → quakelive.exe)
+        <ul>
+          <li>Max Frame Rate: Off</li>
+          <li>Background Application Max Frame Rate: Off</li>
+          <li>Vertical sync: Off (unless using VRR)</li>
+          <li>Low Latency Mode: Ultra</li>
+          <li>Power management: Prefer maximum performance</li>
+          <li>Preferred refresh rate: Highest available</li>
+          <li>Triple buffering: Off</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>RTSS / Afterburner</strong>
+        <ul>
+          <li>In RivaTuner: Set Framerate limit = 0 and Scanline sync = 0</li>
+          <li>Set for both Global AND quakelive.exe entry</li>
+          <li>Quit RTSS completely (close from tray icon)</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Disable Overlays & Capture</strong>
+        <ul>
+          <li>Xbox Game Bar: Off</li>
+          <li>Steam FPS limiter: Off</li>
+          <li>Discord overlay: Off</li>
+          <li>GeForce overlay / Instant Replay: Off</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Cable & Port Check</strong>
+        <ul>
+          <li>Monitor cable must go into GPU, NOT motherboard</li>
+          <li>Use DisplayPort 1.4 (HBR3) or HDMI 2.1</li>
+          <li>Avoid adapters and KVM switches</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Power & Present Path</strong>
+        <ul>
+          <li>Windows power plan: High Performance or Ultimate Performance</li>
+          <li>NVIDIA Control Panel → Vulkan/OpenGL present method: Prefer native</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="info-box">
+      <strong>Note:</strong> After these steps you should hold 250 FPS (or 200 if configured). If still locked around 142 FPS, it's almost certainly a hidden limiter or the game is running in borderless/compositor mode instead of exclusive fullscreen.
+    </div>
+  </section>
+
+  <!-- SECTION 8: VRR & Frame Rate Guide -->
   <section class="settings-section collapsible" id="vrr">
     <h2>VRR &amp; Frame Rate Guide</h2>
     <p class="section-subtitle">How to stay within VRR range with Quake Live's limited fps values</p>
@@ -260,15 +344,17 @@ r_postprocess 0</code></pre>
         <h3>240 Hz VRR</h3>
         <span class="badge">Most Common</span>
         <ul>
-          <li><strong>Preferred:</strong> <code>com_maxfps 200</code> (stays within VRR range)</li>
-          <li>If you need 250: use external limiter (RTSS/driver) at 237-239 (adds ~1ms extra latency)</li>
+          <li><strong>Standard:</strong> <code>com_maxfps 250</code> + external limiter (RTSS/driver) at 237-239</li>
+          <li><strong>Alternative:</strong> <code>com_maxfps 200</code> (no limiter needed, stays in VRR range)</li>
+          <li>External limiter adds ~1ms latency</li>
         </ul>
       </div>
 
       <div class="hz-card">
         <h3>360 / 480 Hz</h3>
         <ul>
-          <li>Use <code>com_maxfps 250</code> (or 200 for footsteps)</li>
+          <li>Use <code>com_maxfps 250</code> (standard)</li>
+          <li>Or <code>200</code> if you prefer stronger footstep audio</li>
           <li>250 FPS is well within VRR range - no external limiter needed</li>
         </ul>
       </div>
@@ -642,6 +728,49 @@ function copyCode(btn) {
 
   .back-link a:hover {
     text-decoration: underline;
+  }
+
+  /* Troubleshooting List */
+  .troubleshoot-list {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .troubleshoot-list > li {
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .troubleshoot-list > li > strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #e8e8f0);
+    font-size: 1rem;
+  }
+
+  .troubleshoot-list ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .troubleshoot-list ul li {
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .code-block.small {
+    margin: 0.5rem 0;
+  }
+
+  .code-block.small pre {
+    padding: 0.75rem;
+  }
+
+  .code-block.small code {
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   /* Mobile Responsiveness */
