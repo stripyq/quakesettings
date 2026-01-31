@@ -72,6 +72,16 @@ const sameMonitor = p.monitor
   ? otherPlayers.filter(pl => pl.data.monitor === p.monitor).slice(0, 5)
   : [];
 
+// Format rating based on type
+function formatRating(rating: number | undefined, type: 'duel' | 'ctf' | 'tdm'): string {
+  if (!rating) return '—';
+  if (type === 'duel') return Math.round(rating).toString(); // Glicko: integer
+  return rating.toFixed(1); // TrueSkill: one decimal
+}
+
+// Check if player has any ratings
+const hasRatings = p.duelRating || p.ctfRating || p.tdmRating;
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -87,6 +97,25 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {p.dataSource === 'verified' && <span class="data-source source-verified" title="Settings verified by the player">✓ Verified</span>}
         {(!p.dataSource || p.dataSource === 'collected') && <span class="data-source source-collected" title="Settings collected from public sources">📋 Collected</span>}
       </div>
+      {hasRatings && (
+        <div class="player-ratings">
+          {p.duelRating && (
+            <span class="rating-badge duel" title={`Duel rating from QLStats${p.duelRatingUpdated ? ` (${p.duelRatingUpdated})` : ''}`}>
+              Duel: {formatRating(p.duelRating, 'duel')}
+            </span>
+          )}
+          {p.ctfRating && (
+            <span class="rating-badge ctf" title={`CTF rating${p.ctfRatingUpdated ? ` (${p.ctfRatingUpdated})` : ''}`}>
+              CTF: {formatRating(p.ctfRating, 'ctf')}
+            </span>
+          )}
+          {p.tdmRating && (
+            <span class="rating-badge tdm" title={`TDM rating${p.tdmRatingUpdated ? ` (${p.tdmRatingUpdated})` : ''}`}>
+              TDM: {formatRating(p.tdmRating, 'tdm')}
+            </span>
+          )}
+        </div>
+      )}
       <div class="player-actions">
         <a href={`${base}compare/?p1=${player.id}`} class="compare-btn">Compare with another player</a>
       </div>
@@ -344,6 +373,39 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     background: rgba(136, 136, 136, 0.15);
     color: var(--text-secondary, #888);
     border: 1px solid var(--text-secondary, #888);
+  }
+
+  .player-ratings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .rating-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: help;
+  }
+
+  .rating-badge.duel {
+    background: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    border: 1px solid #3498db;
+  }
+
+  .rating-badge.ctf {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+  }
+
+  .rating-badge.tdm {
+    background: rgba(155, 89, 182, 0.15);
+    color: #9b59b6;
+    border: 1px solid #9b59b6;
   }
 
   .settings-grid {

@@ -109,9 +109,21 @@ const playersCollection = defineCollection({
     steamId: z.string().optional(), // Steam64 ID (e.g., "76561198012345678")
     qlstatsNick: z.string().optional(), // Nickname on QLStats if different from name
 
-    // Ratings (cached from external sources)
-    qlstatsRating: z.number().optional(), // Duel rating from QLStats
-    qlstatsRatingLastUpdated: z.string().optional(), // When rating was last fetched (YYYY-MM-DD)
+    // Ratings by game mode (cached from external sources)
+    // Duel: Glicko rating from QLStats (integer, e.g., 1777)
+    duelRating: z.number().optional(),
+    duelRatingSource: z.string().optional().default('qlstats'), // "qlstats"
+    duelRatingUpdated: z.string().optional(), // YYYY-MM-DD
+
+    // CTF: TrueSkill rating from community tracker (decimal, e.g., 34.3)
+    ctfRating: z.number().optional(),
+    ctfRatingSource: z.string().optional().default('community'), // "88.214.20.58"
+    ctfRatingUpdated: z.string().optional(), // YYYY-MM-DD
+
+    // TDM: TrueSkill rating from community tracker (decimal, e.g., 34.3)
+    tdmRating: z.number().optional(),
+    tdmRatingSource: z.string().optional().default('community'), // "88.214.20.58"
+    tdmRatingUpdated: z.string().optional(), // YYYY-MM-DD
 
     // Data Source
     dataSource: z.enum(['player', 'verified', 'collected']).optional().default('collected'),
