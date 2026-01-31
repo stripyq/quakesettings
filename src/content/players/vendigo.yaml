@@ -1,6 +1,12 @@
 name: vendigo
 country: "Unknown"
 category: "duel"
+duelRating: 1465
+duelRatingUpdated: "2026-01-31"
+ctfRating: 33.5
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 34.1
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 400
