@@ -146,16 +146,19 @@ function handleSuccess(request) {
 <body>
   <script>
     (function() {
-      function receiveMessage(e) {
-        console.log("receiveMessage", e);
+      const token = "${token}";
+      const provider = "${provider}";
+
+      // Send message to opener immediately
+      if (window.opener) {
         window.opener.postMessage(
-          'authorization:${provider}:success:{"token":"${token}","provider":"${provider}"}',
-          e.origin
+          'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
+          '*'
         );
-        window.close();
+        setTimeout(function() { window.close(); }, 100);
+      } else {
+        document.body.innerHTML = '<p>Authentication successful! You can close this window.</p>';
       }
-      window.addEventListener("message", receiveMessage, false);
-      window.opener.postMessage("authorizing:${provider}", "*");
     })();
   </script>
   <p>Authorizing with GitHub...</p>
