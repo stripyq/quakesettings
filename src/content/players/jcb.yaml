@@ -1,6 +1,7 @@
 name: jcb
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1600
 sensitivity: 1

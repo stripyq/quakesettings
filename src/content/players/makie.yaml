@@ -1,6 +1,7 @@
 name: MAKIE
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 450
 sensitivity: 4.25

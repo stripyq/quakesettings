@@ -1,6 +1,7 @@
 name: Furtzilla
 country: "Unknown"
 category: "duel"
+dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 900
 sensitivity: 1.1
