@@ -1,6 +1,10 @@
 name: Grandbolus
 country: "Unknown"
 category: "duel"
+ctfRating: 18.78
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 20.83
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800

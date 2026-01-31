@@ -1,6 +1,10 @@
 name: Frigolx
 country: "Unknown"
 category: "duel"
+ctfRating: 35.25
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 30.21
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1600

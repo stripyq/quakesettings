@@ -1,6 +1,10 @@
 name: b1ohazzard
 country: "Unknown"
 category: "duel"
+ctfRating: 3.26
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 21.37
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1200
