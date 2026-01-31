@@ -72,6 +72,16 @@ const sameMonitor = p.monitor
   ? otherPlayers.filter(pl => pl.data.monitor === p.monitor).slice(0, 5)
   : [];
 
+// Find players with same keyboard
+const sameKeyboard = p.keyboard
+  ? otherPlayers.filter(pl => pl.data.keyboard === p.keyboard).slice(0, 5)
+  : [];
+
+// Find players with same mousepad
+const sameMousepad = p.mousepad
+  ? otherPlayers.filter(pl => pl.data.mousepad === p.mousepad).slice(0, 5)
+  : [];
+
 // Format rating based on type
 function formatRating(rating: number | undefined, type: 'duel' | 'ctf' | 'tdm'): string {
   if (!rating) return '—';
@@ -274,18 +284,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     )}
 
     <!-- Similar Players -->
-    {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0) && (
+    {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0 || sameKeyboard.length > 0 || sameMousepad.length > 0) && (
       <section class="similar-section">
         <h2>Similar Players</h2>
         <div class="similar-groups">
           {similarSens.length > 0 && (
             <div class="similar-group">
-              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {currentCm360})</span></h3>
+              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {currentCm360.toFixed(2)})</span></h3>
               <div class="similar-players">
                 {similarSens.map(({ player: pl, cm360 }) => (
                   <a href={`${base}players/${pl.id}/`} class="similar-player">
                     <span class="player-name">{pl.data.name}</span>
-                    <span class="player-stat">{cm360} cm/360</span>
+                    <span class="player-stat">{cm360.toFixed(2)} cm/360</span>
                   </a>
                 ))}
               </div>
@@ -297,6 +307,32 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <h3>Same Mouse <span class="similar-info">({mouseData?.name})</span></h3>
               <div class="similar-players">
                 {sameMouse.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMousepad.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Mousepad <span class="similar-info">({mousepadData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMousepad.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameKeyboard.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Keyboard <span class="similar-info">({keyboardData?.name})</span></h3>
+              <div class="similar-players">
+                {sameKeyboard.map(pl => (
                   <a href={`${base}players/${pl.id}/`} class="similar-player">
                     <span class="player-name">{pl.data.name}</span>
                   </a>

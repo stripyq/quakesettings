@@ -2,6 +2,6 @@ name: LG 32GS95UE-B
 brand: LG
 size: "32\""
 resolution: "3840x2160"
-refreshRate: "240Hz"
+refreshRate: "240Hz (480Hz @ 1080p)"
 panelType: "OLED"
 responseTime: "0.03ms"
