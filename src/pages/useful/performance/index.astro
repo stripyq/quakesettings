@@ -1,0 +1,661 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const title = "Optimal Performance Settings - Quake Live";
+const description = "Driver, in-game, and Windows settings for maximum performance in Quake Live on 240Hz+ monitors";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-header">
+    <nav class="breadcrumb">
+      <a href={`${base}useful/`}>Useful</a> &gt; Performance Settings
+    </nav>
+    <h1>Optimal Settings for Maximum Performance</h1>
+    <p class="subtitle">Driver, in-game, and Windows settings for competitive play (240 Hz+ monitors)</p>
+  </div>
+
+  <!-- SECTION 1: Quick Chooser -->
+  <section class="preset-chooser">
+    <h2>Which Preset Is Right For You?</h2>
+
+    <div class="preset-cards">
+      <div class="preset-card preset-a">
+        <h3>Preset A: Lowest Latency</h3>
+        <ul>
+          <li><strong>Best for:</strong> Competitive play, maximum responsiveness</li>
+          <li><strong>VRR:</strong> Off, <strong>V-Sync:</strong> Off everywhere</li>
+          <li><strong>com_maxfps:</strong> 250 (or 200 for footsteps)</li>
+          <li>May have screen tearing</li>
+        </ul>
+      </div>
+
+      <div class="preset-card preset-b">
+        <h3>Preset B: Tear-Free VRR</h3>
+        <ul>
+          <li><strong>Best for:</strong> Clean visuals without sacrificing much latency</li>
+          <li><strong>VRR:</strong> On, <strong>V-Sync:</strong> On in driver (backstop), Off in-game</li>
+          <li><strong>240 Hz:</strong> Use com_maxfps 200, or 250 + external cap at 237</li>
+          <li><strong>360/480 Hz:</strong> Use com_maxfps 250 (well within VRR range)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: NVIDIA Settings -->
+  <section class="settings-section collapsible" id="nvidia">
+    <h2>NVIDIA Control Panel</h2>
+    <p class="section-subtitle">Program Settings → quakelive.exe</p>
+
+    <div class="preset-columns">
+      <div class="preset-column">
+        <h3>Preset A (Lowest Latency)</h3>
+        <table class="settings-table">
+          <tr><td>Monitor Technology</td><td>Fixed Refresh</td></tr>
+          <tr><td>Vertical sync</td><td>Off</td></tr>
+          <tr><td>Low Latency Mode</td><td>Ultra</td></tr>
+          <tr><td>Preferred refresh rate</td><td>Highest available</td></tr>
+          <tr><td>Power management mode</td><td>Prefer maximum performance</td></tr>
+          <tr><td>Max Frame Rate</td><td>Off (use in-game cap)</td></tr>
+          <tr><td>Threaded optimisation</td><td>Auto / On</td></tr>
+          <tr><td>Triple buffering</td><td>Off</td></tr>
+          <tr><td>Texture filtering - Quality</td><td>High performance</td></tr>
+          <tr><td>Texture filtering - Aniso sample / Trilinear</td><td>On / On</td></tr>
+          <tr><td>Texture filtering - Negative LOD bias</td><td>Allow</td></tr>
+          <tr><td>Image Scaling / DSR / DLDSR</td><td>Off</td></tr>
+          <tr><td>Vulkan/OpenGL present method</td><td>Prefer native</td></tr>
+        </table>
+      </div>
+
+      <div class="preset-column">
+        <h3>Preset B (Tear-Free VRR)</h3>
+        <table class="settings-table">
+          <tr><td>Monitor Technology</td><td>G-SYNC Compatible</td></tr>
+          <tr><td>Vertical sync</td><td>On (driver backstop)</td></tr>
+          <tr><td>Low Latency Mode</td><td>Ultra</td></tr>
+          <tr><td>Preferred refresh rate</td><td>Highest available</td></tr>
+          <tr><td>Power management mode</td><td>Prefer maximum performance</td></tr>
+          <tr><td>Max Frame Rate</td><td>Off (or 237 for 240 Hz VRR)</td></tr>
+          <tr><td>Threaded optimisation</td><td>Auto / On</td></tr>
+          <tr><td>Triple buffering</td><td>Off</td></tr>
+          <tr><td>Texture filtering - Quality</td><td>High performance</td></tr>
+          <tr><td>Texture filtering - Aniso sample / Trilinear</td><td>On / On</td></tr>
+          <tr><td>Texture filtering - Negative LOD bias</td><td>Allow</td></tr>
+          <tr><td>Image Scaling / DSR / DLDSR</td><td>Off</td></tr>
+          <tr><td>Vulkan/OpenGL present method</td><td>Prefer native</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Warning:</strong> Do NOT manually set "Max Pre-Rendered Frames" when Low Latency Mode = Ultra. This causes conflicting queue settings.
+    </div>
+  </section>
+
+  <!-- SECTION 3: AMD Settings -->
+  <section class="settings-section collapsible" id="amd">
+    <h2>AMD Radeon Software</h2>
+    <p class="section-subtitle">Per-game profile for Quake Live</p>
+
+    <div class="preset-columns">
+      <div class="preset-column">
+        <h3>Preset A (Lowest Latency)</h3>
+        <table class="settings-table">
+          <tr><td>FreeSync</td><td>Off</td></tr>
+          <tr><td>Wait for Vertical Refresh (V-Sync)</td><td>Always Off</td></tr>
+          <tr><td>Radeon Anti-Lag / Anti-Lag+</td><td>On (if supported for OpenGL)</td></tr>
+          <tr><td>Enhanced Sync</td><td>Off</td></tr>
+          <tr><td>Frame Rate Target Control</td><td>Off (use in-game cap)</td></tr>
+          <tr><td>Texture Filtering Quality</td><td>Performance</td></tr>
+          <tr><td>Surface Format Optimization</td><td>On</td></tr>
+          <tr><td>OpenGL Triple Buffering</td><td>Off</td></tr>
+          <tr><td>GPU Scaling / Scaling Mode</td><td>Off (use display-side scaling)</td></tr>
+        </table>
+      </div>
+
+      <div class="preset-column">
+        <h3>Preset B (Tear-Free VRR)</h3>
+        <table class="settings-table">
+          <tr><td>FreeSync</td><td>On</td></tr>
+          <tr><td>Wait for Vertical Refresh (V-Sync)</td><td>Always On (driver backstop)</td></tr>
+          <tr><td>Radeon Anti-Lag / Anti-Lag+</td><td>On (if supported for OpenGL)</td></tr>
+          <tr><td>Enhanced Sync</td><td>Off</td></tr>
+          <tr><td>Frame Rate Target Control</td><td>Off (or 237 for 240 Hz)</td></tr>
+          <tr><td>Texture Filtering Quality</td><td>Performance</td></tr>
+          <tr><td>Surface Format Optimization</td><td>On</td></tr>
+          <tr><td>OpenGL Triple Buffering</td><td>Off</td></tr>
+          <tr><td>GPU Scaling / Scaling Mode</td><td>Off (use display-side scaling)</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Intel Arc Settings -->
+  <section class="settings-section collapsible" id="intel">
+    <h2>Intel Arc Control</h2>
+    <p class="section-subtitle">Per-game profile for Quake Live</p>
+
+    <p class="info-note">Note: Intel Arc does not have an Anti-Lag equivalent feature. Focus on V-Sync and VRR settings.</p>
+
+    <div class="preset-columns">
+      <div class="preset-column">
+        <h3>Preset A (Lowest Latency)</h3>
+        <table class="settings-table">
+          <tr><td>V-Sync</td><td>Off</td></tr>
+          <tr><td>External frame limiter</td><td>None - use in-game com_maxfps only</td></tr>
+          <tr><td>Scaling / post-processing</td><td>Disable all</td></tr>
+        </table>
+      </div>
+
+      <div class="preset-column">
+        <h3>Preset B (Tear-Free VRR)</h3>
+        <table class="settings-table">
+          <tr><td>V-Sync</td><td>On (with VRR/Adaptive Sync enabled)</td></tr>
+          <tr><td>External frame limiter</td><td>None - use in-game com_maxfps only</td></tr>
+          <tr><td>For 240 Hz</td><td>Use com_maxfps 200 to stay in VRR range</td></tr>
+          <tr><td>Scaling / post-processing</td><td>Disable all</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: In-Game Settings -->
+  <section class="settings-section collapsible" id="ingame">
+    <h2>Quake Live Console Commands</h2>
+
+    <div class="info-box">
+      <strong>Important:</strong> Quake Live only accepts specific com_maxfps values: <code>125</code>, <code>200</code>, <code>250</code>, or <code>333</code>. Arbitrary values like 237 do NOT work in-game.
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>cfg</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>// Essential settings
+com_maxfps 250          // valid values: 125, 200, 250, 333
+r_swapInterval 0        // in-game V-Sync off (always)
+com_idleSleep 0         // prevent CPU idle
+
+// Match your monitor
+r_displayRefresh 240    // change to your Hz: 144/240/360/480
+
+// Optional: Maximum performance visuals
+r_vertexLight 1
+r_picmip 5              // 5-8 range, higher = lower quality
+r_shadows 0
+r_postprocess 0</code></pre>
+    </div>
+
+    <p class="setting-note">Use <code>200</code> for consistent footstep audio timing, <code>250</code> for slightly higher responsiveness.</p>
+  </section>
+
+  <!-- SECTION 6: Windows Settings -->
+  <section class="settings-section collapsible" id="windows">
+    <h2>Windows Optimization</h2>
+
+    <ul class="checklist">
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Set monitor to maximum Hz</strong>
+          <span class="check-path">Display Settings → Advanced display → Choose refresh rate</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Enable Game Mode</strong>
+          <span class="check-path">Settings → Gaming → Game Mode → On</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Enable HAGS (Hardware-accelerated GPU scheduling) - if stable</strong>
+          <span class="check-path">Settings → System → Display → Graphics → Hardware-accelerated GPU scheduling</span>
+          <span class="check-note">Disable if you experience stuttering</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Power Plan: High Performance or Ultimate Performance</strong>
+          <span class="check-path">Control Panel → Power Options</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Disable Fullscreen Optimizations for quakelive.exe</strong>
+          <span class="check-path">Right-click exe → Properties → Compatibility → Disable fullscreen optimizations</span>
+        </div>
+      </li>
+      <li>
+        <span class="check-box"></span>
+        <div class="check-content">
+          <strong>Disable overlays</strong>
+          <span class="check-note">Xbox Game Bar: Off | Steam Overlay: Off | Discord Overlay: Off | GeForce Experience: Off</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SECTION 7: VRR & Frame Rate Guide -->
+  <section class="settings-section collapsible" id="vrr">
+    <h2>VRR &amp; Frame Rate Guide</h2>
+    <p class="section-subtitle">How to stay within VRR range with Quake Live's limited fps values</p>
+
+    <div class="hz-cards">
+      <div class="hz-card">
+        <h3>144 Hz VRR</h3>
+        <ul>
+          <li>Use <code>com_maxfps 125</code> to stay in VRR range</li>
+          <li>Or use <code>com_maxfps 250</code> + external limiter (RTSS/driver) at 141</li>
+        </ul>
+      </div>
+
+      <div class="hz-card featured">
+        <h3>240 Hz VRR</h3>
+        <span class="badge">Most Common</span>
+        <ul>
+          <li><strong>Preferred:</strong> <code>com_maxfps 200</code> (stays within VRR range)</li>
+          <li>If you need 250: use external limiter (RTSS/driver) at 237-239 (adds ~1ms extra latency)</li>
+        </ul>
+      </div>
+
+      <div class="hz-card">
+        <h3>360 / 480 Hz</h3>
+        <ul>
+          <li>Use <code>com_maxfps 250</code> (or 200 for footsteps)</li>
+          <li>250 FPS is well within VRR range - no external limiter needed</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="setting-note">External limiters like RTSS (RivaTuner Statistics Server) or NVIDIA/AMD driver frame caps allow precise frame limiting but add approximately 1ms of latency.</p>
+  </section>
+
+  <div class="back-link">
+    <a href={`${base}useful/`}>← Back to Useful Links</a>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+function copyCode(btn) {
+  const codeBlock = btn.closest('.code-block').querySelector('code');
+  navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+
+<style>
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+    margin-bottom: 0.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .subtitle {
+    color: var(--text-secondary, #888);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Preset Chooser */
+  .preset-chooser {
+    margin: 2rem 0 3rem;
+  }
+
+  .preset-chooser h2 {
+    color: var(--accent-primary, #ff6b35);
+    margin-bottom: 1.5rem;
+  }
+
+  .preset-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .preset-card {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color, #2a2a35);
+  }
+
+  .preset-card.preset-a {
+    border-color: #e74c3c;
+  }
+
+  .preset-card.preset-b {
+    border-color: #2ecc71;
+  }
+
+  .preset-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .preset-a h3::before {
+    content: "Target ";
+    color: #e74c3c;
+  }
+
+  .preset-b h3::before {
+    content: "Monitor ";
+    color: #2ecc71;
+  }
+
+  .preset-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .preset-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .preset-card li:last-child {
+    border-bottom: none;
+  }
+
+  /* Settings Sections */
+  .settings-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .settings-section h2 {
+    color: var(--accent-primary, #ff6b35);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  .section-subtitle {
+    color: var(--text-secondary, #888);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Preset Columns */
+  .preset-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .preset-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  /* Settings Tables */
+  .settings-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .settings-table td {
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.9rem;
+  }
+
+  .settings-table td:first-child {
+    color: var(--text-secondary, #888);
+    width: 55%;
+  }
+
+  .settings-table td:last-child {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
+  }
+
+  .settings-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Warning & Info Boxes */
+  .warning-box {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .info-box {
+    background: rgba(52, 152, 219, 0.15);
+    border: 1px solid #3498db;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .info-note {
+    color: var(--text-secondary, #888);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Code Block */
+  .code-block {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .copy-btn {
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.2s;
+  }
+
+  .copy-btn:hover {
+    background: #ff8c5a;
+  }
+
+  .code-block pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .setting-note {
+    color: var(--text-secondary, #888);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .setting-note code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .checklist li:last-child {
+    border-bottom: none;
+  }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-secondary, #4ecdc4);
+    border-radius: 4px;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .check-path {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .check-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+    font-style: italic;
+  }
+
+  /* Hz Cards */
+  .hz-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .hz-card {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    position: relative;
+  }
+
+  .hz-card.featured {
+    border-color: var(--accent-primary, #ff6b35);
+  }
+
+  .hz-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hz-card h3::before {
+    content: "Display ";
+    color: var(--accent-secondary, #4ecdc4);
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-weight: 600;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .hz-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hz-card li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  .hz-card code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  /* Back Link */
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .preset-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .preset-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .hz-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
