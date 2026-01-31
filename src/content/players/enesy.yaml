@@ -1,6 +1,12 @@
 name: enesy
 country: "Unknown"
 category: "duel"
+duelRating: 1425
+duelRatingUpdated: "2026-01-31"
+ctfRating: 31.2
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 28.8
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800

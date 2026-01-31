@@ -1,6 +1,12 @@
 name: lithz
 country: "Unknown"
 category: "duel"
+duelRating: 1476
+duelRatingUpdated: "2026-01-31"
+ctfRating: 32.8
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 31.4
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 800

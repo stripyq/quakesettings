@@ -4,6 +4,8 @@ country: "USA"
 team: "Retired"
 rating: 2850
 category: "duel"
+duelRating: 2150
+duelRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 

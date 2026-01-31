@@ -1,6 +1,8 @@
 name: tough maf
 country: "Unknown"
 category: "duel"
+duelRating: 1289
+duelRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1600

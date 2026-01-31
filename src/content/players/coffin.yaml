@@ -1,6 +1,12 @@
 name: coffin
 country: "Unknown"
 category: "duel"
+duelRating: 1318
+duelRatingUpdated: "2026-01-31"
+ctfRating: 35.4
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 33.5
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 1000
