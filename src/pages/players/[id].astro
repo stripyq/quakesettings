@@ -34,6 +34,44 @@ const keyboardData = p.keyboard ? keyboardsMap.get(p.keyboard) : null;
 const monitorData = p.monitor ? monitorsMap.get(p.monitor) : null;
 const headsetData = p.headset ? headsetsMap.get(p.headset) : null;
 
+// Get all players for Similar Players section
+const allPlayers = await getCollection('players');
+const otherPlayers = allPlayers.filter(pl => pl.id !== player.id);
+
+// Calculate cm/360 for a player
+function calculateCm360(playerData: any): number {
+  if (playerData.cm360) return playerData.cm360;
+  if (playerData.m_cpi) {
+    return Math.round((360 / playerData.sensitivity) * 100) / 100;
+  }
+  return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
+}
+
+const currentCm360 = calculateCm360(p);
+
+// Find players with similar cm/360 (within 15% range)
+const similarSens = otherPlayers
+  .map(pl => ({
+    player: pl,
+    cm360: calculateCm360(pl.data),
+  }))
+  .filter(({ cm360 }) => {
+    const diff = Math.abs(cm360 - currentCm360) / currentCm360;
+    return diff <= 0.15;
+  })
+  .sort((a, b) => Math.abs(a.cm360 - currentCm360) - Math.abs(b.cm360 - currentCm360))
+  .slice(0, 5);
+
+// Find players with same mouse
+const sameMouse = p.mouse
+  ? otherPlayers.filter(pl => pl.data.mouse === p.mouse).slice(0, 5)
+  : [];
+
+// Find players with same monitor
+const sameMonitor = p.monitor
+  ? otherPlayers.filter(pl => pl.data.monitor === p.monitor).slice(0, 5)
+  : [];
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -186,6 +224,54 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
           {p.lastUpdated && <p><strong>Last Updated:</strong> {p.lastUpdated}</p>}
+        </div>
+      </section>
+    )}
+
+    <!-- Similar Players -->
+    {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0) && (
+      <section class="similar-section">
+        <h2>Similar Players</h2>
+        <div class="similar-groups">
+          {similarSens.length > 0 && (
+            <div class="similar-group">
+              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {currentCm360})</span></h3>
+              <div class="similar-players">
+                {similarSens.map(({ player: pl, cm360 }) => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                    <span class="player-stat">{cm360} cm/360</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMouse.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Mouse <span class="similar-info">({mouseData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMouse.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMonitor.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Monitor <span class="similar-info">({monitorData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMonitor.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     )}
@@ -441,6 +527,81 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .back-link:hover {
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .similar-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .similar-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .similar-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .similar-group h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .similar-info {
+    font-weight: normal;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.8rem;
+  }
+
+  .similar-players {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .similar-player {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .similar-player:hover {
+    background: var(--accent-primary, #ff6b35);
+  }
+
+  .similar-player .player-name {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .similar-player:hover .player-name {
+    color: white;
+  }
+
+  .similar-player .player-stat {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.75rem;
+  }
+
+  .similar-player:hover .player-stat {
+    color: rgba(255, 255, 255, 0.8);
   }
 
   @media (max-width: 768px) {
