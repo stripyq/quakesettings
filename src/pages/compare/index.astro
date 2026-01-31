@@ -104,9 +104,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         player2Select.value = p2Param;
       }
 
-      function formatValue(val) {
+      function formatValue(val, isNumeric = false, decimals = 0) {
         if (val === null || val === undefined || val === '' || val === 'Unknown') return '';
+        if (isNumeric && typeof val === 'number') {
+          return decimals > 0 ? val.toFixed(decimals) : val.toString();
+        }
         return val;
+      }
+
+      function formatCm360(player) {
+        if (player.cm360) return player.cm360.toFixed(2);
+        if (player.m_cpi) return (360 / player.sensitivity).toFixed(2);
+        return (41563.6 / (player.dpi * player.sensitivity)).toFixed(2);
       }
 
       function updateComparison() {
@@ -142,16 +151,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
         // Section: Mouse Settings
         html += sectionHeader('Mouse Settings');
-        html += compareRow('DPI', p1.dpi, p2.dpi);
-        html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity);
-        html += compareRow('eDPI', p1.edpi, p2.edpi);
-        html += compareRow('cm/360', formatValue(p1.cm360), formatValue(p2.cm360));
+        html += compareRow('DPI', p1.dpi, p2.dpi, true);
+        html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
+        html += compareRow('eDPI', p1.edpi, p2.edpi, true);
+        html += compareRow('cm/360', formatCm360(p1), formatCm360(p2), true);
         html += compareRow('Acceleration', p1.acceleration ? 'Yes' : 'No', p2.acceleration ? 'Yes' : 'No');
         html += compareRow('Raw Input', p1.rawInput ? 'Yes' : 'No', p2.rawInput ? 'Yes' : 'No');
 
         // Section: Game Settings
         html += sectionHeader('Game Settings');
-        html += compareRow('FOV', p1.fov, p2.fov);
+        html += compareRow('FOV', p1.fov, p2.fov, true);
         html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair));
 
         // Section: Hardware
@@ -180,15 +189,34 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         return `<tr class="section-row"><td colspan="3">${title}</td></tr>`;
       }
 
-      function compareRow(label, val1, val2) {
+      function compareRow(label, val1, val2, isNumeric = false) {
         const v1 = val1 !== undefined && val1 !== null ? String(val1) : '';
         const v2 = val2 !== undefined && val2 !== null ? String(val2) : '';
         const isDiff = v1 !== v2;
         const diffClass = isDiff ? 'diff' : 'same';
+        const numClass = isNumeric ? 'numeric' : '';
+
+        // Calculate difference for numeric values
+        let diffIndicator1 = '';
+        let diffIndicator2 = '';
+        if (isDiff && isNumeric && v1 && v2) {
+          const n1 = parseFloat(v1);
+          const n2 = parseFloat(v2);
+          if (!isNaN(n1) && !isNaN(n2)) {
+            if (n1 > n2) {
+              diffIndicator1 = '<span class="diff-arrow higher">▲</span>';
+              diffIndicator2 = '<span class="diff-arrow lower">▼</span>';
+            } else {
+              diffIndicator1 = '<span class="diff-arrow lower">▼</span>';
+              diffIndicator2 = '<span class="diff-arrow higher">▲</span>';
+            }
+          }
+        }
+
         return `<tr class="data-row">
-          <td class="value-cell ${diffClass}">${v1}</td>
+          <td class="value-cell ${diffClass} ${numClass}">${v1}${diffIndicator1}</td>
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${diffClass}">${v2}</td>
+          <td class="value-cell ${diffClass} ${numClass}">${v2}${diffIndicator2}</td>
         </tr>`;
       }
 
@@ -245,10 +273,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .comparison-container {
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
 
   .comparison-container.hidden {
     display: none;
+  }
+
+  .compare-table {
+    max-width: 800px;
   }
 
   .empty-state {
@@ -346,6 +380,23 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .value-cell.same {
     color: var(--text-primary, #e8e8f0);
+  }
+
+  .value-cell.numeric {
+    font-family: monospace;
+  }
+
+  .diff-arrow {
+    font-size: 0.7rem;
+    margin-left: 0.35rem;
+  }
+
+  .diff-arrow.higher {
+    color: #27ae60;
+  }
+
+  .diff-arrow.lower {
+    color: #e74c3c;
   }
 
   @media (max-width: 768px) {
