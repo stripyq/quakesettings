@@ -1,6 +1,10 @@
 name: ne_raketa
 country: "Unknown"
 category: "duel"
+ctfRating: 10.39
+ctfRatingUpdated: "2026-01-31"
+tdmRating: 20.71
+tdmRatingUpdated: "2026-01-31"
 dataSource: "player"
 lastUpdated: "2025-01"
 dpi: 400
