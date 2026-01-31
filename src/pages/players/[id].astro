@@ -111,31 +111,14 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="rating-item">
           <span class="rating-label">Duel:</span>
           <span class="rating-value duel">{formatRating(p.duelRating, 'duel')}</span>
-          {hasDuelHistory && (
-            <span class="rating-history-inline">
-              {p.duelRatingPeak && <span class="peak" title={`Peak: ${p.duelRatingPeakDate || ''}`}>{formatRating(p.duelRatingPeak, 'duel')}</span>}
-              {p.duelRatingLow && <span class="low" title={`Low: ${p.duelRatingLowDate || ''}`}>{formatRating(p.duelRatingLow, 'duel')}</span>}
-            </span>
-          )}
         </div>
         <div class="rating-item">
-          <span class="rating-label">Team:</span>
-          <span class="rating-value team">
-            {teamInfo.rating ? formatRating(teamInfo.rating, teamInfo.type!) : '—'}
-            {teamInfo.type && <span class="team-mode">({teamInfo.type.toUpperCase()})</span>}
-          </span>
-          {hasTeamHistory && teamInfo.type === 'ctf' && (
-            <span class="rating-history-inline">
-              {p.ctfRatingPeak && <span class="peak" title={`Peak: ${p.ctfRatingPeakDate || ''}`}>{formatRating(p.ctfRatingPeak, 'ctf')}</span>}
-              {p.ctfRatingLow && <span class="low" title={`Low: ${p.ctfRatingLowDate || ''}`}>{formatRating(p.ctfRatingLow, 'ctf')}</span>}
-            </span>
-          )}
-          {hasTeamHistory && teamInfo.type === 'tdm' && (
-            <span class="rating-history-inline">
-              {p.tdmRatingPeak && <span class="peak" title={`Peak: ${p.tdmRatingPeakDate || ''}`}>{formatRating(p.tdmRatingPeak, 'tdm')}</span>}
-              {p.tdmRatingLow && <span class="low" title={`Low: ${p.tdmRatingLowDate || ''}`}>{formatRating(p.tdmRatingLow, 'tdm')}</span>}
-            </span>
-          )}
+          <span class="rating-label">CTF:</span>
+          <span class="rating-value ctf">{formatRating(p.ctfRating, 'ctf')}</span>
+        </div>
+        <div class="rating-item">
+          <span class="rating-label">TDM:</span>
+          <span class="rating-value tdm">{formatRating(p.tdmRating, 'tdm')}</span>
         </div>
       </div>
 
@@ -393,46 +376,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: #3498db;
   }
 
-  .rating-value.team {
-    color: #2ecc71;
-  }
-
-  .team-mode {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--text-secondary, #9090a0);
-    margin-left: 0.25rem;
-  }
-
-  .rating-history-inline {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.7rem;
-    margin-left: 0.5rem;
-    padding-left: 0.5rem;
-    border-left: 1px solid var(--border-color, #2a2a35);
-  }
-
-  .rating-history-inline .peak {
-    color: #27ae60;
-    cursor: help;
-  }
-
-  .rating-history-inline .peak::before {
-    content: '▲';
-    margin-right: 0.2rem;
-    font-size: 0.6rem;
-  }
-
-  .rating-history-inline .low {
+  .rating-value.ctf {
     color: #e74c3c;
-    cursor: help;
   }
 
-  .rating-history-inline .low::before {
-    content: '▼';
-    margin-right: 0.2rem;
-    font-size: 0.6rem;
+  .rating-value.tdm {
+    color: #2ecc71;
   }
 
   .player-meta {
