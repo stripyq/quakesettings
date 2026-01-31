@@ -26,6 +26,22 @@ function calculateCm360(player: any): number {
   return Math.round((41563.6 / (player.dpi * player.sensitivity)) * 100) / 100;
 }
 
+// Get team rating (higher of CTF or TDM)
+function getTeamRating(player: any): { rating: number | null; type: 'ctf' | 'tdm' | null } {
+  const ctf = player.ctfRating;
+  const tdm = player.tdmRating;
+  if (!ctf && !tdm) return { rating: null, type: null };
+  if (!ctf) return { rating: tdm, type: 'tdm' };
+  if (!tdm) return { rating: ctf, type: 'ctf' };
+  return ctf >= tdm ? { rating: ctf, type: 'ctf' } : { rating: tdm, type: 'tdm' };
+}
+
+// Format rating for display
+function formatRating(rating: number | null, isDuel: boolean): string {
+  if (rating === null) return '—';
+  return isDuel ? Math.round(rating).toString() : rating.toFixed(1);
+}
+
 // Sort players by name
 const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
@@ -60,6 +76,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <thead>
         <tr>
           <th class="sortable" data-sort="name">Player</th>
+          <th class="sortable" data-sort="duel" title="Duel rating (Glicko from QLStats)">Duel</th>
+          <th class="sortable" data-sort="team" title="Team rating (higher of CTF/TDM)">Team</th>
           <th class="sortable" data-sort="mouse">Mouse</th>
           <th class="sortable" data-sort="dpi">DPI</th>
           <th class="sortable" data-sort="sens">Sens</th>
@@ -80,6 +98,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           const monitorData = monitorsMap.get(player.data.monitor);
           const cm360 = calculateCm360(player.data);
           const hasAccel = player.data.acceleration;
+          const teamInfo = getTeamRating(player.data);
           return (
             <tr
               class="player-row"
@@ -90,6 +109,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-cm360={cm360}
               data-fov={player.data.fov}
               data-accel={hasAccel ? "1" : "0"}
+              data-duel={player.data.duelRating || 0}
+              data-team={teamInfo.rating || 0}
               data-mouse={mouseData?.name?.toLowerCase() || player.data.mouse?.toLowerCase() || ''}
               data-monitor={monitorData?.name?.toLowerCase() || player.data.monitor?.toLowerCase() || ''}
               data-keyboard={keyboardData?.name?.toLowerCase() || player.data.keyboard?.toLowerCase() || ''}
@@ -102,6 +123,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 </a>
                 {player.data.dataSource === 'player' && <span class="source-badge source-player" title="Self-submitted">👤</span>}
                 {player.data.dataSource === 'verified' && <span class="source-badge source-verified" title="Verified by player">✓</span>}
+              </td>
+              <td class="rating-cell duel">{formatRating(player.data.duelRating || null, true)}</td>
+              <td class="rating-cell team" title={teamInfo.type ? teamInfo.type.toUpperCase() : ''}>
+                {formatRating(teamInfo.rating, false)}
+                {teamInfo.type && <span class="rating-type">{teamInfo.type.toUpperCase()}</span>}
               </td>
               <td class="hw-cell">{mouseData?.name || player.data.mouse || '—'}</td>
               <td class="num">{player.data.dpi}</td>
@@ -167,6 +193,14 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             case 'name':
               aVal = a.dataset.name || '';
               bVal = b.dataset.name || '';
+              break;
+            case 'duel':
+              aVal = parseFloat(a.dataset.duel || '0') || 0;
+              bVal = parseFloat(b.dataset.duel || '0') || 0;
+              break;
+            case 'team':
+              aVal = parseFloat(a.dataset.team || '0') || 0;
+              bVal = parseFloat(b.dataset.team || '0') || 0;
               break;
             case 'mouse':
               aVal = a.dataset.mouse || '';
@@ -352,6 +386,28 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-secondary, #888);
+  }
+
+  .rating-cell {
+    font-family: monospace;
+    text-align: center;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .rating-cell.duel {
+    color: #3498db;
+  }
+
+  .rating-cell.team {
+    color: #2ecc71;
+  }
+
+  .rating-type {
+    font-size: 0.65rem;
+    color: var(--text-secondary, #888);
+    margin-left: 0.25rem;
+    opacity: 0.8;
   }
 
   .hw-cell {

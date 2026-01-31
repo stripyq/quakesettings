@@ -125,6 +125,25 @@ const playersCollection = defineCollection({
     tdmRatingSource: z.string().optional().default('community'), // "88.214.20.58"
     tdmRatingUpdated: z.string().optional(), // YYYY-MM-DD
 
+    // Rating History - Peak/Low tracking
+    duelRatingPeak: z.number().optional(),
+    duelRatingPeakDate: z.string().optional(), // YYYY-MM-DD
+    duelRatingLow: z.number().optional(),
+    duelRatingLowDate: z.string().optional(), // YYYY-MM-DD
+
+    ctfRatingPeak: z.number().optional(),
+    ctfRatingPeakDate: z.string().optional(), // YYYY-MM-DD
+    ctfRatingLow: z.number().optional(),
+    ctfRatingLowDate: z.string().optional(), // YYYY-MM-DD
+
+    tdmRatingPeak: z.number().optional(),
+    tdmRatingPeakDate: z.string().optional(), // YYYY-MM-DD
+    tdmRatingLow: z.number().optional(),
+    tdmRatingLowDate: z.string().optional(), // YYYY-MM-DD
+
+    // Timestamp of last ratings fetch
+    ratingsUpdated: z.string().optional(), // ISO timestamp
+
     // Data Source
     dataSource: z.enum(['player', 'verified', 'collected']).optional().default('collected'),
     // player = self-submitted by the player
