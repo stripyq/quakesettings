@@ -12,36 +12,57 @@ const headsets = await getCollection('headsets');
 // Get all players to count hardware usage
 const players = await getCollection('players');
 
-// Count hardware usage
-function countUsage(hardwareId: string, field: string) {
-  return players.filter(p => p.data[field] === hardwareId).length;
+// Get players who use each hardware
+function getPlayersUsing(hardwareId: string, field: string) {
+  return players.filter(p => p.data[field] === hardwareId);
 }
 
+// Create usage maps with player data
+function createUsageMap(field: string) {
+  const map = new Map<string, typeof players>();
+  players.forEach(p => {
+    const hwId = p.data[field];
+    if (hwId) {
+      if (!map.has(hwId)) {
+        map.set(hwId, []);
+      }
+      map.get(hwId)!.push(p);
+    }
+  });
+  return map;
+}
+
+const mouseUsageMap = createUsageMap('mouse');
+const monitorUsageMap = createUsageMap('monitor');
+const keyboardUsageMap = createUsageMap('keyboard');
+const mousepadUsageMap = createUsageMap('mousepad');
+const headsetUsageMap = createUsageMap('headset');
+
 // Sort all hardware by popularity (usage count)
-const miceWithUsage = mice.map(m => ({
-  ...m,
-  usage: countUsage(m.id, 'mouse')
-})).sort((a, b) => b.usage - a.usage);
+const miceWithUsage = mice.map(m => {
+  const usedBy = mouseUsageMap.get(m.id) || [];
+  return { ...m, usage: usedBy.length, players: usedBy };
+}).sort((a, b) => b.usage - a.usage);
 
-const monitorsWithUsage = monitors.map(m => ({
-  ...m,
-  usage: countUsage(m.id, 'monitor')
-})).sort((a, b) => b.usage - a.usage);
+const monitorsWithUsage = monitors.map(m => {
+  const usedBy = monitorUsageMap.get(m.id) || [];
+  return { ...m, usage: usedBy.length, players: usedBy };
+}).sort((a, b) => b.usage - a.usage);
 
-const keyboardsWithUsage = keyboards.map(k => ({
-  ...k,
-  usage: countUsage(k.id, 'keyboard')
-})).sort((a, b) => b.usage - a.usage);
+const keyboardsWithUsage = keyboards.map(k => {
+  const usedBy = keyboardUsageMap.get(k.id) || [];
+  return { ...k, usage: usedBy.length, players: usedBy };
+}).sort((a, b) => b.usage - a.usage);
 
-const mousepadsWithUsage = mousepads.map(p => ({
-  ...p,
-  usage: countUsage(p.id, 'mousepad')
-})).sort((a, b) => b.usage - a.usage);
+const mousepadsWithUsage = mousepads.map(p => {
+  const usedBy = mousepadUsageMap.get(p.id) || [];
+  return { ...p, usage: usedBy.length, players: usedBy };
+}).sort((a, b) => b.usage - a.usage);
 
-const headsetsWithUsage = headsets.map(h => ({
-  ...h,
-  usage: countUsage(h.id, 'headset')
-})).sort((a, b) => b.usage - a.usage);
+const headsetsWithUsage = headsets.map(h => {
+  const usedBy = headsetUsageMap.get(h.id) || [];
+  return { ...h, usage: usedBy.length, players: usedBy };
+}).sort((a, b) => b.usage - a.usage);
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -101,7 +122,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="spec-cell">{mouse.data.shape}</td>
               <td class="spec-cell">{mouse.data.sensor}</td>
               <td class="spec-cell">{mouse.data.connection}</td>
-              <td class="num usage-cell">{mouse.usage > 0 ? mouse.usage : '—'}</td>
+              <td class="num usage-cell">
+                {mouse.usage > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{mouse.usage}</span>
+                    <div class="player-dropdown">
+                      {mouse.players.map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
               <td class="buy-cell">
                 {mouse.data.affiliateLink && <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
@@ -146,7 +178,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="spec-cell">{monitor.data.refreshRate}</td>
               <td class="spec-cell">{monitor.data.panelType || monitor.data.panel}</td>
               <td class="spec-cell">{monitor.data.resolution}</td>
-              <td class="num usage-cell">{monitor.usage > 0 ? monitor.usage : '—'}</td>
+              <td class="num usage-cell">
+                {monitor.usage > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{monitor.usage}</span>
+                    <div class="player-dropdown">
+                      {monitor.players.map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
               <td class="buy-cell">
                 {monitor.data.affiliateLink && <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
@@ -188,7 +231,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="spec-cell">{kb.data.size || kb.data.format}</td>
               <td class="spec-cell">{kb.data.switches}</td>
               <td class="spec-cell">{kb.data.connection}</td>
-              <td class="num usage-cell">{kb.usage > 0 ? kb.usage : '—'}</td>
+              <td class="num usage-cell">
+                {kb.usage > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{kb.usage}</span>
+                    <div class="player-dropdown">
+                      {kb.players.map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
               <td class="buy-cell">
                 {kb.data.affiliateLink && <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
@@ -230,7 +284,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="spec-cell">{pad.data.surface}</td>
               <td class="spec-cell">{pad.data.speed || pad.data.speedType}</td>
               <td class="spec-cell">{pad.data.dimensions || pad.data.size}</td>
-              <td class="num usage-cell">{pad.usage > 0 ? pad.usage : '—'}</td>
+              <td class="num usage-cell">
+                {pad.usage > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{pad.usage}</span>
+                    <div class="player-dropdown">
+                      {pad.players.map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
               <td class="buy-cell">
                 {pad.data.affiliateLink && <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
@@ -275,7 +340,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="spec-cell">{hs.data.driverSize || hs.data.driver}</td>
               <td class="spec-cell">{hs.data.connection}</td>
               <td class="center">{hs.data.microphone ? '✓' : '—'}</td>
-              <td class="num usage-cell">{hs.usage > 0 ? hs.usage : '—'}</td>
+              <td class="num usage-cell">
+                {hs.usage > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{hs.usage}</span>
+                    <div class="player-dropdown">
+                      {hs.players.map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
               <td class="buy-cell">
                 {hs.data.affiliateLink && <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
@@ -502,6 +578,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     opacity: 1;
   }
 
+  /* Zebra striping */
+  .hardware-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .hardware-table tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
   .hardware-table tbody tr:hover {
     background: var(--bg-secondary, #12121a);
   }
@@ -528,6 +613,60 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .usage-cell {
     color: var(--accent-primary, #ff6b35);
     font-weight: 500;
+    position: relative;
+  }
+
+  .usage-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .usage-count {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .usage-wrapper:hover .usage-count {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .player-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 100;
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    min-width: 150px;
+    max-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .usage-wrapper:hover .player-dropdown {
+    display: block;
+  }
+
+  .player-dropdown a {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    color: var(--text-primary, #fff);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: inherit;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .player-dropdown a:hover {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-primary, #ff6b35);
   }
 
   .buy-cell {
