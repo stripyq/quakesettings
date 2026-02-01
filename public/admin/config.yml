@@ -406,6 +406,7 @@ collections:
 
       # Mouse Settings
       - { label: "DPI", name: "dpi", widget: "number" }
+      - { label: "m_cpi", name: "m_cpi", widget: "number", required: false, hint: "Quake m_cpi value (mouse CPI override)" }
       - { label: "Sensitivity", name: "sensitivity", widget: "number", value_type: "float" }
       - { label: "eDPI", name: "edpi", widget: "number" }
       - { label: "cm/360", name: "cm360", widget: "number", value_type: "float", required: false }

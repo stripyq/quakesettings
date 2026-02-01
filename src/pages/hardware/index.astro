@@ -102,7 +102,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="sensor">Sensor</th>
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable num" data-sort="usage">Players</th>
-            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -116,7 +115,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-connection={mouse.data.connection?.toLowerCase() || ''}
               data-usage={mouse.usage}
             >
-              <td class="name-cell">{mouse.data.name}</td>
+              <td class="name-cell">
+                {mouse.data.affiliateLink ? (
+                  <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{mouse.data.name}</a>
+                ) : mouse.data.name}
+              </td>
               <td>{mouse.data.brand}</td>
               <td class="spec-cell">{mouse.data.weight}</td>
               <td class="spec-cell">{mouse.data.shape}</td>
@@ -133,9 +136,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     </div>
                   </div>
                 ) : '—'}
-              </td>
-              <td class="buy-cell">
-                {mouse.data.affiliateLink && <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
             </tr>
           ))}
@@ -158,7 +158,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="panel">Panel</th>
             <th class="sortable" data-sort="resolution">Resolution</th>
             <th class="sortable num" data-sort="usage">Players</th>
-            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -172,7 +171,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-resolution={monitor.data.resolution}
               data-usage={monitor.usage}
             >
-              <td class="name-cell">{monitor.data.name}</td>
+              <td class="name-cell">
+                {monitor.data.affiliateLink ? (
+                  <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{monitor.data.name}</a>
+                ) : monitor.data.name}
+              </td>
               <td>{monitor.data.brand}</td>
               <td class="spec-cell">{monitor.data.size}</td>
               <td class="spec-cell">{monitor.data.refreshRate}</td>
@@ -189,9 +192,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     </div>
                   </div>
                 ) : '—'}
-              </td>
-              <td class="buy-cell">
-                {monitor.data.affiliateLink && <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
             </tr>
           ))}
@@ -213,7 +213,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="switches">Switches</th>
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable num" data-sort="usage">Players</th>
-            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -226,7 +225,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-connection={(kb.data.connection || '').toLowerCase()}
               data-usage={kb.usage}
             >
-              <td class="name-cell">{kb.data.name}</td>
+              <td class="name-cell">
+                {kb.data.affiliateLink ? (
+                  <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{kb.data.name}</a>
+                ) : kb.data.name}
+              </td>
               <td>{kb.data.brand}</td>
               <td class="spec-cell">{kb.data.size || kb.data.format}</td>
               <td class="spec-cell">{kb.data.switches}</td>
@@ -242,9 +245,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     </div>
                   </div>
                 ) : '—'}
-              </td>
-              <td class="buy-cell">
-                {kb.data.affiliateLink && <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
             </tr>
           ))}
@@ -266,7 +266,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="speed">Speed</th>
             <th class="sortable" data-sort="dimensions">Dimensions</th>
             <th class="sortable num" data-sort="usage">Players</th>
-            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -279,7 +278,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-dimensions={(pad.data.dimensions || pad.data.size || '')}
               data-usage={pad.usage}
             >
-              <td class="name-cell">{pad.data.name}</td>
+              <td class="name-cell">
+                {pad.data.affiliateLink ? (
+                  <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{pad.data.name}</a>
+                ) : pad.data.name}
+              </td>
               <td>{pad.data.brand}</td>
               <td class="spec-cell">{pad.data.surface}</td>
               <td class="spec-cell">{pad.data.speed || pad.data.speedType}</td>
@@ -295,9 +298,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     </div>
                   </div>
                 ) : '—'}
-              </td>
-              <td class="buy-cell">
-                {pad.data.affiliateLink && <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
             </tr>
           ))}
@@ -320,7 +320,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable" data-sort="microphone">Mic</th>
             <th class="sortable num" data-sort="usage">Players</th>
-            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
@@ -334,7 +333,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-microphone={hs.data.microphone ? 'yes' : 'no'}
               data-usage={hs.usage}
             >
-              <td class="name-cell">{hs.data.name}</td>
+              <td class="name-cell">
+                {hs.data.affiliateLink ? (
+                  <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{hs.data.name}</a>
+                ) : hs.data.name}
+              </td>
               <td>{hs.data.brand}</td>
               <td class="spec-cell">{hs.data.type}</td>
               <td class="spec-cell">{hs.data.driverSize || hs.data.driver}</td>
@@ -351,9 +354,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     </div>
                   </div>
                 ) : '—'}
-              </td>
-              <td class="buy-cell">
-                {hs.data.affiliateLink && <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="buy-link">Amazon</a>}
               </td>
             </tr>
           ))}
@@ -583,6 +583,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .name-cell {
     font-weight: 500;
     white-space: nowrap;
+  }
+
+  .name-link {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .name-link:hover {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
   }
 
   .spec-cell {
