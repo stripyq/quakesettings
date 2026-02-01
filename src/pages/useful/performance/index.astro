@@ -27,7 +27,7 @@ const description = "Driver, in-game, and Windows settings for maximum performan
           <li><strong>Best for:</strong> Competitive play, maximum responsiveness</li>
           <li><strong>VRR:</strong> Off, <strong>V-Sync:</strong> Off everywhere</li>
           <li><strong>com_maxfps:</strong> 250 (or 200 for footsteps)</li>
-          <li>May have screen tearing</li>
+          <li><strong>Tearing:</strong> Accept tearing for lowest latency</li>
         </ul>
       </div>
 
@@ -36,10 +36,119 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <ul>
           <li><strong>Best for:</strong> Clean visuals without sacrificing much latency</li>
           <li><strong>VRR:</strong> On, <strong>V-Sync:</strong> On in driver (backstop), Off in-game</li>
-          <li><strong>240 Hz:</strong> Use com_maxfps 250 + external cap at 237 (or 200 without cap)</li>
-          <li><strong>360/480 Hz:</strong> Use com_maxfps 250 (well within VRR range)</li>
+          <li><strong>240 Hz:</strong> com_maxfps 250 + external cap at 237-239</li>
+          <li><strong>360/480 Hz:</strong> com_maxfps 250 (within VRR range)</li>
         </ul>
       </div>
+
+      <div class="preset-card preset-c">
+        <h3>Preset C: Simple VRR</h3>
+        <ul>
+          <li><strong>Best for:</strong> VRR users who want no external tools</li>
+          <li><strong>VRR:</strong> On, <strong>V-Sync:</strong> On in driver (backstop)</li>
+          <li><strong>com_maxfps:</strong> 200 (stable step, stays in most VRR ranges)</li>
+          <li><strong>Note:</strong> Many prefer stable engine steps (125/200/250)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recommended Presets Comparison Table -->
+    <div class="comparison-table-wrapper">
+      <h3>Quick Comparison</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Preset A<br/><small>Lowest Latency</small></th>
+            <th>Preset B<br/><small>VRR Tear-Free</small></th>
+            <th>Preset C<br/><small>Simple VRR</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VRR / G-Sync / FreeSync</td>
+            <td class="off">Off</td>
+            <td class="on">On</td>
+            <td class="on">On</td>
+          </tr>
+          <tr>
+            <td>V-Sync (driver)</td>
+            <td class="off">Off</td>
+            <td class="on">On (backstop)</td>
+            <td class="on">On (backstop)</td>
+          </tr>
+          <tr>
+            <td>V-Sync (in-game)</td>
+            <td class="off">Off</td>
+            <td class="off">Off</td>
+            <td class="off">Off</td>
+          </tr>
+          <tr>
+            <td>com_maxfps</td>
+            <td>250</td>
+            <td>250</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>External cap (240 Hz)</td>
+            <td class="na">None</td>
+            <td>237-239 (RTSS/driver)</td>
+            <td class="na">None</td>
+          </tr>
+          <tr>
+            <td>Screen tearing</td>
+            <td class="warn">Yes (accepted)</td>
+            <td class="on">No</td>
+            <td class="on">No</td>
+          </tr>
+          <tr>
+            <td>Latency</td>
+            <td class="best">Lowest</td>
+            <td>Slightly higher</td>
+            <td>Slightly higher</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 1b: com_maxfps Quantization -->
+  <section class="settings-section" id="fps-stepping">
+    <h2>Understanding com_maxfps Stepping</h2>
+    <p class="section-subtitle">Why "weird" FPS values don't work as expected in Quake engines</p>
+
+    <div class="info-box">
+      <strong>Key Point:</strong> The Quake engine uses discrete FPS steps based on frame timing. Setting <code>com_maxfps 202</code> will NOT give you 202 FPS — it may behave like the next step (often 250).
+    </div>
+
+    <p>The engine calculates frame times as <code>1000ms / FPS</code>, which means only certain "clean" values work predictably. Values between steps often snap/round to discrete effective FPS:</p>
+
+    <div class="fps-table-wrapper">
+      <table class="fps-table">
+        <thead>
+          <tr>
+            <th>Effective FPS</th>
+            <th>Frame Time</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>333</strong></td><td>3ms</td><td>Max for older configs</td></tr>
+          <tr class="highlight"><td><strong>250</strong></td><td>4ms</td><td>Standard competitive (recommended)</td></tr>
+          <tr class="highlight"><td><strong>200</strong></td><td>5ms</td><td>Stronger footstep audio</td></tr>
+          <tr><td><strong>166</strong></td><td>6ms</td><td>-</td></tr>
+          <tr><td><strong>142</strong></td><td>7ms</td><td>Common "stuck" value</td></tr>
+          <tr class="highlight"><td><strong>125</strong></td><td>8ms</td><td>Classic competitive value</td></tr>
+          <tr><td><strong>111</strong></td><td>9ms</td><td>-</td></tr>
+          <tr><td><strong>100</strong></td><td>10ms</td><td>-</td></tr>
+          <tr><td><strong>91</strong></td><td>11ms</td><td>-</td></tr>
+          <tr><td><strong>83</strong></td><td>12ms</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box">
+      <strong>Important:</strong> Setting an "in-between" value like 202, 237, or 300 in <code>com_maxfps</code> will NOT limit your FPS to that exact number. The engine may round up to the next step. For precise limiting below your monitor's refresh rate, use an external limiter (RTSS or driver cap).
     </div>
   </section>
 
@@ -331,36 +440,51 @@ vid_restart</code></pre>
     <h2>VRR &amp; Frame Rate Guide</h2>
     <p class="section-subtitle">How to stay within VRR range with Quake Live's limited fps values</p>
 
+    <div class="info-box">
+      <strong>Two Approaches:</strong><br/>
+      <strong>VRR ON (tear-free):</strong> Stay below your monitor's VRR ceiling with an external cap (237-239 for 240 Hz) or use a stable engine step like 200.<br/>
+      <strong>VRR OFF (lowest latency):</strong> Many competitive players disable VRR entirely, use <code>com_maxfps 250</code>, and accept tearing for minimum latency.
+    </div>
+
     <div class="hz-cards">
       <div class="hz-card">
-        <h3>144 Hz VRR</h3>
+        <h3>144 Hz</h3>
         <ul>
-          <li>Use <code>com_maxfps 125</code> to stay in VRR range</li>
-          <li>Or use <code>com_maxfps 250</code> + external limiter (RTSS/driver) at 141</li>
+          <li><strong>VRR ON:</strong> <code>com_maxfps 125</code> (stays in range)</li>
+          <li><strong>VRR ON + cap:</strong> <code>com_maxfps 250</code> + external cap at 141</li>
+          <li><strong>VRR OFF:</strong> <code>com_maxfps 250</code> (accept tearing)</li>
         </ul>
       </div>
 
       <div class="hz-card featured">
-        <h3>240 Hz VRR</h3>
+        <h3>240 Hz</h3>
         <span class="badge">Most Common</span>
         <ul>
-          <li><strong>Standard:</strong> <code>com_maxfps 250</code> + external limiter (RTSS/driver) at 237-239</li>
-          <li><strong>Alternative:</strong> <code>com_maxfps 200</code> (no limiter needed, stays in VRR range)</li>
-          <li>External limiter adds ~1ms latency</li>
+          <li><strong>VRR ON + cap:</strong> <code>com_maxfps 250</code> + external cap at 237-239</li>
+          <li><strong>VRR ON (simple):</strong> <code>com_maxfps 200</code> (no cap needed)</li>
+          <li><strong>VRR OFF:</strong> <code>com_maxfps 250</code> (accept tearing, lowest latency)</li>
         </ul>
       </div>
 
       <div class="hz-card">
         <h3>360 / 480 Hz</h3>
         <ul>
-          <li>Use <code>com_maxfps 250</code> (standard)</li>
-          <li>Or <code>200</code> if you prefer stronger footstep audio</li>
-          <li>250 FPS is well within VRR range - no external limiter needed</li>
+          <li><strong>VRR ON:</strong> <code>com_maxfps 250</code> (within VRR range)</li>
+          <li><strong>VRR OFF:</strong> <code>com_maxfps 250</code> (accept tearing)</li>
+          <li>No external limiter needed at these refresh rates</li>
         </ul>
       </div>
     </div>
 
-    <p class="setting-note">External limiters like RTSS (RivaTuner Statistics Server) or NVIDIA/AMD driver frame caps allow precise frame limiting but add approximately 1ms of latency.</p>
+    <div class="limiter-note">
+      <h4>About External Limiters</h4>
+      <p>External limiters (RTSS, NVIDIA Max Frame Rate, AMD FRTC) allow precise frame rate control that the engine cannot provide. They <em>may</em> add a small latency penalty depending on implementation, though modern driver-level limiters (NVIDIA's built-in cap) are generally well-optimized. Test what works best for you.</p>
+      <ul>
+        <li><strong>RTSS (RivaTuner):</strong> Most precise, may add slight latency</li>
+        <li><strong>NVIDIA Max Frame Rate:</strong> Driver-level, well-integrated</li>
+        <li><strong>AMD FRTC:</strong> Driver-level, may have slight overhead</li>
+      </ul>
+    </div>
   </section>
 
   <div class="back-link">
@@ -431,19 +555,143 @@ function copyCode(btn) {
     border-color: #2ecc71;
   }
 
+  .preset-card.preset-c {
+    border-color: #3498db;
+  }
+
   .preset-card h3 {
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
 
   .preset-a h3::before {
-    content: "Target ";
+    content: "🎯 ";
     color: #e74c3c;
   }
 
   .preset-b h3::before {
-    content: "Monitor ";
+    content: "🖥️ ";
     color: #2ecc71;
+  }
+
+  .preset-c h3::before {
+    content: "⚡ ";
+    color: #3498db;
+  }
+
+  /* Comparison Table */
+  .comparison-table-wrapper {
+    margin-top: 2rem;
+    overflow-x: auto;
+  }
+
+  .comparison-table-wrapper h3 {
+    color: var(--accent-primary, #ff6b35);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: center;
+  }
+
+  .comparison-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+  }
+
+  .comparison-table th small {
+    display: block;
+    font-weight: 400;
+    color: var(--text-secondary, #888);
+    font-size: 0.75rem;
+  }
+
+  .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .comparison-table .on { color: #2ecc71; }
+  .comparison-table .off { color: #e74c3c; }
+  .comparison-table .na { color: var(--text-secondary, #888); }
+  .comparison-table .warn { color: #f39c12; }
+  .comparison-table .best { color: #2ecc71; font-weight: 600; }
+
+  /* FPS Stepping Table */
+  .fps-table-wrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .fps-table {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .fps-table th,
+  .fps-table td {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: center;
+  }
+
+  .fps-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .fps-table tr.highlight {
+    background: rgba(78, 205, 196, 0.1);
+  }
+
+  .fps-table tr.highlight td {
+    border-color: rgba(78, 205, 196, 0.3);
+  }
+
+  /* Limiter Note */
+  .limiter-note {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .limiter-note h4 {
+    color: var(--accent-secondary, #4ecdc4);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .limiter-note p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #ccc);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .limiter-note ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .limiter-note li {
+    padding: 0.35rem 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
   }
 
   .preset-card ul {
