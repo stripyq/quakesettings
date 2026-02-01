@@ -177,8 +177,8 @@ collections:
 
       # Game Settings
       - { label: "FOV", name: "fov", widget: "number", min: 90, max: 130 }
-      - { label: "Crosshair", name: "crosshair", widget: "string" }
-      - { label: "Crosshair Size", name: "crosshairSize", widget: "select", options: ["Small", "Medium", "Large"], required: false }
+      - { label: "Crosshair", name: "crosshair", widget: "number", required: false, hint: "Crosshair type (1-31)" }
+      - { label: "Crosshair Size", name: "crosshairSize", widget: "number", required: false, hint: "cg_crosshairSize value" }
       - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false }
 
       # Key Bindings
