@@ -1,9 +1,10 @@
 name: "Razer Viper V3 Pro SE"
 brand: "Razer"
+dimensions: "127.1 x 63.9 x 39.9mm"
 weight: "54g"
 shape: "Ambidextrous"
 sensor: "Razer Focus Pro Gen-2"
 dpiRange: "100-35000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

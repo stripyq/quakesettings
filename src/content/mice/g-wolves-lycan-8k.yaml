@@ -1,9 +1,10 @@
 name: "G-Wolves LYCAN 8K"
 brand: "G-Wolves"
+dimensions: "119.4 x 63.2 x 36.7mm"
 weight: "28.7g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

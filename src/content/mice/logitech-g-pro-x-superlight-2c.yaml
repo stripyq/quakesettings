@@ -1,9 +1,10 @@
 name: "Logitech G Pro X Superlight 2c"
 brand: "Logitech"
+dimensions: "118.4 x 61.2 x 38.6mm"
 weight: "51g"
 shape: "Ambidextrous"
 sensor: "Logitech HERO 2"
 dpiRange: "100-44000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

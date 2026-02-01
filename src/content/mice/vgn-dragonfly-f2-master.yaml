@@ -1,9 +1,10 @@
 name: "VGN Dragonfly F2 Master+"
 brand: "VGN"
+dimensions: "122.4 x 65.1 x 38.3mm"
 weight: "50g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

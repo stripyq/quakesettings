@@ -1,9 +1,10 @@
 name: "RAWM Leviathan V4"
 brand: "RAWM"
+dimensions: "126.7 x 63.9 x 40mm"
 weight: "55g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-45000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

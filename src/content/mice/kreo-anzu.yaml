@@ -1,9 +1,10 @@
 name: "Kreo Anzu"
 brand: "Kreo"
+dimensions: "122.2 x 63.9 x 39.1mm"
 weight: "52g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3311"
 dpiRange: "100-12000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

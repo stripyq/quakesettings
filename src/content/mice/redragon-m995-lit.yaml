@@ -1,9 +1,10 @@
 name: "Redragon M995 LIT"
 brand: "Redragon"
+dimensions: "126 x 63.8 x 39.9mm"
 weight: "59g"
 shape: "Ambidextrous"
 sensor: "SG 8925"
 dpiRange: "100-10000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

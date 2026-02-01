@@ -1,9 +1,10 @@
 name: "Redragon M618 Wired"
 brand: "Redragon"
+dimensions: "121.9 x 69.1 x 39.9mm"
 weight: "84g"
 shape: "Ambidextrous"
 sensor: "SG 8925"
 dpiRange: "100-10000"
 pollingRate: "1000Hz"
 connection: "Wired"
-buttons: 5
+buttons: "5"

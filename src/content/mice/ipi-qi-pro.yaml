@@ -1,9 +1,10 @@
 name: "IPI Qi Pro"
 brand: "IPI"
+dimensions: "124 x 65.5 x 38mm"
 weight: "50g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

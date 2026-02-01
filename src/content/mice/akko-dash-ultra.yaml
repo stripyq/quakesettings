@@ -1,9 +1,10 @@
 name: "Akko Dash Ultra"
 brand: "Akko"
+dimensions: "117.6 x 60.9 x 37mm"
 weight: "40g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

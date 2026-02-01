@@ -1,9 +1,10 @@
 name: "Pulsar X3 LHD CrazyLight Mini"
 brand: "Pulsar"
+dimensions: "119.8 x 66.6 x 41.4mm"
 weight: "43g"
 shape: "Ergonomic"
 sensor: "Pulsar XS-1"
 dpiRange: "100-32000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

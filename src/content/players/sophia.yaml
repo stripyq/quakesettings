@@ -6,7 +6,6 @@ country: OTHER
 team: ''
 category: ctf
 lastUpdated: 2025-01
-duelRating: null
 duelRatingUpdated: ''
 tdmRating: 15.6
 tdmRatingUpdated: 2026-01-31
@@ -20,7 +19,6 @@ sensitivity: 2.25
 edpi: 1800
 cm360: 23
 acceleration: false
-accelValue: null
 rawInput: true
 fov: 100
 crosshair: '2'

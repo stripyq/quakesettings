@@ -1,9 +1,10 @@
 name: "Redragon M725"
 brand: "Redragon"
+dimensions: "120.8 x 64.3 x 37.9mm"
 weight: "49g"
 shape: "Ambidextrous"
 sensor: "SG 8925"
 dpiRange: "100-10000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

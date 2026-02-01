@@ -1,9 +1,10 @@
 name: "Flickshot One Pro Small Fingertip"
 brand: "Flickshot"
+dimensions: "85.3 x 57 x 36.3mm"
 weight: "26g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

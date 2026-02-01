@@ -1,9 +1,10 @@
 name: "Akko Nest"
 brand: "Akko"
+dimensions: "116 x 64 x 40mm"
 weight: "49g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

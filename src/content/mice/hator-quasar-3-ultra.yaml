@@ -1,9 +1,10 @@
 name: "Hator Quasar 3 Ultra"
 brand: "Hator"
+dimensions: "125 x 64 x 40mm"
 weight: "65g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

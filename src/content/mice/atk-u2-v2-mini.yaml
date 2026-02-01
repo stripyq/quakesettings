@@ -1,9 +1,10 @@
 name: "ATK U2 V2 Mini"
 brand: "ATK"
+dimensions: "119.5 x 63 x 38.5mm"
 weight: "39g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

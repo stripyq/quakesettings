@@ -1,9 +1,10 @@
 name: "Orbital Pathfinder PPM-000"
 brand: "Orbital"
+dimensions: "118 x 59.8 x 38mm"
 weight: "53.8g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

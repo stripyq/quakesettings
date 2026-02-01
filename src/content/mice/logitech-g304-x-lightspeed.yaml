@@ -1,9 +1,10 @@
 name: "Logitech G304 X Lightspeed"
 brand: "Logitech"
+dimensions: "116.6 x 62.2 x 38.2mm"
 weight: "57g"
 shape: "Ambidextrous"
 sensor: "Logitech HERO 25K"
 dpiRange: "100-25600"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

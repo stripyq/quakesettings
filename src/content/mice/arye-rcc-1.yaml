@@ -1,9 +1,10 @@
 name: "ARYE RCC-1"
 brand: "ARYE"
+dimensions: "117.6 x 61.6 x 32.2mm"
 weight: "46g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

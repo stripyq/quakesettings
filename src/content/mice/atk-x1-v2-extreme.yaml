@@ -1,9 +1,10 @@
 name: "ATK X1 V2 Extreme"
 brand: "ATK"
+dimensions: "127 x 64 x 40mm"
 weight: "54g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

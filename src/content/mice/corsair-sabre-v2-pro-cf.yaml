@@ -1,9 +1,10 @@
 name: "Corsair Sabre v2 Pro CF"
 brand: "Corsair"
+dimensions: "122.9 x 64.1 x 38.8mm"
 weight: "55g"
 shape: "Ambidextrous"
 sensor: "Corsair MARKSMAN S"
 dpiRange: "100-33000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

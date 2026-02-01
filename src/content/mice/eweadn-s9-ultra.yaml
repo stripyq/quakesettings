@@ -1,9 +1,10 @@
 name: "EWEADN S9+ Ultra"
 brand: "EWEADN"
+dimensions: "127 x 64.8 x 40.5mm"
 weight: "56g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

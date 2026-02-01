@@ -1,9 +1,10 @@
 name: "Flickshot Wavo Pro"
 brand: "Flickshot"
+dimensions: "124 x 67 x 40mm"
 weight: "36g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

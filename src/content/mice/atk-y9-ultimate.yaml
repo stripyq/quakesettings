@@ -1,9 +1,10 @@
 name: "ATK Y9 Ultimate"
 brand: "ATK"
+dimensions: "125.6 x 67.5 x 43.3mm"
 weight: "55g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

@@ -1,9 +1,10 @@
 name: "Kreo Ikarus"
 brand: "Kreo"
+dimensions: "121 x 63.4 x 37.6mm"
 weight: "55g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395"
 dpiRange: "100-26000"
 pollingRate: "4000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

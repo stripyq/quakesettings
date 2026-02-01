@@ -1,9 +1,10 @@
 name: "Finalmouse ULX Frostlord Classic"
 brand: "Finalmouse"
+dimensions: "126 x 65 x 38.4mm"
 weight: "38g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395"
 dpiRange: "100-6400"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

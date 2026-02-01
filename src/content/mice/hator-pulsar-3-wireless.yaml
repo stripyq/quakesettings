@@ -1,9 +1,10 @@
 name: "Hator Pulsar 3 Wireless"
 brand: "Hator"
+dimensions: "123 x 68 x 38mm"
 weight: "71g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3311"
 dpiRange: "100-12000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

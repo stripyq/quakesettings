@@ -1,9 +1,10 @@
 name: "MCHOSE A7 V2 Ultra"
 brand: "MCHOSE"
+dimensions: "125.8 x 63.2 x 39.8mm"
 weight: "59g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ti"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

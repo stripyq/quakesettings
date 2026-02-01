@@ -1,9 +1,10 @@
 name: "Dream Machines DM9 Skill Wireless"
 brand: "Dream Machines"
+dimensions: "129 x 66 x 39mm"
 weight: "58g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395"
 dpiRange: "100-26000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

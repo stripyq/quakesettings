@@ -1,9 +1,10 @@
 name: "Logitech MX Master 4"
 brand: "Logitech"
+dimensions: "128.2 x 88.4 x 50.8mm"
 weight: "150g"
 shape: "Ergonomic"
 sensor: "Logitech Darkfield"
 dpiRange: "100-8000"
 pollingRate: "125Hz"
 connection: "Wireless"
-buttons: 7
+buttons: "7"

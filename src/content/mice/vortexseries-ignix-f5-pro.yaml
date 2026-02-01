@@ -1,9 +1,10 @@
 name: "VortexSeries IGNIX F5 Pro"
 brand: "VortexSeries"
+dimensions: "121 x 65 x 38mm"
 weight: "49g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395 Pro"
 dpiRange: "100-40000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"
