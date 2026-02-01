@@ -159,7 +159,7 @@ const playersCollection = defineCollection({
     cm360: z.number().optional(),
     m_cpi: z.number().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
     acceleration: z.boolean().optional().default(false),
-    accelValue: z.number().optional(),
+    accelValue: z.number().nullable().optional(),
     rawInput: z.boolean().optional().default(true),
 
     // Game Settings
