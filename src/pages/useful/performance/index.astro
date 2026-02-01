@@ -36,8 +36,10 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <ul>
           <li><strong>Best for:</strong> Clean visuals without sacrificing much latency</li>
           <li><strong>VRR:</strong> On, <strong>V-Sync:</strong> On in driver (backstop), Off in-game</li>
-          <li><strong>240 Hz:</strong> com_maxfps 250 + external cap at 237-239</li>
-          <li><strong>360/480 Hz:</strong> com_maxfps 250 (within VRR range)</li>
+          <li><strong>240 Hz (VRR):</strong> Option 1 (simple): <code>com_maxfps 200</code> (stays within VRR range)</li>
+          <li><strong>240 Hz (VRR):</strong> Option 2: <code>com_maxfps 250</code> + external cap 237–239</li>
+          <li><strong>360/480 Hz:</strong> <code>com_maxfps 250</code> (within VRR range)</li>
+          <li><strong>VRR OFF?</strong> Ignore 237–239 caps — just use stable in-game cap (250)</li>
         </ul>
       </div>
 
@@ -213,7 +215,8 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <table class="settings-table">
           <tr><td>FreeSync</td><td>Off</td></tr>
           <tr><td>Wait for Vertical Refresh (V-Sync)</td><td>Always Off</td></tr>
-          <tr><td>Radeon Anti-Lag / Anti-Lag+</td><td>On (if supported for OpenGL)</td></tr>
+          <tr><td>Radeon Anti-Lag</td><td>Optional (may not engage on OpenGL)</td></tr>
+          <tr><td>Radeon Anti-Lag+</td><td>Only if driver shows supported; disable if stutter</td></tr>
           <tr><td>Enhanced Sync</td><td>Off</td></tr>
           <tr><td>Frame Rate Target Control</td><td>Off (use in-game cap)</td></tr>
           <tr><td>Texture Filtering Quality</td><td>Performance</td></tr>
@@ -228,7 +231,8 @@ const description = "Driver, in-game, and Windows settings for maximum performan
         <table class="settings-table">
           <tr><td>FreeSync</td><td>On</td></tr>
           <tr><td>Wait for Vertical Refresh (V-Sync)</td><td>Always On (driver backstop)</td></tr>
-          <tr><td>Radeon Anti-Lag / Anti-Lag+</td><td>On (if supported for OpenGL)</td></tr>
+          <tr><td>Radeon Anti-Lag</td><td>Optional (may not engage on OpenGL)</td></tr>
+          <tr><td>Radeon Anti-Lag+</td><td>Only if driver shows supported; disable if stutter</td></tr>
           <tr><td>Enhanced Sync</td><td>Off</td></tr>
           <tr><td>Frame Rate Target Control</td><td>Off (or 237 for 240 Hz)</td></tr>
           <tr><td>Texture Filtering Quality</td><td>Performance</td></tr>
@@ -274,8 +278,26 @@ const description = "Driver, in-game, and Windows settings for maximum performan
     <h2>Quake Live Console Commands</h2>
 
     <div class="info-box">
-      <strong>Important:</strong> Quake Live only accepts specific com_maxfps values: <code>125</code>, <code>200</code>, <code>250</code>, or <code>333</code>. Arbitrary values like 237 do NOT work in-game.
+      <strong>Important:</strong> In Quake Live, setting an arbitrary <code>com_maxfps</code> value does not reliably produce that exact FPS. The engine tends to run at common frame-time steps, so "in-between" values can snap/round to a different effective FPS.<br/><br/>
+      Example: setting <code>com_maxfps 202</code> will not give you 202 FPS — it may behave like the next step (often 250).<br/><br/>
+      <strong>Practical rule:</strong><br/>
+      • For competitive play, use a stable in-game cap like <code>250</code> (or <code>200</code> for stronger footstep audio).<br/>
+      • If you specifically want a cap like 237–239 (typical for 240 Hz VRR), you must use an external limiter (RTSS/driver cap).
     </div>
+
+    <h3>Quick reference: common effective FPS steps (Quake engines)</h3>
+    <table class="quick-fps-table">
+      <thead>
+        <tr><th>You want</th><th>Use</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>250</td><td><code>com_maxfps 250</code></td><td>Common high-FPS step; simplest for competitive play</td></tr>
+        <tr><td>200</td><td><code>com_maxfps 200</code></td><td>Often used for clearer/stronger footstep audio</td></tr>
+        <tr class="avoid"><td>166 / 142</td><td>(avoid)</td><td>Frequently shows up when a user tries "144" or has a hidden cap; many players report worse feel/warping</td></tr>
+        <tr><td>125</td><td><code>com_maxfps 125</code></td><td>Useful for 144 Hz VRR (stays inside VRR range)</td></tr>
+        <tr><td>111 / 100</td><td><code>com_maxfps 111</code> / <code>100</code></td><td>Lower steps; rarely a first choice on 240 Hz+</td></tr>
+      </tbody>
+    </table>
 
     <div class="code-block">
       <div class="code-header">
@@ -288,7 +310,7 @@ r_fullscreen 1          // exclusive fullscreen (important!)
 com_maxfps 250          // standard (use 200 for stronger footstep audio)
 r_swapInterval 0        // in-game V-Sync off (always)
 com_idleSleep 0         // prevent CPU idle
-r_displayRefresh 0      // auto-detect (or set manually: 144/240/360/480)
+r_displayRefresh 0      // auto; if stuck at 60Hz in fullscreen, set to your panel Hz (144/240/360/480) then `vid_restart`
 
 // Apply changes
 vid_restart
@@ -357,9 +379,16 @@ r_postprocess 0</code></pre>
   <!-- SECTION 7: Troubleshooting 142 FPS -->
   <section class="settings-section collapsible" id="troubleshooting">
     <h2>🔧 Troubleshooting: Stuck at 142 FPS?</h2>
-    <p class="section-subtitle">Common issue when game thinks it's running at lower refresh rate</p>
+    <p class="section-subtitle">142 FPS is a common Quake-engine FPS step. If you're stuck around 142 (or 166), it usually means you're being capped somewhere (or your chosen FPS value snapped to an engine step) — not that your monitor is "142 Hz".</p>
 
-    <ol class="troubleshoot-list">
+    <ol class="troubleshoot-list" start="0">
+      <li>
+        <strong>Sanity check: use a stable in-game cap</strong>
+        <ul>
+          <li>Set <code>com_maxfps 250</code> (or <code>200</code>) and run <code>vid_restart</code></li>
+          <li>Avoid "in-between" values like 144/202 — they can snap to 166/142/250</li>
+        </ul>
+      </li>
       <li>
         <strong>Windows Refresh Rate</strong>
         <ul>
@@ -458,7 +487,7 @@ vid_restart</code></pre>
 
       <div class="hz-card featured">
         <h3>240 Hz</h3>
-        <span class="badge">Most Common</span>
+        <span class="badge">Common VRR approach</span>
         <ul>
           <li><strong>VRR ON + cap:</strong> <code>com_maxfps 250</code> + external cap at 237-239</li>
           <li><strong>VRR ON (simple):</strong> <code>com_maxfps 200</code> (no cap needed)</li>
@@ -478,11 +507,11 @@ vid_restart</code></pre>
 
     <div class="limiter-note">
       <h4>About External Limiters</h4>
-      <p>External limiters (RTSS, NVIDIA Max Frame Rate, AMD FRTC) allow precise frame rate control that the engine cannot provide. They <em>may</em> add a small latency penalty depending on implementation, though modern driver-level limiters (NVIDIA's built-in cap) are generally well-optimized. Test what works best for you.</p>
+      <p>External limiters (RTSS / driver frame caps) can add a small latency penalty compared to an in-game cap. Use them when you specifically need a precise cap (e.g., 237–239 for 240 Hz VRR). If you're chasing absolute lowest latency, stick to in-game <code>com_maxfps</code> and keep VRR/V-Sync off.</p>
       <ul>
-        <li><strong>RTSS (RivaTuner):</strong> Most precise, may add slight latency</li>
+        <li><strong>RTSS (RivaTuner):</strong> Most precise control</li>
         <li><strong>NVIDIA Max Frame Rate:</strong> Driver-level, well-integrated</li>
-        <li><strong>AMD FRTC:</strong> Driver-level, may have slight overhead</li>
+        <li><strong>AMD FRTC:</strong> Driver-level alternative</li>
       </ul>
     </div>
   </section>
@@ -626,6 +655,41 @@ function copyCode(btn) {
   .comparison-table .na { color: var(--text-secondary, #888); }
   .comparison-table .warn { color: #f39c12; }
   .comparison-table .best { color: #2ecc71; font-weight: 600; }
+
+  /* Quick FPS Table (Console Commands section) */
+  .quick-fps-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .quick-fps-table th,
+  .quick-fps-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
+  }
+
+  .quick-fps-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .quick-fps-table th:first-child,
+  .quick-fps-table td:first-child {
+    text-align: right;
+    width: 80px;
+  }
+
+  .quick-fps-table tr.avoid {
+    background: rgba(231, 76, 60, 0.1);
+  }
+
+  .quick-fps-table tr.avoid td {
+    color: #e74c3c;
+  }
 
   /* FPS Stepping Table */
   .fps-table-wrapper {
