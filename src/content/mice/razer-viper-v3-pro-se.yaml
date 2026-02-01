@@ -7,4 +7,4 @@ sensor: "Razer Focus Pro Gen-2"
 dpiRange: "100-35000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: "5"
+buttons: 5

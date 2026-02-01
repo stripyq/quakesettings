@@ -7,4 +7,4 @@ sensor: "Logitech Darkfield"
 dpiRange: "100-8000"
 pollingRate: "125Hz"
 connection: "Wireless"
-buttons: "7"
+buttons: 7

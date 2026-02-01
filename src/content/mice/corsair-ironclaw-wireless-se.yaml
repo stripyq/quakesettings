@@ -7,4 +7,4 @@ sensor: "Corsair MARKSMAN 26K"
 dpiRange: "100-26000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: "6"
+buttons: 6

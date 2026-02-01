@@ -7,4 +7,4 @@ sensor: "PixArt PAW3399"
 dpiRange: "100-20000"
 pollingRate: "8000Hz"
 connection: "Wired"
-buttons: "3"
+buttons: 3

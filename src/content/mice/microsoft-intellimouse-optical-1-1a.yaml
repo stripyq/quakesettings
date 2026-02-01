@@ -7,4 +7,4 @@ sensor: "Microsoft Optical"
 dpiRange: "100-400"
 pollingRate: "125Hz"
 connection: "Wired"
-buttons: "4"
+buttons: 4
