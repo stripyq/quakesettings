@@ -42,25 +42,27 @@ const currentPath = Astro.url.pathname;
     </div>
   </footer>
   <script>
-    if (window.netlifyIdentity) {
-      // Check for authentication tokens in URL hash
-      const hash = window.location.hash;
-      const hasAuthToken = hash.includes('invite_token') ||
-                           hash.includes('recovery_token') ||
-                           hash.includes('confirmation_token');
+    // Detect auth tokens in URL hash
+    const hash = window.location.hash;
+    const hasAuthToken = hash.includes('invite_token') ||
+                         hash.includes('recovery_token') ||
+                         hash.includes('confirmation_token');
 
-      window.netlifyIdentity.on("init", user => {
-        // If there's an auth token in the URL, open the identity widget
-        if (hasAuthToken) {
+    // If auth token present, open identity widget immediately when ready
+    if (hasAuthToken && window.netlifyIdentity) {
+      window.netlifyIdentity.open();
+    }
+
+    // Also handle after widget initializes (in case it loads late)
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (hasAuthToken && !user) {
           window.netlifyIdentity.open();
         }
+      });
 
-        // Handle login redirect to admin
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
+      window.netlifyIdentity.on('login', () => {
+        document.location.href = '/admin/';
       });
     }
   </script>
