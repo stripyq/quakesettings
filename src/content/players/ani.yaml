@@ -20,7 +20,6 @@ sensitivity: 1.5
 edpi: 1200
 cm360: 34.63
 acceleration: false
-accelValue: null
 rawInput: true
 fov: 100
 crosshair: 1, 13, 7, 6
