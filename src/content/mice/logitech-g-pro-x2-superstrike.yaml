@@ -7,4 +7,4 @@ sensor: "Logitech HERO 2"
 dpiRange: "100-44000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: "5"
+buttons: 5

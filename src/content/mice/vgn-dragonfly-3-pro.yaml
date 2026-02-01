@@ -7,4 +7,4 @@ sensor: "PixArt PAW3395"
 dpiRange: "100-36000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: "5"
+buttons: 5

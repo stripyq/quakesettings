@@ -7,4 +7,4 @@ sensor: "Glorious BAMF 3.0"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wired"
-buttons: "5"
+buttons: 5

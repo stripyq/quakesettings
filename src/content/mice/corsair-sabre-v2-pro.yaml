@@ -7,4 +7,4 @@ sensor: "Corsair MARKSMAN S"
 dpiRange: "100-33000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: "5"
+buttons: 5
