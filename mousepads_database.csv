@@ -1,0 +1,254 @@
+name,brand,model,speed,texture,firmness,width_mm,length_mm,thickness_mm,surface_material,base_material
+EspTiger Pioneer Talismans Ya Cheng V2,EspTiger,Pioneer Talismans Ya Cheng V2,Balanced,Textured,Very soft,480,400,4,Cloth,Polyurethane
+EspTiger Talismans Ya Cheng V2,EspTiger,Talismans Ya Cheng V2,Balanced,Textured,Very soft,480,400,4,Cloth,Polyurethane
+EspTiger Pioneer Tang Dao,EspTiger,Pioneer Tang Dao,Control,Rough,Very soft,480,400,4,Hybrid,Polyurethane
+EspTiger Tang Dao Chi Yu Gem,EspTiger,Tang Dao Chi Yu Gem,Control,Rough,Soft,480,400,4,Hybrid,Polyurethane
+EspTiger Tang Dao X,EspTiger,Tang Dao X,Control,Rough,Soft,480,400,4,Hybrid,Polyurethane
+EspTiger Tang Dao SR,EspTiger,Tang Dao SR,Control,Rough,Soft,480,400,4,Hybrid,SCR
+EspTiger Tang Dao,EspTiger,Tang Dao,Control,Rough,Soft,480,400,4,Hybrid,SlimFlex
+ATK Duckbill,ATK,Duckbill,Balanced,Smooth,Very soft,490,420,4,Lycra,Polyurethane
+ATK Sunny Rain,ATK,Sunny Rain,Balanced,Smooth,Very soft,490,420,4,Lycra,Polyurethane
+ATK Blaze Air,ATK,Blaze Air,Control,Textured,Very soft,490,420,5,Hybrid,Rubber
+ATK Blaze,ATK,Blaze,Control,Textured,Very soft,490,420,4,Hybrid,Polyurethane
+ATK X83,ATK,X83,Balanced,Textured,Soft,490,420,4,Hybrid,Polyurethane
+ATK 99G Pro,ATK,99G Pro,Slow,Smooth,Very soft,490,420,4,Hybrid,Polyurethane
+ATK 99G Air,ATK,99G Air,Slow,Smooth,Very soft,490,420,4.5,Hybrid,Rubber
+ATK Sky Large,ATK,Sky Large,Balanced,Textured,Very soft,490,420,4,Hybrid,Polyurethane
+ATK Sky Small,ATK,Sky Small,Balanced,Textured,Very soft,360,300,4,Hybrid,Polyurethane
+Kibu Ooka,Kibu,Ooka,Very fast,Smooth,Hard,490,420,3,Glass,Silicone
+Hystar Aether XL,Hystar,Aether XL,Fast,Smooth,Hard,490,420,4,Glass,Silicone
+Hystar Aether Large,Hystar,Aether Large,Fast,Smooth,Hard,420,320,4,Glass,Silicone
+Hystar Classic 3XL,Hystar,Classic 3XL,Quick,Textured,Firm,1140,500,5,Polyester,Rubber
+Hystar Classic XXL,Hystar,Classic XXL,Quick,Textured,Firm,900,400,5,Polyester,Rubber
+Artisan FX Key-83 Mid XXL,Artisan,FX Key-83 Mid XXL,Balanced,Textured,Firm,500,490,3,Polyester,Poron
+Artisan FX Key-83 Mid XL,Artisan,FX Key-83 Mid XL,Balanced,Textured,Firm,490,420,3,Polyester,Poron
+Artisan FX Key-83 Mid Large,Artisan,FX Key-83 Mid Large,Balanced,Textured,Firm,420,330,3,Polyester,Poron
+Artisan FX Key-83 Soft XXL,Artisan,FX Key-83 Soft XXL,Balanced,Textured,Soft,500,490,4,Polyester,Poron
+Artisan FX Key-83 Soft XL,Artisan,FX Key-83 Soft XL,Balanced,Textured,Soft,490,420,4,Polyester,Poron
+Artisan FX Key-83 Soft Large,Artisan,FX Key-83 Soft Large,Balanced,Textured,Soft,420,330,4,Polyester,Poron
+Artisan FX Key-83 XSoft XXL,Artisan,FX Key-83 XSoft XXL,Balanced,Textured,Very soft,500,490,4,Polyester,Poron
+Artisan FX Key-83 XSoft XL,Artisan,FX Key-83 XSoft XL,Balanced,Textured,Very soft,490,420,4,Polyester,Poron
+Artisan FX Key-83 XSoft Large,Artisan,FX Key-83 XSoft Large,Balanced,Textured,Very soft,420,330,4,Polyester,Poron
+Artisan FX Type-99 Mid XXL,Artisan,FX Type-99 Mid XXL,Slow,Smooth,Firm,500,490,3,Polyester,Poron
+Artisan FX Type-99 Mid XL,Artisan,FX Type-99 Mid XL,Slow,Smooth,Firm,490,420,3,Polyester,Poron
+Artisan FX Type-99 Mid Large,Artisan,FX Type-99 Mid Large,Slow,Smooth,Firm,420,330,3,Polyester,Poron
+Artisan FX Type-99 Soft XXL,Artisan,FX Type-99 Soft XXL,Slow,Smooth,Soft,500,490,4,Polyester,Poron
+Artisan FX Type-99 Soft XL,Artisan,FX Type-99 Soft XL,Slow,Smooth,Soft,490,420,4,Polyester,Poron
+Artisan FX Type-99 Soft Large,Artisan,FX Type-99 Soft Large,Slow,Smooth,Soft,420,330,4,Polyester,Poron
+Artisan FX Type-99 XSoft XXL,Artisan,FX Type-99 XSoft XXL,Slow,Smooth,Very soft,500,490,4,Polyester,Poron
+Artisan FX Type-99 XSoft XL,Artisan,FX Type-99 XSoft XL,Slow,Smooth,Very soft,490,420,4,Polyester,Poron
+Artisan FX Type-99 XSoft Large,Artisan,FX Type-99 XSoft Large,Slow,Smooth,Very soft,420,330,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Mid XXL,Artisan,FX Hayate-Otsu V2 Mid XXL,Quick,Textured,Firm,500,490,3,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Mid XL,Artisan,FX Hayate-Otsu V2 Mid XL,Quick,Textured,Firm,490,420,3,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Mid Large,Artisan,FX Hayate-Otsu V2 Mid Large,Quick,Textured,Firm,420,330,3,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Soft XXL,Artisan,FX Hayate-Otsu V2 Soft XXL,Quick,Textured,Soft,500,490,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Soft XL,Artisan,FX Hayate-Otsu V2 Soft XL,Quick,Textured,Soft,490,420,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 Soft Large,Artisan,FX Hayate-Otsu V2 Soft Large,Quick,Textured,Soft,420,330,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 XSoft XXL,Artisan,FX Hayate-Otsu V2 XSoft XXL,Quick,Textured,Very soft,500,490,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 XSoft XL,Artisan,FX Hayate-Otsu V2 XSoft XL,Quick,Textured,Very soft,490,420,4,Polyester,Poron
+Artisan FX Hayate-Otsu V2 XSoft Large,Artisan,FX Hayate-Otsu V2 XSoft Large,Quick,Textured,Very soft,420,330,4,Polyester,Poron
+Artisan FX Hien Mid XL,Artisan,FX Hien Mid XL,Fast,Rough,Firm,490,420,3,Polyester,Poron
+Artisan FX Hien Mid XXL,Artisan,FX Hien Mid XXL,Fast,Rough,Firm,500,490,3,Polyester,Poron
+Artisan FX Hien Mid Large,Artisan,FX Hien Mid Large,Fast,Rough,Firm,420,330,3,Polyester,Poron
+Artisan FX Hien Mid Medium,Artisan,FX Hien Mid Medium,Fast,Rough,Firm,310,240,3,Polyester,Poron
+Artisan FX Hien Mid Small,Artisan,FX Hien Mid Small,Fast,Rough,Firm,240,210,3,Polyester,Poron
+Artisan FX Hien Soft XXL,Artisan,FX Hien Soft XXL,Fast,Rough,Soft,500,490,4,Polyester,Poron
+Artisan FX Hien Soft XL,Artisan,FX Hien Soft XL,Fast,Rough,Soft,490,420,4,Polyester,Poron
+Artisan FX Hien Soft Large,Artisan,FX Hien Soft Large,Fast,Rough,Soft,420,330,4,Polyester,Poron
+Artisan FX Hien Soft Medium,Artisan,FX Hien Soft Medium,Fast,Rough,Soft,310,240,4,Polyester,Poron
+Artisan FX Hien Soft Small,Artisan,FX Hien Soft Small,Fast,Rough,Soft,240,210,4,Polyester,Poron
+Artisan FX Hien XSoft XXL,Artisan,FX Hien XSoft XXL,Fast,Rough,Very soft,500,490,4,Polyester,Poron
+Artisan FX Hien XSoft XL,Artisan,FX Hien XSoft XL,Fast,Rough,Very soft,490,420,4,Polyester,Poron
+Artisan FX Hien XSoft Large,Artisan,FX Hien XSoft Large,Fast,Rough,Very soft,420,330,4,Polyester,Poron
+Artisan FX Hien XSoft Medium,Artisan,FX Hien XSoft Medium,Fast,Rough,Very soft,310,240,4,Polyester,Poron
+Artisan FX Hien XSoft Small,Artisan,FX Hien XSoft Small,Fast,Rough,Very soft,240,210,4,Polyester,Poron
+Artisan FX Raiden Mid XXL,Artisan,FX Raiden Mid XXL,Very fast,Smooth,Firm,500,490,3,Hybrid,Poron
+Artisan FX Raiden Mid XL,Artisan,FX Raiden Mid XL,Very fast,Smooth,Firm,490,420,3,Hybrid,Poron
+Artisan FX Raiden Mid Large,Artisan,FX Raiden Mid Large,Very fast,Smooth,Firm,420,330,3,Hybrid,Poron
+Artisan FX Raiden Mid Medium,Artisan,FX Raiden Mid Medium,Very fast,Smooth,Firm,310,240,3,Hybrid,Poron
+Artisan FX Raiden Soft XXL,Artisan,FX Raiden Soft XXL,Very fast,Smooth,Soft,500,490,4,Hybrid,Poron
+Artisan FX Raiden Soft XL,Artisan,FX Raiden Soft XL,Very fast,Smooth,Soft,490,420,4,Hybrid,Poron
+Artisan FX Raiden Soft Large,Artisan,FX Raiden Soft Large,Very fast,Smooth,Soft,420,330,4,Hybrid,Poron
+Artisan FX Raiden Soft Medium,Artisan,FX Raiden Soft Medium,Very fast,Smooth,Soft,310,240,4,Hybrid,Poron
+Artisan FX Raiden XSoft XXL,Artisan,FX Raiden XSoft XXL,Very fast,Smooth,Very soft,500,490,4,Hybrid,Poron
+Artisan FX Raiden XSoft XL,Artisan,FX Raiden XSoft XL,Very fast,Smooth,Very soft,490,420,4,Hybrid,Poron
+Artisan FX Raiden XSoft Large,Artisan,FX Raiden XSoft Large,Very fast,Smooth,Very soft,420,330,4,Hybrid,Poron
+Artisan FX Raiden XSoft Medium,Artisan,FX Raiden XSoft Medium,Very fast,Smooth,Very soft,310,240,4,Hybrid,Poron
+Artisan FX Zero Mid XL,Artisan,FX Zero Mid XL,Control,Textured,Firm,490,420,3,Polyester,Poron
+Artisan FX Zero Mid XXL,Artisan,FX Zero Mid XXL,Control,Textured,Firm,500,490,3,Polyester,Poron
+Artisan FX Zero Mid Large,Artisan,FX Zero Mid Large,Control,Textured,Firm,420,330,3,Polyester,Poron
+Artisan FX Zero Mid Medium,Artisan,FX Zero Mid Medium,Control,Textured,Firm,310,240,3,Polyester,Poron
+Artisan FX Zero Mid Small,Artisan,FX Zero Mid Small,Control,Textured,Firm,240,210,3,Polyester,Poron
+Artisan FX Zero Soft XXL,Artisan,FX Zero Soft XXL,Control,Textured,Soft,500,490,4,Polyester,Poron
+Artisan FX Zero Soft XL,Artisan,FX Zero Soft XL,Control,Textured,Soft,490,420,4,Polyester,Poron
+Artisan FX Zero Soft Large,Artisan,FX Zero Soft Large,Control,Textured,Soft,420,330,4,Polyester,Poron
+Artisan FX Zero Soft Medium,Artisan,FX Zero Soft Medium,Control,Textured,Soft,310,240,4,Polyester,Poron
+Artisan FX Zero Soft Small,Artisan,FX Zero Soft Small,Control,Textured,Soft,240,210,4,Polyester,Poron
+Artisan FX Zero XSoft XXL,Artisan,FX Zero XSoft XXL,Control,Textured,Very soft,500,490,4,Polyester,Poron
+Artisan FX Zero XSoft XL,Artisan,FX Zero XSoft XL,Control,Textured,Very soft,490,420,4,Polyester,Poron
+Artisan FX Zero XSoft Large,Artisan,FX Zero XSoft Large,Control,Textured,Very soft,420,330,4,Polyester,Poron
+Artisan FX Zero XSoft Medium,Artisan,FX Zero XSoft Medium,Control,Textured,Very soft,310,240,4,Polyester,Poron
+Artisan FX Zero XSoft Small,Artisan,FX Zero XSoft Small,Control,Textured,Very soft,240,210,4,Polyester,Poron
+ASUS ROG Scabbard II Extended,ASUS,ROG Scabbard II Extended,Fast,Smooth,Soft,900,400,3,Cloth,Rubber
+ASUS ROG Scabbard II Medium,ASUS,ROG Scabbard II Medium,Fast,Smooth,Soft,360,260,3,Cloth,Rubber
+ASUS ROG Sheath II XXL,ASUS,ROG Sheath II XXL,Control,Smooth,Firm,900,400,3,-,Rubber
+ASUS ROG Sheath,ASUS,ROG Sheath,Quick,Textured,Firm,900,440,3,Cloth,Rubber
+Corsair MM Pro Control Medium,Corsair,MM Pro Control Medium,Control,Textured,Soft,320,300,4,Cloth,Polyurethane
+Corsair MM Pro Control Large,Corsair,MM Pro Control Large,Control,Textured,Soft,450,400,4,Cloth,Polyurethane
+Corsair MM500 v2 Large,Corsair,MM500 v2 Large,Very slow,Rough,Firm,450,400,3,Hybrid,Rubber
+Corsair MM500 v2 Extended,Corsair,MM500 v2 Extended,Very slow,Rough,Firm,930,300,3,Hybrid,Rubber
+Corsair MM350 Pro,Corsair,MM350 Pro,Slow,Smooth,Soft,930,400,4,Cloth,Rubber
+Corsair MM200 Pro,Corsair,MM200 Pro,Slow,Smooth,Soft,450,400,6,Cloth,Rubber
+Attack Shark CM04 XL,Attack Shark,CM04 XL,Fast,Textured,Hard,490,490,1.7,Carbon fiber,Rubber
+Attack Shark CM04 Medium,Attack Shark,CM04 Medium,Fast,Textured,Hard,360,280,1.7,Carbon fiber,Rubber
+Dornfinger Rawpad v2 3XL,Dornfinger,Rawpad v2 3XL,Quick,Smooth,Soft,1200,600,4,Cloth,Rubber
+Dornfinger Rawpad v2 XXL,Dornfinger,Rawpad v2 XXL,Quick,Smooth,Soft,900,400,4,Cloth,Rubber
+Dornfinger Rawpad v2 XL Square,Dornfinger,Rawpad v2 XL Square,Quick,Smooth,Soft,540,540,4,Cloth,Rubber
+Dornfinger Rawpad v2 Medium,Dornfinger,Rawpad v2 Medium,Quick,Smooth,Soft,400,320,4,Cloth,Rubber
+Dornfinger Rawpad v2 Large Square,Dornfinger,Rawpad v2 Large Square,Quick,Smooth,Soft,500,500,4,Cloth,Rubber
+Dornfinger Rawpad v2 Large,Dornfinger,Rawpad v2 Large,Quick,Smooth,Soft,483,420,4,Cloth,Rubber
+Fantech Motion Pad Wind,Fantech,Motion Pad Wind,Balanced,Textured,Soft,450,400,5,Cloth,Rubber
+Fantech Motion Pad Water,Fantech,Motion Pad Water,Very slow,Textured,Soft,450,400,5,Cloth,Rubber
+Fantech Motion Pad Lightning,Fantech,Motion Pad Lightning,Quick,Textured,Soft,450,400,5,Cloth,Rubber
+Fantech Motion Pad Fire,Fantech,Motion Pad Fire,Slow,Textured,Soft,450,400,5,Cloth,Rubber
+Fantech Motion Pad Earth,Fantech,Motion Pad Earth,Extremely slow,Textured,Soft,450,400,5,Cloth,Rubber
+EWEADN Path Plus,EWEADN,Path Plus,Balanced,Smooth,Very soft,490,420,5,Cloth,Poron
+EWEADN Path Mini,EWEADN,Path Mini,Balanced,Smooth,Very soft,360,300,5,Cloth,Poron
+Logitech G640,Logitech,G640,Control,Textured,Soft,460,400,3,Cloth,Rubber
+Logitech G840,Logitech,G840,Control,Textured,Soft,900,400,3,Cloth,Rubber
+Pulsar ParaControl XXL Extended,Pulsar,ParaControl XXL Extended,Slow,Rough,Soft,1000,500,4,Polyester,Rubber
+Pulsar ParaControl XXL,Pulsar,ParaControl XXL,Slow,Rough,Soft,900,400,4,Polyester,Rubber
+Pulsar ParaControl XL Square,Pulsar,ParaControl XL Square,Slow,Rough,Soft,500,500,4,Polyester,Rubber
+Pulsar ParaControl XL,Pulsar,ParaControl XL,Slow,Rough,Soft,490,420,4,Polyester,Rubber
+Pulsar ParaControl XL Extended,Pulsar,ParaControl XL Extended,Slow,Rough,Soft,500,450,4,Polyester,Rubber
+Pulsar ParaControl Large,Pulsar,ParaControl Large,Slow,Rough,Soft,420,330,4,Polyester,Rubber
+Superbeings Lab Memento,Superbeings Lab,Memento,Balanced,Rough,Firm,480,400,4,Cloth,Rubber
+Teevolution Genesis Axis,Teevolution,Genesis Axis,Balanced,Textured,Very soft,450,400,5,Fabric,Silicone
+Teevolution Genesis Gravis,Teevolution,Genesis Gravis,Extremely slow,Smooth,Very soft,450,400,5,Fabric,Silicone
+Vancer Trigger,Vancer,Trigger,Fast,Textured,Hard,490,490,1.7,Carbon fiber,Rubber
+VAXEE PC,VAXEE,PC,Control,Smooth,Firm,460,380,3.5,Cloth,Rubber
+X-Raypad Aqua Control Plus V2 XXL,X-Raypad,Aqua Control Plus V2 XXL,Control,Rough,Very soft,900,400,3,Amundsen,Rubber
+X-Raypad Aqua Control Plus V2 XL Square,X-Raypad,Aqua Control Plus V2 XL Square,Control,Rough,Very soft,500,500,3,Amundsen,Rubber
+X-Raypad Aqua Control Plus V2 Large,X-Raypad,Aqua Control Plus V2 Large,Control,Rough,Very soft,360,300,3,Amundsen,Rubber
+X-Raypad Aqua Control Plus V2 XL,X-Raypad,Aqua Control Plus V2 XL,Control,Rough,Very soft,450,400,3,Amundsen,Rubber
+Waizowl Falcon,Waizowl,Falcon,Control,Textured,Soft,490,420,3.5,Hybrid,Polyurethane
+X-Raypad P.CHEN (Heavy Bee) XL Square,X-Raypad,P.CHEN (Heavy Bee) XL Square,Balanced,Smooth,Soft,500,500,4,Cloth,Polyurethane
+X-Raypad P.CHEN (Heavy Bee) XL,X-Raypad,P.CHEN (Heavy Bee) XL,Balanced,Smooth,Soft,450,400,4,Cloth,Polyurethane
+WALLHACK SP-004A,WALLHACK,SP-004A,Very fast,Smooth,Hard,450,390,3.9,Glass,Silicone
+WALLHACK SP-004,WALLHACK,SP-004,Very fast,Smooth,Hard,490,430,3.9,Glass,Silicone
+ASUS ROG Moonstone Ace L,ASUS,ROG Moonstone Ace L,Extremely fast,Smooth,Hard,500,400,4,Glass,Silicone
+GLSSWRKS Polarity XL,GLSSWRKS,Polarity XL,Fast,Smooth,Hard,560,480,2,Glass,Silicone
+GLSSWRKS Polarity Large,GLSSWRKS,Polarity Large,Fast,Smooth,Hard,490,420,2,Glass,Silicone
+Pwnage Ultra Glide Pyramid XL,Pwnage,Ultra Glide Pyramid XL,Very fast,Smooth,Hard,500,500,4,Glass,Silicone
+Pwnage Ultra Glide Pyramid Large,Pwnage,Ultra Glide Pyramid Large,Very fast,Smooth,Hard,430,340,4,Glass,Silicone
+AIM1 Inazuma Hard XL,AIM1,Inazuma Hard XL,Very fast,Smooth,Firm,500,500,3.5,Polyester,Polyurethane
+AIM1 Inazuma Hard Large,AIM1,Inazuma Hard Large,Very fast,Smooth,Firm,490,420,3.5,Polyester,Polyurethane
+AIM1 Inazuma Soft XL,AIM1,Inazuma Soft XL,Very fast,Smooth,Soft,500,500,3.5,Polyester,Polyurethane
+AIM1 Inazuma Soft Large,AIM1,Inazuma Soft Large,Very fast,Smooth,Soft,490,420,3.5,Polyester,Polyurethane
+Wraith Spirit of Aim Pro Speed,Wraith,Spirit of Aim Pro Speed,Quick,Textured,Soft,500,500,3,Cloth,SCR
+Wraith Spirit of Aim Pro Hybrid,Wraith,Spirit of Aim Pro Hybrid,Balanced,Textured,Soft,500,500,3,Cloth,SCR
+LAMZU Maya,LAMZU,Maya,Balanced,Smooth,Firm,490,420,3,Cloth,SlimFlex
+ATK Glass,ATK,Glass,Very fast,Smooth,Hard,360,300,4,Glass,Rubber
+Kanami Minami,Kanami,Minami,Extremely fast,Smooth,Hard,490,420,3,Glass,Silicone
+Razer Firefly V2 Pro,Razer,Firefly V2 Pro,Very fast,Textured,Hard,360,278,4.6,Plastic,Rubber
+Razer Sphex V3 Large,Razer,Sphex V3 Large,Fast,Textured,Hard,450,400,0.4,Plastic,Polyurethane
+Razer Sphex V3 Small,Razer,Sphex V3 Small,Fast,Textured,Hard,270,215,0.4,Plastic,Polyurethane
+Razer Atlas,Razer,Atlas,Extremely fast,Smooth,Hard,450,400,5,Glass,Rubber
+Razer Strider XXL,Razer,Strider XXL,Fast,Rough,Firm,940,410,3,Polyester,Rubber
+Razer Strider Large,Razer,Strider Large,Fast,Rough,Firm,450,400,3,Polyester,Rubber
+Razer Goliathus Chroma 3XL,Razer,Goliathus Chroma 3XL,Balanced,Textured,Soft,1200,550,3.5,Cloth,Rubber
+Razer Goliathus Chroma Extended,Razer,Goliathus Chroma Extended,Balanced,Textured,Soft,920,294,3,Cloth,Rubber
+Razer Goliathus Chroma Medium,Razer,Goliathus Chroma Medium,Balanced,Textured,Soft,355,255,3,Cloth,Rubber
+Razer Gigantus V2 3XL,Razer,Gigantus V2 3XL,Control,Textured,Firm,1200,550,4,Cloth,Rubber
+Razer Gigantus V2 XXL,Razer,Gigantus V2 XXL,Control,Textured,Firm,940,410,4,Cloth,Rubber
+Razer Gigantus V2 Large,Razer,Gigantus V2 Large,Control,Textured,Firm,450,400,3,Cloth,Rubber
+Razer Gigantus V2 Medium,Razer,Gigantus V2 Medium,Control,Textured,Firm,360,275,3,Cloth,Rubber
+Dornfinger Firestarter,Dornfinger,Firestarter,Balanced,Smooth,Very soft,500,500,3.8,Cloth,Polyurethane
+Kurosun Shogun XL,Kurosun,Shogun XL,Control,Smooth,Firm,560,480,4,Cloth,Alpha-cell V2
+Kurosun Shogun Large,Kurosun,Shogun Large,Control,Smooth,Firm,490,420,4,Cloth,Alpha-cell V2
+ATK Sky Pro,ATK,Sky Pro,Balanced,Textured,Very soft,490,420,4,Hybrid,Poron
+ATK X LEVIATAN,ATK,X LEVIATAN,Slow,Smooth,Very soft,490,400,4,Hybrid,Poron
+ATK 99G Carbon,ATK,99G Carbon,Slow,Smooth,Very soft,490,420,4,Hybrid,Polyurethane
+Tenta-X Cataclysm,Tenta-X,Cataclysm,Fast,Smooth,Hard,490,420,4,Glass,Rubber
+Tenta-X The Last Stand,Tenta-X,The Last Stand,Control,Textured,Soft,490,420,3.5,Hybrid,Polyurethane
+Tenta-X Shinrai XL,Tenta-X,Shinrai XL,Control,Textured,Soft,500,500,3.5,Cloth,Polyurethane
+Tenta-X Shinrai Large,Tenta-X,Shinrai Large,Control,Textured,Soft,490,420,3.5,Cloth,Polyurethane
+Tenta-X Jinsoku XL,Tenta-X,Jinsoku XL,Very fast,Smooth,Soft,500,500,3.5,Cloth,Polyurethane
+Tenta-X Jinsoku Large,Tenta-X,Jinsoku Large,Very fast,Smooth,Soft,490,420,3.5,Cloth,Polyurethane
+AIM1 Murakumo XL,AIM1,Murakumo XL,Very fast,Smooth,Hard,500,500,3.5,Glass,Rubber
+AIM1 Murakumo Large,AIM1,Murakumo Large,Very fast,Smooth,Hard,500,420,3.5,Glass,Rubber
+Endgame Gear EM-B Plus,Endgame Gear,EM-B Plus,Quick,Rough,Soft,500,500,3,Cloth,Poron
+Endgame Gear EM-B,Endgame Gear,EM-B,Quick,Rough,Soft,490,410,3,Cloth,Poron
+Endgame Gear EM-C Plus,Endgame Gear,EM-C Plus,Balanced,Textured,Soft,500,500,3,Cloth,Poron
+Endgame Gear EM-C,Endgame Gear,EM-C,Balanced,Textured,Soft,490,410,3,Cloth,Poron
+KingJade Liu Li V2 XL,KingJade,Liu Li V2 XL,Fast,Smooth,Firm,500,490,4,Glass coated cloth,Poron
+KingJade Liu Li V2 Large,KingJade,Liu Li V2 Large,Fast,Smooth,Firm,490,420,4,Glass coated cloth,Poron
+KingJade Liu Li V2 Medium,KingJade,Liu Li V2 Medium,Fast,Smooth,Firm,420,330,4,Glass coated cloth,Poron
+AIM1 Yugiri,AIM1,Yugiri,Very slow,Textured,Firm,500,500,3.5,Polyester,Rubber
+AIM1 Kagero,AIM1,Kagero,Control,Textured,Soft,500,500,3.5,Polyester,Rubber
+Logitech G PowerPlay (hard surface),Logitech,G PowerPlay (hard surface),Very fast,Textured,Hard,344,284,4,Plastic,Rubber
+Logitech G PowerPlay (cloth surface),Logitech,G PowerPlay (cloth surface),Quick,Textured,Very firm,344,284,4,Cloth,Rubber
+Dornfinger Rawpad v2 Pro,Dornfinger,Rawpad v2 Pro,Control,Textured,Very soft,500,500,3.8,Cloth,Polyurethane
+FreeFall SV BASE Control+ v2,FreeFall,SV BASE Control+ v2,Balanced,Textured,Very firm,450,450,3,Cloth,SV BASE
+Superbeings Lab Massimo Pro,Superbeings Lab,Massimo Pro,Control,Textured,Very soft,490,420,4.5,Cloth,Polyurethane
+Superbeings Lab Memoria Pro,Superbeings Lab,Memoria Pro,Control,Textured,Soft,490,420,3.5,Cloth,Polyurethane
+VAXEE PB,VAXEE,PB,Control,Smooth,Firm,470,390,4.8,Cloth,Silicone
+VAXEE PB Black,VAXEE,PB Black,Slow,Smooth,Firm,470,390,4.8,Cloth,Silicone
+VAXEE PD,VAXEE,PD,Slow,Smooth,Very firm,480,400,5,Cloth,Silicone
+Wraith Blade X Pro,Wraith,Blade X Pro,Fast,Textured,Very firm,500,500,4,Fabric,Rubber
+Wraith Blade Y Pro,Wraith,Blade Y Pro,Very fast,Textured,Very firm,500,500,4,Plastic,Rubber
+Wraith W64,Wraith,W64,Balanced,Smooth,Firm,490,430,3.5,Fabric,Rubber
+FreeFall SV BASE Haus Edition,FreeFall,SV BASE Haus Edition,Balanced,Smooth,Very firm,450,450,3,Cloth,SV BASE
+FreeFall SV BASE Haus Edition XL,FreeFall,SV BASE Haus Edition XL,Balanced,Smooth,Very firm,500,500,3,Cloth,SV BASE
+Lethal Gaming Gear Jupiter Pro v2 Firm XXL,Lethal Gaming Gear,Jupiter Pro v2 Firm XXL,Slow,Smooth,Firm,1000,500,3,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Firm XL Square,Lethal Gaming Gear,Jupiter Pro v2 Firm XL Square,Slow,Smooth,Firm,500,500,3,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Firm XL,Lethal Gaming Gear,Jupiter Pro v2 Firm XL,Slow,Smooth,Firm,490,420,3,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Soft XXL,Lethal Gaming Gear,Jupiter Pro v2 Soft XXL,Slow,Smooth,Soft,1000,500,4,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Soft XL Square,Lethal Gaming Gear,Jupiter Pro v2 Soft XL Square,Slow,Smooth,Soft,500,500,4,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Soft XL,Lethal Gaming Gear,Jupiter Pro v2 Soft XL,Slow,Smooth,Soft,490,420,4,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Xsoft XXL,Lethal Gaming Gear,Jupiter Pro v2 Xsoft XXL,Slow,Smooth,Very soft,1000,500,4,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Xsoft XL Square,Lethal Gaming Gear,Jupiter Pro v2 Xsoft XL Square,Slow,Smooth,Very soft,500,500,4,Hybrid,SlimFlex
+Lethal Gaming Gear Jupiter Pro v2 Xsoft XL,Lethal Gaming Gear,Jupiter Pro v2 Xsoft XL,Slow,Smooth,Very soft,490,420,4,Hybrid,SlimFlex
+Lethal Gaming Gear Neptune Pro Firm XXL,Lethal Gaming Gear,Neptune Pro Firm XXL,Fast,Textured,Firm,1000,500,3,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Firm XL Square,Lethal Gaming Gear,Neptune Pro Firm XL Square,Fast,Textured,Firm,500,500,3,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Firm XL,Lethal Gaming Gear,Neptune Pro Firm XL,Fast,Textured,Firm,490,420,3,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Soft XXL,Lethal Gaming Gear,Neptune Pro Soft XXL,Fast,Textured,Soft,1000,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Soft XL Square,Lethal Gaming Gear,Neptune Pro Soft XL Square,Fast,Textured,Soft,500,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Soft XL,Lethal Gaming Gear,Neptune Pro Soft XL,Fast,Textured,Soft,490,420,4,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Xsoft XL,Lethal Gaming Gear,Neptune Pro Xsoft XL,Fast,Textured,Very soft,490,420,4,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Xsoft XL Square,Lethal Gaming Gear,Neptune Pro Xsoft XL Square,Fast,Textured,Very soft,500,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Neptune Pro Xsoft XXL,Lethal Gaming Gear,Neptune Pro Xsoft XXL,Fast,Textured,Very soft,1000,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Firm XXL,Lethal Gaming Gear,Saturn Pro Firm XXL,Control,Textured,Firm,1000,500,3,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Firm XL Square,Lethal Gaming Gear,Saturn Pro Firm XL Square,Control,Textured,Firm,500,500,3,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Firm XL,Lethal Gaming Gear,Saturn Pro Firm XL,Control,Textured,Firm,490,420,3,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Soft XXL,Lethal Gaming Gear,Saturn Pro Soft XXL,Control,Textured,Soft,1000,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Soft XL Square,Lethal Gaming Gear,Saturn Pro Soft XL Square,Control,Textured,Soft,500,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Soft XL,Lethal Gaming Gear,Saturn Pro Soft XL,Control,Textured,Soft,490,420,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Xsoft XXL,Lethal Gaming Gear,Saturn Pro Xsoft XXL,Control,Textured,Very soft,1000,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Xsoft XL Square,Lethal Gaming Gear,Saturn Pro Xsoft XL Square,Control,Textured,Very soft,500,500,4,Polyester,SlimFlex
+Lethal Gaming Gear Saturn Pro Xsoft XL,Lethal Gaming Gear,Saturn Pro Xsoft XL,Control,Textured,Very soft,490,420,4,Polyester,SlimFlex
+Pulsar ES1 3mm XL,Pulsar,ES1 3mm XL,Quick,Textured,Soft,490,420,3,Hybrid,Alpha-cell
+Pulsar ES1 3mm Large,Pulsar,ES1 3mm Large,Quick,Textured,Soft,420,330,3,Hybrid,Alpha-cell
+Pulsar ES1 4mm XL,Pulsar,ES1 4mm XL,Quick,Textured,Firm,490,420,4,Hybrid,Alpha-cell
+Pulsar ES1 4mm Large,Pulsar,ES1 4mm Large,Quick,Textured,Firm,420,330,4,Hybrid,Alpha-cell
+Pulsar ES2 3mm XL,Pulsar,ES2 3mm XL,Balanced,Smooth,Soft,490,420,3,Polyester,Alpha-cell
+Pulsar ES2 3mm Large,Pulsar,ES2 3mm Large,Balanced,Smooth,Soft,420,330,3,Polyester,Alpha-cell
+Pulsar ES2 4mm XL,Pulsar,ES2 4mm XL,Balanced,Smooth,Firm,490,420,4,Polyester,Alpha-cell
+Pulsar ES2 4mm Large,Pulsar,ES2 4mm Large,Balanced,Smooth,Firm,420,330,4,Polyester,Alpha-cell
+Pulsar ParaBrake XXL,Pulsar,ParaBrake XXL,Very slow,Textured,Soft,900,400,4,Microfiber,Rubber
+Pulsar ParaBrake XL,Pulsar,ParaBrake XL,Very slow,Textured,Soft,490,420,4,Microfiber,Rubber
+Pulsar ParaBrake Large,Pulsar,ParaBrake Large,Very slow,Textured,Soft,420,330,4,Microfiber,Rubber
+Pulsar ParaSpeed XXL,Pulsar,ParaSpeed XXL,Fast,Rough,Firm,900,400,3,Cordura,Rubber
+Pulsar ParaSpeed XL,Pulsar,ParaSpeed XL,Fast,Rough,Firm,490,420,3,Cordura,Rubber
+Pulsar ParaSpeed Large,Pulsar,ParaSpeed Large,Fast,Rough,Firm,420,330,3,Cordura,Rubber
+VAXEE PA Medium,VAXEE,PA Medium,Slow,Smooth,Soft,380,292,3.5,Cloth,Rubber
+VAXEE PA,VAXEE,PA,Slow,Smooth,Soft,470,390,3.5,Cloth,Rubber
+VAXEE PA Black,VAXEE,PA Black,Slow,Smooth,Soft,470,390,3.5,Cloth,Rubber
+VAXEE PE XL,VAXEE,PE XL,Control,Smooth,Firm,520,560,3.5,Cloth,Rubber
+VAXEE PE Large,VAXEE,PE Large,Control,Smooth,Firm,500,510,3.5,Cloth,Rubber
+VAXEE PE Black XL,VAXEE,PE Black XL,Slow,Smooth,Firm,520,560,3.5,Cloth,Rubber
+VAXEE PE Black Large,VAXEE,PE Black Large,Slow,Smooth,Firm,500,510,3.5,Cloth,Rubber
+Xtrfy GP5 XL+,Xtrfy,GP5 XL+,Balanced,Textured,Soft,920,600,3,Cloth,Rubber
+Xtrfy GP5 XL,Xtrfy,GP5 XL,Balanced,Textured,Soft,920,400,3,Cloth,Rubber
+Xtrfy GP5 Medium,Xtrfy,GP5 Medium,Balanced,Textured,Soft,320,270,3,Cloth,Rubber
+Xtrfy GP5 Large,Xtrfy,GP5 Large,Balanced,Textured,Soft,460,400,4,Cloth,Rubber
