@@ -15,7 +15,7 @@ const miceCollection = defineCollection({
     sensor: z.string().optional().default('Unknown'),
     dpiRange: z.string().optional().default('Unknown'),
     pollingRate: z.string().optional().default('1000Hz'),
-    buttons: z.number().optional().default(5),
+    buttons: z.number().nullable().optional().default(5),
     connection: z.string().optional().default('Wired'),
     image: z.string().optional(),
     affiliateLink: z.string().optional(), // Amazon affiliate link
@@ -111,34 +111,34 @@ const playersCollection = defineCollection({
 
     // Ratings by game mode (cached from external sources)
     // Duel: Glicko rating from QLStats (integer, e.g., 1777)
-    duelRating: z.number().optional(),
+    duelRating: z.number().nullable().optional(),
     duelRatingSource: z.string().optional().default('qlstats'), // "qlstats"
     duelRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // CTF: TrueSkill rating from community tracker (decimal, e.g., 34.3)
-    ctfRating: z.number().optional(),
+    ctfRating: z.number().nullable().optional(),
     ctfRatingSource: z.string().optional().default('community'), // "88.214.20.58"
     ctfRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // TDM: TrueSkill rating from community tracker (decimal, e.g., 34.3)
-    tdmRating: z.number().optional(),
+    tdmRating: z.number().nullable().optional(),
     tdmRatingSource: z.string().optional().default('community'), // "88.214.20.58"
     tdmRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // Rating History - Peak/Low tracking
-    duelRatingPeak: z.number().optional(),
+    duelRatingPeak: z.number().nullable().optional(),
     duelRatingPeakDate: z.string().optional(), // YYYY-MM-DD
-    duelRatingLow: z.number().optional(),
+    duelRatingLow: z.number().nullable().optional(),
     duelRatingLowDate: z.string().optional(), // YYYY-MM-DD
 
-    ctfRatingPeak: z.number().optional(),
+    ctfRatingPeak: z.number().nullable().optional(),
     ctfRatingPeakDate: z.string().optional(), // YYYY-MM-DD
-    ctfRatingLow: z.number().optional(),
+    ctfRatingLow: z.number().nullable().optional(),
     ctfRatingLowDate: z.string().optional(), // YYYY-MM-DD
 
-    tdmRatingPeak: z.number().optional(),
+    tdmRatingPeak: z.number().nullable().optional(),
     tdmRatingPeakDate: z.string().optional(), // YYYY-MM-DD
-    tdmRatingLow: z.number().optional(),
+    tdmRatingLow: z.number().nullable().optional(),
     tdmRatingLowDate: z.string().optional(), // YYYY-MM-DD
 
     // Timestamp of last ratings fetch
@@ -156,8 +156,8 @@ const playersCollection = defineCollection({
     dpi: z.number(),
     sensitivity: z.number(),
     edpi: z.number(),
-    cm360: z.number().optional(),
-    m_cpi: z.number().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
+    cm360: z.number().nullable().optional(),
+    m_cpi: z.number().nullable().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
     acceleration: z.boolean().optional().default(false),
     accelValue: z.number().nullable().optional(),
     rawInput: z.boolean().optional().default(true),
