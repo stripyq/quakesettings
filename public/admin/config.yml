@@ -125,11 +125,43 @@ collections:
       # Basic Info
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Real Name", name: "realName", widget: "string", required: false }
-      - { label: "Country", name: "country", widget: "string" }
+      - { label: "Steam ID", name: "steam_id", widget: "string", required: false, hint: "Steam ID for the player" }
+      - label: "Country"
+        name: "country"
+        widget: "select"
+        options:
+          - { label: "USA", value: "US" }
+          - { label: "Germany", value: "DE" }
+          - { label: "Russia", value: "RU" }
+          - { label: "Sweden", value: "SE" }
+          - { label: "Poland", value: "PL" }
+          - { label: "France", value: "FR" }
+          - { label: "United Kingdom", value: "GB" }
+          - { label: "Netherlands", value: "NL" }
+          - { label: "Finland", value: "FI" }
+          - { label: "Ukraine", value: "UA" }
+          - { label: "Belarus", value: "BY" }
+          - { label: "Hungary", value: "HU" }
+          - { label: "Australia", value: "AU" }
+          - { label: "Canada", value: "CA" }
+          - { label: "Brazil", value: "BR" }
+          - { label: "Other", value: "OTHER" }
       - { label: "Team", name: "team", widget: "string", required: false }
-      - { label: "Rating", name: "rating", widget: "number", required: false }
       - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
       - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+
+      # Ratings
+      - { label: "Duel Rating", name: "duel_rating", widget: "number", required: false, hint: "Duel Elo/Glicko rating" }
+      - { label: "TDM Rating", name: "tdm_rating", widget: "number", required: false, hint: "TDM rating" }
+      - { label: "CTF Rating", name: "ctf_rating", widget: "number", required: false, hint: "CTF rating" }
+      - label: "Rating Source"
+        name: "rating_source"
+        widget: "select"
+        required: false
+        options:
+          - { label: "QLStats", value: "qlstats" }
+          - { label: "Manual", value: "manual" }
+          - { label: "Other", value: "other" }
 
       # Data Source
       - { label: "Source", name: "source", widget: "string", required: false, hint: "Where data was gathered from (e.g., Player submission, Stream, Interview)" }
