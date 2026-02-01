@@ -165,22 +165,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
         // Section: Hardware
         html += sectionHeader('Hardware');
-        const p1Mouse = p1.mouseData?.name || '';
-        const p2Mouse = p2.mouseData?.name || '';
-        const p1Pad = p1.mousepadData?.name || '';
-        const p2Pad = p2.mousepadData?.name || '';
-        const p1Kb = p1.keyboardData?.name || '';
-        const p2Kb = p2.keyboardData?.name || '';
-        const p1Mon = p1.monitorData?.name || '';
-        const p2Mon = p2.monitorData?.name || '';
-        const p1Hs = p1.headsetData?.name || '';
-        const p2Hs = p2.headsetData?.name || '';
-
-        html += compareRow('Mouse', p1Mouse, p2Mouse);
-        html += compareRow('Mousepad', p1Pad, p2Pad);
-        html += compareRow('Keyboard', p1Kb, p2Kb);
-        html += compareRow('Monitor', p1Mon, p2Mon);
-        html += compareRow('Headset', p1Hs, p2Hs);
+        html += compareHardwareRow('Mouse', p1.mouseData, p2.mouseData);
+        html += compareHardwareRow('Mousepad', p1.mousepadData, p2.mousepadData);
+        html += compareHardwareRow('Keyboard', p1.keyboardData, p2.keyboardData);
+        html += compareHardwareRow('Monitor', p1.monitorData, p2.monitorData);
+        html += compareHardwareRow('Headset', p1.headsetData, p2.headsetData);
 
         compareBody.innerHTML = html;
       }
@@ -217,6 +206,24 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <td class="label-cell">${label}</td>
           <td class="value-cell ${diffClass} ${numClass}">${v1}${diffIndicator1}</td>
           <td class="value-cell ${diffClass} ${numClass}">${v2}${diffIndicator2}</td>
+        </tr>`;
+      }
+
+      function compareHardwareRow(label, hw1, hw2) {
+        const name1 = hw1?.name || '';
+        const name2 = hw2?.name || '';
+        const link1 = hw1?.affiliateLink || '';
+        const link2 = hw2?.affiliateLink || '';
+        const isDiff = name1 !== name2;
+        const diffClass = isDiff ? 'diff' : 'same';
+
+        const v1 = link1 ? `<a href="${link1}" target="_blank" rel="noopener" class="hw-link">${name1}</a>` : name1;
+        const v2 = link2 ? `<a href="${link2}" target="_blank" rel="noopener" class="hw-link">${name2}</a>` : name2;
+
+        return `<tr class="data-row">
+          <td class="label-cell">${label}</td>
+          <td class="value-cell ${diffClass}">${v1}</td>
+          <td class="value-cell ${diffClass}">${v2}</td>
         </tr>`;
       }
 
@@ -369,6 +376,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .value-cell {
     font-size: 0.9rem;
+  }
+
+  .hw-link {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .hw-link:hover {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
   }
 
   .value-cell:nth-child(2) {
