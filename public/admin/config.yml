@@ -23,14 +23,30 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Brand", name: "brand", widget: "string" }
-      - { label: "Weight", name: "weight", widget: "string" }
-      - { label: "Shape", name: "shape", widget: "select", options: ["Ambidextrous", "Ergonomic (Right)", "Ergonomic (Left)"] }
+      - { label: "Weight", name: "weight", widget: "string", required: false }
+      - label: "Shape"
+        name: "shape"
+        widget: "select"
+        required: false
+        options:
+          - "Ambidextrous"
+          - "Symmetrical"
+          - "Ergonomic"
+          - "Ergonomic (Right)"
+          - "Ergonomic (Left)"
       - { label: "Dimensions", name: "dimensions", widget: "string", required: false }
-      - { label: "Sensor", name: "sensor", widget: "string" }
-      - { label: "DPI Range", name: "dpiRange", widget: "string" }
-      - { label: "Polling Rate", name: "pollingRate", widget: "string", default: "1000Hz" }
-      - { label: "Buttons", name: "buttons", widget: "number" }
-      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
+      - { label: "Sensor", name: "sensor", widget: "string", required: false }
+      - { label: "DPI Range", name: "dpiRange", widget: "string", required: false }
+      - { label: "Polling Rate", name: "pollingRate", widget: "string", default: "1000Hz", required: false }
+      - { label: "Buttons", name: "buttons", widget: "number", required: false }
+      - label: "Connection"
+        name: "connection"
+        widget: "select"
+        required: false
+        options:
+          - "Wired"
+          - "Wireless"
+          - "Both"
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
@@ -45,12 +61,29 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Brand", name: "brand", widget: "string" }
-      - { label: "Size", name: "size", widget: "string" }
-      - { label: "Resolution", name: "resolution", widget: "string" }
-      - { label: "Refresh Rate", name: "refreshRate", widget: "string" }
-      - { label: "Panel Type", name: "panelType", widget: "select", options: ["IPS", "TN", "VA", "OLED"] }
-      - { label: "Response Time", name: "responseTime", widget: "string" }
-      - { label: "Adaptive Sync", name: "adaptiveSync", widget: "select", options: ["G-Sync", "FreeSync", "G-Sync Compatible", "None"], required: false }
+      - { label: "Size", name: "size", widget: "string", required: false }
+      - { label: "Resolution", name: "resolution", widget: "string", required: false }
+      - { label: "Refresh Rate", name: "refreshRate", widget: "string", required: false }
+      - label: "Panel Type"
+        name: "panelType"
+        widget: "select"
+        required: false
+        options:
+          - "IPS"
+          - "TN"
+          - "VA"
+          - "OLED"
+          - "QD-OLED"
+      - { label: "Response Time", name: "responseTime", widget: "string", required: false }
+      - label: "Adaptive Sync"
+        name: "adaptiveSync"
+        widget: "select"
+        required: false
+        options:
+          - "G-Sync"
+          - "FreeSync"
+          - "G-Sync Compatible"
+          - "None"
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
@@ -65,11 +98,28 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Brand", name: "brand", widget: "string" }
-      - { label: "Size", name: "size", widget: "select", options: ["Full", "TKL", "75%", "65%", "60%"] }
-      - { label: "Switches", name: "switches", widget: "string" }
+      - label: "Size"
+        name: "size"
+        widget: "select"
+        required: false
+        options:
+          - "Full-size"
+          - "Full"
+          - "TKL"
+          - "75%"
+          - "65%"
+          - "60%"
+      - { label: "Switches", name: "switches", widget: "string", required: false }
       - { label: "Actuation", name: "actuation", widget: "string", required: false }
       - { label: "Features", name: "features", widget: "string", required: false }
-      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
+      - label: "Connection"
+        name: "connection"
+        widget: "select"
+        required: false
+        options:
+          - "Wired"
+          - "Wireless"
+          - "Both"
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
@@ -84,9 +134,24 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Brand", name: "brand", widget: "string" }
-      - { label: "Surface", name: "surface", widget: "select", options: ["Cloth", "Hybrid", "Glass", "Hard"] }
-      - { label: "Speed", name: "speed", widget: "select", options: ["Control", "Balanced", "Speed"] }
-      - { label: "Dimensions", name: "dimensions", widget: "string" }
+      - label: "Surface"
+        name: "surface"
+        widget: "select"
+        required: false
+        options:
+          - "Cloth"
+          - "Hybrid"
+          - "Glass"
+          - "Hard"
+      - label: "Speed"
+        name: "speed"
+        widget: "select"
+        required: false
+        options:
+          - "Control"
+          - "Balanced"
+          - "Speed"
+      - { label: "Dimensions", name: "dimensions", widget: "string", required: false }
       - { label: "Thickness", name: "thickness", widget: "string", required: false }
       - { label: "Base", name: "base", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
@@ -103,12 +168,28 @@ collections:
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Brand", name: "brand", widget: "string" }
-      - { label: "Type", name: "type", widget: "select", options: ["Open-back", "Closed-back", "In-ear"] }
-      - { label: "Driver Size", name: "driverSize", widget: "string" }
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        required: false
+        options:
+          - "Open-back"
+          - "Closed-back"
+          - "In-ear"
+          - "Over-ear"
+      - { label: "Driver Size", name: "driverSize", widget: "string", required: false }
       - { label: "Frequency Response", name: "frequencyResponse", widget: "string", required: false }
       - { label: "Impedance", name: "impedance", widget: "string", required: false }
-      - { label: "Connection", name: "connection", widget: "select", options: ["Wired", "Wireless", "Both"] }
-      - { label: "Microphone", name: "microphone", widget: "boolean", default: false }
+      - label: "Connection"
+        name: "connection"
+        widget: "select"
+        required: false
+        options:
+          - "Wired"
+          - "Wireless"
+          - "Both"
+      - { label: "Microphone", name: "microphone", widget: "boolean", default: false, required: false }
+      - { label: "Features", name: "features", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Affiliate Link", name: "affiliateLink", widget: "string", required: false, hint: "Amazon affiliate URL" }
 
@@ -125,10 +206,12 @@ collections:
       # Basic Info
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Real Name", name: "realName", widget: "string", required: false }
-      - { label: "Steam ID", name: "steam_id", widget: "string", required: false, hint: "Steam ID for the player" }
+      - { label: "Steam ID", name: "steamId", widget: "string", required: false, hint: "Steam64 ID" }
+      - { label: "QLStats Nick", name: "qlstatsNick", widget: "string", required: false, hint: "Nickname on QLStats if different from name" }
       - label: "Country"
         name: "country"
         widget: "select"
+        required: false
         options:
           - { label: "USA", value: "US" }
           - { label: "Germany", value: "DE" }
@@ -145,15 +228,29 @@ collections:
           - { label: "Australia", value: "AU" }
           - { label: "Canada", value: "CA" }
           - { label: "Brazil", value: "BR" }
+          - { label: "Unknown", value: "Unknown" }
           - { label: "Other", value: "OTHER" }
       - { label: "Team", name: "team", widget: "string", required: false }
-      - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
-      - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "duel"
+        options:
+          - "duel"
+          - "ctf"
+          - "tdm"
+          - "sacrifice"
+      - { label: "Last Updated", name: "lastUpdated", widget: "string", required: false, hint: "YYYY-MM format" }
 
       # Ratings (camelCase to match schema)
-      - { label: "Duel Rating", name: "duelRating", widget: "number", required: false, hint: "Duel Elo/Glicko rating" }
-      - { label: "TDM Rating", name: "tdmRating", widget: "number", required: false, hint: "TDM rating" }
-      - { label: "CTF Rating", name: "ctfRating", widget: "number", required: false, hint: "CTF rating" }
+      - { label: "Duel Rating", name: "duelRating", widget: "number", required: false, hint: "Duel Elo/Glicko rating", value_type: "int" }
+      - { label: "Duel Rating Updated", name: "duelRatingUpdated", widget: "string", required: false, hint: "YYYY-MM-DD" }
+      - { label: "TDM Rating", name: "tdmRating", widget: "number", required: false, hint: "TDM TrueSkill rating", value_type: "float" }
+      - { label: "TDM Rating Updated", name: "tdmRatingUpdated", widget: "string", required: false, hint: "YYYY-MM-DD" }
+      - { label: "CTF Rating", name: "ctfRating", widget: "number", required: false, hint: "CTF TrueSkill rating", value_type: "float" }
+      - { label: "CTF Rating Updated", name: "ctfRatingUpdated", widget: "string", required: false, hint: "YYYY-MM-DD" }
+
+      # Data Source
       - label: "Data Source"
         name: "dataSource"
         widget: "select"
@@ -162,24 +259,23 @@ collections:
           - { label: "Player Submitted", value: "player" }
           - { label: "Verified", value: "verified" }
           - { label: "Collected", value: "collected" }
-
-      # Data Source
-      - { label: "Source", name: "source", widget: "string", required: false, hint: "Where data was gathered from (e.g., Player submission, Stream, Interview)" }
-      - { label: "Source URL", name: "sourceUrl", widget: "string", required: false, hint: "Link to source (stream VOD, interview article, etc.)" }
+      - { label: "Source", name: "source", widget: "string", required: false, hint: "Where data was gathered from" }
+      - { label: "Source URL", name: "sourceUrl", widget: "string", required: false, hint: "Link to source" }
 
       # Mouse Settings
       - { label: "DPI", name: "dpi", widget: "number" }
       - { label: "Sensitivity", name: "sensitivity", widget: "number", value_type: "float" }
       - { label: "eDPI", name: "edpi", widget: "number" }
       - { label: "cm/360", name: "cm360", widget: "number", value_type: "float", required: false }
-      - { label: "Acceleration", name: "acceleration", widget: "boolean", default: false }
-      - { label: "Raw Input", name: "rawInput", widget: "boolean", default: true }
+      - { label: "Acceleration", name: "acceleration", widget: "boolean", default: false, required: false }
+      - { label: "Accel Value", name: "accelValue", widget: "number", value_type: "float", required: false }
+      - { label: "Raw Input", name: "rawInput", widget: "boolean", default: true, required: false }
 
       # Game Settings
       - { label: "FOV", name: "fov", widget: "number", min: 90, max: 130 }
-      - { label: "Crosshair", name: "crosshair", widget: "number", required: false, hint: "Crosshair type (1-31)" }
-      - { label: "Crosshair Size", name: "crosshairSize", widget: "number", required: false, hint: "cg_crosshairSize value" }
-      - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false }
+      - { label: "Crosshair", name: "crosshair", widget: "string", required: false, hint: "Crosshair type (e.g., 2)" }
+      - { label: "Crosshair Size", name: "crosshairSize", widget: "string", required: false, hint: "cg_crosshairSize value" }
+      - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false, required: false }
 
       # Key Bindings
       - { label: "Forward", name: "forward", widget: "string", default: "W", required: false }
@@ -201,6 +297,7 @@ collections:
         search_fields: ["name", "brand"]
         value_field: "{{slug}}"
         display_fields: ["name"]
+        required: false
       - label: "Mousepad"
         name: "mousepad"
         widget: "relation"
