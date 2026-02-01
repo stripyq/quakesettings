@@ -1,0 +1,9 @@
+name: "ATK Y9 Pro Max"
+brand: "ATK"
+weight: "55g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3395 Ultra"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

@@ -1,0 +1,9 @@
+name: "be quiet! Dark Perk Ergo"
+brand: "be quiet!"
+weight: "55g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "100-32000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

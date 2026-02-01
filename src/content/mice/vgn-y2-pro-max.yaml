@@ -1,0 +1,9 @@
+name: "VGN Y2 Pro Max"
+brand: "VGN"
+weight: "51g"
+shape: "Hybrid"
+sensor: "PixArt PAW3395"
+dpiRange: "100-36000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

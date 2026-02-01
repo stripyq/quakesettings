@@ -1,0 +1,9 @@
+name: "JamesDonkey RSR7"
+brand: "JamesDonkey"
+weight: "46g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

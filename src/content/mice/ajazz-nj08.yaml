@@ -1,0 +1,9 @@
+name: "AJAZZ NJ08"
+brand: "AJAZZ"
+weight: "70g"
+shape: "Ergonomic"
+sensor: "Instant A825"
+dpiRange: "100-12800"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5

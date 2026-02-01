@@ -1,0 +1,9 @@
+name: "AULA X9"
+brand: "AULA"
+weight: "48g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

@@ -1,0 +1,9 @@
+name: "Microsoft IntelliMouse Optical 1.1a"
+brand: "Microsoft"
+weight: "147g"
+shape: "Ambidextrous"
+sensor: "Microsoft Optical"
+dpiRange: "100-400"
+pollingRate: "125Hz"
+connection: "Wired"
+buttons: 4

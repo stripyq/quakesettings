@@ -1,0 +1,9 @@
+name: "VGN Dragonfly 3 Pro Max"
+brand: "VGN"
+weight: "58g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-36000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

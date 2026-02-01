@@ -1,0 +1,9 @@
+name: "Glorious Model O3 Wired"
+brand: "Glorious"
+weight: "54g"
+shape: "Ambidextrous"
+sensor: "Glorious BAMF 3.0"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wired"
+buttons: 5
