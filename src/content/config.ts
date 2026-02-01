@@ -113,17 +113,17 @@ const playersCollection = defineCollection({
     // Duel: Glicko rating from QLStats (integer, e.g., 1777)
     duelRating: z.number().optional(),
     duelRatingSource: z.string().optional().default('qlstats'), // "qlstats"
-    duelRatingUpdated: z.string().optional(), // YYYY-MM-DD
+    duelRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // CTF: TrueSkill rating from community tracker (decimal, e.g., 34.3)
     ctfRating: z.number().optional(),
     ctfRatingSource: z.string().optional().default('community'), // "88.214.20.58"
-    ctfRatingUpdated: z.string().optional(), // YYYY-MM-DD
+    ctfRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // TDM: TrueSkill rating from community tracker (decimal, e.g., 34.3)
     tdmRating: z.number().optional(),
     tdmRatingSource: z.string().optional().default('community'), // "88.214.20.58"
-    tdmRatingUpdated: z.string().optional(), // YYYY-MM-DD
+    tdmRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
 
     // Rating History - Peak/Low tracking
     duelRatingPeak: z.number().optional(),
