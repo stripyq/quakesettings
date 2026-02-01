@@ -1,39 +1,44 @@
-name: "Cypher"
-realName: "Alexey Yanushevsky"
-country: "Belarus"
-team: "Retired"
-rating: 2720
-category: "duel"
+name: Cypher
+realName: Alexey Yanushevsky
+steamId: ''
+qlstatsNick: ''
+country: BY
+team: Retired
+category: duel
+lastUpdated: 2025-01
 duelRating: 2089
-duelRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
-
+duelRatingUpdated: 2026-01-31
+tdmRating: null
+tdmRatingUpdated: ''
+ctfRating: null
+ctfRatingUpdated: ''
+dataSource: player
+source: ''
+sourceUrl: ''
 dpi: 400
-sensitivity: 3.0
+sensitivity: 3
 edpi: 1200
 cm360: 34.6
 acceleration: false
+accelValue: null
 rawInput: true
-
 fov: 106
-crosshair: "Dot"
-crosshairSize: "Small"
+crosshair: Dot
+crosshairSize: Small
 invertedMouse: false
-
-forward: "W"
-back: "S"
-left: "A"
-right: "D"
-jump: "Space"
-crouch: "C"
-attack: "Mouse1"
-zoom: "Mouse2"
-weaponNext: "Mwheel Down"
-weaponPrev: "Mwheel Up"
-
-mouse: "zowie-ec2-c"
-mousepad: "artisan-hien"
-keyboard: "hyperx-alloy-origins"
-monitor: "benq-xl2546k"
-headset: "beyerdynamic-dt990-pro"
+forward: W
+back: S
+left: A
+right: D
+jump: Space
+crouch: C
+attack: Mouse1
+zoom: Mouse2
+weaponNext: Mwheel Down
+weaponPrev: Mwheel Up
+mouse: zowie-ec2-c
+mousepad: artisan-hien
+keyboard: hyperx-alloy-origins
+monitor: benq-xl2546k
+headset: beyerdynamic-dt990-pro
+rating: 2720
