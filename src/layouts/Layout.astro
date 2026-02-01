@@ -16,6 +16,7 @@ const currentPath = Astro.url.pathname;
   <meta name="description" content={description} />
   <link rel="icon" type="image/svg+xml" href="/quakesettings/favicon.svg" />
   <title>{title} | QL Gear & Settings</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <header class="header">
@@ -40,6 +41,17 @@ const currentPath = Astro.url.pathname;
       <p>Contribute via <a href="https://github.com/stripyq/quakesettings">GitHub</a> or use the <a href="/quakesettings/admin/">CMS</a></p>
     </div>
   </footer>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
 
