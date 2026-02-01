@@ -150,18 +150,18 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["duel", "ctf", "tdm", "sacrifice"], default: "duel" }
       - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
 
-      # Ratings
-      - { label: "Duel Rating", name: "duel_rating", widget: "number", required: false, hint: "Duel Elo/Glicko rating" }
-      - { label: "TDM Rating", name: "tdm_rating", widget: "number", required: false, hint: "TDM rating" }
-      - { label: "CTF Rating", name: "ctf_rating", widget: "number", required: false, hint: "CTF rating" }
-      - label: "Rating Source"
-        name: "rating_source"
+      # Ratings (camelCase to match schema)
+      - { label: "Duel Rating", name: "duelRating", widget: "number", required: false, hint: "Duel Elo/Glicko rating" }
+      - { label: "TDM Rating", name: "tdmRating", widget: "number", required: false, hint: "TDM rating" }
+      - { label: "CTF Rating", name: "ctfRating", widget: "number", required: false, hint: "CTF rating" }
+      - label: "Data Source"
+        name: "dataSource"
         widget: "select"
         required: false
         options:
-          - { label: "QLStats", value: "qlstats" }
-          - { label: "Manual", value: "manual" }
-          - { label: "Other", value: "other" }
+          - { label: "Player Submitted", value: "player" }
+          - { label: "Verified", value: "verified" }
+          - { label: "Collected", value: "collected" }
 
       # Data Source
       - { label: "Source", name: "source", widget: "string", required: false, hint: "Where data was gathered from (e.g., Player submission, Stream, Interview)" }
