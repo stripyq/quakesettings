@@ -12,7 +12,7 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <nav class="breadcrumb">
       <a href={`${base}useful/`}>Useful</a> &gt; Network Settings
     </nav>
-    <h1>Optimal Network & Connection Settings</h1>
+    <h1>Optimal Network & Connection Settings for Quake Live</h1>
     <p class="subtitle">Diagnose and fix lag, jitter, packet loss, and inconsistent hit registration</p>
     <p class="focus-note">Focused on real network behavior — not placebo tweaks.</p>
   </div>
@@ -22,21 +22,28 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <h2>Why Quake Live Is Different</h2>
     <p class="section-subtitle">Quake Live is unusually sensitive to timing consistency</p>
 
-    <div class="info-box">
-      <strong>Key Point:</strong> A stable 30 ms connection feels better than an unstable 15 ms one. Consistency matters more than raw ping.
-    </div>
-
     <ul class="feature-list">
       <li><strong>Very small UDP packets</strong> — easily affected by buffering</li>
       <li><strong>High update frequency</strong> — needs consistent delivery</li>
       <li><strong>Tight hit verification windows</strong> — timing precision required</li>
       <li><strong>Client-side prediction with server reconciliation</strong> — jitter causes visible corrections</li>
     </ul>
+
+    <p>As a result:</p>
+    <ul class="consequence-list">
+      <li><strong>Jitter hurts more than raw ping</strong></li>
+      <li><strong>Bufferbloat breaks gameplay</strong> while "ping looks fine"</li>
+      <li><strong>1 Gbps bandwidth means nothing</strong> if packets arrive late or uneven</li>
+    </ul>
+
+    <div class="key-point">
+      <strong>Key Point:</strong> A stable 30 ms connection feels better than an unstable 15 ms one.
+    </div>
   </section>
 
   <!-- SECTION 2: Common Symptoms -->
   <section class="settings-section" id="symptoms">
-    <h2>Common Symptoms & Causes</h2>
+    <h2>Common Symptoms & Likely Causes</h2>
     <p class="section-subtitle">Quick diagnosis guide</p>
 
     <table class="symptoms-table">
@@ -48,11 +55,11 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
       </thead>
       <tbody>
         <tr>
-          <td><span class="symptom green">Green lagometer spikes</span></td>
+          <td><span class="symptom green">Green spikes in lagometer</span></td>
           <td>Jitter / bufferbloat</td>
         </tr>
         <tr>
-          <td><span class="symptom red">Red lagometer spikes</span></td>
+          <td><span class="symptom red">Red spikes in lagometer</span></td>
           <td>Packet loss</td>
         </tr>
         <tr>
@@ -60,16 +67,20 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
           <td>Upstream congestion</td>
         </tr>
         <tr>
-          <td>Others say you warp</td>
+          <td>Others say you warp (but you feel fine)</td>
           <td>Unstable upload</td>
         </tr>
         <tr>
-          <td>One server bad, others fine</td>
-          <td>ISP routing issue</td>
+          <td>Only one server feels bad</td>
+          <td>ISP routing / peering</td>
         </tr>
         <tr>
-          <td>Evenings worse than morning</td>
-          <td>ISP peak-hour congestion</td>
+          <td>Worse during uploads</td>
+          <td>Bufferbloat</td>
+        </tr>
+        <tr>
+          <td>Worse in evenings</td>
+          <td>ISP congestion</td>
         </tr>
       </tbody>
     </table>
@@ -80,145 +91,271 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <h2>Understanding the Lagometer</h2>
     <p class="section-subtitle">Your primary diagnostic tool</p>
 
+    <p>Enable it in-game:</p>
     <div class="code-block small">
       <pre><code>cg_lagometer 1</code></pre>
     </div>
 
-    <div class="lagometer-diagram">
-      <div class="lagometer-part">
-        <h4>Upper Graph</h4>
-        <p>Shows <strong>interpolation vs extrapolation</strong></p>
-        <ul>
-          <li><span class="color-box blue"></span> Blue bars down = interpolating (good)</li>
-          <li><span class="color-box yellow"></span> Yellow bars up = extrapolating (missing snapshots)</li>
-        </ul>
+    <div class="warning-box">
+      <strong>Important:</strong> The lagometer shows <strong>incoming server data only</strong>. If others say you warp but your lagometer looks fine, the issue is likely your <strong>outgoing traffic</strong>.
+    </div>
+
+    <h3>Lagometer Layout (Conceptual Diagram)</h3>
+    <div class="ascii-diagram">
+      <pre>
+UPPER GRAPH  ── Client-side interpolation / prediction
+────────────
+|   ▲  ▲    |  Yellow = extrapolation (prediction without data)
+|   ░░░░    |  Blue   = interpolation (good)
+────────────
+
+LOWER GRAPH ── Server snapshots
+────────────
+| █ █ █ █   |  Green = ping height
+| █   █     |  Spikes = jitter
+| █ █ █     |  Red = packet loss
+────────────</pre>
+    </div>
+
+    <div class="lagometer-tables">
+      <div class="lagometer-table">
+        <h4>Upper Graph (Client Prediction)</h4>
+        <table class="mini-table">
+          <tr>
+            <td><span class="color-box blue"></span> Blue (below line)</td>
+            <td>Interpolating valid snapshots (good)</td>
+          </tr>
+          <tr>
+            <td><span class="color-box yellow"></span> Yellow (above line)</td>
+            <td>Extrapolating — guessing due to missing or late packets</td>
+          </tr>
+        </table>
+        <p class="table-note">Large yellow triangles = inconsistent delivery → visible warping.</p>
       </div>
-      <div class="lagometer-part">
-        <h4>Lower Graph</h4>
-        <p>Shows <strong>server snapshots, jitter, and packet loss</strong></p>
-        <ul>
-          <li><span class="color-box green"></span> Green = snapshot received, height = ping variation</li>
-          <li><span class="color-box red"></span> Red = dropped/late packet</li>
-          <li>Consistent height = stable connection</li>
-        </ul>
+
+      <div class="lagometer-table">
+        <h4>Lower Graph (Server Data)</h4>
+        <table class="mini-table">
+          <tr>
+            <td><span class="color-box green"></span> Green (steady)</td>
+            <td>Normal — height equals ping</td>
+          </tr>
+          <tr>
+            <td><span class="color-box green"></span> Green (spikes)</td>
+            <td>Jitter</td>
+          </tr>
+          <tr>
+            <td><span class="color-box yellow"></span> Yellow</td>
+            <td>Rate-limited snapshot</td>
+          </tr>
+          <tr>
+            <td><span class="color-box red"></span> Red</td>
+            <td>Packet loss</td>
+          </tr>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4: Timenudge & Lag Compensation -->
+  <!-- SECTION 4: Interpolation, Timenudge & Lag Compensation -->
   <section class="settings-section" id="timenudge">
-    <h2>Timenudge & Lag Compensation</h2>
-    <p class="section-subtitle">How Quake Live handles latency</p>
+    <h2>How Interpolation, Timenudge & Lag Compensation Work</h2>
+    <p class="section-subtitle">Important: Understanding these mechanics</p>
 
     <div class="info-box">
-      <strong>cl_timenudge:</strong> Lower values = less buffering, more responsiveness, but less tolerance for jitter. Most players use <code>0</code> or small negative values.
+      <p>Quake Live servers run at <strong>40 Hz</strong> (40 updates per second). The client buffers snapshots to smooth movement.</p>
     </div>
 
-    <p>Quake Live uses <strong>server-side backwards reconciliation</strong> for hitscan weapons. The server "rewinds" other players to where they were when you fired, based on your ping. This is why:</p>
+    <p><code>cl_timenudge</code> controls how far behind real time the client renders.</p>
 
+    <h3>Key points:</h3>
     <ul class="feature-list">
-      <li>High ping players can still hit shots (server compensates)</li>
-      <li>You may get hit "around corners" by high-ping opponents</li>
-      <li>Consistent ping matters more than low ping</li>
+      <li><strong>Lower (more negative) timenudge</strong> = less buffering</li>
+      <li><strong>Less buffering</strong> = more responsive feel</li>
+      <li><strong>But less buffering</strong> = less tolerance for jitter</li>
     </ul>
 
-    <div class="warning-box">
-      <strong>Note:</strong> Extreme negative timenudge values can cause prediction errors and make the game feel worse, not better.
+    <p>This is why:</p>
+    <ul class="consequence-list">
+      <li><code>cl_timenudge -20</code> can feel "snappier"</li>
+      <li>But causes more visible warping on unstable connections</li>
+    </ul>
+
+    <h3>Lag Compensation (Backwards Reconciliation)</h3>
+    <p>Quake Live uses <strong>server-side backward reconciliation</strong> for hitscan weapons:</p>
+    <ul class="feature-list">
+      <li>The server checks where the target <strong>was</strong> at the time of your shot</li>
+      <li>Not where they are when the server receives it</li>
+    </ul>
+
+    <h4>Implications:</h4>
+    <ul class="consequence-list">
+      <li>Railgun hits register even at high ping (within limits)</li>
+      <li>Dodging feels less intuitive vs high-ping players</li>
+      <li>Being hit "behind corners" can happen legitimately</li>
+    </ul>
+
+    <div class="info-box">
+      <strong>This is by design, not a bug.</strong>
     </div>
   </section>
 
   <!-- SECTION 5: Step 1 - Local Network -->
   <section class="settings-section" id="step1">
-    <h2>Step 1: Local Network</h2>
+    <h2>Step 1: Eliminate Local Network Issues</h2>
     <p class="section-subtitle">Fix problems at the source</p>
 
-    <ul class="checklist">
-      <li>
-        <span class="check-box"></span>
-        <div class="check-content">
-          <strong>Use Ethernet only</strong>
-          <span class="check-note">WiFi adds 2-10ms jitter minimum, often spikes to 50ms+</span>
-        </div>
-      </li>
-      <li>
-        <span class="check-box"></span>
-        <div class="check-content">
-          <strong>Disable background uploads</strong>
-          <span class="check-note">Cloud sync, backups, torrents — pause everything</span>
-        </div>
-      </li>
-      <li>
-        <span class="check-box"></span>
-        <div class="check-content">
-          <strong>Disable power saving on network adapter</strong>
-          <span class="check-path">Device Manager → Network Adapter → Properties → Power Management → Uncheck "Allow computer to turn off"</span>
-        </div>
-      </li>
-      <li>
-        <span class="check-box"></span>
-        <div class="check-content">
-          <strong>Disable interrupt moderation (advanced)</strong>
-          <span class="check-path">Device Manager → Network Adapter → Advanced → Interrupt Moderation → Disabled</span>
-          <span class="check-note">May increase CPU usage slightly</span>
-        </div>
-      </li>
+    <h3>Use Ethernet (Mandatory)</h3>
+    <ul class="feature-list">
+      <li>Wi-Fi introduces jitter even with strong signal</li>
+      <li>Powerline adapters are unreliable</li>
+      <li><strong>Use a direct Ethernet cable to your router</strong></li>
     </ul>
+
+    <h3>Eliminate Background Traffic</h3>
+    <p>Disable or pause:</p>
+    <ul class="disable-list">
+      <li>Cloud sync (OneDrive, Google Drive, iCloud)</li>
+      <li>Game launchers (Steam, Battle.net, Epic)</li>
+      <li>Torrents / P2P</li>
+      <li>Smart TVs / streaming devices</li>
+      <li>OS updates</li>
+    </ul>
+
+    <h3>Network Adapter Settings (Windows)</h3>
+    <p class="path-note">Device Manager → Network Adapter → Properties → Advanced</p>
+
+    <table class="adapter-table">
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Energy Efficient Ethernet</td>
+          <td>Disabled</td>
+        </tr>
+        <tr>
+          <td>Interrupt Moderation</td>
+          <td>Disabled</td>
+        </tr>
+        <tr>
+          <td>Flow Control</td>
+          <td>Disabled</td>
+        </tr>
+        <tr>
+          <td>Green Ethernet</td>
+          <td>Disabled</td>
+        </tr>
+        <tr>
+          <td>Speed & Duplex</td>
+          <td>1.0 Gbps Full Duplex</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="setting-note">Only change settings that exist on your adapter.</p>
   </section>
 
-  <!-- SECTION 6: Step 2 - Router / ISP -->
+  <!-- SECTION 6: Step 2 - Router & ISP -->
   <section class="settings-section" id="step2">
-    <h2>Step 2: Router / ISP Settings</h2>
+    <h2>Step 2: Router & ISP Equipment</h2>
     <p class="section-subtitle">Reduce bufferbloat and congestion</p>
 
-    <div class="router-settings">
-      <div class="setting-card">
-        <h4>Enable SQM / QoS</h4>
-        <p>Smart Queue Management prevents bufferbloat. Available on most modern routers (especially OpenWrt, Ubiquiti, pfSense).</p>
-        <ul>
-          <li>Set bandwidth to <strong>85–90%</strong> of actual speed</li>
-          <li>Use <strong>fq_codel</strong> or <strong>cake</strong> if available</li>
-        </ul>
-      </div>
+    <h3>Enable SQM / QoS (If Available)</h3>
+    <p>Look for:</p>
+    <ul class="feature-list compact">
+      <li>SQM</li>
+      <li>QoS</li>
+      <li>Smart Queue</li>
+      <li>fq_codel / CAKE</li>
+      <li>"Gaming mode"</li>
+    </ul>
+    <p><strong>Set bandwidth to 85–90% of your real speed (up & down).</strong> This prevents bufferbloat.</p>
 
-      <div class="setting-card">
-        <h4>Disable DPI / IDS</h4>
-        <p>Deep Packet Inspection and Intrusion Detection add latency. Disable for gaming if security allows.</p>
-      </div>
+    <h3>Bufferbloat Explained</h3>
+    <div class="ascii-diagram small">
+      <pre>
+UPLOAD FULL → router queues packets → game packets wait
+           → packets arrive late
+           → jitter spikes
 
-      <div class="setting-card">
-        <h4>Disable Gaming Mode Gimmicks</h4>
-        <p>Most "gaming mode" features in consumer routers are placebo or worse. Real QoS is the only thing that helps.</p>
-      </div>
+Ping stays "low" but gameplay breaks.</pre>
     </div>
+
+    <h3>Test Bufferbloat</h3>
+    <p>Use: <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener noreferrer">waveform.com/tools/bufferbloat</a></p>
+
+    <table class="grade-table">
+      <thead>
+        <tr>
+          <th>Grade</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="grade-good">
+          <td>A</td>
+          <td>Excellent</td>
+        </tr>
+        <tr class="grade-ok">
+          <td>B–C</td>
+          <td>Acceptable</td>
+        </tr>
+        <tr class="grade-bad">
+          <td>D–F</td>
+          <td>Likely source of in-game issues</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Disable Packet Inspection Features</h3>
+    <p>If present, disable:</p>
+    <ul class="disable-list">
+      <li>DPI (Deep Packet Inspection)</li>
+      <li>IDS / IPS</li>
+      <li>"Advanced security"</li>
+      <li>Parental filtering</li>
+    </ul>
+    <p class="setting-note">These cause latency spikes.</p>
 
     <h3>ISP-Specific Notes</h3>
     <div class="isp-cards">
       <div class="isp-card dsl">
-        <h4>DSL</h4>
-        <p>Highly sensitive to bufferbloat. SQM is almost mandatory. Interleaving settings matter.</p>
+        <h4>DSL (VDSL / ADSL)</h4>
+        <ul>
+          <li>Highly sensitive to bufferbloat</li>
+          <li>SQM is critical</li>
+          <li>Evening congestion common</li>
+        </ul>
       </div>
       <div class="isp-card cable">
-        <h4>Cable</h4>
-        <p>Shared upload bandwidth — congestion common during peak hours. Consider business tier if available.</p>
+        <h4>Cable (DOCSIS)</h4>
+        <ul>
+          <li>Shared medium</li>
+          <li>Upload congestion very common</li>
+          <li>SQM strongly recommended</li>
+        </ul>
       </div>
       <div class="isp-card fiber">
-        <h4>Fiber</h4>
-        <p>Best raw latency, but still routing-dependent. Bad peering can still cause issues.</p>
+        <h4>Fiber (FTTH)</h4>
+        <ul>
+          <li>Lowest latency</li>
+          <li>Still affected by poor routers</li>
+          <li>ISP routing issues still possible</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- SECTION 7: Step 3 - DNS -->
   <section class="settings-section" id="step3">
-    <h2>Step 3: DNS</h2>
+    <h2>Step 3: DNS (Correct Expectations)</h2>
     <p class="section-subtitle">Keep it simple</p>
 
-    <div class="warning-box">
-      <strong>Reality check:</strong> DNS does NOT reduce ping. It only affects initial server lookup, not gameplay traffic.
-    </div>
-
-    <p>Use one reliable resolver and move on:</p>
-
+    <p>Use one resolver:</p>
     <div class="dns-options">
       <div class="dns-option">
         <code>1.1.1.1</code>
@@ -234,7 +371,10 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
       </div>
     </div>
 
-    <p class="setting-note">Pick one, set it in your router or Windows network settings, and forget about it.</p>
+    <div class="warning-box">
+      <strong>DNS does not lower ping.</strong><br>
+      It only affects server discovery and initial connections.
+    </div>
   </section>
 
   <!-- SECTION 8: Step 4 - Quake Live Settings -->
@@ -247,106 +387,249 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
         <span>cfg</span>
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
       </div>
-      <pre><code>// Network settings
-rate 25000              // bandwidth limit (25000 is standard)
-snaps 40                // snapshots per second (match server sv_fps)
-cl_maxpackets 125       // packets per second to server
-cl_packetdup 0          // don't duplicate packets (0 = off)
-cl_timenudge 0          // prediction timing offset (0 = neutral)
-com_idleSleep 0         // prevent frame sleep
-
-// Lagometer (diagnostic)
-cg_lagometer 1          // show connection quality graph</code></pre>
+      <pre><code>rate 25000
+com_idleSleep 0
+cl_packetdup 0
+cl_timenudge 0</code></pre>
     </div>
 
-    <h3>Setting Explanations</h3>
-    <table class="settings-explain-table">
-      <tr>
-        <td><code>rate 25000</code></td>
-        <td>Maximum bytes/sec from server. 25000 is standard; don't go lower unless on dial-up.</td>
-      </tr>
-      <tr>
-        <td><code>cl_packetdup 0</code></td>
-        <td>Duplicating packets wastes bandwidth and doesn't help with modern connections.</td>
-      </tr>
-      <tr>
-        <td><code>cl_timenudge 0</code></td>
-        <td>Neutral timing. Some players use -10 to -20 for slightly more responsive feel, but it reduces jitter tolerance.</td>
-      </tr>
-      <tr>
-        <td><code>com_idleSleep 0</code></td>
-        <td>Prevents the game from sleeping between frames. Important for consistent input.</td>
-      </tr>
-    </table>
+    <h3>When to Change cl_packetdup</h3>
+    <p>Use <code>1–2</code> only if:</p>
+    <ul class="feature-list">
+      <li>You see red packet loss bars</li>
+      <li>Others say you warp</li>
+      <li>You cannot avoid Wi-Fi</li>
+    </ul>
+    <p class="setting-note">Trade-off: higher upload usage.</p>
+
+    <h3>When to Change cl_timenudge</h3>
+    <p>Use <code>-10</code> to <code>-20</code> only as last resort:</p>
+    <ul class="feature-list">
+      <li>Persistent yellow triangles</li>
+      <li>Underlying network cannot be fixed</li>
+    </ul>
+    <p class="setting-note">Trade-off: adds artificial local delay to reduce warping.</p>
+
+    <h3>Recommended Profiles</h3>
+    <div class="profile-cards">
+      <div class="profile-card stable">
+        <h4>Stable connection</h4>
+        <div class="code-block small">
+          <pre><code>cl_packetdup 0
+cl_timenudge 0</code></pre>
+        </div>
+      </div>
+      <div class="profile-card unstable">
+        <h4>Unstable</h4>
+        <div class="code-block small">
+          <pre><code>cl_packetdup 2
+cl_timenudge 0</code></pre>
+        </div>
+      </div>
+      <div class="profile-card lastresort">
+        <h4>Last resort</h4>
+        <div class="code-block small">
+          <pre><code>cl_packetdup 2
+cl_timenudge -15</code></pre>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- SECTION 9: Step 5 - Real Server Testing -->
   <section class="settings-section" id="step5">
-    <h2>Step 5: Real Server Testing</h2>
+    <h2>Step 5: Test Real Quake Live Servers</h2>
     <p class="section-subtitle">Test with actual game servers, not synthetic benchmarks</p>
 
-    <p>Ping tests to google.com mean nothing. Test actual Quake Live servers:</p>
+    <h3>Common EU Test Servers</h3>
+    <table class="server-table">
+      <thead>
+        <tr>
+          <th>Server</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ranger</td>
+          <td><code>57.129.16.240</code></td>
+        </tr>
+        <tr>
+          <td>mynx</td>
+          <td><code>77.90.2.53:27980</code></td>
+        </tr>
+        <tr>
+          <td>omega</td>
+          <td><code>136.244.82.9</code></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="server-list">
-      <div class="server-card">
-        <h4>Ranger (EU)</h4>
-        <code>57.129.16.240</code>
-        <span class="server-test">ping 57.129.16.240</span>
+    <h3>Ping Test</h3>
+    <div class="code-columns">
+      <div class="code-column">
+        <h4>Windows</h4>
+        <div class="code-block small">
+          <pre><code>ping -n 50 57.129.16.240</code></pre>
+        </div>
       </div>
-      <div class="server-card">
-        <h4>Mynx (EU)</h4>
-        <code>77.90.2.53</code>
-        <span class="server-test">ping 77.90.2.53</span>
-      </div>
-      <div class="server-card">
-        <h4>Omega (US)</h4>
-        <code>136.244.82.9</code>
-        <span class="server-test">ping 136.244.82.9</span>
+      <div class="code-column">
+        <h4>Linux / macOS</h4>
+        <div class="code-block small">
+          <pre><code>ping -c 50 57.129.16.240</code></pre>
+        </div>
       </div>
     </div>
 
+    <p>Look for:</p>
+    <ul class="feature-list">
+      <li>0% loss</li>
+      <li>Tight min / avg / max</li>
+      <li>No large spikes</li>
+    </ul>
+
+    <h3>Route Analysis (Advanced)</h3>
+    <p>Use:</p>
+    <ul class="feature-list compact">
+      <li><code>tracert</code> (Windows)</li>
+      <li><code>traceroute</code> (Linux/macOS)</li>
+      <li><strong>WinMTR / mtr</strong> (best)</li>
+    </ul>
+    <p class="setting-note">These show where jitter or loss begins.</p>
+  </section>
+
+  <!-- SECTION 10: Step 6 - Interpret Results -->
+  <section class="settings-section" id="step6">
+    <h2>Step 6: Interpret Results</h2>
+    <p class="section-subtitle">What your tests mean</p>
+
+    <table class="interpret-table">
+      <thead>
+        <tr>
+          <th>Observation</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stable ping, no loss</td>
+          <td>Connection OK</td>
+        </tr>
+        <tr>
+          <td>High max, low avg</td>
+          <td>Jitter / bufferbloat</td>
+        </tr>
+        <tr>
+          <td>Loss everywhere</td>
+          <td>Local or ISP issue</td>
+        </tr>
+        <tr>
+          <td>One server bad</td>
+          <td>Routing / peering</td>
+        </tr>
+        <tr>
+          <td>Evenings worse</td>
+          <td>ISP congestion</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>VPNs & Tunnels</h3>
+    <ul class="feature-list">
+      <li>Can improve routing</li>
+      <li>Can add latency</li>
+      <li><strong>Prefer WireGuard-based tunnels</strong></li>
+      <li>Avoid "privacy" VPNs for gaming</li>
+    </ul>
+
     <div class="info-box">
-      <strong>What to look for:</strong> Run <code>ping -n 100 [IP]</code> and check for consistent times. Variation of ±2ms is good. Variation of ±10ms+ indicates jitter problems.
+      <strong>A stable VPN path is better than a faster but unstable direct route.</strong>
     </div>
   </section>
 
-  <!-- SECTION 10: 5-Minute Checklist -->
+  <!-- SECTION 11: Common Myths -->
+  <section class="settings-section" id="myths">
+    <h2>Common Myths</h2>
+    <p class="section-subtitle">Separating fact from fiction</p>
+
+    <table class="myths-table">
+      <thead>
+        <tr>
+          <th>Myth</th>
+          <th>Reality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Faster internet = better Quake</td>
+          <td>Stability matters</td>
+        </tr>
+        <tr>
+          <td>DNS lowers ping</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <td>Port forwarding fixes lag</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <td>Disable Nagle's algorithm</td>
+          <td>TCP only — QL uses UDP</td>
+        </tr>
+        <tr>
+          <td>Everyone should use same settings</td>
+          <td>Networks differ</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 12: 5-Minute Checklist -->
   <section class="settings-section checklist-section" id="checklist">
-    <h2>5-Minute Checklist</h2>
+    <h2>5-Minute Checklist (Quick Start)</h2>
     <p class="section-subtitle">Quick verification before playing</p>
 
     <ul class="final-checklist">
-      <li><span class="check-icon">☐</span> Ethernet cable connected (no WiFi)</li>
-      <li><span class="check-icon">☐</span> No background traffic (cloud sync, updates paused)</li>
-      <li><span class="check-icon">☐</span> QoS / SQM enabled on router</li>
-      <li><span class="check-icon">☐</span> DPI / IDS disabled on router</li>
-      <li><span class="check-icon">☐</span> Correct QL settings applied (rate, timenudge, etc.)</li>
-      <li><span class="check-icon">☐</span> Tested ping to actual game servers</li>
+      <li><span class="check-icon">☐</span> Ethernet only</li>
+      <li><span class="check-icon">☐</span> Stop uploads/downloads</li>
+      <li><span class="check-icon">☐</span> Enable QoS / SQM if available</li>
+      <li><span class="check-icon">☐</span> Disable DPI / IDS</li>
+      <li><span class="check-icon">☐</span> <code>rate 25000</code> + <code>com_idleSleep 0</code></li>
+      <li><span class="check-icon">☐</span> Test real QL servers</li>
+      <li><span class="check-icon">☐</span> Watch lagometer</li>
+      <li><span class="check-icon">☐</span> Adjust packetdup only if needed</li>
     </ul>
   </section>
 
-  <!-- SECTION 11: Troubleshooting -->
-  <section class="settings-section collapsible" id="troubleshooting">
-    <h2>Troubleshooting Common Issues</h2>
+  <!-- SECTION 13: Technical Reference -->
+  <section class="settings-section" id="techref">
+    <h2>Technical Reference</h2>
+    <p class="section-subtitle">Quick facts</p>
 
-    <div class="troubleshoot-item">
-      <h4>Lagometer shows constant red spikes</h4>
-      <p>Packet loss. Check cable connections, try different ethernet port, contact ISP if persistent.</p>
-    </div>
+    <table class="ref-table">
+      <tbody>
+        <tr>
+          <td>Protocol</td>
+          <td>UDP</td>
+        </tr>
+        <tr>
+          <td>Server tickrate</td>
+          <td>40 Hz</td>
+        </tr>
+        <tr>
+          <td>Default port</td>
+          <td>27960</td>
+        </tr>
+        <tr>
+          <td>Hit verification</td>
+          <td>Server-side reconciliation</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="troubleshoot-item">
-      <h4>Ping is fine but game feels sluggish</h4>
-      <p>Likely jitter/bufferbloat. Enable SQM on router, check for background traffic.</p>
-    </div>
-
-    <div class="troubleshoot-item">
-      <h4>One server has high ping, others normal</h4>
-      <p>Routing issue. Use <code>tracert [server IP]</code> to identify where delay occurs. Usually ISP-side, nothing you can fix.</p>
-    </div>
-
-    <div class="troubleshoot-item">
-      <h4>Connection fine during day, bad at night</h4>
-      <p>ISP congestion during peak hours. Consider business-tier internet or different ISP.</p>
+    <div class="final-note">
+      <p>This guide prioritizes reproducible behavior over superstition.</p>
+      <p><strong>Fix the network first — then tune the client.</strong></p>
     </div>
   </section>
 
@@ -409,21 +692,47 @@ function copyCode(btn) {
     font-size: 1.4rem;
   }
 
+  .settings-section h3 {
+    color: var(--accent-secondary, #4ecdc4);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .settings-section h4 {
+    color: var(--text-primary, #e8e8f0);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
   .section-subtitle {
     color: var(--text-secondary, #888);
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
   }
 
-  /* Feature List */
-  .feature-list {
+  /* Key Point Box */
+  .key-point {
+    background: rgba(78, 205, 196, 0.15);
+    border: 1px solid var(--accent-secondary, #4ecdc4);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Feature & Consequence Lists */
+  .feature-list,
+  .consequence-list {
     list-style: none;
     padding: 0;
     margin: 1rem 0;
   }
 
-  .feature-list li {
-    padding: 0.5rem 0;
+  .feature-list li,
+  .consequence-list li {
+    padding: 0.4rem 0;
     padding-left: 1.5rem;
     position: relative;
   }
@@ -433,6 +742,35 @@ function copyCode(btn) {
     position: absolute;
     left: 0;
     color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .consequence-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .feature-list.compact li {
+    padding: 0.25rem 0 0.25rem 1.5rem;
+  }
+
+  /* Disable List */
+  .disable-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .disable-list li {
+    padding: 0.4rem 0.75rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #ccc);
   }
 
   /* Symptoms Table */
@@ -467,37 +805,74 @@ function copyCode(btn) {
     color: #e74c3c;
   }
 
-  /* Lagometer Diagram */
-  .lagometer-diagram {
+  /* ASCII Diagram */
+  .ascii-diagram {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  .ascii-diagram pre {
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-primary, #e8e8f0);
+    white-space: pre;
+  }
+
+  .ascii-diagram.small pre {
+    font-size: 0.8rem;
+  }
+
+  /* Lagometer Tables */
+  .lagometer-tables {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin: 1.5rem 0;
   }
 
-  .lagometer-part {
+  .lagometer-table {
     background: var(--bg-secondary, #12121a);
     padding: 1.25rem;
     border-radius: 6px;
   }
 
-  .lagometer-part h4 {
+  .lagometer-table h4 {
     color: var(--accent-secondary, #4ecdc4);
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.75rem 0;
   }
 
-  .lagometer-part ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.75rem 0 0 0;
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
   }
 
-  .lagometer-part li {
-    padding: 0.35rem 0;
+  .mini-table tr td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
     font-size: 0.9rem;
+  }
+
+  .mini-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .mini-table td:first-child {
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .table-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+    margin-top: 0.75rem;
+    font-style: italic;
   }
 
   .color-box {
@@ -505,6 +880,7 @@ function copyCode(btn) {
     width: 14px;
     height: 14px;
     border-radius: 2px;
+    flex-shrink: 0;
   }
 
   .color-box.blue { background: #3498db; }
@@ -512,39 +888,64 @@ function copyCode(btn) {
   .color-box.green { background: #2ecc71; }
   .color-box.red { background: #e74c3c; }
 
-  /* Router Settings */
-  .router-settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
+  /* Adapter Table */
+  .adapter-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
   }
 
-  .setting-card {
-    background: var(--bg-secondary, #12121a);
-    padding: 1.25rem;
-    border-radius: 6px;
-  }
-
-  .setting-card h4 {
-    color: var(--text-primary, #e8e8f0);
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .setting-card p {
+  .adapter-table th,
+  .adapter-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
     font-size: 0.9rem;
-    color: var(--text-secondary, #ccc);
-    margin-bottom: 0.5rem;
   }
 
-  .setting-card ul {
-    list-style: disc;
-    padding-left: 1.25rem;
-    margin: 0.5rem 0 0 0;
+  .adapter-table th {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .adapter-table td:last-child {
+    color: #2ecc71;
+    font-weight: 500;
+  }
+
+  .path-note {
     font-size: 0.85rem;
     color: var(--text-secondary, #888);
+    font-family: monospace;
+    margin-bottom: 0.75rem;
   }
+
+  /* Grade Table */
+  .grade-table {
+    width: 100%;
+    max-width: 400px;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .grade-table th,
+  .grade-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .grade-table th {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .grade-table .grade-good td:first-child { color: #2ecc71; font-weight: 600; }
+  .grade-table .grade-ok td:first-child { color: #f1c40f; font-weight: 600; }
+  .grade-table .grade-bad td:first-child { color: #e74c3c; font-weight: 600; }
 
   /* ISP Cards */
   .isp-cards {
@@ -576,14 +977,20 @@ function copyCode(btn) {
   }
 
   .isp-card h4 {
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
     font-size: 1rem;
   }
 
-  .isp-card p {
+  .isp-card ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
     font-size: 0.85rem;
     color: var(--text-secondary, #ccc);
-    margin: 0;
+  }
+
+  .isp-card li {
+    padding: 0.2rem 0;
   }
 
   /* DNS Options */
@@ -614,67 +1021,158 @@ function copyCode(btn) {
     color: var(--text-secondary, #888);
   }
 
-  /* Server List */
-  .server-list {
+  /* Profile Cards */
+  .profile-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
   }
 
-  .server-card {
-    background: var(--bg-secondary, #12121a);
-    padding: 1.25rem;
+  .profile-card {
+    padding: 1rem;
     border-radius: 6px;
-    text-align: center;
+    border-left: 3px solid;
   }
 
-  .server-card h4 {
-    margin-bottom: 0.5rem;
-    color: var(--text-primary, #e8e8f0);
+  .profile-card.stable {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: #2ecc71;
   }
 
-  .server-card code {
-    display: block;
-    font-size: 1rem;
+  .profile-card.unstable {
+    background: rgba(241, 196, 15, 0.1);
+    border-color: #f1c40f;
+  }
+
+  .profile-card.lastresort {
+    background: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+  }
+
+  .profile-card h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+  }
+
+  .profile-card .code-block {
+    margin: 0;
+  }
+
+  /* Server Table */
+  .server-table {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .server-table th,
+  .server-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .server-table th {
+    background: var(--bg-secondary, #12121a);
     color: var(--accent-secondary, #4ecdc4);
-    margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
-  .server-test {
-    font-size: 0.75rem;
+  .server-table code {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  /* Code Columns */
+  .code-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .code-column h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
     color: var(--text-secondary, #888);
-    font-family: monospace;
   }
 
-  /* Settings Explanation Table */
-  .settings-explain-table {
+  /* Interpret & Myths Tables */
+  .interpret-table,
+  .myths-table {
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0;
   }
 
-  .settings-explain-table td {
-    padding: 0.75rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-    vertical-align: top;
-  }
-
-  .settings-explain-table td:first-child {
-    width: 180px;
-    white-space: nowrap;
-  }
-
-  .settings-explain-table td:first-child code {
-    background: var(--bg-secondary, #12121a);
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .settings-explain-table td:last-child {
+  .interpret-table th,
+  .interpret-table td,
+  .myths-table th,
+  .myths-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
     font-size: 0.9rem;
-    color: var(--text-secondary, #ccc);
+  }
+
+  .interpret-table th,
+  .myths-table th {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .myths-table td:first-child {
+    color: var(--text-secondary, #aaa);
+    text-decoration: line-through;
+  }
+
+  .myths-table td:last-child {
+    color: #2ecc71;
+  }
+
+  /* Reference Table */
+  .ref-table {
+    width: 100%;
+    max-width: 400px;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .ref-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.9rem;
+  }
+
+  .ref-table td:first-child {
+    color: var(--text-secondary, #888);
+    width: 150px;
+  }
+
+  .ref-table td:last-child {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
+  }
+
+  /* Final Note */
+  .final-note {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+    text-align: center;
+    color: var(--text-secondary, #888);
+    font-size: 0.95rem;
+  }
+
+  .final-note p {
+    margin: 0.25rem 0;
+  }
+
+  .final-note strong {
+    color: var(--accent-primary, #ff6b35);
   }
 
   /* Final Checklist */
@@ -688,7 +1186,7 @@ function copyCode(btn) {
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 0.75rem;
   }
 
@@ -696,39 +1194,22 @@ function copyCode(btn) {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     background: var(--bg-secondary, #12121a);
     border-radius: 4px;
     font-size: 0.9rem;
   }
 
+  .final-checklist code {
+    background: rgba(78, 205, 196, 0.2);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }
+
   .check-icon {
     font-size: 1.1rem;
     color: var(--accent-secondary, #4ecdc4);
-  }
-
-  /* Troubleshooting Items */
-  .troubleshoot-item {
-    background: var(--bg-secondary, #12121a);
-    padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-  }
-
-  .troubleshoot-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .troubleshoot-item h4 {
-    color: var(--text-primary, #e8e8f0);
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .troubleshoot-item p {
-    font-size: 0.9rem;
-    color: var(--text-secondary, #ccc);
-    margin: 0;
   }
 
   /* Warning & Info Boxes */
@@ -746,53 +1227,12 @@ function copyCode(btn) {
     border: 1px solid #3498db;
     border-radius: 6px;
     padding: 1rem;
-    margin-bottom: 1.5rem;
+    margin: 1rem 0;
     font-size: 0.9rem;
   }
 
-  /* Checklist */
-  .checklist {
-    list-style: none;
-    padding: 0;
+  .info-box p {
     margin: 0;
-  }
-
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-  }
-
-  .checklist li:last-child {
-    border-bottom: none;
-  }
-
-  .check-box {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--accent-secondary, #4ecdc4);
-    border-radius: 4px;
-    margin-right: 1rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .check-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .check-path {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #888);
-  }
-
-  .check-note {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #888);
-    font-style: italic;
   }
 
   /* Code Block */
@@ -872,11 +1312,7 @@ function copyCode(btn) {
 
   /* Mobile Responsiveness */
   @media (max-width: 768px) {
-    .lagometer-diagram {
-      grid-template-columns: 1fr;
-    }
-
-    .router-settings {
+    .lagometer-tables {
       grid-template-columns: 1fr;
     }
 
@@ -884,7 +1320,11 @@ function copyCode(btn) {
       grid-template-columns: 1fr;
     }
 
-    .server-list {
+    .profile-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .code-columns {
       grid-template-columns: 1fr;
     }
 
@@ -892,8 +1332,8 @@ function copyCode(btn) {
       grid-template-columns: 1fr;
     }
 
-    .settings-explain-table td:first-child {
-      width: auto;
+    .disable-list {
+      grid-template-columns: 1fr;
     }
   }
 </style>
