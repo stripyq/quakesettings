@@ -1,0 +1,10 @@
+name: "SteelSeries Aerox 5 Wireless"
+brand: "SteelSeries"
+weight: "74g"
+shape: "Ergonomic"
+dimensions: "128.8 x 62.8 x 38.3mm"
+sensor: "TrueMove Air"
+dpiRange: "100-18000"
+pollingRate: "1000Hz"
+buttons: 9
+connection: "Wireless"

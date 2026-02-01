@@ -1,0 +1,10 @@
+name: "Xtrfy M8 Wireless"
+brand: "Xtrfy"
+weight: "55g"
+shape: "Ambidextrous"
+dimensions: "118 x 60 x 38mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+buttons: 6
+connection: "Wireless"

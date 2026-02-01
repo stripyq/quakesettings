@@ -1,0 +1,10 @@
+name: "Razer Viper V3 HyperSpeed"
+brand: "Razer"
+weight: "82g"
+shape: "Ambidextrous"
+dimensions: "127.1 x 66.2 x 37.8mm"
+sensor: "Razer 5G"
+dpiRange: "100-30000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

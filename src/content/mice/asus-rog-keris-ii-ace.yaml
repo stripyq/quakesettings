@@ -1,0 +1,10 @@
+name: "ASUS ROG Keris II Ace"
+brand: "ASUS"
+weight: "54g"
+shape: "Ergonomic"
+dimensions: "118 x 62 x 39mm"
+sensor: "ROG AimPoint Pro"
+dpiRange: "100-42000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

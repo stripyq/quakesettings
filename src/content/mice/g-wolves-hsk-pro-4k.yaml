@@ -1,0 +1,10 @@
+name: "G-Wolves HSK Pro 4K"
+brand: "G-Wolves"
+weight: "35g"
+shape: "Symmetrical"
+dimensions: "114 x 60 x 35mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

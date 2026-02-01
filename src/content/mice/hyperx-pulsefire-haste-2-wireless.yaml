@@ -1,0 +1,10 @@
+name: "HyperX Pulsefire Haste 2 Wireless"
+brand: "HyperX"
+weight: "61g"
+shape: "Symmetrical"
+dimensions: "124.6 x 66.8 x 38.2mm"
+sensor: "PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+buttons: 6
+connection: "Wireless"

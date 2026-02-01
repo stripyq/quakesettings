@@ -1,0 +1,10 @@
+name: "Mad Catz R.A.T. DWS"
+brand: "Mad Catz"
+weight: "95g"
+shape: "Ergonomic"
+dimensions: "136 x 80 x 40mm"
+sensor: "PAW3335"
+dpiRange: "100-16000"
+pollingRate: "1000Hz"
+buttons: 10
+connection: "Wireless"

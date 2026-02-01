@@ -1,0 +1,10 @@
+name: "Keychron M3"
+brand: "Keychron"
+weight: "79g"
+shape: "Ergonomic"
+dimensions: "125 x 67 x 42mm"
+sensor: "PAW3395"
+dpiRange: "100-26000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

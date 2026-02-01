@@ -1,0 +1,10 @@
+name: "Roccat Kone Pro Air"
+brand: "Roccat"
+weight: "75g"
+shape: "Ergonomic"
+dimensions: "126 x 72 x 40mm"
+sensor: "Owl-Eye 19K"
+dpiRange: "50-19000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

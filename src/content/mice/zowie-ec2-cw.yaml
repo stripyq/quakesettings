@@ -1,0 +1,10 @@
+name: "Zowie EC2-CW"
+brand: "Zowie"
+weight: "77g"
+shape: "Ergonomic"
+dimensions: "120 x 61 x 40mm"
+sensor: "3370"
+dpiRange: "400-3200"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wireless"

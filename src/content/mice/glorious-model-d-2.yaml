@@ -1,0 +1,10 @@
+name: "Glorious Model D 2"
+brand: "Glorious"
+weight: "60g"
+shape: "Ergonomic"
+dimensions: "128 x 67 x 42mm"
+sensor: "BAMF 2.0"
+dpiRange: "100-26000"
+pollingRate: "4000Hz"
+buttons: 6
+connection: "Both"

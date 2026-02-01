@@ -1,0 +1,10 @@
+name: "Lamzu Thorn 4K"
+brand: "Lamzu"
+weight: "54g"
+shape: "Symmetrical"
+dimensions: "121 x 64 x 39mm"
+sensor: "PAW3950"
+dpiRange: "50-30000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

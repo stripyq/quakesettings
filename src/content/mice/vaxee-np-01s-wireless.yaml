@@ -1,0 +1,10 @@
+name: "VAXEE NP-01S Wireless"
+brand: "VAXEE"
+weight: "73g"
+shape: "Symmetrical"
+dimensions: "123 x 58 x 37mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wireless"

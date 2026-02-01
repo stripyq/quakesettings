@@ -1,0 +1,10 @@
+name: "WLMouse Beast X Max"
+brand: "WLMouse"
+weight: "37g"
+shape: "Symmetrical"
+dimensions: "120 x 64 x 38mm"
+sensor: "PAW3950"
+dpiRange: "50-30000"
+pollingRate: "8000Hz"
+buttons: 5
+connection: "Wireless"

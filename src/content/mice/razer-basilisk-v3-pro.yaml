@@ -1,0 +1,10 @@
+name: "Razer Basilisk V3 Pro"
+brand: "Razer"
+weight: "112g"
+shape: "Ergonomic"
+dimensions: "130 x 75 x 42mm"
+sensor: "Focus Pro 26K"
+dpiRange: "100-26000"
+pollingRate: "4000Hz"
+buttons: 11
+connection: "Wireless"

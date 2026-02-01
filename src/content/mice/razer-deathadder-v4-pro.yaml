@@ -1,0 +1,10 @@
+name: "Razer DeathAdder V4 Pro"
+brand: "Razer"
+weight: "55g"
+shape: "Ergonomic"
+dimensions: "128 x 68 x 44mm"
+sensor: "Focus Pro 45K"
+dpiRange: "100-45000"
+pollingRate: "8000Hz"
+buttons: 5
+connection: "Wireless"
