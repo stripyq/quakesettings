@@ -1,0 +1,10 @@
+name: "Razer Cobra Pro"
+brand: "Razer"
+weight: "77g"
+shape: "Symmetrical"
+dimensions: "119 x 62 x 38mm"
+sensor: "Focus Pro 30K"
+dpiRange: "100-30000"
+pollingRate: "4000Hz"
+buttons: 8
+connection: "Wireless"

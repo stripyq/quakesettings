@@ -1,0 +1,10 @@
+name: "Ninjutso Sora"
+brand: "Ninjutso"
+weight: "44g"
+shape: "Symmetrical"
+dimensions: "118 x 61 x 37mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

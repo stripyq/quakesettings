@@ -1,0 +1,10 @@
+name: "Pulsar X2V2 Mini"
+brand: "Pulsar"
+weight: "49g"
+shape: "Symmetrical"
+dimensions: "116 x 60 x 37mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

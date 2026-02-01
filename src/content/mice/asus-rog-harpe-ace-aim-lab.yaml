@@ -1,0 +1,10 @@
+name: "ASUS ROG Harpe Ace Aim Lab Edition"
+brand: "ASUS"
+weight: "54g"
+shape: "Symmetrical"
+dimensions: "127.5 x 63.7 x 39.6mm"
+sensor: "ROG AimPoint Pro"
+dpiRange: "100-36000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

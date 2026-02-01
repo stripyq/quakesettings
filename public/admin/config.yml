@@ -213,23 +213,75 @@ collections:
         widget: "select"
         required: false
         options:
-          - { label: "USA", value: "US" }
-          - { label: "Germany", value: "DE" }
-          - { label: "Russia", value: "RU" }
-          - { label: "Sweden", value: "SE" }
-          - { label: "Poland", value: "PL" }
-          - { label: "France", value: "FR" }
-          - { label: "United Kingdom", value: "GB" }
-          - { label: "Netherlands", value: "NL" }
-          - { label: "Finland", value: "FI" }
-          - { label: "Ukraine", value: "UA" }
-          - { label: "Belarus", value: "BY" }
-          - { label: "Hungary", value: "HU" }
-          - { label: "Australia", value: "AU" }
-          - { label: "Canada", value: "CA" }
-          - { label: "Brazil", value: "BR" }
+          # Europe
+          - { label: "Austria (AT)", value: "AT" }
+          - { label: "Belarus (BY)", value: "BY" }
+          - { label: "Belgium (BE)", value: "BE" }
+          - { label: "Bosnia and Herzegovina (BA)", value: "BA" }
+          - { label: "Bulgaria (BG)", value: "BG" }
+          - { label: "Croatia (HR)", value: "HR" }
+          - { label: "Czech Republic (CZ)", value: "CZ" }
+          - { label: "Denmark (DK)", value: "DK" }
+          - { label: "Estonia (EE)", value: "EE" }
+          - { label: "Finland (FI)", value: "FI" }
+          - { label: "France (FR)", value: "FR" }
+          - { label: "Germany (DE)", value: "DE" }
+          - { label: "Greece (GR)", value: "GR" }
+          - { label: "Hungary (HU)", value: "HU" }
+          - { label: "Iceland (IS)", value: "IS" }
+          - { label: "Ireland (IE)", value: "IE" }
+          - { label: "Italy (IT)", value: "IT" }
+          - { label: "Latvia (LV)", value: "LV" }
+          - { label: "Lithuania (LT)", value: "LT" }
+          - { label: "Luxembourg (LU)", value: "LU" }
+          - { label: "Moldova (MD)", value: "MD" }
+          - { label: "Montenegro (ME)", value: "ME" }
+          - { label: "Netherlands (NL)", value: "NL" }
+          - { label: "North Macedonia (MK)", value: "MK" }
+          - { label: "Norway (NO)", value: "NO" }
+          - { label: "Poland (PL)", value: "PL" }
+          - { label: "Portugal (PT)", value: "PT" }
+          - { label: "Romania (RO)", value: "RO" }
+          - { label: "Russia (RU)", value: "RU" }
+          - { label: "Serbia (RS)", value: "RS" }
+          - { label: "Slovakia (SK)", value: "SK" }
+          - { label: "Slovenia (SI)", value: "SI" }
+          - { label: "Spain (ES)", value: "ES" }
+          - { label: "Sweden (SE)", value: "SE" }
+          - { label: "Switzerland (CH)", value: "CH" }
+          - { label: "Turkey (TR)", value: "TR" }
+          - { label: "Ukraine (UA)", value: "UA" }
+          - { label: "United Kingdom (GB)", value: "GB" }
+          # Americas
+          - { label: "Argentina (AR)", value: "AR" }
+          - { label: "Brazil (BR)", value: "BR" }
+          - { label: "Canada (CA)", value: "CA" }
+          - { label: "Chile (CL)", value: "CL" }
+          - { label: "Colombia (CO)", value: "CO" }
+          - { label: "Mexico (MX)", value: "MX" }
+          - { label: "Peru (PE)", value: "PE" }
+          - { label: "United States (US)", value: "US" }
+          - { label: "Venezuela (VE)", value: "VE" }
+          # Asia & Oceania
+          - { label: "Australia (AU)", value: "AU" }
+          - { label: "China (CN)", value: "CN" }
+          - { label: "Hong Kong (HK)", value: "HK" }
+          - { label: "India (IN)", value: "IN" }
+          - { label: "Indonesia (ID)", value: "ID" }
+          - { label: "Israel (IL)", value: "IL" }
+          - { label: "Japan (JP)", value: "JP" }
+          - { label: "Kazakhstan (KZ)", value: "KZ" }
+          - { label: "Malaysia (MY)", value: "MY" }
+          - { label: "New Zealand (NZ)", value: "NZ" }
+          - { label: "Philippines (PH)", value: "PH" }
+          - { label: "Singapore (SG)", value: "SG" }
+          - { label: "South Korea (KR)", value: "KR" }
+          - { label: "Taiwan (TW)", value: "TW" }
+          - { label: "Thailand (TH)", value: "TH" }
+          - { label: "Vietnam (VN)", value: "VN" }
+          # Other
+          - { label: "South Africa (ZA)", value: "ZA" }
           - { label: "Unknown", value: "Unknown" }
-          - { label: "Other", value: "OTHER" }
       - { label: "Team", name: "team", widget: "string", required: false }
       - label: "Category"
         name: "category"

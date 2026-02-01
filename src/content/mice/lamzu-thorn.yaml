@@ -1,0 +1,10 @@
+name: "Lamzu Thorn"
+brand: "Lamzu"
+weight: "52g"
+shape: "Symmetrical"
+dimensions: "121 x 64 x 39mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

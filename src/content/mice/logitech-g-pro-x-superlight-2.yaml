@@ -1,0 +1,10 @@
+name: "Lozer G Pro X Superlight 2"
+brand: "Logitech"
+weight: "60g"
+shape: "Ambidextrous"
+dimensions: "125 x 63.5 x 40mm"
+sensor: "HERO 2"
+dpiRange: "100-32000"
+pollingRate: "4000Hz"
+buttons: 5
+connection: "Wireless"

@@ -1,0 +1,10 @@
+name: "Logitech G309 Lightspeed"
+brand: "Logitech"
+weight: "86g"
+shape: "Symmetrical"
+dimensions: "116 x 62 x 38mm"
+sensor: "HERO 25K"
+dpiRange: "100-25600"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

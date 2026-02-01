@@ -1,0 +1,10 @@
+name: "Wooting 60HE+ Mouse"
+brand: "Wooting"
+weight: "50g"
+shape: "Symmetrical"
+dimensions: "122 x 62 x 38mm"
+sensor: "PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+buttons: 5
+connection: "Wireless"

@@ -1,0 +1,10 @@
+name: "Corsair Sabre RGB Pro Wireless"
+brand: "Corsair"
+weight: "79g"
+shape: "Ergonomic"
+dimensions: "129 x 70 x 43mm"
+sensor: "MARKSMAN"
+dpiRange: "100-26000"
+pollingRate: "2000Hz"
+buttons: 6
+connection: "Wireless"

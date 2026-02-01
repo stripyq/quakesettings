@@ -1,0 +1,10 @@
+name: "VAXEE XE Wireless"
+brand: "VAXEE"
+weight: "75g"
+shape: "Ergonomic"
+dimensions: "123 x 68 x 42mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wireless"

@@ -1,0 +1,10 @@
+name: "SteelSeries Prime Wireless"
+brand: "SteelSeries"
+weight: "80g"
+shape: "Ergonomic"
+dimensions: "125.3 x 59 x 40.7mm"
+sensor: "TrueMove Air"
+dpiRange: "100-18000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

@@ -1,0 +1,10 @@
+name: "Cooler Master MM712"
+brand: "Cooler Master"
+weight: "59g"
+shape: "Ambidextrous"
+dimensions: "122.6 x 62 x 38.4mm"
+sensor: "PAW3370"
+dpiRange: "100-19000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wireless"

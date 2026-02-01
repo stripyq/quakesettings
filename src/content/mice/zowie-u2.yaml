@@ -1,0 +1,10 @@
+name: "Zowie U2"
+brand: "Zowie"
+weight: "62g"
+shape: "Symmetrical"
+dimensions: "119 x 61 x 37mm"
+sensor: "3395"
+dpiRange: "400-3200"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wireless"
