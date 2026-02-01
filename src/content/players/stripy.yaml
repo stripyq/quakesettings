@@ -1,10 +1,10 @@
 name: stripy
 realName: ''
-steamId: '76561197992882111'
+steamId: ''
 qlstatsNick: ''
 country: Unknown
 team: ''
-category: ctf
+category: duel
 lastUpdated: 2025-01
 duelRating: 1623
 duelRatingUpdated: 2026-01-31
@@ -14,7 +14,7 @@ ctfRating: 24.16
 ctfRatingUpdated: 2026-01-31
 dataSource: player
 source: ''
-sourceUrl: http://88.214.20.58/player/76561197992882111
+sourceUrl: ''
 dpi: 1600
 sensitivity: 0.75
 edpi: 1200
@@ -37,7 +37,7 @@ zoom: ''
 weaponNext: ''
 weaponPrev: ''
 mouse: lamzu-maya-x
-mousepad: artisan-hayate-otsu-
+mousepad: artisan-fx-key-83-soft-xxl
 keyboard: wooting-80he
 monitor: lg-32gs95ue-b
 headset: drop-sennheiser-pc37x
