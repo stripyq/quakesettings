@@ -1,10 +1,6 @@
 backend:
-  name: github
-  repo: stripyq/quakesettings
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  site_domain: quakesettings.netlify.app
 
 media_folder: public/images
 public_folder: /quakesettings/images
