@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager</title>
+  <script>
+    // Catch OAuth message before CMS loads
+    window.addEventListener('message', function(e) {
+      if (e.data && typeof e.data === 'string' && e.data.startsWith('authorization:github:success:')) {
+        var jsonStr = e.data.replace('authorization:github:success:', '');
+        var data = JSON.parse(jsonStr);
+        // Store for Netlify CMS
+        localStorage.setItem('netlify-cms-user', JSON.stringify({
+          access_token: data.token,
+          token_type: 'bearer',
+          provider: 'github'
+        }));
+        console.log('Token stored! Reloading...');
+        setTimeout(function() { location.reload(); }, 500);
+      }
+    });
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
