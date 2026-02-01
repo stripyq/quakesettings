@@ -1,9 +1,10 @@
 name: "ATK F1 V2 Extreme"
 brand: "ATK"
+dimensions: "118.2 x 62.4 x 38.8mm"
 weight: "38g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

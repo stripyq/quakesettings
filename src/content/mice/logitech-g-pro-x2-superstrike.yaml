@@ -1,9 +1,10 @@
 name: "Logitech G Pro X2 Superstrike"
 brand: "Logitech"
+dimensions: "125 x 63.5 x 40mm"
 weight: "61g"
 shape: "Ambidextrous"
 sensor: "Logitech HERO 2"
 dpiRange: "100-44000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

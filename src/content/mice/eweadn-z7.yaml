@@ -1,9 +1,10 @@
 name: "EWEADN Z7"
 brand: "EWEADN"
+dimensions: "118.2 x 61.6 x 38.3mm"
 weight: "49g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

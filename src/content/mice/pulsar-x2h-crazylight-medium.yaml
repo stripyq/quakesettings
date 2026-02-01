@@ -1,9 +1,10 @@
 name: "Pulsar X2H CrazyLight Medium"
 brand: "Pulsar"
+dimensions: "120.4 x 65 x 39.1mm"
 weight: "43g"
 shape: "Ambidextrous"
 sensor: "Pulsar XS-1"
 dpiRange: "100-32000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

@@ -1,9 +1,10 @@
 name: "Pulsar Xlite CrazyLight Medium"
 brand: "Pulsar"
+dimensions: "122 x 66 x 43mm"
 weight: "44g"
 shape: "Ergonomic"
 sensor: "Pulsar XS-1"
 dpiRange: "100-32000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

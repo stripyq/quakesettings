@@ -1,9 +1,10 @@
 name: "ATK A9 Ultimate"
 brand: "ATK"
+dimensions: "125 x 64 x 40mm"
 weight: "53g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

@@ -1,9 +1,10 @@
 name: "VGN Y2 Master+"
 brand: "VGN"
+dimensions: "119 x 63.3 x 39.4mm"
 weight: "47g"
 shape: "Hybrid"
 sensor: "PixArt PAW3950"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

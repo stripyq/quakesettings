@@ -1,9 +1,10 @@
 name: "Pulsar VSPO"
 brand: "Pulsar"
+dimensions: "122 x 62 x 38.5mm"
 weight: "53.5g"
 shape: "Ambidextrous"
 sensor: "Pulsar XS-1"
 dpiRange: "100-32000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

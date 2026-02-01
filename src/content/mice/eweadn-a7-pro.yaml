@@ -1,9 +1,10 @@
 name: "EWEADN A7 Pro"
 brand: "EWEADN"
+dimensions: "125.9 x 75 x 42.6mm"
 weight: "59g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3395"
 dpiRange: "100-26000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

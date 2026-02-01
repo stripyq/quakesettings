@@ -1,9 +1,10 @@
 name: "Turtle Beach Burst II Pro"
 brand: "Turtle Beach"
+dimensions: "122.2 x 67.3 x 39.2mm"
 weight: "57g"
 shape: "Ambidextrous"
 sensor: "Turtle Beach Owl-Eye 30K"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 6
+buttons: "6"

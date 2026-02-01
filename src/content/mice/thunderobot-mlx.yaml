@@ -1,9 +1,10 @@
 name: "ThundeRobot MLX"
 brand: "ThundeRobot"
+dimensions: "119.3 x 63.9 x 38.9mm"
 weight: "39g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3950 Pro"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

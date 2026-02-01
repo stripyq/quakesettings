@@ -1,9 +1,10 @@
 name: "ATK U2 V2 Ultimate"
 brand: "ATK"
+dimensions: "123.7 x 64.6 x 39.1mm"
 weight: "45g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

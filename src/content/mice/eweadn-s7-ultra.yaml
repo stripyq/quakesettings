@@ -1,9 +1,10 @@
 name: "EWEADN S7 Ultra"
 brand: "EWEADN"
+dimensions: "125.5 x 62.5 x 39.3mm"
 weight: "59g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950 Ultra"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

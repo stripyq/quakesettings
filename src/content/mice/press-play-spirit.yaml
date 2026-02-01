@@ -1,9 +1,10 @@
 name: "Press Play SPIRIT"
 brand: "Press Play"
+dimensions: "118 x 63.4 x 37.5mm"
 weight: "44g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3311"
 dpiRange: "100-24000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

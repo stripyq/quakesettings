@@ -1,9 +1,10 @@
 name: "Epomaker Carbon X"
 brand: "Epomaker"
+dimensions: "118 x 62.2 x 39.6mm"
 weight: "50g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

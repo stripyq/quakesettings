@@ -1,9 +1,10 @@
 name: "Arbiter Studio Akitsu Medium"
 brand: "Arbiter Studio"
+dimensions: "123 x 62.5 x 38.5mm"
 weight: "40g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

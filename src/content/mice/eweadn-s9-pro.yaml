@@ -1,9 +1,10 @@
 name: "EWEADN S9+ Pro"
 brand: "EWEADN"
+dimensions: "127 x 64.8 x 40.5mm"
 weight: "56g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395"
 dpiRange: "100-26000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

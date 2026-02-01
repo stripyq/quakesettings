@@ -1,9 +1,10 @@
 name: "G-Wolves HSK Pro V2 8K"
 brand: "G-Wolves"
+dimensions: "73.3 x 56 x 29mm"
 weight: "26.8g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

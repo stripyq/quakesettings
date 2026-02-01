@@ -1,9 +1,10 @@
 name: "ATK A9 Ultra Max 2.0"
 brand: "ATK"
+dimensions: "125 x 64 x 40mm"
 weight: "53g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395 Ultra"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

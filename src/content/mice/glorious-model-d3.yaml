@@ -1,9 +1,10 @@
 name: "Glorious Model D3"
 brand: "Glorious"
+dimensions: "121.7 x 63.7 x 41.7mm"
 weight: "69g"
 shape: "Ergonomic"
 sensor: "Glorious BAMF 3.0"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

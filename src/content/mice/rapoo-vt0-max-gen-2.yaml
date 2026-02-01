@@ -1,9 +1,10 @@
 name: "Rapoo VT0 Max Gen-2"
 brand: "Rapoo"
+dimensions: "119 x 63 x 38mm"
 weight: "49g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3950"
 dpiRange: "100-45000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

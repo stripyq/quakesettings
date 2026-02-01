@@ -1,9 +1,10 @@
 name: "Finalmouse ULX Frostlord Medium"
 brand: "Finalmouse"
+dimensions: "121.3 x 62 x 37mm"
 weight: "36g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3395"
 dpiRange: "100-6400"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

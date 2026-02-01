@@ -1,9 +1,10 @@
 name: "MCHOSE A7 Ultra RE"
 brand: "MCHOSE"
+dimensions: "125.5 x 67.3 x 43.5mm"
 weight: "56g"
 shape: "Ergonomic"
 sensor: "PixArt PAW3950"
 dpiRange: "100-42000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

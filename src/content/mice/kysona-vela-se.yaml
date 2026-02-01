@@ -1,9 +1,10 @@
 name: "Kysona Vela SE"
 brand: "Kysona"
+dimensions: "118 x 63.5 x 38mm"
 weight: "45g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3311"
 dpiRange: "100-12000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

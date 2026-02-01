@@ -1,9 +1,10 @@
 name: "VortexSeries IGNIX F3"
 brand: "VortexSeries"
+dimensions: "118.5 x 61 x 39.7mm"
 weight: "39g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3311"
 dpiRange: "100-24000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

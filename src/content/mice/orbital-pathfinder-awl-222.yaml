@@ -1,9 +1,10 @@
 name: "Orbital Pathfinder AWL-222"
 brand: "Orbital"
+dimensions: "126 x 68 x 38mm"
 weight: "54.9g"
 shape: "Hybrid"
 sensor: "PixArt PAW3950"
 dpiRange: "100-30000"
 pollingRate: "8000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"

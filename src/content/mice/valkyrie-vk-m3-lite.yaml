@@ -1,9 +1,10 @@
 name: "Valkyrie VK M3 Lite"
 brand: "Valkyrie"
+dimensions: "118.5 x 62.5 x 37.8mm"
 weight: "49g"
 shape: "Ambidextrous"
 sensor: "PixArt PAW3311"
 dpiRange: "100-24000"
 pollingRate: "1000Hz"
 connection: "Wireless"
-buttons: 5
+buttons: "5"
