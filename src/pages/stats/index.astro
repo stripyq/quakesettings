@@ -187,6 +187,170 @@ const highestSensPlayer = nonAccelPlayers.reduce((prev, curr) =>
   calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
 );
 
+// ===========================================
+// MOUSE SHAPE & SIZE STATISTICS
+// ===========================================
+
+// Mouse shape distribution
+const mouseShapeDistribution = new Map<string, number>();
+const mouseWeightDistribution = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.mouse) {
+    const mouseData = miceMap.get(p.data.mouse);
+    if (mouseData) {
+      // Shape
+      const shape = mouseData.shape || 'Unknown';
+      mouseShapeDistribution.set(shape, (mouseShapeDistribution.get(shape) || 0) + 1);
+
+      // Weight (categorize)
+      if (mouseData.weight && mouseData.weight !== 'Unknown') {
+        const weightNum = parseFloat(mouseData.weight);
+        let weightCategory = 'Unknown';
+        if (weightNum < 70) weightCategory = 'Ultralight (<70g)';
+        else if (weightNum < 90) weightCategory = 'Light (70-89g)';
+        else if (weightNum < 110) weightCategory = 'Medium (90-109g)';
+        else weightCategory = 'Heavy (110g+)';
+        mouseWeightDistribution.set(weightCategory, (mouseWeightDistribution.get(weightCategory) || 0) + 1);
+      }
+    }
+  }
+});
+
+const topMouseShapes = [...mouseShapeDistribution.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const topMouseWeights = [...mouseWeightDistribution.entries()]
+  .sort((a, b) => {
+    // Sort by weight category order
+    const order = ['Ultralight (<70g)', 'Light (70-89g)', 'Medium (90-109g)', 'Heavy (110g+)', 'Unknown'];
+    return order.indexOf(a[0]) - order.indexOf(b[0]);
+  });
+
+// ===========================================
+// MONITOR SIZE VS REFRESH RATE HEATMAP
+// ===========================================
+
+// Parse size to number (e.g., "27 inch" or "27\"" -> 27)
+function parseMonitorSize(size: string): number | null {
+  const match = size.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : null;
+}
+
+// Parse refresh rate to number (e.g., "360Hz" -> 360)
+function parseRefreshRate(rate: string): number | null {
+  const match = rate.match(/(\d+)/);
+  return match ? parseInt(match[1]) : null;
+}
+
+// Define bins for the heatmap
+const sizeBins = [18, 21, 23, 24, 25, 27, 28, 32, 34];
+const refreshBins = [60, 120, 144, 165, 180, 240, 280, 360, 500];
+
+// Build heatmap data
+const monitorHeatmap: Map<string, number> = new Map();
+players.forEach(p => {
+  if (p.data.monitor) {
+    const monitorData = monitorsMap.get(p.data.monitor);
+    if (monitorData) {
+      const size = parseMonitorSize(monitorData.size || '');
+      const refresh = parseRefreshRate(monitorData.refreshRate || '');
+
+      if (size !== null && refresh !== null) {
+        // Find closest size bin
+        const sizeBin = sizeBins.reduce((prev, curr) =>
+          Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
+        );
+        // Find closest refresh bin
+        const refreshBin = refreshBins.reduce((prev, curr) =>
+          Math.abs(curr - refresh) < Math.abs(prev - refresh) ? curr : prev
+        );
+
+        const key = `${sizeBin}-${refreshBin}`;
+        monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
+      }
+    }
+  }
+});
+
+// Calculate max for color scaling
+const heatmapMax = Math.max(...monitorHeatmap.values(), 1);
+
+// ===========================================
+// KEY BINDINGS STATISTICS
+// ===========================================
+
+// Movement keys analysis
+const movementPatterns = new Map<string, number>();
+const jumpKeys = new Map<string, number>();
+
+players.forEach(p => {
+  // Analyze movement pattern
+  const forward = (p.data.forward || 'W').toUpperCase();
+  const left = (p.data.left || 'A').toUpperCase();
+  const back = (p.data.back || 'S').toUpperCase();
+  const right = (p.data.right || 'D').toUpperCase();
+
+  let pattern = `${forward}${left}${back}${right}`;
+
+  // Normalize common patterns
+  if (pattern === 'WASD') pattern = 'WASD';
+  else if (pattern === 'ESDF') pattern = 'ESDF';
+  else if (pattern === 'RFDG') pattern = 'RFDG';
+  else if (forward.includes('ARROW') || forward.includes('UP')) pattern = 'Arrow Keys';
+  else if (forward.includes('KP_') || forward.includes('NUMPAD')) pattern = 'Numpad';
+
+  movementPatterns.set(pattern, (movementPatterns.get(pattern) || 0) + 1);
+
+  // Analyze jump key
+  let jump = (p.data.jump || 'Space');
+  // Normalize
+  if (jump.toLowerCase() === 'space' || jump.toLowerCase() === 'spacebar') jump = 'Space';
+  else if (jump.toLowerCase().includes('mouse2') || jump.toLowerCase() === 'mwheeldown' || jump.toLowerCase() === 'm2') jump = 'Mouse2';
+  else if (jump.toLowerCase().includes('mouse')) jump = 'Mouse Button';
+  else if (jump.toLowerCase() === 'shift') jump = 'Shift';
+  else if (jump.toLowerCase() === 'ctrl' || jump.toLowerCase() === 'control') jump = 'Ctrl';
+
+  jumpKeys.set(jump, (jumpKeys.get(jump) || 0) + 1);
+});
+
+const topMovementPatterns = [...movementPatterns.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
+const topJumpKeys = [...jumpKeys.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+
+// ===========================================
+// CROSSHAIR VISUALIZATION DATA
+// ===========================================
+
+// Crosshair type to visual description mapping
+const crosshairVisuals: Record<string, { shape: string; description: string }> = {
+  '1': { shape: 'circle-dot', description: 'Circle with dot' },
+  '2': { shape: 'cross', description: 'Cross (+)' },
+  '3': { shape: 'cross-gap', description: 'Cross with gap' },
+  '4': { shape: 'dot', description: 'Small dot' },
+  '5': { shape: 'dot-large', description: 'Large dot' },
+  '6': { shape: 'dot', description: 'Dot' },
+  '7': { shape: 'cross-thick', description: 'Thick cross' },
+  '8': { shape: 'circle', description: 'Circle' },
+  '9': { shape: 'cross-gap', description: 'Cross with gap' },
+  '10': { shape: 'x-mark', description: 'X shape' },
+  '11': { shape: 'triangle', description: 'Triangle' },
+  '12': { shape: 'chevron', description: 'Chevron' },
+  '13': { shape: 'circle-crosshair', description: 'Circle crosshair' },
+};
+
+// Get crosshair data with counts
+const crosshairData = [...crosshairTypes.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10)
+  .map(([type, count]) => ({
+    type,
+    count,
+    percentage: Math.round((count / players.length) * 100),
+    visual: crosshairVisuals[type] || { shape: 'unknown', description: `Type ${type}` }
+  }));
+
 // Ensure base URL has trailing slash
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -445,10 +609,142 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </section>
     )}
+
+    <!-- MOUSE SHAPE & WEIGHT -->
+    <section class="stat-card">
+      <h2>Mouse Shape & Weight</h2>
+      <h3 class="subsection-title">Shape Preference</h3>
+      <div class="popularity-list compact">
+        {topMouseShapes.map(([shape, count]) => (
+          <div class="popularity-item">
+            <span class="name">{shape}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+          </div>
+        ))}
+      </div>
+      <h3 class="subsection-title">Weight Distribution</h3>
+      <div class="popularity-list compact">
+        {topMouseWeights.map(([weight, count]) => (
+          <div class="popularity-item">
+            <span class="name">{weight}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- MONITOR SIZE VS REFRESH RATE HEATMAP -->
+    <section class="stat-card wide">
+      <h2>Monitor Size vs Refresh Rate</h2>
+      <p class="card-subtitle">Heatmap showing player monitor preferences</p>
+      <div class="heatmap-container">
+        <div class="heatmap-y-label">Size (inches)</div>
+        <div class="heatmap-wrapper">
+          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 1fr)`}>
+            <!-- Header row -->
+            <div class="heatmap-cell header"></div>
+            {refreshBins.map(rate => (
+              <div class="heatmap-cell header">{rate}</div>
+            ))}
+
+            <!-- Data rows -->
+            {[...sizeBins].reverse().map(size => (
+              <>
+                <div class="heatmap-cell row-label">{size}"</div>
+                {refreshBins.map(rate => {
+                  const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
+                  const intensity = count / heatmapMax;
+                  return (
+                    <div
+                      class="heatmap-cell data"
+                      style={`background-color: ${count > 0 ? `rgba(78, 205, 196, ${0.2 + intensity * 0.8})` : 'var(--bg-secondary)'}`}
+                      title={`${size}" @ ${rate}Hz: ${count} players`}
+                    >
+                      {count > 0 ? count : ''}
+                    </div>
+                  );
+                })}
+              </>
+            ))}
+          </div>
+          <div class="heatmap-x-label">Refresh Rate (Hz)</div>
+        </div>
+        <div class="heatmap-legend">
+          <span class="legend-label">Low</span>
+          <div class="legend-gradient"></div>
+          <span class="legend-label">High</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY BINDINGS -->
+    <section class="stat-card">
+      <h2>Key Bindings</h2>
+      <h3 class="subsection-title">Movement Keys</h3>
+      <div class="binds-list">
+        {topMovementPatterns.map(([pattern, count]) => (
+          <div class="bind-item">
+            <span class="bind-keys">{pattern}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{Math.round((count / players.length) * 100)}%</span>
+          </div>
+        ))}
+      </div>
+      <h3 class="subsection-title">Jump Key</h3>
+      <div class="binds-list">
+        {topJumpKeys.map(([key, count]) => (
+          <div class="bind-item">
+            <span class="bind-keys">{key}</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{Math.round((count / players.length) * 100)}%</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CROSSHAIR TYPES WITH VISUALS -->
+    <section class="stat-card wide">
+      <h2>Crosshair Styles</h2>
+      <p class="card-subtitle">cg_drawCrosshair values and visual representation</p>
+      <div class="crosshair-grid">
+        {crosshairData.map(({ type, count, percentage, visual }) => (
+          <div class="crosshair-item">
+            <div class="crosshair-preview" data-type={visual.shape}>
+              {visual.shape === 'cross' && <div class="ch ch-cross"></div>}
+              {visual.shape === 'cross-thick' && <div class="ch ch-cross-thick"></div>}
+              {visual.shape === 'cross-gap' && <div class="ch ch-cross-gap"></div>}
+              {visual.shape === 'dot' && <div class="ch ch-dot"></div>}
+              {visual.shape === 'dot-large' && <div class="ch ch-dot-large"></div>}
+              {visual.shape === 'circle' && <div class="ch ch-circle"></div>}
+              {visual.shape === 'circle-dot' && <div class="ch ch-circle-dot"></div>}
+              {visual.shape === 'circle-crosshair' && <div class="ch ch-circle-crosshair"></div>}
+              {visual.shape === 'x-mark' && <div class="ch ch-x"></div>}
+              {visual.shape === 'triangle' && <div class="ch ch-triangle"></div>}
+              {visual.shape === 'chevron' && <div class="ch ch-chevron"></div>}
+              {visual.shape === 'unknown' && <div class="ch ch-unknown">?</div>}
+            </div>
+            <div class="crosshair-info">
+              <span class="crosshair-type">Type {type}</span>
+              <span class="crosshair-count">{count} ({percentage}%)</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   </div>
 
   <footer class="stats-footer">
-    <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> • CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">community tracker</a></p>
+    <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> • CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
   </footer>
 </BaseLayout>
 
@@ -820,5 +1116,389 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .stats-footer a:hover {
     color: var(--accent-secondary, #4ecdc4);
     text-decoration: underline;
+  }
+
+  /* Heatmap Styles */
+  .heatmap-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .heatmap-y-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+  }
+
+  .heatmap-wrapper {
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .heatmap-grid {
+    display: grid;
+    gap: 2px;
+    min-width: 500px;
+  }
+
+  .heatmap-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    min-height: 2rem;
+    padding: 0.25rem;
+  }
+
+  .heatmap-cell.header {
+    color: var(--text-secondary, #888);
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .heatmap-cell.row-label {
+    color: var(--text-secondary, #888);
+    font-weight: 600;
+    font-size: 0.7rem;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+  }
+
+  .heatmap-cell.data {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 3px;
+    color: var(--text-primary, #fff);
+    font-weight: 600;
+    cursor: default;
+    transition: transform 0.1s;
+  }
+
+  .heatmap-cell.data:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+
+  .heatmap-x-label {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .heatmap-legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .legend-gradient {
+    width: 1rem;
+    height: 6rem;
+    background: linear-gradient(to bottom, rgba(78, 205, 196, 1), rgba(78, 205, 196, 0.2));
+    border-radius: 3px;
+  }
+
+  .legend-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary, #888);
+  }
+
+  /* Binds Styles */
+  .binds-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bind-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+  }
+
+  .bind-keys {
+    min-width: 100px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-secondary, #4ecdc4);
+    letter-spacing: 0.05em;
+  }
+
+  /* Crosshair Styles */
+  .crosshair-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .crosshair-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .crosshair-preview {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a24;
+    border-radius: 4px;
+    border: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .ch {
+    position: relative;
+  }
+
+  /* Cross (+) */
+  .ch-cross::before,
+  .ch-cross::after {
+    content: '';
+    position: absolute;
+    background: #4ecdc4;
+  }
+  .ch-cross::before {
+    width: 2px;
+    height: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .ch-cross::after {
+    width: 16px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Thick Cross */
+  .ch-cross-thick::before,
+  .ch-cross-thick::after {
+    content: '';
+    position: absolute;
+    background: #4ecdc4;
+  }
+  .ch-cross-thick::before {
+    width: 4px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .ch-cross-thick::after {
+    width: 20px;
+    height: 4px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Cross with Gap */
+  .ch-cross-gap {
+    width: 24px;
+    height: 24px;
+  }
+  .ch-cross-gap::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background: #4ecdc4;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    box-shadow: 0 16px 0 #4ecdc4;
+  }
+  .ch-cross-gap::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 2px;
+    background: #4ecdc4;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    box-shadow: 16px 0 0 #4ecdc4;
+  }
+
+  /* Dot */
+  .ch-dot {
+    width: 4px;
+    height: 4px;
+    background: #4ecdc4;
+    border-radius: 50%;
+  }
+
+  .ch-dot-large {
+    width: 8px;
+    height: 8px;
+    background: #4ecdc4;
+    border-radius: 50%;
+  }
+
+  /* Circle */
+  .ch-circle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #4ecdc4;
+    border-radius: 50%;
+  }
+
+  /* Circle with Dot */
+  .ch-circle-dot {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #4ecdc4;
+    border-radius: 50%;
+    position: relative;
+  }
+  .ch-circle-dot::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #4ecdc4;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Circle Crosshair */
+  .ch-circle-crosshair {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4ecdc4;
+    border-radius: 50%;
+    position: relative;
+  }
+  .ch-circle-crosshair::before,
+  .ch-circle-crosshair::after {
+    content: '';
+    position: absolute;
+    background: #4ecdc4;
+  }
+  .ch-circle-crosshair::before {
+    width: 2px;
+    height: 8px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .ch-circle-crosshair::after {
+    width: 8px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* X Mark */
+  .ch-x {
+    width: 16px;
+    height: 16px;
+    position: relative;
+  }
+  .ch-x::before,
+  .ch-x::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #4ecdc4;
+    left: 50%;
+    top: 50%;
+  }
+  .ch-x::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .ch-x::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  /* Triangle */
+  .ch-triangle {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid #4ecdc4;
+  }
+
+  /* Chevron */
+  .ch-chevron {
+    width: 16px;
+    height: 16px;
+    position: relative;
+  }
+  .ch-chevron::before,
+  .ch-chevron::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    background: #4ecdc4;
+    bottom: 0;
+  }
+  .ch-chevron::before {
+    left: 2px;
+    transform: rotate(-30deg);
+  }
+  .ch-chevron::after {
+    right: 2px;
+    transform: rotate(30deg);
+  }
+
+  /* Unknown */
+  .ch-unknown {
+    color: var(--text-secondary, #888);
+    font-size: 1.25rem;
+  }
+
+  .crosshair-info {
+    text-align: center;
+  }
+
+  .crosshair-type {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+  }
+
+  .crosshair-count {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-secondary, #888);
+  }
+
+  @media (max-width: 600px) {
+    .heatmap-container {
+      flex-direction: column;
+    }
+
+    .heatmap-y-label {
+      writing-mode: horizontal-tb;
+      transform: none;
+    }
+
+    .crosshair-grid {
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
   }
 </style>
