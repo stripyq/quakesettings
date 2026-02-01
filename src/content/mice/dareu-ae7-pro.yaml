@@ -1,0 +1,9 @@
+name: "Dareu AE7 Pro"
+brand: "Dareu"
+weight: "62g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

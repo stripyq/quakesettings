@@ -1,0 +1,9 @@
+name: "INPHIC IN10P"
+brand: "INPHIC"
+weight: "59.7g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

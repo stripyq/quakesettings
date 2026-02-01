@@ -1,0 +1,9 @@
+name: "Corsair Sabre v2 Pro"
+brand: "Corsair"
+weight: "36g"
+shape: "Ambidextrous"
+sensor: "Corsair MARKSMAN S"
+dpiRange: "100-33000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

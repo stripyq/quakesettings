@@ -1,0 +1,9 @@
+name: "Press Play Nova Ergo"
+brand: "Press Play"
+weight: "52g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3311"
+dpiRange: "100-22000"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5

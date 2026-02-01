@@ -1,0 +1,9 @@
+name: "ATK Z1 V2 Ultimate"
+brand: "ATK"
+weight: "54g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "100-42000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

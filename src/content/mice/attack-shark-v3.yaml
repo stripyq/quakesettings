@@ -1,0 +1,9 @@
+name: "Attack Shark V3"
+brand: "Attack Shark"
+weight: "65g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3311"
+dpiRange: "100-25000"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5

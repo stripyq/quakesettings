@@ -1,0 +1,9 @@
+name: "Akko Dash Max"
+brand: "Akko"
+weight: "40g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

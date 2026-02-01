@@ -1,0 +1,9 @@
+name: "Flick Edge"
+brand: "Flick"
+weight: "52g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

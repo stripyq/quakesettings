@@ -1,0 +1,9 @@
+name: "Keychron BM25"
+brand: "Keychron"
+weight: "79g"
+shape: "Ambidextrous"
+sensor: "SOC 3212"
+dpiRange: "100-2400"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5

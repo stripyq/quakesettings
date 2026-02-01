@@ -1,0 +1,9 @@
+name: "Finalmouse ULX Sakura Classic"
+brand: "Finalmouse"
+weight: "38g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-6400"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

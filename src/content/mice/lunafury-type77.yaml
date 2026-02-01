@@ -1,0 +1,9 @@
+name: "LunaFury TYPE77"
+brand: "LunaFury"
+weight: "43.5g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

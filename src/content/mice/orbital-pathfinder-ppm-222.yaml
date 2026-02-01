@@ -1,0 +1,9 @@
+name: "Orbital Pathfinder PPM-222"
+brand: "Orbital"
+weight: "55.4g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

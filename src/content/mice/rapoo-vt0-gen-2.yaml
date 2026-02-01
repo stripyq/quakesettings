@@ -1,0 +1,9 @@
+name: "Rapoo VT0 Gen-2"
+brand: "Rapoo"
+weight: "49g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3398"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

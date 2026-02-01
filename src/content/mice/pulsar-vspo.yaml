@@ -1,0 +1,9 @@
+name: "Pulsar VSPO"
+brand: "Pulsar"
+weight: "53.5g"
+shape: "Ambidextrous"
+sensor: "Pulsar XS-1"
+dpiRange: "100-32000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

@@ -1,0 +1,9 @@
+name: "ELECOM VM800"
+brand: "ELECOM"
+weight: "59g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

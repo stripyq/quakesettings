@@ -1,0 +1,9 @@
+name: "EWEADN S7 Max"
+brand: "EWEADN"
+weight: "58g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3395"
+dpiRange: "100-26000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

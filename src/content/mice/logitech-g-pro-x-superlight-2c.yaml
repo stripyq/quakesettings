@@ -1,0 +1,9 @@
+name: "Logitech G Pro X Superlight 2c"
+brand: "Logitech"
+weight: "51g"
+shape: "Ambidextrous"
+sensor: "Logitech HERO 2"
+dpiRange: "100-44000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

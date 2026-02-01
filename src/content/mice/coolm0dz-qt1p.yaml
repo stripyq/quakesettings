@@ -1,0 +1,9 @@
+name: "cOoLm0Dz Qt1p"
+brand: "cOoLm0Dz"
+weight: "19g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3399"
+dpiRange: "100-20000"
+pollingRate: "8000Hz"
+connection: "Wired"
+buttons: 3

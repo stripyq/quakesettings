@@ -1,0 +1,9 @@
+name: "ATK A9 Air"
+brand: "ATK"
+weight: "47g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950 Ultra"
+dpiRange: "100-42000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5
