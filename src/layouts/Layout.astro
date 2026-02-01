@@ -41,28 +41,35 @@ const currentPath = Astro.url.pathname;
       <p>Contribute via <a href="https://github.com/stripyq/quakesettings">GitHub</a> or use the <a href="/quakesettings/admin/">CMS</a></p>
     </div>
   </footer>
-  <script>
+  <script is:inline>
     // Detect auth tokens in URL hash
-    const hash = window.location.hash;
-    const hasAuthToken = hash.includes('invite_token') ||
-                         hash.includes('recovery_token') ||
-                         hash.includes('confirmation_token');
+    var hash = window.location.hash;
+    var hasAuthToken = hash.includes('invite_token') ||
+                       hash.includes('recovery_token') ||
+                       hash.includes('confirmation_token');
 
-    // If auth token present, open identity widget immediately when ready
-    if (hasAuthToken && window.netlifyIdentity) {
-      window.netlifyIdentity.open();
+    function setupNetlifyIdentity() {
+      if (typeof netlifyIdentity === 'undefined') return;
+
+      // If auth token present, open the widget
+      if (hasAuthToken) {
+        netlifyIdentity.open();
+      }
+
+      // Redirect to admin after login
+      netlifyIdentity.on('login', function() {
+        document.location.href = '/admin/';
+      });
     }
 
-    // Also handle after widget initializes (in case it loads late)
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        if (hasAuthToken && !user) {
-          window.netlifyIdentity.open();
+    // Wait for the widget to load
+    if (typeof netlifyIdentity !== 'undefined') {
+      setupNetlifyIdentity();
+    } else {
+      window.addEventListener('load', function() {
+        if (typeof netlifyIdentity !== 'undefined') {
+          setupNetlifyIdentity();
         }
-      });
-
-      window.netlifyIdentity.on('login', () => {
-        document.location.href = '/admin/';
       });
     }
   </script>
