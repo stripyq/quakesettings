@@ -121,7 +121,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 <a href={`${base}players/${player.id}/`} class="player-link">
                   {player.data.name}
                 </a>
-                {player.data.dataSource === 'player' && <span class="source-badge source-player" title="Self-submitted">👤</span>}
+                {player.data.dataSource === 'player' && <span class="source-badge source-player" title="Self-submitted">P</span>}
                 {player.data.dataSource === 'verified' && <span class="source-badge source-verified" title="Verified by player">✓</span>}
               </td>
               <td class="rating-cell duel">{formatRating(player.data.duelRating || null, true)}</td>

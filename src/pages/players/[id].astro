@@ -133,9 +133,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
 
       <div class="player-meta">
-        {p.dataSource === 'player' && <span class="data-source source-player" title="Settings self-submitted by the player">👤 Submitted</span>}
+        {p.dataSource === 'player' && <span class="data-source source-player" title="Settings self-submitted by the player">Submitted</span>}
         {p.dataSource === 'verified' && <span class="data-source source-verified" title="Settings verified by the player">✓ Verified</span>}
-        {(!p.dataSource || p.dataSource === 'collected') && <span class="data-source source-collected" title="Settings collected from public sources">📋 Collected</span>}
+        {(!p.dataSource || p.dataSource === 'collected') && <span class="data-source source-collected" title="Settings collected from public sources">Collected</span>}
       </div>
 
       <div class="player-actions">
