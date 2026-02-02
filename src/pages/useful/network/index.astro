@@ -31,14 +31,106 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
 
     <p>As a result:</p>
     <ul class="consequence-list">
-      <li><strong>Jitter hurts more than raw ping</strong></li>
+      <li><strong>Low jitter matters more than low latency</strong></li>
       <li><strong>Bufferbloat breaks gameplay</strong> while "ping looks fine"</li>
       <li><strong>1 Gbps bandwidth means nothing</strong> if packets arrive late or uneven</li>
+      <li><strong>Game quality correlates more with stable upload than download or raw ping</strong></li>
     </ul>
 
     <div class="key-point">
       <strong>Key Point:</strong> A stable 30 ms connection feels better than an unstable 15 ms one.
     </div>
+  </section>
+
+  <!-- SECTION: Latency vs Jitter -->
+  <section class="settings-section" id="latency-vs-jitter">
+    <h2>Latency vs Jitter</h2>
+    <p class="section-subtitle">Understanding the difference</p>
+
+    <div class="definition-cards">
+      <div class="definition-card">
+        <h4>Latency (Ping)</h4>
+        <p>The time it takes for a packet to travel from you to the server and back. Measured in milliseconds (ms).</p>
+        <p class="example">Example: 25 ms ping means round-trip takes 25 ms.</p>
+      </div>
+      <div class="definition-card highlight">
+        <h4>Jitter</h4>
+        <p>Variation in latency from packet to packet. If your ping fluctuates between 20–40 ms, you have 20 ms of jitter.</p>
+        <p class="example">In Quake Live, high jitter causes inconsistent snapshot timing and visible warping.</p>
+      </div>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Ping</th>
+          <th>Jitter</th>
+          <th>Experience</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="good-row">
+          <td>Stable fiber</td>
+          <td>25 ms</td>
+          <td>±1 ms</td>
+          <td>Smooth, consistent</td>
+        </tr>
+        <tr class="ok-row">
+          <td>Stable DSL</td>
+          <td>40 ms</td>
+          <td>±2 ms</td>
+          <td>Fine, slightly slower</td>
+        </tr>
+        <tr class="bad-row">
+          <td>Bufferbloat</td>
+          <td>20 ms (avg)</td>
+          <td>±50 ms</td>
+          <td>Warping, inconsistent hits</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>Bottom line:</strong> A consistent 40 ms connection plays better than an inconsistent 20 ms one.
+    </div>
+  </section>
+
+  <!-- SECTION: Quick Test Sequence -->
+  <section class="settings-section quick-test" id="quick-test">
+    <h2>Quick Test Sequence (5 minutes)</h2>
+    <p class="section-subtitle">Test these first — in order</p>
+
+    <ol class="test-sequence">
+      <li>
+        <span class="step-number">1</span>
+        <div class="step-content">
+          <strong>Test idle latency</strong>
+          <span>Ping a game server with no other traffic</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-number">2</span>
+        <div class="step-content">
+          <strong>Test under load (bufferbloat)</strong>
+          <span>Run <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener">Waveform bufferbloat test</a> — isolates bufferbloat vs clean ping</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-number">3</span>
+        <div class="step-content">
+          <strong>Check packet loss & jitter</strong>
+          <span>Use <a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener">WinMTR</a> — visualizes packet loss & latency on the entire route</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-number">4</span>
+        <div class="step-content">
+          <strong>Test actual QL servers</strong>
+          <span>Ping ranger, mynx, omega (see Step 5 below)</span>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <!-- SECTION 2: Common Symptoms -->
@@ -81,6 +173,43 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
         <tr>
           <td>Worse in evenings</td>
           <td>ISP congestion</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION: Common Myths (moved up) -->
+  <section class="settings-section" id="myths">
+    <h2>Common Myths</h2>
+    <p class="section-subtitle">Clear these up before diving deeper</p>
+
+    <table class="myths-table">
+      <thead>
+        <tr>
+          <th>Myth</th>
+          <th>Reality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Faster internet = better Quake</td>
+          <td>Stability matters more than speed</td>
+        </tr>
+        <tr>
+          <td>DNS lowers ping</td>
+          <td>False — DNS only affects initial server lookup</td>
+        </tr>
+        <tr>
+          <td>Port forwarding fixes lag</td>
+          <td>False — QL uses outbound connections</td>
+        </tr>
+        <tr>
+          <td>Disable Nagle's algorithm</td>
+          <td>TCP only — QL uses UDP</td>
+        </tr>
+        <tr>
+          <td>Everyone should use same settings</td>
+          <td>Networks differ — test yours</td>
         </tr>
       </tbody>
     </table>
@@ -286,7 +415,7 @@ Ping stays "low" but gameplay breaks.</pre>
     </div>
 
     <h3>Test Bufferbloat</h3>
-    <p>Use: <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener noreferrer">waveform.com/tools/bufferbloat</a></p>
+    <p>Use: <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener noreferrer">Waveform Bufferbloat Test</a> — isolates bufferbloat from clean latency. If your lagometer spikes during an upload or download test, it often indicates bufferbloat.</p>
 
     <table class="grade-table">
       <thead>
@@ -489,13 +618,20 @@ cl_timenudge -15</code></pre>
     </ul>
 
     <h3>Route Analysis (Advanced)</h3>
-    <p>Use:</p>
-    <ul class="feature-list compact">
-      <li><code>tracert</code> (Windows)</li>
-      <li><code>traceroute</code> (Linux/macOS)</li>
-      <li><strong>WinMTR / mtr</strong> (best)</li>
-    </ul>
-    <p class="setting-note">These show where jitter or loss begins.</p>
+    <div class="tool-list">
+      <div class="tool-item">
+        <code>tracert</code> / <code>traceroute</code>
+        <span>Basic route visualization — shows each hop to the server</span>
+      </div>
+      <div class="tool-item recommended">
+        <a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener"><strong>WinMTR / mtr</strong></a>
+        <span>Visualize packet loss & latency on the entire route — best for diagnosing where problems occur</span>
+      </div>
+      <div class="tool-item">
+        <a href="https://packetlosstest.com" target="_blank" rel="noopener">Packet Loss Test</a>
+        <span>Quick check for packet loss issues</span>
+      </div>
+    </div>
   </section>
 
   <!-- SECTION 10: Step 6 - Interpret Results -->
@@ -547,44 +683,7 @@ cl_timenudge -15</code></pre>
     </div>
   </section>
 
-  <!-- SECTION 11: Common Myths -->
-  <section class="settings-section" id="myths">
-    <h2>Common Myths</h2>
-    <p class="section-subtitle">Separating fact from fiction</p>
-
-    <table class="myths-table">
-      <thead>
-        <tr>
-          <th>Myth</th>
-          <th>Reality</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Faster internet = better Quake</td>
-          <td>Stability matters</td>
-        </tr>
-        <tr>
-          <td>DNS lowers ping</td>
-          <td>False</td>
-        </tr>
-        <tr>
-          <td>Port forwarding fixes lag</td>
-          <td>False</td>
-        </tr>
-        <tr>
-          <td>Disable Nagle's algorithm</td>
-          <td>TCP only — QL uses UDP</td>
-        </tr>
-        <tr>
-          <td>Everyone should use same settings</td>
-          <td>Networks differ</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- SECTION 12: 5-Minute Checklist -->
+  <!-- SECTION 11: 5-Minute Checklist -->
   <section class="settings-section checklist-section" id="checklist">
     <h2>5-Minute Checklist (Quick Start)</h2>
     <p class="section-subtitle">Quick verification before playing</p>
@@ -720,6 +819,168 @@ function copyCode(btn) {
     padding: 1rem;
     margin-top: 1.5rem;
     font-size: 0.95rem;
+  }
+
+  /* Definition Cards */
+  .definition-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .definition-card {
+    background: var(--bg-secondary, #12121a);
+    padding: 1.25rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--text-secondary, #888);
+  }
+
+  .definition-card.highlight {
+    border-color: var(--accent-primary, #ff6b35);
+    background: rgba(255, 107, 53, 0.1);
+  }
+
+  .definition-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .definition-card p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #ccc);
+  }
+
+  .definition-card p.example {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Compare Table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .compare-table th {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .compare-table .good-row td:last-child { color: #2ecc71; }
+  .compare-table .ok-row td:last-child { color: #f1c40f; }
+  .compare-table .bad-row td:last-child { color: #e74c3c; }
+
+  /* Quick Test Section */
+  .quick-test {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(78, 205, 196, 0.1));
+    border-color: var(--accent-primary, #ff6b35);
+  }
+
+  .test-sequence {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: none;
+  }
+
+  .test-sequence li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .test-sequence li:last-child {
+    border-bottom: none;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .step-content strong {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .step-content span {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .step-content a {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  /* Tool List */
+  .tool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .tool-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    border-left: 3px solid var(--border-color, #2a2a35);
+  }
+
+  .tool-item.recommended {
+    border-color: var(--accent-secondary, #4ecdc4);
+    background: rgba(78, 205, 196, 0.1);
+  }
+
+  .tool-item code {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .tool-item a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .tool-item a:hover {
+    text-decoration: underline;
+  }
+
+  .tool-item span {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
   }
 
   /* Feature & Consequence Lists */
@@ -1312,6 +1573,10 @@ function copyCode(btn) {
 
   /* Mobile Responsiveness */
   @media (max-width: 768px) {
+    .definition-cards {
+      grid-template-columns: 1fr;
+    }
+
     .lagometer-tables {
       grid-template-columns: 1fr;
     }
@@ -1334,6 +1599,15 @@ function copyCode(btn) {
 
     .disable-list {
       grid-template-columns: 1fr;
+    }
+
+    .compare-table {
+      font-size: 0.8rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 0.4rem 0.5rem;
     }
   }
 </style>
