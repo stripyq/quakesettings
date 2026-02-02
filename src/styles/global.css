@@ -116,24 +116,24 @@ a:hover {
   background: rgba(255, 107, 0, 0.15);
 }
 
-/* Nav Icons */
+/* Nav Icons - explicit sizing to prevent overflow */
 .nav-icon {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
   min-width: 16px;
   min-height: 16px;
-  max-width: 16px;
-  max-height: 16px;
+  max-width: 16px !important;
+  max-height: 16px !important;
   flex-shrink: 0;
   display: block;
 }
 
-.nav-link svg,
-.mobile-link svg {
-  width: inherit;
-  height: inherit;
-  max-width: 100%;
-  max-height: 100%;
+/* All SVGs in navigation must be constrained */
+.nav-link svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
 }
 
 /* Mobile Menu Button */
@@ -166,8 +166,9 @@ a:hover {
   display: block;
 }
 
-/* Mobile Overlay */
+/* Mobile Overlay - HIDDEN BY DEFAULT */
 .mobile-overlay {
+  display: none; /* Hidden by default on ALL breakpoints */
   position: fixed;
   top: 0;
   left: 0;
@@ -180,13 +181,16 @@ a:hover {
   z-index: 200;
 }
 
+/* Only show overlay when .open class is added */
 .mobile-overlay.open {
+  display: block;
   opacity: 1;
   visibility: visible;
 }
 
-/* Mobile Slide-in Menu */
+/* Mobile Slide-in Menu - HIDDEN BY DEFAULT */
 .mobile-menu {
+  display: none; /* Hidden by default on ALL breakpoints */
   position: fixed;
   top: 0;
   right: 0;
@@ -196,16 +200,15 @@ a:hover {
   background: var(--bg-secondary);
   border-left: 1px solid var(--border);
   transform: translateX(100%);
-  transition: transform 0.3s ease, visibility 0.3s ease;
+  transition: transform 0.3s ease;
   z-index: 201;
-  display: flex;
   flex-direction: column;
-  visibility: hidden;
 }
 
+/* Only show menu when .open class is added */
 .mobile-menu.open {
+  display: flex;
   transform: translateX(0);
-  visibility: visible;
 }
 
 .mobile-menu-header {
@@ -290,12 +293,26 @@ a:hover {
   max-height: 20px;
 }
 
-/* Hide mobile elements on desktop (use display:none to fully remove from DOM) */
+/* Extra safety: Force hide mobile elements on desktop even if .open somehow gets added */
 @media (min-width: 769px) {
   .mobile-overlay,
   .mobile-menu {
-    display: none;
+    display: none !important;
   }
+}
+
+/* Global SVG constraint - prevent any SVG from becoming huge */
+.mobile-menu svg,
+.mobile-overlay svg,
+.mobile-menu-links svg,
+.mobile-link svg {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  flex-shrink: 0;
 }
 
 /* Legacy header styles (keep for compatibility) */
