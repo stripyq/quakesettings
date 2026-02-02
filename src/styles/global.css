@@ -97,35 +97,24 @@ a:hover {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.875rem;
   color: var(--text-secondary);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
   background: var(--bg-tertiary);
   text-decoration: none;
-}
-
-.nav-link .nav-icon {
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-.nav-link:hover .nav-icon {
-  opacity: 1;
 }
 
 /* Search Box */
@@ -404,91 +393,71 @@ tr:hover {
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
   .nav-link {
-    padding: 0.5rem 0.5rem;
-    font-size: 0.85rem;
-  }
-
-  .nav-link .nav-icon {
-    display: none;
+    padding: 0.5rem 0.625rem;
+    font-size: 0.8rem;
   }
 
   .search-box input {
-    width: 140px;
+    width: 130px;
   }
 
   .search-box input:focus {
-    width: 160px;
+    width: 150px;
   }
 }
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
   .nav-container {
-    flex-wrap: wrap;
+    position: relative;
     height: auto;
+    min-height: 56px;
     padding: 0.75rem 1rem;
   }
 
   .mobile-menu-btn {
     display: flex;
-    order: 2;
   }
 
   .logo {
-    order: 1;
     flex: 1;
   }
 
   .search-box {
-    order: 3;
-    width: 100%;
-    margin-top: 0.75rem;
     display: none;
   }
 
-  .nav-links.active + .search-box,
-  .search-box:focus-within {
-    display: block;
-  }
-
-  .search-box input {
-    width: 100%;
-  }
-
-  .search-box input:focus {
-    width: 100%;
-  }
-
   .nav-links {
-    order: 4;
-    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.3s ease;
-    margin-top: 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
   }
 
   .nav-links.active {
-    max-height: 400px;
+    max-height: 320px;
     opacity: 1;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
+    padding: 0.5rem 0;
   }
 
   .nav-link {
-    padding: 0.875rem 0.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
   }
 
-  .nav-link .nav-icon {
-    display: inline;
-    font-size: 1.1rem;
+  .nav-link:last-child {
+    border-bottom: none;
   }
 
   .nav-link:hover,
