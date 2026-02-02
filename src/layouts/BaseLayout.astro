@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Professional Quake Live player settings, configs, and hardware" } = Astro.props;
+const { title, description = "Quake Live player settings, configs, and hardware" } = Astro.props;
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
