@@ -21,20 +21,62 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <body>
   <nav class="main-nav">
     <div class="nav-container">
-      <a href={base} class="logo">QL Pro Settings</a>
+      <a href={base} class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">QL Pro Settings</span>
+      </a>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
       <div class="nav-links">
-        <a href={base}>Players</a>
-        <a href={`${base}compare/`}>Compare</a>
-        <a href={`${base}hardware/`}>Hardware</a>
-        <a href={`${base}recommendations/`}>Gear Recs</a>
-        <a href={`${base}useful/`}>Useful</a>
-        <a href={`${base}stats/`}>Stats</a>
+        <a href={base} class="nav-link">
+          <span class="nav-icon">👤</span>
+          <span>Players</span>
+        </a>
+        <a href={`${base}compare/`} class="nav-link">
+          <span class="nav-icon">⚖</span>
+          <span>Compare</span>
+        </a>
+        <a href={`${base}hardware/`} class="nav-link">
+          <span class="nav-icon">🖱</span>
+          <span>Hardware</span>
+        </a>
+        <a href={`${base}recommendations/`} class="nav-link">
+          <span class="nav-icon">⭐</span>
+          <span>Gear Recs</span>
+        </a>
+        <a href={`${base}useful/`} class="nav-link">
+          <span class="nav-icon">📋</span>
+          <span>Useful</span>
+        </a>
+        <a href={`${base}stats/`} class="nav-link">
+          <span class="nav-icon">📊</span>
+          <span>Stats</span>
+        </a>
       </div>
+
       <div class="search-box">
         <input type="text" id="player-search" placeholder="Search players...">
       </div>
     </div>
   </nav>
+
+  <script is:inline>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+        menuBtn.classList.toggle('active');
+      });
+    }
+  </script>
 
   <main class="main-content">
     <slot />

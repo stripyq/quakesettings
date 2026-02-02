@@ -817,7 +817,29 @@ function copyCode(btn) {
     color: var(--text-primary, #e8e8f0);
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+  }
+
+  /* Link styling for settings sections */
+  .settings-section a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .settings-section a:hover {
+    color: #fff;
+    background: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  /* External link indicator */
+  .settings-section a[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
   }
 
   .section-subtitle {
