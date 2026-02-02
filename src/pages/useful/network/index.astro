@@ -282,62 +282,8 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <h3>Visual Examples</h3>
     <p>Learn to recognize these patterns at a glance:</p>
 
-    <div class="lagometer-gallery">
-      <div class="lagometer-example good">
-        <div class="example-image">
-          <!-- Replace with actual screenshot: lagometer-stable.png -->
-          <div class="image-placeholder">
-            <span>Screenshot: Stable Connection</span>
-          </div>
-        </div>
-        <div class="example-info">
-          <h5>Stable Connection</h5>
-          <p>Lower graph: consistent green height, no spikes. Upper graph: solid blue below the line.</p>
-          <p class="gameplay-impact">Gameplay: Smooth, responsive, consistent hit registration.</p>
-        </div>
-      </div>
-
-      <div class="lagometer-example warning">
-        <div class="example-image">
-          <!-- Replace with actual screenshot: lagometer-jitter.png -->
-          <div class="image-placeholder">
-            <span>Screenshot: Jitter / Bufferbloat</span>
-          </div>
-        </div>
-        <div class="example-info">
-          <h5>Jitter / Bufferbloat</h5>
-          <p>Lower graph: green bars vary wildly in height. Upper graph: occasional yellow spikes above the line.</p>
-          <p class="gameplay-impact">Gameplay: Players skip or teleport, shots feel inconsistent, dodging is unpredictable.</p>
-        </div>
-      </div>
-
-      <div class="lagometer-example bad">
-        <div class="example-image">
-          <!-- Replace with actual screenshot: lagometer-packetloss.png -->
-          <div class="image-placeholder">
-            <span>Screenshot: Packet Loss</span>
-          </div>
-        </div>
-        <div class="example-info">
-          <h5>Packet Loss</h5>
-          <p>Lower graph: red bars appear intermittently or in clusters. Upper graph: yellow triangles where client had to extrapolate.</p>
-          <p class="gameplay-impact">Gameplay: Severe warping, players freeze then snap to new positions, unplayable in competitive.</p>
-        </div>
-      </div>
-
-      <div class="lagometer-example notice">
-        <div class="example-image">
-          <!-- Replace with actual screenshot: lagometer-ratelimited.png -->
-          <div class="image-placeholder">
-            <span>Screenshot: Rate Limited</span>
-          </div>
-        </div>
-        <div class="example-info">
-          <h5>Rate Limited</h5>
-          <p>Lower graph: yellow bars appear regularly. Server is sending less data because your <code>rate</code> cvar is too low.</p>
-          <p class="gameplay-impact">Gameplay: Choppy movement, reduced update frequency. Fix: set <code>rate 25000</code></p>
-        </div>
-      </div>
+    <div class="lagometer-infographic">
+      <img src={`${base}images/lagometer-reference.png`} alt="Lagometer Quick Reference showing four states: Good/Stable (flat green bar, blue on top), Jitter/Bufferbloat (green spikes, jagged top), Packet Loss (red vertical bars, gaps), and Rate Limited (flat yellow bars on bottom)" loading="lazy" />
     </div>
 
     <h3>Test Your Own Connection</h3>
@@ -1104,86 +1050,19 @@ function copyCode(btn) {
     white-space: nowrap;
   }
 
-  /* Lagometer Gallery */
-  .lagometer-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+  /* Lagometer Infographic */
+  .lagometer-infographic {
     margin: 1.5rem 0;
-  }
-
-  .lagometer-example {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-    overflow: hidden;
-    border-left: 3px solid var(--border-color, #2a2a35);
-  }
-
-  .lagometer-example.good {
-    border-color: #2ecc71;
-  }
-
-  .lagometer-example.warning {
-    border-color: #f1c40f;
-  }
-
-  .lagometer-example.bad {
-    border-color: #e74c3c;
-  }
-
-  .lagometer-example.notice {
-    border-color: #3498db;
-  }
-
-  .example-image {
-    background: #0a0a10;
+    border-radius: 8px;
     padding: 1rem;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .image-placeholder {
-    border: 2px dashed var(--border-color, #2a2a35);
-    border-radius: 4px;
-    padding: 1.5rem 1rem;
     text-align: center;
-    width: 100%;
   }
 
-  .image-placeholder span {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #666);
-    font-style: italic;
-  }
-
-  .example-info {
-    padding: 1rem;
-  }
-
-  .example-info h5 {
-    color: var(--text-primary, #e8e8f0);
-    margin: 0 0 0.5rem 0;
-    font-size: 0.95rem;
-  }
-
-  .example-info p {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .example-info p:last-child {
-    margin-bottom: 0;
-  }
-
-  .gameplay-impact {
-    color: var(--text-secondary, #888) !important;
-    font-style: italic;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    margin-top: 0.5rem !important;
+  .lagometer-infographic img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
   }
 
   /* Numbered Steps */
@@ -1855,10 +1734,6 @@ function copyCode(btn) {
     .compare-table th,
     .compare-table td {
       padding: 0.4rem 0.5rem;
-    }
-
-    .lagometer-gallery {
-      grid-template-columns: 1fr;
     }
 
     .color-table td:nth-child(2) {
