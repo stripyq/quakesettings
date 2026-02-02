@@ -218,71 +218,140 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
   <!-- SECTION 3: Understanding the Lagometer -->
   <section class="settings-section" id="lagometer">
     <h2>Understanding the Lagometer</h2>
-    <p class="section-subtitle">Your primary diagnostic tool</p>
+    <p class="section-subtitle">Your primary diagnostic tool for network issues</p>
 
-    <p>Enable it in-game:</p>
+    <p>The lagometer is a real-time graph showing how well your client is receiving data from the server. It's the single most useful tool for diagnosing connection problems in Quake Live.</p>
+
     <div class="code-block small">
       <pre><code>cg_lagometer 1</code></pre>
     </div>
 
     <div class="warning-box">
-      <strong>Important:</strong> The lagometer shows <strong>incoming server data only</strong>. If others say you warp but your lagometer looks fine, the issue is likely your <strong>outgoing traffic</strong>.
+      <strong>Critical:</strong> The lagometer shows <strong>incoming server data only</strong>. If others say you warp but your lagometer looks clean, the problem is your <strong>upload</strong>, not download. The lagometer won't show this.
     </div>
 
-    <h3>Lagometer Layout (Conceptual Diagram)</h3>
-    <div class="ascii-diagram">
-      <pre>
-UPPER GRAPH  ── Client-side interpolation / prediction
-────────────
-|   ▲  ▲    |  Yellow = extrapolation (prediction without data)
-|   ░░░░    |  Blue   = interpolation (good)
-────────────
+    <h3>How to Read the Lagometer</h3>
+    <p>The lagometer has two graphs stacked vertically:</p>
 
-LOWER GRAPH ── Server snapshots
-────────────
-| █ █ █ █   |  Green = ping height
-| █   █     |  Spikes = jitter
-| █ █ █     |  Red = packet loss
-────────────</pre>
-    </div>
-
-    <div class="lagometer-tables">
-      <div class="lagometer-table">
-        <h4>Upper Graph (Client Prediction)</h4>
-        <table class="mini-table">
+    <div class="lagometer-structure">
+      <div class="graph-section">
+        <h4>Upper Graph — Client Prediction</h4>
+        <p>Shows how well your client is interpolating between server snapshots.</p>
+        <table class="color-table">
           <tr>
-            <td><span class="color-box blue"></span> Blue (below line)</td>
-            <td>Interpolating valid snapshots (good)</td>
+            <td><span class="color-box blue"></span></td>
+            <td><strong>Blue (below baseline)</strong></td>
+            <td>Interpolating between valid snapshots. This is normal and good.</td>
           </tr>
           <tr>
-            <td><span class="color-box yellow"></span> Yellow (above line)</td>
-            <td>Extrapolating — guessing due to missing or late packets</td>
-          </tr>
-        </table>
-        <p class="table-note">Large yellow triangles = inconsistent delivery → visible warping.</p>
-      </div>
-
-      <div class="lagometer-table">
-        <h4>Lower Graph (Server Data)</h4>
-        <table class="mini-table">
-          <tr>
-            <td><span class="color-box green"></span> Green (steady)</td>
-            <td>Normal — height equals ping</td>
-          </tr>
-          <tr>
-            <td><span class="color-box green"></span> Green (spikes)</td>
-            <td>Jitter</td>
-          </tr>
-          <tr>
-            <td><span class="color-box yellow"></span> Yellow</td>
-            <td>Rate-limited snapshot</td>
-          </tr>
-          <tr>
-            <td><span class="color-box red"></span> Red</td>
-            <td>Packet loss</td>
+            <td><span class="color-box yellow"></span></td>
+            <td><strong>Yellow (above baseline)</strong></td>
+            <td>Extrapolating — client is guessing because snapshots arrived late or not at all. Causes visible player warping.</td>
           </tr>
         </table>
       </div>
+
+      <div class="graph-section">
+        <h4>Lower Graph — Server Snapshots</h4>
+        <p>Shows timing and delivery of snapshots from the server.</p>
+        <table class="color-table">
+          <tr>
+            <td><span class="color-box green"></span></td>
+            <td><strong>Green (steady height)</strong></td>
+            <td>Normal snapshot delivery. Height = current ping.</td>
+          </tr>
+          <tr>
+            <td><span class="color-box green"></span></td>
+            <td><strong>Green (variable height)</strong></td>
+            <td>Jitter — packets arriving at inconsistent intervals.</td>
+          </tr>
+          <tr>
+            <td><span class="color-box yellow"></span></td>
+            <td><strong>Yellow bars</strong></td>
+            <td>Rate-limited — server suppressed this snapshot (rate cvar too low).</td>
+          </tr>
+          <tr>
+            <td><span class="color-box red"></span></td>
+            <td><strong>Red bars</strong></td>
+            <td>Packet loss — snapshot never arrived.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <h3>Visual Examples</h3>
+    <p>Learn to recognize these patterns at a glance:</p>
+
+    <div class="lagometer-gallery">
+      <div class="lagometer-example good">
+        <div class="example-image">
+          <!-- Replace with actual screenshot: lagometer-stable.png -->
+          <div class="image-placeholder">
+            <span>Screenshot: Stable Connection</span>
+          </div>
+        </div>
+        <div class="example-info">
+          <h5>Stable Connection</h5>
+          <p>Lower graph: consistent green height, no spikes. Upper graph: solid blue below the line.</p>
+          <p class="gameplay-impact">Gameplay: Smooth, responsive, consistent hit registration.</p>
+        </div>
+      </div>
+
+      <div class="lagometer-example warning">
+        <div class="example-image">
+          <!-- Replace with actual screenshot: lagometer-jitter.png -->
+          <div class="image-placeholder">
+            <span>Screenshot: Jitter / Bufferbloat</span>
+          </div>
+        </div>
+        <div class="example-info">
+          <h5>Jitter / Bufferbloat</h5>
+          <p>Lower graph: green bars vary wildly in height. Upper graph: occasional yellow spikes above the line.</p>
+          <p class="gameplay-impact">Gameplay: Players skip or teleport, shots feel inconsistent, dodging is unpredictable.</p>
+        </div>
+      </div>
+
+      <div class="lagometer-example bad">
+        <div class="example-image">
+          <!-- Replace with actual screenshot: lagometer-packetloss.png -->
+          <div class="image-placeholder">
+            <span>Screenshot: Packet Loss</span>
+          </div>
+        </div>
+        <div class="example-info">
+          <h5>Packet Loss</h5>
+          <p>Lower graph: red bars appear intermittently or in clusters. Upper graph: yellow triangles where client had to extrapolate.</p>
+          <p class="gameplay-impact">Gameplay: Severe warping, players freeze then snap to new positions, unplayable in competitive.</p>
+        </div>
+      </div>
+
+      <div class="lagometer-example notice">
+        <div class="example-image">
+          <!-- Replace with actual screenshot: lagometer-ratelimited.png -->
+          <div class="image-placeholder">
+            <span>Screenshot: Rate Limited</span>
+          </div>
+        </div>
+        <div class="example-info">
+          <h5>Rate Limited</h5>
+          <p>Lower graph: yellow bars appear regularly. Server is sending less data because your <code>rate</code> cvar is too low.</p>
+          <p class="gameplay-impact">Gameplay: Choppy movement, reduced update frequency. Fix: set <code>rate 25000</code></p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Test Your Own Connection</h3>
+    <p>Reproduce issues to confirm bufferbloat:</p>
+    <ol class="numbered-steps">
+      <li>Join a server and enable <code>cg_lagometer 1</code></li>
+      <li>Observe the lower graph — it should be steady green</li>
+      <li>Start a speed test or cloud sync upload on your network</li>
+      <li>Watch the lower graph: if green bars spike during upload, you have bufferbloat</li>
+      <li>Enable SQM/QoS on your router to fix this</li>
+    </ol>
+
+    <div class="info-box">
+      <strong>Key insight:</strong> If your lagometer spikes only during uploads or downloads, the problem is bufferbloat — not your ISP, not the server. This is fixable with proper router configuration.
     </div>
   </section>
 
@@ -983,6 +1052,184 @@ function copyCode(btn) {
     color: var(--text-secondary, #888);
   }
 
+  /* Lagometer Structure */
+  .lagometer-structure {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .graph-section {
+    background: var(--bg-secondary, #12121a);
+    padding: 1.25rem;
+    border-radius: 6px;
+  }
+
+  .graph-section h4 {
+    color: var(--accent-secondary, #4ecdc4);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .graph-section > p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #ccc);
+    margin-bottom: 1rem;
+  }
+
+  .color-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .color-table tr td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+
+  .color-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .color-table td:first-child {
+    width: 24px;
+    padding-right: 0;
+  }
+
+  .color-table td:nth-child(2) {
+    width: 180px;
+    white-space: nowrap;
+  }
+
+  /* Lagometer Gallery */
+  .lagometer-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .lagometer-example {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    overflow: hidden;
+    border-left: 3px solid var(--border-color, #2a2a35);
+  }
+
+  .lagometer-example.good {
+    border-color: #2ecc71;
+  }
+
+  .lagometer-example.warning {
+    border-color: #f1c40f;
+  }
+
+  .lagometer-example.bad {
+    border-color: #e74c3c;
+  }
+
+  .lagometer-example.notice {
+    border-color: #3498db;
+  }
+
+  .example-image {
+    background: #0a0a10;
+    padding: 1rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-placeholder {
+    border: 2px dashed var(--border-color, #2a2a35);
+    border-radius: 4px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .image-placeholder span {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #666);
+    font-style: italic;
+  }
+
+  .example-info {
+    padding: 1rem;
+  }
+
+  .example-info h5 {
+    color: var(--text-primary, #e8e8f0);
+    margin: 0 0 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .example-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .example-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .gameplay-impact {
+    color: var(--text-secondary, #888) !important;
+    font-style: italic;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+    margin-top: 0.5rem !important;
+  }
+
+  /* Numbered Steps */
+  .numbered-steps {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    counter-reset: step-counter;
+  }
+
+  .numbered-steps li {
+    counter-increment: step-counter;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .numbered-steps li:last-child {
+    border-bottom: none;
+  }
+
+  .numbered-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 22px;
+    height: 22px;
+    background: var(--accent-secondary, #4ecdc4);
+    color: var(--bg-primary, #0d0d14);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .numbered-steps li code {
+    background: rgba(78, 205, 196, 0.2);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }
+
   /* Feature & Consequence Lists */
   .feature-list,
   .consequence-list {
@@ -1608,6 +1855,15 @@ function copyCode(btn) {
     .compare-table th,
     .compare-table td {
       padding: 0.4rem 0.5rem;
+    }
+
+    .lagometer-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .color-table td:nth-child(2) {
+      width: auto;
+      white-space: normal;
     }
   }
 </style>
