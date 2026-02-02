@@ -1,11 +1,11 @@
 name: stripy
 realName: ''
-steamId: ''
+steamId: 76561197992882112
 qlstatsNick: ''
 country: Unknown
 team: ''
 category: duel
-lastUpdated: 2025-01
+lastUpdated: "2025-01"
 duelRating: 1623
 duelRatingUpdated: 2026-01-31
 tdmRating: 27.04
@@ -23,7 +23,7 @@ acceleration: true
 accelValue: 0.005
 rawInput: true
 fov: 103
-crosshair: 2, 7, 6, 1, 9, 14, 22, 4
+crosshair: "2, 7, 6, 1, 9, 14, 22, 4"
 crosshairSize: ''
 invertedMouse: true
 forward: Mouse2
@@ -36,8 +36,8 @@ attack: Mouse1
 zoom: ''
 weaponNext: ''
 weaponPrev: ''
-mouse: lamzu-maya-x
-mousepad: artisan-fx-key-83-soft-xxl
-keyboard: wooting-80he
-monitor: lg-32gs95ue-b
-headset: drop-sennheiser-pc37x
+mouse: "lamzu-maya-x"
+mousepad: "artisan-fx-key-83-soft-xxl"
+keyboard: "wooting-80he"
+monitor: "lg-32gs95ue-b"
+headset: "drop-sennheiser-pc37x"

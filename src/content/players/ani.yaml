@@ -1,11 +1,11 @@
 name: ani
 realName: ''
-steamId: ''
+steamId: 76561197993861008
 qlstatsNick: ''
 country: SE
 team: ''
 category: ctf
-lastUpdated: 2025-01
+lastUpdated: "2025-01"
 duelRating: 1547
 duelRatingUpdated: 2026-01-31
 tdmRating: 24.13
@@ -20,10 +20,10 @@ sensitivity: 1.5
 edpi: 1200
 cm360: 34.63
 acceleration: false
-accelValue: null
+accelValue: ''
 rawInput: true
 fov: 100
-crosshair: 1, 13, 7, 6
+crosshair: "1, 13, 7, 6"
 crosshairSize: ''
 invertedMouse: false
 forward: Mouse2
@@ -36,8 +36,8 @@ attack: Mouse1
 zoom: ''
 weaponNext: ''
 weaponPrev: ''
-mouse: logitech-g-pro-wireless
-mousepad: steelseries-qck-heavy
+mouse: "logitech-g-pro-wireless"
+mousepad: "steelseries-qck-heavy"
 keyboard: microsoft
-monitor: benq-xl2420t
-headset: hyperx-cloud-mix
+monitor: "benq-xl2420t"
+headset: "hyperx-cloud-mix"

@@ -1,39 +1,36 @@
-name: "Serious"
-realName: "Nikita Gusev"
-country: "Russia"
-rating: 2650
-category: "duel"
+name: Serious
+realName: Nikita Gusev
+steamId: 76561198136963504
+country: Russia
+category: duel
+lastUpdated: "2025-01"
 duelRating: 1834
 duelRatingUpdated: "2026-01-31"
-ctfRating: 18.57
-ctfRatingUpdated: "2026-01-31"
 tdmRating: 35.46
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
-
+ctfRating: 18.57
+ctfRatingUpdated: "2026-01-31"
+dataSource: player
 dpi: 800
 sensitivity: 1.5
 edpi: 1200
 cm360: 34.6
 acceleration: false
 rawInput: true
-
 fov: 120
-crosshair: "Circle"
-crosshairSize: "Small"
+crosshair: Circle
+crosshairSize: Small
 invertedMouse: false
-
-forward: "W"
-back: "S"
-left: "A"
-right: "D"
-jump: "Space"
-crouch: "Ctrl"
-attack: "Mouse1"
-zoom: "Mouse2"
-
+forward: W
+back: S
+left: A
+right: D
+jump: Space
+crouch: Ctrl
+attack: Mouse1
+zoom: Mouse2
 mouse: "g-pro-wireless"
 mousepad: "logitech-g640"
 keyboard: "wooting-60he"
 monitor: "asus-pg259qn"
+rating: 2650
