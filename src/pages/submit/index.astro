@@ -188,7 +188,6 @@ const movementPresets = [
               <option value="__other__">Other (type below)</option>
             </select>
             <input type="text" id="mousepadOther" name="mousepadOther" class="other-input hidden" placeholder="Enter mousepad model">
-            <small>Artisan owners: check kanji reference (Japanese characters) on the list and your mousepad to match exact model</small>
           </div>
         </div>
 
@@ -256,16 +255,16 @@ const movementPresets = [
           <div class="form-group">
             <label for="m_cpi">
               <code class="cvar">m_cpi</code>
-              <span class="tooltip" title="Mouse CPI multiplier. If your DPI is different from what Quake expects, use this to correct it. Most players leave this at 0 (disabled).">ⓘ</span>
+              <span class="tooltip" data-tip="When set to your mouse DPI, cm/360 simplifies to 360÷sensitivity. Most players leave at 0.">ⓘ</span>
             </label>
-            <input type="number" id="m_cpi" name="m_cpi" step="1" min="0" max="32000" placeholder="e.g., 0 or 800">
+            <input type="number" id="m_cpi" name="m_cpi" step="1" min="0" max="32000" value="0">
             <small>Leave at 0 if not using custom CPI correction</small>
           </div>
 
           <div class="form-group">
             <label for="acceleration">
               Mouse Acceleration
-              <span class="tooltip" title="Do you use mouse acceleration in any form? i.e. cl_mouseAccel in-game or Raw Accel (3rd party program)">ⓘ</span>
+              <span class="tooltip" data-tip="Do you use mouse acceleration? Either cl_mouseAccel in-game or Raw Accel (3rd party program).">ⓘ</span>
             </label>
             <select id="acceleration" name="acceleration">
               <option value="false">No</option>
@@ -285,12 +284,30 @@ const movementPresets = [
           <div class="form-group">
             <label for="rawInput">
               Raw Input <code class="cvar">in_mouse</code>
-              <span class="tooltip" title="When enabled (in_mouse 2), mouse input bypasses Windows mouse settings and acceleration. Recommended for consistent aim.">ⓘ</span>
+              <span class="tooltip" data-tip="When enabled (in_mouse 2), mouse input bypasses Windows mouse settings and acceleration. Recommended for consistent aim.">ⓘ</span>
             </label>
             <select id="rawInput" name="rawInput">
               <option value="true">Yes (in_mouse 2)</option>
               <option value="false">No (in_mouse 1)</option>
             </select>
+          </div>
+
+          <div class="form-group windows-sens-group hidden">
+            <label for="windowsSensitivity">Windows Sensitivity</label>
+            <select id="windowsSensitivity" name="windowsSensitivity">
+              <option value="1">1/11</option>
+              <option value="2">2/11</option>
+              <option value="3">3/11</option>
+              <option value="4">4/11</option>
+              <option value="5">5/11</option>
+              <option value="6" selected>6/11 (default)</option>
+              <option value="7">7/11</option>
+              <option value="8">8/11</option>
+              <option value="9">9/11</option>
+              <option value="10">10/11</option>
+              <option value="11">11/11</option>
+            </select>
+            <small>Your Windows mouse sensitivity slider position (Control Panel → Mouse). Default is 6/11.</small>
           </div>
 
           <div class="form-group">
@@ -299,8 +316,18 @@ const movementPresets = [
             </label>
             <select id="invertedMouse" name="invertedMouse">
               <option value="false">No</option>
-              <option value="true">Yes (m_pitch "-0.022")</option>
+              <option value="true">Yes</option>
             </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="m_yaw">
+              <code class="cvar">m_yaw</code>
+            </label>
+            <input type="number" id="m_yaw" name="m_yaw" step="0.001" value="0.022">
+            <small>Default is 0.022. Only change if you modified this cvar.</small>
           </div>
         </div>
 
@@ -311,59 +338,75 @@ const movementPresets = [
           <div class="grip-selector">
             <div class="grip-card" data-grip="Palm">
               <div class="grip-icon">
-                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
-                  <ellipse cx="30" cy="25" rx="20" ry="12" />
-                  <path d="M15 20 Q15 10, 30 10 Q45 10, 45 20" />
-                  <line x1="20" y1="15" x2="20" y2="22" />
-                  <line x1="27" y1="12" x2="27" y2="20" />
-                  <line x1="34" y1="12" x2="34" y2="20" />
-                  <line x1="40" y1="15" x2="40" y2="22" />
+                <!-- Side view: mouse with hand flat on top -->
+                <svg viewBox="0 0 80 45" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <!-- Mouse body -->
+                  <path d="M10 35 Q10 28, 20 25 L60 25 Q75 28, 75 35 L75 38 Q75 42, 65 42 L20 42 Q10 42, 10 38 Z" fill="var(--bg-secondary)"/>
+                  <!-- Hand/arm coming from right, resting flat -->
+                  <path d="M78 20 Q70 18, 60 20 L25 22 Q15 24, 12 28" stroke-width="2"/>
+                  <!-- Palm resting on back of mouse -->
+                  <ellipse cx="55" cy="22" rx="18" ry="6" fill="var(--bg-secondary)" stroke-width="1.5"/>
+                  <!-- Fingers flat on mouse -->
+                  <path d="M25 22 L15 26" stroke-width="2"/>
+                  <path d="M28 21 L18 24" stroke-width="2"/>
                 </svg>
               </div>
               <div class="grip-name">Palm</div>
-              <div class="grip-desc">Flat fingers, full finger contact. Large palm contact</div>
+              <div class="grip-desc">Full palm and fingers resting flat on mouse</div>
             </div>
             <div class="grip-card" data-grip="Hybrid">
               <div class="grip-icon">
-                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
-                  <ellipse cx="30" cy="27" rx="20" ry="10" />
-                  <path d="M15 22 Q20 8, 30 8 Q40 8, 45 22" />
-                  <line x1="20" y1="12" x2="22" y2="20" />
-                  <line x1="27" y1="9" x2="28" y2="18" />
-                  <line x1="34" y1="9" x2="33" y2="18" />
-                  <line x1="40" y1="12" x2="38" y2="20" />
+                <!-- Side view: partial palm contact, slightly curved fingers -->
+                <svg viewBox="0 0 80 45" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <!-- Mouse body -->
+                  <path d="M10 35 Q10 28, 20 25 L60 25 Q75 28, 75 35 L75 38 Q75 42, 65 42 L20 42 Q10 42, 10 38 Z" fill="var(--bg-secondary)"/>
+                  <!-- Hand/arm, palm partially touching -->
+                  <path d="M78 16 Q70 14, 58 16 Q45 18, 40 22" stroke-width="2"/>
+                  <!-- Palm partial contact -->
+                  <ellipse cx="58" cy="18" rx="14" ry="5" fill="var(--bg-secondary)" stroke-width="1.5"/>
+                  <!-- Slightly curved fingers -->
+                  <path d="M40 22 Q30 20, 22 24 Q16 27, 14 30" stroke-width="2"/>
                 </svg>
               </div>
               <div class="grip-name">Hybrid</div>
-              <div class="grip-desc">Mixture of palm grip and claw grip</div>
+              <div class="grip-desc">Partial palm contact, slightly curved fingers</div>
             </div>
             <div class="grip-card" data-grip="Claw">
               <div class="grip-icon">
-                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
-                  <ellipse cx="30" cy="30" rx="18" ry="8" />
-                  <path d="M18 25 Q25 5, 30 5 Q35 5, 42 25" />
-                  <line x1="22" y1="10" x2="24" y2="22" />
-                  <line x1="28" y1="6" x2="29" y2="20" />
-                  <line x1="33" y1="6" x2="32" y2="20" />
-                  <line x1="38" y1="10" x2="36" y2="22" />
+                <!-- Side view: back of palm touching, fingers arched -->
+                <svg viewBox="0 0 80 45" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <!-- Mouse body -->
+                  <path d="M10 35 Q10 28, 20 25 L60 25 Q75 28, 75 35 L75 38 Q75 42, 65 42 L20 42 Q10 42, 10 38 Z" fill="var(--bg-secondary)"/>
+                  <!-- Hand/arm with palm base touching -->
+                  <path d="M78 12 Q70 10, 60 12 Q52 14, 50 20" stroke-width="2"/>
+                  <!-- Palm base on mouse back -->
+                  <ellipse cx="60" cy="15" rx="12" ry="4" fill="var(--bg-secondary)" stroke-width="1.5"/>
+                  <!-- Arched fingers like a claw -->
+                  <path d="M50 20 Q38 12, 28 16 Q20 20, 16 28" stroke-width="2"/>
                 </svg>
               </div>
               <div class="grip-name">Claw</div>
-              <div class="grip-desc">Curved fingers, top finger contact. Partial palm contact</div>
+              <div class="grip-desc">Back of palm touching, fingers arched upward</div>
             </div>
             <div class="grip-card" data-grip="Fingertip">
               <div class="grip-icon">
-                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
-                  <ellipse cx="30" cy="32" rx="16" ry="6" />
-                  <path d="M20 28 Q28 2, 30 2 Q32 2, 40 28" />
-                  <circle cx="23" cy="10" r="2" />
-                  <circle cx="28" cy="5" r="2" />
-                  <circle cx="33" cy="5" r="2" />
-                  <circle cx="38" cy="10" r="2" />
+                <!-- Side view: only fingertips touching, palm hovering -->
+                <svg viewBox="0 0 80 45" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <!-- Mouse body -->
+                  <path d="M10 35 Q10 28, 20 25 L60 25 Q75 28, 75 35 L75 38 Q75 42, 65 42 L20 42 Q10 42, 10 38 Z" fill="var(--bg-secondary)"/>
+                  <!-- Hand hovering above, only tips touching -->
+                  <path d="M78 8 Q68 6, 58 8 Q48 10, 42 14" stroke-width="2"/>
+                  <!-- Palm hovering (no contact) -->
+                  <ellipse cx="60" cy="10" rx="12" ry="4" fill="none" stroke-dasharray="2,2" stroke-width="1"/>
+                  <!-- Fingers curved down to tips on mouse -->
+                  <path d="M42 14 Q32 10, 25 16 Q20 22, 18 28" stroke-width="2"/>
+                  <!-- Fingertip contact points -->
+                  <circle cx="18" cy="28" r="2" fill="currentColor"/>
+                  <circle cx="24" cy="25" r="2" fill="currentColor"/>
                 </svg>
               </div>
               <div class="grip-name">Fingertip</div>
-              <div class="grip-desc">Curved fingers, top finger contact. No palm contact</div>
+              <div class="grip-desc">Only fingertips touching, palm hovering above</div>
             </div>
           </div>
         </div>
@@ -390,7 +433,7 @@ const movementPresets = [
           </div>
         </div>
 
-        <!-- Crosshair Visual Selector -->
+        <!-- Crosshair Selector -->
         <div class="form-group">
           <label>Crosshair <code class="cvar">cg_drawCrosshair</code></label>
           <small>Select one or more crosshairs (click to toggle). Can select multiple if you use different ones per weapon.</small>
@@ -398,7 +441,6 @@ const movementPresets = [
           <div class="crosshair-grid">
             {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].map(n => (
               <div class="crosshair-item" data-crosshair={n}>
-                <div class="crosshair-preview" data-ch={n}></div>
                 <div class="crosshair-num">{n}</div>
               </div>
             ))}
@@ -691,11 +733,44 @@ const movementPresets = [
     border-radius: 50%;
     cursor: help;
     vertical-align: middle;
+    position: relative;
   }
 
   .tooltip:hover {
     color: var(--accent-primary);
     border-color: var(--accent-primary);
+  }
+
+  .tooltip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: var(--text-secondary);
+    white-space: normal;
+    width: 220px;
+    max-width: 280px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    line-height: 1.4;
+  }
+
+  .tooltip:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--border-color);
+    z-index: 1001;
   }
 
   /* Grip Style Cards */
@@ -727,13 +802,13 @@ const movementPresets = [
   }
 
   .grip-icon {
-    height: 40px;
+    height: 45px;
     margin-bottom: 0.5rem;
   }
 
   .grip-icon svg {
-    width: 60px;
-    height: 40px;
+    width: 80px;
+    height: 45px;
     color: var(--text-secondary);
   }
 
@@ -755,19 +830,21 @@ const movementPresets = [
 
   /* Crosshair Grid */
   .crosshair-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.5rem;
-    max-width: 600px;
   }
 
   .crosshair-item {
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     border-radius: 6px;
-    padding: 0.5rem;
-    text-align: center;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -781,49 +858,10 @@ const movementPresets = [
     background: rgba(255, 107, 53, 0.1);
   }
 
-  .crosshair-preview {
-    width: 32px;
-    height: 32px;
-    margin: 0 auto 0.25rem;
-    position: relative;
-  }
-
-  /* Crosshair SVG representations */
-  .crosshair-preview::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .crosshair-preview[data-ch="1"]::before { content: '○'; font-size: 24px; color: #fff; }
-  .crosshair-preview[data-ch="2"]::before { content: '+'; font-size: 28px; color: #fff; font-weight: bold; }
-  .crosshair-preview[data-ch="3"]::before { content: '+'; font-size: 18px; color: #fff; }
-  .crosshair-preview[data-ch="4"]::before { content: '●'; font-size: 16px; color: #fff; }
-  .crosshair-preview[data-ch="5"]::before { content: '•'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="6"]::before { content: '·'; font-size: 28px; color: #fff; }
-  .crosshair-preview[data-ch="7"]::before { content: '⊕'; font-size: 22px; color: #fff; }
-  .crosshair-preview[data-ch="8"]::before { content: '✚'; font-size: 24px; color: #fff; }
-  .crosshair-preview[data-ch="9"]::before { content: '┼'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="10"]::before { content: '⟨⟩'; font-size: 16px; color: #fff; }
-  .crosshair-preview[data-ch="11"]::before { content: '◉'; font-size: 18px; color: #fff; }
-  .crosshair-preview[data-ch="12"]::before { content: '◎'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="13"]::before { content: '∴'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="14"]::before { content: '⌇'; font-size: 22px; color: #fff; }
-  .crosshair-preview[data-ch="15"]::before { content: '◌'; font-size: 22px; color: #fff; }
-  .crosshair-preview[data-ch="16"]::before { content: '( )'; font-size: 14px; color: #fff; }
-  .crosshair-preview[data-ch="17"]::before { content: '⦿'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="18"]::before { content: '><'; font-size: 16px; color: #fff; }
-  .crosshair-preview[data-ch="19"]::before { content: '╋'; font-size: 20px; color: #fff; }
-  .crosshair-preview[data-ch="20"]::before { content: '⊙'; font-size: 22px; color: #fff; }
-  .crosshair-preview[data-ch="21"]::before { content: '✛'; font-size: 26px; color: #fff; }
-  .crosshair-preview[data-ch="22"]::before { content: '⁜'; font-size: 22px; color: #fff; }
-  .crosshair-preview[data-ch="23"]::before { content: '⬤'; font-size: 14px; color: #fff; }
-
   .crosshair-num {
-    font-size: 0.7rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
   }
 
   .crosshair-item.selected .crosshair-num {
@@ -1030,8 +1068,13 @@ const movementPresets = [
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .crosshair-grid {
-      grid-template-columns: repeat(6, 1fr);
+    .crosshair-item {
+      width: 36px;
+      height: 36px;
+    }
+
+    .crosshair-num {
+      font-size: 0.8rem;
     }
   }
 </style>
@@ -1386,7 +1429,12 @@ const movementPresets = [
     if (data.gpu) document.getElementById('gpu').value = data.gpu;
     if (data.cpu) document.getElementById('cpu').value = data.cpu;
 
+    // New fields
+    if (data.m_yaw) document.getElementById('m_yaw').value = data.m_yaw;
+    if (data.windowsSensitivity) document.getElementById('windowsSensitivity').value = data.windowsSensitivity;
+
     toggleAccelField();
+    toggleWindowsSensField();
   }
 
   function setSelectValue(selectId, value) {
@@ -1477,6 +1525,20 @@ const movementPresets = [
   }
 
   accelSelect.addEventListener('change', toggleAccelField);
+
+  // Toggle Windows Sensitivity field based on Raw Input
+  const rawInputSelect = document.getElementById('rawInput');
+  const windowsSensGroup = document.querySelector('.windows-sens-group');
+
+  function toggleWindowsSensField() {
+    if (rawInputSelect.value === 'false') {
+      windowsSensGroup.classList.remove('hidden');
+    } else {
+      windowsSensGroup.classList.add('hidden');
+    }
+  }
+
+  rawInputSelect.addEventListener('change', toggleWindowsSensField);
 
   // Form submission
   form.addEventListener('submit', async function(e) {
