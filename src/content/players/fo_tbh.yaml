@@ -2,15 +2,16 @@ name: fo_tbh
 steamId: "76561198075628640"
 country: GB
 category: ctf
-lastUpdated: 2025-01
+lastUpdated: 2026-02
 ctfRating: 34.33
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
 dpi: 800
-sensitivity: 1.36
-edpi: 1088
-cm360: 38.20187165775401
-acceleration: false
+sensitivity: 1.05
+edpi: 840
+cm360: 49.48051948051948
+acceleration: true
+accelValue: 0.05
 rawInput: true
 fov: 100
 crosshair: 2, 7
