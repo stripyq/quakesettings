@@ -4,25 +4,41 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 const mousepadData = [
-  { name: "Artisan Hien", type: "Cloth", speed: "Speed", recommended: ["Boardzy", "Techless", "Optimum Tech"] },
-  { name: "Artisan Zero", type: "Cloth", speed: "Control", recommended: ["RocketJumpNinja", "Boardzy"] },
-  { name: "Artisan Hayate Otsu", type: "Cloth", speed: "Balanced", recommended: ["Techless", "Optimum Tech"] },
-  { name: "LGG Saturn Pro", type: "Cloth", speed: "Control", recommended: ["Boardzy", "RocketJumpNinja"] },
-  { name: "LGG Venus Pro", type: "Cloth", speed: "Speed", recommended: ["Boardzy"] },
-  { name: "Pulsar Paracontrol V2", type: "Cloth", speed: "Control", recommended: ["Techless"] },
-  { name: "X-raypad Aqua Control+", type: "Cloth", speed: "Control", recommended: ["Boardzy", "RocketJumpNinja"] },
-  { name: "Skypad 3.0", type: "Glass", speed: "Speed", recommended: ["Boardzy"] },
-  { name: "Razer Strider", type: "Hybrid", speed: "Balanced", recommended: ["RocketJumpNinja"] },
-  { name: "SteelSeries QcK Heavy", type: "Cloth", speed: "Control", recommended: ["Classic choice"] },
-  { name: "Zowie G-SR", type: "Cloth", speed: "Control", recommended: ["Pro standard"] },
-  { name: "Zowie G-SR-SE", type: "Cloth", speed: "Balanced", recommended: ["Pro standard"] },
+  { name: "Artisan Zero", surface: "Cloth", speed: "Control", price: "$$$", bz: true, tl: false, ju: true },
+  { name: "LGG Saturn Pro", surface: "Cloth", speed: "Control", price: "$$", bz: true, tl: false, ju: true },
+  { name: "Artisan Hayate Otsu V2", surface: "Hybrid", speed: "Balanced", price: "$$$", bz: true, tl: false, ju: false },
+  { name: "Artisan Raiden", surface: "Hybrid", speed: "Speed", price: "$$$", bz: false, tl: false, ju: true },
+  { name: "Wallhack SP-004", surface: "Glass", speed: "Speed", price: "$$", bz: false, tl: true, ju: false },
+  { name: "Razer Strider", surface: "Hybrid", speed: "Speed", price: "$", bz: false, tl: true, ju: false },
+  { name: "VXE/VGN Dragonfly Pad", surface: "Cloth", speed: "Balanced", price: "$", bz: false, tl: true, ju: false },
+  { name: "LGG Saturn", surface: "Cloth", speed: "Control", price: "$$", bz: false, tl: true, ju: false },
+  { name: "Razer Gigantus V2", surface: "Cloth", speed: "Control", price: "$", bz: false, tl: true, ju: false },
+  { name: "Padsmith Temple of Dreams", surface: "Cloth", speed: "Control", price: "$$", bz: false, tl: false, ju: true },
 ];
+
+function countRecommendations(p) {
+  return (p.bz ? 1 : 0) + (p.tl ? 1 : 0) + (p.ju ? 1 : 0);
+}
+
+const sortedPads = mousepadData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
 ---
 
 <BaseLayout title="Mousepad Recommendations">
   <div class="page-header">
     <h1>Mousepad Recommendations</h1>
-    <p>Control vs speed pads for different playstyles</p>
+    <p>Recommended mousepads from top reviewers (2025)</p>
+  </div>
+
+  <div class="reviewer-legend">
+    <span class="legend-item"><span class="badge bz">BZ</span> Boardzy</span>
+    <span class="legend-item"><span class="badge tl">TL</span> Techless</span>
+    <span class="legend-item"><span class="badge ju">JU</span> jakeu</span>
+  </div>
+
+  <div class="price-legend">
+    <span>$ = Budget (&lt;$30)</span>
+    <span>$$ = Mid-range ($30-60)</span>
+    <span>$$$ = Premium ($60+)</span>
   </div>
 
   <div class="table-container">
@@ -30,18 +46,26 @@ const mousepadData = [
       <thead>
         <tr>
           <th>Mousepad</th>
-          <th>Type</th>
+          <th>Surface</th>
           <th>Speed</th>
-          <th>Recommended By</th>
+          <th>Price</th>
+          <th>BZ</th>
+          <th>TL</th>
+          <th>JU</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
-        {mousepadData.map(p => (
+        {sortedPads.map(p => (
           <tr>
             <td class="pad-name">{p.name}</td>
-            <td>{p.type}</td>
+            <td>{p.surface}</td>
             <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
-            <td>{p.recommended.join(', ')}</td>
+            <td class="price">{p.price}</td>
+            <td class="center">{p.bz ? '✓' : ''}</td>
+            <td class="center">{p.tl ? '✓' : ''}</td>
+            <td class="center">{p.ju ? '✓' : ''}</td>
+            <td class="center total">{countRecommendations(p)}</td>
           </tr>
         ))}
       </tbody>
@@ -54,14 +78,54 @@ const mousepadData = [
 </BaseLayout>
 
 <style>
-  .table-container { overflow-x: auto; }
+  .reviewer-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .badge.bz { background: #ffd93d; color: #000; }
+  .badge.tl { background: #ff6b6b; color: #fff; }
+  .badge.ju { background: #6bcb77; color: #000; }
+
+  .price-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
 
   .rec-table {
     width: 100%;
     border-collapse: collapse;
   }
 
-  .rec-table th, .rec-table td {
+  .rec-table th,
+  .rec-table td {
     padding: 0.75rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
@@ -81,7 +145,7 @@ const mousepadData = [
 
   .pad-name {
     font-weight: 500;
-    color: var(--accent-primary, #ff6b35);
+    color: var(--text-primary, #fff);
   }
 
   .speed-badge {
@@ -95,7 +159,31 @@ const mousepadData = [
   .speed-badge.balanced { background: #ffd93d; color: #000; }
   .speed-badge.speed { background: #ff6b6b; color: #fff; }
 
-  .back-link { margin-top: 2rem; }
-  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
-  .back-link a:hover { text-decoration: underline; }
+  .price {
+    font-family: monospace;
+    color: var(--text-secondary, #888);
+  }
+
+  .center {
+    text-align: center;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
 </style>
