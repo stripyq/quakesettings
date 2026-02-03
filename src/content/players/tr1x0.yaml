@@ -2,7 +2,7 @@ name: tr1x0
 steamId: "76561198257316784"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 24.12
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 24.81
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.02
 rawInput: true
 fov: 100
-crosshair: "2, 6, 3"
+crosshair: 2, 6, 3
 invertedMouse: false
 forward: e
 back: d
@@ -24,8 +24,13 @@ left: s
 right: f
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g-pro"
-mousepad: "steelseries-qck"
-keyboard: "sharkoon-skiller-sgk3"
-monitor: "msi-optix-g271"
-headset: "hyperx-cloud-ii"
+mouse: logitech-g-pro
+mousepad: steelseries-qck
+keyboard: sharkoon-skiller-sgk3
+monitor: msi-optix-g271
+headset: hyperx-cloud-ii
+skates: Stock
+enemyModel: Tank Jr.
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

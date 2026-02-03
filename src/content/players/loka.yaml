@@ -2,7 +2,7 @@ name: loka
 steamId: "76561198030933152"
 country: HR
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 14.09
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 8.83
@@ -23,7 +23,12 @@ left: downarrow
 right: rightarrow
 jump: Mouse2
 attack: Mouse1
-mouse: "zowie-ec2-b"
-mousepad: "corepad-xxxl-"
-monitor: "benq-zowie-xl2411t"
-headset: "philips-fidelio-x2"
+mouse: zowie-ec2-b
+mousepad: corepad-xxxl-
+monitor: benq-zowie-xl2411t
+headset: philips-fidelio-x2
+skates: Stock
+enemyModel: Keel
+crosshairColor: Red
+gpuBrand: NVIDIA
+cpuBrand: Intel

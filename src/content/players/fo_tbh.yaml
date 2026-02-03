@@ -2,7 +2,7 @@ name: fo_tbh
 steamId: "76561198075628640"
 country: GB
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 ctfRating: 34.33
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -13,7 +13,7 @@ cm360: 38.20187165775401
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: "2, 7"
+crosshair: 2, 7
 invertedMouse: false
 forward: w
 back: s
@@ -21,7 +21,12 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "pulsar-xlite-v3-medium"
-mousepad: "esptiger-eba"
-monitor: "msi-mpg-271qrx-qd-oled"
-headset: "drop-sennheiser-pc37x"
+mouse: pulsar-xlite-v3-medium
+mousepad: esptiger-eba
+monitor: msi-mpg-271qrx-qd-oled
+headset: drop-sennheiser-pc37x
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

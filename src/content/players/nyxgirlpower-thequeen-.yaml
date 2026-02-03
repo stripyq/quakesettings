@@ -1,12 +1,12 @@
 name: NyxGirlPower TheQueen ♥
-country: "SI"
+country: SI
 category: ctf
 ctfRating: 17.62
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 17.62
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
+dataSource: player
+lastUpdated: 2025-01
 dpi: 1800
 sensitivity: 3
 edpi: 5400
@@ -27,3 +27,8 @@ mousepad: razer-goliathus-chroma-extended
 keyboard: razer-blackwidow-v4-pro
 monitor: asus-tuf-vg259qm
 headset: razer-kraken-kitty
+skates: Stock
+enemyModel: Keel
+crosshairColor: Pink
+gpuBrand: NVIDIA
+cpuBrand: Intel

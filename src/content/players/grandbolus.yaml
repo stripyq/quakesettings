@@ -2,7 +2,7 @@ name: Grandbolus
 steamId: "76561198255736448"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 20.83
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 18.78
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g302"
-mousepad: "steelseries-qck-large"
-keyboard: "ducky-one-2"
-monitor: "iiyama-g-master-gb2470hsu-b1"
-headset: "sony-wh-1000xm4"
+mouse: logitech-g302
+mousepad: steelseries-qck-large
+keyboard: ducky-one-2
+monitor: iiyama-g-master-gb2470hsu-b1
+headset: sony-wh-1000xm4
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

@@ -2,7 +2,7 @@ name: Xiu
 steamId: "76561198010106912"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 ctfRating: 23.8
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -21,8 +21,13 @@ left: a
 right: d
 jump: CAPSLOCK
 attack: Mouse1
-mouse: "pulsar-xlite-wireless"
-mousepad: "steelseries-qck-large"
-keyboard: "cooler-master-mk730"
-monitor: "acer-gn246hl"
-headset: "hyperx-cloud-ii"
+mouse: pulsar-xlite-wireless
+mousepad: steelseries-qck-large
+keyboard: cooler-master-mk730
+monitor: acer-gn246hl
+headset: hyperx-cloud-ii
+skates: Stock
+enemyModel: Keel
+crosshairColor: Black
+gpuBrand: NVIDIA
+cpuBrand: Intel

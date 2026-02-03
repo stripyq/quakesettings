@@ -2,7 +2,7 @@ name: Manty
 steamId: "76561198146434640"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 ctfRating: 22.85
 ctfRatingUpdated: "2026-02-02"
 dataSource: player
@@ -21,8 +21,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight-ii"
-mousepad: "artisan-hayate-otsu-"
-keyboard: "logitech-g512-carbon"
-monitor: "samsung-odyssey-g6-s32bg65"
-headset: "technics-eah-a800"
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: artisan-hayate-otsu-
+keyboard: logitech-g512-carbon
+monitor: samsung-odyssey-g6-s32bg65
+headset: technics-eah-a800
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: Pink
+gpuBrand: AMD
+cpuBrand: AMD

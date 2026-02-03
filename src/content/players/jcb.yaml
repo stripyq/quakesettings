@@ -2,7 +2,7 @@ name: jcb
 steamId: "76561198042268416"
 country: DK
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 29.55
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 38.11
@@ -15,7 +15,7 @@ cm360: 25.97727272727273
 acceleration: false
 rawInput: true
 fov: 103
-crosshair: "2, 13"
+crosshair: 2, 13
 invertedMouse: false
 forward: t
 back: g
@@ -23,8 +23,13 @@ left: f
 right: h
 jump: Space
 attack: Mouse1
-mouse: "pulsar-xlite-v3-medium"
-mousepad: "artisan-zero-"
-keyboard: "wooting-two-he"
-monitor: "dell-alienware-aw3225qf"
-headset: "beyerdynamic-dt-700-pro-x"
+mouse: pulsar-xlite-v3-medium
+mousepad: artisan-zero-
+keyboard: wooting-two-he
+monitor: dell-alienware-aw3225qf
+headset: beyerdynamic-dt-700-pro-x
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

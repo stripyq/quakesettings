@@ -2,7 +2,7 @@ name: vendigo
 steamId: "76561198258932160"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1465
 duelRatingUpdated: "2026-01-31"
 tdmRating: 34.1
@@ -25,7 +25,12 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g102-lightsync"
-keyboard: "logitech-k120"
-monitor: "aoc-24g2w1g4"
-headset: "sennheiser-hd-280-pro"
+mouse: logitech-g102-lightsync
+keyboard: logitech-k120
+monitor: aoc-24g2w1g4
+headset: sennheiser-hd-280-pro
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

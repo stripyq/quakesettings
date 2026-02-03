@@ -2,7 +2,7 @@ name: St3f4N
 steamId: "76561199756237856"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 25.16
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 17.55
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.011
 rawInput: true
 fov: 100
-crosshair: "2, 7, 9"
+crosshair: 2, 7, 9
 invertedMouse: false
 forward: KP_5
 back: KP_DOWNARROW
@@ -24,8 +24,13 @@ left: KP_END
 right: KP_PGDN
 jump: Mouse2
 attack: Mouse1
-mouse: "finalmouse-ultralightx-lion-m"
-mousepad: "x-raypad-aqua-control-pro-"
-keyboard: "nuphy-field75-he"
-monitor: "asus-tuf-gaming-vg279qm"
-headset: "drop-sennheiser-pc37x"
+mouse: finalmouse-ultralightx-lion-m
+mousepad: x-raypad-aqua-control-pro-
+keyboard: nuphy-field75-he
+monitor: asus-tuf-gaming-vg279qm
+headset: drop-sennheiser-pc37x
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

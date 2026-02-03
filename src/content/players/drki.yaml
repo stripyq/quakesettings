@@ -2,7 +2,7 @@ name: drki
 steamId: "76561197965308768"
 country: HR
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1412
 duelRatingUpdated: "2026-01-31"
 tdmRating: 21.69
@@ -25,7 +25,11 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "hyperx-fury-s-speed-edition-xl"
-monitor: "samsung-odyssey-g7"
-headset: "steelseries-arctis-nova-7-wireless"
+mouse: logitech-g-pro-x-superlight
+mousepad: hyperx-fury-s-speed-edition-xl
+monitor: samsung-odyssey-g7
+headset: steelseries-arctis-nova-7-wireless
+skates: Aftermarket
+crosshairColor: Green
+gpuBrand: INTEL
+cpuBrand: Intel

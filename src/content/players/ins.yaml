@@ -2,7 +2,7 @@ name: ins
 steamId: "76561198023589152"
 country: PT
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 29.47
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 30.77
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "razer-viper-mini"
-mousepad: "wallhack-skypad-20"
-keyboard: "steelseries-apex-pro"
-monitor: "benq-zowie-xl2546"
-headset: "sennheiser-cx400"
+mouse: razer-viper-mini
+mousepad: wallhack-skypad-20
+keyboard: steelseries-apex-pro
+monitor: benq-zowie-xl2546
+headset: sennheiser-cx400
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

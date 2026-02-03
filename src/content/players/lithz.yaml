@@ -2,7 +2,7 @@ name: lithz
 steamId: "76561198033171296"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1476
 duelRatingUpdated: "2026-01-31"
 tdmRating: 31.4
@@ -25,8 +25,13 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g203-lightsync"
-mousepad: "lethal-gaming-gear-saturn-pro"
-keyboard: "steelseries-apex-3-tkl"
-monitor: "acer-predator-xb252q"
-headset: "logitech-g-pro-headset"
+mouse: logitech-g203-lightsync
+mousepad: lethal-gaming-gear-saturn-pro
+keyboard: steelseries-apex-3-tkl
+monitor: acer-predator-xb252q
+headset: logitech-g-pro-headset
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

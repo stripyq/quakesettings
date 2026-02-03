@@ -1,5 +1,5 @@
 name: tough maf
-country: "Unknown"
+country: Unknown
 category: tdm
 duelRating: 1289
 duelRatingUpdated: "2026-01-31"
@@ -7,8 +7,8 @@ ctfRating: 15.13
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 20.05
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
+dataSource: player
+lastUpdated: 2025-01
 dpi: 1600
 sensitivity: 1
 edpi: 1600
@@ -28,3 +28,8 @@ mouse: logitech-g-pro-x-superlight
 keyboard: steelseries-apex-3
 monitor: msi-optix-mag251rx
 headset: beyerdynamic-dt-770-pro
+skates: Aftermarket
+enemyModel: Tank Jr.
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: Intel

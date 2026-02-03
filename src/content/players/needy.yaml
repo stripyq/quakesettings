@@ -2,7 +2,7 @@ name: Needy
 steamId: "76561198275956016"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1356
 duelRatingUpdated: "2026-01-31"
 tdmRating: 10.6
@@ -18,7 +18,7 @@ acceleration: true
 accelValue: 0.11
 rawInput: true
 fov: 103
-crosshair: "2, 7, 13"
+crosshair: 2, 7, 13
 invertedMouse: false
 forward: w
 back: s
@@ -26,8 +26,13 @@ left: a
 right: d
 jump: CAPSLOCK
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "artisan-raiden-"
-keyboard: "logitech-g-pro"
-monitor: "samsung-odyssey-g3-lf24g35t"
-headset: "hyperx-cloud-ii"
+mouse: logitech-g-pro-x-superlight
+mousepad: artisan-raiden-
+keyboard: logitech-g-pro
+monitor: samsung-odyssey-g3-lf24g35t
+headset: hyperx-cloud-ii
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: AMD
+cpuBrand: AMD

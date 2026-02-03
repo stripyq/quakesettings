@@ -1,8 +1,8 @@
 name: MASTERMIND
 steamId: "76561198033439424"
-country: NO
+country: "NO"
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.37
@@ -18,7 +18,7 @@ acceleration: true
 accelValue: 0.055
 rawInput: true
 fov: 110
-crosshair: "6, 2"
+crosshair: 6, 2
 invertedMouse: true
 forward: w
 back: s
@@ -26,7 +26,12 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "razer-deathadder-v3-pro"
-mousepad: "artisan-zero-"
-monitor: "samsung-odyssey-g7-c32g75t"
-headset: "logitech-g-pro-x-wireless-headset"
+mouse: razer-deathadder-v3-pro
+mousepad: artisan-zero-
+monitor: samsung-odyssey-g7-c32g75t
+headset: logitech-g-pro-x-wireless-headset
+skates: Stock
+enemyModel: Keel
+crosshairColor: Green, White
+gpuBrand: NVIDIA
+cpuBrand: Intel

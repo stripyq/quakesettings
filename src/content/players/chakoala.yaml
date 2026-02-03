@@ -2,7 +2,7 @@ name: chakoala
 steamId: "76561198109579696"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 16.87
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 15.47
@@ -17,8 +17,13 @@ rawInput: true
 fov: 103
 crosshair: "2"
 invertedMouse: false
-mouse: "razer-viper-8khz"
-mousepad: "glorious-ice"
-keyboard: "razer-cynosa-v2"
-monitor: "benq-zowie-xl2411t"
-headset: "razer-blackshark-v2"
+mouse: razer-viper-8khz
+mousepad: glorious-ice
+keyboard: razer-cynosa-v2
+monitor: benq-zowie-xl2411t
+headset: razer-blackshark-v2
+crosshairColor: Green
+gpuBrand: NVIDIA
+cpuBrand: AMD
+attack: Mouse1
+jump: Mouse2

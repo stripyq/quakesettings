@@ -2,7 +2,7 @@ name: spooky
 steamId: "76561198041115888"
 country: Unknown
 category: duel
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 26.6
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 26.6
@@ -23,8 +23,13 @@ left: downarrow
 right: rightarrow
 jump: "1"
 attack: mouse
-mouse: "logitech-g-pro-wireless"
-mousepad: "razer-atlas-"
-keyboard: "razer-huntsman-v3-pro"
-monitor: "benq-zowie-xl2546"
-headset: "steelseries-arctis-pro-wireless"
+mouse: logitech-g-pro-wireless
+mousepad: razer-atlas-
+keyboard: razer-huntsman-v3-pro
+monitor: benq-zowie-xl2546
+headset: steelseries-arctis-pro-wireless
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: Intel

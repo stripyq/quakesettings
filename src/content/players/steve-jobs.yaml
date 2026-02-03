@@ -1,12 +1,12 @@
 name: Steve Jobs
-country: "Unknown"
+country: Unknown
 category: tdm
 ctfRating: 9.79
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 7.36
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
+dataSource: player
+lastUpdated: 2025-01
 dpi: 1000
 sensitivity: 2.8
 edpi: 2800
@@ -27,3 +27,8 @@ mousepad: artisan-hien-
 keyboard: microsoft
 monitor: acer-predator-xb323u
 headset: steven-slate-vsx
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: AMD

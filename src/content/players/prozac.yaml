@@ -2,7 +2,7 @@ name: proZaC
 steamId: "76561197993233904"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1372
 duelRatingUpdated: "2026-01-31"
 tdmRating: 30.72
@@ -17,7 +17,7 @@ cm360: 12
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: "7, 2"
+crosshair: 7, 2
 invertedMouse: true
 forward: w
 back: s
@@ -25,8 +25,13 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "home-of-victory-mouse2"
-mousepad: "steelseries-qck"
-keyboard: "logitech-g413"
-monitor: "asus-rog-strix-xg248q"
-headset: "zon-home-of-victory-headset1"
+mouse: home-of-victory-mouse2
+mousepad: steelseries-qck
+keyboard: logitech-g413
+monitor: asus-rog-strix-xg248q
+headset: zon-home-of-victory-headset1
+skates: Stock
+enemyModel: Keel
+crosshairColor: Blue
+gpuBrand: NVIDIA
+cpuBrand: AMD

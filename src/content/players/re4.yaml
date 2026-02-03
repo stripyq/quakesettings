@@ -2,7 +2,7 @@ name: re4
 steamId: "76561198155003680"
 country: PL
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 21.78
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 21.78
@@ -18,14 +18,19 @@ rawInput: true
 fov: 101
 crosshair: "2"
 invertedMouse: false
-forward: y
+forward: "y"
 back: h
 left: g
 right: j
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight-ii"
-mousepad: "artisan-raiden-"
-keyboard: "nuphy-halo75"
-monitor: "asus-rog-swift-pg27aqn"
-headset: "sennheiser-hd-599"
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: artisan-raiden-
+keyboard: nuphy-halo75
+monitor: asus-rog-swift-pg27aqn
+headset: sennheiser-hd-599
+skates: Stock
+enemyModel: Tank Jr.
+crosshairColor: Red
+gpuBrand: AMD
+cpuBrand: AMD

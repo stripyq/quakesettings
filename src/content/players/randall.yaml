@@ -2,7 +2,7 @@ name: randall
 steamId: "76561198106787712"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1305
 duelRatingUpdated: "2026-01-31"
 tdmRating: 34.36
@@ -18,7 +18,7 @@ acceleration: true
 accelValue: 0.04
 rawInput: true
 fov: 99
-crosshair: "2, 7, 6"
+crosshair: 2, 7, 6
 invertedMouse: false
 forward: r
 back: d
@@ -26,8 +26,13 @@ left: f
 right: g
 jump: Space
 attack: Mouse1
-mouse: "razer-viper-v3-pro"
-mousepad: "lethal-gaming-gear-venus-pro"
-keyboard: "corsair-k65-plus-wireless"
-monitor: "asus-tuf-gaming-vg279qm"
-headset: "philips-fidelio-x3"
+mouse: razer-viper-v3-pro
+mousepad: lethal-gaming-gear-venus-pro
+keyboard: corsair-k65-plus-wireless
+monitor: asus-tuf-gaming-vg279qm
+headset: philips-fidelio-x3
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: AMD
+cpuBrand: AMD
