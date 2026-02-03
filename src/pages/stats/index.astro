@@ -418,10 +418,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <div class="sensitivity-info">
         <p><strong>cm/360°</strong> = how many centimeters it takes for you to complete a 360 degree turn. This is also called your real sensitivity.</p>
         <p><strong>eDPI</strong> = mouse DPI × ingame sens</p>
-        <ul class="disclaimer-list">
-          <li><em>Disclaimer:</em> for these calculations default windows sensitivity multiplier, default m_yaw and m_cpi was used</li>
-          <li>Does not account for in-game acceleration. If mouse acceleration is enabled, the movement distance required to turn 360° will of course vary depending on the speed of your mouse movement. But can still be used as comparable "base" sensitivity.</li>
-        </ul>
+        <p class="disclaimer-note"><em>Note:</em> Does not account for in-game acceleration. If mouse acceleration is enabled, the movement distance required to turn 360° will of course vary depending on the speed of your mouse movement. But can still be used as comparable "base" sensitivity.</p>
       </div>
     </section>
 
@@ -956,18 +953,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     margin: 0 0 0.5rem 0;
   }
 
-  .disclaimer-list {
-    margin: 0.75rem 0 0 0;
-    padding-left: 1.25rem;
-    list-style-type: disc;
-  }
-
-  .disclaimer-list li {
-    margin-bottom: 0.35rem;
+  .disclaimer-note {
+    margin-top: 0.75rem;
     line-height: 1.4;
   }
 
-  .disclaimer-list em {
+  .disclaimer-note em {
     color: var(--accent-primary, #ff6b35);
   }
 
