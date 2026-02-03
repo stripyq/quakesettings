@@ -31,6 +31,37 @@ body {
 }
 
 /* ============================================
+   Links - Visible on Dark Background
+   ============================================ */
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #6ee7de;
+  text-decoration: underline;
+}
+
+/* Product/Hardware links in tables and comparison */
+td a,
+.compare-table a,
+.hardware-link,
+.product-link {
+  color: var(--accent-secondary);
+  font-weight: 500;
+}
+
+td a:hover,
+.compare-table a:hover,
+.hardware-link:hover,
+.product-link:hover {
+  color: #6ee7de;
+}
+
+/* ============================================
    Navigation
    ============================================ */
 
