@@ -1,5 +1,5 @@
 name: cherrypoff
-steamId: 76561198149540640
+steamId: "76561198149540640"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 25.58
 acceleration: false
 rawInput: true
 fov: 95
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

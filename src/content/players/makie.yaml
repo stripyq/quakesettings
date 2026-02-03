@@ -1,5 +1,5 @@
 name: MAKIE
-steamId: 76561198008234336
+steamId: "76561198008234336"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.08
 rawInput: true
 fov: 93
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

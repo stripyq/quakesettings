@@ -1,5 +1,5 @@
 name: Drayan
-steamId: 76561198196618512
+steamId: "76561198196618512"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 20
 acceleration: false
 rawInput: true
 fov: 105
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

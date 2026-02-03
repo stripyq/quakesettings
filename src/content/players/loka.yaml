@@ -1,5 +1,5 @@
 name: loka
-steamId: 76561198030933152
+steamId: "76561198030933152"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 30.56
 acceleration: false
 rawInput: true
 fov: 90
-crosshair: 6
+crosshair: "6"
 invertedMouse: false
 forward: uparrow
 back: leftarrow

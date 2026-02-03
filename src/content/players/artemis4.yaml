@@ -1,5 +1,5 @@
 name: artemis4
-steamId: 76561198151319264
+steamId: "76561198151319264"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 21.2
 acceleration: false
 rawInput: true
 fov: 110
-crosshair: 6
+crosshair: "6"
 invertedMouse: false
 forward: w
 back: s

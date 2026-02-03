@@ -1,5 +1,5 @@
 name: Furtzilla
-steamId: 76561198053186400
+steamId: "76561198053186400"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.012
 rawInput: true
 fov: 100
-crosshair: 6
+crosshair: "6"
 invertedMouse: false
 forward: w
 back: s

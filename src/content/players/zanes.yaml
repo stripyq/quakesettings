@@ -1,5 +1,5 @@
 name: zanes
-steamId: 76561198026248912
+steamId: "76561198026248912"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.13
 rawInput: true
 fov: 95
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

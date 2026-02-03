@@ -1,5 +1,5 @@
 name: imprez
-steamId: 76561198256071168
+steamId: "76561198256071168"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 72.16
 acceleration: false
 rawInput: true
 fov: 96
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: e
 back: d

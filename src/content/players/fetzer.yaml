@@ -1,5 +1,5 @@
 name: fetzer
-steamId: 76561197968556128
+steamId: "76561197968556128"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -18,7 +18,7 @@ acceleration: true
 accelValue: 0.04
 rawInput: true
 fov: 120
-crosshair: 2
+crosshair: "2"
 invertedMouse: true
 forward: uparrow
 back: leftarrow

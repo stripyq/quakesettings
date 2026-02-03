@@ -1,5 +1,5 @@
 name: b1ohazzard
-steamId: 76561198132543392
+steamId: "76561198132543392"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.04
 rawInput: true
 fov: 100
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

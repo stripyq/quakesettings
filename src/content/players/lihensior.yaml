@@ -1,5 +1,5 @@
 name: lihensior
-steamId: 76561198007335392
+steamId: "76561198007335392"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 46.38
 acceleration: false
 rawInput: true
 fov: 112
-crosshair: 6
+crosshair: "6"
 invertedMouse: false
 forward: w
 back: s

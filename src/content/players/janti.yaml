@@ -1,5 +1,5 @@
 name: Janti
-steamId: 76561198258475376
+steamId: "76561198258475376"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 27.7
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: 6
+crosshair: "6"
 invertedMouse: false
 forward: e
 back: d
