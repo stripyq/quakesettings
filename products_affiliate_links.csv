@@ -1,0 +1,753 @@
+category,slug,name,brand,affiliateLink,file_path
+headsets,akg-k99,AKG K99,AKG,,/home/user/quakesettings/src/content/headsets/akg-k99.yaml
+headsets,apple-airpods-pro-2nd-gen,Apple AirPods Pro 2nd Gen,Apple,,/home/user/quakesettings/src/content/headsets/apple-airpods-pro-2nd-gen.yaml
+headsets,astro-a50-wireless,Astro A50 Wireless,Astro,,/home/user/quakesettings/src/content/headsets/astro-a50-wireless.yaml
+headsets,audio-technica-ath-m50x,Audio-Technica ATH-M50x,Audio-Technica,,/home/user/quakesettings/src/content/headsets/audio-technica-ath-m50x.yaml
+headsets,beyerdynamic-dt-700-pro-x,Beyerdynamic DT 700 Pro X,Beyerdynamic,,/home/user/quakesettings/src/content/headsets/beyerdynamic-dt-700-pro-x.yaml
+headsets,beyerdynamic-dt-770-pro,Beyerdynamic DT 770 Pro,Beyerdynamic,https://www.amazon.com/dp/B0016MNAAI?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/beyerdynamic-dt-770-pro.yaml
+headsets,beyerdynamic-dt-990-pro,Beyerdynamic DT 990 Pro,Beyerdynamic,https://www.amazon.com/dp/B0011UB9CQ?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/beyerdynamic-dt-990-pro.yaml
+headsets,beyerdynamic-dt990-pro,Beyerdynamic DT 990 Pro,Beyerdynamic,,/home/user/quakesettings/src/content/headsets/beyerdynamic-dt990-pro.yaml
+headsets,creative-fatal1ty,Creative Fatal1ty,Creative,,/home/user/quakesettings/src/content/headsets/creative-fatal1ty.yaml
+headsets,drop-sennheiser-pc37x,Drop + Sennheiser PC37X,Sennheiser,,/home/user/quakesettings/src/content/headsets/drop-sennheiser-pc37x.yaml
+headsets,havit-h2002bg,Havit H2002BG,Havit,,/home/user/quakesettings/src/content/headsets/havit-h2002bg.yaml
+headsets,hyperx-cloud-alpha,HyperX Cloud Alpha,HyperX,https://www.amazon.com/dp/B074NBSF9N?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/hyperx-cloud-alpha.yaml
+headsets,hyperx-cloud-alpha-s,HyperX Cloud Alpha S,HyperX,https://www.amazon.com/dp/B074NBSF9N?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/hyperx-cloud-alpha-s.yaml
+headsets,hyperx-cloud-alpha-wireless,HyperX Cloud Alpha Wireless,HyperX,https://www.amazon.com/dp/B074NBSF9N?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/hyperx-cloud-alpha-wireless.yaml
+headsets,hyperx-cloud-ii,HyperX Cloud II,HyperX,https://www.amazon.com/dp/B00SAYCXWG?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/hyperx-cloud-ii.yaml
+headsets,hyperx-cloud-mix,HyperX Cloud MIX,HyperX,,/home/user/quakesettings/src/content/headsets/hyperx-cloud-mix.yaml
+headsets,hyperx-cloud-stinger-2,HyperX Cloud Stinger 2,HyperX,,/home/user/quakesettings/src/content/headsets/hyperx-cloud-stinger-2.yaml
+headsets,jabra-elite-10-gen-2,Jabra Elite 10 Gen 2,Jabra,,/home/user/quakesettings/src/content/headsets/jabra-elite-10-gen-2.yaml
+headsets,logitech-g-pro-headset,Logitech G Pro,Logitech,,/home/user/quakesettings/src/content/headsets/logitech-g-pro-headset.yaml
+headsets,logitech-g-pro-x-headset,Logitech G Pro X,Logitech,https://www.amazon.com/dp/B07PDFBJZD?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/logitech-g-pro-x-headset.yaml
+headsets,logitech-g-pro-x-wireless-headset,Logitech G Pro X Wireless,Logitech,https://www.amazon.com/dp/B07PDFBJZD?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/logitech-g-pro-x-wireless-headset.yaml
+headsets,logitech-g432,Logitech G432,Logitech,,/home/user/quakesettings/src/content/headsets/logitech-g432.yaml
+headsets,philips-fidelio-x2,Philips Fidelio X2,Philips,,/home/user/quakesettings/src/content/headsets/philips-fidelio-x2.yaml
+headsets,philips-fidelio-x3,Philips Fidelio X3,Philips,,/home/user/quakesettings/src/content/headsets/philips-fidelio-x3.yaml
+headsets,philips-sho9554,Philips SHO9554,Philips,,/home/user/quakesettings/src/content/headsets/philips-sho9554.yaml
+headsets,razer-blackshark-v2,Razer BlackShark V2,Razer,https://www.amazon.com/dp/B08BQJL6TC?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/razer-blackshark-v2.yaml
+headsets,razer-kraken-kitty,Razer Kraken Kitty,Razer,https://www.amazon.com/dp/B07QPQXB2H?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/razer-kraken-kitty.yaml
+headsets,sennheiser-cx400,Sennheiser CX400,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-cx400.yaml
+headsets,sennheiser-hd-280-pro,Sennheiser HD 280 Pro,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-hd-280-pro.yaml
+headsets,sennheiser-hd-599,Sennheiser HD 599,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-hd-599.yaml
+headsets,sennheiser-hd-600,Sennheiser HD 600,Sennheiser,https://www.amazon.com/dp/B00004SY4H?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/sennheiser-hd-600.yaml
+headsets,sennheiser-hd-660s,Sennheiser HD 660S,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-hd-660s.yaml
+headsets,sennheiser-pc-350,Sennheiser PC 350,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-pc-350.yaml
+headsets,sennheiser-pc37x,Sennheiser PC37X,Sennheiser,,/home/user/quakesettings/src/content/headsets/sennheiser-pc37x.yaml
+headsets,sony-mdr-7506,Sony MDR-7506,Sony,,/home/user/quakesettings/src/content/headsets/sony-mdr-7506.yaml
+headsets,sony-wh-1000xm4,Sony WH-1000XM4,Sony,,/home/user/quakesettings/src/content/headsets/sony-wh-1000xm4.yaml
+headsets,steelseries-arctis-nova-7-wireless,SteelSeries Arctis Nova 7 Wireless,SteelSeries,https://www.amazon.com/dp/B0B15QPX5L?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/steelseries-arctis-nova-7-wireless.yaml
+headsets,steelseries-arctis-pro-wireless,SteelSeries Arctis Pro Wireless,SteelSeries,https://www.amazon.com/dp/B079YBKTRN?tag=prosettings-20,/home/user/quakesettings/src/content/headsets/steelseries-arctis-pro-wireless.yaml
+headsets,steven-slate-vsx,Steven Slate VSX,Steven Slate,,/home/user/quakesettings/src/content/headsets/steven-slate-vsx.yaml
+headsets,technics-eah-a800,Technics EAH-A800,Technics,,/home/user/quakesettings/src/content/headsets/technics-eah-a800.yaml
+headsets,yamaha-eph-55,Yamaha EPH-55,Yamaha,,/home/user/quakesettings/src/content/headsets/yamaha-eph-55.yaml
+headsets,zon-home-of-victory-headset1,Zon Home of Victory Headset,Home of Victory,,/home/user/quakesettings/src/content/headsets/zon-home-of-victory-headset1.yaml
+keyboards,a4tech,A4Tech,A4Tech,,/home/user/quakesettings/src/content/keyboards/a4tech.yaml
+keyboards,akko-7th-anniversary-mod-007-pc,Akko MOD007 PC,Akko,,/home/user/quakesettings/src/content/keyboards/akko-7th-anniversary-mod-007-pc.yaml
+keyboards,cooler-master-mk730,Cooler Master MK730,Cooler Master,,/home/user/quakesettings/src/content/keyboards/cooler-master-mk730.yaml
+keyboards,corsair-k100-air-wireless,Corsair K100 Air Wireless,Corsair,https://www.amazon.com/dp/B0BSQ72GL9?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/corsair-k100-air-wireless.yaml
+keyboards,corsair-k55-rgb-pro,Corsair K55 RGB Pro,Corsair,,/home/user/quakesettings/src/content/keyboards/corsair-k55-rgb-pro.yaml
+keyboards,corsair-k65-plus-wireless,Corsair K65 Plus Wireless,Corsair,https://www.amazon.com/dp/B0CZ6KM7ZM?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/corsair-k65-plus-wireless.yaml
+keyboards,corsair-k95-rgb-platinum,Corsair K95 RGB Platinum,Corsair,https://www.amazon.com/dp/B01N5IISXY?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/corsair-k95-rgb-platinum.yaml
+keyboards,dark-project-kd87a,Dark Project KD87A,Dark Project,,/home/user/quakesettings/src/content/keyboards/dark-project-kd87a.yaml
+keyboards,das-keyboard-4-ultimate,Das Keyboard 4 Ultimate,Das Keyboard,https://www.amazon.com/dp/B00JLHV6VO?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/das-keyboard-4-ultimate.yaml
+keyboards,drunkdeer-a75,DrunkDeer A75,DrunkDeer,,/home/user/quakesettings/src/content/keyboards/drunkdeer-a75.yaml
+keyboards,ducky-one-2,Ducky One 2,Ducky,https://www.amazon.com/dp/B07R1P3SCZ?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/ducky-one-2.yaml
+keyboards,ducky-one-2-mini,Ducky One 2 Mini,Ducky,https://www.amazon.com/dp/B07R1P3SCZ?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/ducky-one-2-mini.yaml
+keyboards,hyperx-alloy-origins,HyperX Alloy Origins,HyperX,https://www.amazon.com/dp/B07YMHGP86?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/hyperx-alloy-origins.yaml
+keyboards,keychron-k8,Keychron K8,Keychron,https://www.amazon.com/dp/B0869J52R4?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/keychron-k8.yaml
+keyboards,keychron-q3-he-8k,Keychron Q3 HE 8K,Keychron,,/home/user/quakesettings/src/content/keyboards/keychron-q3-he-8k.yaml
+keyboards,leopold-fc750r,Leopold FC750R,Leopold,,/home/user/quakesettings/src/content/keyboards/leopold-fc750r.yaml
+keyboards,logitech-g-pro,Logitech G Pro,Logitech,https://www.amazon.com/dp/B07QQB9VCV?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/logitech-g-pro.yaml
+keyboards,logitech-g413,Logitech G413,Logitech,,/home/user/quakesettings/src/content/keyboards/logitech-g413.yaml
+keyboards,logitech-g512,Logitech G512,Logitech,https://www.amazon.com/dp/B07QHSYPMQ?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/logitech-g512.yaml
+keyboards,logitech-g512-carbon,Logitech G512 Carbon,Logitech,https://www.amazon.com/dp/B07QHSYPMQ?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/logitech-g512-carbon.yaml
+keyboards,logitech-g513,Logitech G513,Logitech,,/home/user/quakesettings/src/content/keyboards/logitech-g513.yaml
+keyboards,logitech-g910-orion-spectrum,Logitech G910 Orion Spectrum,Logitech,,/home/user/quakesettings/src/content/keyboards/logitech-g910-orion-spectrum.yaml
+keyboards,logitech-g915-tkl,Logitech G915 TKL,Logitech,https://www.amazon.com/dp/B085RLZ1C4?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/logitech-g915-tkl.yaml
+keyboards,logitech-k120,Logitech K120,Logitech,,/home/user/quakesettings/src/content/keyboards/logitech-k120.yaml
+keyboards,magegee-sky81-gasket,MageGee Sky81 Gasket,MageGee,,/home/user/quakesettings/src/content/keyboards/magegee-sky81-gasket.yaml
+keyboards,microsoft,Microsoft Keyboard,Microsoft,,/home/user/quakesettings/src/content/keyboards/microsoft.yaml
+keyboards,myria,Myria Keyboard,Myria,,/home/user/quakesettings/src/content/keyboards/myria.yaml
+keyboards,nuphy-field75-he,NuPhy Field75 HE,NuPhy,,/home/user/quakesettings/src/content/keyboards/nuphy-field75-he.yaml
+keyboards,nuphy-halo65-he,NuPhy Halo65 HE,NuPhy,,/home/user/quakesettings/src/content/keyboards/nuphy-halo65-he.yaml
+keyboards,nuphy-halo75,NuPhy Halo75,NuPhy,,/home/user/quakesettings/src/content/keyboards/nuphy-halo75.yaml
+keyboards,razer-blackwidow,Razer BlackWidow,Razer,https://www.amazon.com/dp/B08FQPLR5V?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/razer-blackwidow.yaml
+keyboards,razer-blackwidow-v3-tenkeyless,Razer BlackWidow V3 Tenkeyless,Razer,https://www.amazon.com/dp/B08FQPLR5V?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/razer-blackwidow-v3-tenkeyless.yaml
+keyboards,razer-blackwidow-v4-pro,Razer BlackWidow V4 Pro,Razer,https://www.amazon.com/dp/B0BQ9M18FS?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/razer-blackwidow-v4-pro.yaml
+keyboards,razer-cynosa-v2,Razer Cynosa V2,Razer,,/home/user/quakesettings/src/content/keyboards/razer-cynosa-v2.yaml
+keyboards,razer-huntsman-mini,Razer Huntsman Mini,Razer,,/home/user/quakesettings/src/content/keyboards/razer-huntsman-mini.yaml
+keyboards,razer-huntsman-v2-tenkeyless,Razer Huntsman V2 Tenkeyless,Razer,,/home/user/quakesettings/src/content/keyboards/razer-huntsman-v2-tenkeyless.yaml
+keyboards,razer-huntsman-v3-pro,Razer Huntsman V3 Pro,Razer,,/home/user/quakesettings/src/content/keyboards/razer-huntsman-v3-pro.yaml
+keyboards,sharkoon-skiller-sgk3,Sharkoon Skiller SGK3,Sharkoon,,/home/user/quakesettings/src/content/keyboards/sharkoon-skiller-sgk3.yaml
+keyboards,spc-gear,SPC Gear,SPC,,/home/user/quakesettings/src/content/keyboards/spc-gear.yaml
+keyboards,steelseries-6gv2,SteelSeries 6Gv2,SteelSeries,,/home/user/quakesettings/src/content/keyboards/steelseries-6gv2.yaml
+keyboards,steelseries-apex-3,SteelSeries Apex 3,SteelSeries,,/home/user/quakesettings/src/content/keyboards/steelseries-apex-3.yaml
+keyboards,steelseries-apex-3-tkl,SteelSeries Apex 3 TKL,SteelSeries,,/home/user/quakesettings/src/content/keyboards/steelseries-apex-3-tkl.yaml
+keyboards,steelseries-apex-pro,SteelSeries Apex Pro,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro.yaml
+keyboards,steelseries-apex-pro-gen-3,SteelSeries Apex Pro Gen 3,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro-gen-3.yaml
+keyboards,steelseries-apex-pro-mini,SteelSeries Apex Pro Mini,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro-mini.yaml
+keyboards,steelseries-apex-pro-mini-wireless,SteelSeries Apex Pro Mini Wireless,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro-mini-wireless.yaml
+keyboards,steelseries-apex-pro-tkl,SteelSeries Apex Pro TKL,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro-tkl.yaml
+keyboards,steelseries-apex-pro-tkl-gen-3,SteelSeries Apex Pro TKL Gen 3,SteelSeries,https://www.amazon.com/dp/B07SVJJCP3?tag=prosettings-20,/home/user/quakesettings/src/content/keyboards/steelseries-apex-pro-tkl-gen-3.yaml
+keyboards,uvi-gear-pride-mini,UVI Gear Pride Mini,UVI,,/home/user/quakesettings/src/content/keyboards/uvi-gear-pride-mini.yaml
+keyboards,wooting-60he,Wooting 60HE,Wooting,,/home/user/quakesettings/src/content/keyboards/wooting-60he.yaml
+keyboards,wooting-80he,Wooting 80HE,Wooting,,/home/user/quakesettings/src/content/keyboards/wooting-80he.yaml
+keyboards,wooting-two-he,Wooting Two HE,Wooting,,/home/user/quakesettings/src/content/keyboards/wooting-two-he.yaml
+keyboards,xtrfy-k2-rgb,Xtrfy K2 RGB,Xtrfy,,/home/user/quakesettings/src/content/keyboards/xtrfy-k2-rgb.yaml
+keyboards,z-gaming,Z-Gaming,Z-Gaming,,/home/user/quakesettings/src/content/keyboards/z-gaming.yaml
+mice,ajazz-aj139-v2-mc,AJAZZ AJ139 V2 MC,AJAZZ,,/home/user/quakesettings/src/content/mice/ajazz-aj139-v2-mc.yaml
+mice,ajazz-aj139-v2-pro,AJAZZ AJ139 V2 Pro,AJAZZ,,/home/user/quakesettings/src/content/mice/ajazz-aj139-v2-pro.yaml
+mice,ajazz-aj139p-v3-mc,AJAZZ AJ139P V3 MC,AJAZZ,,/home/user/quakesettings/src/content/mice/ajazz-aj139p-v3-mc.yaml
+mice,ajazz-nj08,AJAZZ NJ08,AJAZZ,,/home/user/quakesettings/src/content/mice/ajazz-nj08.yaml
+mice,akko-dash-max,Akko Dash Max,Akko,,/home/user/quakesettings/src/content/mice/akko-dash-max.yaml
+mice,akko-dash-ultra,Akko Dash Ultra,Akko,,/home/user/quakesettings/src/content/mice/akko-dash-ultra.yaml
+mice,akko-nest,Akko Nest,Akko,,/home/user/quakesettings/src/content/mice/akko-nest.yaml
+mice,arbiter-studio-akitsu-medium,Arbiter Studio Akitsu Medium,Arbiter Studio,,/home/user/quakesettings/src/content/mice/arbiter-studio-akitsu-medium.yaml
+mice,arye-rcc-1,ARYE RCC-1,ARYE,,/home/user/quakesettings/src/content/mice/arye-rcc-1.yaml
+mice,asus-rog-harpe-ace-aim-lab,ASUS ROG Harpe Ace Aim Lab Edition,ASUS,https://www.amazon.com/dp/B0BYD7M4KZ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/asus-rog-harpe-ace-aim-lab.yaml
+mice,asus-rog-harpe-mini-core,ASUS ROG Harpe Mini Core,ASUS,,/home/user/quakesettings/src/content/mice/asus-rog-harpe-mini-core.yaml
+mice,asus-rog-keris-ii-ace,ASUS ROG Keris II Ace,ASUS,,/home/user/quakesettings/src/content/mice/asus-rog-keris-ii-ace.yaml
+mice,atk-a9-air,ATK A9 Air,ATK,,/home/user/quakesettings/src/content/mice/atk-a9-air.yaml
+mice,atk-a9-ultimate,ATK A9 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-a9-ultimate.yaml
+mice,atk-a9-ultra-max-2-0,ATK A9 Ultra Max 2.0,ATK,,/home/user/quakesettings/src/content/mice/atk-a9-ultra-max-2-0.yaml
+mice,atk-f1-v2-extreme,ATK F1 V2 Extreme,ATK,,/home/user/quakesettings/src/content/mice/atk-f1-v2-extreme.yaml
+mice,atk-f1-v2-ultimate,ATK F1 V2 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-f1-v2-ultimate.yaml
+mice,atk-f1-v2-ultra-max,ATK F1 V2 Ultra Max,ATK,,/home/user/quakesettings/src/content/mice/atk-f1-v2-ultra-max.yaml
+mice,atk-ghost-extreme,ATK GHOST Extreme,ATK,,/home/user/quakesettings/src/content/mice/atk-ghost-extreme.yaml
+mice,atk-ghost-ultimate,ATK GHOST Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-ghost-ultimate.yaml
+mice,atk-u2-v2-mini,ATK U2 V2 Mini,ATK,,/home/user/quakesettings/src/content/mice/atk-u2-v2-mini.yaml
+mice,atk-u2-v2-ultimate,ATK U2 V2 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-u2-v2-ultimate.yaml
+mice,atk-x1-v2-extreme,ATK X1 V2 Extreme,ATK,,/home/user/quakesettings/src/content/mice/atk-x1-v2-extreme.yaml
+mice,atk-x1-v2-ultimate,ATK X1 V2 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-x1-v2-ultimate.yaml
+mice,atk-x1-v2-ultra-max,ATK X1 V2 Ultra Max,ATK,,/home/user/quakesettings/src/content/mice/atk-x1-v2-ultra-max.yaml
+mice,atk-y9-pro-max,ATK Y9 Pro Max,ATK,,/home/user/quakesettings/src/content/mice/atk-y9-pro-max.yaml
+mice,atk-y9-ultimate,ATK Y9 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-y9-ultimate.yaml
+mice,atk-z1-v2-ultimate,ATK Z1 V2 Ultimate,ATK,,/home/user/quakesettings/src/content/mice/atk-z1-v2-ultimate.yaml
+mice,attack-shark-r6,Attack Shark R6,Attack Shark,,/home/user/quakesettings/src/content/mice/attack-shark-r6.yaml
+mice,attack-shark-v3,Attack Shark V3,Attack Shark,,/home/user/quakesettings/src/content/mice/attack-shark-v3.yaml
+mice,attack-shark-v6,Attack Shark V6,Attack Shark,,/home/user/quakesettings/src/content/mice/attack-shark-v6.yaml
+mice,attack-shark-v8,Attack Shark V8,Attack Shark,,/home/user/quakesettings/src/content/mice/attack-shark-v8.yaml
+mice,attack-shark-x8-ultimate,Attack Shark X8 Ultimate,Attack Shark,,/home/user/quakesettings/src/content/mice/attack-shark-x8-ultimate.yaml
+mice,aula-x9,AULA X9,AULA,,/home/user/quakesettings/src/content/mice/aula-x9.yaml
+mice,aula-x9-pro,AULA X9 Pro,AULA,,/home/user/quakesettings/src/content/mice/aula-x9-pro.yaml
+mice,aula-x9-ultra,AULA X9 Ultra,AULA,,/home/user/quakesettings/src/content/mice/aula-x9-ultra.yaml
+mice,be-quiet-dark-perk-ergo,be quiet! Dark Perk Ergo,be quiet!,,/home/user/quakesettings/src/content/mice/be-quiet-dark-perk-ergo.yaml
+mice,be-quiet-dark-perk-sym,be quiet! Dark Perk Sym,be quiet!,,/home/user/quakesettings/src/content/mice/be-quiet-dark-perk-sym.yaml
+mice,cherry-mw5500,Cherry MW5500,Cherry,,/home/user/quakesettings/src/content/mice/cherry-mw5500.yaml
+mice,chilkey-glacier-lw-8k-l,Chilkey Glacier LW 8K L,Chilkey,,/home/user/quakesettings/src/content/mice/chilkey-glacier-lw-8k-l.yaml
+mice,cooler-master-mm712,Cooler Master MM712,Cooler Master,https://www.amazon.com/dp/B0B6CW7S85?tag=prosettings-20,/home/user/quakesettings/src/content/mice/cooler-master-mm712.yaml
+mice,coolm0dz-qt1p,cOoLm0Dz Qt1p,cOoLm0Dz,,/home/user/quakesettings/src/content/mice/coolm0dz-qt1p.yaml
+mice,corsair-ironclaw-wireless-se,Corsair Ironclaw Wireless SE,Corsair,,/home/user/quakesettings/src/content/mice/corsair-ironclaw-wireless-se.yaml
+mice,corsair-sabre-rgb-pro-wireless,Corsair Sabre RGB Pro Wireless,Corsair,,/home/user/quakesettings/src/content/mice/corsair-sabre-rgb-pro-wireless.yaml
+mice,corsair-sabre-v2-pro,Corsair Sabre v2 Pro,Corsair,,/home/user/quakesettings/src/content/mice/corsair-sabre-v2-pro.yaml
+mice,corsair-sabre-v2-pro-cf,Corsair Sabre v2 Pro CF,Corsair,,/home/user/quakesettings/src/content/mice/corsair-sabre-v2-pro-cf.yaml
+mice,corsair-sabre-v2-pro-mg,Corsair Sabre v2 Pro MG,Corsair,,/home/user/quakesettings/src/content/mice/corsair-sabre-v2-pro-mg.yaml
+mice,crdrako-ko-one,CRDRAKO KO-ONE,CRDRAKO,,/home/user/quakesettings/src/content/mice/crdrako-ko-one.yaml
+mice,dareu-a950-gm,Dareu A950 GM,Dareu,,/home/user/quakesettings/src/content/mice/dareu-a950-gm.yaml
+mice,dareu-ae7-pro,Dareu AE7 Pro,Dareu,,/home/user/quakesettings/src/content/mice/dareu-ae7-pro.yaml
+mice,delux-m400,Delux M400,Delux,,/home/user/quakesettings/src/content/mice/delux-m400.yaml
+mice,dream-machines-dm9-skill-wired,Dream Machines DM9 Skill Wired,Dream Machines,,/home/user/quakesettings/src/content/mice/dream-machines-dm9-skill-wired.yaml
+mice,dream-machines-dm9-skill-wireless,Dream Machines DM9 Skill Wireless,Dream Machines,,/home/user/quakesettings/src/content/mice/dream-machines-dm9-skill-wireless.yaml
+mice,elecom-vm800,ELECOM VM800,ELECOM,,/home/user/quakesettings/src/content/mice/elecom-vm800.yaml
+mice,elecom-vm800l,ELECOM VM800L,ELECOM,,/home/user/quakesettings/src/content/mice/elecom-vm800l.yaml
+mice,endgame-gear-op1-8k,Endgame Gear OP1 8K,Endgame Gear,,/home/user/quakesettings/src/content/mice/endgame-gear-op1-8k.yaml
+mice,endgame-gear-xm2w,Endgame Gear XM2w,Endgame Gear,,/home/user/quakesettings/src/content/mice/endgame-gear-xm2w.yaml
+mice,epomaker-carbon-x,Epomaker Carbon X,Epomaker,,/home/user/quakesettings/src/content/mice/epomaker-carbon-x.yaml
+mice,eweadn-a7,EWEADN A7,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-a7.yaml
+mice,eweadn-a7-pro,EWEADN A7 Pro,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-a7-pro.yaml
+mice,eweadn-s7,EWEADN S7,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s7.yaml
+mice,eweadn-s7-max,EWEADN S7 Max,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s7-max.yaml
+mice,eweadn-s7-pro,EWEADN S7 Pro,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s7-pro.yaml
+mice,eweadn-s7-ultra,EWEADN S7 Ultra,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s7-ultra.yaml
+mice,eweadn-s9-max,EWEADN S9 Max,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s9-max.yaml
+mice,eweadn-s9-v2-pro,EWEADN S9 V2 Pro,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s9-v2-pro.yaml
+mice,eweadn-s9-v2-ultra,EWEADN S9 V2 Ultra,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s9-v2-ultra.yaml
+mice,eweadn-s9-pro,EWEADN S9+ Pro,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s9-pro.yaml
+mice,eweadn-s9-ultra,EWEADN S9+ Ultra,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-s9-ultra.yaml
+mice,eweadn-z7,EWEADN Z7,EWEADN,,/home/user/quakesettings/src/content/mice/eweadn-z7.yaml
+mice,finalmouse-ultralightx-cheetah,Finalmouse UltralightX Cheetah,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ultralightx-cheetah.yaml
+mice,finalmouse-ultralightx-lion-m,Finalmouse UltralightX Lion M,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ultralightx-lion-m.yaml
+mice,finalmouse-ulx-frostlord-classic,Finalmouse ULX Frostlord Classic,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-frostlord-classic.yaml
+mice,finalmouse-ulx-frostlord-medium,Finalmouse ULX Frostlord Medium,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-frostlord-medium.yaml
+mice,finalmouse-ulx-frostlord-small,Finalmouse ULX Frostlord Small,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-frostlord-small.yaml
+mice,finalmouse-ulx-sakura-classic,Finalmouse ULX Sakura Classic,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-sakura-classic.yaml
+mice,finalmouse-ulx-sakura-medium,Finalmouse ULX Sakura Medium,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-sakura-medium.yaml
+mice,finalmouse-ulx-sakura-small,Finalmouse ULX Sakura Small,Finalmouse,,/home/user/quakesettings/src/content/mice/finalmouse-ulx-sakura-small.yaml
+mice,flick-edge,Flick Edge,Flick,,/home/user/quakesettings/src/content/mice/flick-edge.yaml
+mice,flickshot-evora-pro,Flickshot Evora Pro,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-evora-pro.yaml
+mice,flickshot-evora-pro-fingertip,Flickshot Evora Pro Fingertip,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-evora-pro-fingertip.yaml
+mice,flickshot-evora-pro-fingertip-lhd,Flickshot Evora Pro Fingertip LHD,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-evora-pro-fingertip-lhd.yaml
+mice,flickshot-evora-pro-lhd,Flickshot Evora Pro LHD,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-evora-pro-lhd.yaml
+mice,flickshot-one-pro-medium-lhd,Flickshot One Pro Medium LHD,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-one-pro-medium-lhd.yaml
+mice,flickshot-one-pro-small,Flickshot One Pro Small,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-one-pro-small.yaml
+mice,flickshot-one-pro-small-fingertip,Flickshot One Pro Small Fingertip,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-one-pro-small-fingertip.yaml
+mice,flickshot-one-pro-small-fingertip-lhd,Flickshot One Pro Small Fingertip LHD,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-one-pro-small-fingertip-lhd.yaml
+mice,flickshot-one-pro-small-lhd,Flickshot One Pro Small LHD,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-one-pro-small-lhd.yaml
+mice,flickshot-wavo,Flickshot Wavo,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-wavo.yaml
+mice,flickshot-wavo-pro,Flickshot Wavo Pro,Flickshot,,/home/user/quakesettings/src/content/mice/flickshot-wavo-pro.yaml
+mice,g-wolves-hsk-pro-4k,G-Wolves HSK Pro 4K,G-Wolves,,/home/user/quakesettings/src/content/mice/g-wolves-hsk-pro-4k.yaml
+mice,g-wolves-hsk-pro-v2-8k,G-Wolves HSK Pro V2 8K,G-Wolves,,/home/user/quakesettings/src/content/mice/g-wolves-hsk-pro-v2-8k.yaml
+mice,g-wolves-lycan-8k,G-Wolves LYCAN 8K,G-Wolves,,/home/user/quakesettings/src/content/mice/g-wolves-lycan-8k.yaml
+mice,glorious-model-d-2,Glorious Model D 2,Glorious,https://www.amazon.com/dp/B0842CCWSG?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-d-2.yaml
+mice,glorious-model-d3,Glorious Model D3,Glorious,https://www.amazon.com/dp/B0842CCWSG?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-d3.yaml
+mice,glorious-model-d3-wired,Glorious Model D3 Wired,Glorious,https://www.amazon.com/dp/B0842CCWSG?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-d3-wired.yaml
+mice,glorious-model-o,Glorious Model O,Glorious,https://www.amazon.com/dp/B07MGDRBBF?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-o.yaml
+mice,glorious-model-o-2,Glorious Model O 2,Glorious,https://www.amazon.com/dp/B07MGDRBBF?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-o-2.yaml
+mice,glorious-model-o3,Glorious Model O3,Glorious,https://www.amazon.com/dp/B07MGDRBBF?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-o3.yaml
+mice,glorious-model-o3-wired,Glorious Model O3 Wired,Glorious,https://www.amazon.com/dp/B07MGDRBBF?tag=prosettings-20,/home/user/quakesettings/src/content/mice/glorious-model-o3-wired.yaml
+mice,hator-pulsar-3,Hator Pulsar 3,Hator,,/home/user/quakesettings/src/content/mice/hator-pulsar-3.yaml
+mice,hator-pulsar-3-pro,Hator Pulsar 3 Pro,Hator,,/home/user/quakesettings/src/content/mice/hator-pulsar-3-pro.yaml
+mice,hator-pulsar-3-ultra,Hator Pulsar 3 Ultra,Hator,,/home/user/quakesettings/src/content/mice/hator-pulsar-3-ultra.yaml
+mice,hator-pulsar-3-wireless,Hator Pulsar 3 Wireless,Hator,,/home/user/quakesettings/src/content/mice/hator-pulsar-3-wireless.yaml
+mice,hator-quasar-3-ultra,Hator Quasar 3 Ultra,Hator,,/home/user/quakesettings/src/content/mice/hator-quasar-3-ultra.yaml
+mice,hator-quasar-3-wireless,Hator Quasar 3 Wireless,Hator,,/home/user/quakesettings/src/content/mice/hator-quasar-3-wireless.yaml
+mice,home-of-victory-mouse2,Home of Victory Mouse2,Home of Victory,,/home/user/quakesettings/src/content/mice/home-of-victory-mouse2.yaml
+mice,hyperx-pulsefire-core,HyperX Pulsefire Core,HyperX,,/home/user/quakesettings/src/content/mice/hyperx-pulsefire-core.yaml
+mice,hyperx-pulsefire-haste-2-wired,HyperX Pulsefire Haste 2 Wired,HyperX,,/home/user/quakesettings/src/content/mice/hyperx-pulsefire-haste-2-wired.yaml
+mice,hyperx-pulsefire-haste-2-wireless,HyperX Pulsefire Haste 2 Wireless,HyperX,,/home/user/quakesettings/src/content/mice/hyperx-pulsefire-haste-2-wireless.yaml
+mice,inphic-in10p,INPHIC IN10P,INPHIC,,/home/user/quakesettings/src/content/mice/inphic-in10p.yaml
+mice,ipi-qi-pro,IPI Qi Pro,IPI,,/home/user/quakesettings/src/content/mice/ipi-qi-pro.yaml
+mice,irok-he6,IROK HE6,IROK,,/home/user/quakesettings/src/content/mice/irok-he6.yaml
+mice,jamesdonkey-rsr7,JamesDonkey RSR7,JamesDonkey,,/home/user/quakesettings/src/content/mice/jamesdonkey-rsr7.yaml
+mice,jamesdonkey-rsr7-ultra,JamesDonkey RSR7 Ultra,JamesDonkey,,/home/user/quakesettings/src/content/mice/jamesdonkey-rsr7-ultra.yaml
+mice,jamesdonkey-rsr7s,JamesDonkey RSR7S,JamesDonkey,,/home/user/quakesettings/src/content/mice/jamesdonkey-rsr7s.yaml
+mice,keychron-bm22,Keychron BM22,Keychron,,/home/user/quakesettings/src/content/mice/keychron-bm22.yaml
+mice,keychron-bm24,Keychron BM24,Keychron,,/home/user/quakesettings/src/content/mice/keychron-bm24.yaml
+mice,keychron-bm25,Keychron BM25,Keychron,,/home/user/quakesettings/src/content/mice/keychron-bm25.yaml
+mice,keychron-m3,Keychron M3,Keychron,,/home/user/quakesettings/src/content/mice/keychron-m3.yaml
+mice,kreo-anzu,Kreo Anzu,Kreo,,/home/user/quakesettings/src/content/mice/kreo-anzu.yaml
+mice,kreo-chimera-v2,Kreo Chimera v2,Kreo,,/home/user/quakesettings/src/content/mice/kreo-chimera-v2.yaml
+mice,kreo-harpy,Kreo Harpy,Kreo,,/home/user/quakesettings/src/content/mice/kreo-harpy.yaml
+mice,kreo-hawk,Kreo Hawk,Kreo,,/home/user/quakesettings/src/content/mice/kreo-hawk.yaml
+mice,kreo-ikarus,Kreo Ikarus,Kreo,,/home/user/quakesettings/src/content/mice/kreo-ikarus.yaml
+mice,kysona-vela-se,Kysona Vela SE,Kysona,,/home/user/quakesettings/src/content/mice/kysona-vela-se.yaml
+mice,lamzu-atlantis,Lamzu Atlantis,Lamzu,https://www.amazon.com/dp/B0BQ4FKGB9?tag=prosettings-20,/home/user/quakesettings/src/content/mice/lamzu-atlantis.yaml
+mice,lamzu-atlantis-mini,Lamzu Atlantis Mini,Lamzu,https://www.amazon.com/dp/B0BQ4FKGB9?tag=prosettings-20,/home/user/quakesettings/src/content/mice/lamzu-atlantis-mini.yaml
+mice,lamzu-maya-x,Lamzu Maya X,Lamzu,,/home/user/quakesettings/src/content/mice/lamzu-maya-x.yaml
+mice,lamzu-thorn,Lamzu Thorn,Lamzu,https://www.amazon.com/dp/B0CCTDPYWM?tag=prosettings-20,/home/user/quakesettings/src/content/mice/lamzu-thorn.yaml
+mice,lamzu-thorn-4k,Lamzu Thorn 4K,Lamzu,https://www.amazon.com/dp/B0CCTDPYWM?tag=prosettings-20,/home/user/quakesettings/src/content/mice/lamzu-thorn-4k.yaml
+mice,lethal-gaming-gear-la-1,Lethal Gaming Gear LA-1,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mice/lethal-gaming-gear-la-1.yaml
+mice,logitech-g-pro,Logitech G Pro,Logitech,https://www.amazon.com/dp/B087LXCTFJ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g-pro.yaml
+mice,g-pro-wireless,Logitech G Pro Wireless,Logitech,,/home/user/quakesettings/src/content/mice/g-pro-wireless.yaml
+mice,logitech-g-pro-wireless,Logitech G Pro Wireless,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g-pro-wireless.yaml
+mice,g-pro-superlight,Logitech G Pro X Superlight,Logitech,https://www.amazon.com/dp/B087LXCTFJ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/g-pro-superlight.yaml
+mice,logitech-g-pro-x-superlight,Logitech G Pro X Superlight,Logitech,https://www.amazon.com/dp/B087LXCTFJ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g-pro-x-superlight.yaml
+mice,logitech-g-pro-x-superlight-ii,Logitech G Pro X Superlight 2,Logitech,https://www.amazon.com/dp/B087LXCTFJ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g-pro-x-superlight-ii.yaml
+mice,logitech-g-pro-x-superlight-2c,Logitech G Pro X Superlight 2c,Logitech,https://www.amazon.com/dp/B087LXCTFJ?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g-pro-x-superlight-2c.yaml
+mice,logitech-g-pro-x2-superstrike,Logitech G Pro X2 Superstrike,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g-pro-x2-superstrike.yaml
+mice,logitech-g102-lightsync,Logitech G102 Lightsync,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g102-lightsync.yaml
+mice,logitech-g203-lightsync,Logitech G203 Lightsync,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g203-lightsync.yaml
+mice,logitech-g302,Logitech G302,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g302.yaml
+mice,logitech-g304-lightspeed,Logitech G304 Lightspeed,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g304-lightspeed.yaml
+mice,logitech-g304-x-lightspeed,Logitech G304 X Lightspeed,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g304-x-lightspeed.yaml
+mice,logitech-g305-lightspeed,Logitech G305 Lightspeed,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g305-lightspeed.yaml
+mice,logitech-g309-lightspeed,Logitech G309 Lightspeed,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g309-lightspeed.yaml
+mice,logitech-g402-hyperion-fury,Logitech G402 Hyperion Fury,Logitech,,/home/user/quakesettings/src/content/mice/logitech-g402-hyperion-fury.yaml
+mice,logitech-g502-x-plus,Logitech G502 X Plus,Logitech,https://www.amazon.com/dp/B0B174VY84?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g502-x-plus.yaml
+mice,logitech-mx-master-4,Logitech MX Master 4,Logitech,,/home/user/quakesettings/src/content/mice/logitech-mx-master-4.yaml
+mice,logitech-g-pro-x-superlight-2,Lozer G Pro X Superlight 2,Logitech,https://www.amazon.com/dp/B0CGXCV5LL?tag=prosettings-20,/home/user/quakesettings/src/content/mice/logitech-g-pro-x-superlight-2.yaml
+mice,lunafury-luna33,LunaFury LUNA33,LunaFury,,/home/user/quakesettings/src/content/mice/lunafury-luna33.yaml
+mice,lunafury-type33,LunaFury TYPE33,LunaFury,,/home/user/quakesettings/src/content/mice/lunafury-type33.yaml
+mice,lunafury-type77,LunaFury TYPE77,LunaFury,,/home/user/quakesettings/src/content/mice/lunafury-type77.yaml
+mice,mad-catz-r-a-t-dws,Mad Catz R.A.T. DWS,Mad Catz,,/home/user/quakesettings/src/content/mice/mad-catz-r-a-t-dws.yaml
+mice,mambasnake-m2,MAMBASNAKE M2,MAMBASNAKE,,/home/user/quakesettings/src/content/mice/mambasnake-m2.yaml
+mice,mchose-a5-v3,MCHOSE A5 V3,MCHOSE,,/home/user/quakesettings/src/content/mice/mchose-a5-v3.yaml
+mice,mchose-a7-ultra-re,MCHOSE A7 Ultra RE,MCHOSE,,/home/user/quakesettings/src/content/mice/mchose-a7-ultra-re.yaml
+mice,mchose-a7-v2-pro,MCHOSE A7 V2 Pro,MCHOSE,,/home/user/quakesettings/src/content/mice/mchose-a7-v2-pro.yaml
+mice,mchose-a7-v2-ultra,MCHOSE A7 V2 Ultra,MCHOSE,,/home/user/quakesettings/src/content/mice/mchose-a7-v2-ultra.yaml
+mice,melgeek-horus,MelGeek Horus,MelGeek,,/home/user/quakesettings/src/content/mice/melgeek-horus.yaml
+mice,microsoft-intellimouse-optical-1-1a,Microsoft IntelliMouse Optical 1.1a,Microsoft,,/home/user/quakesettings/src/content/mice/microsoft-intellimouse-optical-1-1a.yaml
+mice,mountain-makalu-67,Mountain Makalu 67,Mountain,,/home/user/quakesettings/src/content/mice/mountain-makalu-67.yaml
+mice,ninjutso-sora,Ninjutso Sora,Ninjutso,,/home/user/quakesettings/src/content/mice/ninjutso-sora.yaml
+mice,ninjutso-sora-v2,Ninjutso Sora V2,Ninjutso,,/home/user/quakesettings/src/content/mice/ninjutso-sora-v2.yaml
+mice,orbital-pathfinder-aah-000,Orbital Pathfinder AAH-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-aah-000.yaml
+mice,orbital-pathfinder-aah-222,Orbital Pathfinder AAH-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-aah-222.yaml
+mice,orbital-pathfinder-awl-000,Orbital Pathfinder AWL-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-awl-000.yaml
+mice,orbital-pathfinder-awl-222,Orbital Pathfinder AWL-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-awl-222.yaml
+mice,orbital-pathfinder-cch-000,Orbital Pathfinder CCH-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-cch-000.yaml
+mice,orbital-pathfinder-cch-222,Orbital Pathfinder CCH-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-cch-222.yaml
+mice,orbital-pathfinder-lrr-000,Orbital Pathfinder LRR-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-lrr-000.yaml
+mice,orbital-pathfinder-lrr-222,Orbital Pathfinder LRR-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-lrr-222.yaml
+mice,orbital-pathfinder-lxr-000,Orbital Pathfinder LXR-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-lxr-000.yaml
+mice,orbital-pathfinder-lxr-222,Orbital Pathfinder LXR-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-lxr-222.yaml
+mice,orbital-pathfinder-ppm-000,Orbital Pathfinder PPM-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-ppm-000.yaml
+mice,orbital-pathfinder-ppm-222,Orbital Pathfinder PPM-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-ppm-222.yaml
+mice,orbital-pathfinder-psm-000,Orbital Pathfinder PSM-000,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-psm-000.yaml
+mice,orbital-pathfinder-psm-222,Orbital Pathfinder PSM-222,Orbital,,/home/user/quakesettings/src/content/mice/orbital-pathfinder-psm-222.yaml
+mice,pmm-pulse,PMM PULSE,PMM,,/home/user/quakesettings/src/content/mice/pmm-pulse.yaml
+mice,pmm-pulse-w,PMM PULSE W,PMM,,/home/user/quakesettings/src/content/mice/pmm-pulse-w.yaml
+mice,press-play-atlas,Press Play ATLAS,Press Play,,/home/user/quakesettings/src/content/mice/press-play-atlas.yaml
+mice,press-play-icarus-v2-mini,Press Play Icarus V2 Mini,Press Play,,/home/user/quakesettings/src/content/mice/press-play-icarus-v2-mini.yaml
+mice,press-play-iris,Press Play IRIS,Press Play,,/home/user/quakesettings/src/content/mice/press-play-iris.yaml
+mice,press-play-nova-ergo,Press Play Nova Ergo,Press Play,,/home/user/quakesettings/src/content/mice/press-play-nova-ergo.yaml
+mice,press-play-spirit,Press Play SPIRIT,Press Play,,/home/user/quakesettings/src/content/mice/press-play-spirit.yaml
+mice,press-play-spirit-pro,Press Play SPIRIT Pro,Press Play,,/home/user/quakesettings/src/content/mice/press-play-spirit-pro.yaml
+mice,project-w-opus,Project W Opus,Project W,,/home/user/quakesettings/src/content/mice/project-w-opus.yaml
+mice,pulsar-feinmann-f01,Pulsar Feinmann F01,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-feinmann-f01.yaml
+mice,pulsar-vspo,Pulsar VSPO,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-vspo.yaml
+mice,pulsar-x2,Pulsar X2,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2.yaml
+mice,pulsar-x2-crazylight-medium,Pulsar X2 CrazyLight Medium,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2-crazylight-medium.yaml
+mice,pulsar-x2-mini,Pulsar X2 Mini,Pulsar,https://www.amazon.com/dp/B0BS1CTL6Z?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2-mini.yaml
+mice,pulsar-x2h-crazylight-medium,Pulsar X2H CrazyLight Medium,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2h-crazylight-medium.yaml
+mice,pulsar-x2h-crazylight-mini,Pulsar X2H CrazyLight Mini,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2h-crazylight-mini.yaml
+mice,pulsar-x2v2,Pulsar X2V2,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2v2.yaml
+mice,pulsar-x2v2-mini,Pulsar X2V2 Mini,Pulsar,https://www.amazon.com/dp/B0BS1DZ7JD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-x2v2-mini.yaml
+mice,pulsar-x3-crazylight-mini,Pulsar X3 CrazyLight Mini,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-x3-crazylight-mini.yaml
+mice,pulsar-x3-lhd-crazylight-mini,Pulsar X3 LHD CrazyLight Mini,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-x3-lhd-crazylight-mini.yaml
+mice,pulsar-xlite-crazylight-medium,Pulsar Xlite CrazyLight Medium,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-xlite-crazylight-medium.yaml
+mice,pulsar-xlite-v3-medium,Pulsar Xlite V3 Medium,Pulsar,https://www.amazon.com/dp/B0D75BPG4P?tag=prosettings-20,/home/user/quakesettings/src/content/mice/pulsar-xlite-v3-medium.yaml
+mice,pulsar-xlite-wireless,Pulsar Xlite Wireless,Pulsar,,/home/user/quakesettings/src/content/mice/pulsar-xlite-wireless.yaml
+mice,rapoo-vt0-gen-2,Rapoo VT0 Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt0-gen-2.yaml
+mice,rapoo-vt0-max-gen-2,Rapoo VT0 Max Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt0-max-gen-2.yaml
+mice,rapoo-vt1-gen-2,Rapoo VT1 Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt1-gen-2.yaml
+mice,rapoo-vt1-max-gen-2,Rapoo VT1 Max Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt1-max-gen-2.yaml
+mice,rapoo-vt9-gen-2,Rapoo VT9 Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt9-gen-2.yaml
+mice,rapoo-vt9-max-gen-2,Rapoo VT9 Max Gen-2,Rapoo,,/home/user/quakesettings/src/content/mice/rapoo-vt9-max-gen-2.yaml
+mice,rawm-leviathan-v4,RAWM Leviathan V4,RAWM,,/home/user/quakesettings/src/content/mice/rawm-leviathan-v4.yaml
+mice,razer-basilisk-v3-pro,Razer Basilisk V3 Pro,Razer,,/home/user/quakesettings/src/content/mice/razer-basilisk-v3-pro.yaml
+mice,razer-cobra-pro,Razer Cobra Pro,Razer,,/home/user/quakesettings/src/content/mice/razer-cobra-pro.yaml
+mice,razer-deathadder-essential,Razer DeathAdder Essential,Razer,,/home/user/quakesettings/src/content/mice/razer-deathadder-essential.yaml
+mice,razer-deathadder-v2,Razer DeathAdder V2,Razer,https://www.amazon.com/dp/B082G5BDNC?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-deathadder-v2.yaml
+mice,razer-deathadder-v2-mini,Razer DeathAdder V2 Mini,Razer,https://www.amazon.com/dp/B08FQMBYH5?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-deathadder-v2-mini.yaml
+mice,deathadder-v3,Razer DeathAdder V3,Razer,https://www.amazon.com/dp/B0BNX3N8V8?tag=prosettings-20,/home/user/quakesettings/src/content/mice/deathadder-v3.yaml
+mice,razer-deathadder-v3,Razer DeathAdder V3,Razer,https://www.amazon.com/dp/B0BNX3N8V8?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-deathadder-v3.yaml
+mice,razer-deathadder-v3-pro,Razer DeathAdder V3 Pro,Razer,https://www.amazon.com/dp/B0B6LBFY8P?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-deathadder-v3-pro.yaml
+mice,razer-deathadder-v4-pro,Razer DeathAdder V4 Pro,Razer,,/home/user/quakesettings/src/content/mice/razer-deathadder-v4-pro.yaml
+mice,razer-hello-kitty-viper-mini,Razer Hello Kitty Viper Mini,Razer,,/home/user/quakesettings/src/content/mice/razer-hello-kitty-viper-mini.yaml
+mice,razer-viper-8khz,Razer Viper 8KHz,Razer,https://www.amazon.com/dp/B07TTC2MJG?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-viper-8khz.yaml
+mice,razer-viper-mini,Razer Viper Mini,Razer,https://www.amazon.com/dp/B084RPZD6T?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-viper-mini.yaml
+mice,razer-viper-v3-hyperspeed,Razer Viper V3 HyperSpeed,Razer,https://www.amazon.com/dp/B07TTC2MJG?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-viper-v3-hyperspeed.yaml
+mice,razer-viper-v3-pro,Razer Viper V3 Pro,Razer,https://www.amazon.com/dp/B0CXY4MZ5C?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-viper-v3-pro.yaml
+mice,viper-v3-pro,Razer Viper V3 Pro,Razer,https://www.amazon.com/dp/B0CXY4MZ5C?tag=prosettings-20,/home/user/quakesettings/src/content/mice/viper-v3-pro.yaml
+mice,razer-viper-v3-pro-se,Razer Viper V3 Pro SE,Razer,https://www.amazon.com/dp/B0CXY4MZ5C?tag=prosettings-20,/home/user/quakesettings/src/content/mice/razer-viper-v3-pro-se.yaml
+mice,redragon-m617-lit,Redragon M617 LIT,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m617-lit.yaml
+mice,redragon-m618-lit,Redragon M618 LIT,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m618-lit.yaml
+mice,redragon-m618-wired,Redragon M618 Wired,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m618-wired.yaml
+mice,redragon-m725,Redragon M725,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m725.yaml
+mice,redragon-m818-std,Redragon M818-STD,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m818-std.yaml
+mice,redragon-m995-lit,Redragon M995 LIT,Redragon,,/home/user/quakesettings/src/content/mice/redragon-m995-lit.yaml
+mice,roccat-burst-pro-air,Roccat Burst Pro Air,Roccat,,/home/user/quakesettings/src/content/mice/roccat-burst-pro-air.yaml
+mice,roccat-kone-pro-air,Roccat Kone Pro Air,Roccat,,/home/user/quakesettings/src/content/mice/roccat-kone-pro-air.yaml
+mice,steelseries-aerox-5-wireless,SteelSeries Aerox 5 Wireless,SteelSeries,https://www.amazon.com/dp/B09V1KCHC4?tag=prosettings-20,/home/user/quakesettings/src/content/mice/steelseries-aerox-5-wireless.yaml
+mice,steelseries-prime-wireless,SteelSeries Prime Wireless,SteelSeries,https://www.amazon.com/dp/B095XXJLB8?tag=prosettings-20,/home/user/quakesettings/src/content/mice/steelseries-prime-wireless.yaml
+mice,thunderobot-mlx,ThundeRobot MLX,ThundeRobot,,/home/user/quakesettings/src/content/mice/thunderobot-mlx.yaml
+mice,turtle-beach-burst-ii-pro,Turtle Beach Burst II Pro,Turtle Beach,,/home/user/quakesettings/src/content/mice/turtle-beach-burst-ii-pro.yaml
+mice,valkyrie-vk-m3,Valkyrie VK M3,Valkyrie,,/home/user/quakesettings/src/content/mice/valkyrie-vk-m3.yaml
+mice,valkyrie-vk-m3-lite,Valkyrie VK M3 Lite,Valkyrie,,/home/user/quakesettings/src/content/mice/valkyrie-vk-m3-lite.yaml
+mice,valkyrie-vk-m3-pro,Valkyrie VK M3 Pro,Valkyrie,,/home/user/quakesettings/src/content/mice/valkyrie-vk-m3-pro.yaml
+mice,vaxee-np-01s-wireless,VAXEE NP-01S Wireless,VAXEE,https://www.amazon.com/dp/B08T1HLNSR?tag=prosettings-20,/home/user/quakesettings/src/content/mice/vaxee-np-01s-wireless.yaml
+mice,vaxee-xe-wireless,VAXEE XE Wireless,VAXEE,,/home/user/quakesettings/src/content/mice/vaxee-xe-wireless.yaml
+mice,vgn-dragonfly-3-master,VGN Dragonfly 3 Master+,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-3-master.yaml
+mice,vgn-dragonfly-3-pro,VGN Dragonfly 3 Pro,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-3-pro.yaml
+mice,vgn-dragonfly-3-pro-max,VGN Dragonfly 3 Pro Max,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-3-pro-max.yaml
+mice,vgn-dragonfly-3-se,VGN Dragonfly 3 SE,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-3-se.yaml
+mice,vgn-dragonfly-f1,VGN Dragonfly F1,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-f1.yaml
+mice,vgn-dragonfly-f1-se,VGN Dragonfly F1 SE,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-f1-se.yaml
+mice,vgn-dragonfly-f2-master,VGN Dragonfly F2 Master+,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-f2-master.yaml
+mice,vgn-dragonfly-king,VGN Dragonfly King,VGN,,/home/user/quakesettings/src/content/mice/vgn-dragonfly-king.yaml
+mice,vgn-y2-master,VGN Y2 Master+,VGN,,/home/user/quakesettings/src/content/mice/vgn-y2-master.yaml
+mice,vgn-y2-pro-max,VGN Y2 Pro Max,VGN,,/home/user/quakesettings/src/content/mice/vgn-y2-pro-max.yaml
+mice,vortexseries-ignix-f1,VortexSeries IGNIX F1,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f1.yaml
+mice,vortexseries-ignix-f1-pro,VortexSeries IGNIX F1 Pro,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f1-pro.yaml
+mice,vortexseries-ignix-f3,VortexSeries IGNIX F3,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f3.yaml
+mice,vortexseries-ignix-f3-pro,VortexSeries IGNIX F3 Pro,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f3-pro.yaml
+mice,vortexseries-ignix-f5,VortexSeries IGNIX F5,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f5.yaml
+mice,vortexseries-ignix-f5-pro,VortexSeries IGNIX F5 Pro,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f5-pro.yaml
+mice,vortexseries-ignix-f7,VortexSeries IGNIX F7,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f7.yaml
+mice,vortexseries-ignix-f7-pro,VortexSeries IGNIX F7 Pro,VortexSeries,,/home/user/quakesettings/src/content/mice/vortexseries-ignix-f7-pro.yaml
+mice,vxe-r1-pro,VXE R1 Pro,VXE,,/home/user/quakesettings/src/content/mice/vxe-r1-pro.yaml
+mice,vxe-r1-s,VXE R1 S,VXE,,/home/user/quakesettings/src/content/mice/vxe-r1-s.yaml
+mice,waizowl-cloud-ultra,Waizowl Cloud Ultra,Waizowl,,/home/user/quakesettings/src/content/mice/waizowl-cloud-ultra.yaml
+mice,wlmouse-beast-x,WLMouse Beast X,WLMouse,,/home/user/quakesettings/src/content/mice/wlmouse-beast-x.yaml
+mice,wlmouse-beast-x-max,WLMouse Beast X Max,WLMouse,,/home/user/quakesettings/src/content/mice/wlmouse-beast-x-max.yaml
+mice,wlmouse-huan,WLMOUSE Huan,WLMOUSE,,/home/user/quakesettings/src/content/mice/wlmouse-huan.yaml
+mice,wlmouse-sword-x,WLMouse Sword X,WLMouse,,/home/user/quakesettings/src/content/mice/wlmouse-sword-x.yaml
+mice,wooting-60he-mouse,Wooting 60HE+ Mouse,Wooting,,/home/user/quakesettings/src/content/mice/wooting-60he-mouse.yaml
+mice,wraith-w1,Wraith W1,Wraith,,/home/user/quakesettings/src/content/mice/wraith-w1.yaml
+mice,wraith-w1-freestyle,Wraith W1 Freestyle,Wraith,,/home/user/quakesettings/src/content/mice/wraith-w1-freestyle.yaml
+mice,xiaomi-wireless-mouse-3,Xiaomi Wireless Mouse 3,Xiaomi,,/home/user/quakesettings/src/content/mice/xiaomi-wireless-mouse-3.yaml
+mice,xiberia-ex,XIBERIA EX,XIBERIA,,/home/user/quakesettings/src/content/mice/xiberia-ex.yaml
+mice,xtrfy-m8-wireless,Xtrfy M8 Wireless,Xtrfy,,/home/user/quakesettings/src/content/mice/xtrfy-m8-wireless.yaml
+mice,zaopin-z11,Zaopin Z11,Zaopin,,/home/user/quakesettings/src/content/mice/zaopin-z11.yaml
+mice,zaopin-z11-pro,Zaopin Z11 Pro,Zaopin,,/home/user/quakesettings/src/content/mice/zaopin-z11-pro.yaml
+mice,zaunkoenig-m2k,Zaunkoenig M2K,Zaunkoenig,,/home/user/quakesettings/src/content/mice/zaunkoenig-m2k.yaml
+mice,zowie-ec2-b,Zowie EC2-B,Zowie,https://www.amazon.com/dp/B07H93NGB2?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-ec2-b.yaml
+mice,zowie-ec2-c,Zowie EC2-C,Zowie,https://www.amazon.com/dp/B09NLZMZH9?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-ec2-c.yaml
+mice,zowie-ec2-cw,Zowie EC2-CW,Zowie,https://www.amazon.com/dp/B0CFJ8MD5N?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-ec2-cw.yaml
+mice,zowie-ec3-cw,Zowie EC3-CW,Zowie,,/home/user/quakesettings/src/content/mice/zowie-ec3-cw.yaml
+mice,zowie-fk2,Zowie FK2,Zowie,https://www.amazon.com/dp/B00WHRFMU0?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-fk2.yaml
+mice,zowie-fk2-cw,Zowie FK2-CW,Zowie,https://www.amazon.com/dp/B00WHRFMU0?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-fk2-cw.yaml
+mice,zowie-s2-cw,Zowie S2-CW,Zowie,https://www.amazon.com/dp/B09NLZWJ8K?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-s2-cw.yaml
+mice,zowie-u2,Zowie U2,Zowie,,/home/user/quakesettings/src/content/mice/zowie-u2.yaml
+mice,zowie-za13-c,Zowie ZA13-C,Zowie,https://www.amazon.com/dp/B09NLZQ3VD?tag=prosettings-20,/home/user/quakesettings/src/content/mice/zowie-za13-c.yaml
+monitors,acer-gn246hl,Acer GN246HL,Acer,,/home/user/quakesettings/src/content/monitors/acer-gn246hl.yaml
+monitors,acer-nitro-vg271up,Acer Nitro VG271UP,Acer,,/home/user/quakesettings/src/content/monitors/acer-nitro-vg271up.yaml
+monitors,acer-predator-xb252q,Acer Predator XB252Q,Acer,,/home/user/quakesettings/src/content/monitors/acer-predator-xb252q.yaml
+monitors,acer-predator-xb273u-f6,Acer Predator XB273U F6,Acer,,/home/user/quakesettings/src/content/monitors/acer-predator-xb273u-f6.yaml
+monitors,acer-predator-xb323u,Acer Predator XB323U,Acer,,/home/user/quakesettings/src/content/monitors/acer-predator-xb323u.yaml
+monitors,acer-v193hql,Acer V193HQL,Acer,,/home/user/quakesettings/src/content/monitors/acer-v193hql.yaml
+monitors,alienware-aw2524hf,Alienware AW2524HF,Alienware,,/home/user/quakesettings/src/content/monitors/alienware-aw2524hf.yaml
+monitors,alienware-aw2725df,Alienware AW2725DF,Alienware,,/home/user/quakesettings/src/content/monitors/alienware-aw2725df.yaml
+monitors,aoc-24g15n,AOC 24G15N,AOC,,/home/user/quakesettings/src/content/monitors/aoc-24g15n.yaml
+monitors,aoc-24g2w1g4,AOC 24G2W1G4,AOC,,/home/user/quakesettings/src/content/monitors/aoc-24g2w1g4.yaml
+monitors,aoc-agon-pro-ag276qsg2,AOC Agon PRO AG276QSG2,AOC,,/home/user/quakesettings/src/content/monitors/aoc-agon-pro-ag276qsg2.yaml
+monitors,aoc-agp277qk,AOC AGP277QK,AOC,,/home/user/quakesettings/src/content/monitors/aoc-agp277qk.yaml
+monitors,aoc-c24g1,AOC C24G1,AOC,,/home/user/quakesettings/src/content/monitors/aoc-c24g1.yaml
+monitors,aoc-q27g4x,AOC Q27G4X,AOC,,/home/user/quakesettings/src/content/monitors/aoc-q27g4x.yaml
+monitors,asus-rog-strix-ace-xg248qsg,ASUS ROG Strix Ace XG248QSG,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-strix-ace-xg248qsg.yaml
+monitors,asus-rog-strix-oled-xg27aqdmg,ASUS ROG Strix OLED XG27AQDMG,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-strix-oled-xg27aqdmg.yaml
+monitors,asus-rog-strix-oled-xg34wcdms,ASUS ROG Strix OLED XG34WCDMS,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-strix-oled-xg34wcdms.yaml
+monitors,asus-rog-strix-pulsar-xg27aqngv,ASUS ROG Strix Pulsar XG27AQNGV,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-strix-pulsar-xg27aqngv.yaml
+monitors,asus-rog-strix-xg248q,ASUS ROG STRIX XG248Q,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-strix-xg248q.yaml
+monitors,asus-rog-strix-xg27aqm,ASUS ROG Strix XG27AQM,ASUS,https://www.amazon.com/dp/B09SBZGQFT?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/asus-rog-strix-xg27aqm.yaml
+monitors,asus-rog-swift-oled-pg27ucwm,ASUS ROG Swift OLED PG27UCWM,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-oled-pg27ucwm.yaml
+monitors,asus-rog-swift-oled-pg32ucdm-gen-3,ASUS ROG Swift OLED PG32UCDM Gen 3,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-oled-pg32ucdm-gen-3.yaml
+monitors,asus-rog-swift-oled-pg32ucdp,ASUS ROG Swift OLED PG32UCDP,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-oled-pg32ucdp.yaml
+monitors,asus-rog-swift-oled-pg34wcdn,ASUS ROG Swift OLED PG34WCDN,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-oled-pg34wcdn.yaml
+monitors,asus-pg259qn,ASUS ROG Swift PG259QN,ASUS,,/home/user/quakesettings/src/content/monitors/asus-pg259qn.yaml
+monitors,asus-rog-swift-pg27aqdp,ASUS ROG Swift PG27AQDP,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-pg27aqdp.yaml
+monitors,asus-rog-swift-pg27aqn,ASUS ROG Swift PG27AQN,ASUS,https://www.amazon.com/dp/B0BSRRQYX8?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/asus-rog-swift-pg27aqn.yaml
+monitors,asus-rog-swift-pg32uqx,ASUS ROG Swift PG32UQX,ASUS,,/home/user/quakesettings/src/content/monitors/asus-rog-swift-pg32uqx.yaml
+monitors,asus-rog-swift-pro-pg248qp,ASUS ROG Swift Pro PG248QP,ASUS,https://www.amazon.com/dp/B0BMHG5Z76?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/asus-rog-swift-pro-pg248qp.yaml
+monitors,asus-tuf-gaming-vg279qm,ASUS TUF Gaming VG279QM,ASUS,https://www.amazon.com/dp/B0845QFDVM?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/asus-tuf-gaming-vg279qm.yaml
+monitors,asus-tuf-vg259qm,ASUS TUF VG259QM,ASUS,,/home/user/quakesettings/src/content/monitors/asus-tuf-vg259qm.yaml
+monitors,asus-vg259qm,ASUS VG259QM,ASUS,https://www.amazon.com/dp/B0876KP2CK?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/asus-vg259qm.yaml
+monitors,benq-xl2420t,BenQ XL2420T,BenQ,,/home/user/quakesettings/src/content/monitors/benq-xl2420t.yaml
+monitors,benq-zowie-xl2411t,BenQ ZOWIE XL2411T,BenQ,https://www.amazon.com/dp/B01H5KKQUQ?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2411t.yaml
+monitors,benq-zowie-xl2540,BenQ ZOWIE XL2540,BenQ,https://www.amazon.com/dp/B01MCT8V4E?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2540.yaml
+monitors,benq-zowie-xl2546,BenQ ZOWIE XL2546,BenQ,https://www.amazon.com/dp/B08T1K3G3X?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2546.yaml
+monitors,benq-xl2546k,BenQ Zowie XL2546K,BenQ Zowie,,/home/user/quakesettings/src/content/monitors/benq-xl2546k.yaml
+monitors,benq-zowie-xl2546k,BenQ Zowie XL2546K,BenQ,https://www.amazon.com/dp/B08T1K3G3X?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2546k.yaml
+monitors,benq-zowie-xl2566k,BenQ Zowie XL2566K,BenQ,https://www.amazon.com/dp/B0BHYY1LH5?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2566k.yaml
+monitors,benq-zowie-xl2586x,BenQ Zowie XL2586X+,BenQ,,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2586x.yaml
+monitors,benq-zowie-xl2746k,BenQ Zowie XL2746K,BenQ,,/home/user/quakesettings/src/content/monitors/benq-zowie-xl2746k.yaml
+monitors,dell-alienware-aw2518hf,Dell AlienWare AW2518HF,Dell,,/home/user/quakesettings/src/content/monitors/dell-alienware-aw2518hf.yaml
+monitors,dell-alienware-aw2521hf,Dell Alienware AW2521HF,Dell,https://www.amazon.com/dp/B0899KXGPC?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/dell-alienware-aw2521hf.yaml
+monitors,dell-alienware-aw2723df,Dell Alienware AW2723DF,Dell,https://www.amazon.com/dp/B09WPQVKL9?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/dell-alienware-aw2723df.yaml
+monitors,dell-alienware-aw2724dm,Dell Alienware AW2724DM,Dell,,/home/user/quakesettings/src/content/monitors/dell-alienware-aw2724dm.yaml
+monitors,dell-alienware-aw2725df,Dell Alienware AW2725DF,Dell,,/home/user/quakesettings/src/content/monitors/dell-alienware-aw2725df.yaml
+monitors,dell-alienware-aw3225qf,Dell Alienware AW3225QF,Dell,,/home/user/quakesettings/src/content/monitors/dell-alienware-aw3225qf.yaml
+monitors,gigabyte-aorus-fi27q-x,GIGABYTE AORUS FI27Q-X,GIGABYTE,,/home/user/quakesettings/src/content/monitors/gigabyte-aorus-fi27q-x.yaml
+monitors,gigabyte-g27qc,GIGABYTE G27QC,GIGABYTE,,/home/user/quakesettings/src/content/monitors/gigabyte-g27qc.yaml
+monitors,gigabyte-m28u,Gigabyte M28U,Gigabyte,,/home/user/quakesettings/src/content/monitors/gigabyte-m28u.yaml
+monitors,hkc-m10-ultra,HKC M10 Ultra,HKC,,/home/user/quakesettings/src/content/monitors/hkc-m10-ultra.yaml
+monitors,iiyama-g-master-gb2470hsu-b1,Iiyama G-Master GB2470HSU-B1,Iiyama,,/home/user/quakesettings/src/content/monitors/iiyama-g-master-gb2470hsu-b1.yaml
+monitors,innocn-ga27m1q,Innocn GA27M1Q,Innocn,,/home/user/quakesettings/src/content/monitors/innocn-ga27m1q.yaml
+monitors,innocn-ga27w1q,Innocn GA27W1Q,Innocn,,/home/user/quakesettings/src/content/monitors/innocn-ga27w1q.yaml
+monitors,koorui-g7,Koorui G7,Koorui,,/home/user/quakesettings/src/content/monitors/koorui-g7.yaml
+monitors,lg-32gs95ue-b,LG 32GS95UE-B,LG,,/home/user/quakesettings/src/content/monitors/lg-32gs95ue-b.yaml
+monitors,lg-32gs95ue,LG 32GS95UE-B,LG,,/home/user/quakesettings/src/content/monitors/lg-32gs95ue.yaml
+monitors,lg-ultragear-27gx790b,LG UltraGear 27GX790B,LG,,/home/user/quakesettings/src/content/monitors/lg-ultragear-27gx790b.yaml
+monitors,lg-ultragear-32gx870b-gx7,LG UltraGear 32GX870B GX7,LG,,/home/user/quakesettings/src/content/monitors/lg-ultragear-32gx870b-gx7.yaml
+monitors,lg-w2261vp-pf,LG W2261VP-PF,LG,,/home/user/quakesettings/src/content/monitors/lg-w2261vp-pf.yaml
+monitors,msi-mpg-271qrx-qd-oled,MSI MPG 271QRX QD-OLED,MSI,,/home/user/quakesettings/src/content/monitors/msi-mpg-271qrx-qd-oled.yaml
+monitors,msi-mpg-272qrf-x36,MSI MPG 272QRF X36,MSI,,/home/user/quakesettings/src/content/monitors/msi-mpg-272qrf-x36.yaml
+monitors,msi-mpg-321urx-qd-oled,MSI MPG 321URX QD-OLED,MSI,,/home/user/quakesettings/src/content/monitors/msi-mpg-321urx-qd-oled.yaml
+monitors,msi-mpg-341cqr-x36,MSI MPG 341CQR X36,MSI,,/home/user/quakesettings/src/content/monitors/msi-mpg-341cqr-x36.yaml
+monitors,msi-optix-g271,MSI Optix G271,MSI,,/home/user/quakesettings/src/content/monitors/msi-optix-g271.yaml
+monitors,msi-optix-mag251rx,MSI OPTIX MAG251RX,MSI,,/home/user/quakesettings/src/content/monitors/msi-optix-mag251rx.yaml
+monitors,philips-27m2n5500xd,Philips 27M2N5500XD,Philips,,/home/user/quakesettings/src/content/monitors/philips-27m2n5500xd.yaml
+monitors,samsung-crg5,Samsung CRG5,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-crg5.yaml
+monitors,samsung-lc27rg50fqrxen,Samsung LC27RG50FQRXEN,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-lc27rg50fqrxen.yaml
+monitors,samsung-odyssey-g3-lf24g35t,Samsung Odyssey G3 LF24G35T,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g3-lf24g35t.yaml
+monitors,samsung-odyssey-g4,Samsung Odyssey G4,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g4.yaml
+monitors,samsung-odyssey-g6-g60h,Samsung Odyssey G6 G60H,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g6-g60h.yaml
+monitors,samsung-odyssey-g6-s32bg65,Samsung Odyssey G6 S32BG65,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g6-s32bg65.yaml
+monitors,samsung-odyssey-g7,Samsung Odyssey G7,Samsung,https://www.amazon.com/dp/B0BTSQD3RZ?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g7.yaml
+monitors,samsung-odyssey-g7-c32g75t,Samsung Odyssey G7 C32G75T,Samsung,https://www.amazon.com/dp/B0BTSQD3RZ?tag=prosettings-20,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g7-c32g75t.yaml
+monitors,samsung-odyssey-g8-oled,Samsung Odyssey G8 OLED,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-g8-oled.yaml
+monitors,samsung-odyssey-oled-g60sd,Samsung Odyssey OLED G60SD,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-oled-g60sd.yaml
+monitors,samsung-odyssey-oled-g80sh,Samsung Odyssey OLED G80SH,Samsung,,/home/user/quakesettings/src/content/monitors/samsung-odyssey-oled-g80sh.yaml
+monitors,titan-army-m27e6v-pro,Titan Army M27E6V-Pro,Titan Army,,/home/user/quakesettings/src/content/monitors/titan-army-m27e6v-pro.yaml
+monitors,xiaomi-g27i,Xiaomi G27i,Xiaomi,,/home/user/quakesettings/src/content/monitors/xiaomi-g27i.yaml
+mousepads,a4tech-ap20s,A4tech Ap20s,A4tech,,/home/user/quakesettings/src/content/mousepads/a4tech-ap20s.yaml
+mousepads,a4tech-x7-500mp,A4tech X7 500mp,A4tech,,/home/user/quakesettings/src/content/mousepads/a4tech-x7-500mp.yaml
+mousepads,aim1-inazuma-hard-large,AIM1 Inazuma Hard Large,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-inazuma-hard-large.yaml
+mousepads,aim1-inazuma-hard-xl,AIM1 Inazuma Hard XL,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-inazuma-hard-xl.yaml
+mousepads,aim1-inazuma-soft-large,AIM1 Inazuma Soft Large,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-inazuma-soft-large.yaml
+mousepads,aim1-inazuma-soft-xl,AIM1 Inazuma Soft XL,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-inazuma-soft-xl.yaml
+mousepads,aim1-kagero,AIM1 Kagero,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-kagero.yaml
+mousepads,aim1-murakumo-large,AIM1 Murakumo Large,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-murakumo-large.yaml
+mousepads,aim1-murakumo-xl,AIM1 Murakumo XL,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-murakumo-xl.yaml
+mousepads,aim1-yugiri,AIM1 Yugiri,AIM1,,/home/user/quakesettings/src/content/mousepads/aim1-yugiri.yaml
+mousepads,aqirys-gravity,Aqirys Gravity,Aqirys,,/home/user/quakesettings/src/content/mousepads/aqirys-gravity.yaml
+mousepads,artisan-fx-hayate-otsu-v2-mid-large,Artisan FX Hayate-Otsu V2 Mid Large,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-mid-large.yaml
+mousepads,artisan-fx-hayate-otsu-v2-mid-xl,Artisan FX Hayate-Otsu V2 Mid XL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-mid-xl.yaml
+mousepads,artisan-fx-hayate-otsu-v2-mid-xxl,Artisan FX Hayate-Otsu V2 Mid XXL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-mid-xxl.yaml
+mousepads,artisan-fx-hayate-otsu-v2-soft-large,Artisan FX Hayate-Otsu V2 Soft Large,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-soft-large.yaml
+mousepads,artisan-fx-hayate-otsu-v2-soft-xl,Artisan FX Hayate-Otsu V2 Soft XL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-soft-xl.yaml
+mousepads,artisan-fx-hayate-otsu-v2-soft-xxl,Artisan FX Hayate-Otsu V2 Soft XXL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-soft-xxl.yaml
+mousepads,artisan-fx-hayate-otsu-v2-xsoft-large,Artisan FX Hayate-Otsu V2 XSoft Large,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-xsoft-large.yaml
+mousepads,artisan-fx-hayate-otsu-v2-xsoft-xl,Artisan FX Hayate-Otsu V2 XSoft XL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-xsoft-xl.yaml
+mousepads,artisan-fx-hayate-otsu-v2-xsoft-xxl,Artisan FX Hayate-Otsu V2 XSoft XXL,Artisan,https://www.amazon.com/dp/B07HDMYHKV?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hayate-otsu-v2-xsoft-xxl.yaml
+mousepads,artisan-fx-hien-mid-large,Artisan FX Hien Mid Large,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-mid-large.yaml
+mousepads,artisan-fx-hien-mid-medium,Artisan FX Hien Mid Medium,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-mid-medium.yaml
+mousepads,artisan-fx-hien-mid-small,Artisan FX Hien Mid Small,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-mid-small.yaml
+mousepads,artisan-fx-hien-mid-xl,Artisan FX Hien Mid XL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-mid-xl.yaml
+mousepads,artisan-fx-hien-mid-xxl,Artisan FX Hien Mid XXL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-mid-xxl.yaml
+mousepads,artisan-fx-hien-soft-large,Artisan FX Hien Soft Large,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-soft-large.yaml
+mousepads,artisan-fx-hien-soft-medium,Artisan FX Hien Soft Medium,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-soft-medium.yaml
+mousepads,artisan-fx-hien-soft-small,Artisan FX Hien Soft Small,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-soft-small.yaml
+mousepads,artisan-fx-hien-soft-xl,Artisan FX Hien Soft XL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-soft-xl.yaml
+mousepads,artisan-fx-hien-soft-xxl,Artisan FX Hien Soft XXL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-soft-xxl.yaml
+mousepads,artisan-fx-hien-xsoft-large,Artisan FX Hien XSoft Large,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-xsoft-large.yaml
+mousepads,artisan-fx-hien-xsoft-medium,Artisan FX Hien XSoft Medium,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-xsoft-medium.yaml
+mousepads,artisan-fx-hien-xsoft-small,Artisan FX Hien XSoft Small,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-xsoft-small.yaml
+mousepads,artisan-fx-hien-xsoft-xl,Artisan FX Hien XSoft XL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-xsoft-xl.yaml
+mousepads,artisan-fx-hien-xsoft-xxl,Artisan FX Hien XSoft XXL,Artisan,https://www.amazon.com/dp/B07HDMZFFK?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-hien-xsoft-xxl.yaml
+mousepads,artisan-fx-key-83-mid-large,Artisan FX Key-83 Mid Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-mid-large.yaml
+mousepads,artisan-fx-key-83-mid-xl,Artisan FX Key-83 Mid XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-mid-xl.yaml
+mousepads,artisan-fx-key-83-mid-xxl,Artisan FX Key-83 Mid XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-mid-xxl.yaml
+mousepads,artisan-fx-key-83-soft-large,Artisan FX Key-83 Soft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-soft-large.yaml
+mousepads,artisan-fx-key-83-soft-xl,Artisan FX Key-83 Soft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-soft-xl.yaml
+mousepads,artisan-fx-key-83-soft-xxl,Artisan FX Key-83 Soft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-soft-xxl.yaml
+mousepads,artisan-fx-key-83-xsoft-large,Artisan FX Key-83 XSoft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-xsoft-large.yaml
+mousepads,artisan-fx-key-83-xsoft-xl,Artisan FX Key-83 XSoft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-xsoft-xl.yaml
+mousepads,artisan-fx-key-83-xsoft-xxl,Artisan FX Key-83 XSoft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-key-83-xsoft-xxl.yaml
+mousepads,artisan-fx-raiden-mid-large,Artisan FX Raiden Mid Large,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-mid-large.yaml
+mousepads,artisan-fx-raiden-mid-medium,Artisan FX Raiden Mid Medium,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-mid-medium.yaml
+mousepads,artisan-fx-raiden-mid-xl,Artisan FX Raiden Mid XL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-mid-xl.yaml
+mousepads,artisan-fx-raiden-mid-xxl,Artisan FX Raiden Mid XXL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-mid-xxl.yaml
+mousepads,artisan-fx-raiden-soft-large,Artisan FX Raiden Soft Large,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-soft-large.yaml
+mousepads,artisan-fx-raiden-soft-medium,Artisan FX Raiden Soft Medium,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-soft-medium.yaml
+mousepads,artisan-fx-raiden-soft-xl,Artisan FX Raiden Soft XL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-soft-xl.yaml
+mousepads,artisan-fx-raiden-soft-xxl,Artisan FX Raiden Soft XXL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-soft-xxl.yaml
+mousepads,artisan-fx-raiden-xsoft-large,Artisan FX Raiden XSoft Large,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-xsoft-large.yaml
+mousepads,artisan-fx-raiden-xsoft-medium,Artisan FX Raiden XSoft Medium,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-xsoft-medium.yaml
+mousepads,artisan-fx-raiden-xsoft-xl,Artisan FX Raiden XSoft XL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-xsoft-xl.yaml
+mousepads,artisan-fx-raiden-xsoft-xxl,Artisan FX Raiden XSoft XXL,Artisan,https://www.amazon.com/dp/B07HDMYHMN?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/artisan-fx-raiden-xsoft-xxl.yaml
+mousepads,artisan-fx-type-99-mid-large,Artisan FX Type-99 Mid Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-mid-large.yaml
+mousepads,artisan-fx-type-99-mid-xl,Artisan FX Type-99 Mid XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-mid-xl.yaml
+mousepads,artisan-fx-type-99-mid-xxl,Artisan FX Type-99 Mid XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-mid-xxl.yaml
+mousepads,artisan-fx-type-99-soft-large,Artisan FX Type-99 Soft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-soft-large.yaml
+mousepads,artisan-fx-type-99-soft-xl,Artisan FX Type-99 Soft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-soft-xl.yaml
+mousepads,artisan-fx-type-99-soft-xxl,Artisan FX Type-99 Soft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-soft-xxl.yaml
+mousepads,artisan-fx-type-99-xsoft-large,Artisan FX Type-99 XSoft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-xsoft-large.yaml
+mousepads,artisan-fx-type-99-xsoft-xl,Artisan FX Type-99 XSoft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-xsoft-xl.yaml
+mousepads,artisan-fx-type-99-xsoft-xxl,Artisan FX Type-99 XSoft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-type-99-xsoft-xxl.yaml
+mousepads,artisan-fx-zero-mid-large,Artisan FX Zero Mid Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-mid-large.yaml
+mousepads,artisan-fx-zero-mid-medium,Artisan FX Zero Mid Medium,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-mid-medium.yaml
+mousepads,artisan-fx-zero-mid-small,Artisan FX Zero Mid Small,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-mid-small.yaml
+mousepads,artisan-fx-zero-mid-xl,Artisan FX Zero Mid XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-mid-xl.yaml
+mousepads,artisan-fx-zero-mid-xxl,Artisan FX Zero Mid XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-mid-xxl.yaml
+mousepads,artisan-fx-zero-soft-large,Artisan FX Zero Soft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-soft-large.yaml
+mousepads,artisan-fx-zero-soft-medium,Artisan FX Zero Soft Medium,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-soft-medium.yaml
+mousepads,artisan-fx-zero-soft-small,Artisan FX Zero Soft Small,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-soft-small.yaml
+mousepads,artisan-fx-zero-soft-xl,Artisan FX Zero Soft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-soft-xl.yaml
+mousepads,artisan-fx-zero-soft-xxl,Artisan FX Zero Soft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-soft-xxl.yaml
+mousepads,artisan-fx-zero-xsoft-large,Artisan FX Zero XSoft Large,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-xsoft-large.yaml
+mousepads,artisan-fx-zero-xsoft-medium,Artisan FX Zero XSoft Medium,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-xsoft-medium.yaml
+mousepads,artisan-fx-zero-xsoft-small,Artisan FX Zero XSoft Small,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-xsoft-small.yaml
+mousepads,artisan-fx-zero-xsoft-xl,Artisan FX Zero XSoft XL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-xsoft-xl.yaml
+mousepads,artisan-fx-zero-xsoft-xxl,Artisan FX Zero XSoft XXL,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-fx-zero-xsoft-xxl.yaml
+mousepads,artisan-hayate-otsu-,Artisan Hayate Otsu,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-hayate-otsu-.yaml
+mousepads,artisan-hayate-otsu,Artisan Hayate Otsu,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-hayate-otsu.yaml
+mousepads,artisan-hien-,Artisan Hien,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-hien-.yaml
+mousepads,artisan-hien,Artisan Hien,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-hien.yaml
+mousepads,artisan-raiden-,Artisan Raiden,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-raiden-.yaml
+mousepads,artisan-zero-,Artisan Zero,Artisan,,/home/user/quakesettings/src/content/mousepads/artisan-zero-.yaml
+mousepads,asus-rog-moonstone-ace-l,ASUS ROG Moonstone Ace L,ASUS,,/home/user/quakesettings/src/content/mousepads/asus-rog-moonstone-ace-l.yaml
+mousepads,asus-rog-scabbard-ii-extended,ASUS ROG Scabbard II Extended,ASUS,,/home/user/quakesettings/src/content/mousepads/asus-rog-scabbard-ii-extended.yaml
+mousepads,asus-rog-scabbard-ii-medium,ASUS ROG Scabbard II Medium,ASUS,,/home/user/quakesettings/src/content/mousepads/asus-rog-scabbard-ii-medium.yaml
+mousepads,asus-rog-sheath,ASUS ROG Sheath,ASUS,,/home/user/quakesettings/src/content/mousepads/asus-rog-sheath.yaml
+mousepads,asus-rog-sheath-ii-xxl,ASUS ROG Sheath II XXL,ASUS,,/home/user/quakesettings/src/content/mousepads/asus-rog-sheath-ii-xxl.yaml
+mousepads,atk-99g-air,ATK 99G Air,ATK,,/home/user/quakesettings/src/content/mousepads/atk-99g-air.yaml
+mousepads,atk-99g-carbon,ATK 99G Carbon,ATK,,/home/user/quakesettings/src/content/mousepads/atk-99g-carbon.yaml
+mousepads,atk-99g-pro,ATK 99G Pro,ATK,,/home/user/quakesettings/src/content/mousepads/atk-99g-pro.yaml
+mousepads,atk-blaze,ATK Blaze,ATK,,/home/user/quakesettings/src/content/mousepads/atk-blaze.yaml
+mousepads,atk-blaze-air,ATK Blaze Air,ATK,,/home/user/quakesettings/src/content/mousepads/atk-blaze-air.yaml
+mousepads,atk-duckbill,ATK Duckbill,ATK,,/home/user/quakesettings/src/content/mousepads/atk-duckbill.yaml
+mousepads,atk-glass,ATK Glass,ATK,,/home/user/quakesettings/src/content/mousepads/atk-glass.yaml
+mousepads,atk-sky-large,ATK Sky Large,ATK,,/home/user/quakesettings/src/content/mousepads/atk-sky-large.yaml
+mousepads,atk-sky-pro,ATK Sky Pro,ATK,,/home/user/quakesettings/src/content/mousepads/atk-sky-pro.yaml
+mousepads,atk-sky-small,ATK Sky Small,ATK,,/home/user/quakesettings/src/content/mousepads/atk-sky-small.yaml
+mousepads,atk-sunny-rain,ATK Sunny Rain,ATK,,/home/user/quakesettings/src/content/mousepads/atk-sunny-rain.yaml
+mousepads,atk-x-leviatan,ATK X LEVIATAN,ATK,,/home/user/quakesettings/src/content/mousepads/atk-x-leviatan.yaml
+mousepads,atk-x83,ATK X83,ATK,,/home/user/quakesettings/src/content/mousepads/atk-x83.yaml
+mousepads,attack-shark-cm04-medium,Attack Shark CM04 Medium,Attack Shark,,/home/user/quakesettings/src/content/mousepads/attack-shark-cm04-medium.yaml
+mousepads,attack-shark-cm04-xl,Attack Shark CM04 XL,Attack Shark,,/home/user/quakesettings/src/content/mousepads/attack-shark-cm04-xl.yaml
+mousepads,cisa-pad-v2,Cisa Pad V2,Cisa,,/home/user/quakesettings/src/content/mousepads/cisa-pad-v2.yaml
+mousepads,corepad-xxxl-,Corepad Xxxl ,Corepad,,/home/user/quakesettings/src/content/mousepads/corepad-xxxl-.yaml
+mousepads,corsair-mm-pro-control-large,Corsair MM Pro Control Large,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm-pro-control-large.yaml
+mousepads,corsair-mm-pro-control-medium,Corsair MM Pro Control Medium,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm-pro-control-medium.yaml
+mousepads,corsair-mm200-pro,Corsair MM200 Pro,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm200-pro.yaml
+mousepads,corsair-mm350-pro,Corsair MM350 Pro,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm350-pro.yaml
+mousepads,corsair-mm500-v2-extended,Corsair MM500 v2 Extended,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm500-v2-extended.yaml
+mousepads,corsair-mm500-v2-large,Corsair MM500 v2 Large,Corsair,,/home/user/quakesettings/src/content/mousepads/corsair-mm500-v2-large.yaml
+mousepads,dark-project-x-playerman-white-glass-dp-id-0002,Dark Project X Playerman White Glass Dp Id 0002,Dark,,/home/user/quakesettings/src/content/mousepads/dark-project-x-playerman-white-glass-dp-id-0002.yaml
+mousepads,dexp-gm-m-biohazard-,Dexp Gm M Biohazard ,Dexp,,/home/user/quakesettings/src/content/mousepads/dexp-gm-m-biohazard-.yaml
+mousepads,dornfinger-firestarter,Dornfinger Firestarter,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-firestarter.yaml
+mousepads,dornfinger-rawpad-v2-3xl,Dornfinger Rawpad v2 3XL,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-3xl.yaml
+mousepads,dornfinger-rawpad-v2-large,Dornfinger Rawpad v2 Large,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-large.yaml
+mousepads,dornfinger-rawpad-v2-large-square,Dornfinger Rawpad v2 Large Square,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-large-square.yaml
+mousepads,dornfinger-rawpad-v2-medium,Dornfinger Rawpad v2 Medium,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-medium.yaml
+mousepads,dornfinger-rawpad-v2-pro,Dornfinger Rawpad v2 Pro,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-pro.yaml
+mousepads,dornfinger-rawpad-v2-xl-square,Dornfinger Rawpad v2 XL Square,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-xl-square.yaml
+mousepads,dornfinger-rawpad-v2-xxl,Dornfinger Rawpad v2 XXL,Dornfinger,,/home/user/quakesettings/src/content/mousepads/dornfinger-rawpad-v2-xxl.yaml
+mousepads,endgame-gear-em-b,Endgame Gear EM-B,Endgame Gear,,/home/user/quakesettings/src/content/mousepads/endgame-gear-em-b.yaml
+mousepads,endgame-gear-em-b-plus,Endgame Gear EM-B Plus,Endgame Gear,,/home/user/quakesettings/src/content/mousepads/endgame-gear-em-b-plus.yaml
+mousepads,endgame-gear-em-c,Endgame Gear EM-C,Endgame Gear,,/home/user/quakesettings/src/content/mousepads/endgame-gear-em-c.yaml
+mousepads,endgame-gear-em-c-plus,Endgame Gear EM-C Plus,Endgame Gear,,/home/user/quakesettings/src/content/mousepads/endgame-gear-em-c-plus.yaml
+mousepads,endgame-gear-mpc-450,Endgame Gear MPC 450,Endgame Gear,,/home/user/quakesettings/src/content/mousepads/endgame-gear-mpc-450.yaml
+mousepads,esptiger-eba,Esptiger EBA,Esptiger,,/home/user/quakesettings/src/content/mousepads/esptiger-eba.yaml
+mousepads,esptiger-pioneer-talismans-ya-cheng-v2,EspTiger Pioneer Talismans Ya Cheng V2,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-pioneer-talismans-ya-cheng-v2.yaml
+mousepads,esptiger-pioneer-tang-dao,EspTiger Pioneer Tang Dao,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-pioneer-tang-dao.yaml
+mousepads,esptiger-talismans-ya-cheng-v2,EspTiger Talismans Ya Cheng V2,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-talismans-ya-cheng-v2.yaml
+mousepads,esptiger-tang-dao,EspTiger Tang Dao,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-tang-dao.yaml
+mousepads,esptiger-tang-dao-chi-yu-gem,EspTiger Tang Dao Chi Yu Gem,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-tang-dao-chi-yu-gem.yaml
+mousepads,esptiger-tang-dao-sr,EspTiger Tang Dao SR,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-tang-dao-sr.yaml
+mousepads,esptiger-tang-dao-x,EspTiger Tang Dao X,EspTiger,,/home/user/quakesettings/src/content/mousepads/esptiger-tang-dao-x.yaml
+mousepads,eweadn-path-mini,EWEADN Path Mini,EWEADN,,/home/user/quakesettings/src/content/mousepads/eweadn-path-mini.yaml
+mousepads,eweadn-path-plus,EWEADN Path Plus,EWEADN,,/home/user/quakesettings/src/content/mousepads/eweadn-path-plus.yaml
+mousepads,fantech-motion-pad-earth,Fantech Motion Pad Earth,Fantech,,/home/user/quakesettings/src/content/mousepads/fantech-motion-pad-earth.yaml
+mousepads,fantech-motion-pad-fire,Fantech Motion Pad Fire,Fantech,,/home/user/quakesettings/src/content/mousepads/fantech-motion-pad-fire.yaml
+mousepads,fantech-motion-pad-lightning,Fantech Motion Pad Lightning,Fantech,,/home/user/quakesettings/src/content/mousepads/fantech-motion-pad-lightning.yaml
+mousepads,fantech-motion-pad-water,Fantech Motion Pad Water,Fantech,,/home/user/quakesettings/src/content/mousepads/fantech-motion-pad-water.yaml
+mousepads,fantech-motion-pad-wind,Fantech Motion Pad Wind,Fantech,,/home/user/quakesettings/src/content/mousepads/fantech-motion-pad-wind.yaml
+mousepads,freefall-sv-base-control-v2,FreeFall SV BASE Control+ v2,FreeFall,,/home/user/quakesettings/src/content/mousepads/freefall-sv-base-control-v2.yaml
+mousepads,freefall-sv-base-haus-edition,FreeFall SV BASE Haus Edition,FreeFall,,/home/user/quakesettings/src/content/mousepads/freefall-sv-base-haus-edition.yaml
+mousepads,freefall-sv-base-haus-edition-xl,FreeFall SV BASE Haus Edition XL,FreeFall,,/home/user/quakesettings/src/content/mousepads/freefall-sv-base-haus-edition-xl.yaml
+mousepads,glorious-ice,Glorious Ice,Glorious,,/home/user/quakesettings/src/content/mousepads/glorious-ice.yaml
+mousepads,glsswrks-polarity-large,GLSSWRKS Polarity Large,GLSSWRKS,,/home/user/quakesettings/src/content/mousepads/glsswrks-polarity-large.yaml
+mousepads,glsswrks-polarity-xl,GLSSWRKS Polarity XL,GLSSWRKS,,/home/user/quakesettings/src/content/mousepads/glsswrks-polarity-xl.yaml
+mousepads,hyperx-fury-s-pro,HyperX Fury S Pro,HyperX,,/home/user/quakesettings/src/content/mousepads/hyperx-fury-s-pro.yaml
+mousepads,hyperx-fury-s-speed-edition-xl,HyperX Fury S Speed Edition XL,HyperX,https://www.amazon.com/dp/B07CP9YRY4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/hyperx-fury-s-speed-edition-xl.yaml
+mousepads,hystar-aether-large,Hystar Aether Large,Hystar,,/home/user/quakesettings/src/content/mousepads/hystar-aether-large.yaml
+mousepads,hystar-aether-xl,Hystar Aether XL,Hystar,,/home/user/quakesettings/src/content/mousepads/hystar-aether-xl.yaml
+mousepads,hystar-classic-3xl,Hystar Classic 3XL,Hystar,,/home/user/quakesettings/src/content/mousepads/hystar-classic-3xl.yaml
+mousepads,hystar-classic-xxl,Hystar Classic XXL,Hystar,,/home/user/quakesettings/src/content/mousepads/hystar-classic-xxl.yaml
+mousepads,ikea-lnespelare,Ikea Lnespelare,Ikea,,/home/user/quakesettings/src/content/mousepads/ikea-lnespelare.yaml
+mousepads,kanami-minami,Kanami Minami,Kanami,,/home/user/quakesettings/src/content/mousepads/kanami-minami.yaml
+mousepads,kibu-ooka,Kibu Ooka,Kibu,,/home/user/quakesettings/src/content/mousepads/kibu-ooka.yaml
+mousepads,kingjade-liu-li-v2-large,KingJade Liu Li V2 Large,KingJade,,/home/user/quakesettings/src/content/mousepads/kingjade-liu-li-v2-large.yaml
+mousepads,kingjade-liu-li-v2-medium,KingJade Liu Li V2 Medium,KingJade,,/home/user/quakesettings/src/content/mousepads/kingjade-liu-li-v2-medium.yaml
+mousepads,kingjade-liu-li-v2-xl,KingJade Liu Li V2 XL,KingJade,,/home/user/quakesettings/src/content/mousepads/kingjade-liu-li-v2-xl.yaml
+mousepads,kurosun-shogun-large,Kurosun Shogun Large,Kurosun,,/home/user/quakesettings/src/content/mousepads/kurosun-shogun-large.yaml
+mousepads,kurosun-shogun-xl,Kurosun Shogun XL,Kurosun,,/home/user/quakesettings/src/content/mousepads/kurosun-shogun-xl.yaml
+mousepads,la-onda-blitz,La Onda Blitz,La Onda,,/home/user/quakesettings/src/content/mousepads/la-onda-blitz.yaml
+mousepads,lamzu-maya,LAMZU Maya,LAMZU,,/home/user/quakesettings/src/content/mousepads/lamzu-maya.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-firm-xl,Lethal Gaming Gear Jupiter Pro v2 Firm XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-firm-xl.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-firm-xl-square,Lethal Gaming Gear Jupiter Pro v2 Firm XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-firm-xl-square.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-firm-xxl,Lethal Gaming Gear Jupiter Pro v2 Firm XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-firm-xxl.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-soft-xl,Lethal Gaming Gear Jupiter Pro v2 Soft XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-soft-xl.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-soft-xl-square,Lethal Gaming Gear Jupiter Pro v2 Soft XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-soft-xl-square.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-soft-xxl,Lethal Gaming Gear Jupiter Pro v2 Soft XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-soft-xxl.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-xsoft-xl,Lethal Gaming Gear Jupiter Pro v2 Xsoft XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-xsoft-xl.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-xsoft-xl-square,Lethal Gaming Gear Jupiter Pro v2 Xsoft XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-xsoft-xl-square.yaml
+mousepads,lethal-gaming-gear-jupiter-pro-v2-xsoft-xxl,Lethal Gaming Gear Jupiter Pro v2 Xsoft XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-jupiter-pro-v2-xsoft-xxl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-firm-xl,Lethal Gaming Gear Neptune Pro Firm XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-firm-xl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-firm-xl-square,Lethal Gaming Gear Neptune Pro Firm XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-firm-xl-square.yaml
+mousepads,lethal-gaming-gear-neptune-pro-firm-xxl,Lethal Gaming Gear Neptune Pro Firm XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-firm-xxl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-soft-xl,Lethal Gaming Gear Neptune Pro Soft XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-soft-xl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-soft-xl-square,Lethal Gaming Gear Neptune Pro Soft XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-soft-xl-square.yaml
+mousepads,lethal-gaming-gear-neptune-pro-soft-xxl,Lethal Gaming Gear Neptune Pro Soft XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-soft-xxl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-xsoft-xl,Lethal Gaming Gear Neptune Pro Xsoft XL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-xsoft-xl.yaml
+mousepads,lethal-gaming-gear-neptune-pro-xsoft-xl-square,Lethal Gaming Gear Neptune Pro Xsoft XL Square,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-xsoft-xl-square.yaml
+mousepads,lethal-gaming-gear-neptune-pro-xsoft-xxl,Lethal Gaming Gear Neptune Pro Xsoft XXL,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-neptune-pro-xsoft-xxl.yaml
+mousepads,lethal-gaming-gear-saturn-pro,Lethal Gaming Gear Saturn Pro,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro.yaml
+mousepads,lethal-gaming-gear-saturn-pro-firm-xl,Lethal Gaming Gear Saturn Pro Firm XL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-firm-xl.yaml
+mousepads,lethal-gaming-gear-saturn-pro-firm-xl-square,Lethal Gaming Gear Saturn Pro Firm XL Square,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-firm-xl-square.yaml
+mousepads,lethal-gaming-gear-saturn-pro-firm-xxl,Lethal Gaming Gear Saturn Pro Firm XXL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-firm-xxl.yaml
+mousepads,lethal-gaming-gear-saturn-pro-soft-xl,Lethal Gaming Gear Saturn Pro Soft XL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-soft-xl.yaml
+mousepads,lethal-gaming-gear-saturn-pro-soft-xl-square,Lethal Gaming Gear Saturn Pro Soft XL Square,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-soft-xl-square.yaml
+mousepads,lethal-gaming-gear-saturn-pro-soft-xxl,Lethal Gaming Gear Saturn Pro Soft XXL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-soft-xxl.yaml
+mousepads,lethal-gaming-gear-saturn-pro-xsoft-xl,Lethal Gaming Gear Saturn Pro Xsoft XL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-xsoft-xl.yaml
+mousepads,lethal-gaming-gear-saturn-pro-xsoft-xl-square,Lethal Gaming Gear Saturn Pro Xsoft XL Square,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-xsoft-xl-square.yaml
+mousepads,lethal-gaming-gear-saturn-pro-xsoft-xxl,Lethal Gaming Gear Saturn Pro Xsoft XXL,Lethal Gaming Gear,https://www.amazon.com/dp/B0BT67SGL3?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-saturn-pro-xsoft-xxl.yaml
+mousepads,lethal-gaming-gear-venus-pro,Lethal Gaming Gear Venus Pro,Lethal Gaming Gear,,/home/user/quakesettings/src/content/mousepads/lethal-gaming-gear-venus-pro.yaml
+mousepads,logitech-g-powerplay-cloth-surface,Logitech G PowerPlay (cloth surface),Logitech,,/home/user/quakesettings/src/content/mousepads/logitech-g-powerplay-cloth-surface.yaml
+mousepads,logitech-g-powerplay-hard-surface,Logitech G PowerPlay (hard surface),Logitech,,/home/user/quakesettings/src/content/mousepads/logitech-g-powerplay-hard-surface.yaml
+mousepads,logitech-g240,Logitech G240,Logitech,,/home/user/quakesettings/src/content/mousepads/logitech-g240.yaml
+mousepads,logitech-g640,Logitech G640,Logitech,https://www.amazon.com/dp/B01MZ6TZ9A?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/logitech-g640.yaml
+mousepads,logitech-g840,Logitech G840,Logitech,https://www.amazon.com/dp/B07GLTW1BS?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/logitech-g840.yaml
+mousepads,nitro-concepts-dm16-deskmat,Nitro Concepts Dm16 Deskmat,Nitro,,/home/user/quakesettings/src/content/mousepads/nitro-concepts-dm16-deskmat.yaml
+mousepads,pulsar-es1-3mm-large,Pulsar ES1 3mm Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es1-3mm-large.yaml
+mousepads,pulsar-es1-3mm-xl,Pulsar ES1 3mm XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es1-3mm-xl.yaml
+mousepads,pulsar-es1-4mm-large,Pulsar ES1 4mm Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es1-4mm-large.yaml
+mousepads,pulsar-es1-4mm-xl,Pulsar ES1 4mm XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es1-4mm-xl.yaml
+mousepads,pulsar-es2-3mm-large,Pulsar ES2 3mm Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es2-3mm-large.yaml
+mousepads,pulsar-es2-3mm-xl,Pulsar ES2 3mm XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es2-3mm-xl.yaml
+mousepads,pulsar-es2-4mm-large,Pulsar ES2 4mm Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es2-4mm-large.yaml
+mousepads,pulsar-es2-4mm-xl,Pulsar ES2 4mm XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-es2-4mm-xl.yaml
+mousepads,pulsar-parabrake-large,Pulsar ParaBrake Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-parabrake-large.yaml
+mousepads,pulsar-parabrake-xl,Pulsar ParaBrake XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-parabrake-xl.yaml
+mousepads,pulsar-parabrake-xxl,Pulsar ParaBrake XXL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-parabrake-xxl.yaml
+mousepads,pulsar-paracontrol-large,Pulsar ParaControl Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-large.yaml
+mousepads,pulsar-paracontrol-v2,Pulsar ParaControl V2,Pulsar,https://www.amazon.com/dp/B0B5HNKD5P?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-v2.yaml
+mousepads,pulsar-paracontrol-xl,Pulsar ParaControl XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-xl.yaml
+mousepads,pulsar-paracontrol-xl-extended,Pulsar ParaControl XL Extended,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-xl-extended.yaml
+mousepads,pulsar-paracontrol-xl-square,Pulsar ParaControl XL Square,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-xl-square.yaml
+mousepads,pulsar-paracontrol-xxl,Pulsar ParaControl XXL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-xxl.yaml
+mousepads,pulsar-paracontrol-xxl-extended,Pulsar ParaControl XXL Extended,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paracontrol-xxl-extended.yaml
+mousepads,pulsar-paraspeed-large,Pulsar ParaSpeed Large,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paraspeed-large.yaml
+mousepads,pulsar-paraspeed-xl,Pulsar ParaSpeed XL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paraspeed-xl.yaml
+mousepads,pulsar-paraspeed-xxl,Pulsar ParaSpeed XXL,Pulsar,,/home/user/quakesettings/src/content/mousepads/pulsar-paraspeed-xxl.yaml
+mousepads,pulsar-superglide-mousepad,Pulsar Superglide Mousepad,Pulsar,https://www.amazon.com/dp/B0C5XCJ5JL?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/pulsar-superglide-mousepad.yaml
+mousepads,pwnage-ultra-glide-pyramid-large,Pwnage Ultra Glide Pyramid Large,Pwnage,,/home/user/quakesettings/src/content/mousepads/pwnage-ultra-glide-pyramid-large.yaml
+mousepads,pwnage-ultra-glide-pyramid-xl,Pwnage Ultra Glide Pyramid XL,Pwnage,,/home/user/quakesettings/src/content/mousepads/pwnage-ultra-glide-pyramid-xl.yaml
+mousepads,razer-atlas-,Razer Atlas,Razer,,/home/user/quakesettings/src/content/mousepads/razer-atlas-.yaml
+mousepads,razer-atlas,Razer Atlas,Razer,,/home/user/quakesettings/src/content/mousepads/razer-atlas.yaml
+mousepads,razer-firefly-v2-pro,Razer Firefly V2 Pro,Razer,,/home/user/quakesettings/src/content/mousepads/razer-firefly-v2-pro.yaml
+mousepads,razer-gigantus,Razer Gigantus V2,Razer,https://www.amazon.com/dp/B0885N29X4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-gigantus.yaml
+mousepads,razer-gigantus-v2-3xl,Razer Gigantus V2 3XL,Razer,https://www.amazon.com/dp/B0885N29X4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-gigantus-v2-3xl.yaml
+mousepads,razer-gigantus-v2-large,Razer Gigantus V2 Large,Razer,https://www.amazon.com/dp/B0885N29X4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-gigantus-v2-large.yaml
+mousepads,razer-gigantus-v2-medium,Razer Gigantus V2 Medium,Razer,https://www.amazon.com/dp/B0885N29X4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-gigantus-v2-medium.yaml
+mousepads,razer-gigantus-v2-xxl,Razer Gigantus V2 XXL,Razer,https://www.amazon.com/dp/B0885N29X4?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-gigantus-v2-xxl.yaml
+mousepads,razer-goliathus-chroma-3xl,Razer Goliathus Chroma 3XL,Razer,,/home/user/quakesettings/src/content/mousepads/razer-goliathus-chroma-3xl.yaml
+mousepads,razer-goliathus-chroma-extended,Razer Goliathus Chroma Extended,Razer,,/home/user/quakesettings/src/content/mousepads/razer-goliathus-chroma-extended.yaml
+mousepads,razer-goliathus-chroma-medium,Razer Goliathus Chroma Medium,Razer,,/home/user/quakesettings/src/content/mousepads/razer-goliathus-chroma-medium.yaml
+mousepads,razer-goliathus-control,Razer Goliathus Control,Razer,https://www.amazon.com/dp/B00IRDW6L2?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/razer-goliathus-control.yaml
+mousepads,razer-sphex-v3-large,Razer Sphex V3 Large,Razer,,/home/user/quakesettings/src/content/mousepads/razer-sphex-v3-large.yaml
+mousepads,razer-sphex-v3-small,Razer Sphex V3 Small,Razer,,/home/user/quakesettings/src/content/mousepads/razer-sphex-v3-small.yaml
+mousepads,razer-strider-large,Razer Strider Large,Razer,,/home/user/quakesettings/src/content/mousepads/razer-strider-large.yaml
+mousepads,razer-strider-xxl,Razer Strider XXL,Razer,,/home/user/quakesettings/src/content/mousepads/razer-strider-xxl.yaml
+mousepads,sharkoon-1337-rgb-v2-gaming-mat,Sharkoon 1337 Rgb V2 Gaming Mat,Sharkoon,,/home/user/quakesettings/src/content/mousepads/sharkoon-1337-rgb-v2-gaming-mat.yaml
+mousepads,wallhack-skypad-20,Skypad 2.0,Wallhack,,/home/user/quakesettings/src/content/mousepads/wallhack-skypad-20.yaml
+mousepads,wallhack-skypad-30,Skypad 3.0,Wallhack,,/home/user/quakesettings/src/content/mousepads/wallhack-skypad-30.yaml
+mousepads,steelseries-qck,SteelSeries QcK,SteelSeries,https://www.amazon.com/dp/B000UEZ36W?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/steelseries-qck.yaml
+mousepads,steelseries-qck-heavy,SteelSeries QcK Heavy,SteelSeries,https://www.amazon.com/dp/B000V7ARAU?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/steelseries-qck-heavy.yaml
+mousepads,steelseries-qck-heavy-xxl,SteelSeries QcK Heavy XXL,SteelSeries,https://www.amazon.com/dp/B000UEZ36W?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/steelseries-qck-heavy-xxl.yaml
+mousepads,steelseries-qck-large,SteelSeries QcK Large,SteelSeries,https://www.amazon.com/dp/B000UEZ36W?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/steelseries-qck-large.yaml
+mousepads,superbeings-lab-massimo-pro,Superbeings Lab Massimo Pro,Superbeings Lab,,/home/user/quakesettings/src/content/mousepads/superbeings-lab-massimo-pro.yaml
+mousepads,superbeings-lab-memento,Superbeings Lab Memento,Superbeings Lab,,/home/user/quakesettings/src/content/mousepads/superbeings-lab-memento.yaml
+mousepads,superbeings-lab-memoria-pro,Superbeings Lab Memoria Pro,Superbeings Lab,,/home/user/quakesettings/src/content/mousepads/superbeings-lab-memoria-pro.yaml
+mousepads,teevolution-genesis-axis,Teevolution Genesis Axis,Teevolution,,/home/user/quakesettings/src/content/mousepads/teevolution-genesis-axis.yaml
+mousepads,teevolution-genesis-gravis,Teevolution Genesis Gravis,Teevolution,,/home/user/quakesettings/src/content/mousepads/teevolution-genesis-gravis.yaml
+mousepads,tenta-x-cataclysm,Tenta-X Cataclysm,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-cataclysm.yaml
+mousepads,tenta-x-jinsoku-large,Tenta-X Jinsoku Large,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-jinsoku-large.yaml
+mousepads,tenta-x-jinsoku-xl,Tenta-X Jinsoku XL,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-jinsoku-xl.yaml
+mousepads,tenta-x-shinrai-large,Tenta-X Shinrai Large,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-shinrai-large.yaml
+mousepads,tenta-x-shinrai-xl,Tenta-X Shinrai XL,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-shinrai-xl.yaml
+mousepads,tenta-x-the-last-stand,Tenta-X The Last Stand,Tenta-X,,/home/user/quakesettings/src/content/mousepads/tenta-x-the-last-stand.yaml
+mousepads,trust-gxt-756-,Trust Gxt 756 ,Trust,,/home/user/quakesettings/src/content/mousepads/trust-gxt-756-.yaml
+mousepads,vancer-trigger,Vancer Trigger,Vancer,,/home/user/quakesettings/src/content/mousepads/vancer-trigger.yaml
+mousepads,vaxee-pa,VAXEE PA,VAXEE,https://www.amazon.com/dp/B09FJWRM3R?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/vaxee-pa.yaml
+mousepads,vaxee-pa-black,VAXEE PA Black,VAXEE,https://www.amazon.com/dp/B09FJWRM3R?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/vaxee-pa-black.yaml
+mousepads,vaxee-pa-medium,VAXEE PA Medium,VAXEE,https://www.amazon.com/dp/B09FJWRM3R?tag=prosettings-20,/home/user/quakesettings/src/content/mousepads/vaxee-pa-medium.yaml
+mousepads,vaxee-pb,VAXEE PB,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pb.yaml
+mousepads,vaxee-pb-black,VAXEE PB Black,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pb-black.yaml
+mousepads,vaxee-pc,VAXEE PC,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pc.yaml
+mousepads,vaxee-pd,VAXEE PD,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pd.yaml
+mousepads,vaxee-pe-black-large,VAXEE PE Black Large,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pe-black-large.yaml
+mousepads,vaxee-pe-black-xl,VAXEE PE Black XL,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pe-black-xl.yaml
+mousepads,vaxee-pe-large,VAXEE PE Large,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pe-large.yaml
+mousepads,vaxee-pe-xl,VAXEE PE XL,VAXEE,,/home/user/quakesettings/src/content/mousepads/vaxee-pe-xl.yaml
+mousepads,waizowl-falcon,Waizowl Falcon,Waizowl,,/home/user/quakesettings/src/content/mousepads/waizowl-falcon.yaml
+mousepads,wallhack-sp-004,WALLHACK SP-004,WALLHACK,,/home/user/quakesettings/src/content/mousepads/wallhack-sp-004.yaml
+mousepads,wallhack-sp-004a,WALLHACK SP-004A,WALLHACK,,/home/user/quakesettings/src/content/mousepads/wallhack-sp-004a.yaml
+mousepads,wraith-blade-x-pro,Wraith Blade X Pro,Wraith,,/home/user/quakesettings/src/content/mousepads/wraith-blade-x-pro.yaml
+mousepads,wraith-blade-y-pro,Wraith Blade Y Pro,Wraith,,/home/user/quakesettings/src/content/mousepads/wraith-blade-y-pro.yaml
+mousepads,wraith-spirit-of-aim-pro-hybrid,Wraith Spirit of Aim Pro Hybrid,Wraith,,/home/user/quakesettings/src/content/mousepads/wraith-spirit-of-aim-pro-hybrid.yaml
+mousepads,wraith-spirit-of-aim-pro-speed,Wraith Spirit of Aim Pro Speed,Wraith,,/home/user/quakesettings/src/content/mousepads/wraith-spirit-of-aim-pro-speed.yaml
+mousepads,wraith-w64,Wraith W64,Wraith,,/home/user/quakesettings/src/content/mousepads/wraith-w64.yaml
+mousepads,x-raypad-aqua-control-plus-v2-large,X-Raypad Aqua Control Plus V2 Large,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-aqua-control-plus-v2-large.yaml
+mousepads,x-raypad-aqua-control-plus-v2-xl,X-Raypad Aqua Control Plus V2 XL,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-aqua-control-plus-v2-xl.yaml
+mousepads,x-raypad-aqua-control-plus-v2-xl-square,X-Raypad Aqua Control Plus V2 XL Square,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-aqua-control-plus-v2-xl-square.yaml
+mousepads,x-raypad-aqua-control-plus-v2-xxl,X-Raypad Aqua Control Plus V2 XXL,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-aqua-control-plus-v2-xxl.yaml
+mousepads,x-raypad-aqua-control-pro-,X-raypad Aqua Control Pro,X-raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-aqua-control-pro-.yaml
+mousepads,x-raypad-p-chen-heavy-bee-xl,X-Raypad P.CHEN (Heavy Bee) XL,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-p-chen-heavy-bee-xl.yaml
+mousepads,x-raypad-p-chen-heavy-bee-xl-square,X-Raypad P.CHEN (Heavy Bee) XL Square,X-Raypad,,/home/user/quakesettings/src/content/mousepads/x-raypad-p-chen-heavy-bee-xl-square.yaml
+mousepads,xtrfy-gp5-large,Xtrfy GP5 Large,Xtrfy,,/home/user/quakesettings/src/content/mousepads/xtrfy-gp5-large.yaml
+mousepads,xtrfy-gp5-medium,Xtrfy GP5 Medium,Xtrfy,,/home/user/quakesettings/src/content/mousepads/xtrfy-gp5-medium.yaml
+mousepads,xtrfy-gp5-xl,Xtrfy GP5 XL+,Xtrfy,,/home/user/quakesettings/src/content/mousepads/xtrfy-gp5-xl.yaml
+mousepads,xtrfy-gpz1,Xtrfy GPZ1,Xtrfy,,/home/user/quakesettings/src/content/mousepads/xtrfy-gpz1.yaml
