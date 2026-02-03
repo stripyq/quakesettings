@@ -118,6 +118,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         return (41563.6 / (player.dpi * player.sensitivity)).toFixed(2);
       }
 
+      function formatBind(val) {
+        if (!val) return '';
+        return String(val).toUpperCase();
+      }
+
       function updateComparison() {
         const p1Id = player1Select.value;
         const p2Id = player2Select.value;
@@ -156,12 +161,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         html += compareRow('eDPI', p1.edpi, p2.edpi, true);
         html += compareRow('cm/360', formatCm360(p1), formatCm360(p2), true);
         html += compareRow('Acceleration', p1.acceleration ? 'Yes' : 'No', p2.acceleration ? 'Yes' : 'No');
-        html += compareRow('Raw Input', p1.rawInput ? 'Yes' : 'No', p2.rawInput ? 'Yes' : 'No');
 
         // Section: Game Settings
         html += sectionHeader('Game Settings');
         html += compareRow('FOV', p1.fov, p2.fov, true);
         html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair));
+
+        // Section: Key Bindings
+        html += sectionHeader('Key Bindings');
+        html += compareRow('Forward', formatBind(p1.forward), formatBind(p2.forward));
+        html += compareRow('Back', formatBind(p1.back), formatBind(p2.back));
+        html += compareRow('Left', formatBind(p1.left), formatBind(p2.left));
+        html += compareRow('Right', formatBind(p1.right), formatBind(p2.right));
+        html += compareRow('Jump', formatBind(p1.jump), formatBind(p2.jump));
+        html += compareRow('Fire', formatBind(p1.attack), formatBind(p2.attack));
 
         // Section: Hardware
         html += sectionHeader('Hardware');
@@ -170,6 +183,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         html += compareHardwareRow('Keyboard', p1.keyboardData, p2.keyboardData);
         html += compareHardwareRow('Monitor', p1.monitorData, p2.monitorData);
         html += compareHardwareRow('Headset', p1.headsetData, p2.headsetData);
+
+        // Section: Ratings (only show if at least one player has data)
+        const hasRatings = p1.duelRating || p2.duelRating || p1.tdmRating || p2.tdmRating || p1.ctfRating || p2.ctfRating;
+        if (hasRatings) {
+          html += sectionHeader('Ratings');
+          if (p1.duelRating || p2.duelRating) {
+            html += compareRow('Duel', formatValue(p1.duelRating), formatValue(p2.duelRating), true);
+          }
+          if (p1.tdmRating || p2.tdmRating) {
+            html += compareRow('TDM', formatValue(p1.tdmRating), formatValue(p2.tdmRating), true);
+          }
+          if (p1.ctfRating || p2.ctfRating) {
+            html += compareRow('CTF', formatValue(p1.ctfRating), formatValue(p2.ctfRating), true);
+          }
+        }
 
         compareBody.innerHTML = html;
       }
@@ -185,26 +213,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         const diffClass = isDiff ? 'diff' : 'same';
         const numClass = isNumeric ? 'numeric' : '';
 
-        // Calculate difference for numeric values
-        let diffIndicator1 = '';
+        // Only show arrow on Player 2 column (right side)
         let diffIndicator2 = '';
         if (isDiff && isNumeric && v1 && v2) {
           const n1 = parseFloat(v1);
           const n2 = parseFloat(v2);
           if (!isNaN(n1) && !isNaN(n2)) {
-            if (n1 > n2) {
-              diffIndicator1 = '<span class="diff-arrow higher">▲</span>';
-              diffIndicator2 = '<span class="diff-arrow lower">▼</span>';
-            } else {
-              diffIndicator1 = '<span class="diff-arrow lower">▼</span>';
-              diffIndicator2 = '<span class="diff-arrow higher">▲</span>';
-            }
+            diffIndicator2 = n2 > n1
+              ? '<span class="diff-arrow higher">▲</span>'
+              : '<span class="diff-arrow lower">▼</span>';
           }
         }
 
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${diffClass} ${numClass}">${v1}${diffIndicator1}</td>
+          <td class="value-cell ${diffClass} ${numClass}">${v1}</td>
           <td class="value-cell ${diffClass} ${numClass}">${v2}${diffIndicator2}</td>
         </tr>`;
       }
@@ -343,15 +366,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   }
 
   .section-row td {
-    padding: 0.75rem 1rem;
-    background: var(--bg-secondary, #12121a);
+    padding: 1rem 1rem 0.75rem;
+    background: transparent;
     color: var(--accent-primary, #ff6b35);
-    font-size: 0.75rem;
+    font-size: 1.1em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    text-align: left;
+    border-bottom: 2px solid var(--accent-primary, #ff6b35);
+    border-top: none;
+  }
+
+  .section-row:not(:first-child) td {
+    padding-top: 1.5rem;
   }
 
   .data-row td {
