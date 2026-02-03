@@ -326,6 +326,16 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <div class="info-box">
       <strong>Key insight:</strong> If your lagometer spikes only during uploads or downloads, the problem is bufferbloat — not your ISP, not the server. This is fixable with proper router configuration.
     </div>
+
+    <h3>Scoreboard Ping is Reliable</h3>
+    <p>The ping shown on the scoreboard uses actual game engine data, not a separate ping tool like some games. It's averaged over a few seconds, so it won't show instant spikes but accurately reflects your real connection to the server.</p>
+
+    <p>This means:</p>
+    <ul class="feature-list">
+      <li><strong>Trust the scoreboard ping</strong> for your actual latency</li>
+      <li><strong>For spike detection</strong>, watch the lagometer instead</li>
+      <li><strong>If scoreboard says 40ms but feels like 80ms</strong>, the issue is likely jitter (use lagometer to confirm)</li>
+    </ul>
   </section>
 
   <!-- SECTION 4: Interpolation, Timenudge & Lag Compensation -->
