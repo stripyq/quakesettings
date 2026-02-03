@@ -212,18 +212,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       function compareHardwareRow(label, hw1, hw2) {
         const name1 = hw1?.name || '';
         const name2 = hw2?.name || '';
-        const link1 = hw1?.affiliateLink || '';
-        const link2 = hw2?.affiliateLink || '';
         const isDiff = name1 !== name2;
         const diffClass = isDiff ? 'diff' : 'same';
 
-        const v1 = link1 ? `<a href="${link1}" target="_blank" rel="noopener" class="hw-link">${name1}</a>` : name1;
-        const v2 = link2 ? `<a href="${link2}" target="_blank" rel="noopener" class="hw-link">${name2}</a>` : name2;
-
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${diffClass}">${v1}</td>
-          <td class="value-cell ${diffClass}">${v2}</td>
+          <td class="value-cell ${diffClass}">${name1}</td>
+          <td class="value-cell ${diffClass}">${name2}</td>
         </tr>`;
       }
 

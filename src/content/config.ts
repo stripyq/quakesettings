@@ -18,8 +18,7 @@ const miceCollection = defineCollection({
     buttons: z.number().nullable().optional().default(5),
     connection: z.string().optional().default('Wired'),
     image: z.string().optional(),
-    affiliateLink: z.string().optional(), // Amazon affiliate link
-  }),
+      }),
 });
 
 const monitorsCollection = defineCollection({
@@ -35,8 +34,7 @@ const monitorsCollection = defineCollection({
     responseTime: z.string().optional().default('1ms'),
     adaptiveSync: z.string().optional(),
     image: z.string().optional(),
-    affiliateLink: z.string().optional(), // Amazon affiliate link
-  }),
+      }),
 });
 
 const keyboardsCollection = defineCollection({
@@ -51,8 +49,7 @@ const keyboardsCollection = defineCollection({
     connection: z.string().optional().default('Wired'),
     features: z.string().optional(),
     image: z.string().optional(),
-    affiliateLink: z.string().optional(), // Amazon affiliate link
-  }),
+      }),
 });
 
 const mousepadsCollection = defineCollection({
@@ -68,8 +65,7 @@ const mousepadsCollection = defineCollection({
     thickness: z.string().optional(),
     base: z.string().optional(),
     image: z.string().optional(),
-    affiliateLink: z.string().optional(), // Amazon affiliate link
-  }),
+      }),
 });
 
 const headsetsCollection = defineCollection({
@@ -86,8 +82,7 @@ const headsetsCollection = defineCollection({
     microphone: z.union([z.boolean(), z.string()]).optional().default(false),
     features: z.string().optional(),
     image: z.string().optional(),
-    affiliateLink: z.string().optional(), // Amazon affiliate link
-  }),
+      }),
 });
 
 // ============================================

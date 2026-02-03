@@ -54,31 +54,19 @@ a:hover {
   text-decoration: underline;
 }
 
-/* External links (Amazon, affiliate, any http outside site) - Sky Blue */
-a[href*="amazon"],
-a[href*="amzn"],
+/* External links - Sky Blue */
 a[href^="http"]:not([href*="stripyq.github.io"]):not([href*="localhost"]),
-a.affiliate-link,
-a.product-link,
 a.external-link {
   color: var(--link-external);
 }
 
-a[href*="amazon"]::after,
-a[href*="amzn"]::after,
-a.affiliate-link::after,
-a.product-link::after,
 a.external-link::after {
   content: " ↗";
   font-size: 0.75em;
   opacity: 0.7;
 }
 
-a[href*="amazon"]:hover,
-a[href*="amzn"]:hover,
 a[href^="http"]:not([href*="stripyq.github.io"]):not([href*="localhost"]):hover,
-a.affiliate-link:hover,
-a.product-link:hover,
 a.external-link:hover {
   color: #7dd3fc;
 }
@@ -736,13 +724,6 @@ th[class*="player"] {
 
 .main-footer a:hover {
   text-decoration: underline;
-}
-
-.affiliate-disclaimer {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  opacity: 0.7;
-  margin-top: 0.5rem;
 }
 
 /* ============================================

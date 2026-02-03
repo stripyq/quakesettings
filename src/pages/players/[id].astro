@@ -195,11 +195,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {mouseData && (
           <div class="hardware-item">
             <h3>Mouse</h3>
-            {mouseData.affiliateLink ? (
-              <a href={mouseData.affiliateLink} target="_blank" rel="noopener" class="hardware-name-link">{mouseData.name}</a>
-            ) : (
-              <p class="hardware-name">{mouseData.name}</p>
-            )}
+            <p class="hardware-name">{mouseData.name}</p>
             <table class="hardware-specs">
               <tr><td>Brand</td><td>{mouseData.brand}</td></tr>
               <tr><td>Weight</td><td>{mouseData.weight}</td></tr>
@@ -213,11 +209,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {mousepadData && (
           <div class="hardware-item">
             <h3>Mousepad</h3>
-            {mousepadData.affiliateLink ? (
-              <a href={mousepadData.affiliateLink} target="_blank" rel="noopener" class="hardware-name-link">{mousepadData.name}</a>
-            ) : (
-              <p class="hardware-name">{mousepadData.name}</p>
-            )}
+            <p class="hardware-name">{mousepadData.name}</p>
             <table class="hardware-specs">
               <tr><td>Surface</td><td>{mousepadData.surface}</td></tr>
               <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || 'N/A'}</td></tr>
@@ -229,11 +221,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {keyboardData && (
           <div class="hardware-item">
             <h3>Keyboard</h3>
-            {keyboardData.affiliateLink ? (
-              <a href={keyboardData.affiliateLink} target="_blank" rel="noopener" class="hardware-name-link">{keyboardData.name}</a>
-            ) : (
-              <p class="hardware-name">{keyboardData.name}</p>
-            )}
+            <p class="hardware-name">{keyboardData.name}</p>
             <table class="hardware-specs">
               <tr><td>Size</td><td>{keyboardData.size || keyboardData.format || 'N/A'}</td></tr>
               <tr><td>Switches</td><td>{keyboardData.switches}</td></tr>
@@ -245,11 +233,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {monitorData && (
           <div class="hardware-item">
             <h3>Monitor</h3>
-            {monitorData.affiliateLink ? (
-              <a href={monitorData.affiliateLink} target="_blank" rel="noopener" class="hardware-name-link">{monitorData.name}</a>
-            ) : (
-              <p class="hardware-name">{monitorData.name}</p>
-            )}
+            <p class="hardware-name">{monitorData.name}</p>
             <table class="hardware-specs">
               <tr><td>Size</td><td>{monitorData.size}</td></tr>
               <tr><td>Refresh Rate</td><td>{monitorData.refreshRate}</td></tr>
@@ -262,11 +246,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {headsetData && (
           <div class="hardware-item">
             <h3>Headset</h3>
-            {headsetData.affiliateLink ? (
-              <a href={headsetData.affiliateLink} target="_blank" rel="noopener" class="hardware-name-link">{headsetData.name}</a>
-            ) : (
-              <p class="hardware-name">{headsetData.name}</p>
-            )}
+            <p class="hardware-name">{headsetData.name}</p>
             <table class="hardware-specs">
               <tr><td>Type</td><td>{headsetData.type}</td></tr>
               <tr><td>Driver Size</td><td>{headsetData.driverSize || headsetData.driver || 'N/A'}</td></tr>
