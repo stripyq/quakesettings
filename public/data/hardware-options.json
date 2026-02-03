@@ -2513,6 +2513,11 @@
       "brand": "Nitro"
     },
     {
+      "slug": "padsmith-temple-of-dreams",
+      "name": "Padsmith Temple of Dreams",
+      "brand": "Padsmith"
+    },
+    {
       "slug": "pulsar-es1-3mm-large",
       "name": "Pulsar ES1 3mm Large",
       "brand": "Pulsar"
@@ -2856,6 +2861,16 @@
       "slug": "vaxee-pe-xl",
       "name": "VAXEE PE XL",
       "brand": "VAXEE"
+    },
+    {
+      "slug": "vgn-dragonfly-pad",
+      "name": "VGN Dragonfly Pad",
+      "brand": "VGN"
+    },
+    {
+      "slug": "vxe-dragonfly-pad",
+      "name": "VXE Dragonfly Pad",
+      "brand": "VXE"
     },
     {
       "slug": "waizowl-falcon",
