@@ -1,7 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Create monitor usage map
+const monitorUsageMap = new Map<string, number>();
+players.forEach(p => {
+  const monitorId = p.data.monitor;
+  if (monitorId) {
+    monitorUsageMap.set(monitorId, (monitorUsageMap.get(monitorId) || 0) + 1);
+  }
+});
+
+// Map recommendation names to hardware slugs
+const monitorSlugMap: Record<string, string[]> = {
+  "Asus ROG Swift PG27AQDP": ["asus-rog-swift-pg27aqdp"],
+  "Asus PG27AQWP-W": ["asus-pg27aqwp-w", "asus-rog-swift-pg27aqwp"],
+  "BenQ Zowie XL2586X+": ["benq-zowie-xl2586x"],
+  "Alienware AW2725DF": ["alienware-aw2725df", "dell-alienware-aw2725df"],
+  "AOC Q27G3XMN": ["aoc-q27g3xmn"],
+  "MSI MAG 271QPX": ["msi-mag-271qpx"],
+  "LG 27GS95QE": ["lg-27gs95qe", "lg-ultragear-27gs95qe"],
+  "ViewSonic XG2431": ["viewsonic-xg2431"],
+};
+
+function getPlayerCount(name: string): number {
+  const slugs = monitorSlugMap[name];
+  if (!slugs) return 0;
+  let total = 0;
+  slugs.forEach(slug => {
+    total += monitorUsageMap.get(slug) || 0;
+  });
+  return total;
+}
 
 const monitorData = [
   { name: "Asus ROG Swift PG27AQDP", price: "$$$$", mu: true, ot: false, tft: false, rt: true, tl: false },
@@ -14,11 +49,13 @@ const monitorData = [
   { name: "ViewSonic XG2431", price: "$", mu: false, ot: false, tft: false, rt: false, tl: true },
 ];
 
-function countRecommendations(m) {
-  return (m.mu ? 1 : 0) + (m.ot ? 1 : 0) + (m.tft ? 1 : 0) + (m.rt ? 1 : 0) + (m.tl ? 1 : 0);
-}
-
-const sortedMonitors = monitorData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
+// Sort by reviewer count, then by player count
+const sortedMonitors = monitorData.sort((a, b) => {
+  const aReviewers = (a.mu ? 1 : 0) + (a.ot ? 1 : 0) + (a.tft ? 1 : 0) + (a.rt ? 1 : 0) + (a.tl ? 1 : 0);
+  const bReviewers = (b.mu ? 1 : 0) + (b.ot ? 1 : 0) + (b.tft ? 1 : 0) + (b.rt ? 1 : 0) + (b.tl ? 1 : 0);
+  if (bReviewers !== aReviewers) return bReviewers - aReviewers;
+  return getPlayerCount(b.name) - getPlayerCount(a.name);
+});
 ---
 
 <BaseLayout title="Monitor Recommendations">
@@ -53,22 +90,29 @@ const sortedMonitors = monitorData.sort((a, b) => countRecommendations(b) - coun
           <th>TFT</th>
           <th>RT</th>
           <th>TL</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {sortedMonitors.map(m => (
-          <tr>
-            <td class="monitor-name">{m.name}</td>
-            <td class="price">{m.price}</td>
-            <td class="center">{m.mu ? '✓' : ''}</td>
-            <td class="center">{m.ot ? '✓' : ''}</td>
-            <td class="center">{m.tft ? '✓' : ''}</td>
-            <td class="center">{m.rt ? '✓' : ''}</td>
-            <td class="center">{m.tl ? '✓' : ''}</td>
-            <td class="center total">{countRecommendations(m)}</td>
-          </tr>
-        ))}
+        {sortedMonitors.map(m => {
+          const playerCount = getPlayerCount(m.name);
+          return (
+            <tr>
+              <td class="monitor-name">{m.name}</td>
+              <td class="price">{m.price}</td>
+              <td class="center">{m.mu ? '✓' : ''}</td>
+              <td class="center">{m.ot ? '✓' : ''}</td>
+              <td class="center">{m.tft ? '✓' : ''}</td>
+              <td class="center">{m.rt ? '✓' : ''}</td>
+              <td class="center">{m.tl ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#monitors`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -161,9 +205,19 @@ const sortedMonitors = monitorData.sort((a, b) => countRecommendations(b) - coun
     color: var(--accent-primary, #ff6b35);
   }
 
-  .total {
-    font-weight: 700;
-    font-size: 1.1rem;
+  .players {
+    font-weight: 600;
+  }
+
+  .player-link {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .player-link:hover {
+    color: var(--accent-secondary, #4ecdc4);
   }
 
   .back-link {

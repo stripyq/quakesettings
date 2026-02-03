@@ -1,7 +1,48 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Create headset usage map
+const headsetUsageMap = new Map<string, number>();
+players.forEach(p => {
+  const headsetId = p.data.headset;
+  if (headsetId) {
+    headsetUsageMap.set(headsetId, (headsetUsageMap.get(headsetId) || 0) + 1);
+  }
+});
+
+// Map recommendation names to hardware slugs
+const headsetSlugMap: Record<string, string[]> = {
+  "Audeze Maxwell": ["audeze-maxwell"],
+  "SteelSeries Arctis Nova Pro Wireless": ["steelseries-arctis-nova-pro-wireless"],
+  "SteelSeries Arctis Nova Elite": ["steelseries-arctis-nova-elite"],
+  "Asus ROG Delta 2 Wireless": ["asus-rog-delta-2-wireless"],
+  "Alienware Pro Wireless": ["alienware-pro-wireless"],
+  "Sony Inzone H5": ["sony-inzone-h5"],
+  "SteelSeries Arctis Nova 3X": ["steelseries-arctis-nova-3x"],
+  "Razer BlackShark V3X": ["razer-blackshark-v3x"],
+  "Logitech G435": ["logitech-g435"],
+  "Drop EPOS PC38X": ["drop-epos-pc38x"],
+  "Beyerdynamic DT 900 Pro X": ["beyerdynamic-dt-900-pro-x"],
+  "Turtle Beach Atlas Air": ["turtle-beach-atlas-air"],
+  "Astro A50X": ["astro-a50x"],
+  "Fosi K7": ["fosi-k7"],
+};
+
+function getPlayerCount(name: string): number {
+  const slugs = headsetSlugMap[name];
+  if (!slugs) return 0;
+  let total = 0;
+  slugs.forEach(slug => {
+    total += headsetUsageMap.get(slug) || 0;
+  });
+  return total;
+}
 
 const wirelessGaming = [
   { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true },
@@ -29,7 +70,7 @@ const specialty = [
   { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Best audio upgrade for any headphone" },
 ];
 
-function countRecs(h) {
+function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean }) {
   return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0);
 }
 ---
@@ -64,21 +105,28 @@ function countRecs(h) {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {wirelessGaming.map(h => (
-          <tr class={countRecs(h) >= 3 ? 'highlight-row' : ''}>
-            <td class="headset-name">{h.name} {countRecs(h) >= 3 ? '⭐' : ''}</td>
-            <td>{h.type}</td>
-            <td class="price">{h.price}</td>
-            <td class="center">{h.gt ? '✓' : ''}</td>
-            <td class="center">{h.bs ? '✓' : ''}</td>
-            <td class="center">{h.jv ? '✓' : ''}</td>
-            <td class="center total">{countRecs(h)}</td>
-          </tr>
-        ))}
+        {wirelessGaming.map(h => {
+          const playerCount = getPlayerCount(h.name);
+          return (
+            <tr>
+              <td class="headset-name">{h.name}</td>
+              <td>{h.type}</td>
+              <td class="price">{h.price}</td>
+              <td class="center">{h.gt ? '✓' : ''}</td>
+              <td class="center">{h.bs ? '✓' : ''}</td>
+              <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#headsets`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -94,21 +142,28 @@ function countRecs(h) {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {budgetOptions.map(h => (
-          <tr>
-            <td class="headset-name">{h.name}</td>
-            <td>{h.type}</td>
-            <td class="price">{h.price}</td>
-            <td class="center">{h.gt ? '✓' : ''}</td>
-            <td class="center">{h.bs ? '✓' : ''}</td>
-            <td class="center">{h.jv ? '✓' : ''}</td>
-            <td class="center total">{countRecs(h)}</td>
-          </tr>
-        ))}
+        {budgetOptions.map(h => {
+          const playerCount = getPlayerCount(h.name);
+          return (
+            <tr>
+              <td class="headset-name">{h.name}</td>
+              <td>{h.type}</td>
+              <td class="price">{h.price}</td>
+              <td class="center">{h.gt ? '✓' : ''}</td>
+              <td class="center">{h.bs ? '✓' : ''}</td>
+              <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#headsets`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -124,21 +179,28 @@ function countRecs(h) {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {audiophile.map(h => (
-          <tr>
-            <td class="headset-name">{h.name}</td>
-            <td>{h.type}</td>
-            <td class="price">{h.price}</td>
-            <td class="center">{h.gt ? '✓' : ''}</td>
-            <td class="center">{h.bs ? '✓' : ''}</td>
-            <td class="center">{h.jv ? '✓' : ''}</td>
-            <td class="center total">{countRecs(h)}</td>
-          </tr>
-        ))}
+        {audiophile.map(h => {
+          const playerCount = getPlayerCount(h.name);
+          return (
+            <tr>
+              <td class="headset-name">{h.name}</td>
+              <td>{h.type}</td>
+              <td class="price">{h.price}</td>
+              <td class="center">{h.gt ? '✓' : ''}</td>
+              <td class="center">{h.bs ? '✓' : ''}</td>
+              <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#headsets`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -152,17 +214,26 @@ function countRecs(h) {
           <th>Category</th>
           <th>Price</th>
           <th>Notes</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {specialty.map(s => (
-          <tr>
-            <td class="headset-name">{s.name}</td>
-            <td>{s.category}</td>
-            <td class="price">{s.price}</td>
-            <td class="notes">{s.notes}</td>
-          </tr>
-        ))}
+        {specialty.map(s => {
+          const playerCount = getPlayerCount(s.name);
+          return (
+            <tr>
+              <td class="headset-name">{s.name}</td>
+              <td>{s.category}</td>
+              <td class="price">{s.price}</td>
+              <td class="notes">{s.notes}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#headsets`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -249,14 +320,6 @@ function countRecs(h) {
     background: var(--bg-secondary, #12121a);
   }
 
-  .highlight-row {
-    background: rgba(255, 107, 53, 0.1);
-  }
-
-  .highlight-row:hover {
-    background: rgba(255, 107, 53, 0.15) !important;
-  }
-
   .headset-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
@@ -272,9 +335,19 @@ function countRecs(h) {
     color: var(--accent-primary, #ff6b35);
   }
 
-  .total {
-    font-weight: 700;
-    font-size: 1.1rem;
+  .players {
+    font-weight: 600;
+  }
+
+  .player-link {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .player-link:hover {
+    color: var(--accent-secondary, #4ecdc4);
   }
 
   .notes {
