@@ -379,6 +379,12 @@ const crosshairData = [...crosshairTypes.entries()]
     visual: crosshairVisuals[type] || { shape: 'unknown', description: `Type ${type}` }
   }));
 
+// Format cm/360 values - remove .00 for whole numbers
+function formatCm360(value: number): string {
+  const fixed = value.toFixed(2);
+  return fixed.endsWith('.00') ? Math.round(value).toString() : fixed;
+}
+
 // Ensure base URL has trailing slash
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -395,11 +401,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <h2>Sensitivity Overview</h2>
       <div class="stat-row">
         <div class="big-stat">
-          <span class="stat-number">{avgCm360.toFixed(2)}</span>
+          <span class="stat-number">{formatCm360(avgCm360)}</span>
           <span class="stat-label">Average cm/360</span>
         </div>
         <div class="big-stat">
-          <span class="stat-number">{medianCm360.toFixed(2)}</span>
+          <span class="stat-number">{formatCm360(medianCm360)}</span>
           <span class="stat-label">Median cm/360</span>
         </div>
         <div class="big-stat">
@@ -412,7 +418,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </div>
       <div class="stat-details">
-        <div><strong>cm/360 Range:</strong> {minCm360.toFixed(2)} - {maxCm360.toFixed(2)}</div>
+        <div><strong>cm/360 Range:</strong> {formatCm360(minCm360)} - {formatCm360(maxCm360)}</div>
         <div><strong>eDPI Range:</strong> {minEdpi} - {maxEdpi}</div>
       </div>
       <div class="sensitivity-info">
@@ -792,7 +798,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <strong>Lowest Sensitivity</strong>
               <p>
                 <a href={`${base}players/${lowestSensPlayer.id}/`}>{lowestSensPlayer.data.name}</a>
-                uses {calculateCm360(lowestSensPlayer.data).toFixed(2)} cm/360
+                uses {formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360
               </p>
             </div>
           </div>
@@ -802,7 +808,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <strong>Highest Sensitivity</strong>
               <p>
                 <a href={`${base}players/${highestSensPlayer.id}/`}>{highestSensPlayer.data.name}</a>
-                uses {calculateCm360(highestSensPlayer.data).toFixed(2)} cm/360
+                uses {formatCm360(calculateCm360(highestSensPlayer.data))} cm/360
               </p>
             </div>
           </div>
