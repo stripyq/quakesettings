@@ -116,9 +116,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-usage={mouse.usage}
             >
               <td class="name-cell">
-                {mouse.data.affiliateLink ? (
-                  <a href={mouse.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{mouse.data.name}</a>
-                ) : mouse.data.name}
+                {mouse.data.name}
               </td>
               <td>{mouse.data.brand}</td>
               <td class="spec-cell">{mouse.data.weight}</td>
@@ -172,9 +170,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-usage={monitor.usage}
             >
               <td class="name-cell">
-                {monitor.data.affiliateLink ? (
-                  <a href={monitor.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{monitor.data.name}</a>
-                ) : monitor.data.name}
+                {monitor.data.name}
               </td>
               <td>{monitor.data.brand}</td>
               <td class="spec-cell">{monitor.data.size}</td>
@@ -226,9 +222,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-usage={kb.usage}
             >
               <td class="name-cell">
-                {kb.data.affiliateLink ? (
-                  <a href={kb.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{kb.data.name}</a>
-                ) : kb.data.name}
+                {kb.data.name}
               </td>
               <td>{kb.data.brand}</td>
               <td class="spec-cell">{kb.data.size || kb.data.format}</td>
@@ -279,9 +273,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-usage={pad.usage}
             >
               <td class="name-cell">
-                {pad.data.affiliateLink ? (
-                  <a href={pad.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{pad.data.name}</a>
-                ) : pad.data.name}
+                {pad.data.name}
               </td>
               <td>{pad.data.brand}</td>
               <td class="spec-cell">{pad.data.surface}</td>
@@ -334,9 +326,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-usage={hs.usage}
             >
               <td class="name-cell">
-                {hs.data.affiliateLink ? (
-                  <a href={hs.data.affiliateLink} target="_blank" rel="noopener" class="name-link">{hs.data.name}</a>
-                ) : hs.data.name}
+                {hs.data.name}
               </td>
               <td>{hs.data.brand}</td>
               <td class="spec-cell">{hs.data.type}</td>
