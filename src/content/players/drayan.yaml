@@ -16,7 +16,7 @@ dataSource: verified
 source: ''
 sourceUrl: ''
 dpi: 3200
-m_cpi: null
+m_cpi: 1
 sensitivity: 18
 edpi: 57600
 cm360: 20
@@ -37,8 +37,8 @@ attack: Mouse1
 zoom: ''
 weaponNext: ''
 weaponPrev: ''
-mouse: logitech-g-pro-x-superlight
+mouse: zowie-ec2-dw
 mousepad: endgame-gear-mpc-450
 keyboard: keychron-q3-he-8k
-monitor: acer-nitro-vg271up
+monitor: asus-rog-strix-oled-xg27acdng
 headset: beyerdynamic-dt-990-pro
