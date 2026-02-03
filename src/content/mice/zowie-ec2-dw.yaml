@@ -1,0 +1,9 @@
+name: "Zowie EC2-DW"
+brand: "Zowie"
+weight: "68g"
+shape: "Ergonomic"
+sensor: "3950"
+dpiRange: "400-3200"
+pollingRate: "4000Hz"
+connection: "Wireless"
+buttons: 5

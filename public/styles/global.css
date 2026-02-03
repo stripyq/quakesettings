@@ -8,9 +8,12 @@
   --bg-card: #1a1a24;
   --bg-hover: #252530;
   --text-primary: #e8e8f0;
-  --text-secondary: #9090a0;
+  --text-secondary: #b0b0c0;
+  --text-muted: #9090a0;
   --accent-primary: #ff6b35;
-  --accent-secondary: #4ecdc4;
+  --accent-secondary: #4ecdc4; /* Teal - for backward compat with inline styles */
+  --link-internal: #4ecdc4;
+  --link-external: #38bdf8;
   --border-color: #2a2a35;
   --success: #4ade80;
   --error: #f87171;
@@ -33,69 +36,96 @@ body {
 /* ============================================
    Links - Color Hierarchy for Clarity
 
-   🟠 Orange (#ff6b35) = Headers/titles (NOT clickable)
-   🔵 Light Blue (#60a5fa) = Internal links (stays on site)
-   🩵 Teal (#4ecdc4) = External/affiliate links (leaves site)
-   ⚪ White = Plain text (not clickable)
+   🩵 Teal (#4ecdc4) = Internal links (stays on site)
+   🔵 Sky Blue (#38bdf8) = External links (leaves site) + ↗ icon
+   🟠 Orange (#ff6b35) = Active states, hover effects, buttons ONLY
+   ⚪ White (#e8e8f0) = Headers/titles
    ============================================ */
 
-/* Default: Internal links - Light Blue */
+/* Default: Internal links - Teal */
 a {
-  color: #60a5fa;
+  color: var(--link-internal);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #93c5fd;
+  color: #6ee7de;
   text-decoration: underline;
 }
 
-/* External/Affiliate links (products with affiliate URLs) - Teal */
+/* External links (Amazon, affiliate, any http outside site) - Sky Blue */
 a[href*="amazon"],
 a[href*="amzn"],
+a[href^="http"]:not([href*="stripyq.github.io"]):not([href*="localhost"]),
 a.affiliate-link,
 a.product-link,
 a.external-link {
-  color: #4ecdc4;
+  color: var(--link-external);
+}
+
+a[href*="amazon"]::after,
+a[href*="amzn"]::after,
+a.affiliate-link::after,
+a.product-link::after,
+a.external-link::after {
+  content: " ↗";
+  font-size: 0.75em;
+  opacity: 0.7;
 }
 
 a[href*="amazon"]:hover,
 a[href*="amzn"]:hover,
+a[href^="http"]:not([href*="stripyq.github.io"]):not([href*="localhost"]):hover,
 a.affiliate-link:hover,
 a.product-link:hover,
 a.external-link:hover {
-  color: #6ee7de;
+  color: #7dd3fc;
 }
 
-/* Player name headers in comparison table - Orange (NOT clickable) */
-.player-header,
-.compare-player-name,
-th[class*="player"] {
-  color: #ff6b35 !important;
-  font-weight: 600;
-}
-
-/* Hardware/product cells with affiliate links - Teal */
+/* Table cell links - context-aware */
 td a {
-  color: #4ecdc4;
+  color: var(--link-external);
 }
 
 td a:hover {
-  color: #6ee7de;
+  color: #7dd3fc;
 }
 
-/* Player name links (clickable player names in lists) - Light Blue */
+/* Player name links (clickable player names in lists) - Teal (internal) */
 .player-name a,
 a.player-link,
-td.player a {
-  color: #60a5fa;
+td.player a,
+td:first-child a {
+  color: var(--link-internal);
+}
+
+.player-name a::after,
+a.player-link::after,
+td.player a::after,
+td:first-child a::after {
+  content: none;
 }
 
 .player-name a:hover,
 a.player-link:hover,
-td.player a:hover {
-  color: #93c5fd;
+td.player a:hover,
+td:first-child a:hover {
+  color: #6ee7de;
+}
+
+/* Headers - White (NOT orange) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Player name headers in comparison table - White */
+.player-header,
+.compare-player-name,
+th[class*="player"] {
+  color: var(--text-primary) !important;
+  font-weight: 600;
 }
 
 /* ============================================
@@ -142,6 +172,14 @@ td.player a:hover {
 
 .nav-links a:hover {
   color: var(--text-primary);
+}
+
+.nav-links a.active {
+  color: var(--accent-primary);
+}
+
+.nav-links a.active:hover {
+  color: var(--accent-primary);
 }
 
 .search-box input {
@@ -268,7 +306,7 @@ td.player a:hover {
 .player-name {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--accent-secondary);
+  color: var(--text-primary);
 }
 
 .player-country {
@@ -338,7 +376,7 @@ td.player a:hover {
 
 .player-header h1 {
   font-size: 3rem;
-  color: var(--accent-secondary);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -368,7 +406,7 @@ td.player a:hover {
 }
 
 .player-meta .category {
-  color: var(--accent-secondary);
+  color: var(--link-internal);
 }
 
 .settings-grid {
@@ -445,7 +483,7 @@ td.player a:hover {
 .hardware-name {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--accent-secondary);
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
@@ -494,13 +532,14 @@ td.player a:hover {
 }
 
 .back-link {
-  color: var(--accent-secondary);
+  color: var(--link-internal);
   text-decoration: none;
   display: inline-block;
   margin-top: 1rem;
 }
 
 .back-link:hover {
+  color: #6ee7de;
   text-decoration: underline;
 }
 
@@ -535,7 +574,7 @@ td.player a:hover {
 
 .hardware-card h3 {
   font-size: 1.1rem;
-  color: var(--accent-secondary);
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -601,7 +640,7 @@ td.player a:hover {
   display: block;
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent-secondary);
+  color: var(--link-internal);
 }
 
 .big-stat .stat-label {
@@ -643,7 +682,7 @@ td.player a:hover {
   opacity: 0.3;
 }
 
-.dist-fill.low { background: var(--accent-secondary); }
+.dist-fill.low { background: var(--link-internal); }
 .dist-fill.mid { background: var(--success); }
 .dist-fill.high { background: var(--accent-primary); }
 
@@ -691,7 +730,7 @@ td.player a:hover {
 }
 
 .main-footer a {
-  color: var(--accent-secondary);
+  color: var(--link-internal);
   text-decoration: none;
 }
 
