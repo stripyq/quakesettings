@@ -4,22 +4,41 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 const keyboardData = [
-  { name: "Wooting 60HE+", size: "60%", switches: "Hall Effect", features: "Rapid Trigger", recommended: ["Optimum Tech", "Techless"] },
-  { name: "Wooting 80HE", size: "TKL", switches: "Hall Effect", features: "Rapid Trigger", recommended: ["Optimum Tech"] },
-  { name: "Razer Huntsman V3 Pro", size: "Full/TKL", switches: "Optical HE", features: "Rapid Trigger", recommended: ["Hardware Canucks"] },
-  { name: "SteelSeries Apex Pro", size: "Full/TKL", switches: "OmniPoint HE", features: "Adjustable actuation", recommended: ["Popular choice"] },
-  { name: "Keychron Q1 Pro", size: "75%", switches: "Gateron G Pro", features: "QMK/VIA", recommended: ["Budget enthusiast"] },
-  { name: "Leopold FC750R", size: "TKL", switches: "Cherry MX", features: "Build quality", recommended: ["Classic choice"] },
-  { name: "Ducky One 3", size: "Various", switches: "Cherry MX", features: "Hot-swap", recommended: ["Reliable"] },
-  { name: "DrunkDeer A75", size: "75%", switches: "Hall Effect", features: "Budget RT", recommended: ["Budget RT option"] },
-  { name: "NuPhy Field75 HE", size: "75%", switches: "Hall Effect", features: "Rapid Trigger", recommended: ["Techless"] },
+  { name: "Wooting 60HE+ / 60HE V2", price: "$$$", dl: true, tl: true, ju: true },
+  { name: "Wooting 80HE", price: "$$$", dl: false, tl: false, ju: true },
+  { name: "DrunkDeer G65 / A75", price: "$$", dl: false, tl: true, ju: true },
+  { name: "IROK MG68 Max", price: "$", dl: true, tl: true, ju: false },
+  { name: "Meletrix BOOG75", price: "$$$", dl: false, tl: false, ju: true },
+  { name: "Pulsar PCMK3 H60", price: "$$", dl: false, tl: true, ju: false },
+  { name: "Keychron Q1 HE", price: "$$", dl: false, tl: false, ju: true },
+  { name: "VXE ATK68", price: "$", dl: false, tl: false, ju: true },
+  { name: "NuPhy Halo 65HE", price: "$$", dl: false, tl: true, ju: false },
+  { name: "Asus ROG Falchion Split", price: "$$$", dl: false, tl: true, ju: false },
 ];
+
+function countRecommendations(k) {
+  return (k.dl ? 1 : 0) + (k.tl ? 1 : 0) + (k.ju ? 1 : 0);
+}
+
+const sortedKeyboards = keyboardData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
 ---
 
 <BaseLayout title="Keyboard Recommendations">
   <div class="page-header">
     <h1>Keyboard Recommendations</h1>
-    <p>Mechanical keyboards and switches for gaming</p>
+    <p>Recommended keyboards from top reviewers (2025)</p>
+  </div>
+
+  <div class="reviewer-legend">
+    <span class="legend-item"><span class="badge dl">DL</span> Diamond Lobby</span>
+    <span class="legend-item"><span class="badge tl">TL</span> Techless</span>
+    <span class="legend-item"><span class="badge ju">JU</span> jakeu</span>
+  </div>
+
+  <div class="price-legend">
+    <span>$ = Budget</span>
+    <span>$$ = Mid-range</span>
+    <span>$$$ = Premium</span>
   </div>
 
   <div class="table-container">
@@ -27,20 +46,22 @@ const keyboardData = [
       <thead>
         <tr>
           <th>Keyboard</th>
-          <th>Size</th>
-          <th>Switches</th>
-          <th>Features</th>
-          <th>Recommended By</th>
+          <th>Price</th>
+          <th>DL</th>
+          <th>TL</th>
+          <th>JU</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
-        {keyboardData.map(k => (
+        {sortedKeyboards.map(k => (
           <tr>
             <td class="kb-name">{k.name}</td>
-            <td>{k.size}</td>
-            <td>{k.switches}</td>
-            <td>{k.features}</td>
-            <td>{k.recommended.join(', ')}</td>
+            <td class="price">{k.price}</td>
+            <td class="center">{k.dl ? '✓' : ''}</td>
+            <td class="center">{k.tl ? '✓' : ''}</td>
+            <td class="center">{k.ju ? '✓' : ''}</td>
+            <td class="center total">{countRecommendations(k)}</td>
           </tr>
         ))}
       </tbody>
@@ -53,13 +74,101 @@ const keyboardData = [
 </BaseLayout>
 
 <style>
-  .table-container { overflow-x: auto; }
-  .rec-table { width: 100%; border-collapse: collapse; }
-  .rec-table th, .rec-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color, #2a2a3a); }
-  .rec-table th { background: var(--bg-secondary, #12121a); font-weight: 600; color: var(--text-secondary, #888); text-transform: uppercase; font-size: 0.75rem; }
-  .rec-table tbody tr:hover { background: var(--bg-secondary, #12121a); }
-  .kb-name { font-weight: 500; color: var(--accent-primary, #ff6b35); }
-  .back-link { margin-top: 2rem; }
-  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
-  .back-link a:hover { text-decoration: underline; }
+  .reviewer-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .badge.dl { background: #4a9eff; color: #fff; }
+  .badge.tl { background: #ff6b6b; color: #fff; }
+  .badge.ju { background: #6bcb77; color: #000; }
+
+  .price-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rec-table th,
+  .rec-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .rec-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .rec-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .kb-name {
+    font-weight: 500;
+    color: var(--text-primary, #fff);
+  }
+
+  .price {
+    font-family: monospace;
+    color: var(--text-secondary, #888);
+  }
+
+  .center {
+    text-align: center;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
 </style>

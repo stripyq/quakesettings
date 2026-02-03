@@ -4,23 +4,42 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 const monitorData = [
-  { name: "ASUS ROG Swift PG27AQN", size: '27"', resolution: "1440p", refresh: "360Hz", panel: "IPS", notes: "Top esports 1440p" },
-  { name: "BenQ Zowie XL2566K", size: '24.5"', resolution: "1080p", refresh: "360Hz", panel: "TN", notes: "Esports standard" },
-  { name: "BenQ Zowie XL2546K", size: '24.5"', resolution: "1080p", refresh: "240Hz", panel: "TN", notes: "DyAc+, pro favorite" },
-  { name: "Alienware AW2524HF", size: '24.5"', resolution: "1080p", refresh: "500Hz", panel: "IPS", notes: "Fastest refresh" },
-  { name: "ASUS ROG Swift OLED PG27AQDM", size: '27"', resolution: "1440p", refresh: "240Hz", panel: "OLED", notes: "Best image quality" },
-  { name: "LG 27GR95QE", size: '27"', resolution: "1440p", refresh: "240Hz", panel: "OLED", notes: "OLED gaming" },
-  { name: "Samsung Odyssey G7", size: '27"/32"', resolution: "1440p", refresh: "240Hz", panel: "VA", notes: "Curved, good contrast" },
-  { name: "Dell Alienware AW2723DF", size: '27"', resolution: "1440p", refresh: "280Hz", panel: "IPS", notes: "QD-IPS, great colors" },
-  { name: "Gigabyte M28U", size: '28"', resolution: "4K", refresh: "144Hz", panel: "IPS", notes: "Budget 4K gaming" },
-  { name: "AOC 24G2", size: '24"', resolution: "1080p", refresh: "144Hz", panel: "IPS", notes: "Budget king" },
+  { name: "Asus ROG Swift PG27AQDP", price: "$$$$", mu: true, ot: false, tft: false, rt: true, tl: false },
+  { name: "Asus PG27AQWP-W", price: "$$$$", mu: false, ot: true, tft: false, rt: false, tl: false },
+  { name: "BenQ Zowie XL2586X+", price: "$$$", mu: true, ot: false, tft: false, rt: true, tl: false },
+  { name: "Alienware AW2725DF", price: "$$$", mu: false, ot: true, tft: false, rt: false, tl: false },
+  { name: "AOC Q27G3XMN", price: "$$", mu: false, ot: true, tft: false, rt: false, tl: true },
+  { name: "MSI MAG 271QPX", price: "$$", mu: false, ot: false, tft: false, rt: false, tl: true },
+  { name: "LG 27GS95QE", price: "$$$$", mu: false, ot: false, tft: false, rt: false, tl: true },
+  { name: "ViewSonic XG2431", price: "$", mu: false, ot: false, tft: false, rt: false, tl: true },
 ];
+
+function countRecommendations(m) {
+  return (m.mu ? 1 : 0) + (m.ot ? 1 : 0) + (m.tft ? 1 : 0) + (m.rt ? 1 : 0) + (m.tl ? 1 : 0);
+}
+
+const sortedMonitors = monitorData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
 ---
 
 <BaseLayout title="Monitor Recommendations">
   <div class="page-header">
     <h1>Monitor Recommendations</h1>
-    <p>High refresh rate gaming monitors</p>
+    <p>Recommended monitors from top reviewers (2025)</p>
+  </div>
+
+  <div class="reviewer-legend">
+    <span class="legend-item"><span class="badge mu">MU</span> Monitors Unboxed</span>
+    <span class="legend-item"><span class="badge ot">OT</span> Optimum Tech</span>
+    <span class="legend-item"><span class="badge tft">TFT</span> TFT Central</span>
+    <span class="legend-item"><span class="badge rt">RT</span> RTINGS</span>
+    <span class="legend-item"><span class="badge tl">TL</span> Techless</span>
+  </div>
+
+  <div class="price-legend">
+    <span>$ = Budget</span>
+    <span>$$ = Mid-range</span>
+    <span>$$$ = Premium</span>
+    <span>$$$$ = High-end</span>
   </div>
 
   <div class="table-container">
@@ -28,22 +47,26 @@ const monitorData = [
       <thead>
         <tr>
           <th>Monitor</th>
-          <th>Size</th>
-          <th>Resolution</th>
-          <th>Refresh</th>
-          <th>Panel</th>
-          <th>Notes</th>
+          <th>Price</th>
+          <th>MU</th>
+          <th>OT</th>
+          <th>TFT</th>
+          <th>RT</th>
+          <th>TL</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
-        {monitorData.map(m => (
+        {sortedMonitors.map(m => (
           <tr>
             <td class="monitor-name">{m.name}</td>
-            <td>{m.size}</td>
-            <td>{m.resolution}</td>
-            <td class="highlight">{m.refresh}</td>
-            <td>{m.panel}</td>
-            <td class="notes">{m.notes}</td>
+            <td class="price">{m.price}</td>
+            <td class="center">{m.mu ? '✓' : ''}</td>
+            <td class="center">{m.ot ? '✓' : ''}</td>
+            <td class="center">{m.tft ? '✓' : ''}</td>
+            <td class="center">{m.rt ? '✓' : ''}</td>
+            <td class="center">{m.tl ? '✓' : ''}</td>
+            <td class="center total">{countRecommendations(m)}</td>
           </tr>
         ))}
       </tbody>
@@ -56,15 +79,103 @@ const monitorData = [
 </BaseLayout>
 
 <style>
-  .table-container { overflow-x: auto; }
-  .rec-table { width: 100%; border-collapse: collapse; }
-  .rec-table th, .rec-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color, #2a2a3a); }
-  .rec-table th { background: var(--bg-secondary, #12121a); font-weight: 600; color: var(--text-secondary, #888); text-transform: uppercase; font-size: 0.75rem; }
-  .rec-table tbody tr:hover { background: var(--bg-secondary, #12121a); }
-  .monitor-name { font-weight: 500; color: var(--accent-primary, #ff6b35); }
-  .highlight { color: var(--accent-primary, #ff6b35); font-weight: 600; }
-  .notes { color: var(--text-secondary, #888); font-size: 0.875rem; }
-  .back-link { margin-top: 2rem; }
-  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
-  .back-link a:hover { text-decoration: underline; }
+  .reviewer-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .badge.mu { background: #4a9eff; color: #fff; }
+  .badge.ot { background: #ff6b6b; color: #fff; }
+  .badge.tft { background: #ffd93d; color: #000; }
+  .badge.rt { background: #6bcb77; color: #000; }
+  .badge.tl { background: #b19cd9; color: #000; }
+
+  .price-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rec-table th,
+  .rec-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .rec-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .rec-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .monitor-name {
+    font-weight: 500;
+    color: var(--text-primary, #fff);
+  }
+
+  .price {
+    font-family: monospace;
+    color: var(--text-secondary, #888);
+  }
+
+  .center {
+    text-align: center;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
 </style>
