@@ -961,6 +961,10 @@ const countries = [
     e.preventDefault();
 
     const formData = new FormData(form);
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
 
     try {
       const response = await fetch(form.action, {
@@ -971,17 +975,30 @@ const countries = [
         }
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (response.ok) {
         form.classList.add('hidden');
         currentSettingsPanel.classList.add('hidden');
         successMessage.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        alert('There was an error submitting your settings. Please try again.');
+        console.error('Formspree error:', response.status, data);
+        // If AJAX fails, try native form submission
+        if (confirm('AJAX submission failed. Try native form submission?')) {
+          form.removeEventListener('submit', arguments.callee);
+          form.submit();
+        }
       }
     } catch (err) {
       console.error('Submission error:', err);
-      alert('There was an error submitting your settings. Please try again.');
+      // If fetch fails entirely, try native form submission
+      if (confirm('Network error. Try native form submission?')) {
+        form.submit();
+      }
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
   });
 
