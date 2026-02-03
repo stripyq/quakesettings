@@ -1,0 +1,6 @@
+name: "Asus ROG Harpe Ace 2"
+brand: "Asus"
+shape: "Ambidextrous"
+connection: "Wireless"
+sensor: "ROG AimPoint Pro"
+pollingRate: "8000Hz"

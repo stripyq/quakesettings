@@ -46,6 +46,11 @@
       "brand": "ARYE"
     },
     {
+      "slug": "asus-rog-harpe-ace-2",
+      "name": "Asus ROG Harpe Ace 2",
+      "brand": "Asus"
+    },
+    {
       "slug": "asus-rog-harpe-ace-aim-lab",
       "name": "ASUS ROG Harpe Ace Aim Lab Edition",
       "brand": "ASUS"
@@ -256,6 +261,11 @@
       "brand": "Delux"
     },
     {
+      "slug": "delux-m800-mini",
+      "name": "Delux M800 Mini",
+      "brand": "Delux"
+    },
+    {
       "slug": "dream-machines-dm9-skill-wired",
       "name": "Dream Machines DM9 Skill Wired",
       "brand": "Dream Machines"
@@ -461,6 +471,16 @@
       "brand": "G-Wolves"
     },
     {
+      "slug": "g-wolves-hts-ultra",
+      "name": "G-Wolves HTS Ultra",
+      "brand": "G-Wolves"
+    },
+    {
+      "slug": "g-wolves-htx-ultra",
+      "name": "G-Wolves HTX Ultra",
+      "brand": "G-Wolves"
+    },
+    {
       "slug": "g-wolves-lycan-8k",
       "name": "G-Wolves LYCAN 8K",
       "brand": "G-Wolves"
@@ -551,6 +571,16 @@
       "brand": "HyperX"
     },
     {
+      "slug": "incott-g23",
+      "name": "Incott G23",
+      "brand": "Incott"
+    },
+    {
+      "slug": "incott-g23-v2",
+      "name": "Incott G23 V2",
+      "brand": "Incott"
+    },
+    {
       "slug": "inphic-in10p",
       "name": "INPHIC IN10P",
       "brand": "INPHIC"
@@ -599,6 +629,11 @@
       "slug": "keychron-m3",
       "name": "Keychron M3",
       "brand": "Keychron"
+    },
+    {
+      "slug": "kissa-uranus-pro",
+      "name": "Kissa Uranus Pro",
+      "brand": "Kissa"
     },
     {
       "slug": "kreo-anzu",
@@ -801,6 +836,16 @@
       "brand": "MCHOSE"
     },
     {
+      "slug": "mchose-l7",
+      "name": "MCHOSE L7",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "mchose-l7-plus",
+      "name": "MCHOSE L7 Plus",
+      "brand": "MCHOSE"
+    },
+    {
       "slug": "melgeek-horus",
       "name": "MelGeek Horus",
       "brand": "MelGeek"
@@ -896,6 +941,11 @@
       "brand": "Orbital"
     },
     {
+      "slug": "piranha-mouse-zen8k",
+      "name": "Piranha Mouse Zen8K",
+      "brand": "Piranha Mouse"
+    },
+    {
       "slug": "pmm-pulse",
       "name": "PMM PULSE",
       "brand": "PMM"
@@ -943,6 +993,11 @@
     {
       "slug": "pulsar-feinmann-f01",
       "name": "Pulsar Feinmann F01",
+      "brand": "Pulsar"
+    },
+    {
+      "slug": "pulsar-jvx",
+      "name": "Pulsar JVX",
       "brand": "Pulsar"
     },
     {
@@ -1166,6 +1221,16 @@
       "brand": "Roccat"
     },
     {
+      "slug": "saipin-c2",
+      "name": "Saipin C2",
+      "brand": "Saipin"
+    },
+    {
+      "slug": "saipin-c2-mini",
+      "name": "Saipin C2 Mini",
+      "brand": "Saipin"
+    },
+    {
       "slug": "steelseries-aerox-5-wireless",
       "name": "SteelSeries Aerox 5 Wireless",
       "brand": "SteelSeries"
@@ -1174,6 +1239,11 @@
       "slug": "steelseries-prime-wireless",
       "name": "SteelSeries Prime Wireless",
       "brand": "SteelSeries"
+    },
+    {
+      "slug": "t-vevo-terrior",
+      "name": "T-Vevo Terrior",
+      "brand": "T-Vevo"
     },
     {
       "slug": "thunderobot-mlx",
@@ -1199,6 +1269,11 @@
       "slug": "valkyrie-vk-m3-pro",
       "name": "Valkyrie VK M3 Pro",
       "brand": "Valkyrie"
+    },
+    {
+      "slug": "vaxee-e1",
+      "name": "VAXEE E1",
+      "brand": "VAXEE"
     },
     {
       "slug": "vaxee-np-01s-wireless",
@@ -2975,6 +3050,11 @@
       "brand": "Asus"
     },
     {
+      "slug": "asus-rog-falchion-split",
+      "name": "Asus ROG Falchion Split",
+      "brand": "Asus"
+    },
+    {
       "slug": "attack-shark-k85",
       "name": "Attack Shark K85",
       "brand": "Attack Shark"
@@ -2993,6 +3073,11 @@
       "slug": "boyi-66pro",
       "name": "BOYI 66Pro",
       "brand": "BOYI"
+    },
+    {
+      "slug": "chili-s75h",
+      "name": "Chili S75H",
+      "brand": "Chili"
     },
     {
       "slug": "cidoo-c75",
@@ -3290,6 +3375,11 @@
       "brand": "iQunix"
     },
     {
+      "slug": "irok-mg68-max",
+      "name": "IROK MG68 Max",
+      "brand": "IROK"
+    },
+    {
       "slug": "irok-mu68",
       "name": "IROK Mu68",
       "brand": "IROK"
@@ -3540,6 +3630,16 @@
       "brand": "Matrix Lab"
     },
     {
+      "slug": "mchose-a68",
+      "name": "MCHOSE A68",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "mchose-a68-turbo",
+      "name": "MCHOSE A68 Turbo",
+      "brand": "MCHOSE"
+    },
+    {
       "slug": "mchose-ace60",
       "name": "MCHOSE Ace60",
       "brand": "MCHOSE"
@@ -3687,6 +3787,11 @@
     {
       "slug": "pulsar-pcmk2-he",
       "name": "Pulsar PCMK2 HE",
+      "brand": "Pulsar"
+    },
+    {
+      "slug": "pulsar-pcmk3-h60",
+      "name": "Pulsar PCMK3 H60",
       "brand": "Pulsar"
     },
     {

@@ -1,0 +1,6 @@
+name: "Piranha Mouse Zen8K"
+brand: "Piranha Mouse"
+shape: "Ambidextrous"
+connection: "Wireless"
+sensor: "PAW3395"
+pollingRate: "8000Hz"

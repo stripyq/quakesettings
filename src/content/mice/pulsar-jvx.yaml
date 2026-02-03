@@ -1,0 +1,6 @@
+name: "Pulsar JVX"
+brand: "Pulsar"
+shape: "Ambidextrous"
+connection: "Wireless"
+sensor: "PAW3950"
+pollingRate: "4000Hz"
