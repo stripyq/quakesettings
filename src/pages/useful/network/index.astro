@@ -101,6 +101,10 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <h2>Quick Test Sequence (5 minutes)</h2>
     <p class="section-subtitle">Test these first — in order</p>
 
+    <div class="key-point" style="margin-bottom: 1.25rem; margin-top: 0;">
+      <strong>Remember:</strong> Jitter hurts more than latency — a stable 50ms beats an unstable 30ms.
+    </div>
+
     <ol class="test-sequence">
       <li>
         <span class="step-number">1</span>
@@ -112,25 +116,48 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
       <li>
         <span class="step-number">2</span>
         <div class="step-content">
-          <strong>Test under load (bufferbloat)</strong>
-          <span>Run <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener">Waveform bufferbloat test</a> — isolates bufferbloat vs clean ping</span>
+          <strong>Test jitter & packet loss</strong>
+          <span>Run <a href="https://packetlosstest.com/" target="_blank" rel="noopener">packetlosstest.com</a> — measures packet loss and jitter over time</span>
         </div>
       </li>
       <li>
         <span class="step-number">3</span>
         <div class="step-content">
-          <strong>Check packet loss & jitter</strong>
-          <span>Use <a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener">WinMTR</a> — visualizes packet loss & latency on the entire route</span>
+          <strong>Test connection quality</strong>
+          <span>Run <a href="https://speed.cloudflare.com/" target="_blank" rel="noopener">speed.cloudflare.com</a> — shows jitter, latency, and packet loss in one test</span>
         </div>
       </li>
       <li>
         <span class="step-number">4</span>
         <div class="step-content">
+          <strong>Check route stability</strong>
+          <span>Use <a href="https://winmtr.net/download-winmtr" target="_blank" rel="noopener">WinMTR</a> — visualizes packet loss & latency on the entire route</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-number">5</span>
+        <div class="step-content">
           <strong>Test actual QL servers</strong>
-          <span>Ping ranger, mynx, omega (see Step 5 below)</span>
+          <span>Ping ranger, mynx, omega (see <a href="#step5">Step 5</a> below)</span>
         </div>
       </li>
     </ol>
+  </section>
+
+  <!-- SECTION: Advanced Diagnostics -->
+  <section class="settings-section" id="advanced-diagnostics">
+    <h2>Advanced Diagnostics</h2>
+    <p class="section-subtitle">Additional tests for specific issues</p>
+
+    <h3>Bufferbloat Test</h3>
+    <p>If you experience lag spikes during uploads/downloads but your idle ping looks fine:</p>
+    <div class="tool-list">
+      <div class="tool-item recommended">
+        <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener"><strong>Waveform Bufferbloat Test</strong></a>
+        <span>Isolates bufferbloat from clean latency — measures ping under load vs idle</span>
+      </div>
+    </div>
+    <p class="setting-note">If your grade is D or F, enable SQM/QoS on your router (see <a href="#step2">Step 2</a>).</p>
   </section>
 
   <!-- SECTION 2: Common Symptoms -->
@@ -299,6 +326,16 @@ const description = "Diagnose and fix lag, jitter, packet loss, and inconsistent
     <div class="info-box">
       <strong>Key insight:</strong> If your lagometer spikes only during uploads or downloads, the problem is bufferbloat — not your ISP, not the server. This is fixable with proper router configuration.
     </div>
+
+    <h3>Scoreboard Ping is Reliable</h3>
+    <p>The ping shown on the scoreboard uses actual game engine data, not a separate ping tool like some games. It's averaged over a few seconds, so it won't show instant spikes but accurately reflects your real connection to the server.</p>
+
+    <p>This means:</p>
+    <ul class="feature-list">
+      <li><strong>Trust the scoreboard ping</strong> for your actual latency</li>
+      <li><strong>For spike detection</strong>, watch the lagometer instead</li>
+      <li><strong>If scoreboard says 40ms but feels like 80ms</strong>, the issue is likely jitter (use lagometer to confirm)</li>
+    </ul>
   </section>
 
   <!-- SECTION 4: Interpolation, Timenudge & Lag Compensation -->

@@ -7,12 +7,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 // Get all players to count hardware usage
 const players = await getCollection('players');
 
-// Create mousepad usage map
+// Create mousepad usage map and player list map
 const mousepadUsageMap = new Map<string, number>();
+const mousepadPlayersMap = new Map<string, typeof players>();
 players.forEach(p => {
   const padId = p.data.mousepad;
   if (padId) {
     mousepadUsageMap.set(padId, (mousepadUsageMap.get(padId) || 0) + 1);
+    if (!mousepadPlayersMap.has(padId)) {
+      mousepadPlayersMap.set(padId, []);
+    }
+    mousepadPlayersMap.get(padId)!.push(p);
   }
 });
 
@@ -45,6 +50,18 @@ function getPlayerCount(name: string): number {
   const prefixes = mousepadPrefixes[name];
   if (!prefixes) return 0;
   return getPlayerCountByPrefix(prefixes);
+}
+
+function getPlayersForMousepad(name: string): typeof players {
+  const prefixes = mousepadPrefixes[name];
+  if (!prefixes) return [];
+  const result: typeof players = [];
+  mousepadPlayersMap.forEach((playersForSlug, slug) => {
+    if (prefixes.some(prefix => slug.startsWith(prefix))) {
+      result.push(...playersForSlug);
+    }
+  });
+  return result;
 }
 
 const mousepadData = [
@@ -115,7 +132,14 @@ const sortedPads = mousepadData.sort((a, b) => {
               <td class="center">{p.ju ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
-                  <a href={`${base}hardware/#mousepads`} class="player-link">{playerCount}</a>
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{playerCount}</span>
+                    <div class="player-dropdown">
+                      {getPlayersForMousepad(p.name).map(pl => (
+                        <a href={`${base}players/${pl.id}/`}>{pl.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
                 ) : '—'}
               </td>
             </tr>
@@ -226,15 +250,56 @@ const sortedPads = mousepadData.sort((a, b) => {
     font-weight: 600;
   }
 
-  .player-link {
+  .usage-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .usage-count {
     color: var(--accent-primary, #ff6b35);
     text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 2px;
   }
 
-  .player-link:hover {
+  .usage-wrapper:hover .usage-count {
     color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .player-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-primary, #0a0a0f);
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: 6px;
+    padding: 0.5rem;
+    min-width: 120px;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .usage-wrapper:hover .player-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .player-dropdown a {
+    color: var(--text-primary, #fff);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .player-dropdown a:hover {
+    background: var(--bg-secondary, #12121a);
+    color: var(--accent-primary, #ff6b35);
   }
 
   .back-link {
