@@ -1,5 +1,5 @@
 name: fearz
-steamId: 76561198090058816
+steamId: "76561198090058816"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -18,7 +18,7 @@ acceleration: true
 accelValue: 0.175
 rawInput: true
 fov: 100
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

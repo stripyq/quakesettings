@@ -1,5 +1,5 @@
 name: spooky
-steamId: 76561198041115888
+steamId: "76561198041115888"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,13 +15,13 @@ cm360: 450
 acceleration: false
 rawInput: true
 fov: 90
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: uparrow
 back: leftarrow
 left: downarrow
 right: rightarrow
-jump: 1
+jump: "1"
 attack: mouse
 mouse: "logitech-g-pro-wireless"
 mousepad: "razer-atlas-"

@@ -1,5 +1,5 @@
 name: Xiu
-steamId: 76561198010106912
+steamId: "76561198010106912"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -13,7 +13,7 @@ cm360: 20.781818181818185
 acceleration: false
 rawInput: true
 fov: 116
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

@@ -1,5 +1,5 @@
 name: enesy
-steamId: 76561198032236192
+steamId: "76561198032236192"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 40.74
 acceleration: false
 rawInput: true
 fov: 93
-crosshair: 13
+crosshair: "13"
 invertedMouse: false
 forward: w
 back: s

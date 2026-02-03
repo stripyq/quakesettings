@@ -1,5 +1,5 @@
 name: Pettern
-steamId: 76561197970764064
+steamId: "76561197970764064"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.3
 rawInput: true
 fov: 105
-crosshair: 2
+crosshair: "2"
 invertedMouse: true
 forward: Mouse2
 back: alt

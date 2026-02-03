@@ -1,5 +1,5 @@
 name: Frigolx
-steamId: 76561198053960736
+steamId: "76561198053960736"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 34.63636363636364
 acceleration: false
 rawInput: true
 fov: 98
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

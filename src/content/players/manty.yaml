@@ -1,5 +1,5 @@
 name: Manty
-steamId: 76561198146434640
+steamId: "76561198146434640"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -13,7 +13,7 @@ cm360: 24.74
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: 3
+crosshair: "3"
 invertedMouse: false
 forward: w
 back: s

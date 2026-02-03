@@ -11,7 +11,7 @@ cm360: 24.85863418877773
 acceleration: false
 rawInput: true
 fov: 102
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: e
 back: d

@@ -1,5 +1,5 @@
 name: Bolland
-steamId: 76561198354200896
+steamId: "76561198354200896"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 7.52
 acceleration: false
 rawInput: true
 fov: 103
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: i
 back: k

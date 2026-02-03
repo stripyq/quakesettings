@@ -1,5 +1,5 @@
 name: Nex
-steamId: 76561198043070752
+steamId: "76561198043070752"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 25.97727272727273
 acceleration: false
 rawInput: true
 fov: 103
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

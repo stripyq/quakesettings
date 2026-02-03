@@ -1,6 +1,6 @@
 name: ani
 realName: ''
-steamId: 76561197993861008
+steamId: "76561197993861008"
 qlstatsNick: ''
 country: SE
 team: ''
@@ -20,7 +20,6 @@ sensitivity: 1.5
 edpi: 1200
 cm360: 34.63
 acceleration: false
-accelValue: ''
 rawInput: true
 fov: 100
 crosshair: "1, 13, 7, 6"

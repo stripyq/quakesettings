@@ -1,6 +1,6 @@
 name: Wood
 realName: ''
-steamId: 76561198257437664
+steamId: "76561198257437664"
 country: HU
 team: ''
 category: tdm
@@ -21,7 +21,7 @@ cm360: 34.63
 acceleration: false
 rawInput: true
 fov: 92
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

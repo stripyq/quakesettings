@@ -1,5 +1,5 @@
 name: ins
-steamId: 76561198023589152
+steamId: "76561198023589152"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 26.64335664335665
 acceleration: false
 rawInput: true
 fov: 95
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

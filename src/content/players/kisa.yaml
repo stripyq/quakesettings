@@ -1,5 +1,5 @@
 name: KISA
-steamId: 76561198286173232
+steamId: "76561198286173232"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 25.97
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: 3
+crosshair: "3"
 invertedMouse: false
 forward: w
 back: s

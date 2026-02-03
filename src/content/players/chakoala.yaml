@@ -1,5 +1,5 @@
 name: chakoala
-steamId: 76561198109579696
+steamId: "76561198109579696"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -15,7 +15,7 @@ cm360: 27.344497607655505
 acceleration: false
 rawInput: true
 fov: 103
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 mouse: "razer-viper-8khz"
 mousepad: "glorious-ice"

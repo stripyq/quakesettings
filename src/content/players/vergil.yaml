@@ -1,5 +1,5 @@
 name: VergiL
-steamId: 76561198140092768
+steamId: "76561198140092768"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -17,7 +17,7 @@ cm360: 23.090909090909093
 acceleration: false
 rawInput: true
 fov: 110
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: w
 back: s

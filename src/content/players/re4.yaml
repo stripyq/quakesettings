@@ -1,5 +1,5 @@
 name: re4
-steamId: 76561198155003680
+steamId: "76561198155003680"
 country: Unknown
 category: duel
 lastUpdated: "2025-01"
@@ -16,7 +16,7 @@ acceleration: true
 accelValue: 0.105
 rawInput: true
 fov: 101
-crosshair: 2
+crosshair: "2"
 invertedMouse: false
 forward: y
 back: h
