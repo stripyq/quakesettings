@@ -1,0 +1,997 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Common enemy models in Quake Live
+const enemyModels = [
+  'Anarki', 'Bones', 'Biker', 'Cadavre', 'Crash', 'Doom', 'Grunt', 'Hossman',
+  'Hunter', 'James', 'Janet', 'Keel', 'Klesk', 'Lucy', 'Major', 'Mynx',
+  'Orbb', 'Patriot', 'Penguin', 'Ranger', 'Razor', 'Sarge', 'Slash', 'Sorlag',
+  'Stripe', 'Tank Jr.', 'Tankjr', 'TankJr', 'Uriel', 'Visor', 'Xaero'
+];
+
+// Common crosshair colors
+const crosshairColors = [
+  'White', 'Yellow', 'Green', 'Cyan', 'Red', 'Orange', 'Pink', 'Blue', 'Purple', 'Custom'
+];
+
+// Countries for dropdown
+const countries = [
+  { code: 'Unknown', name: 'Unknown / Prefer not to say' },
+  { code: 'AU', name: 'Australia' },
+  { code: 'AT', name: 'Austria' },
+  { code: 'BY', name: 'Belarus' },
+  { code: 'BE', name: 'Belgium' },
+  { code: 'BR', name: 'Brazil' },
+  { code: 'BG', name: 'Bulgaria' },
+  { code: 'CA', name: 'Canada' },
+  { code: 'HR', name: 'Croatia' },
+  { code: 'CZ', name: 'Czech Republic' },
+  { code: 'DK', name: 'Denmark' },
+  { code: 'EE', name: 'Estonia' },
+  { code: 'FI', name: 'Finland' },
+  { code: 'FR', name: 'France' },
+  { code: 'DE', name: 'Germany' },
+  { code: 'GR', name: 'Greece' },
+  { code: 'HU', name: 'Hungary' },
+  { code: 'IT', name: 'Italy' },
+  { code: 'JP', name: 'Japan' },
+  { code: 'LV', name: 'Latvia' },
+  { code: 'LT', name: 'Lithuania' },
+  { code: 'NL', name: 'Netherlands' },
+  { code: 'NO', name: 'Norway' },
+  { code: 'PL', name: 'Poland' },
+  { code: 'PT', name: 'Portugal' },
+  { code: 'RO', name: 'Romania' },
+  { code: 'RU', name: 'Russia' },
+  { code: 'RS', name: 'Serbia' },
+  { code: 'SK', name: 'Slovakia' },
+  { code: 'SI', name: 'Slovenia' },
+  { code: 'ES', name: 'Spain' },
+  { code: 'SE', name: 'Sweden' },
+  { code: 'CH', name: 'Switzerland' },
+  { code: 'UA', name: 'Ukraine' },
+  { code: 'GB', name: 'United Kingdom' },
+  { code: 'US', name: 'United States' },
+  { code: 'OTHER', name: 'Other' }
+];
+---
+
+<BaseLayout title="Submit Your Settings" description="Submit or update your Quake Live player settings">
+  <main class="main-content submit-page">
+    <div class="page-header">
+      <h1>Submit Your Settings</h1>
+      <p>Share your Quake Live config with the community. Existing players can update their settings.</p>
+    </div>
+
+    <!-- Current Settings Summary (shown when existing player selected) -->
+    <div id="current-settings" class="current-settings hidden">
+      <h2>Your Current Settings</h2>
+      <p class="current-info">These are your currently saved settings. The form below is pre-filled with these values - update any fields you want to change.</p>
+      <div id="current-settings-summary" class="settings-summary"></div>
+    </div>
+
+    <form
+      id="settings-form"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      class="settings-form"
+    >
+      <!-- Honeypot field for spam prevention -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <!-- Identity Section -->
+      <section class="form-section">
+        <h2>Identity</h2>
+
+        <div class="form-group">
+          <label for="nickname">Nickname / In-game Name *</label>
+          <div class="autocomplete-wrapper">
+            <input
+              type="text"
+              id="nickname"
+              name="nickname"
+              required
+              autocomplete="off"
+              placeholder="Start typing your nickname..."
+            >
+            <div id="autocomplete-results" class="autocomplete-results hidden"></div>
+          </div>
+          <small>Start typing to search existing players, or enter a new name</small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="realName">Real Name (optional)</label>
+            <input type="text" id="realName" name="realName" placeholder="Your real name">
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country">
+              {countries.map(c => (
+                <option value={c.code}>{c.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <!-- Hidden field for steamId (populated from registry) -->
+        <input type="hidden" id="steamId" name="steamId">
+      </section>
+
+      <!-- Hardware Section -->
+      <section class="form-section">
+        <h2>Hardware</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mouse">Mouse</label>
+            <select id="mouse" name="mouse">
+              <option value="">-- Select Mouse --</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input type="text" id="mouseOther" name="mouseOther" class="other-input hidden" placeholder="Enter mouse model">
+          </div>
+
+          <div class="form-group">
+            <label for="mousepad">Mousepad</label>
+            <select id="mousepad" name="mousepad">
+              <option value="">-- Select Mousepad --</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input type="text" id="mousepadOther" name="mousepadOther" class="other-input hidden" placeholder="Enter mousepad model">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="keyboard">Keyboard</label>
+            <select id="keyboard" name="keyboard">
+              <option value="">-- Select Keyboard --</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input type="text" id="keyboardOther" name="keyboardOther" class="other-input hidden" placeholder="Enter keyboard model">
+          </div>
+
+          <div class="form-group">
+            <label for="monitor">Monitor</label>
+            <select id="monitor" name="monitor">
+              <option value="">-- Select Monitor --</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input type="text" id="monitorOther" name="monitorOther" class="other-input hidden" placeholder="Enter monitor model">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="headset">Headphones / Headset</label>
+            <select id="headset" name="headset">
+              <option value="">-- Select Headset --</option>
+              <option value="__other__">Other (type below)</option>
+            </select>
+            <input type="text" id="headsetOther" name="headsetOther" class="other-input hidden" placeholder="Enter headset model">
+          </div>
+
+          <div class="form-group">
+            <label for="skates">Mouse Skates</label>
+            <select id="skates" name="skates">
+              <option value="">-- Select --</option>
+              <option value="Stock">Stock</option>
+              <option value="Aftermarket">Aftermarket</option>
+              <option value="None">None</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mouse Settings Section -->
+      <section class="form-section">
+        <h2>Mouse Settings</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dpi">DPI *</label>
+            <input type="number" id="dpi" name="dpi" required min="100" max="32000" placeholder="e.g., 800">
+          </div>
+
+          <div class="form-group">
+            <label for="sensitivity">In-game Sensitivity *</label>
+            <input type="number" id="sensitivity" name="sensitivity" required step="0.01" min="0.1" max="30" placeholder="e.g., 1.5">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="acceleration">Mouse Acceleration</label>
+            <select id="acceleration" name="acceleration">
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+
+          <div class="form-group accel-value-group hidden">
+            <label for="accelValue">Accel Value</label>
+            <input type="number" id="accelValue" name="accelValue" step="0.001" placeholder="e.g., 0.02">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rawInput">Raw Input</label>
+            <select id="rawInput" name="rawInput">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="invertedMouse">Inverted Mouse</label>
+            <select id="invertedMouse" name="invertedMouse">
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="grip">Grip Style</label>
+          <select id="grip" name="grip">
+            <option value="">-- Select --</option>
+            <option value="Palm">Palm</option>
+            <option value="Claw">Claw</option>
+            <option value="Fingertip">Fingertip</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Game Settings Section -->
+      <section class="form-section">
+        <h2>Game Settings</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fov">FOV (Field of View)</label>
+            <input type="number" id="fov" name="fov" min="80" max="140" placeholder="e.g., 100">
+          </div>
+
+          <div class="form-group">
+            <label for="crosshair">Crosshair</label>
+            <input type="text" id="crosshair" name="crosshair" placeholder="e.g., 2 or 2, 7, 21">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="crosshairColor">Crosshair Color</label>
+            <select id="crosshairColor" name="crosshairColor">
+              <option value="">-- Select --</option>
+              {crosshairColors.map(color => (
+                <option value={color}>{color}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="enemyModel">Enemy Model</label>
+            <select id="enemyModel" name="enemyModel">
+              <option value="">-- Select --</option>
+              {enemyModels.map(model => (
+                <option value={model}>{model}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Binds Section -->
+      <section class="form-section">
+        <h2>Key Binds</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="forward">Forward</label>
+            <input type="text" id="forward" name="forward" placeholder="e.g., w">
+          </div>
+          <div class="form-group">
+            <label for="back">Back</label>
+            <input type="text" id="back" name="back" placeholder="e.g., s">
+          </div>
+          <div class="form-group">
+            <label for="left">Left</label>
+            <input type="text" id="left" name="left" placeholder="e.g., a">
+          </div>
+          <div class="form-group">
+            <label for="right">Right</label>
+            <input type="text" id="right" name="right" placeholder="e.g., d">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="jump">Jump</label>
+            <input type="text" id="jump" name="jump" placeholder="e.g., space or mouse2">
+          </div>
+          <div class="form-group">
+            <label for="crouch">Crouch</label>
+            <input type="text" id="crouch" name="crouch" placeholder="e.g., ctrl">
+          </div>
+          <div class="form-group">
+            <label for="attack">Fire / Attack</label>
+            <input type="text" id="attack" name="attack" placeholder="e.g., mouse1">
+          </div>
+          <div class="form-group">
+            <label for="zoom">Zoom</label>
+            <input type="text" id="zoom" name="zoom" placeholder="e.g., shift">
+          </div>
+        </div>
+      </section>
+
+      <!-- System Section -->
+      <section class="form-section">
+        <h2>System (Optional)</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gpu">GPU Brand</label>
+            <select id="gpu" name="gpu">
+              <option value="">-- Select --</option>
+              <option value="NVIDIA">NVIDIA</option>
+              <option value="AMD">AMD</option>
+              <option value="Intel">Intel</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cpu">CPU Brand</label>
+            <select id="cpu" name="cpu">
+              <option value="">-- Select --</option>
+              <option value="Intel">Intel</option>
+              <option value="AMD">AMD</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Submit -->
+      <section class="form-section submit-section">
+        <button type="submit" class="submit-btn">Submit Settings</button>
+        <p class="submit-note">Your submission will be reviewed before being published.</p>
+      </section>
+    </form>
+
+    <!-- Success Message -->
+    <div id="success-message" class="success-message hidden">
+      <h2>Thank You!</h2>
+      <p>Your submission has been received and is under review.</p>
+      <p>Once approved, your settings will appear on the site.</p>
+      <a href={base} class="back-link">Back to Players</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .submit-page {
+    max-width: 900px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--text-secondary);
+  }
+
+  /* Current Settings Panel */
+  .current-settings {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .current-settings h2 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .current-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .settings-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .settings-summary .summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+
+  .settings-summary .summary-label {
+    color: var(--text-secondary);
+  }
+
+  .settings-summary .summary-value {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* Form Sections */
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .form-section h2 {
+    color: var(--accent-primary);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group select {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.6rem 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+  }
+
+  .form-group input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-group small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .form-group select {
+    cursor: pointer;
+  }
+
+  .other-input {
+    margin-top: 0.5rem;
+  }
+
+  /* Autocomplete */
+  .autocomplete-wrapper {
+    position: relative;
+  }
+
+  .autocomplete-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .autocomplete-item {
+    padding: 0.6rem 0.75rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .autocomplete-item:last-child {
+    border-bottom: none;
+  }
+
+  .autocomplete-item:hover,
+  .autocomplete-item.selected {
+    background: var(--bg-hover);
+  }
+
+  .autocomplete-item .player-name {
+    font-weight: 500;
+  }
+
+  .autocomplete-item .player-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .autocomplete-item .has-profile {
+    color: var(--success);
+    font-size: 0.75rem;
+  }
+
+  /* Submit Section */
+  .submit-section {
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .submit-btn {
+    background: linear-gradient(135deg, var(--accent-primary), #ff8c5a);
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+
+  .submit-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Success Message */
+  .success-message {
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+  }
+
+  .success-message h2 {
+    color: var(--success);
+    margin-bottom: 1rem;
+  }
+
+  .success-message p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .success-message .back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--link-internal);
+  }
+
+  /* Utility */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .settings-summary {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script define:vars={{ base }}>
+  // Data will be loaded from JSON files
+  let playerRegistry = [];
+  let collectedPlayers = [];
+  let hardwareOptions = {};
+
+  // DOM elements
+  const nicknameInput = document.getElementById('nickname');
+  const autocompleteResults = document.getElementById('autocomplete-results');
+  const currentSettingsPanel = document.getElementById('current-settings');
+  const currentSettingsSummary = document.getElementById('current-settings-summary');
+  const form = document.getElementById('settings-form');
+  const successMessage = document.getElementById('success-message');
+
+  // Hardware selects
+  const hardwareSelects = {
+    mouse: document.getElementById('mouse'),
+    mousepad: document.getElementById('mousepad'),
+    keyboard: document.getElementById('keyboard'),
+    monitor: document.getElementById('monitor'),
+    headset: document.getElementById('headset')
+  };
+
+  // Load data
+  async function loadData() {
+    try {
+      const [registryRes, collectedRes, hardwareRes] = await Promise.all([
+        fetch(`${base}data/player-registry.json`),
+        fetch(`${base}data/collected-players.json`),
+        fetch(`${base}data/hardware-options.json`)
+      ]);
+
+      playerRegistry = (await registryRes.json()).players || [];
+      collectedPlayers = await collectedRes.json();
+      hardwareOptions = await hardwareRes.json();
+
+      populateHardwareDropdowns();
+    } catch (err) {
+      console.error('Failed to load form data:', err);
+    }
+  }
+
+  // Populate hardware dropdowns
+  function populateHardwareDropdowns() {
+    const categories = {
+      mouse: 'mice',
+      mousepad: 'mousepads',
+      keyboard: 'keyboards',
+      monitor: 'monitors',
+      headset: 'headsets'
+    };
+
+    for (const [selectId, category] of Object.entries(categories)) {
+      const select = hardwareSelects[selectId];
+      const items = hardwareOptions[category] || [];
+
+      // Group by brand
+      const brands = {};
+      for (const item of items) {
+        const brand = item.brand || 'Other';
+        if (!brands[brand]) brands[brand] = [];
+        brands[brand].push(item);
+      }
+
+      // Add options grouped by brand
+      for (const brand of Object.keys(brands).sort()) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = brand;
+
+        for (const item of brands[brand]) {
+          const option = document.createElement('option');
+          option.value = item.slug;
+          option.textContent = item.name;
+          optgroup.appendChild(option);
+        }
+
+        select.appendChild(optgroup);
+      }
+    }
+  }
+
+  // Autocomplete for nickname
+  let selectedIndex = -1;
+  let filteredPlayers = [];
+
+  nicknameInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    selectedIndex = -1;
+
+    if (query.length < 2) {
+      hideAutocomplete();
+      return;
+    }
+
+    // Search registry
+    filteredPlayers = playerRegistry
+      .filter(p => p.name.toLowerCase().includes(query))
+      .slice(0, 20);
+
+    if (filteredPlayers.length === 0) {
+      hideAutocomplete();
+      return;
+    }
+
+    // Render results
+    autocompleteResults.innerHTML = filteredPlayers.map((p, i) => {
+      const hasProfile = collectedPlayers.some(cp => cp.steamId === p.steamId);
+      return `
+        <div class="autocomplete-item" data-index="${i}">
+          <span>
+            <span class="player-name">${escapeHtml(p.name)}</span>
+            ${hasProfile ? '<span class="has-profile">(has settings)</span>' : ''}
+          </span>
+          <span class="player-info">${p.ratings?.ctf ? `CTF: ${p.ratings.ctf}` : ''}</span>
+        </div>
+      `;
+    }).join('');
+
+    autocompleteResults.classList.remove('hidden');
+  });
+
+  // Keyboard navigation for autocomplete
+  nicknameInput.addEventListener('keydown', function(e) {
+    if (autocompleteResults.classList.contains('hidden')) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectedIndex = Math.min(selectedIndex + 1, filteredPlayers.length - 1);
+      updateSelectedItem();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectedIndex = Math.max(selectedIndex - 1, 0);
+      updateSelectedItem();
+    } else if (e.key === 'Enter' && selectedIndex >= 0) {
+      e.preventDefault();
+      selectPlayer(filteredPlayers[selectedIndex]);
+    } else if (e.key === 'Escape') {
+      hideAutocomplete();
+    }
+  });
+
+  function updateSelectedItem() {
+    const items = autocompleteResults.querySelectorAll('.autocomplete-item');
+    items.forEach((item, i) => {
+      item.classList.toggle('selected', i === selectedIndex);
+    });
+  }
+
+  // Click on autocomplete item
+  autocompleteResults.addEventListener('click', function(e) {
+    const item = e.target.closest('.autocomplete-item');
+    if (item) {
+      const index = parseInt(item.dataset.index);
+      selectPlayer(filteredPlayers[index]);
+    }
+  });
+
+  // Select a player
+  function selectPlayer(player) {
+    nicknameInput.value = player.name;
+    document.getElementById('steamId').value = player.steamId || '';
+    hideAutocomplete();
+
+    // Check if player has collected settings
+    const collected = collectedPlayers.find(cp => cp.steamId === player.steamId);
+    if (collected) {
+      prefillForm(collected);
+      showCurrentSettings(collected);
+    } else {
+      currentSettingsPanel.classList.add('hidden');
+    }
+  }
+
+  // Pre-fill form with collected player data
+  function prefillForm(data) {
+    // Identity
+    if (data.realName) document.getElementById('realName').value = data.realName;
+    if (data.country) document.getElementById('country').value = data.country;
+
+    // Hardware
+    setSelectValue('mouse', data.mouse);
+    setSelectValue('mousepad', data.mousepad);
+    setSelectValue('keyboard', data.keyboard);
+    setSelectValue('monitor', data.monitor);
+    setSelectValue('headset', data.headset);
+    if (data.skates) document.getElementById('skates').value = data.skates;
+
+    // Mouse settings
+    if (data.dpi) document.getElementById('dpi').value = data.dpi;
+    if (data.sensitivity) document.getElementById('sensitivity').value = data.sensitivity;
+    if (data.acceleration) document.getElementById('acceleration').value = 'true';
+    if (data.accelValue) document.getElementById('accelValue').value = data.accelValue;
+    if (data.rawInput !== undefined) document.getElementById('rawInput').value = data.rawInput.toString();
+    if (data.invertedMouse) document.getElementById('invertedMouse').value = 'true';
+    if (data.grip) document.getElementById('grip').value = data.grip;
+
+    // Game settings
+    if (data.fov) document.getElementById('fov').value = data.fov;
+    if (data.crosshair) document.getElementById('crosshair').value = data.crosshair;
+    if (data.crosshairColor) document.getElementById('crosshairColor').value = data.crosshairColor;
+    if (data.enemyModel) document.getElementById('enemyModel').value = data.enemyModel;
+
+    // Binds
+    if (data.forward) document.getElementById('forward').value = data.forward;
+    if (data.back) document.getElementById('back').value = data.back;
+    if (data.left) document.getElementById('left').value = data.left;
+    if (data.right) document.getElementById('right').value = data.right;
+    if (data.jump) document.getElementById('jump').value = data.jump;
+    if (data.crouch) document.getElementById('crouch').value = data.crouch;
+    if (data.attack) document.getElementById('attack').value = data.attack;
+    if (data.zoom) document.getElementById('zoom').value = data.zoom;
+
+    // System
+    if (data.gpu) document.getElementById('gpu').value = data.gpu;
+    if (data.cpu) document.getElementById('cpu').value = data.cpu;
+
+    // Show accel value field if acceleration is enabled
+    toggleAccelField();
+  }
+
+  // Set select value, handling "Other" case
+  function setSelectValue(selectId, value) {
+    const select = document.getElementById(selectId);
+    const otherInput = document.getElementById(selectId + 'Other');
+
+    if (!value) return;
+
+    // Check if value exists in options
+    const optionExists = Array.from(select.options).some(opt => opt.value === value);
+
+    if (optionExists) {
+      select.value = value;
+      otherInput?.classList.add('hidden');
+    } else {
+      // Use "Other" option
+      select.value = '__other__';
+      if (otherInput) {
+        otherInput.value = value;
+        otherInput.classList.remove('hidden');
+      }
+    }
+  }
+
+  // Show current settings summary
+  function showCurrentSettings(data) {
+    const items = [
+      { label: 'DPI', value: data.dpi },
+      { label: 'Sensitivity', value: data.sensitivity },
+      { label: 'FOV', value: data.fov },
+      { label: 'Crosshair', value: data.crosshair },
+      { label: 'Mouse', value: getHardwareName('mice', data.mouse) },
+      { label: 'Mousepad', value: getHardwareName('mousepads', data.mousepad) },
+      { label: 'Grip', value: data.grip },
+      { label: 'Enemy Model', value: data.enemyModel }
+    ].filter(item => item.value);
+
+    currentSettingsSummary.innerHTML = items.map(item => `
+      <div class="summary-item">
+        <span class="summary-label">${item.label}</span>
+        <span class="summary-value">${escapeHtml(String(item.value))}</span>
+      </div>
+    `).join('');
+
+    currentSettingsPanel.classList.remove('hidden');
+  }
+
+  // Get hardware name from slug
+  function getHardwareName(category, slug) {
+    if (!slug) return '';
+    const items = hardwareOptions[category] || [];
+    const item = items.find(i => i.slug === slug);
+    return item ? item.name : slug;
+  }
+
+  function hideAutocomplete() {
+    autocompleteResults.classList.add('hidden');
+    filteredPlayers = [];
+    selectedIndex = -1;
+  }
+
+  // Close autocomplete when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.autocomplete-wrapper')) {
+      hideAutocomplete();
+    }
+  });
+
+  // Toggle "Other" input for hardware selects
+  for (const [id, select] of Object.entries(hardwareSelects)) {
+    select.addEventListener('change', function() {
+      const otherInput = document.getElementById(id + 'Other');
+      if (this.value === '__other__') {
+        otherInput.classList.remove('hidden');
+        otherInput.focus();
+      } else {
+        otherInput.classList.add('hidden');
+        otherInput.value = '';
+      }
+    });
+  }
+
+  // Toggle accel value field
+  const accelSelect = document.getElementById('acceleration');
+  const accelValueGroup = document.querySelector('.accel-value-group');
+
+  function toggleAccelField() {
+    if (accelSelect.value === 'true') {
+      accelValueGroup.classList.remove('hidden');
+    } else {
+      accelValueGroup.classList.add('hidden');
+    }
+  }
+
+  accelSelect.addEventListener('change', toggleAccelField);
+
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.classList.add('hidden');
+        currentSettingsPanel.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('There was an error submitting your settings. Please try again.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      alert('There was an error submitting your settings. Please try again.');
+    }
+  });
+
+  // Utility: escape HTML
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Initialize
+  loadData();
+</script>
