@@ -1,11 +1,8 @@
 name: Drayan
-realName: ''
-steamId: '76561198196618512'
-qlstatsNick: ''
+steamId: "76561198196618512"
 country: GB
-team: ''
-category: ctf
-lastUpdated: 2025-01
+category: duel
+lastUpdated: "2025-01"
 duelRating: 1498
 duelRatingUpdated: 2026-01-31
 tdmRating: 28.11
