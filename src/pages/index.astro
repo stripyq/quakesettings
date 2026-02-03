@@ -53,6 +53,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <div class="page-header">
     <h1>Quake Live Pro Settings</h1>
     <p>Mouse settings, hardware, and configs from {players.length} players</p>
+    <a href={`${base}submit/`} class="submit-settings-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      Submit Your Settings
+    </a>
   </div>
 
   <div class="filters">
@@ -284,6 +288,46 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 </BaseLayout>
 
 <style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .submit-settings-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), #ff8c5a);
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+
+  .submit-settings-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .table-container {
     overflow-x: auto;
     margin-top: 1.5rem;
