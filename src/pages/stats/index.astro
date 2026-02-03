@@ -27,9 +27,8 @@ function calculateCm360(playerData: any): number {
 // SENSITIVITY STATS
 // ===========================================
 
-// cm/360 calculations (excluding accel users for meaningful comparison)
-const nonAccelPlayers = players.filter(p => !p.data.acceleration);
-const cm360Values = nonAccelPlayers.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
+// cm/360 calculations (includes all players - cm/360 is base sensitivity, accel is applied on top)
+const cm360Values = players.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
 const avgCm360 = cm360Values.length > 0
   ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
   : 0;
@@ -64,6 +63,7 @@ const topDpiValues = [...dpiDistribution.entries()]
 const lowSens = cm360Values.filter(v => v > 35).length; // High cm/360 = low sens
 const midSens = cm360Values.filter(v => v >= 20 && v <= 35).length;
 const highSens = cm360Values.filter(v => v < 20).length; // Low cm/360 = high sens
+const totalSensPlayers = cm360Values.length;
 
 // ===========================================
 // HARDWARE POPULARITY
@@ -124,6 +124,28 @@ const topMousepadBrands = [...mousepadBrands.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 5);
 
+// GPU Brand distribution
+const gpuBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.gpuBrand) {
+    gpuBrands.set(p.data.gpuBrand, (gpuBrands.get(p.data.gpuBrand) || 0) + 1);
+  }
+});
+const topGpuBrands = [...gpuBrands.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
+
+// CPU Brand distribution
+const cpuBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.cpuBrand) {
+    cpuBrands.set(p.data.cpuBrand, (cpuBrands.get(p.data.cpuBrand) || 0) + 1);
+  }
+});
+const topCpuBrands = [...cpuBrands.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
+
 // ===========================================
 // SETTINGS TRENDS
 // ===========================================
@@ -178,12 +200,12 @@ const recentPlayers = [...players]
 // ===========================================
 
 // Lowest sens player (highest cm/360)
-const lowestSensPlayer = nonAccelPlayers.reduce((prev, curr) =>
+const lowestSensPlayer = players.reduce((prev, curr) =>
   calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
 );
 
 // Highest sens player (lowest cm/360)
-const highestSensPlayer = nonAccelPlayers.reduce((prev, curr) =>
+const highestSensPlayer = players.reduce((prev, curr) =>
   calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
 );
 
@@ -319,6 +341,11 @@ const topJumpKeys = [...jumpKeys.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 6);
 
+// Format bind strings to add space after MOUSE1/MOUSE2
+function formatBindString(bind: string): string {
+  return bind.replace(/^(MOUSE[12])([A-Z])/, '$1 $2');
+}
+
 // ===========================================
 // CROSSHAIR VISUALIZATION DATA
 // ===========================================
@@ -386,7 +413,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <div class="stat-details">
         <div><strong>cm/360 Range:</strong> {minCm360.toFixed(2)} - {maxCm360.toFixed(2)}</div>
         <div><strong>eDPI Range:</strong> {minEdpi} - {maxEdpi}</div>
-        <p class="stat-note">* cm/360 stats exclude {accelUsers} acceleration users for accurate comparison</p>
       </div>
     </section>
 
@@ -397,16 +423,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <p class="card-subtitle">Based on cm/360 values</p>
         <div class="distribution">
           <div class="dist-bar">
-            <div class="dist-fill low" style={`width: ${(lowSens / nonAccelPlayers.length) * 100}%`}></div>
-            <span>Low (&gt;35cm): {lowSens} ({Math.round((lowSens / nonAccelPlayers.length) * 100)}%)</span>
+            <div class="dist-fill low" style={`width: ${(lowSens / totalSensPlayers) * 100}%`}></div>
+            <span>Low (&gt;35cm): {lowSens} ({Math.round((lowSens / totalSensPlayers) * 100)}%)</span>
           </div>
           <div class="dist-bar">
-            <div class="dist-fill mid" style={`width: ${(midSens / nonAccelPlayers.length) * 100}%`}></div>
-            <span>Medium (20-35cm): {midSens} ({Math.round((midSens / nonAccelPlayers.length) * 100)}%)</span>
+            <div class="dist-fill mid" style={`width: ${(midSens / totalSensPlayers) * 100}%`}></div>
+            <span>Medium (20-35cm): {midSens} ({Math.round((midSens / totalSensPlayers) * 100)}%)</span>
           </div>
           <div class="dist-bar">
-            <div class="dist-fill high" style={`width: ${(highSens / nonAccelPlayers.length) * 100}%`}></div>
-            <span>High (&lt;20cm): {highSens} ({Math.round((highSens / nonAccelPlayers.length) * 100)}%)</span>
+            <div class="dist-fill high" style={`width: ${(highSens / totalSensPlayers) * 100}%`}></div>
+            <span>High (&lt;20cm): {highSens} ({Math.round((highSens / totalSensPlayers) * 100)}%)</span>
           </div>
         </div>
       </section>
@@ -531,6 +557,42 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </section>
     </div>
 
+    <div class="two-col">
+      <!-- GPU BRAND -->
+      <section class="stat-card">
+        <h2>GPU Brand</h2>
+        <p class="card-subtitle">{totalGpuPlayers} players with data</p>
+        <div class="popularity-list">
+          {topGpuBrands.map(([brand, count]) => (
+            <div class="popularity-item">
+              <span class="name">{brand}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style={`width: ${(count / totalGpuPlayers) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / totalGpuPlayers) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CPU BRAND -->
+      <section class="stat-card">
+        <h2>CPU Brand</h2>
+        <p class="card-subtitle">{totalCpuPlayers} players with data</p>
+        <div class="popularity-list">
+          {topCpuBrands.map(([brand, count]) => (
+            <div class="popularity-item">
+              <span class="name">{brand}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill accent" style={`width: ${(count / totalCpuPlayers) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / totalCpuPlayers) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
     <!-- MONITOR SIZE VS REFRESH RATE HEATMAP -->
     <section class="stat-card wide">
       <h2>Monitor Size vs Refresh Rate</h2>
@@ -613,7 +675,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="binds-list">
           {topMovementPatterns.map(([pattern, count]) => (
             <div class="bind-item">
-              <span class="bind-keys">{pattern}</span>
+              <span class="bind-keys">{formatBindString(pattern)}</span>
               <div class="bar-wrapper">
                 <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
               </div>
