@@ -4689,6 +4689,11 @@
       "brand": "AKG"
     },
     {
+      "slug": "alienware-pro-wireless",
+      "name": "Alienware Pro Wireless",
+      "brand": "Alienware"
+    },
+    {
       "slug": "apple-airpods-pro-2nd-gen",
       "name": "Apple AirPods Pro 2nd Gen",
       "brand": "Apple"
@@ -4697,6 +4702,21 @@
       "slug": "astro-a50-wireless",
       "name": "Astro A50 Wireless",
       "brand": "Astro"
+    },
+    {
+      "slug": "astro-a50x",
+      "name": "Astro A50X",
+      "brand": "Astro"
+    },
+    {
+      "slug": "asus-rog-delta-2-wireless",
+      "name": "Asus ROG Delta 2 Wireless",
+      "brand": "Asus"
+    },
+    {
+      "slug": "audeze-maxwell",
+      "name": "Audeze Maxwell",
+      "brand": "Audeze"
     },
     {
       "slug": "audio-technica-ath-m50x",
@@ -4714,6 +4734,11 @@
       "brand": "Beyerdynamic"
     },
     {
+      "slug": "beyerdynamic-dt-900-pro-x",
+      "name": "Beyerdynamic DT 900 Pro X",
+      "brand": "Beyerdynamic"
+    },
+    {
       "slug": "beyerdynamic-dt-990-pro",
       "name": "Beyerdynamic DT 990 Pro",
       "brand": "Beyerdynamic"
@@ -4727,6 +4752,16 @@
       "slug": "creative-fatal1ty",
       "name": "Creative Fatal1ty",
       "brand": "Creative"
+    },
+    {
+      "slug": "drop-epos-pc38x",
+      "name": "Drop EPOS PC38X",
+      "brand": "Drop/EPOS"
+    },
+    {
+      "slug": "fosi-k7",
+      "name": "Fosi K7",
+      "brand": "Fosi"
     },
     {
       "slug": "havit-h2002bg",
@@ -4794,6 +4829,11 @@
       "brand": "Logitech"
     },
     {
+      "slug": "logitech-g435",
+      "name": "Logitech G435",
+      "brand": "Logitech"
+    },
+    {
       "slug": "philips-fidelio-x2",
       "name": "Philips Fidelio X2",
       "brand": "Philips"
@@ -4811,6 +4851,11 @@
     {
       "slug": "razer-blackshark-v2",
       "name": "Razer BlackShark V2",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-blackshark-v3x",
+      "name": "Razer BlackShark V3X",
       "brand": "Razer"
     },
     {
@@ -4849,6 +4894,11 @@
       "brand": "Sennheiser"
     },
     {
+      "slug": "sennheiser-hd-800s",
+      "name": "Sennheiser HD 800S",
+      "brand": "Sennheiser"
+    },
+    {
       "slug": "sennheiser-pc-350",
       "name": "Sennheiser PC 350",
       "brand": "Sennheiser"
@@ -4857,6 +4907,11 @@
       "slug": "sennheiser-pc37x",
       "name": "Sennheiser PC37X",
       "brand": "Sennheiser"
+    },
+    {
+      "slug": "sony-inzone-h5",
+      "name": "Sony Inzone H5",
+      "brand": "Sony"
     },
     {
       "slug": "sony-mdr-7506",
@@ -4869,8 +4924,23 @@
       "brand": "Sony"
     },
     {
+      "slug": "steelseries-arctis-nova-3x",
+      "name": "SteelSeries Arctis Nova 3X",
+      "brand": "SteelSeries"
+    },
+    {
       "slug": "steelseries-arctis-nova-7-wireless",
       "name": "SteelSeries Arctis Nova 7 Wireless",
+      "brand": "SteelSeries"
+    },
+    {
+      "slug": "steelseries-arctis-nova-elite",
+      "name": "SteelSeries Arctis Nova Elite",
+      "brand": "SteelSeries"
+    },
+    {
+      "slug": "steelseries-arctis-nova-pro-wireless",
+      "name": "SteelSeries Arctis Nova Pro Wireless",
       "brand": "SteelSeries"
     },
     {
@@ -4887,6 +4957,11 @@
       "slug": "technics-eah-a800",
       "name": "Technics EAH-A800",
       "brand": "Technics"
+    },
+    {
+      "slug": "turtle-beach-atlas-air",
+      "name": "Turtle Beach Atlas Air",
+      "brand": "Turtle Beach"
     },
     {
       "slug": "yamaha-eph-55",

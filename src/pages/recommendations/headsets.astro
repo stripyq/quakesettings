@@ -3,45 +3,164 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
-const headsetData = [
-  { name: "Sennheiser HD 560S", type: "Open-back", connection: "Wired", mic: false, notes: "Excellent imaging, neutral" },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Open-back", connection: "Wired", mic: false, notes: "Great soundstage" },
-  { name: "Audio-Technica ATH-R70x", type: "Open-back", connection: "Wired", mic: false, notes: "Audiophile gaming" },
-  { name: "HyperX Cloud II", type: "Closed-back", connection: "Wired", mic: true, notes: "Best value gaming headset" },
-  { name: "SteelSeries Arctis Nova Pro", type: "Closed-back", connection: "Wireless", mic: true, notes: "Premium wireless" },
-  { name: "Logitech G Pro X", type: "Closed-back", connection: "Wired", mic: true, notes: "Esports focused" },
-  { name: "Drop + Sennheiser PC38X", type: "Open-back", connection: "Wired", mic: true, notes: "Best open-back with mic" },
-  { name: "Beyerdynamic DT 770 Pro", type: "Closed-back", connection: "Wired", mic: false, notes: "Studio classic" },
-  { name: "AKG K712 Pro", type: "Open-back", connection: "Wired", mic: false, notes: "Wide soundstage" },
-  { name: "Philips SHP9500", type: "Open-back", connection: "Wired", mic: false, notes: "Budget open-back" },
+const wirelessGaming = [
+  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true },
+  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false },
+  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false },
+  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false },
+  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false },
+  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false },
 ];
+
+const budgetOptions = [
+  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false },
+  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false },
+  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false },
+];
+
+const audiophile = [
+  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false },
+  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true },
+  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true },
+];
+
+const specialty = [
+  { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
+  { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Best audio upgrade for any headphone" },
+];
+
+function countRecs(h) {
+  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0);
+}
 ---
 
 <BaseLayout title="Headset Recommendations">
   <div class="page-header">
     <h1>Headset Recommendations</h1>
-    <p>Audio gear for competitive gaming</p>
+    <p>Recommended headsets from top reviewers (2025)</p>
   </div>
 
+  <div class="reviewer-legend">
+    <span class="legend-item"><span class="badge gt">GT</span> GadgetryTech</span>
+    <span class="legend-item"><span class="badge bs">BS</span> BadSeed Tech</span>
+    <span class="legend-item"><span class="badge jv">JV</span> Joshua Valour</span>
+  </div>
+
+  <div class="price-legend">
+    <span>$ = Budget (&lt;$80)</span>
+    <span>$$ = Mid ($80-200)</span>
+    <span>$$$ = Premium ($200-400)</span>
+    <span>$$$$ = Flagship ($400+)</span>
+  </div>
+
+  <h2 class="section-title">Wireless Gaming</h2>
   <div class="table-container">
     <table class="rec-table">
       <thead>
         <tr>
           <th>Headset</th>
           <th>Type</th>
-          <th>Connection</th>
-          <th>Mic</th>
+          <th>Price</th>
+          <th>GT</th>
+          <th>BS</th>
+          <th>JV</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {wirelessGaming.map(h => (
+          <tr class={countRecs(h) >= 3 ? 'highlight-row' : ''}>
+            <td class="headset-name">{h.name} {countRecs(h) >= 3 ? '⭐' : ''}</td>
+            <td>{h.type}</td>
+            <td class="price">{h.price}</td>
+            <td class="center">{h.gt ? '✓' : ''}</td>
+            <td class="center">{h.bs ? '✓' : ''}</td>
+            <td class="center">{h.jv ? '✓' : ''}</td>
+            <td class="center total">{countRecs(h)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">Budget Wireless/Wired</h2>
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Headset</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>GT</th>
+          <th>BS</th>
+          <th>JV</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {budgetOptions.map(h => (
+          <tr>
+            <td class="headset-name">{h.name}</td>
+            <td>{h.type}</td>
+            <td class="price">{h.price}</td>
+            <td class="center">{h.gt ? '✓' : ''}</td>
+            <td class="center">{h.bs ? '✓' : ''}</td>
+            <td class="center">{h.jv ? '✓' : ''}</td>
+            <td class="center total">{countRecs(h)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">Audiophile / Open-Back (Competitive FPS)</h2>
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Headset</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>GT</th>
+          <th>BS</th>
+          <th>JV</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {audiophile.map(h => (
+          <tr>
+            <td class="headset-name">{h.name}</td>
+            <td>{h.type}</td>
+            <td class="price">{h.price}</td>
+            <td class="center">{h.gt ? '✓' : ''}</td>
+            <td class="center">{h.bs ? '✓' : ''}</td>
+            <td class="center">{h.jv ? '✓' : ''}</td>
+            <td class="center total">{countRecs(h)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">Specialty Picks</h2>
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Price</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
-        {headsetData.map(h => (
+        {specialty.map(s => (
           <tr>
-            <td class="headset-name">{h.name}</td>
-            <td><span class={`type-badge ${h.type.toLowerCase().replace('-', '')}`}>{h.type}</span></td>
-            <td>{h.connection}</td>
-            <td class="center">{h.mic ? '✓' : '—'}</td>
-            <td class="notes">{h.notes}</td>
+            <td class="headset-name">{s.name}</td>
+            <td>{s.category}</td>
+            <td class="price">{s.price}</td>
+            <td class="notes">{s.notes}</td>
           </tr>
         ))}
       </tbody>
@@ -54,18 +173,125 @@ const headsetData = [
 </BaseLayout>
 
 <style>
-  .table-container { overflow-x: auto; }
-  .rec-table { width: 100%; border-collapse: collapse; }
-  .rec-table th, .rec-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color, #2a2a3a); }
-  .rec-table th { background: var(--bg-secondary, #12121a); font-weight: 600; color: var(--text-secondary, #888); text-transform: uppercase; font-size: 0.75rem; }
-  .rec-table tbody tr:hover { background: var(--bg-secondary, #12121a); }
-  .headset-name { font-weight: 500; color: var(--accent-primary, #ff6b35); }
-  .type-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; }
-  .type-badge.openback { background: #6bcb77; color: #000; }
-  .type-badge.closedback { background: #4a9eff; color: #fff; }
-  .center { text-align: center; color: var(--accent-primary, #ff6b35); }
-  .notes { color: var(--text-secondary, #888); font-size: 0.875rem; }
-  .back-link { margin-top: 2rem; }
-  .back-link a { color: var(--accent-primary, #ff6b35); text-decoration: none; }
-  .back-link a:hover { text-decoration: underline; }
+  .reviewer-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .badge.gt { background: #4a9eff; color: #fff; }
+  .badge.bs { background: #ff6b6b; color: #fff; }
+  .badge.jv { background: #6bcb77; color: #000; }
+
+  .price-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .section-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-primary, #fff);
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+    padding-bottom: 0.5rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rec-table th,
+  .rec-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+  }
+
+  .rec-table th {
+    background: var(--bg-secondary, #12121a);
+    font-weight: 600;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .rec-table tbody tr:hover {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .highlight-row {
+    background: rgba(255, 107, 53, 0.1);
+  }
+
+  .highlight-row:hover {
+    background: rgba(255, 107, 53, 0.15) !important;
+  }
+
+  .headset-name {
+    font-weight: 500;
+    color: var(--text-primary, #fff);
+  }
+
+  .price {
+    font-family: monospace;
+    color: var(--text-secondary, #888);
+  }
+
+  .center {
+    text-align: center;
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .notes {
+    color: var(--text-secondary, #888);
+    font-size: 0.875rem;
+  }
+
+  .back-link {
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
 </style>
