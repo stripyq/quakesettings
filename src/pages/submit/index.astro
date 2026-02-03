@@ -205,25 +205,37 @@ const countries = [
 
         <div class="form-row">
           <div class="form-group">
+            <label for="m_cpi">
+              m_cpi
+              <span class="tooltip" title="Mouse CPI multiplier. If your DPI is different from what Quake expects, use this to correct it. Most players leave this at 0 (disabled). Common values: 0 (off), or your actual DPI if using non-standard settings.">ⓘ</span>
+            </label>
+            <input type="number" id="m_cpi" name="m_cpi" step="1" min="0" max="32000" placeholder="e.g., 0 or 800">
+            <small>Leave at 0 if not using custom CPI correction</small>
+          </div>
+
+          <div class="form-group">
             <label for="acceleration">Mouse Acceleration</label>
             <select id="acceleration" name="acceleration">
               <option value="false">No</option>
               <option value="true">Yes</option>
             </select>
           </div>
+        </div>
 
-          <div class="form-group accel-value-group hidden">
-            <label for="accelValue">Accel Value</label>
-            <input type="number" id="accelValue" name="accelValue" step="0.001" placeholder="e.g., 0.02">
-          </div>
+        <div class="form-group accel-value-group hidden">
+          <label for="accelValue">Accel Value (cl_mouseAccel)</label>
+          <input type="number" id="accelValue" name="accelValue" step="0.001" placeholder="e.g., 0.02">
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="rawInput">Raw Input</label>
+            <label for="rawInput">
+              Raw Input
+              <span class="tooltip" title="When enabled (in_mouse 2), mouse input bypasses Windows mouse settings and acceleration. Recommended for consistent aim. Most competitive players use Raw Input.">ⓘ</span>
+            </label>
             <select id="rawInput" name="rawInput">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
+              <option value="true">Yes (in_mouse 2)</option>
+              <option value="false">No (in_mouse 1)</option>
             </select>
           </div>
 
@@ -622,6 +634,28 @@ const countries = [
     display: inline-block;
     margin-top: 1.5rem;
     color: var(--link-internal);
+  }
+
+  /* Tooltip */
+  .tooltip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 0.35rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: help;
+    vertical-align: middle;
+  }
+
+  .tooltip:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
   }
 
   /* Utility */
