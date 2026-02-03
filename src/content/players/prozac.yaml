@@ -11,9 +11,10 @@ ctfRating: 20.29
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
 dpi: 800
+m_cpi: 800
 sensitivity: 28
 edpi: 22400
-cm360: 12
+cm360: 12.86
 acceleration: false
 rawInput: true
 fov: 100
