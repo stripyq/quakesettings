@@ -1,7 +1,44 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Create keyboard usage map
+const keyboardUsageMap = new Map<string, number>();
+players.forEach(p => {
+  const kbId = p.data.keyboard;
+  if (kbId) {
+    keyboardUsageMap.set(kbId, (keyboardUsageMap.get(kbId) || 0) + 1);
+  }
+});
+
+// Map recommendation names to hardware slugs
+const keyboardSlugMap: Record<string, string[]> = {
+  "Wooting 60HE+ / 60HE V2": ["wooting-60he-plus", "wooting-60he-v2", "wooting-60he"],
+  "Wooting 80HE": ["wooting-80he"],
+  "DrunkDeer G65 / A75": ["drunkdeer-g65", "drunkdeer-a75"],
+  "IROK MG68 Max": ["irok-mg68-max"],
+  "Meletrix BOOG75": ["meletrix-boog75"],
+  "Pulsar PCMK3 H60": ["pulsar-pcmk3-h60"],
+  "Keychron Q1 HE": ["keychron-q1he", "keychron-q1-he"],
+  "VXE ATK68": ["vxe-atk68"],
+  "NuPhy Halo 65HE": ["nuphy-halo65-he", "nuphy-halo-65he"],
+  "Asus ROG Falchion Split": ["asus-rog-falchion-split"],
+};
+
+function getPlayerCount(name: string): number {
+  const slugs = keyboardSlugMap[name];
+  if (!slugs) return 0;
+  let total = 0;
+  slugs.forEach(slug => {
+    total += keyboardUsageMap.get(slug) || 0;
+  });
+  return total;
+}
 
 const keyboardData = [
   { name: "Wooting 60HE+ / 60HE V2", price: "$$$", dl: true, tl: true, ju: true },
@@ -16,11 +53,13 @@ const keyboardData = [
   { name: "Asus ROG Falchion Split", price: "$$$", dl: false, tl: true, ju: false },
 ];
 
-function countRecommendations(k) {
-  return (k.dl ? 1 : 0) + (k.tl ? 1 : 0) + (k.ju ? 1 : 0);
-}
-
-const sortedKeyboards = keyboardData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
+// Sort by reviewer count, then by player count
+const sortedKeyboards = keyboardData.sort((a, b) => {
+  const aReviewers = (a.dl ? 1 : 0) + (a.tl ? 1 : 0) + (a.ju ? 1 : 0);
+  const bReviewers = (b.dl ? 1 : 0) + (b.tl ? 1 : 0) + (b.ju ? 1 : 0);
+  if (bReviewers !== aReviewers) return bReviewers - aReviewers;
+  return getPlayerCount(b.name) - getPlayerCount(a.name);
+});
 ---
 
 <BaseLayout title="Keyboard Recommendations">
@@ -50,20 +89,27 @@ const sortedKeyboards = keyboardData.sort((a, b) => countRecommendations(b) - co
           <th>DL</th>
           <th>TL</th>
           <th>JU</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {sortedKeyboards.map(k => (
-          <tr>
-            <td class="kb-name">{k.name}</td>
-            <td class="price">{k.price}</td>
-            <td class="center">{k.dl ? '✓' : ''}</td>
-            <td class="center">{k.tl ? '✓' : ''}</td>
-            <td class="center">{k.ju ? '✓' : ''}</td>
-            <td class="center total">{countRecommendations(k)}</td>
-          </tr>
-        ))}
+        {sortedKeyboards.map(k => {
+          const playerCount = getPlayerCount(k.name);
+          return (
+            <tr>
+              <td class="kb-name">{k.name}</td>
+              <td class="price">{k.price}</td>
+              <td class="center">{k.dl ? '✓' : ''}</td>
+              <td class="center">{k.tl ? '✓' : ''}</td>
+              <td class="center">{k.ju ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#keyboards`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -154,9 +200,19 @@ const sortedKeyboards = keyboardData.sort((a, b) => countRecommendations(b) - co
     color: var(--accent-primary, #ff6b35);
   }
 
-  .total {
-    font-weight: 700;
-    font-size: 1.1rem;
+  .players {
+    font-weight: 600;
+  }
+
+  .player-link {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .player-link:hover {
+    color: var(--accent-secondary, #4ecdc4);
   }
 
   .back-link {

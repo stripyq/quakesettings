@@ -1,7 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Create mousepad usage map
+const mousepadUsageMap = new Map<string, number>();
+players.forEach(p => {
+  const padId = p.data.mousepad;
+  if (padId) {
+    mousepadUsageMap.set(padId, (mousepadUsageMap.get(padId) || 0) + 1);
+  }
+});
+
+// Function to count players using any variant of a pad (by prefix match)
+function getPlayerCountByPrefix(prefixes: string[]): number {
+  let total = 0;
+  mousepadUsageMap.forEach((count, slug) => {
+    if (prefixes.some(prefix => slug.startsWith(prefix))) {
+      total += count;
+    }
+  });
+  return total;
+}
+
+// Mousepad prefixes for matching variants
+const mousepadPrefixes: Record<string, string[]> = {
+  "Artisan Zero": ["artisan-fx-zero", "artisan-zero"],
+  "LGG Saturn Pro": ["lethal-gaming-gear-saturn-pro"],
+  "Artisan Hayate Otsu V2": ["artisan-fx-hayate-otsu-v2", "artisan-hayate-otsu"],
+  "Artisan Raiden": ["artisan-fx-raiden", "artisan-raiden"],
+  "Wallhack SP-004": ["wallhack-sp-004"],
+  "Razer Strider": ["razer-strider"],
+  "VXE/VGN Dragonfly Pad": ["vxe-dragonfly", "vgn-dragonfly"],
+  "LGG Saturn": ["lethal-gaming-gear-saturn"],
+  "Razer Gigantus V2": ["razer-gigantus-v2"],
+  "Padsmith Temple of Dreams": ["padsmith-temple"],
+};
+
+function getPlayerCount(name: string): number {
+  const prefixes = mousepadPrefixes[name];
+  if (!prefixes) return 0;
+  return getPlayerCountByPrefix(prefixes);
+}
 
 const mousepadData = [
   { name: "Artisan Zero", surface: "Cloth", speed: "Control", price: "$$$", bz: true, tl: false, ju: true },
@@ -16,11 +60,13 @@ const mousepadData = [
   { name: "Padsmith Temple of Dreams", surface: "Cloth", speed: "Control", price: "$$", bz: false, tl: false, ju: true },
 ];
 
-function countRecommendations(p) {
-  return (p.bz ? 1 : 0) + (p.tl ? 1 : 0) + (p.ju ? 1 : 0);
-}
-
-const sortedPads = mousepadData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
+// Sort by reviewer count, then by player count
+const sortedPads = mousepadData.sort((a, b) => {
+  const aReviewers = (a.bz ? 1 : 0) + (a.tl ? 1 : 0) + (a.ju ? 1 : 0);
+  const bReviewers = (b.bz ? 1 : 0) + (b.tl ? 1 : 0) + (b.ju ? 1 : 0);
+  if (bReviewers !== aReviewers) return bReviewers - aReviewers;
+  return getPlayerCount(b.name) - getPlayerCount(a.name);
+});
 ---
 
 <BaseLayout title="Mousepad Recommendations">
@@ -52,22 +98,29 @@ const sortedPads = mousepadData.sort((a, b) => countRecommendations(b) - countRe
           <th>BZ</th>
           <th>TL</th>
           <th>JU</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {sortedPads.map(p => (
-          <tr>
-            <td class="pad-name">{p.name}</td>
-            <td>{p.surface}</td>
-            <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
-            <td class="price">{p.price}</td>
-            <td class="center">{p.bz ? '✓' : ''}</td>
-            <td class="center">{p.tl ? '✓' : ''}</td>
-            <td class="center">{p.ju ? '✓' : ''}</td>
-            <td class="center total">{countRecommendations(p)}</td>
-          </tr>
-        ))}
+        {sortedPads.map(p => {
+          const playerCount = getPlayerCount(p.name);
+          return (
+            <tr>
+              <td class="pad-name">{p.name}</td>
+              <td>{p.surface}</td>
+              <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
+              <td class="price">{p.price}</td>
+              <td class="center">{p.bz ? '✓' : ''}</td>
+              <td class="center">{p.tl ? '✓' : ''}</td>
+              <td class="center">{p.ju ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#mousepads`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -169,9 +222,19 @@ const sortedPads = mousepadData.sort((a, b) => countRecommendations(b) - countRe
     color: var(--accent-primary, #ff6b35);
   }
 
-  .total {
-    font-weight: 700;
-    font-size: 1.1rem;
+  .players {
+    font-weight: 600;
+  }
+
+  .player-link {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .player-link:hover {
+    color: var(--accent-secondary, #4ecdc4);
   }
 
   .back-link {

@@ -1,7 +1,43 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+// Get all players to count hardware usage
+const players = await getCollection('players');
+
+// Create mouse usage map
+const mouseUsageMap = new Map<string, number>();
+players.forEach(p => {
+  const mouseId = p.data.mouse;
+  if (mouseId) {
+    mouseUsageMap.set(mouseId, (mouseUsageMap.get(mouseId) || 0) + 1);
+  }
+});
+
+// Map recommendation names to hardware slugs
+const mouseSlugMap: Record<string, string> = {
+  "VXE R1 Pro": "vxe-r1-pro",
+  "Endgame Gear OP1 8K": "endgame-gear-op1-8k",
+  "Pulsar Xlite V3 Crazy Light": "pulsar-xlite-v3-crazylight-medium",
+  "G-Wolves HTS Ultra": "g-wolves-hts-ultra",
+  "Logitech G Pro X Superlight 2": "logitech-g-pro-x-superlight-2",
+  "Ninjutso Sora V2": "ninjutso-sora-v2",
+  "VAXEE NP-01S": "vaxee-np-01s-wireless",
+  "VAXEE XE V2": "vaxee-xe-v2",
+  "Incott G23 V2": "incott-g23-v2",
+  "RAW Leviathan V4": "rawm-leviathan-v4",
+  "ATK X1 / F1 V2": "atk-x1-v2-ultimate",
+  "MCHOSE A5": "mchose-a5",
+  "Asus ROG Harpe Ace 2": "asus-rog-harpe-ace-2",
+};
+
+function getPlayerCount(name: string): number {
+  const slug = mouseSlugMap[name];
+  if (!slug) return 0;
+  return mouseUsageMap.get(slug) || 0;
+}
 
 const mouseData = [
   { mouse: "VXE R1 Pro", price: "$", dl: true, tl: true, bz: true, ju: true },
@@ -19,11 +55,13 @@ const mouseData = [
   { mouse: "Asus ROG Harpe Ace 2", price: "$$$", dl: false, tl: true, bz: false, ju: false },
 ];
 
-function countRecommendations(m) {
-  return (m.dl ? 1 : 0) + (m.tl ? 1 : 0) + (m.bz ? 1 : 0) + (m.ju ? 1 : 0);
-}
-
-const sortedMice = mouseData.sort((a, b) => countRecommendations(b) - countRecommendations(a));
+// Sort by reviewer count, then by player count
+const sortedMice = mouseData.sort((a, b) => {
+  const aReviewers = (a.dl ? 1 : 0) + (a.tl ? 1 : 0) + (a.bz ? 1 : 0) + (a.ju ? 1 : 0);
+  const bReviewers = (b.dl ? 1 : 0) + (b.tl ? 1 : 0) + (b.bz ? 1 : 0) + (b.ju ? 1 : 0);
+  if (bReviewers !== aReviewers) return bReviewers - aReviewers;
+  return getPlayerCount(b.mouse) - getPlayerCount(a.mouse);
+});
 ---
 
 <BaseLayout title="Mice Recommendations">
@@ -55,21 +93,29 @@ const sortedMice = mouseData.sort((a, b) => countRecommendations(b) - countRecom
           <th>TL</th>
           <th>BZ</th>
           <th>JU</th>
-          <th>Total</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
-        {sortedMice.map(m => (
-          <tr>
-            <td class="mouse-name">{m.mouse}</td>
-            <td class="price">{m.price}</td>
-            <td class="center">{m.dl ? '✓' : ''}</td>
-            <td class="center">{m.tl ? '✓' : ''}</td>
-            <td class="center">{m.bz ? '✓' : ''}</td>
-            <td class="center">{m.ju ? '✓' : ''}</td>
-            <td class="center total">{countRecommendations(m)}</td>
-          </tr>
-        ))}
+        {sortedMice.map(m => {
+          const playerCount = getPlayerCount(m.mouse);
+          const slug = mouseSlugMap[m.mouse];
+          return (
+            <tr>
+              <td class="mouse-name">{m.mouse}</td>
+              <td class="price">{m.price}</td>
+              <td class="center">{m.dl ? '✓' : ''}</td>
+              <td class="center">{m.tl ? '✓' : ''}</td>
+              <td class="center">{m.bz ? '✓' : ''}</td>
+              <td class="center">{m.ju ? '✓' : ''}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <a href={`${base}hardware/#mice`} class="player-link">{playerCount}</a>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
@@ -161,9 +207,19 @@ const sortedMice = mouseData.sort((a, b) => countRecommendations(b) - countRecom
     color: var(--accent-primary, #ff6b35);
   }
 
-  .total {
-    font-weight: 700;
-    font-size: 1.1rem;
+  .players {
+    font-weight: 600;
+  }
+
+  .player-link {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .player-link:hover {
+    color: var(--accent-secondary, #4ecdc4);
   }
 
   .back-link {
