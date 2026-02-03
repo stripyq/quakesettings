@@ -3,17 +3,53 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
-// Common enemy models in Quake Live
+// Enemy models - reordered with most popular first
 const enemyModels = [
-  'Anarki', 'Bones', 'Biker', 'Cadavre', 'Crash', 'Doom', 'Grunt', 'Hossman',
-  'Hunter', 'James', 'Janet', 'Keel', 'Klesk', 'Lucy', 'Major', 'Mynx',
-  'Orbb', 'Patriot', 'Penguin', 'Ranger', 'Razor', 'Sarge', 'Slash', 'Sorlag',
-  'Stripe', 'Tank Jr.', 'Tankjr', 'TankJr', 'Uriel', 'Visor', 'Xaero'
+  { value: 'Keel', label: 'Keel' },
+  { value: 'Tank Jr.', label: 'Tank Jr.' },
+  { value: '', label: "I don't use forced enemy model" },
+  // Rest alphabetically
+  { value: 'Anarki', label: 'Anarki' },
+  { value: 'Biker', label: 'Biker' },
+  { value: 'Bones', label: 'Bones' },
+  { value: 'Cadavre', label: 'Cadavre' },
+  { value: 'Crash', label: 'Crash' },
+  { value: 'Doom', label: 'Doom' },
+  { value: 'Grunt', label: 'Grunt' },
+  { value: 'Hossman', label: 'Hossman' },
+  { value: 'Hunter', label: 'Hunter' },
+  { value: 'James', label: 'James' },
+  { value: 'Janet', label: 'Janet' },
+  { value: 'Klesk', label: 'Klesk' },
+  { value: 'Lucy', label: 'Lucy' },
+  { value: 'Major', label: 'Major' },
+  { value: 'Mynx', label: 'Mynx' },
+  { value: 'Orbb', label: 'Orbb' },
+  { value: 'Patriot', label: 'Patriot' },
+  { value: 'Penguin', label: 'Penguin' },
+  { value: 'Ranger', label: 'Ranger' },
+  { value: 'Razor', label: 'Razor' },
+  { value: 'Sarge', label: 'Sarge' },
+  { value: 'Slash', label: 'Slash' },
+  { value: 'Sorlag', label: 'Sorlag' },
+  { value: 'Stripe', label: 'Stripe' },
+  { value: 'Uriel', label: 'Uriel' },
+  { value: 'Visor', label: 'Visor' },
+  { value: 'Xaero', label: 'Xaero' }
 ];
 
-// Common crosshair colors
+// Crosshair colors with hex values for swatches
 const crosshairColors = [
-  'White', 'Yellow', 'Green', 'Cyan', 'Red', 'Orange', 'Pink', 'Blue', 'Purple', 'Custom'
+  { value: 'Red', hex: '#ff0000' },
+  { value: 'Orange', hex: '#ff8800' },
+  { value: 'Yellow', hex: '#ffff00' },
+  { value: 'Green', hex: '#00ff00' },
+  { value: 'Cyan', hex: '#00ffff' },
+  { value: 'Blue', hex: '#0088ff' },
+  { value: 'Pink', hex: '#ff00ff' },
+  { value: 'White', hex: '#ffffff' },
+  { value: 'Grey', hex: '#888888' },
+  { value: 'Black', hex: '#000000' }
 ];
 
 // Countries for dropdown
@@ -55,6 +91,16 @@ const countries = [
   { code: 'GB', name: 'United Kingdom' },
   { code: 'US', name: 'United States' },
   { code: 'OTHER', name: 'Other' }
+];
+
+// Movement presets
+const movementPresets = [
+  { id: 'wasd', label: 'WASD', keys: { forward: 'w', back: 's', left: 'a', right: 'd' } },
+  { id: 'esdf', label: 'ESDF', keys: { forward: 'e', back: 'd', left: 's', right: 'f' } },
+  { id: 'rfdg', label: 'RFDG', keys: { forward: 'r', back: 'f', left: 'd', right: 'g' } },
+  { id: 'arrows', label: 'Arrow Keys', keys: { forward: 'uparrow', back: 'downarrow', left: 'leftarrow', right: 'rightarrow' } },
+  { id: 'mouse2asd', label: 'mouse2 A S D', keys: { forward: 'mouse2', back: 's', left: 'a', right: 'd' } },
+  { id: 'other', label: 'Other', keys: null }
 ];
 ---
 
@@ -142,6 +188,7 @@ const countries = [
               <option value="__other__">Other (type below)</option>
             </select>
             <input type="text" id="mousepadOther" name="mousepadOther" class="other-input hidden" placeholder="Enter mousepad model">
+            <small>Artisan owners: check kanji reference (Japanese characters) on the list and your mousepad to match exact model</small>
           </div>
         </div>
 
@@ -195,43 +242,50 @@ const countries = [
           <div class="form-group">
             <label for="dpi">DPI *</label>
             <input type="number" id="dpi" name="dpi" required min="100" max="32000" placeholder="e.g., 800">
+            <small>i.e. 400, 800, 1600, 3200 — Put only one value</small>
           </div>
 
           <div class="form-group">
-            <label for="sensitivity">In-game Sensitivity *</label>
+            <label for="sensitivity">In-game Sensitivity * <code class="cvar">/sensitivity</code></label>
             <input type="number" id="sensitivity" name="sensitivity" required step="0.01" min="0.1" max="30" placeholder="e.g., 1.5">
+            <small>Use dot (.) as decimal separator, not comma (,)</small>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="m_cpi">
-              m_cpi
-              <span class="tooltip" title="Mouse CPI multiplier. If your DPI is different from what Quake expects, use this to correct it. Most players leave this at 0 (disabled). Common values: 0 (off), or your actual DPI if using non-standard settings.">ⓘ</span>
+              <code class="cvar">m_cpi</code>
+              <span class="tooltip" title="Mouse CPI multiplier. If your DPI is different from what Quake expects, use this to correct it. Most players leave this at 0 (disabled).">ⓘ</span>
             </label>
             <input type="number" id="m_cpi" name="m_cpi" step="1" min="0" max="32000" placeholder="e.g., 0 or 800">
             <small>Leave at 0 if not using custom CPI correction</small>
           </div>
 
           <div class="form-group">
-            <label for="acceleration">Mouse Acceleration</label>
+            <label for="acceleration">
+              Mouse Acceleration
+              <span class="tooltip" title="Do you use mouse acceleration in any form? i.e. cl_mouseAccel in-game or Raw Accel (3rd party program)">ⓘ</span>
+            </label>
             <select id="acceleration" name="acceleration">
               <option value="false">No</option>
               <option value="true">Yes</option>
             </select>
+            <small>In-game <code class="cvar">cl_mouseAccel</code> or 3rd party (Raw Accel)</small>
           </div>
         </div>
 
         <div class="form-group accel-value-group hidden">
-          <label for="accelValue">Accel Value (cl_mouseAccel)</label>
+          <label for="accelValue">Accel Value <code class="cvar">cl_mouseAccel</code></label>
           <input type="number" id="accelValue" name="accelValue" step="0.001" placeholder="e.g., 0.02">
+          <small>Your <code class="cvar">cl_mouseAccel</code> value if using in-game accel</small>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="rawInput">
-              Raw Input
-              <span class="tooltip" title="When enabled (in_mouse 2), mouse input bypasses Windows mouse settings and acceleration. Recommended for consistent aim. Most competitive players use Raw Input.">ⓘ</span>
+              Raw Input <code class="cvar">in_mouse</code>
+              <span class="tooltip" title="When enabled (in_mouse 2), mouse input bypasses Windows mouse settings and acceleration. Recommended for consistent aim.">ⓘ</span>
             </label>
             <select id="rawInput" name="rawInput">
               <option value="true">Yes (in_mouse 2)</option>
@@ -240,23 +294,78 @@ const countries = [
           </div>
 
           <div class="form-group">
-            <label for="invertedMouse">Inverted Mouse</label>
+            <label for="invertedMouse">
+              Inverted Mouse <code class="cvar">m_pitch</code>
+            </label>
             <select id="invertedMouse" name="invertedMouse">
               <option value="false">No</option>
-              <option value="true">Yes</option>
+              <option value="true">Yes (m_pitch "-0.022")</option>
             </select>
           </div>
         </div>
 
+        <!-- Grip Style Visual Selector -->
         <div class="form-group">
-          <label for="grip">Grip Style</label>
-          <select id="grip" name="grip">
-            <option value="">-- Select --</option>
-            <option value="Palm">Palm</option>
-            <option value="Claw">Claw</option>
-            <option value="Fingertip">Fingertip</option>
-            <option value="Hybrid">Hybrid</option>
-          </select>
+          <label>Grip Style</label>
+          <input type="hidden" id="grip" name="grip" value="">
+          <div class="grip-selector">
+            <div class="grip-card" data-grip="Palm">
+              <div class="grip-icon">
+                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="30" cy="25" rx="20" ry="12" />
+                  <path d="M15 20 Q15 10, 30 10 Q45 10, 45 20" />
+                  <line x1="20" y1="15" x2="20" y2="22" />
+                  <line x1="27" y1="12" x2="27" y2="20" />
+                  <line x1="34" y1="12" x2="34" y2="20" />
+                  <line x1="40" y1="15" x2="40" y2="22" />
+                </svg>
+              </div>
+              <div class="grip-name">Palm</div>
+              <div class="grip-desc">Flat fingers, full finger contact. Large palm contact</div>
+            </div>
+            <div class="grip-card" data-grip="Hybrid">
+              <div class="grip-icon">
+                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="30" cy="27" rx="20" ry="10" />
+                  <path d="M15 22 Q20 8, 30 8 Q40 8, 45 22" />
+                  <line x1="20" y1="12" x2="22" y2="20" />
+                  <line x1="27" y1="9" x2="28" y2="18" />
+                  <line x1="34" y1="9" x2="33" y2="18" />
+                  <line x1="40" y1="12" x2="38" y2="20" />
+                </svg>
+              </div>
+              <div class="grip-name">Hybrid</div>
+              <div class="grip-desc">Mixture of palm grip and claw grip</div>
+            </div>
+            <div class="grip-card" data-grip="Claw">
+              <div class="grip-icon">
+                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="30" cy="30" rx="18" ry="8" />
+                  <path d="M18 25 Q25 5, 30 5 Q35 5, 42 25" />
+                  <line x1="22" y1="10" x2="24" y2="22" />
+                  <line x1="28" y1="6" x2="29" y2="20" />
+                  <line x1="33" y1="6" x2="32" y2="20" />
+                  <line x1="38" y1="10" x2="36" y2="22" />
+                </svg>
+              </div>
+              <div class="grip-name">Claw</div>
+              <div class="grip-desc">Curved fingers, top finger contact. Partial palm contact</div>
+            </div>
+            <div class="grip-card" data-grip="Fingertip">
+              <div class="grip-icon">
+                <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="30" cy="32" rx="16" ry="6" />
+                  <path d="M20 28 Q28 2, 30 2 Q32 2, 40 28" />
+                  <circle cx="23" cy="10" r="2" />
+                  <circle cx="28" cy="5" r="2" />
+                  <circle cx="33" cy="5" r="2" />
+                  <circle cx="38" cy="10" r="2" />
+                </svg>
+              </div>
+              <div class="grip-name">Fingertip</div>
+              <div class="grip-desc">Curved fingers, top finger contact. No palm contact</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -266,36 +375,47 @@ const countries = [
 
         <div class="form-row">
           <div class="form-group">
-            <label for="fov">FOV (Field of View)</label>
+            <label for="fov">FOV <code class="cvar">cg_fov</code></label>
             <input type="number" id="fov" name="fov" min="80" max="140" placeholder="e.g., 100">
-          </div>
-
-          <div class="form-group">
-            <label for="crosshair">Crosshair</label>
-            <input type="text" id="crosshair" name="crosshair" placeholder="e.g., 2 or 2, 7, 21">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="crosshairColor">Crosshair Color</label>
-            <select id="crosshairColor" name="crosshairColor">
-              <option value="">-- Select --</option>
-              {crosshairColors.map(color => (
-                <option value={color}>{color}</option>
-              ))}
-            </select>
+            <small>Your non-zoom FOV in-game</small>
           </div>
 
           <div class="form-group">
             <label for="enemyModel">Enemy Model</label>
             <select id="enemyModel" name="enemyModel">
-              <option value="">-- Select --</option>
               {enemyModels.map(model => (
-                <option value={model}>{model}</option>
+                <option value={model.value}>{model.label}</option>
               ))}
             </select>
           </div>
+        </div>
+
+        <!-- Crosshair Visual Selector -->
+        <div class="form-group">
+          <label>Crosshair <code class="cvar">cg_drawCrosshair</code></label>
+          <small>Select one or more crosshairs (click to toggle). Can select multiple if you use different ones per weapon.</small>
+          <input type="hidden" id="crosshair" name="crosshair" value="">
+          <div class="crosshair-grid">
+            {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].map(n => (
+              <div class="crosshair-item" data-crosshair={n}>
+                <div class="crosshair-preview" data-ch={n}></div>
+                <div class="crosshair-num">{n}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Crosshair Color Swatches -->
+        <div class="form-group">
+          <label>Crosshair Color</label>
+          <input type="hidden" id="crosshairColor" name="crosshairColor" value="">
+          <div class="color-swatches">
+            {crosshairColors.map(color => (
+              <div class="color-swatch" data-color={color.value} style={`background-color: ${color.hex}`} title={color.value}></div>
+            ))}
+            <div class="color-swatch color-custom" data-color="Custom" title="Custom">?</div>
+          </div>
+          <input type="text" id="crosshairColorCustom" class="other-input hidden" placeholder="Enter custom color (e.g., RGB value)">
         </div>
       </section>
 
@@ -303,7 +423,18 @@ const countries = [
       <section class="form-section">
         <h2>Key Binds</h2>
 
-        <div class="form-row">
+        <!-- Movement Presets -->
+        <div class="form-group">
+          <label>Movement Keys</label>
+          <small>What do you use for: <code class="cvar">+forward</code>, <code class="cvar">+back</code>, <code class="cvar">+moveleft</code>, <code class="cvar">+moveright</code></small>
+          <div class="movement-presets">
+            {movementPresets.map(preset => (
+              <button type="button" class="preset-btn" data-preset={preset.id}>{preset.label}</button>
+            ))}
+          </div>
+        </div>
+
+        <div id="movement-custom" class="form-row hidden">
           <div class="form-group">
             <label for="forward">Forward</label>
             <input type="text" id="forward" name="forward" placeholder="e.g., w">
@@ -313,30 +444,30 @@ const countries = [
             <input type="text" id="back" name="back" placeholder="e.g., s">
           </div>
           <div class="form-group">
-            <label for="left">Left</label>
+            <label for="left">Strafe Left</label>
             <input type="text" id="left" name="left" placeholder="e.g., a">
           </div>
           <div class="form-group">
-            <label for="right">Right</label>
+            <label for="right">Strafe Right</label>
             <input type="text" id="right" name="right" placeholder="e.g., d">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="jump">Jump</label>
+            <label for="jump">Jump <code class="cvar">+moveup</code></label>
             <input type="text" id="jump" name="jump" placeholder="e.g., space or mouse2">
           </div>
           <div class="form-group">
-            <label for="crouch">Crouch</label>
+            <label for="crouch">Crouch <code class="cvar">+movedown</code></label>
             <input type="text" id="crouch" name="crouch" placeholder="e.g., ctrl">
           </div>
           <div class="form-group">
-            <label for="attack">Fire / Attack</label>
+            <label for="attack">Fire <code class="cvar">+attack</code></label>
             <input type="text" id="attack" name="attack" placeholder="e.g., mouse1">
           </div>
           <div class="form-group">
-            <label for="zoom">Zoom</label>
+            <label for="zoom">Zoom <code class="cvar">+zoom</code></label>
             <input type="text" id="zoom" name="zoom" placeholder="e.g., shift">
           </div>
         </div>
@@ -401,6 +532,16 @@ const countries = [
 
   .page-header p {
     color: var(--text-secondary);
+  }
+
+  /* Cvar code styling */
+  .cvar {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.8em;
+    background: var(--bg-secondary);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    color: var(--link-internal);
   }
 
   /* Current Settings Panel */
@@ -487,6 +628,11 @@ const countries = [
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group:last-child {
+    margin-bottom: 0;
   }
 
   .form-group label {
@@ -519,6 +665,7 @@ const countries = [
   .form-group small {
     font-size: 0.75rem;
     color: var(--text-muted);
+    line-height: 1.4;
   }
 
   .form-group select {
@@ -527,6 +674,228 @@ const countries = [
 
   .other-input {
     margin-top: 0.5rem;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 0.35rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: help;
+    vertical-align: middle;
+  }
+
+  .tooltip:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+  }
+
+  /* Grip Style Cards */
+  .grip-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .grip-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .grip-card:hover {
+    border-color: var(--text-muted);
+    background: var(--bg-hover);
+  }
+
+  .grip-card.selected {
+    border-color: var(--accent-primary);
+    background: rgba(255, 107, 53, 0.1);
+  }
+
+  .grip-icon {
+    height: 40px;
+    margin-bottom: 0.5rem;
+  }
+
+  .grip-icon svg {
+    width: 60px;
+    height: 40px;
+    color: var(--text-secondary);
+  }
+
+  .grip-card.selected .grip-icon svg {
+    color: var(--accent-primary);
+  }
+
+  .grip-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .grip-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* Crosshair Grid */
+  .crosshair-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    max-width: 600px;
+  }
+
+  .crosshair-item {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .crosshair-item:hover {
+    border-color: var(--text-muted);
+  }
+
+  .crosshair-item.selected {
+    border-color: var(--accent-primary);
+    background: rgba(255, 107, 53, 0.1);
+  }
+
+  .crosshair-preview {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 0.25rem;
+    position: relative;
+  }
+
+  /* Crosshair SVG representations */
+  .crosshair-preview::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .crosshair-preview[data-ch="1"]::before { content: '○'; font-size: 24px; color: #fff; }
+  .crosshair-preview[data-ch="2"]::before { content: '+'; font-size: 28px; color: #fff; font-weight: bold; }
+  .crosshair-preview[data-ch="3"]::before { content: '+'; font-size: 18px; color: #fff; }
+  .crosshair-preview[data-ch="4"]::before { content: '●'; font-size: 16px; color: #fff; }
+  .crosshair-preview[data-ch="5"]::before { content: '•'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="6"]::before { content: '·'; font-size: 28px; color: #fff; }
+  .crosshair-preview[data-ch="7"]::before { content: '⊕'; font-size: 22px; color: #fff; }
+  .crosshair-preview[data-ch="8"]::before { content: '✚'; font-size: 24px; color: #fff; }
+  .crosshair-preview[data-ch="9"]::before { content: '┼'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="10"]::before { content: '⟨⟩'; font-size: 16px; color: #fff; }
+  .crosshair-preview[data-ch="11"]::before { content: '◉'; font-size: 18px; color: #fff; }
+  .crosshair-preview[data-ch="12"]::before { content: '◎'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="13"]::before { content: '∴'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="14"]::before { content: '⌇'; font-size: 22px; color: #fff; }
+  .crosshair-preview[data-ch="15"]::before { content: '◌'; font-size: 22px; color: #fff; }
+  .crosshair-preview[data-ch="16"]::before { content: '( )'; font-size: 14px; color: #fff; }
+  .crosshair-preview[data-ch="17"]::before { content: '⦿'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="18"]::before { content: '><'; font-size: 16px; color: #fff; }
+  .crosshair-preview[data-ch="19"]::before { content: '╋'; font-size: 20px; color: #fff; }
+  .crosshair-preview[data-ch="20"]::before { content: '⊙'; font-size: 22px; color: #fff; }
+  .crosshair-preview[data-ch="21"]::before { content: '✛'; font-size: 26px; color: #fff; }
+  .crosshair-preview[data-ch="22"]::before { content: '⁜'; font-size: 22px; color: #fff; }
+  .crosshair-preview[data-ch="23"]::before { content: '⬤'; font-size: 14px; color: #fff; }
+
+  .crosshair-num {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .crosshair-item.selected .crosshair-num {
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+
+  /* Color Swatches */
+  .color-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .color-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.2s;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.1);
+  }
+
+  .color-swatch.selected {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent-primary);
+  }
+
+  .color-custom {
+    background: linear-gradient(135deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+
+  /* Movement Presets */
+  .movement-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .preset-btn {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--text-muted);
+    background: var(--bg-hover);
+  }
+
+  .preset-btn.selected {
+    border-color: var(--accent-primary);
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--accent-primary);
   }
 
   /* Autocomplete */
@@ -605,6 +974,12 @@ const countries = [
     box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
   }
 
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
   .submit-note {
     color: var(--text-muted);
     font-size: 0.85rem;
@@ -636,28 +1011,6 @@ const countries = [
     color: var(--link-internal);
   }
 
-  /* Tooltip */
-  .tooltip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    margin-left: 0.35rem;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    cursor: help;
-    vertical-align: middle;
-  }
-
-  .tooltip:hover {
-    color: var(--accent-primary);
-    border-color: var(--accent-primary);
-  }
-
   /* Utility */
   .hidden {
     display: none !important;
@@ -672,10 +1025,21 @@ const countries = [
     .settings-summary {
       grid-template-columns: 1fr;
     }
+
+    .grip-selector {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .crosshair-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 </style>
 
-<script define:vars={{ base }}>
+<script define:vars={{ base, movementPresets: JSON.stringify(movementPresets) }}>
+  // Parse movement presets
+  const presets = JSON.parse(movementPresets);
+
   // Data will be loaded from JSON files
   let playerRegistry = [];
   let collectedPlayers = [];
@@ -756,6 +1120,93 @@ const countries = [
     }
   }
 
+  // Grip Style Selector
+  const gripCards = document.querySelectorAll('.grip-card');
+  const gripInput = document.getElementById('grip');
+
+  gripCards.forEach(card => {
+    card.addEventListener('click', () => {
+      gripCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      gripInput.value = card.dataset.grip;
+    });
+  });
+
+  // Crosshair Selector (multi-select)
+  const crosshairItems = document.querySelectorAll('.crosshair-item');
+  const crosshairInput = document.getElementById('crosshair');
+
+  crosshairItems.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('selected');
+      updateCrosshairValue();
+    });
+  });
+
+  function updateCrosshairValue() {
+    const selected = Array.from(crosshairItems)
+      .filter(item => item.classList.contains('selected'))
+      .map(item => item.dataset.crosshair);
+    crosshairInput.value = selected.join(', ');
+  }
+
+  // Color Swatches
+  const colorSwatches = document.querySelectorAll('.color-swatch');
+  const crosshairColorInput = document.getElementById('crosshairColor');
+  const crosshairColorCustom = document.getElementById('crosshairColorCustom');
+
+  colorSwatches.forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      colorSwatches.forEach(s => s.classList.remove('selected'));
+      swatch.classList.add('selected');
+      const color = swatch.dataset.color;
+      crosshairColorInput.value = color;
+
+      if (color === 'Custom') {
+        crosshairColorCustom.classList.remove('hidden');
+        crosshairColorCustom.focus();
+      } else {
+        crosshairColorCustom.classList.add('hidden');
+      }
+    });
+  });
+
+  crosshairColorCustom.addEventListener('input', () => {
+    crosshairColorInput.value = crosshairColorCustom.value || 'Custom';
+  });
+
+  // Movement Presets
+  const presetBtns = document.querySelectorAll('.preset-btn');
+  const movementCustom = document.getElementById('movement-custom');
+  const movementInputs = {
+    forward: document.getElementById('forward'),
+    back: document.getElementById('back'),
+    left: document.getElementById('left'),
+    right: document.getElementById('right')
+  };
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      const presetId = btn.dataset.preset;
+      const preset = presets.find(p => p.id === presetId);
+
+      if (presetId === 'other') {
+        movementCustom.classList.remove('hidden');
+        // Clear values
+        Object.values(movementInputs).forEach(input => input.value = '');
+      } else if (preset && preset.keys) {
+        movementCustom.classList.add('hidden');
+        movementInputs.forward.value = preset.keys.forward;
+        movementInputs.back.value = preset.keys.back;
+        movementInputs.left.value = preset.keys.left;
+        movementInputs.right.value = preset.keys.right;
+      }
+    });
+  });
+
   // Autocomplete for nickname
   let selectedIndex = -1;
   let filteredPlayers = [];
@@ -769,7 +1220,6 @@ const countries = [
       return;
     }
 
-    // Search registry
     filteredPlayers = playerRegistry
       .filter(p => p.name.toLowerCase().includes(query))
       .slice(0, 20);
@@ -779,7 +1229,6 @@ const countries = [
       return;
     }
 
-    // Render results
     autocompleteResults.innerHTML = filteredPlayers.map((p, i) => {
       const hasProfile = collectedPlayers.some(cp => cp.steamId === p.steamId);
       return `
@@ -796,7 +1245,6 @@ const countries = [
     autocompleteResults.classList.remove('hidden');
   });
 
-  // Keyboard navigation for autocomplete
   nicknameInput.addEventListener('keydown', function(e) {
     if (autocompleteResults.classList.contains('hidden')) return;
 
@@ -823,7 +1271,6 @@ const countries = [
     });
   }
 
-  // Click on autocomplete item
   autocompleteResults.addEventListener('click', function(e) {
     const item = e.target.closest('.autocomplete-item');
     if (item) {
@@ -832,13 +1279,11 @@ const countries = [
     }
   });
 
-  // Select a player
   function selectPlayer(player) {
     nicknameInput.value = player.name;
     document.getElementById('steamId').value = player.steamId || '';
     hideAutocomplete();
 
-    // Check if player has collected settings
     const collected = collectedPlayers.find(cp => cp.steamId === player.steamId);
     if (collected) {
       prefillForm(collected);
@@ -848,13 +1293,10 @@ const countries = [
     }
   }
 
-  // Pre-fill form with collected player data
   function prefillForm(data) {
-    // Identity
     if (data.realName) document.getElementById('realName').value = data.realName;
     if (data.country) document.getElementById('country').value = data.country;
 
-    // Hardware
     setSelectValue('mouse', data.mouse);
     setSelectValue('mousepad', data.mousepad);
     setSelectValue('keyboard', data.keyboard);
@@ -862,54 +1304,103 @@ const countries = [
     setSelectValue('headset', data.headset);
     if (data.skates) document.getElementById('skates').value = data.skates;
 
-    // Mouse settings
     if (data.dpi) document.getElementById('dpi').value = data.dpi;
     if (data.sensitivity) document.getElementById('sensitivity').value = data.sensitivity;
+    if (data.m_cpi) document.getElementById('m_cpi').value = data.m_cpi;
     if (data.acceleration) document.getElementById('acceleration').value = 'true';
     if (data.accelValue) document.getElementById('accelValue').value = data.accelValue;
     if (data.rawInput !== undefined) document.getElementById('rawInput').value = data.rawInput.toString();
     if (data.invertedMouse) document.getElementById('invertedMouse').value = 'true';
-    if (data.grip) document.getElementById('grip').value = data.grip;
 
-    // Game settings
+    // Grip
+    if (data.grip) {
+      gripInput.value = data.grip;
+      gripCards.forEach(card => {
+        card.classList.toggle('selected', card.dataset.grip === data.grip);
+      });
+    }
+
     if (data.fov) document.getElementById('fov').value = data.fov;
-    if (data.crosshair) document.getElementById('crosshair').value = data.crosshair;
-    if (data.crosshairColor) document.getElementById('crosshairColor').value = data.crosshairColor;
+
+    // Crosshair
+    if (data.crosshair) {
+      crosshairInput.value = data.crosshair;
+      const values = data.crosshair.split(',').map(v => v.trim());
+      crosshairItems.forEach(item => {
+        item.classList.toggle('selected', values.includes(item.dataset.crosshair));
+      });
+    }
+
+    // Crosshair color
+    if (data.crosshairColor) {
+      crosshairColorInput.value = data.crosshairColor;
+      const matchingSwatch = Array.from(colorSwatches).find(s => s.dataset.color === data.crosshairColor);
+      if (matchingSwatch) {
+        colorSwatches.forEach(s => s.classList.remove('selected'));
+        matchingSwatch.classList.add('selected');
+      } else {
+        // Custom color
+        colorSwatches.forEach(s => s.classList.remove('selected'));
+        document.querySelector('.color-custom').classList.add('selected');
+        crosshairColorCustom.value = data.crosshairColor;
+        crosshairColorCustom.classList.remove('hidden');
+      }
+    }
+
     if (data.enemyModel) document.getElementById('enemyModel').value = data.enemyModel;
 
-    // Binds
-    if (data.forward) document.getElementById('forward').value = data.forward;
-    if (data.back) document.getElementById('back').value = data.back;
-    if (data.left) document.getElementById('left').value = data.left;
-    if (data.right) document.getElementById('right').value = data.right;
+    // Movement - try to match preset
+    if (data.forward && data.back && data.left && data.right) {
+      movementInputs.forward.value = data.forward;
+      movementInputs.back.value = data.back;
+      movementInputs.left.value = data.left;
+      movementInputs.right.value = data.right;
+
+      // Check if matches a preset
+      const matchingPreset = presets.find(p =>
+        p.keys &&
+        p.keys.forward === data.forward &&
+        p.keys.back === data.back &&
+        p.keys.left === data.left &&
+        p.keys.right === data.right
+      );
+
+      if (matchingPreset) {
+        presetBtns.forEach(btn => {
+          btn.classList.toggle('selected', btn.dataset.preset === matchingPreset.id);
+        });
+        movementCustom.classList.add('hidden');
+      } else {
+        presetBtns.forEach(btn => {
+          btn.classList.toggle('selected', btn.dataset.preset === 'other');
+        });
+        movementCustom.classList.remove('hidden');
+      }
+    }
+
     if (data.jump) document.getElementById('jump').value = data.jump;
     if (data.crouch) document.getElementById('crouch').value = data.crouch;
     if (data.attack) document.getElementById('attack').value = data.attack;
     if (data.zoom) document.getElementById('zoom').value = data.zoom;
 
-    // System
     if (data.gpu) document.getElementById('gpu').value = data.gpu;
     if (data.cpu) document.getElementById('cpu').value = data.cpu;
 
-    // Show accel value field if acceleration is enabled
     toggleAccelField();
   }
 
-  // Set select value, handling "Other" case
   function setSelectValue(selectId, value) {
     const select = document.getElementById(selectId);
     const otherInput = document.getElementById(selectId + 'Other');
 
     if (!value) return;
 
-    // Check if value exists in options
     const optionExists = Array.from(select.options).some(opt => opt.value === value);
 
     if (optionExists) {
       select.value = value;
       otherInput?.classList.add('hidden');
     } else {
-      // Use "Other" option
       select.value = '__other__';
       if (otherInput) {
         otherInput.value = value;
@@ -918,7 +1409,6 @@ const countries = [
     }
   }
 
-  // Show current settings summary
   function showCurrentSettings(data) {
     const items = [
       { label: 'DPI', value: data.dpi },
@@ -941,7 +1431,6 @@ const countries = [
     currentSettingsPanel.classList.remove('hidden');
   }
 
-  // Get hardware name from slug
   function getHardwareName(category, slug) {
     if (!slug) return '';
     const items = hardwareOptions[category] || [];
@@ -955,7 +1444,6 @@ const countries = [
     selectedIndex = -1;
   }
 
-  // Close autocomplete when clicking outside
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.autocomplete-wrapper')) {
       hideAutocomplete();
@@ -1018,15 +1506,12 @@ const countries = [
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         console.error('Formspree error:', response.status, data);
-        // If AJAX fails, try native form submission
         if (confirm('AJAX submission failed. Try native form submission?')) {
-          form.removeEventListener('submit', arguments.callee);
           form.submit();
         }
       }
     } catch (err) {
       console.error('Submission error:', err);
-      // If fetch fails entirely, try native form submission
       if (confirm('Network error. Try native form submission?')) {
         form.submit();
       }
@@ -1036,7 +1521,6 @@ const countries = [
     }
   });
 
-  // Utility: escape HTML
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
