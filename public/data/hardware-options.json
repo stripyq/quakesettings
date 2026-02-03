@@ -2895,9 +2895,114 @@
       "brand": "A4Tech"
     },
     {
+      "slug": "acer-okw220",
+      "name": "Acer OKW220",
+      "brand": "Acer"
+    },
+    {
+      "slug": "ajazz-ak820-max",
+      "name": "AJAZZ AK820 Max",
+      "brand": "AJAZZ"
+    },
+    {
+      "slug": "akko-3061s",
+      "name": "Akko 3061S",
+      "brand": "Akko"
+    },
+    {
+      "slug": "akko-mod-007b-he-v2",
+      "name": "Akko Mod 007b HE v2",
+      "brand": "Akko"
+    },
+    {
+      "slug": "akko-mod-007b-he-v3-yotd",
+      "name": "Akko Mod 007b HE v3 YOTD",
+      "brand": "Akko"
+    },
+    {
       "slug": "akko-7th-anniversary-mod-007-pc",
       "name": "Akko MOD007 PC",
       "brand": "Akko"
+    },
+    {
+      "slug": "antgamer-agk75",
+      "name": "AntGamer AGK75",
+      "brand": "AntGamer"
+    },
+    {
+      "slug": "arbiter-neo-tokyo-polar65",
+      "name": "Arbiter Neo Tokyo Polar65",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar65",
+      "name": "Arbiter Polar65",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar65-calabera-edition",
+      "name": "Arbiter Polar65 Calabera Edition",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar65-dual-rail",
+      "name": "Arbiter Polar65 Dual Rail",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar65-pro",
+      "name": "Arbiter Polar65 Pro",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar65-yuki-aim",
+      "name": "Arbiter Polar65 Yuki Aim",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-polar75-pro",
+      "name": "Arbiter Polar75 Pro",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "arbiter-hm-collab-65",
+      "name": "Arbiter Studio HM Collab 65",
+      "brand": "Arbiter"
+    },
+    {
+      "slug": "asus-rog-falchion-ace-hfx",
+      "name": "Asus ROG Falchion ACE HFX",
+      "brand": "Asus"
+    },
+    {
+      "slug": "attack-shark-k85",
+      "name": "Attack Shark K85",
+      "brand": "Attack Shark"
+    },
+    {
+      "slug": "aula-win68-he",
+      "name": "AULA Win68 HE",
+      "brand": "AULA"
+    },
+    {
+      "slug": "backspace-oasis75",
+      "name": "Backspace Oasis75",
+      "brand": "Backspace"
+    },
+    {
+      "slug": "boyi-66pro",
+      "name": "BOYI 66Pro",
+      "brand": "BOYI"
+    },
+    {
+      "slug": "cidoo-c75",
+      "name": "Cidoo C75",
+      "brand": "Cidoo"
+    },
+    {
+      "slug": "click-clack-x-kochi-hummingbird-68",
+      "name": "Click Clack x Kochi Hummingbird 68",
+      "brand": "Click Clack x Kochi"
     },
     {
       "slug": "cooler-master-mk730",
@@ -2920,9 +3025,39 @@
       "brand": "Corsair"
     },
     {
+      "slug": "corsair-k70-max",
+      "name": "Corsair K70 Max",
+      "brand": "Corsair"
+    },
+    {
+      "slug": "corsair-k70-pro",
+      "name": "Corsair K70 Pro",
+      "brand": "Corsair"
+    },
+    {
       "slug": "corsair-k95-rgb-platinum",
       "name": "Corsair K95 RGB Platinum",
       "brand": "Corsair"
+    },
+    {
+      "slug": "cox-cnk84w",
+      "name": "COX CNK84W",
+      "brand": "COX"
+    },
+    {
+      "slug": "dareu-a70-he",
+      "name": "Dareu A70 HE",
+      "brand": "Dareu"
+    },
+    {
+      "slug": "dareu-ek75",
+      "name": "DAREU EK75",
+      "brand": "DAREU"
+    },
+    {
+      "slug": "dark-project-kd83a",
+      "name": "Dark Project KD83A",
+      "brand": "Dark Project"
     },
     {
       "slug": "dark-project-kd87a",
@@ -2930,13 +3065,58 @@
       "brand": "Dark Project"
     },
     {
+      "slug": "darmoshark-kt65",
+      "name": "Darmoshark KT65",
+      "brand": "Darmoshark"
+    },
+    {
+      "slug": "darmoshark-kt68",
+      "name": "Darmoshark KT68",
+      "brand": "Darmoshark"
+    },
+    {
       "slug": "das-keyboard-4-ultimate",
       "name": "Das Keyboard 4 Ultimate",
       "brand": "Das Keyboard"
     },
     {
+      "slug": "device-armoury-rx-75",
+      "name": "Device Armoury RX-75",
+      "brand": "Device Armoury"
+    },
+    {
       "slug": "drunkdeer-a75",
       "name": "DrunkDeer A75",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-a75-master",
+      "name": "DrunkDeer A75 Master",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-a75-pro",
+      "name": "DrunkDeer A75 Pro",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-a75-ultra",
+      "name": "DrunkDeer A75 Ultra",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-g60",
+      "name": "DrunkDeer G60",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-g65",
+      "name": "DrunkDeer G65",
+      "brand": "DrunkDeer"
+    },
+    {
+      "slug": "drunkdeer-g75",
+      "name": "DrunkDeer G75",
       "brand": "DrunkDeer"
     },
     {
@@ -2950,9 +3130,219 @@
       "brand": "Ducky"
     },
     {
+      "slug": "durgod-k100",
+      "name": "Durgod K100",
+      "brand": "Durgod"
+    },
+    {
+      "slug": "elecom-vk600a",
+      "name": "Elecom VK600A",
+      "brand": "Elecom"
+    },
+    {
+      "slug": "elecom-vk720a",
+      "name": "Elecom VK720A",
+      "brand": "Elecom"
+    },
+    {
+      "slug": "endgame-gear-kb65he",
+      "name": "Endgame Gear KB65HE",
+      "brand": "Endgame Gear"
+    },
+    {
+      "slug": "everglide-ae68",
+      "name": "Everglide AE68",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "everglide-ae68-v2",
+      "name": "Everglide AE68 V2",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "everglide-ae75",
+      "name": "Everglide AE75",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "everglide-su68",
+      "name": "Everglide SU68",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "everglide-su75",
+      "name": "Everglide SU75",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "everglide-su75-ultra",
+      "name": "Everglide SU75 Ultra",
+      "brand": "Everglide"
+    },
+    {
+      "slug": "eweadn-battle68",
+      "name": "EWEADN Battle68",
+      "brand": "EWEADN"
+    },
+    {
+      "slug": "fierce-gaming-gear-fire68",
+      "name": "Fierce Gaming Gear Fire68",
+      "brand": "Fierce Gaming Gear"
+    },
+    {
+      "slug": "fierce-gaming-gear-fire68-pro",
+      "name": "Fierce Gaming Gear Fire68 Pro",
+      "brand": "Fierce Gaming Gear"
+    },
+    {
+      "slug": "fierce-gaming-gear-fire68-ultra",
+      "name": "Fierce Gaming Gear Fire68 Ultra",
+      "brand": "Fierce Gaming Gear"
+    },
+    {
+      "slug": "finalmouse-centerpiece",
+      "name": "Finalmouse Centerpiece",
+      "brand": "Finalmouse"
+    },
+    {
+      "slug": "fl-esports-gp75-rapid-trigger",
+      "name": "FL ESPORTS GP75 Rapid Trigger",
+      "brand": "FL ESPORTS"
+    },
+    {
+      "slug": "flux-keyboard",
+      "name": "Flux Keyboard",
+      "brand": "Flux"
+    },
+    {
+      "slug": "gamakay-tk68-he",
+      "name": "Gamakay TK68 HE",
+      "brand": "Gamakay"
+    },
+    {
+      "slug": "gamakay-tk75-he",
+      "name": "Gamakay TK75 HE",
+      "brand": "Gamakay"
+    },
+    {
+      "slug": "geonworks-venom60he",
+      "name": "Geonworks Venom60HE",
+      "brand": "Geonworks"
+    },
+    {
+      "slug": "geonworks-venom87he",
+      "name": "Geonworks Venom87HE",
+      "brand": "Geonworks"
+    },
+    {
+      "slug": "geonworks-venom88he",
+      "name": "Geonworks Venom88HE",
+      "brand": "Geonworks"
+    },
+    {
+      "slug": "glorious-gmmk-3-he-65",
+      "name": "Glorious GMMK 3 HE 65",
+      "brand": "Glorious"
+    },
+    {
+      "slug": "glorious-gmmk-3-he-75",
+      "name": "Glorious GMMK 3 HE 75",
+      "brand": "Glorious"
+    },
+    {
+      "slug": "glorious-gmmk-3-he-full",
+      "name": "Glorious GMMK 3 HE Full",
+      "brand": "Glorious"
+    },
+    {
+      "slug": "glorious-gmmk-3-pro-he",
+      "name": "Glorious GMMK 3 Pro HE",
+      "brand": "Glorious"
+    },
+    {
+      "slug": "gmdk-gm87",
+      "name": "GMDK GM87",
+      "brand": "GMDK"
+    },
+    {
+      "slug": "higround-performance-base-65",
+      "name": "Higround Performance Base 65",
+      "brand": "Higround"
+    },
+    {
       "slug": "hyperx-alloy-origins",
       "name": "HyperX Alloy Origins",
       "brand": "HyperX"
+    },
+    {
+      "slug": "iqunix-ez60",
+      "name": "iQunix EZ60",
+      "brand": "iQunix"
+    },
+    {
+      "slug": "iqunix-ez63",
+      "name": "iQunix EZ63",
+      "brand": "iQunix"
+    },
+    {
+      "slug": "iqunix-ez75",
+      "name": "iQunix EZ75",
+      "brand": "iQunix"
+    },
+    {
+      "slug": "irok-mu68",
+      "name": "IROK Mu68",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-mu68-pro",
+      "name": "IROK Mu68 Pro",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-na87",
+      "name": "IROK NA87",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-na87-pro",
+      "name": "IROK NA87 Pro",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-nd63",
+      "name": "IROK ND63",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-nd63-pro",
+      "name": "IROK ND63 Pro",
+      "brand": "IROK"
+    },
+    {
+      "slug": "irok-nd75",
+      "name": "IROK ND75",
+      "brand": "IROK"
+    },
+    {
+      "slug": "kbdfans-mm-gaming-keyboard-kit",
+      "name": "KBDfans MM Gaming Keyboard Kit",
+      "brand": "KBDfans"
+    },
+    {
+      "slug": "kbdfans-tiger-lite-gaming",
+      "name": "KBDfans Tiger Lite Gaming",
+      "brand": "KBDfans"
+    },
+    {
+      "slug": "kbdfans-tofix-he",
+      "name": "KBDfans Tofix HE",
+      "brand": "KBDfans"
+    },
+    {
+      "slug": "keychron-k2-he",
+      "name": "Keychron K2 HE",
+      "brand": "Keychron"
     },
     {
       "slug": "keychron-k8",
@@ -2960,9 +3350,109 @@
       "brand": "Keychron"
     },
     {
+      "slug": "keychron-q10he",
+      "name": "Keychron Q10HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q11he",
+      "name": "Keychron Q11HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q13he",
+      "name": "Keychron Q13HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q14he",
+      "name": "Keychron Q14HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q1he",
+      "name": "Keychron Q1HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q2he",
+      "name": "Keychron Q2HE",
+      "brand": "Keychron"
+    },
+    {
       "slug": "keychron-q3-he-8k",
       "name": "Keychron Q3 HE 8K",
       "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q5he",
+      "name": "Keychron Q5HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keychron-q6he",
+      "name": "Keychron Q6HE",
+      "brand": "Keychron"
+    },
+    {
+      "slug": "keydous-nj68-cp",
+      "name": "Keydous NJ68-CP",
+      "brand": "Keydous"
+    },
+    {
+      "slug": "keydous-nj80-cp",
+      "name": "Keydous NJ80-CP",
+      "brand": "Keydous"
+    },
+    {
+      "slug": "keydous-nj98cp",
+      "name": "Keydous NJ98CP",
+      "brand": "Keydous"
+    },
+    {
+      "slug": "keydous-nj98cp-pro",
+      "name": "Keydous NJ98CP-Pro",
+      "brand": "Keydous"
+    },
+    {
+      "slug": "keysme-aim04",
+      "name": "KEYSME AIM04",
+      "brand": "KEYSME"
+    },
+    {
+      "slug": "kzzi-g68",
+      "name": "KZZI G68",
+      "brand": "KZZI"
+    },
+    {
+      "slug": "lamzu-atlantis-pro-keyboard",
+      "name": "Lamzu Atlantis Pro Keyboard",
+      "brand": "Lamzu"
+    },
+    {
+      "slug": "lamzu-jet",
+      "name": "Lamzu Jet",
+      "brand": "Lamzu"
+    },
+    {
+      "slug": "latenpow-looting60",
+      "name": "Latenpow Looting60",
+      "brand": "Latenpow"
+    },
+    {
+      "slug": "latenpow-looting66",
+      "name": "Latenpow Looting66",
+      "brand": "Latenpow"
+    },
+    {
+      "slug": "latenpow-looting68",
+      "name": "Latenpow Looting68",
+      "brand": "Latenpow"
+    },
+    {
+      "slug": "latenpow-looting75",
+      "name": "Latenpow Looting75",
+      "brand": "Latenpow"
     },
     {
       "slug": "leopold-fc750r",
@@ -3010,9 +3500,109 @@
       "brand": "Logitech"
     },
     {
+      "slug": "luminikey-magger68-performance",
+      "name": "Luminikey Magger68 Performance",
+      "brand": "Luminikey"
+    },
+    {
+      "slug": "luminikey-magger68-professional",
+      "name": "Luminikey Magger68 Professional",
+      "brand": "Luminikey"
+    },
+    {
+      "slug": "madlions-mad60-he",
+      "name": "Madlions Mad60 HE",
+      "brand": "Madlions"
+    },
+    {
+      "slug": "madlions-mad68-he",
+      "name": "Madlions Mad68 HE",
+      "brand": "Madlions"
+    },
+    {
+      "slug": "madlions-nano68-he",
+      "name": "Madlions Nano68 HE",
+      "brand": "Madlions"
+    },
+    {
       "slug": "magegee-sky81-gasket",
       "name": "MageGee Sky81 Gasket",
       "brand": "MageGee"
+    },
+    {
+      "slug": "matrix-lab-corsa",
+      "name": "Matrix Lab Corsa",
+      "brand": "Matrix Lab"
+    },
+    {
+      "slug": "matrix-lab-navi",
+      "name": "Matrix Lab Navi",
+      "brand": "Matrix Lab"
+    },
+    {
+      "slug": "mchose-ace60",
+      "name": "MCHOSE Ace60",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "mchose-ace60-pro",
+      "name": "MCHOSE Ace60 Pro",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "mchose-zero75",
+      "name": "MCHOSE ZERO75",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "meletrix-boog75",
+      "name": "Meletrix Boog75",
+      "brand": "Meletrix"
+    },
+    {
+      "slug": "meletrix-zoom65v3-module",
+      "name": "Meletrix Zoom65V3 Module",
+      "brand": "Meletrix"
+    },
+    {
+      "slug": "meletrix-zoom75-he",
+      "name": "Meletrix Zoom75 HE",
+      "brand": "Meletrix"
+    },
+    {
+      "slug": "meletrix-zoom75he-module",
+      "name": "Meletrix Zoom75HE Module",
+      "brand": "Meletrix"
+    },
+    {
+      "slug": "melgeek-cyber01",
+      "name": "Melgeek Cyber01",
+      "brand": "Melgeek"
+    },
+    {
+      "slug": "melgeek-made68",
+      "name": "Melgeek Made68",
+      "brand": "Melgeek"
+    },
+    {
+      "slug": "melgeek-made68-pro",
+      "name": "Melgeek Made68 Pro",
+      "brand": "Melgeek"
+    },
+    {
+      "slug": "melgeek-made68-ultra",
+      "name": "Melgeek Made68 Ultra",
+      "brand": "Melgeek"
+    },
+    {
+      "slug": "melgeek-made84-pro",
+      "name": "Melgeek Made84 Pro",
+      "brand": "Melgeek"
+    },
+    {
+      "slug": "melgeek-mojo68-rt",
+      "name": "Melgeek Mojo68 RT",
+      "brand": "Melgeek"
     },
     {
       "slug": "microsoft",
@@ -3020,9 +3610,44 @@
       "brand": "Microsoft"
     },
     {
+      "slug": "monsgeek-m1he",
+      "name": "Monsgeek M1HE",
+      "brand": "Monsgeek"
+    },
+    {
+      "slug": "monsgeek-m1he-wireless",
+      "name": "Monsgeek M1HE Wireless",
+      "brand": "Monsgeek"
+    },
+    {
+      "slug": "monsgeek-mg75s",
+      "name": "Monsgeek MG75S",
+      "brand": "Monsgeek"
+    },
+    {
+      "slug": "morkblade-bold-tkl-he",
+      "name": "MorkBlade Bold TKL HE",
+      "brand": "MorkBlade"
+    },
+    {
       "slug": "myria",
       "name": "Myria Keyboard",
       "brand": "Myria"
+    },
+    {
+      "slug": "newmen-gm560pro",
+      "name": "NEWMEN GM560Pro",
+      "brand": "NEWMEN"
+    },
+    {
+      "slug": "nuphy-air60-he",
+      "name": "NuPhy Air60 HE",
+      "brand": "NuPhy"
+    },
+    {
+      "slug": "nuphy-air75he",
+      "name": "NuPhy Air75HE",
+      "brand": "NuPhy"
     },
     {
       "slug": "nuphy-field75-he",
@@ -3038,6 +3663,86 @@
       "slug": "nuphy-halo75",
       "name": "NuPhy Halo75",
       "brand": "NuPhy"
+    },
+    {
+      "slug": "nuphy-halo75-he",
+      "name": "NuPhy Halo75 HE",
+      "brand": "NuPhy"
+    },
+    {
+      "slug": "nyfter-75",
+      "name": "Nyfter 75",
+      "brand": "Nyfter"
+    },
+    {
+      "slug": "piifox-walker75",
+      "name": "Piifox Walker75",
+      "brand": "Piifox"
+    },
+    {
+      "slug": "pulsar-es-70-he",
+      "name": "Pulsar eS 70 HE",
+      "brand": "Pulsar"
+    },
+    {
+      "slug": "pulsar-pcmk2-he",
+      "name": "Pulsar PCMK2 HE",
+      "brand": "Pulsar"
+    },
+    {
+      "slug": "pulsar-pmmk2-60he",
+      "name": "Pulsar PMMK2 60HE",
+      "brand": "Pulsar"
+    },
+    {
+      "slug": "pwnage-zenblade",
+      "name": "Pwnage Zenblade",
+      "brand": "Pwnage"
+    },
+    {
+      "slug": "atk-x-qwertykeys-hex80",
+      "name": "ATK x QwertyKeys Hex80",
+      "brand": "QwertyKeys"
+    },
+    {
+      "slug": "qwertykeys-neo65-sonic-he-plus",
+      "name": "QwertyKeys Neo65 Sonic HE+",
+      "brand": "QwertyKeys"
+    },
+    {
+      "slug": "qwertykeys-qk65v2-classic",
+      "name": "QwertyKeys QK65v2 Classic",
+      "brand": "QwertyKeys"
+    },
+    {
+      "slug": "rakka-60-origin",
+      "name": "RAKKA 60 Origin",
+      "brand": "RAKKA"
+    },
+    {
+      "slug": "rakka-edge-tkl",
+      "name": "RAKKA Edge TKL",
+      "brand": "RAKKA"
+    },
+    {
+      "slug": "rakka-h60",
+      "name": "RAKKA H60",
+      "brand": "RAKKA"
+    },
+    {
+      "slug": "rakka-holy60",
+      "name": "RAKKA Holy60",
+      "brand": "RAKKA"
+    },
+    {
+      "slug": "rakka-takka60",
+      "name": "RAKKA Takka60",
+      "brand": "RAKKA"
+    },
+    {
+      "slug": "ranked-master-m65",
+      "name": "Ranked Master M65",
+      "brand": "Ranked Master"
     },
     {
       "slug": "razer-blackwidow",
@@ -3065,8 +3770,33 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-huntsman-v2",
+      "name": "Razer Huntsman V2",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-huntsman-v2-mini",
+      "name": "Razer Huntsman V2 Mini",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-huntsman-v2-mini-analog",
+      "name": "Razer Huntsman V2 Mini Analog",
+      "brand": "Razer"
+    },
+    {
       "slug": "razer-huntsman-v2-tenkeyless",
       "name": "Razer Huntsman V2 Tenkeyless",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-huntsman-v3",
+      "name": "Razer Huntsman V3",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-huntsman-v3-mini",
+      "name": "Razer Huntsman V3 Mini",
       "brand": "Razer"
     },
     {
@@ -3075,9 +3805,79 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-huntsman-v3-tkl",
+      "name": "Razer Huntsman V3 TKL",
+      "brand": "Razer"
+    },
+    {
+      "slug": "realforce-gx1",
+      "name": "Realforce GX1",
+      "brand": "Realforce"
+    },
+    {
+      "slug": "redragon-fizz-k617",
+      "name": "Redragon Fizz K617",
+      "brand": "Redragon"
+    },
+    {
+      "slug": "redragon-k683wb",
+      "name": "Redragon K683WB",
+      "brand": "Redragon"
+    },
+    {
+      "slug": "redragon-k956",
+      "name": "Redragon K956",
+      "brand": "Redragon"
+    },
+    {
+      "slug": "redragon-m61",
+      "name": "Redragon M61",
+      "brand": "Redragon"
+    },
+    {
+      "slug": "redragon-m68",
+      "name": "Redragon M68",
+      "brand": "Redragon"
+    },
+    {
+      "slug": "sam-mk-magnet67",
+      "name": "Sam MK Magnet67",
+      "brand": "Sam MK"
+    },
+    {
       "slug": "sharkoon-skiller-sgk3",
       "name": "Sharkoon Skiller SGK3",
       "brand": "Sharkoon"
+    },
+    {
+      "slug": "shortcut-studio-bridge-75-he",
+      "name": "ShortCut Studio Bridge 75 HE",
+      "brand": "ShortCut Studio"
+    },
+    {
+      "slug": "sikakeyb-ck75",
+      "name": "SIKAKEYB CK75",
+      "brand": "SIKAKEYB"
+    },
+    {
+      "slug": "sikakeyb-ck75us",
+      "name": "SIKAKEYB CK75US",
+      "brand": "SIKAKEYB"
+    },
+    {
+      "slug": "sikakeyb-hm66",
+      "name": "SIKAKEYB HM66",
+      "brand": "SIKAKEYB"
+    },
+    {
+      "slug": "sikakeyb-hm80",
+      "name": "SIKAKEYB HM80",
+      "brand": "SIKAKEYB"
+    },
+    {
+      "slug": "skn-he75",
+      "name": "SKN HE75",
+      "brand": "SKN"
     },
     {
       "slug": "spc-gear",
@@ -3125,9 +3925,54 @@
       "brand": "SteelSeries"
     },
     {
+      "slug": "steelseries-apex-pro-tkl-2023",
+      "name": "SteelSeries Apex Pro TKL 2023",
+      "brand": "SteelSeries"
+    },
+    {
+      "slug": "steelseries-apex-pro-tkl-2023-wireless",
+      "name": "SteelSeries Apex Pro TKL 2023 Wireless",
+      "brand": "SteelSeries"
+    },
+    {
       "slug": "steelseries-apex-pro-tkl-gen-3",
       "name": "SteelSeries Apex Pro TKL Gen 3",
       "brand": "SteelSeries"
+    },
+    {
+      "slug": "suryfyy-gk893b-pro",
+      "name": "Suryfyy GK893B Pro",
+      "brand": "Suryfyy"
+    },
+    {
+      "slug": "teamwolf-hitboy-hk25",
+      "name": "TEAMWOLF HITBOY HK25",
+      "brand": "TEAMWOLF"
+    },
+    {
+      "slug": "teamwolf-raven-68",
+      "name": "TEAMWOLF Raven 68",
+      "brand": "TEAMWOLF"
+    },
+    {
+      "slug": "titannation-titan68he",
+      "name": "TitanNation Titan68HE",
+      "brand": "TitanNation"
+    },
+    {
+      "slug": "titannation-titan68he-pro",
+      "name": "TitanNation Titan68HE Pro",
+      "brand": "TitanNation"
+    },
+    {
+      "slug": "tkd-cycle8",
+      "name": "TKD Cycle8",
+      "brand": "TKD"
+    },
+    {
+      "slug": "turtle-beach-vulcan-ii-tkl-pro",
+      "name": "Turtle Beach Vulcan II TKL Pro",
+      "brand": "Turtle Beach"
     },
     {
       "slug": "uvi-gear-pride-mini",
@@ -3135,8 +3980,118 @@
       "brand": "UVI"
     },
     {
+      "slug": "valkyrie-mag-75",
+      "name": "Valkyrie Mag 75",
+      "brand": "Valkyrie"
+    },
+    {
+      "slug": "valkyrie-vk-99",
+      "name": "Valkyrie VK-99",
+      "brand": "Valkyrie"
+    },
+    {
+      "slug": "varmilo-aurora-65",
+      "name": "Varmilo Aurora 65",
+      "brand": "Varmilo"
+    },
+    {
+      "slug": "varmilo-muse65",
+      "name": "Varmilo Muse65",
+      "brand": "Varmilo"
+    },
+    {
+      "slug": "varmilo-victory",
+      "name": "Varmilo Victory",
+      "brand": "Varmilo"
+    },
+    {
+      "slug": "vxe-a75",
+      "name": "VXE A75",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk-edge-60he",
+      "name": "VXE ATK Edge 60HE",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk68",
+      "name": "VXE ATK68",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk68-air",
+      "name": "VXE ATK68 AIR",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk68-v2",
+      "name": "VXE ATK68 v2",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk68-v2-pro",
+      "name": "VXE ATK68 v2 Pro",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk68-l",
+      "name": "VXE ATK68-L",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk75",
+      "name": "VXE ATK75",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-atk75-l",
+      "name": "VXE ATK75-L",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-rs6",
+      "name": "VXE RS6",
+      "brand": "VXE"
+    },
+    {
+      "slug": "vxe-rs7",
+      "name": "VXE RS7",
+      "brand": "VXE"
+    },
+    {
+      "slug": "waizowl-lightning60",
+      "name": "Waizowl Lightning60",
+      "brand": "Waizowl"
+    },
+    {
+      "slug": "wlmouse-ying63",
+      "name": "WLmouse Ying63",
+      "brand": "WLmouse"
+    },
+    {
+      "slug": "wobkey-rainy75-he",
+      "name": "Wobkey Rainy75 HE",
+      "brand": "Wobkey"
+    },
+    {
+      "slug": "womier-m68",
+      "name": "Womier M68",
+      "brand": "Womier"
+    },
+    {
       "slug": "wooting-60he",
       "name": "Wooting 60HE",
+      "brand": "Wooting"
+    },
+    {
+      "slug": "wooting-60he-v2",
+      "name": "Wooting 60HE v2",
+      "brand": "Wooting"
+    },
+    {
+      "slug": "wooting-60he-plus",
+      "name": "Wooting 60HE+",
       "brand": "Wooting"
     },
     {
@@ -3150,14 +4105,54 @@
       "brand": "Wooting"
     },
     {
+      "slug": "wooting-twohe",
+      "name": "Wooting TwoHE",
+      "brand": "Wooting"
+    },
+    {
+      "slug": "wraith-esports-w75",
+      "name": "Wraith Esports W75",
+      "brand": "Wraith Esports"
+    },
+    {
       "slug": "xtrfy-k2-rgb",
       "name": "Xtrfy K2 RGB",
       "brand": "Xtrfy"
     },
     {
+      "slug": "yunzii-al75-he",
+      "name": "Yunzii AL75 HE",
+      "brand": "Yunzii"
+    },
+    {
       "slug": "z-gaming",
       "name": "Z-Gaming",
       "brand": "Z-Gaming"
+    },
+    {
+      "slug": "zenaim-keyboard-60",
+      "name": "Zenaim Keyboard 60",
+      "brand": "Zenaim"
+    },
+    {
+      "slug": "zenaim-keyboard-tkl",
+      "name": "Zenaim Keyboard TKL",
+      "brand": "Zenaim"
+    },
+    {
+      "slug": "zifriend-m68",
+      "name": "Zifriend M68",
+      "brand": "Zifriend"
+    },
+    {
+      "slug": "zirnex-herald68-m",
+      "name": "Zirnex Herald68-M",
+      "brand": "Zirnex"
+    },
+    {
+      "slug": "zuoya-x86",
+      "name": "Zuoya x86",
+      "brand": "Zuoya"
     }
   ],
   "monitors": [
