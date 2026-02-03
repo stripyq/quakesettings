@@ -2,7 +2,7 @@ name: Silencep
 steamId: "76561198010942016"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 33.92
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 41.69
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "razer-viper-mini"
-mousepad: "hyperx-fury-s-pro"
-keyboard: "razer-blackwidow"
-monitor: "aoc-q27g4x"
-headset: "sennheiser-pc-350"
+mouse: razer-viper-mini
+mousepad: hyperx-fury-s-pro
+keyboard: razer-blackwidow
+monitor: aoc-q27g4x
+headset: sennheiser-pc-350
+skates: Stock
+enemyModel: Keel
+crosshairColor: Red
+gpuBrand: NVIDIA
+cpuBrand: Intel

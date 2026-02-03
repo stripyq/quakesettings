@@ -2,7 +2,7 @@ name: p5ych0
 steamId: "76561197995121696"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 13.71
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 12.7
@@ -15,7 +15,7 @@ cm360: 37.11
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: "2, 1"
+crosshair: 2, 1
 invertedMouse: false
 forward: w
 back: s
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "glorious-model-o"
-mousepad: "steelseries-qck"
+mouse: glorious-model-o
+mousepad: steelseries-qck
 keyboard: a4tech
-monitor: "asus-tuf-vg259qm"
-headset: "creative-fatal1ty"
+monitor: asus-tuf-vg259qm
+headset: creative-fatal1ty
+skates: Stock
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: Intel

@@ -2,7 +2,7 @@ name: fetzer
 steamId: "76561197968556128"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1231
 duelRatingUpdated: "2026-01-31"
 tdmRating: 11.51
@@ -26,8 +26,13 @@ left: downarrow
 right: rightarrow
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "sharkoon-1337-rgb-v2-gaming-mat"
-keyboard: "corsair-k100-air-wireless"
-monitor: "gigabyte-aorus-fi27q-x"
-headset: "beyerdynamic-dt-990-pro"
+mouse: logitech-g-pro-x-superlight
+mousepad: sharkoon-1337-rgb-v2-gaming-mat
+keyboard: corsair-k100-air-wireless
+monitor: gigabyte-aorus-fi27q-x
+headset: beyerdynamic-dt-990-pro
+skates: Stock
+enemyModel: Tank Jr.
+crosshairColor: Pink
+gpuBrand: NVIDIA
+cpuBrand: AMD

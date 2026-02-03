@@ -2,7 +2,7 @@ name: sno
 steamId: "76561198031267120"
 country: Unknown
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1438
 duelRatingUpdated: "2026-01-31"
 tdmRating: 19.29
@@ -25,8 +25,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "razer-viper-v3-pro"
-mousepad: "artisan-hien-"
-keyboard: "das-keyboard-4-ultimate"
-monitor: "dell-alienware-aw3225qf"
-headset: "drop-sennheiser-pc37x"
+mouse: razer-viper-v3-pro
+mousepad: artisan-hien-
+keyboard: das-keyboard-4-ultimate
+monitor: dell-alienware-aw3225qf
+headset: drop-sennheiser-pc37x
+skates: Stock
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: AMD

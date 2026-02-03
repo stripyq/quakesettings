@@ -2,7 +2,7 @@ name: MAKIE
 steamId: "76561198008234336"
 country: HR
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 23.43
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 31.25
@@ -24,8 +24,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "hyperx-pulsefire-haste-2-wired"
-mousepad: "artisan-hayate-otsu-"
-keyboard: "steelseries-6gv2"
-monitor: "dell-alienware-aw2725df"
-headset: "drop-sennheiser-pc37x"
+mouse: hyperx-pulsefire-haste-2-wired
+mousepad: artisan-hayate-otsu-
+keyboard: steelseries-6gv2
+monitor: dell-alienware-aw2725df
+headset: drop-sennheiser-pc37x
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: INTEL
+cpuBrand: Intel

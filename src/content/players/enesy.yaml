@@ -2,7 +2,7 @@ name: enesy
 steamId: "76561198032236192"
 country: DK
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1425
 duelRatingUpdated: "2026-01-31"
 tdmRating: 32.52
@@ -25,8 +25,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "endgame-gear-op1-8k"
-mousepad: "lethal-gaming-gear-saturn-pro"
-keyboard: "steelseries-apex-pro-mini"
-monitor: "dell-alienware-aw2518hf"
-headset: "sony-wh-1000xm4"
+mouse: endgame-gear-op1-8k
+mousepad: lethal-gaming-gear-saturn-pro
+keyboard: steelseries-apex-pro-mini
+monitor: dell-alienware-aw2518hf
+headset: sony-wh-1000xm4
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

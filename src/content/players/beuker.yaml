@@ -1,12 +1,12 @@
 name: BeukeR
-country: "Unknown"
+country: Unknown
 category: ctf
 ctfRating: 25.26
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 22.42
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
+dataSource: player
+lastUpdated: 2025-01
 dpi: 1200
 sensitivity: 1.85
 edpi: 2220
@@ -27,3 +27,8 @@ mousepad: artisan-zero-
 keyboard: steelseries-apex-pro
 monitor: asus-rog-swift-pg32uqx
 headset: beyerdynamic-dt-770-pro
+skates: Stock
+enemyModel: Tank Jr.
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

@@ -2,7 +2,7 @@ name: b1ohazzard
 steamId: "76561198132543392"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 21.37
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 3.26
@@ -24,7 +24,12 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "razer-deathadder-essential"
-mousepad: "dexp-gm-m-biohazard-"
-monitor: "gigabyte-g27qc"
-headset: "philips-sho9554"
+mouse: razer-deathadder-essential
+mousepad: dexp-gm-m-biohazard-
+monitor: gigabyte-g27qc
+headset: philips-sho9554
+skates: Stock
+enemyModel: Keel
+crosshairColor: Pink
+gpuBrand: NVIDIA
+cpuBrand: Intel

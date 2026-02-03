@@ -2,7 +2,7 @@ name: artemis4
 steamId: "76561198151319264"
 country: SI
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 14.38
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 25.94
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "hyperx-pulsefire-core"
-mousepad: "trust-gxt-756-"
-keyboard: "uvi-gear-pride-mini"
-monitor: "aoc-c24g1"
-headset: "hyperx-cloud-stinger-2"
+mouse: hyperx-pulsefire-core
+mousepad: trust-gxt-756-
+keyboard: uvi-gear-pride-mini
+monitor: aoc-c24g1
+headset: hyperx-cloud-stinger-2
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: AMD

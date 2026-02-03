@@ -2,7 +2,7 @@ name: krysa
 steamId: "76561198044065408"
 country: CZ
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1442
 duelRatingUpdated: "2026-01-31"
 tdmRating: 36.27
@@ -25,7 +25,12 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g102-lightsync"
-mousepad: "razer-goliathus-control"
-monitor: "gigabyte-m28u"
-headset: "hyperx-cloud-ii"
+mouse: logitech-g102-lightsync
+mousepad: razer-goliathus-control
+monitor: gigabyte-m28u
+headset: hyperx-cloud-ii
+skates: Stock
+enemyModel: Keel
+crosshairColor: Blue
+gpuBrand: NVIDIA
+cpuBrand: Intel

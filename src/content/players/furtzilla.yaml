@@ -2,7 +2,7 @@ name: Furtzilla
 steamId: "76561198053186400"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 26.25
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 22.55
@@ -23,8 +23,12 @@ back: s
 left: a
 right: d
 attack: mouse3
-mouse: "razer-viper-mini"
-mousepad: "razer-goliathus-control"
-keyboard: "steelseries-6gv2"
-monitor: "asus-vg259qm"
-headset: "hyperx-cloud-alpha"
+mouse: razer-viper-mini
+mousepad: razer-goliathus-control
+keyboard: steelseries-6gv2
+monitor: asus-vg259qm
+headset: hyperx-cloud-alpha
+skates: Stock
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

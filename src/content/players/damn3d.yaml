@@ -2,7 +2,7 @@ name: damn3d
 steamId: "76561198162507968"
 country: RU
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 26.77
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 27.26
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g304-lightspeed"
-mousepad: "a4tech-x7-500mp"
-keyboard: "z-gaming"
-monitor: "xiaomi-g27i"
-headset: "logitech-g432"
+mouse: logitech-g304-lightspeed
+mousepad: a4tech-x7-500mp
+keyboard: z-gaming
+monitor: xiaomi-g27i
+headset: logitech-g432
+skates: Stock
+enemyModel: Keel
+crosshairColor: Blue, Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

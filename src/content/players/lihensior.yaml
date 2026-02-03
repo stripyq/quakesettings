@@ -2,7 +2,7 @@ name: lihensior
 steamId: "76561198007335392"
 country: PL
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 24.36
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 22.3
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "razer-gigantus"
-keyboard: "keychron-k8"
-monitor: "asus-tuf-gaming-vg279qm"
-headset: "hyperx-cloud-ii"
+mouse: logitech-g-pro-x-superlight
+mousepad: razer-gigantus
+keyboard: keychron-k8
+monitor: asus-tuf-gaming-vg279qm
+headset: hyperx-cloud-ii
+skates: Stock
+enemyModel: Keel
+crosshairColor: Red
+gpuBrand: NVIDIA
+cpuBrand: AMD

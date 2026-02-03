@@ -2,7 +2,7 @@ name: deisma
 steamId: "76561198257310624"
 country: RU
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 21.4
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 10.07
@@ -15,7 +15,7 @@ cm360: 14.43
 acceleration: false
 rawInput: true
 fov: 90
-crosshair: "2, 3, 10, 13, 18"
+crosshair: 2, 3, 10, 13, 18
 invertedMouse: false
 forward: w
 back: s
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight-ii"
-mousepad: "logitech-g640"
-keyboard: "razer-huntsman-mini"
-monitor: "asus-tuf-gaming-vg279qm"
-headset: "apple-airpods-pro-2nd-gen"
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: logitech-g640
+keyboard: razer-huntsman-mini
+monitor: asus-tuf-gaming-vg279qm
+headset: apple-airpods-pro-2nd-gen
+skates: Stock
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: Intel

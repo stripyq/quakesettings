@@ -2,7 +2,7 @@ name: Bolland
 steamId: "76561198354200896"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
 tdmRating: 15.6
@@ -23,8 +23,13 @@ left: j
 right: l
 jump: Space
 attack: Mouse1
-mouse: "logitech-g305-lightspeed"
-mousepad: "steelseries-qck"
-keyboard: "logitech-g413"
-monitor: "aoc-24g15n"
-headset: "jabra-elite-10-gen-2"
+mouse: logitech-g305-lightspeed
+mousepad: steelseries-qck
+keyboard: logitech-g413
+monitor: aoc-24g15n
+headset: jabra-elite-10-gen-2
+skates: Stock
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: Intel

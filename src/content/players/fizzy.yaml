@@ -2,7 +2,7 @@ name: FizzY
 steamId: "76561198129795104"
 country: PL
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 3.9
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 3.9
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight-ii"
-mousepad: "wallhack-skypad-30"
-keyboard: "spc-gear"
-monitor: "dell-alienware-aw2725df"
-headset: "jabra-elite-10-gen-2"
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: wallhack-skypad-30
+keyboard: spc-gear
+monitor: dell-alienware-aw2725df
+headset: jabra-elite-10-gen-2
+skates: Aftermarket
+enemyModel: Keel
+crosshairColor: White
+gpuBrand: NVIDIA
+cpuBrand: AMD

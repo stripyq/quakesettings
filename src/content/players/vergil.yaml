@@ -2,7 +2,7 @@ name: VergiL
 steamId: "76561198140092768"
 country: HR
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1455
 duelRatingUpdated: "2026-01-31"
 tdmRating: 18.8
@@ -25,8 +25,12 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "razer-deathadder-essential"
-mousepad: "razer-goliathus-control"
-keyboard: "razer-cynosa-v2"
-monitor: "aoc-q27g4x"
-headset: "hyperx-cloud-alpha-wireless"
+mouse: razer-deathadder-essential
+mousepad: razer-goliathus-control
+keyboard: razer-cynosa-v2
+monitor: aoc-q27g4x
+headset: hyperx-cloud-alpha-wireless
+enemyModel: Keel
+crosshairColor: Cyan
+gpuBrand: NVIDIA
+cpuBrand: AMD

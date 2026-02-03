@@ -2,7 +2,7 @@ name: ne_raketa
 steamId: "76561198284683840"
 country: Unknown
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 20.71
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 10.39
@@ -24,8 +24,13 @@ left: s
 right: f
 jump: Mouse2
 attack: Mouse1
-mouse: "attack-shark-r6"
-mousepad: "pulsar-paracontrol-v2"
-keyboard: "dark-project-kd87a"
-monitor: "benq-zowie-xl2546"
-headset: "hyperx-cloud-alpha-s"
+mouse: attack-shark-r6
+mousepad: pulsar-paracontrol-v2
+keyboard: dark-project-kd87a
+monitor: benq-zowie-xl2546
+headset: hyperx-cloud-alpha-s
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: Intel

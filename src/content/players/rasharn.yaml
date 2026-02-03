@@ -2,7 +2,7 @@ name: rasharn
 steamId: "76561198049631088"
 country: SE
 category: ctf
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 20.73
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 28.74
@@ -23,8 +23,13 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "artisan-raiden-"
-keyboard: "logitech-g915-tkl"
-monitor: "dell-alienware-aw2723df"
-headset: "logitech-g-pro-x-wireless-headset"
+mouse: logitech-g-pro-x-superlight
+mousepad: artisan-raiden-
+keyboard: logitech-g915-tkl
+monitor: dell-alienware-aw2723df
+headset: logitech-g-pro-x-wireless-headset
+skates: Stock
+enemyModel: Keel
+crosshairColor: Yellow
+gpuBrand: NVIDIA
+cpuBrand: AMD

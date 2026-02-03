@@ -2,7 +2,7 @@ name: cherrypoff
 steamId: "76561198149540640"
 country: RU
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 tdmRating: 39.02
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 36.64
@@ -23,6 +23,11 @@ left: a
 right: d
 jump: Mouse2
 attack: Mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "dark-project-x-playerman-white-glass-dp-id-0002"
-monitor: "benq-zowie-xl2540"
+mouse: logitech-g-pro-x-superlight
+mousepad: dark-project-x-playerman-white-glass-dp-id-0002
+monitor: benq-zowie-xl2540
+skates: Stock
+enemyModel: Keel
+crosshairColor: Pink
+gpuBrand: NVIDIA
+cpuBrand: Intel

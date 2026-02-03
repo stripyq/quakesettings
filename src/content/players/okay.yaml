@@ -1,5 +1,5 @@
 name: Okay.
-country: "Unknown"
+country: Unknown
 category: ctf
 duelRating: 1332
 duelRatingUpdated: "2026-01-31"
@@ -7,8 +7,8 @@ ctfRating: 20.9
 ctfRatingUpdated: "2026-01-31"
 tdmRating: 19.8
 tdmRatingUpdated: "2026-01-31"
-dataSource: "player"
-lastUpdated: "2025-01"
+dataSource: player
+lastUpdated: 2025-01
 dpi: 2000
 sensitivity: 3.8
 edpi: 7600
@@ -28,3 +28,7 @@ mouse: razer-viper-mini
 mousepad: a4tech-ap20s
 keyboard: logitech-g413
 monitor: asus-rog-strix-xg27aqm
+skates: Stock
+crosshairColor: White
+gpuBrand: INTEL
+cpuBrand: Intel
