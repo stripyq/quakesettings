@@ -31,34 +31,71 @@ body {
 }
 
 /* ============================================
-   Links - Visible on Dark Background
+   Links - Color Hierarchy for Clarity
+
+   🟠 Orange (#ff6b35) = Headers/titles (NOT clickable)
+   🔵 Light Blue (#60a5fa) = Internal links (stays on site)
+   🩵 Teal (#4ecdc4) = External/affiliate links (leaves site)
+   ⚪ White = Plain text (not clickable)
    ============================================ */
 
+/* Default: Internal links - Light Blue */
 a {
-  color: var(--accent-secondary);
+  color: #60a5fa;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #6ee7de;
+  color: #93c5fd;
   text-decoration: underline;
 }
 
-/* Product/Hardware links in tables and comparison */
-td a,
-.compare-table a,
-.hardware-link,
-.product-link {
-  color: var(--accent-secondary);
-  font-weight: 500;
+/* External/Affiliate links (products with affiliate URLs) - Teal */
+a[href*="amazon"],
+a[href*="amzn"],
+a.affiliate-link,
+a.product-link,
+a.external-link {
+  color: #4ecdc4;
 }
 
-td a:hover,
-.compare-table a:hover,
-.hardware-link:hover,
-.product-link:hover {
+a[href*="amazon"]:hover,
+a[href*="amzn"]:hover,
+a.affiliate-link:hover,
+a.product-link:hover,
+a.external-link:hover {
   color: #6ee7de;
+}
+
+/* Player name headers in comparison table - Orange (NOT clickable) */
+.player-header,
+.compare-player-name,
+th[class*="player"] {
+  color: #ff6b35 !important;
+  font-weight: 600;
+}
+
+/* Hardware/product cells with affiliate links - Teal */
+td a {
+  color: #4ecdc4;
+}
+
+td a:hover {
+  color: #6ee7de;
+}
+
+/* Player name links (clickable player names in lists) - Light Blue */
+.player-name a,
+a.player-link,
+td.player a {
+  color: #60a5fa;
+}
+
+.player-name a:hover,
+a.player-link:hover,
+td.player a:hover {
+  color: #93c5fd;
 }
 
 /* ============================================
