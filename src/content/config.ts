@@ -119,6 +119,17 @@ const playersCollection = defineCollection({
     tdmRating: z.number().nullable().optional(),
     tdmRatingSource: z.string().optional().default('community'), // "88.214.20.58"
     tdmRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
+    tdmGames: z.number().nullable().optional(), // Number of games played
+
+    // CA (Clan Arena): TrueSkill rating from community tracker (decimal, e.g., 25.56)
+    caRating: z.number().nullable().optional(),
+    caRatingSource: z.string().optional().default('community'), // "88.214.20.58"
+    caRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
+    caGames: z.number().nullable().optional(), // Number of games played
+
+    // Games played counts
+    duelGames: z.number().nullable().optional(),
+    ctfGames: z.number().nullable().optional(),
 
     // Rating History - Peak/Low tracking
     duelRatingPeak: z.number().nullable().optional(),
