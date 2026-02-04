@@ -127,22 +127,28 @@ const topMousepadBrands = [...mousepadBrands.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 5);
 
-// GPU Brand distribution
+// GPU Brand distribution (check both gpuBrand and gpu fields)
 const gpuBrands = new Map<string, number>();
 players.forEach(p => {
-  if (p.data.gpuBrand) {
-    gpuBrands.set(p.data.gpuBrand, (gpuBrands.get(p.data.gpuBrand) || 0) + 1);
+  const brand = p.data.gpuBrand || p.data.gpu;
+  if (brand) {
+    // Normalize to uppercase for consistency
+    const normalizedBrand = brand.toUpperCase();
+    gpuBrands.set(normalizedBrand, (gpuBrands.get(normalizedBrand) || 0) + 1);
   }
 });
 const topGpuBrands = [...gpuBrands.entries()]
   .sort((a, b) => b[1] - a[1]);
 const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
 
-// CPU Brand distribution
+// CPU Brand distribution (check both cpuBrand and cpu fields)
 const cpuBrands = new Map<string, number>();
 players.forEach(p => {
-  if (p.data.cpuBrand) {
-    cpuBrands.set(p.data.cpuBrand, (cpuBrands.get(p.data.cpuBrand) || 0) + 1);
+  const brand = p.data.cpuBrand || p.data.cpu;
+  if (brand) {
+    // Normalize: capitalize first letter
+    const normalizedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
+    cpuBrands.set(normalizedBrand, (cpuBrands.get(normalizedBrand) || 0) + 1);
   }
 });
 const topCpuBrands = [...cpuBrands.entries()]

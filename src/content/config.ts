@@ -194,6 +194,12 @@ const playersCollection = defineCollection({
     monitor: z.string().optional(),
     headset: z.string().optional(),
 
+    // System Hardware
+    gpuBrand: z.string().optional(), // NVIDIA, AMD, INTEL
+    cpuBrand: z.string().optional(), // Intel, AMD
+    gpu: z.string().optional(), // Alias for gpuBrand (legacy)
+    cpu: z.string().optional(), // Alias for cpuBrand (legacy)
+
     // Config file path
     configFile: z.string().optional(),
   }),
