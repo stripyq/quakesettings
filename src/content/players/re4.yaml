@@ -7,6 +7,9 @@ tdmRating: 21.78
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 21.78
 ctfRatingUpdated: "2026-01-31"
+duelRating: 1310
+duelGames: 3381
+duelRatingUpdated: "2026-02-04"
 dataSource: player
 dpi: 800
 sensitivity: 0.1
