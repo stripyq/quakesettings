@@ -1,10 +1,11 @@
 name: fo_tbh
-steamId: "76561198075628640"
+steamId: "76561198075628646"
 country: GB-SCT
 category: ctf
 lastUpdated: 2026-02
-ctfRating: 34.33
-ctfRatingUpdated: "2026-01-31"
+ctfRating: 34.83
+ctfGames: 2187
+ctfRatingUpdated: "2026-02-04"
 dataSource: player
 dpi: 800
 sensitivity: 1.05
