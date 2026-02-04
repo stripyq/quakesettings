@@ -19,9 +19,9 @@ const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
 function calculateCm360(player: any): number {
   if (player.cm360) return player.cm360;
   if (player.m_cpi) {
-    // m_cpi scales effective sensitivity: effective_sens = sens × (DPI / m_cpi)
-    // cm360 = 41563.6 / (DPI × effective_sens) = 41563.6 × m_cpi / (DPI² × sens)
-    return Math.round((41563.6 * player.m_cpi / (player.dpi * player.dpi * player.sensitivity)) * 100) / 100;
+    // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
+    // When m_cpi = DPI, this simplifies to 360 / sensitivity
+    return Math.round((360 * player.m_cpi / (player.sensitivity * player.dpi)) * 100) / 100;
   }
   // Standard calculation: cm360 = 41563.6 / (DPI × sensitivity)
   return Math.round((41563.6 / (player.dpi * player.sensitivity)) * 100) / 100;
