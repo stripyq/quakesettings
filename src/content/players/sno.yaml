@@ -17,7 +17,7 @@ m_yaw: 0.022
 grip: Hybrid
 fov: 105
 enemyModel: Keel
-crosshair: 2
+crosshair: "2"
 crosshairColor: White
 forward: w
 back: s
