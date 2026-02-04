@@ -1,0 +1,37 @@
+name: Kung
+steamId: "76561198068070185"
+country: Unknown
+category: ctf
+lastUpdated: "2026-02"
+dataSource: player
+ctfRating: 15.58
+ctfGames: 1069
+ctfRatingUpdated: "2026-02-04"
+tdmRating: 22.23
+tdmGames: 245
+tdmRatingUpdated: "2026-02-04"
+mouse: logitech-g305-lightspeed
+mousepad: ""
+mousepadOther: "Amazon basics"
+keyboard: wooting-60he
+monitor: lg-ultragear-27gx790a
+headset: hyperx-cloud-ii
+dpi: 1600
+sensitivity: 4
+edpi: 6400
+m_yaw: 0.016
+cm360: 8.93
+grip: Palm
+fov: 115
+crosshair: "2"
+crosshairColor: Pink
+enemyModel: Tank Jr.
+forward: w
+back: s
+left: a
+right: d
+jump: Space
+crouch: Ctrl
+attack: Mouse1
+gpu: AMD
+cpu: AMD

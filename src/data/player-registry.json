@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-04",
   "totalPlayers": 2285,
-  "playersWithProfiles": 70,
+  "playersWithProfiles": 71,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -17798,9 +17798,9 @@
     },
     {
       "steamId": "76561198068070185",
-      "name": "KungShit",
-      "slug": null,
-      "hasProfile": false,
+      "name": "Kung",
+      "slug": "kung",
+      "hasProfile": true,
       "ratings": {
         "ctf": 15.580487251281738,
         "tdm": 22.23129653930664,
