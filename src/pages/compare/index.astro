@@ -123,6 +123,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         return String(val).toUpperCase();
       }
 
+      function countryCodeToFlag(code) {
+        if (!code || code.length !== 2) return '';
+        return code
+          .toUpperCase()
+          .split('')
+          .map(char => String.fromCodePoint(127397 + char.charCodeAt(0)))
+          .join('');
+      }
+
       function updateComparison() {
         const p1Id = player1Select.value;
         const p2Id = player2Select.value;
@@ -145,11 +154,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         const newUrl = `${window.location.pathname}?p1=${p1Id}&p2=${p2Id}`;
         window.history.replaceState({}, '', newUrl);
 
-        // Update headers
+        // Update headers with flag emojis
         const p1Country = p1.country && p1.country !== 'Unknown' ? p1.country : '';
         const p2Country = p2.country && p2.country !== 'Unknown' ? p2.country : '';
-        p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Country ? `<span class="header-country">${p1Country}</span>` : ''}`;
-        p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Country ? `<span class="header-country">${p2Country}</span>` : ''}`;
+        const p1Flag = countryCodeToFlag(p1Country);
+        const p2Flag = countryCodeToFlag(p2Country);
+        p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Flag ? `<span class="header-country">${p1Flag}</span>` : ''}`;
+        p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Flag ? `<span class="header-country">${p2Flag}</span>` : ''}`;
 
         // Build comparison table
         let html = '';
@@ -359,9 +370,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .player-header :global(.header-country) {
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-secondary, #9090a0);
-    font-weight: 400;
+    font-size: 1.25rem;
     margin-top: 0.25rem;
   }
 
