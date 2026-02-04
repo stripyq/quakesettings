@@ -175,7 +175,7 @@ const description = "Driver, in-game, and Windows settings for maximum performan
           <tr><td>Texture filtering - Aniso sample / Trilinear</td><td>On / On</td></tr>
           <tr><td>Texture filtering - Negative LOD bias</td><td>Allow</td></tr>
           <tr><td>Image Scaling / DSR / DLDSR</td><td>Off</td></tr>
-          <tr><td>Vulkan/OpenGL present method</td><td>Prefer native</td></tr>
+          <tr><td>Vulkan/OpenGL present method</td><td>Native or DXGI (see note)</td></tr>
         </table>
       </div>
 
@@ -194,9 +194,13 @@ const description = "Driver, in-game, and Windows settings for maximum performan
           <tr><td>Texture filtering - Aniso sample / Trilinear</td><td>On / On</td></tr>
           <tr><td>Texture filtering - Negative LOD bias</td><td>Allow</td></tr>
           <tr><td>Image Scaling / DSR / DLDSR</td><td>Off</td></tr>
-          <tr><td>Vulkan/OpenGL present method</td><td>Prefer native</td></tr>
+          <tr><td>Vulkan/OpenGL present method</td><td>Native or DXGI (see note)</td></tr>
         </table>
       </div>
+    </div>
+
+    <div class="info-box" style="background: rgba(78, 205, 196, 0.15); border-color: #4ecdc4;">
+      <strong>Present Method Note:</strong> Both "Prefer native" and "Prefer DXGI" are valid choices. DXGI offers faster alt-tab/window switching. For most users there's no noticeable latency difference — use whichever works best for your workflow.
     </div>
 
     <div class="warning-box">
@@ -454,7 +458,7 @@ vid_restart</code></pre>
         <strong>Power & Present Path</strong>
         <ul>
           <li>Windows power plan: High Performance or Ultimate Performance</li>
-          <li>NVIDIA Control Panel → Vulkan/OpenGL present method: Prefer native</li>
+          <li>NVIDIA Control Panel → Vulkan/OpenGL present method: Native or DXGI (both valid)</li>
         </ul>
       </li>
     </ol>
@@ -473,6 +477,10 @@ vid_restart</code></pre>
       <strong>Two Approaches:</strong><br/>
       <strong>VRR ON (tear-free):</strong> Stay below your monitor's VRR ceiling with an external cap (237-239 for 240 Hz) or use a stable engine step like 200.<br/>
       <strong>VRR OFF (lowest latency):</strong> Many competitive players disable VRR entirely, use <code>com_maxfps 250</code>, and accept tearing for minimum latency.
+    </div>
+
+    <div class="info-box" style="background: rgba(46, 204, 113, 0.15); border-color: #2ecc71;">
+      <strong>VRR Latency Note:</strong> The latency concerns with VRR are minimal when your monitor's refresh rate is significantly higher than your FPS cap. For example, a 360Hz monitor with <code>com_maxfps 250</code> means VRR is essentially "free" — you get tear-free visuals with negligible latency penalty because there's so much headroom above your cap.
     </div>
 
     <div class="hz-cards">
