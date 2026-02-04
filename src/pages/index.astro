@@ -138,7 +138,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class="num">{player.data.dpi}</td>
               <td class="num">{player.data.sensitivity}</td>
               <td class="num">{cm360.toFixed(2)}</td>
-              <td class="accel-cell">{hasAccel ? 'Yes' : 'No'}</td>
+              <td class={`accel-cell ${hasAccel ? 'accel-on' : ''}`}>{hasAccel ? '✓' : '–'}</td>
               <td class="num">{player.data.fov}</td>
               <td class="hw-cell">
                 {monitorData?.name || player.data.monitor || '—'}
@@ -157,23 +157,36 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     </table>
   </div>
 
+  <div class="pagination" id="pagination">
+    <button class="page-btn" id="prev-page" disabled>← Prev</button>
+    <span class="page-info" id="page-info">Page 1 of 1</span>
+    <button class="page-btn" id="next-page">Next →</button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const searchInput = document.getElementById('player-search') as HTMLInputElement;
       const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
       const tbody = document.getElementById('player-tbody');
       const headers = document.querySelectorAll('th.sortable');
+      const prevBtn = document.getElementById('prev-page') as HTMLButtonElement;
+      const nextBtn = document.getElementById('next-page') as HTMLButtonElement;
+      const pageInfo = document.getElementById('page-info');
 
+      const PLAYERS_PER_PAGE = 25;
       let sortCol = 'name';
       let sortAsc = true;
+      let currentPage = 1;
+      let filteredRows: HTMLTableRowElement[] = [];
 
-      function filterAndSort() {
+      function filterSortAndPaginate() {
         const search = searchInput?.value.toLowerCase() || '';
         const category = categoryFilter?.value || 'all';
 
         const rows = Array.from(tbody?.querySelectorAll('tr') || []) as HTMLTableRowElement[];
 
-        rows.forEach(row => {
+        // Filter rows
+        filteredRows = rows.filter(row => {
           const name = row.dataset.name || '';
           const mouse = row.dataset.mouse || '';
           const monitor = row.dataset.monitor || '';
@@ -181,24 +194,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           const headset = row.dataset.headset || '';
           const cat = row.dataset.category || '';
 
-          let show = true;
-
           // Search filter (searches player name and hardware)
           if (search && !name.includes(search) && !mouse.includes(search) && !monitor.includes(search) && !keyboard.includes(search) && !headset.includes(search)) {
-            show = false;
+            return false;
           }
 
           // Category filter
           if (category !== 'all' && cat !== category) {
-            show = false;
+            return false;
           }
 
-          row.style.display = show ? '' : 'none';
+          return true;
         });
 
-        // Sort visible rows
-        const visibleRows = rows.filter(r => r.style.display !== 'none');
-        visibleRows.sort((a, b) => {
+        // Sort filtered rows
+        filteredRows.sort((a, b) => {
           let aVal: string | number, bVal: string | number;
           switch(sortCol) {
             case 'name':
@@ -252,12 +262,54 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           return sortAsc ? (aVal as number) - (bVal as number) : (bVal as number) - (aVal as number);
         });
 
-        visibleRows.forEach(row => tbody?.appendChild(row));
+        // Apply pagination
+        const totalPages = Math.max(1, Math.ceil(filteredRows.length / PLAYERS_PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIdx = (currentPage - 1) * PLAYERS_PER_PAGE;
+        const endIdx = startIdx + PLAYERS_PER_PAGE;
+
+        // Hide all rows first, then show only current page
+        rows.forEach(row => row.style.display = 'none');
+        filteredRows.slice(startIdx, endIdx).forEach(row => {
+          row.style.display = '';
+          tbody?.appendChild(row);
+        });
+
+        // Update pagination controls
+        updatePaginationControls(totalPages);
+      }
+
+      function updatePaginationControls(totalPages: number) {
+        if (pageInfo) {
+          pageInfo.textContent = `Page ${currentPage} of ${totalPages} (${filteredRows.length} players)`;
+        }
+        if (prevBtn) {
+          prevBtn.disabled = currentPage <= 1;
+        }
+        if (nextBtn) {
+          nextBtn.disabled = currentPage >= totalPages;
+        }
+      }
+
+      function goToPage(page: number) {
+        currentPage = page;
+        filterSortAndPaginate();
       }
 
       // Event listeners
-      searchInput?.addEventListener('input', filterAndSort);
-      categoryFilter?.addEventListener('change', filterAndSort);
+      searchInput?.addEventListener('input', () => {
+        currentPage = 1; // Reset to first page on search
+        filterSortAndPaginate();
+      });
+
+      categoryFilter?.addEventListener('change', () => {
+        currentPage = 1; // Reset to first page on filter change
+        filterSortAndPaginate();
+      });
+
+      prevBtn?.addEventListener('click', () => goToPage(currentPage - 1));
+      nextBtn?.addEventListener('click', () => goToPage(currentPage + 1));
 
       headers.forEach(header => {
         header.addEventListener('click', () => {
@@ -273,9 +325,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
           header.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
 
-          filterAndSort();
+          currentPage = 1; // Reset to first page on sort change
+          filterSortAndPaginate();
         });
       });
+
+      // Initial render
+      filterSortAndPaginate();
     });
   </script>
 </BaseLayout>
@@ -435,8 +491,48 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .accel-cell {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #555);
+  }
+
+  .accel-cell.accel-on {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .page-btn {
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #2a2a3a);
+    color: var(--text-primary, #fff);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .page-btn:hover:not(:disabled) {
+    background: var(--accent-primary, #ff6b35);
+    border-color: var(--accent-primary, #ff6b35);
+  }
+
+  .page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .page-info {
     color: var(--text-secondary, #888);
+    font-size: 0.85rem;
   }
 
   .rating-cell {
