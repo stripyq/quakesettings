@@ -42,9 +42,9 @@ const otherPlayers = allPlayers.filter(pl => pl.id !== player.id);
 function calculateCm360(playerData: any): number {
   if (playerData.cm360) return playerData.cm360;
   if (playerData.m_cpi) {
-    // m_cpi scales effective sensitivity: effective_sens = sens × (DPI / m_cpi)
-    // cm360 = 41563.6 / (DPI × effective_sens) = 41563.6 × m_cpi / (DPI² × sens)
-    return Math.round((41563.6 * playerData.m_cpi / (playerData.dpi * playerData.dpi * playerData.sensitivity)) * 100) / 100;
+    // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
+    // When m_cpi = DPI, this simplifies to 360 / sensitivity
+    return Math.round((360 * playerData.m_cpi / (playerData.sensitivity * playerData.dpi)) * 100) / 100;
   }
   return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
 }

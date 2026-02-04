@@ -12,8 +12,8 @@ ctfRatingUpdated: "2026-01-31"
 dataSource: player
 dpi: 800
 sensitivity: 4
-edpi: 6400
-cm360: 6.49
+edpi: 3200
+cm360: 45
 acceleration: true
 accelValue: 0.055
 rawInput: true
