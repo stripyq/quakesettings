@@ -1,6 +1,12 @@
 name: sno
 country: Unknown
-steamId: "76561198031267120"
+steamId: "76561198031267126"
+ctfRating: 22
+ctfGames: 2093
+ctfRatingUpdated: "2026-02-04"
+tdmRating: 19.29
+tdmGames: 1
+tdmRatingUpdated: "2026-02-04"
 mouse: razer-viper-v3-pro
 mousepad: artisan-hien-
 keyboard: das-keyboard-4-ultimate
