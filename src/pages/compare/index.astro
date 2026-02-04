@@ -366,19 +366,31 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   }
 
   .section-row td {
-    padding: 1rem 1rem 0.75rem;
-    background: transparent;
-    color: var(--accent-primary, #ff6b35);
-    font-size: 1.1em;
-    font-weight: 600;
+    padding: 0.75rem 1rem;
+    background: rgba(249, 115, 22, 0.1);
+    color: #f97316;
+    font-size: 0.8rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     text-align: left;
-    border-bottom: 2px solid var(--accent-primary, #ff6b35);
-    border-top: none;
+    border-bottom: none;
+    border-left: 3px solid #f97316;
+  }
+
+  .section-row:first-child td {
+    margin-top: 0;
   }
 
   .section-row:not(:first-child) td {
+    border-top: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .compare-table tbody .section-row:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .compare-table tbody .section-row:not(:first-child) td {
     padding-top: 1.5rem;
   }
 
