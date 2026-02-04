@@ -1,10 +1,13 @@
 name: BeukeR
 country: Unknown
+steamId: "76561197971635353"
 category: ctf
 ctfRating: 25.26
-ctfRatingUpdated: "2026-01-31"
+ctfGames: 908
+ctfRatingUpdated: "2026-02-04"
 tdmRating: 22.42
-tdmRatingUpdated: "2026-01-31"
+tdmGames: 45
+tdmRatingUpdated: "2026-02-04"
 dataSource: player
 lastUpdated: 2025-01
 dpi: 1200
