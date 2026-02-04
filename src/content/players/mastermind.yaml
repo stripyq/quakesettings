@@ -17,6 +17,8 @@ cm360: 12.988636363636365
 acceleration: true
 accelValue: 0.055
 rawInput: true
+m_cpi: 400
+grip: Hybrid
 fov: 110
 crosshair: 6, 2
 invertedMouse: true
@@ -24,8 +26,9 @@ forward: w
 back: s
 left: a
 right: d
-jump: Mouse2
-attack: Mouse1
+jump: MOUSE2
+attack: MOUSE1
+zoom: MOUSE3
 mouse: razer-deathadder-v3-pro
 mousepad: artisan-zero-
 monitor: samsung-odyssey-g7-c32g75t
