@@ -167,6 +167,7 @@ const playersCollection = defineCollection({
     acceleration: z.boolean().optional().default(false),
     accelValue: z.number().nullable().optional(),
     rawInput: z.boolean().optional().default(true),
+    grip: z.string().optional(), // Grip style: Palm, Claw, Fingertip, Hybrid
 
     // Game Settings
     fov: z.number(),

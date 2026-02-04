@@ -151,13 +151,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <section class="settings-section">
         <h2>Mouse Settings</h2>
         <table class="settings-table">
-          <tr><td>DPI</td><td>{p.dpi}</td></tr>
-          <tr><td>In-game Sensitivity</td><td>{p.sensitivity}</td></tr>
-          <tr><td>eDPI</td><td>{p.edpi}</td></tr>
-          <tr><td>cm/360</td><td>{currentCm360.toFixed(2)}</td></tr>
-          {p.grip && <tr><td>Grip Style</td><td>{p.grip}</td></tr>}
-          <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
-          <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
+          <tbody>
+            <tr><td>DPI</td><td>{p.dpi}</td></tr>
+            <tr><td>In-game Sensitivity</td><td>{p.sensitivity}</td></tr>
+            <tr><td>eDPI</td><td>{p.edpi}</td></tr>
+            <tr><td>cm/360</td><td>{currentCm360.toFixed(2)}</td></tr>
+            {p.grip && <tr><td>Grip Style</td><td>{p.grip}</td></tr>}
+            <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
+            <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
+          </tbody>
         </table>
       </section>
 
@@ -165,10 +167,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <section class="settings-section">
         <h2>Game Settings</h2>
         <table class="settings-table">
-          <tr><td>FOV</td><td>{p.fov}</td></tr>
-          <tr><td>Crosshair</td><td>{p.crosshair}</td></tr>
-          <tr><td>Crosshair Size</td><td>{p.crosshairSize || 'N/A'}</td></tr>
-          <tr><td>Inverted Mouse</td><td>{p.invertedMouse ? 'Yes' : 'No'}</td></tr>
+          <tbody>
+            <tr><td>FOV</td><td>{p.fov}</td></tr>
+            <tr><td>Crosshair</td><td>{p.crosshair}</td></tr>
+            <tr><td>Crosshair Size</td><td>{p.crosshairSize || 'N/A'}</td></tr>
+            <tr><td>Inverted Mouse</td><td>{p.invertedMouse ? 'Yes' : 'No'}</td></tr>
+          </tbody>
         </table>
       </section>
 
