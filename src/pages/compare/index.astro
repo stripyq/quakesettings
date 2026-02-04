@@ -365,52 +365,81 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     margin-top: 0.25rem;
   }
 
-  .section-row td {
+  /* Dynamic content styles need :global() */
+  .compare-table :global(.section-row td) {
     padding: 0.75rem 1rem;
-    background: rgba(249, 115, 22, 0.1);
+    background: rgba(249, 115, 22, 0.15);
     color: #f97316;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: left;
     border-bottom: none;
-    border-left: 3px solid #f97316;
+    border-left: 4px solid #f97316;
   }
 
-  .section-row:first-child td {
-    margin-top: 0;
-  }
-
-  .section-row:not(:first-child) td {
+  .compare-table :global(.section-row:not(:first-child) td) {
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border-color, #2a2a35);
   }
 
-  .compare-table tbody .section-row:not(:first-child) {
-    margin-top: 1.5rem;
-  }
-
-  .compare-table tbody .section-row:not(:first-child) td {
-    padding-top: 1.5rem;
-  }
-
-  .data-row td {
+  .compare-table :global(.data-row td) {
     padding: 0.6rem 1rem;
     border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .data-row:last-child td {
+  .compare-table :global(.data-row:last-child td) {
     border-bottom: none;
   }
 
-  .label-cell {
+  .compare-table :global(.label-cell) {
     text-align: left;
     color: var(--text-secondary, #9090a0);
     font-size: 0.85rem;
   }
 
-  .value-cell {
+  .compare-table :global(.value-cell) {
     font-size: 0.9rem;
+  }
+
+  /* Player 1 (2nd column) - right aligned */
+  .compare-table :global(.value-cell:nth-child(2)) {
+    text-align: right;
+    padding-right: 1.5rem;
+  }
+
+  /* Player 2 (3rd column) - left aligned */
+  .compare-table :global(.value-cell:nth-child(3)) {
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+
+  .compare-table :global(.value-cell.diff) {
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 500;
+  }
+
+  .compare-table :global(.value-cell.same) {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .compare-table :global(.value-cell.numeric) {
+    font-family: monospace;
+  }
+
+  .compare-table :global(.diff-arrow) {
+    font-size: 0.7rem;
+    margin-left: 0.35rem;
+  }
+
+  .compare-table :global(.diff-arrow.higher) {
+    color: #27ae60;
+  }
+
+  .compare-table :global(.diff-arrow.lower) {
+    color: #e74c3c;
   }
 
   .hw-link {
@@ -422,43 +451,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hw-link:hover {
     color: var(--accent-primary, #ff6b35);
     text-decoration: underline;
-  }
-
-  .value-cell:nth-child(2) {
-    text-align: right;
-    padding-right: 1.5rem;
-  }
-
-  .value-cell:nth-child(3) {
-    text-align: left;
-    padding-left: 1.5rem;
-  }
-
-  .value-cell.diff {
-    background: rgba(255, 107, 53, 0.1);
-    color: var(--accent-primary, #ff6b35);
-    font-weight: 500;
-  }
-
-  .value-cell.same {
-    color: var(--text-primary, #e8e8f0);
-  }
-
-  .value-cell.numeric {
-    font-family: monospace;
-  }
-
-  .diff-arrow {
-    font-size: 0.7rem;
-    margin-left: 0.35rem;
-  }
-
-  .diff-arrow.higher {
-    color: #27ae60;
-  }
-
-  .diff-arrow.lower {
-    color: #e74c3c;
   }
 
   @media (max-width: 768px) {
