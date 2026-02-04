@@ -1,12 +1,13 @@
 name: iceman
-steamId: "76561198001355728"
+steamId: "76561198001355736"
 country: SE
 category: ctf
 lastUpdated: 2025-01
+ctfRating: 38.89
+ctfGames: 940
+ctfRatingUpdated: "2026-02-04"
 tdmRating: 30.94
 tdmRatingUpdated: "2026-01-31"
-ctfRating: 38.87
-ctfRatingUpdated: "2026-01-31"
 dataSource: player
 dpi: 1600
 sensitivity: 0.75
