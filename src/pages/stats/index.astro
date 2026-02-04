@@ -182,6 +182,17 @@ const topCrosshairs = [...crosshairTypes.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 5);
 
+// Grip style distribution
+const gripStyles = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.grip) {
+    gripStyles.set(p.data.grip, (gripStyles.get(p.data.grip) || 0) + 1);
+  }
+});
+const gripDistribution = [...gripStyles.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const totalGripPlayers = [...gripStyles.values()].reduce((a, b) => a + b, 0);
+
 // ===========================================
 // PLAYER STATS
 // ===========================================
@@ -745,6 +756,25 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         ))}
       </div>
     </section>
+
+    <!-- GRIP STYLE DISTRIBUTION -->
+    {totalGripPlayers > 0 && (
+      <section class="stat-card">
+        <h2>Grip Style Distribution</h2>
+        <p class="card-subtitle">{totalGripPlayers} players with data</p>
+        <div class="popularity-list">
+          {gripDistribution.map(([style, count]) => (
+            <div class="popularity-item">
+              <span class="name">{style}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style={`width: ${(count / totalGripPlayers) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / totalGripPlayers) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- ========== PLAYERS SECTION ========== -->
     <h3 class="section-header">Players</h3>
