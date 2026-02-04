@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-04",
   "totalPlayers": 2285,
-  "playersWithProfiles": 71,
+  "playersWithProfiles": 72,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -8450,22 +8450,6 @@
         "ctf": 1,
         "tdm": null,
         "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198002515349",
-      "name": "delulu navigator",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 30.75337028503418,
-        "tdm": 39.80954360961914,
-        "2v2": 40.63605499267578
-      },
-      "gamesPlayed": {
-        "ctf": 722,
-        "tdm": 2625,
-        "2v2": 164
       }
     },
     {
@@ -26178,6 +26162,22 @@
         "ctf": 16,
         "tdm": null,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198002515349",
+      "name": "rehepapp",
+      "slug": "rehepapp",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 30.75337028503418,
+        "tdm": 39.80954360961914,
+        "2v2": 40.63605499267578
+      },
+      "gamesPlayed": {
+        "ctf": 722,
+        "tdm": 2625,
+        "2v2": 164
       }
     },
     {
