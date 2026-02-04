@@ -1,0 +1,31 @@
+name: d1z
+country: RU
+steamId: "76561198075079469"
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: spyre-manta
+keyboard: dark-project-kd83a
+monitor: asus-tuf-vg259qm
+headset: razer-blackshark-v3x
+skates: Aftermarket
+dpi: 800
+sensitivity: 1.61
+edpi: 1288
+cm360: 32.27
+acceleration: false
+rawInput: true
+m_yaw: 0.022
+grip: Claw
+fov: 100
+enemyModel: Tank Jr.
+crosshair: 1, 2, 3, 7, 11
+crosshairColor: Red
+forward: e
+back: d
+left: s
+right: f
+jump: space
+crouch: MOUSE2
+attack: MOUSE1
+zoom: shift
+gpu: NVIDIA
+cpu: Intel
