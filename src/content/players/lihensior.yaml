@@ -12,6 +12,9 @@ tdmRatingUpdated: "2026-02-04"
 caRating: 32.96
 caGames: 24
 caRatingUpdated: "2026-02-04"
+duelRating: 1558
+duelGames: 52
+duelRatingUpdated: "2026-02-04"
 dataSource: player
 dpi: 1600
 sensitivity: 0.56
