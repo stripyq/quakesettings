@@ -624,9 +624,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hardware-cell {
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
-    gap: 0;
-    padding: 1px 0;
+    justify-content: center;
+    line-height: 1.15;
+    gap: 1px;
   }
 
   .hardware-brand {
@@ -634,15 +634,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: var(--text-secondary, #888);
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    margin-bottom: -1px;
+    margin: 0;
   }
 
   .hardware-model {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: var(--text-primary, #fff);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0;
   }
 
   .date-cell {
