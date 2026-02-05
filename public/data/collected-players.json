@@ -497,17 +497,17 @@
     "back": "s",
     "left": "a",
     "right": "d",
-    "jump": "",
-    "crouch": "",
-    "attack": "",
-    "zoom": "",
+    "jump": "space",
+    "crouch": "c",
+    "attack": "mouse1",
+    "zoom": "mouse2",
     "mouse": "razer-viper-v3-pro",
     "mousepad": "",
     "keyboard": "",
     "monitor": "",
     "headset": "",
-    "gpu": "",
-    "cpu": ""
+    "gpu": "NVIDIA",
+    "cpu": "Intel"
   },
   {
     "slug": "diabz",
