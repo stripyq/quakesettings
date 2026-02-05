@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-05",
   "totalPlayers": 2285,
-  "playersWithProfiles": 73,
+  "playersWithProfiles": 74,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -8455,8 +8455,8 @@
     {
       "steamId": "76561198077163281",
       "name": "dem0n",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "dem0n",
+      "hasProfile": true,
       "ratings": {
         "ctf": 46.87993240356445,
         "tdm": 32.66770553588867,
