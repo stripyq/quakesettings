@@ -3145,6 +3145,11 @@
       "brand": "Corsair"
     },
     {
+      "slug": "corsair-strafe",
+      "name": "Corsair Strafe",
+      "brand": "Corsair"
+    },
+    {
       "slug": "cox-cnk84w",
       "name": "COX CNK84W",
       "brand": "COX"
@@ -4347,6 +4352,11 @@
       "brand": "AOC"
     },
     {
+      "slug": "aoc-g2490vxa",
+      "name": "AOC G2490VXA",
+      "brand": "AOC"
+    },
+    {
       "slug": "aoc-q27g4x",
       "name": "AOC Q27G4X",
       "brand": "AOC"
@@ -4822,6 +4832,11 @@
       "slug": "jabra-elite-10-gen-2",
       "name": "Jabra Elite 10 Gen 2",
       "brand": "Jabra"
+    },
+    {
+      "slug": "jbl-wireless",
+      "name": "JBL Wireless",
+      "brand": "JBL"
     },
     {
       "slug": "logitech-g-pro-headset",
