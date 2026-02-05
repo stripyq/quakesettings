@@ -1,0 +1,29 @@
+name: dem0n
+realName: Romain
+country: Belgium
+steamId: "76561198077163281"
+ctfRating: 46.88
+ctfGames: 943
+tdmRating: 32.67
+tdmGames: 40
+mouse: razer-viper-v3-pro
+mousepadOther: Artisan Ninja FX
+keyboardOther: Corsair Strafe
+monitorOther: AOC G2490VXA
+headsetOther: JBL Wireless
+dpi: 1600
+sensitivity: 0.75
+edpi: 1200
+cm360: 34.64
+acceleration: false
+rawInput: true
+grip: Hybrid
+fov: 99
+crosshair: "2, 3, 7"
+crosshairColor: White
+enemyModel: Keel
+forward: w
+back: s
+left: a
+right: d
+dataSource: player
