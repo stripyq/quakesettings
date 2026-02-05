@@ -429,7 +429,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .player-table th,
   .player-table td {
-    padding: 0.6rem 0.75rem;
+    padding: 0.4rem 0.75rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
   }
@@ -624,14 +624,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hardware-cell {
     display: flex;
     flex-direction: column;
-    line-height: 1.2;
+    line-height: 1.1;
+    gap: 0;
+    padding: 1px 0;
   }
 
   .hardware-brand {
-    font-size: 0.7em;
+    font-size: 0.65em;
     color: var(--text-secondary, #888);
     text-transform: uppercase;
     letter-spacing: 0.02em;
+    margin-bottom: -1px;
   }
 
   .hardware-model {
@@ -687,7 +690,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
     .player-table th,
     .player-table td {
-      padding: 0.4rem 0.5rem;
+      padding: 0.3rem 0.5rem;
     }
 
     .hw-cell {
