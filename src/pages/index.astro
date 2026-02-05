@@ -43,6 +43,28 @@ function formatRating(rating: number | null, isDuel: boolean): string {
   return isDuel ? Math.round(rating).toString() : rating.toFixed(1);
 }
 
+// Extract model from hardware name by removing brand prefix
+function getHardwareDisplay(hwData: any, fallbackSlug: string | undefined): { brand: string | null; model: string; fullName: string } {
+  if (!hwData?.name) {
+    return { brand: null, model: fallbackSlug || '—', fullName: fallbackSlug || '—' };
+  }
+  const fullName = hwData.name;
+  const brand = hwData.brand;
+
+  if (!brand) {
+    return { brand: null, model: fullName, fullName };
+  }
+
+  // Extract model by removing brand from start of name
+  if (fullName.startsWith(brand)) {
+    const model = fullName.slice(brand.length).trim();
+    return { brand, model: model || fullName, fullName };
+  }
+
+  // Brand doesn't match start of name, show full name
+  return { brand: null, model: fullName, fullName };
+}
+
 // Sort players by name
 const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
@@ -104,6 +126,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           const cm360 = calculateCm360(player.data);
           const hasAccel = player.data.acceleration;
           const teamInfo = getTeamRating(player.data);
+          const mouseDisplay = getHardwareDisplay(mouseData, player.data.mouse);
+          const keyboardDisplay = getHardwareDisplay(keyboardData, player.data.keyboard);
+          const headsetDisplay = getHardwareDisplay(headsetData, player.data.headset);
+          const monitorDisplay = getHardwareDisplay(monitorData, player.data.monitor);
           return (
             <tr
               class="player-row"
@@ -133,7 +159,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 {teamInfo.type && <span class="rating-type">{teamInfo.type.toUpperCase()}</span>}
               </td>
               <td class="hw-cell hw-cell-wide">
-                {mouseData?.name || player.data.mouse || '—'}
+                <div class="hardware-cell">
+                  {mouseDisplay.brand && <span class="hardware-brand">{mouseDisplay.brand}</span>}
+                  <span class="hardware-model">{mouseDisplay.model}</span>
+                </div>
               </td>
               <td class="num">{player.data.dpi}</td>
               <td class="num">{player.data.sensitivity}</td>
@@ -141,13 +170,22 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <td class={`accel-cell ${hasAccel ? 'accel-on' : ''}`}>{hasAccel ? '✓' : '–'}</td>
               <td class="num">{player.data.fov}</td>
               <td class="hw-cell">
-                {monitorData?.name || player.data.monitor || '—'}
+                <div class="hardware-cell">
+                  {monitorDisplay.brand && <span class="hardware-brand">{monitorDisplay.brand}</span>}
+                  <span class="hardware-model">{monitorDisplay.model}</span>
+                </div>
               </td>
               <td class="hw-cell">
-                {keyboardData?.name || player.data.keyboard || '—'}
+                <div class="hardware-cell">
+                  {keyboardDisplay.brand && <span class="hardware-brand">{keyboardDisplay.brand}</span>}
+                  <span class="hardware-model">{keyboardDisplay.model}</span>
+                </div>
               </td>
               <td class="hw-cell">
-                {headsetData?.name || player.data.headset || '—'}
+                <div class="hardware-cell">
+                  {headsetDisplay.brand && <span class="hardware-brand">{headsetDisplay.brand}</span>}
+                  <span class="hardware-model">{headsetDisplay.model}</span>
+                </div>
               </td>
               <td class="date-cell">{player.data.lastUpdated || '—'}</td>
             </tr>
@@ -564,9 +602,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hw-cell {
     max-width: 180px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     font-size: 0.8rem;
+    vertical-align: middle;
   }
 
   .hw-cell-wide {
@@ -582,6 +619,27 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hw-link:hover {
     color: var(--accent-primary, #ff6b35);
     text-decoration: underline;
+  }
+
+  .hardware-cell {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .hardware-brand {
+    font-size: 0.7em;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .hardware-model {
+    font-size: 0.9em;
+    color: var(--text-primary, #fff);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .date-cell {
