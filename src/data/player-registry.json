@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-02-04",
+  "generatedAt": "2026-02-05",
   "totalPlayers": 2285,
-  "playersWithProfiles": 72,
+  "playersWithProfiles": 73,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -16871,8 +16871,8 @@
     {
       "steamId": "76561198114832578",
       "name": "kirson",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "kirson",
+      "hasProfile": true,
       "ratings": {
         "ctf": 33.13262939453125,
         "tdm": 29.156415939331055,
