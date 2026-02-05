@@ -6,6 +6,8 @@ ctfRating: 46.88
 ctfGames: 943
 tdmRating: 32.67
 tdmGames: 40
+duelRating: 1783
+duelGames: 439
 mouse: razer-viper-v3-pro
 mousepadOther: Artisan Ninja FX
 keyboardOther: Corsair Strafe
@@ -26,4 +28,10 @@ forward: w
 back: s
 left: a
 right: d
+jump: space
+crouch: c
+attack: mouse1
+zoom: mouse2
+gpu: NVIDIA
+cpu: Intel
 dataSource: player
