@@ -503,9 +503,9 @@
     "zoom": "mouse2",
     "mouse": "razer-viper-v3-pro",
     "mousepad": "artisan-fx-zero-mid-xl",
-    "keyboard": "",
-    "monitor": "",
-    "headset": "",
+    "keyboard": "corsair-strafe",
+    "monitor": "aoc-g2490vxa",
+    "headset": "jbl-wireless",
     "gpu": "NVIDIA",
     "cpu": "Intel"
   },
