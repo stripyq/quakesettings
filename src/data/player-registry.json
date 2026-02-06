@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-06",
   "totalPlayers": 2287,
-  "playersWithProfiles": 74,
+  "playersWithProfiles": 75,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -10039,8 +10039,8 @@
     {
       "steamId": "76561198084461653",
       "name": "edd1",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "edd1",
+      "hasProfile": true,
       "ratings": {
         "ctf": 29.161027908325195,
         "tdm": 39.69597625732422,
@@ -22902,7 +22902,7 @@
     },
     {
       "steamId": "76561198256080242",
-      "name": "NyxGirlPower TheQueen ♥",
+      "name": "NyxGirlPower TheQueen♥",
       "slug": "nyxgirlpower-thequeen-",
       "hasProfile": true,
       "ratings": {
