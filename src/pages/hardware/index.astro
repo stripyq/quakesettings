@@ -64,6 +64,13 @@ const headsetsWithUsage = headsets.map(h => {
   return { ...h, usage: usedBy.length, players: usedBy };
 }).sort((a, b) => b.usage - a.usage);
 
+// Count items with players
+const miceWithPlayers = miceWithUsage.filter(m => m.usage > 0).length;
+const monitorsWithPlayers = monitorsWithUsage.filter(m => m.usage > 0).length;
+const keyboardsWithPlayers = keyboardsWithUsage.filter(k => k.usage > 0).length;
+const mousepadsWithPlayers = mousepadsWithUsage.filter(p => p.usage > 0).length;
+const headsetsWithPlayers = headsetsWithUsage.filter(h => h.usage > 0).length;
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -74,25 +81,40 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <p>A collection of gaming peripherals and gear used by Quake Live players</p>
   </div>
 
-  <div class="hardware-nav">
-    <a href="#mice" class="nav-pill">Mice ({mice.length})</a>
-    <a href="#monitors" class="nav-pill">Monitors ({monitors.length})</a>
-    <a href="#keyboards" class="nav-pill">Keyboards ({keyboards.length})</a>
-    <a href="#mousepads" class="nav-pill">Mousepads ({mousepads.length})</a>
-    <a href="#headsets" class="nav-pill">Headsets ({headsets.length})</a>
+  <div class="hardware-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="mice" role="tab" aria-selected="true">
+      Mice <span class="tab-count">({mice.length})</span>
+    </button>
+    <button class="tab-btn" data-tab="monitors" role="tab" aria-selected="false">
+      Monitors <span class="tab-count">({monitors.length})</span>
+    </button>
+    <button class="tab-btn" data-tab="keyboards" role="tab" aria-selected="false">
+      Keyboards <span class="tab-count">({keyboards.length})</span>
+    </button>
+    <button class="tab-btn" data-tab="mousepads" role="tab" aria-selected="false">
+      Mousepads <span class="tab-count">({mousepads.length})</span>
+    </button>
+    <button class="tab-btn" data-tab="headsets" role="tab" aria-selected="false">
+      Headsets <span class="tab-count">({headsets.length})</span>
+    </button>
   </div>
 
   <div class="filters">
     <div class="filter-group">
-      <input type="text" id="hardware-search" placeholder="Search hardware..." class="search-input">
+      <input type="text" id="hardware-search" placeholder="Search by name, brand, or specs..." class="search-input">
+    </div>
+    <div class="filter-group">
+      <label class="toggle-label">
+        <input type="checkbox" id="player-used-toggle" checked>
+        <span>Show only player-used gear</span>
+      </label>
     </div>
   </div>
 
   <!-- MICE TABLE -->
-  <section class="hardware-category" id="mice">
-    <h2>Mice <span class="count">({mice.length})</span></h2>
+  <section class="hardware-category active" id="mice" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="mice">
+      <table class="hardware-table" data-type="mice" data-player-count={miceWithPlayers}>
         <thead>
           <tr>
             <th class="sortable" data-sort="name">Name</th>
@@ -101,7 +123,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="shape">Shape</th>
             <th class="sortable" data-sort="sensor">Sensor</th>
             <th class="sortable" data-sort="connection">Connection</th>
-            <th class="sortable num" data-sort="usage">Players</th>
+            <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -143,10 +165,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </section>
 
   <!-- MONITORS TABLE -->
-  <section class="hardware-category" id="monitors">
-    <h2>Monitors <span class="count">({monitors.length})</span></h2>
+  <section class="hardware-category" id="monitors" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="monitors">
+      <table class="hardware-table" data-type="monitors" data-player-count={monitorsWithPlayers}>
         <thead>
           <tr>
             <th class="sortable" data-sort="name">Name</th>
@@ -155,7 +176,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="refresh">Refresh Rate</th>
             <th class="sortable" data-sort="panel">Panel</th>
             <th class="sortable" data-sort="resolution">Resolution</th>
-            <th class="sortable num" data-sort="usage">Players</th>
+            <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -197,10 +218,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </section>
 
   <!-- KEYBOARDS TABLE -->
-  <section class="hardware-category" id="keyboards">
-    <h2>Keyboards <span class="count">({keyboards.length})</span></h2>
+  <section class="hardware-category" id="keyboards" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="keyboards">
+      <table class="hardware-table" data-type="keyboards" data-player-count={keyboardsWithPlayers}>
         <thead>
           <tr>
             <th class="sortable" data-sort="name">Name</th>
@@ -208,7 +228,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="size">Size</th>
             <th class="sortable" data-sort="switches">Switches</th>
             <th class="sortable" data-sort="connection">Connection</th>
-            <th class="sortable num" data-sort="usage">Players</th>
+            <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -248,10 +268,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </section>
 
   <!-- MOUSEPADS TABLE -->
-  <section class="hardware-category" id="mousepads">
-    <h2>Mousepads <span class="count">({mousepads.length})</span></h2>
+  <section class="hardware-category" id="mousepads" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="mousepads">
+      <table class="hardware-table" data-type="mousepads" data-player-count={mousepadsWithPlayers}>
         <thead>
           <tr>
             <th class="sortable" data-sort="name">Name</th>
@@ -259,7 +278,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="surface">Surface</th>
             <th class="sortable" data-sort="speed">Speed</th>
             <th class="sortable" data-sort="dimensions">Dimensions</th>
-            <th class="sortable num" data-sort="usage">Players</th>
+            <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -299,10 +318,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </section>
 
   <!-- HEADSETS TABLE -->
-  <section class="hardware-category" id="headsets">
-    <h2>Headsets <span class="count">({headsets.length})</span></h2>
+  <section class="hardware-category" id="headsets" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="headsets">
+      <table class="hardware-table" data-type="headsets" data-player-count={headsetsWithPlayers}>
         <thead>
           <tr>
             <th class="sortable" data-sort="name">Name</th>
@@ -311,7 +329,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <th class="sortable" data-sort="driver">Driver</th>
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable" data-sort="microphone">Mic</th>
-            <th class="sortable num" data-sort="usage">Players</th>
+            <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -357,26 +375,90 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('hardware-search') as HTMLInputElement;
+    const playerUsedToggle = document.getElementById('player-used-toggle') as HTMLInputElement;
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const categories = document.querySelectorAll('.hardware-category');
     const tables = document.querySelectorAll('.hardware-table');
 
     // Track sort state per table
     const sortState: Record<string, { col: string; asc: boolean }> = {};
 
-    function filterTables() {
-      const search = searchInput?.value.toLowerCase() || '';
+    // Initialize sort state - default to usage descending
+    tables.forEach(table => {
+      const tableType = table.getAttribute('data-type') || '';
+      sortState[tableType] = { col: 'usage', asc: false };
+    });
 
-      tables.forEach(table => {
-        const tbody = table.querySelector('tbody');
-        const rows = tbody?.querySelectorAll('tr') || [];
-
-        rows.forEach(row => {
-          const name = row.getAttribute('data-name') || '';
-          const brand = row.getAttribute('data-brand') || '';
-
-          const show = !search || name.includes(search) || brand.includes(search);
-          (row as HTMLElement).style.display = show ? '' : 'none';
-        });
+    function switchTab(tabId: string) {
+      // Update tab buttons
+      tabButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive.toString());
       });
+
+      // Update category visibility
+      categories.forEach(cat => {
+        cat.classList.toggle('active', cat.id === tabId);
+      });
+
+      // Update URL hash without scrolling
+      history.replaceState(null, '', `#${tabId}`);
+
+      // Re-apply filters
+      filterCurrentTable();
+    }
+
+    function filterCurrentTable() {
+      const activeCategory = document.querySelector('.hardware-category.active');
+      if (!activeCategory) return;
+
+      const table = activeCategory.querySelector('.hardware-table');
+      if (!table) return;
+
+      const search = searchInput?.value.toLowerCase() || '';
+      const playerUsedOnly = playerUsedToggle?.checked ?? true;
+
+      const tbody = table.querySelector('tbody');
+      const rows = tbody?.querySelectorAll('tr') || [];
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const name = row.getAttribute('data-name') || '';
+        const brand = row.getAttribute('data-brand') || '';
+        const sensor = row.getAttribute('data-sensor') || '';
+        const shape = row.getAttribute('data-shape') || '';
+        const connection = row.getAttribute('data-connection') || '';
+        const usage = parseInt(row.getAttribute('data-usage') || '0');
+
+        // Search filter - check all data attributes
+        const matchesSearch = !search ||
+          name.includes(search) ||
+          brand.includes(search) ||
+          sensor.includes(search) ||
+          shape.includes(search) ||
+          connection.includes(search);
+
+        // Player-used filter
+        const matchesPlayerFilter = !playerUsedOnly || usage > 0;
+
+        const show = matchesSearch && matchesPlayerFilter;
+        (row as HTMLElement).style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      // Update visible count in tab
+      const tableType = table.getAttribute('data-type');
+      const tabBtn = document.querySelector(`.tab-btn[data-tab="${tableType}"]`);
+      const countSpan = tabBtn?.querySelector('.tab-count');
+      if (countSpan) {
+        const totalCount = rows.length;
+        if (playerUsedOnly || search) {
+          countSpan.textContent = `(${visibleCount}/${totalCount})`;
+        } else {
+          countSpan.textContent = `(${totalCount})`;
+        }
+      }
     }
 
     function sortTable(table: Element, col: string, asc: boolean) {
@@ -412,12 +494,23 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       rows.forEach(row => tbody.appendChild(row));
     }
 
-    // Set up event listeners
-    searchInput?.addEventListener('input', filterTables);
+    // Tab click handlers
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        if (tabId) switchTab(tabId);
+      });
+    });
 
+    // Search input handler
+    searchInput?.addEventListener('input', filterCurrentTable);
+
+    // Player-used toggle handler
+    playerUsedToggle?.addEventListener('change', filterCurrentTable);
+
+    // Sort handlers for each table
     tables.forEach(table => {
       const tableType = table.getAttribute('data-type') || '';
-      sortState[tableType] = { col: 'usage', asc: false };
 
       const headers = table.querySelectorAll('th.sortable');
       headers.forEach(header => {
@@ -440,35 +533,69 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         });
       });
     });
+
+    // Handle initial hash or default to mice
+    function handleHash() {
+      const hash = window.location.hash.replace('#', '') || 'mice';
+      const validTabs = ['mice', 'monitors', 'keyboards', 'mousepads', 'headsets'];
+      const tabId = validTabs.includes(hash) ? hash : 'mice';
+      switchTab(tabId);
+    }
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHash);
+
+    // Initial load
+    handleHash();
   });
 </script>
 
 <style>
-  .hardware-nav {
+  .hardware-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.25rem;
     margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a3a);
+    padding-bottom: 0;
   }
 
-  .nav-pill {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: var(--bg-secondary, #12121a);
-    border: 1px solid var(--border-color, #2a2a3a);
-    border-radius: 20px;
-    color: var(--text-primary, #fff);
-    text-decoration: none;
-    font-size: 0.85rem;
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-secondary, #888);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
     transition: all 0.2s;
+    margin-bottom: -1px;
   }
 
-  .nav-pill:hover {
-    background: var(--accent-primary, #ff6b35);
-    border-color: var(--accent-primary, #ff6b35);
+  .tab-btn:hover {
+    color: var(--text-primary, #fff);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .tab-btn.active {
+    color: var(--accent-primary, #ff6b35);
+    border-bottom-color: var(--accent-primary, #ff6b35);
+  }
+
+  .tab-count {
+    font-size: 0.8em;
+    opacity: 0.7;
   }
 
   .filters {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
     margin-bottom: 1.5rem;
   }
 
@@ -484,24 +611,36 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: var(--text-primary, #fff);
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
-    min-width: 300px;
+    min-width: 280px;
+  }
+
+  .toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #888);
+    user-select: none;
+  }
+
+  .toggle-label:hover {
+    color: var(--text-primary, #fff);
+  }
+
+  .toggle-label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--accent-primary, #ff6b35);
+    cursor: pointer;
   }
 
   .hardware-category {
-    margin-bottom: 3rem;
-    scroll-margin-top: 2rem;
+    display: none;
   }
 
-  .hardware-category h2 {
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a3a);
-  }
-
-  .hardware-category h2 .count {
-    font-weight: normal;
-    color: var(--text-secondary, #888);
-    font-size: 0.9em;
+  .hardware-category.active {
+    display: block;
   }
 
   .table-container {
@@ -573,17 +712,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .name-cell {
     font-weight: 500;
     white-space: nowrap;
-  }
-
-  .name-link {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .name-link:hover {
-    color: var(--accent-primary, #ff6b35);
-    text-decoration: underline;
   }
 
   .spec-cell {
@@ -659,27 +787,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: var(--accent-primary, #ff6b35);
   }
 
-  .buy-cell {
-    text-align: center;
-  }
-
-  .buy-link {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    background: var(--accent-primary, #ff6b35);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-
-  .buy-link:hover {
-    background: #ff8c5a;
-    transform: translateY(-1px);
-  }
-
   @media (max-width: 1024px) {
     .hardware-table {
       font-size: 0.75rem;
@@ -693,12 +800,25 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .search-input {
       min-width: 200px;
     }
+
+    .filters {
+      gap: 1rem;
+    }
   }
 
   @media (max-width: 640px) {
-    .nav-pill {
-      font-size: 0.75rem;
-      padding: 0.4rem 0.75rem;
+    .tab-btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .filters {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .search-input {
+      min-width: 100%;
     }
   }
 </style>
