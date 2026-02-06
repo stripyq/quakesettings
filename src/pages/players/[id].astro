@@ -137,6 +137,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </div>
         )}
       </div>
+      <p class="ratings-disclaimer">Not real-time · Updated periodically</p>
 
       <div class="player-meta">
         {p.dataSource === 'player' && <span class="data-source source-player" title="Settings self-submitted by the player">Submitted</span>}
@@ -379,6 +380,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .player-header h1 {
     margin-bottom: 0.25rem;
+  }
+
+  .ratings-disclaimer {
+    font-size: 0.75em;
+    color: #666;
+    margin: 0.35rem 0 0;
   }
 
   .player-ratings-display {
