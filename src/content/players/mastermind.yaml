@@ -9,6 +9,8 @@ tdmRating: 35.37
 tdmRatingUpdated: "2026-01-31"
 ctfRating: 43.86
 ctfRatingUpdated: "2026-01-31"
+qllrCtfRating: 33.84
+qllrCtfGames: 49
 dataSource: player
 dpi: 800
 sensitivity: 4
