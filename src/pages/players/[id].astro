@@ -117,8 +117,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <div class="player-page">
     <div class="player-header">
       <h1>{p.name}</h1>
-      {p.realName && <p class="real-name">{p.realName}</p>}
-
       <div class="player-ratings-display">
         <div class="rating-item">
           <span class="rating-label">Duel:</span>
@@ -375,12 +373,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .player-header h1 {
     margin-bottom: 0.25rem;
-  }
-
-  .real-name {
-    color: var(--text-secondary, #9090a0);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
   }
 
   .player-ratings-display {
