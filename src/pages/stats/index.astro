@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { getBaseModelName } from '../../utils/mousepadGrouping';
 
 const players = await getCollection('players');
 const mice = await getCollection('mice');
@@ -126,6 +127,31 @@ players.forEach(p => {
 const topMousepadBrands = [...mousepadBrands.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 5);
+
+// Mousepad models (grouped by base model name)
+const mousepadModels = new Map<string, { count: number; brand: string }>();
+players.forEach(p => {
+  if (p.data.mousepad) {
+    const pad = mousepadsMap.get(p.data.mousepad);
+    if (pad) {
+      const baseModel = getBaseModelName(pad.name);
+      const existing = mousepadModels.get(baseModel);
+      if (existing) {
+        existing.count++;
+      } else {
+        mousepadModels.set(baseModel, { count: 1, brand: pad.brand });
+      }
+    }
+  }
+});
+const topMousepads = [...mousepadModels.entries()]
+  .sort((a, b) => b[1].count - a[1].count)
+  .slice(0, 10)
+  .map(([name, data]) => ({
+    name,
+    count: data.count,
+    percentage: Math.round((data.count / players.length) * 100)
+  }));
 
 // GPU Brand distribution (check both gpuBrand and gpu fields)
 const gpuBrands = new Map<string, number>();
@@ -564,24 +590,64 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </section>
 
-      <!-- KEYBOARD & MOUSEPAD BRANDS -->
+      <!-- TOP KEYBOARD BRANDS -->
       <section class="stat-card">
-        <h2>Other Hardware</h2>
-        <h3 class="subsection-title">Top Keyboard Brands</h3>
-        <div class="popularity-list compact">
+        <h2>Top Keyboard Brands</h2>
+        <div class="popularity-list">
           {topKeyboardBrands.map(([brand, count]) => (
             <div class="popularity-item">
               <span class="name">{brand}</span>
-              <span class="count">{count}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
             </div>
           ))}
         </div>
-        <h3 class="subsection-title">Top Mousepad Brands</h3>
-        <div class="popularity-list compact">
+      </section>
+    </div>
+
+    <div class="two-col">
+      <!-- TOP MOUSEPADS (Grouped by Model) -->
+      <section class="stat-card">
+        <h2>Most Popular Mousepads</h2>
+        <p class="card-subtitle">Grouped by model (all sizes combined)</p>
+        <div class="popularity-list">
+          {topMousepads.slice(0, 5).map((pad, i) => (
+            <div class="popularity-item">
+              <span class="rank">#{i + 1}</span>
+              <span class="name">{pad.name}</span>
+              <span class="count">{pad.count} ({pad.percentage}%)</span>
+            </div>
+          ))}
+        </div>
+        {topMousepads.length > 5 && (
+          <details class="more-items">
+            <summary>Show more</summary>
+            <div class="popularity-list">
+              {topMousepads.slice(5).map((pad, i) => (
+                <div class="popularity-item">
+                  <span class="rank">#{i + 6}</span>
+                  <span class="name">{pad.name}</span>
+                  <span class="count">{pad.count} ({pad.percentage}%)</span>
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+      </section>
+
+      <!-- MOUSEPAD BRANDS -->
+      <section class="stat-card">
+        <h2>Mousepad Brands</h2>
+        <div class="popularity-list">
           {topMousepadBrands.map(([brand, count]) => (
             <div class="popularity-item">
               <span class="name">{brand}</span>
-              <span class="count">{count}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
             </div>
           ))}
         </div>
