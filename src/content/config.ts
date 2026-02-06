@@ -94,7 +94,6 @@ const playersCollection = defineCollection({
   schema: z.object({
     // Basic Info
     name: z.string(),
-    realName: z.string().optional(),
     country: z.string().optional().default('Unknown'),
     team: z.string().optional(),
     category: z.string().optional().default('duel'),
@@ -126,6 +125,10 @@ const playersCollection = defineCollection({
     caRatingSource: z.string().optional().default('community'), // "88.214.20.58"
     caRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
     caGames: z.number().nullable().optional(), // Number of games played
+
+    // QLLR CTF ratings (from qllr.xyz)
+    qllrCtfRating: z.number().nullable().optional(),
+    qllrCtfGames: z.number().nullable().optional(),
 
     // Games played counts
     duelGames: z.number().nullable().optional(),
