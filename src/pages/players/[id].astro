@@ -130,6 +130,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <span class="rating-label">TDM:</span>
           <span class="rating-value tdm">{formatRating(p.tdmRating, 'tdm')}</span>
         </div>
+        {p.qllrCtfRating && (
+          <div class="rating-item">
+            <span class="rating-label">CSQL:</span>
+            <a href={`https://qllr.xyz/player/${p.steamId}`} target="_blank" rel="noopener noreferrer" class="rating-value csql">{p.qllrCtfRating.toFixed(1)}</a>
+          </div>
+        )}
       </div>
 
       <div class="player-meta">
@@ -412,6 +418,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .rating-value.tdm {
     color: #2ecc71;
+  }
+
+  .rating-value.csql {
+    color: #f39c12;
+    text-decoration: none;
+  }
+
+  .rating-value.csql:hover {
+    text-decoration: underline;
   }
 
   .player-meta {

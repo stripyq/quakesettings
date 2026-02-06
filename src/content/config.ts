@@ -126,6 +126,10 @@ const playersCollection = defineCollection({
     caRatingUpdated: z.coerce.string().optional(), // YYYY-MM-DD (coerce handles YAML dates)
     caGames: z.number().nullable().optional(), // Number of games played
 
+    // QLLR CTF ratings (from qllr.xyz)
+    qllrCtfRating: z.number().nullable().optional(),
+    qllrCtfGames: z.number().nullable().optional(),
+
     // Games played counts
     duelGames: z.number().nullable().optional(),
     ctfGames: z.number().nullable().optional(),
