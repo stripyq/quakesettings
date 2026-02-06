@@ -175,7 +175,6 @@ function generateCollectedPlayers() {
     slug: p.slug,
     name: p.name,
     steamId: String(p.steamId || ''), // Ensure string
-    realName: p.realName || '',
     country: p.country || '',
     // Mouse settings
     dpi: p.dpi || '',

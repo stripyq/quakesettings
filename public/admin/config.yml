@@ -200,7 +200,6 @@ collections:
     fields:
       # Basic Info
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Real Name", name: "realName", widget: "string", required: false }
       - { label: "Steam ID", name: "steamId", widget: "string", required: false, hint: "Steam64 ID" }
       - { label: "QLStats Nick", name: "qlstatsNick", widget: "string", required: false, hint: "Nickname on QLStats if different from name" }
       - label: "Country"

@@ -147,20 +147,13 @@ const movementPresets = [
           <small>Start typing to search existing players, or enter a new name</small>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="realName">Real Name (optional)</label>
-            <input type="text" id="realName" name="realName" placeholder="Your real name">
-          </div>
-
-          <div class="form-group">
-            <label for="country">Country</label>
-            <select id="country" name="country">
-              {countries.map(c => (
-                <option value={c.code}>{c.name}</option>
-              ))}
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            {countries.map(c => (
+              <option value={c.code}>{c.name}</option>
+            ))}
+          </select>
         </div>
 
         <!-- Hidden field for steamId (populated from registry) -->
@@ -1337,7 +1330,6 @@ const movementPresets = [
   }
 
   function prefillForm(data) {
-    if (data.realName) document.getElementById('realName').value = data.realName;
     if (data.country) document.getElementById('country').value = data.country;
 
     setSelectValue('mouse', data.mouse);

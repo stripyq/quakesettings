@@ -94,7 +94,6 @@ const playersCollection = defineCollection({
   schema: z.object({
     // Basic Info
     name: z.string(),
-    realName: z.string().optional(),
     country: z.string().optional().default('Unknown'),
     team: z.string().optional(),
     category: z.string().optional().default('duel'),
