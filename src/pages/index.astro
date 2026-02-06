@@ -212,8 +212,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       const pageInfo = document.getElementById('page-info');
 
       const PLAYERS_PER_PAGE = 25;
-      let sortCol = 'name';
-      let sortAsc = true;
+      let sortCol = 'team';
+      let sortAsc = false;
       let currentPage = 1;
       let filteredRows: HTMLTableRowElement[] = [];
 
