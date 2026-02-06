@@ -300,7 +300,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               <h3>Similar Sensitivity <span class="similar-info">(cm/360: {currentCm360.toFixed(2)})</span></h3>
               <div class="similar-players">
                 {similarSens.map(({ player: pl, cm360 }) => (
-                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                  <a
+                    href={`${base}players/${pl.id}/`}
+                    class={`similar-player ${pl.data.acceleration ? 'has-accel' : ''}`}
+                    title={pl.data.acceleration ? 'This player uses mouse acceleration — base sensitivity shown' : undefined}
+                  >
                     <span class="player-name">{pl.data.name}</span>
                     <span class="player-stat">{cm360.toFixed(2)} cm/360</span>
                   </a>
@@ -778,6 +782,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .similar-player:hover .player-stat {
     color: rgba(255, 255, 255, 0.8);
+  }
+
+  .similar-player.has-accel {
+    border: 1px dashed #e8a735;
   }
 
   @media (max-width: 768px) {

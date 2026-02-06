@@ -148,7 +148,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               data-headset={headsetData?.name?.toLowerCase() || player.data.headset?.toLowerCase() || ''}
               data-updated={player.data.lastUpdated || ''}
             >
-              <td>
+              <td class="player-cell">
                 <a href={`${base}players/${player.id}/`} class="player-link">
                   {player.data.name}
                 </a>
@@ -501,6 +501,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     text-decoration: underline;
   }
 
+  .player-cell {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .source-badge {
     display: inline-block;
     margin-left: 0.35rem;
@@ -692,6 +701,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .player-table th,
     .player-table td {
       padding: 0.3rem 0.5rem;
+    }
+
+    .player-cell {
+      width: 110px;
+      min-width: 110px;
+      max-width: 110px;
     }
 
     .hw-cell {

@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "generatedAt": "2026-02-06",
-  "totalPlayers": 2285,
+  "totalPlayers": 2287,
   "playersWithProfiles": 74,
   "players": [
     {
@@ -6805,6 +6805,22 @@
       }
     },
     {
+      "steamId": "76561197995232645",
+      "name": "Cook",
+      "slug": null,
+      "hasProfile": false,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      }
+    },
+    {
       "steamId": "76561197975956071",
       "name": "coolspin",
       "slug": null,
@@ -7346,6 +7362,22 @@
         "ctf": null,
         "tdm": 1,
         "2v2": 2
+      }
+    },
+    {
+      "steamId": "76561198074185301",
+      "name": "Cyber",
+      "slug": null,
+      "hasProfile": false,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
       }
     },
     {
