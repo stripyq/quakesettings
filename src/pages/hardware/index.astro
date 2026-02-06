@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { groupMousepadsByModel, getSizeBadges, hasMultipleSizes } from '../../utils/mousepadGrouping';
 
 // Get all hardware
 const mice = await getCollection('mice');
@@ -59,6 +60,10 @@ const mousepadsWithUsage = mousepads.map(p => {
   return { ...p, usage: usedBy.length, players: usedBy };
 }).sort((a, b) => b.usage - a.usage);
 
+// Group mousepads by model (for display)
+const groupedMousepads = groupMousepadsByModel(mousepadsWithUsage);
+const groupedMousepadsArray = [...groupedMousepads.values()].sort((a, b) => b.totalUsage - a.totalUsage);
+
 const headsetsWithUsage = headsets.map(h => {
   const usedBy = headsetUsageMap.get(h.id) || [];
   return { ...h, usage: usedBy.length, players: usedBy };
@@ -68,7 +73,7 @@ const headsetsWithUsage = headsets.map(h => {
 const miceWithPlayers = miceWithUsage.filter(m => m.usage > 0).length;
 const monitorsWithPlayers = monitorsWithUsage.filter(m => m.usage > 0).length;
 const keyboardsWithPlayers = keyboardsWithUsage.filter(k => k.usage > 0).length;
-const mousepadsWithPlayers = mousepadsWithUsage.filter(p => p.usage > 0).length;
+const mousepadsWithPlayers = groupedMousepadsArray.filter(p => p.totalUsage > 0).length;
 const headsetsWithPlayers = headsetsWithUsage.filter(h => h.usage > 0).length;
 
 // Ensure base URL has trailing slash for path concatenation
@@ -92,7 +97,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       Keyboards <span class="tab-count">({keyboards.length})</span>
     </button>
     <button class="tab-btn" data-tab="mousepads" role="tab" aria-selected="false">
-      Mousepads <span class="tab-count">({mousepads.length})</span>
+      Mousepads <span class="tab-count">({groupedMousepadsArray.length})</span>
     </button>
     <button class="tab-btn" data-tab="headsets" role="tab" aria-selected="false">
       Headsets <span class="tab-count">({headsets.length})</span>
@@ -267,50 +272,83 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     </div>
   </section>
 
-  <!-- MOUSEPADS TABLE -->
+  <!-- MOUSEPADS TABLE (Grouped by Model) -->
   <section class="hardware-category" id="mousepads" role="tabpanel">
     <div class="table-container">
-      <table class="hardware-table" data-type="mousepads" data-player-count={mousepadsWithPlayers}>
+      <table class="hardware-table mousepad-table" data-type="mousepads" data-player-count={mousepadsWithPlayers}>
         <thead>
           <tr>
-            <th class="sortable" data-sort="name">Name</th>
+            <th class="sortable" data-sort="name">Model</th>
             <th class="sortable" data-sort="brand">Brand</th>
             <th class="sortable" data-sort="surface">Surface</th>
             <th class="sortable" data-sort="speed">Speed</th>
-            <th class="sortable" data-sort="dimensions">Dimensions</th>
+            <th>Sizes</th>
             <th class="sortable num sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
-          {mousepadsWithUsage.map((pad) => (
-            <tr
-              data-name={pad.data.name.toLowerCase()}
-              data-brand={pad.data.brand.toLowerCase()}
-              data-surface={(pad.data.surface || '').toLowerCase()}
-              data-speed={(pad.data.speed || pad.data.speedType || '').toLowerCase()}
-              data-dimensions={(pad.data.dimensions || pad.data.size || '')}
-              data-usage={pad.usage}
-            >
-              <td class="name-cell">
-                {pad.data.name}
-              </td>
-              <td>{pad.data.brand}</td>
-              <td class="spec-cell">{pad.data.surface}</td>
-              <td class="spec-cell">{pad.data.speed || pad.data.speedType}</td>
-              <td class="spec-cell">{pad.data.dimensions || pad.data.size}</td>
-              <td class="num usage-cell">
-                {pad.usage > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{pad.usage}</span>
-                    <div class="player-dropdown">
-                      {pad.players.map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
+          {groupedMousepadsArray.map((group) => (
+            <>
+              <tr
+                class={`mousepad-row ${hasMultipleSizes(group) ? 'expandable' : ''}`}
+                data-name={group.baseModel.toLowerCase()}
+                data-brand={group.brand.toLowerCase()}
+                data-surface={group.surface.toLowerCase()}
+                data-speed={group.speed.toLowerCase()}
+                data-usage={group.totalUsage}
+              >
+                <td class="name-cell">
+                  {hasMultipleSizes(group) && <span class="expand-icon">▶</span>}
+                  {group.baseModel}
+                </td>
+                <td>{group.brand}</td>
+                <td class="spec-cell">{group.surface}</td>
+                <td class="spec-cell">{group.speed}</td>
+                <td class="spec-cell sizes-cell">
+                  {getSizeBadges(group) ? (
+                    <span class="size-badges">{getSizeBadges(group)}</span>
+                  ) : (
+                    <span class="size-single">{group.variants[0]?.dimensions || '—'}</span>
+                  )}
+                </td>
+                <td class="num usage-cell">
+                  {group.totalUsage > 0 ? (
+                    <div class="usage-wrapper">
+                      <span class="usage-count">{group.totalUsage}</span>
+                      <div class="player-dropdown">
+                        {group.allPlayers.map(p => (
+                          <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ) : '—'}
-              </td>
-            </tr>
+                  ) : '—'}
+                </td>
+              </tr>
+              {hasMultipleSizes(group) && group.variants.map((variant) => (
+                <tr class="variant-row" data-parent={group.baseModel.toLowerCase()} style="display: none;">
+                  <td class="name-cell variant-name">
+                    <span class="variant-indent"></span>
+                    {variant.normalizedSize || variant.size}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="spec-cell">{variant.dimensions}</td>
+                  <td class="num usage-cell">
+                    {variant.players.length > 0 ? (
+                      <div class="usage-wrapper">
+                        <span class="usage-count">{variant.players.length}</span>
+                        <div class="player-dropdown">
+                          {variant.players.map(p => (
+                            <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </>
           ))}
         </tbody>
       </table>
@@ -420,17 +458,32 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
       const search = searchInput?.value.toLowerCase() || '';
       const playerUsedOnly = playerUsedToggle?.checked ?? true;
+      const isMousepadTable = table.classList.contains('mousepad-table');
 
       const tbody = table.querySelector('tbody');
       const rows = tbody?.querySelectorAll('tr') || [];
       let visibleCount = 0;
+      let totalMainRows = 0;
 
       rows.forEach(row => {
+        // Skip variant rows - they follow their parent
+        if (row.classList.contains('variant-row')) {
+          const parentName = row.getAttribute('data-parent');
+          const parentRow = tbody?.querySelector(`.mousepad-row[data-name="${parentName}"]`) as HTMLElement;
+          if (parentRow && parentRow.style.display === 'none') {
+            (row as HTMLElement).style.display = 'none';
+          }
+          // Variant rows are not counted, and their visibility is managed by parent expand state
+          return;
+        }
+
         const name = row.getAttribute('data-name') || '';
         const brand = row.getAttribute('data-brand') || '';
         const sensor = row.getAttribute('data-sensor') || '';
         const shape = row.getAttribute('data-shape') || '';
         const connection = row.getAttribute('data-connection') || '';
+        const surface = row.getAttribute('data-surface') || '';
+        const speed = row.getAttribute('data-speed') || '';
         const usage = parseInt(row.getAttribute('data-usage') || '0');
 
         // Search filter - check all data attributes
@@ -439,14 +492,31 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           brand.includes(search) ||
           sensor.includes(search) ||
           shape.includes(search) ||
-          connection.includes(search);
+          connection.includes(search) ||
+          surface.includes(search) ||
+          speed.includes(search);
 
         // Player-used filter
         const matchesPlayerFilter = !playerUsedOnly || usage > 0;
 
         const show = matchesSearch && matchesPlayerFilter;
         (row as HTMLElement).style.display = show ? '' : 'none';
+
+        // Count only main rows
+        totalMainRows++;
         if (show) visibleCount++;
+
+        // If this is a mousepad row and it's hidden, also hide its variants
+        if (isMousepadTable && !show) {
+          const variantRows = tbody?.querySelectorAll(`.variant-row[data-parent="${name}"]`);
+          variantRows?.forEach(vr => {
+            (vr as HTMLElement).style.display = 'none';
+          });
+          // Also collapse it
+          row.classList.remove('expanded');
+          const icon = row.querySelector('.expand-icon');
+          if (icon) icon.textContent = '▶';
+        }
       });
 
       // Update visible count in tab
@@ -454,11 +524,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       const tabBtn = document.querySelector(`.tab-btn[data-tab="${tableType}"]`);
       const countSpan = tabBtn?.querySelector('.tab-count');
       if (countSpan) {
-        const totalCount = rows.length;
         if (playerUsedOnly || search) {
-          countSpan.textContent = `(${visibleCount}/${totalCount})`;
+          countSpan.textContent = `(${visibleCount}/${totalMainRows})`;
         } else {
-          countSpan.textContent = `(${totalCount})`;
+          countSpan.textContent = `(${totalMainRows})`;
         }
       }
     }
@@ -467,7 +536,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       const tbody = table.querySelector('tbody');
       if (!tbody) return;
 
-      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const isMousepadTable = table.classList.contains('mousepad-table');
+
+      // For mousepad table, only sort main rows and keep variants with their parents
+      let rows: Element[];
+      if (isMousepadTable) {
+        rows = Array.from(tbody.querySelectorAll('tr.mousepad-row'));
+      } else {
+        rows = Array.from(tbody.querySelectorAll('tr'));
+      }
 
       rows.sort((a, b) => {
         let aVal: string | number = a.getAttribute(`data-${col}`) || '';
@@ -493,7 +570,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           : (bVal as string).localeCompare(aVal as string);
       });
 
-      rows.forEach(row => tbody.appendChild(row));
+      // Re-append rows in sorted order
+      if (isMousepadTable) {
+        // For mousepad table, append each main row followed by its variants
+        rows.forEach(row => {
+          tbody.appendChild(row);
+          const parentName = row.getAttribute('data-name');
+          const variantRows = tbody.querySelectorAll(`.variant-row[data-parent="${parentName}"]`);
+          variantRows.forEach(vr => tbody.appendChild(vr));
+        });
+      } else {
+        rows.forEach(row => tbody.appendChild(row));
+      }
     }
 
     // Tab click handlers
@@ -535,6 +623,36 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         });
       });
     });
+
+    // Mousepad expand/collapse handlers
+    const mousepadTable = document.querySelector('.mousepad-table');
+    if (mousepadTable) {
+      const expandableRows = mousepadTable.querySelectorAll('.mousepad-row.expandable');
+      expandableRows.forEach(row => {
+        row.addEventListener('click', (e) => {
+          // Don't toggle if clicking on player dropdown
+          if ((e.target as HTMLElement).closest('.usage-wrapper')) return;
+
+          const isExpanded = row.classList.contains('expanded');
+          const parentName = row.getAttribute('data-name');
+
+          // Toggle expand state
+          row.classList.toggle('expanded');
+
+          // Toggle variant rows
+          const variantRows = mousepadTable.querySelectorAll(`.variant-row[data-parent="${parentName}"]`);
+          variantRows.forEach(vr => {
+            (vr as HTMLElement).style.display = isExpanded ? 'none' : 'table-row';
+          });
+
+          // Update expand icon
+          const icon = row.querySelector('.expand-icon');
+          if (icon) {
+            icon.textContent = isExpanded ? '▶' : '▼';
+          }
+        });
+      });
+    }
 
     // Handle initial hash or default to mice
     function handleHash(isInitialLoad: boolean = false) {
@@ -790,6 +908,69 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .player-dropdown a:hover {
     background: var(--bg-secondary, #12121a);
     color: var(--accent-primary, #ff6b35);
+  }
+
+  /* Mousepad grouping styles */
+  .mousepad-row.expandable {
+    cursor: pointer;
+  }
+
+  .mousepad-row.expandable:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .expand-icon {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.25rem;
+    font-size: 0.65em;
+    color: var(--text-secondary, #888);
+    transition: transform 0.15s;
+  }
+
+  .mousepad-row.expanded .expand-icon {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .variant-row {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .variant-row td {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.8rem;
+  }
+
+  .variant-name {
+    color: var(--text-secondary, #aaa);
+  }
+
+  .variant-indent {
+    display: inline-block;
+    width: 1.5rem;
+    margin-left: 0.5rem;
+    border-left: 1px solid var(--border-color, #2a2a3a);
+    height: 1em;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+  }
+
+  .sizes-cell {
+    white-space: nowrap;
+  }
+
+  .size-badges {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--accent-secondary, #4ecdc4);
+    background: rgba(78, 205, 196, 0.1);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  .size-single {
+    color: var(--text-secondary, #888);
   }
 
   @media (max-width: 1024px) {
