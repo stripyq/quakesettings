@@ -1,9 +1,13 @@
 name: r3cke
 country: Unknown
-steamId: ""
+steamId: "76561198279892880"
 category: duel
 dataSource: player
 lastUpdated: 2025-02
+ctfRating: 17.02
+ctfGames: 4499
+tdmRating: 17.26
+tdmGames: 67
 dpi: 400
 sensitivity: 2
 m_yaw: 0.0185642
