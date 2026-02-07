@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout title="Privacy & Data" description="Privacy information and data practices for QL Pro Settings">
@@ -27,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><a href="https://qllr.xyz/" target="_blank" rel="noopener noreferrer">QLLR</a> &ndash; CTF ratings</li>
       </ul>
       <p><strong>Voluntary submissions:</strong></p>
-      <p>Players can submit their own settings via the <a href="submit/">submit form</a>.</p>
+      <p>Players can submit their own settings via the <a href={`${base}submit/`}>submit form</a>.</p>
     </section>
 
     <section class="privacy-section">
