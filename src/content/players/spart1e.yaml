@@ -5,11 +5,14 @@ category: "ctf"
 lastUpdated: "2026-02"
 dataSource: "player"
 
-duelRating: null
+duelRating: 2070
+duelGames: 2866
 ctfRating: 33.6
 ctfGames: 719
 tdmRating: 34.6
 tdmGames: 344
+qllrCtfRating: 35.78
+qllrCtfGames: 61
 
 dpi: 1600
 sensitivity: 1
