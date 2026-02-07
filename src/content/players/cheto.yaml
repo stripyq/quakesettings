@@ -28,7 +28,9 @@ right: d
 crouch: C
 zoom: Space
 mouse: glorious-model-o-wireless
-mousepad: artisan-fx-hien-xsoft-xl
+mousepad: artisan-hien
+mousepadBase: XSoft
+mousepadSize: XL
 keyboard: ozone-keyboard
 monitor: hp-omen
 headset: logitech-g-pro-headset

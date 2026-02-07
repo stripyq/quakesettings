@@ -23,7 +23,9 @@ back: s
 left: a
 right: d
 mouse: logitech-g-pro-wireless
-mousepad: artisan-fx-zero-mid-large
+mousepad: artisan-zero
+mousepadBase: Mid
+mousepadSize: L
 monitor: aoc-24g15n
 headset: razer-blackshark-v2
 skates: Stock

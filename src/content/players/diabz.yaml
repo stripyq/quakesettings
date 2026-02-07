@@ -9,7 +9,9 @@ tdmRating: 26.94
 tdmRatingUpdated: "2026-02-03"
 dataSource: player
 mouse: endgame-gear-op1-8k
-mousepad: artisan-fx-key-83-soft-xl
+mousepad: artisan-key-83
+mousepadBase: Soft
+mousepadSize: XL
 keyboard: steelseries-apex-pro-tkl
 monitor: aorus-fo27q3
 headset: beyerdynamic-dt-990-pro

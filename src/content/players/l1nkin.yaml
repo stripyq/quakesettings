@@ -34,7 +34,9 @@ crouch: z
 attack: mouse1
 zoom: space
 mouse: pulsar-x2v2-mini
-mousepad: artisan-fx-hien-mid-large
+mousepad: artisan-hien
+mousepadBase: Mid
+mousepadSize: L
 keyboard: keychron-k5-pro-he
 headset: beyerdynamic-dt-770-pro
 gpuBrand: AMD

@@ -324,7 +324,35 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   ) : '—'}
                 </td>
               </tr>
-              {hasMultipleSizes(group) && group.variants.map((variant) => (
+              {/* Base variant rows for Artisan-style pads */}
+              {hasMultipleSizes(group) && group.hasBaseVariants && group.baseVariants?.map((bv) => (
+                <tr class="variant-row" data-parent={group.baseModel.toLowerCase()} style="display: none;">
+                  <td class="name-cell variant-name">
+                    <span class="variant-indent"></span>
+                    {bv.base} <span class="variant-thickness">({bv.thickness})</span>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="spec-cell sizes-cell">
+                    <span class="size-badges">{bv.sizes.join(' / ')}</span>
+                  </td>
+                  <td class="num usage-cell">
+                    {bv.players.length > 0 ? (
+                      <div class="usage-wrapper">
+                        <span class="usage-count">{bv.players.length}</span>
+                        <div class="player-dropdown">
+                          {bv.players.map(p => (
+                            <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : '—'}
+                  </td>
+                </tr>
+              ))}
+              {/* Size variant rows for size-grouped pads */}
+              {hasMultipleSizes(group) && !group.hasBaseVariants && group.variants.map((variant) => (
                 <tr class="variant-row" data-parent={group.baseModel.toLowerCase()} style="display: none;">
                   <td class="name-cell variant-name">
                     <span class="variant-indent"></span>
@@ -954,6 +982,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     height: 1em;
     vertical-align: middle;
     margin-right: 0.25rem;
+  }
+
+  .variant-thickness {
+    color: var(--text-muted, #666);
+    font-size: 0.85em;
   }
 
   .sizes-cell {

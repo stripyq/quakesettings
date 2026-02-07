@@ -36,7 +36,9 @@ crouch: Shift
 attack: Mouse1
 zoom: Mouse4 / Spacebar
 mouse: razer-deathadder-v3-pro
-mousepad: artisan-fx-zero-soft-large
+mousepad: artisan-zero
+mousepadBase: Soft
+mousepadSize: L
 keyboard: steelseries-apex-pro
 monitor: msi-mpg-321urx-qd-oled
 headset: beyerdynamic-dt-770-pro

@@ -115,6 +115,24 @@ const hasDuelHistory = p.duelRatingPeak || p.duelRatingLow;
 const hasTeamHistory = (teamInfo.type === 'ctf' && (p.ctfRatingPeak || p.ctfRatingLow)) ||
                        (teamInfo.type === 'tdm' && (p.tdmRatingPeak || p.tdmRatingLow));
 
+// Mousepad variant display
+const mpVariantParts: string[] = [];
+if (p.mousepadBase) mpVariantParts.push(p.mousepadBase);
+if (p.mousepadSize) mpVariantParts.push(p.mousepadSize);
+const mpVariantLabel = mpVariantParts.join(', ');
+const mpDisplayName = mousepadData
+  ? (mpVariantLabel ? mousepadData.name + ' (' + mpVariantLabel + ')' : mousepadData.name)
+  : '';
+let mpBaseDisplay = '';
+if (p.mousepadBase) {
+  mpBaseDisplay = p.mousepadBase;
+  if (mousepadData?.variants) {
+    const mv = mousepadData.variants.find((v: any) => v.base === p.mousepadBase);
+    if (mv?.thickness) mpBaseDisplay = p.mousepadBase + ' (' + mv.thickness + ')';
+  }
+}
+const hasMousepadVariant = !!(p.mousepadBase || p.mousepadSize);
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
@@ -227,11 +245,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         {mousepadData && (
           <div class="hardware-item">
             <h3>Mousepad</h3>
-            <p class="hardware-name">{mousepadData.name}</p>
+            <p class="hardware-name">{mpDisplayName}</p>
             <table class="hardware-specs">
               <tr><td>Surface</td><td>{mousepadData.surface}</td></tr>
               <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || 'N/A'}</td></tr>
-              <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || 'N/A'}</td></tr>
+              {hasMousepadVariant ? (
+                <>
+                  {mpBaseDisplay && <tr><td>Base</td><td>{mpBaseDisplay}</td></tr>}
+                  {p.mousepadSize && <tr><td>Size</td><td>{p.mousepadSize}</td></tr>}
+                </>
+              ) : (
+                <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || 'N/A'}</td></tr>
+              )}
             </table>
           </div>
         )}

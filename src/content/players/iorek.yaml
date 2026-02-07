@@ -32,7 +32,9 @@ crouch: alt
 attack: mouse1
 zoom: mouse2
 mouse: vaxee-xe-wireless
-mousepad: artisan-fx-zero-mid-xl
+mousepad: artisan-zero
+mousepadBase: Mid
+mousepadSize: XL
 keyboard: nuphy-air60-he
 monitor: benq-zowie-xl2546k
 headset: sennheiser-pc-350

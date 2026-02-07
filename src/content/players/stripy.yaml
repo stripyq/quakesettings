@@ -40,7 +40,9 @@ zoom: ""
 weaponNext: ""
 weaponPrev: ""
 mouse: lamzu-maya-x
-mousepad: artisan-fx-key-83-soft-xxl
+mousepad: artisan-key-83
+mousepadBase: Soft
+mousepadSize: XXL
 keyboard: wooting-80he
 monitor: lg-32gs95ue-b
 headset: drop-sennheiser-pc37x
