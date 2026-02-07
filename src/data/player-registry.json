@@ -15109,22 +15109,6 @@
       }
     },
     {
-      "steamId": "76561197960736529",
-      "name": "iOio_",
-      "slug": "ioio",
-      "hasProfile": true,
-      "ratings": {
-        "ctf": 30.677724838256836,
-        "tdm": null,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 1703,
-        "tdm": null,
-        "2v2": null
-      }
-    },
-    {
       "steamId": "76561197983318796",
       "name": "ion",
       "slug": "ion",
@@ -15154,6 +15138,22 @@
         "ctf": null,
         "tdm": null,
         "2v2": 3
+      }
+    },
+    {
+      "steamId": "76561197960736529",
+      "name": "ioRek",
+      "slug": "iorek",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 30.677724838256836,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 1703,
+        "tdm": null,
+        "2v2": null
       }
     },
     {
