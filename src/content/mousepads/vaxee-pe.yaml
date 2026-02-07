@@ -1,0 +1,11 @@
+name: "VAXEE PE"
+brand: "VAXEE"
+surface: "Cloth"
+speed: "Control"
+variants:
+  - base: "Standard"
+    thickness: "3.5mm"
+    sizes: ["L", "XL"]
+  - base: "Black"
+    thickness: "3.5mm"
+    sizes: ["L", "XL"]

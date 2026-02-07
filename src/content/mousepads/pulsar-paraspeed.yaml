@@ -1,0 +1,8 @@
+name: "Pulsar ParaSpeed"
+brand: "Pulsar"
+surface: "Cordura"
+speed: "Fast"
+variants:
+  - base: "Standard"
+    thickness: "3mm"
+    sizes: ["L", "XL", "XXL"]

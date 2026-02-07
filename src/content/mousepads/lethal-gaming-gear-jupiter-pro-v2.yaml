@@ -1,14 +1,14 @@
-name: "Lethal Gaming Gear Saturn Pro"
+name: "Lethal Gaming Gear Jupiter Pro V2"
 brand: "Lethal Gaming Gear"
-surface: "Cloth"
-speed: "Balanced"
+surface: "Hybrid"
+speed: "Slow"
 variants:
   - base: "Firm"
-    thickness: "4mm"
+    thickness: "3mm"
     sizes: ["XL", "XL Square", "XXL"]
   - base: "Soft"
-    thickness: "4mm"
+    thickness: "3mm"
     sizes: ["XL", "XL Square", "XXL"]
   - base: "XSoft"
-    thickness: "4mm"
+    thickness: "3mm"
     sizes: ["XL", "XL Square", "XXL"]

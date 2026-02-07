@@ -26,7 +26,9 @@ right: f
 jump: Mouse2
 attack: Mouse1
 mouse: logitech-g-pro-wireless
-mousepad: steelseries-qck-heavy-xxl
+mousepad: steelseries-qck
+mousepadBase: "Heavy"
+mousepadSize: "XXL"
 keyboard: logitech-g910-orion-spectrum
 monitor: asus-rog-strix-oled-xg27aqdmg
 headset: sennheiser-hd-660s

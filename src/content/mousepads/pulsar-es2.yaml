@@ -1,0 +1,11 @@
+name: "Pulsar ES2"
+brand: "Pulsar"
+surface: "Polyester"
+speed: "Balanced"
+variants:
+  - base: "3mm"
+    thickness: "3mm"
+    sizes: ["Large", "XL"]
+  - base: "4mm"
+    thickness: "4mm"
+    sizes: ["Large", "XL"]

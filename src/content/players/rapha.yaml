@@ -29,7 +29,8 @@ zoom: Mouse2
 weaponNext: Mwheel Down
 weaponPrev: Mwheel Up
 mouse: "g-pro-superlight"
-mousepad: "steelseries-qck-heavy"
+mousepad: "steelseries-qck"
+mousepadBase: "Heavy"
 keyboard: "ducky-one-2-mini"
 monitor: "benq-xl2546k"
 headset: "hyperx-cloud-ii"

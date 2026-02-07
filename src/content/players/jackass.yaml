@@ -21,7 +21,9 @@ right: d
 jump: mouse2
 attack: mouse1
 mouse: ""
-mousepad: "steelseries-qck-heavy-xxl"
+mousepad: "steelseries-qck"
+mousepadBase: "Heavy"
+mousepadSize: "XXL"
 keyboard: "logitech-g513"
 monitor: ""
 headset: "jabra-elite-10-gen-2"

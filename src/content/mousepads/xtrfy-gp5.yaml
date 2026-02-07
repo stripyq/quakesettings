@@ -1,0 +1,8 @@
+name: "Xtrfy GP5"
+brand: "Xtrfy"
+surface: "Cloth"
+speed: "Balanced"
+variants:
+  - base: "Standard"
+    thickness: "4mm"
+    sizes: ["M", "L", "XL"]

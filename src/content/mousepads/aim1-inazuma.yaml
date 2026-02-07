@@ -1,0 +1,11 @@
+name: "AIM1 Inazuma"
+brand: "AIM1"
+surface: "Polyester"
+speed: "Very fast"
+variants:
+  - base: "Hard"
+    thickness: "3.5mm"
+    sizes: ["Large", "XL"]
+  - base: "Soft"
+    thickness: "3.5mm"
+    sizes: ["Large", "XL"]

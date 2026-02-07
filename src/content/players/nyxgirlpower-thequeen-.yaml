@@ -36,7 +36,8 @@ zoom: ''
 weaponNext: ''
 weaponPrev: ''
 mouse: razer-hello-kitty-viper-mini
-mousepad: razer-goliathus-chroma-extended
+mousepad: razer-goliathus-chroma
+mousepadSize: "Extended"
 keyboard: razer-blackwidow-v4-pro
 monitor: asus-tuf-vg259qm
 headset: razer-kraken-kitty

@@ -19,7 +19,8 @@ right: d
 jump: space
 attack: mouse1
 mouse: "logitech-g-pro-x-superlight"
-mousepad: "xtrfy-gp5-xl"
+mousepad: "xtrfy-gp5"
+mousepadSize: "XL"
 keyboard: ""
 monitor: "benq-zowie-xl2546k"
 headset: "hyperx-cloud-ii"

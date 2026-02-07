@@ -1,0 +1,8 @@
+name: "X-Raypad Aqua Control Plus V2"
+brand: "X-Raypad"
+surface: "Amundsen"
+speed: "Control"
+variants:
+  - base: "Standard"
+    thickness: "3mm"
+    sizes: ["L", "XL", "XL Square", "XXL"]
