@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 87,
+  "playersWithProfiles": 88,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -29415,8 +29415,8 @@
     {
       "steamId": "76561198239142044",
       "name": "SPART1E",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "spart1e",
+      "hasProfile": true,
       "ratings": {
         "ctf": 33.6490364074707,
         "tdm": 34.59083938598633,
