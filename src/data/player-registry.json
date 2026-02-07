@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 82,
+  "playersWithProfiles": 83,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -7169,22 +7169,6 @@
       "gamesPlayed": {
         "ctf": 1,
         "tdm": null,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198257496197",
-      "name": "CRYING LAUGHING POMIDOREK",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 13.826506614685059,
-        "tdm": 11.53742790222168,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 1370,
-        "tdm": 1,
         "2v2": null
       }
     },
@@ -26529,6 +26513,22 @@
       "gamesPlayed": {
         "ctf": null,
         "tdm": 11,
+        "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198257496197",
+      "name": "RiriWoo",
+      "slug": "ririwoo",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 13.826506614685059,
+        "tdm": 11.53742790222168,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 1370,
+        "tdm": 1,
         "2v2": null
       }
     },

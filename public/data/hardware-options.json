@@ -3135,6 +3135,11 @@
       "brand": "Corsair"
     },
     {
+      "slug": "corsair-k68",
+      "name": "Corsair K68",
+      "brand": "Corsair"
+    },
+    {
       "slug": "corsair-k70-max",
       "name": "Corsair K70 Max",
       "brand": "Corsair"
@@ -4499,6 +4504,11 @@
     {
       "slug": "benq-xl2420z",
       "name": "BenQ XL2420Z",
+      "brand": "BenQ"
+    },
+    {
+      "slug": "benq-zowie-xl2411",
+      "name": "BenQ ZOWIE XL2411",
       "brand": "BenQ"
     },
     {
