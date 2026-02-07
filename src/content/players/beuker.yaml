@@ -1,6 +1,6 @@
 name: BeukeR
 country: NL
-steamId: "76561197971635353"
+steamId: "76561197971635344"
 category: ctf
 ctfRating: 25.26
 ctfGames: 908
@@ -12,29 +12,34 @@ duelRating: 1652
 duelGames: 2127
 duelRatingUpdated: "2026-02-04"
 dataSource: player
-lastUpdated: 2025-01
+lastUpdated: 2025-02
 dpi: 1200
 sensitivity: 1.85
+m_yaw: 0.018
 edpi: 2220
-cm360: 18.722358722358724
+cm360: 22.88
 acceleration: false
 rawInput: true
-fov: 120
-crosshair: "7"
+windowsSensitivity: 6
 invertedMouse: false
+grip: Palm
+fov: 110
+crosshair: "2, 7"
+crosshairColor: Yellow
+enemyModel: Tank Jr.
 forward: w
 back: s
 left: a
 right: d
-attack: Mouse1
 jump: Mouse2
+crouch: Shift
+attack: Mouse1
+zoom: Mouse4 / Spacebar
 mouse: razer-deathadder-v3-pro
-mousepad: artisan-zero-
+mousepad: artisan-fx-zero-soft-large
 keyboard: steelseries-apex-pro
-monitor: asus-rog-swift-pg32uqx
+monitor: msi-mpg-321urx-qd-oled
 headset: beyerdynamic-dt-770-pro
-skates: Stock
-enemyModel: Tank Jr.
-crosshairColor: Yellow
+skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
