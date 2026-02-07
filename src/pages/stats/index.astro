@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
+import { execSync } from 'child_process';
 
 const players = await getCollection('players');
 const mice = await getCollection('mice');
@@ -235,11 +236,31 @@ const categoryCTF = players.filter(p => p.data.category === 'ctf').length;
 const categoryTDM = players.filter(p => p.data.category === 'tdm').length;
 const categoryOther = players.length - categoryDuel - categoryCTF - categoryTDM;
 
-// Recently updated (sort by lastUpdated)
-const recentPlayers = [...players]
+// Recently updated: rank by lastUpdated (intentional signal), use git date for precise display
+function getGitLastModified(filePath: string): string | null {
+  try {
+    return execSync(`git log -1 --format=%aI -- "${filePath}"`, { encoding: 'utf-8' }).trim() || null;
+  } catch { return null; }
+}
+
+const playersWithDates = players
   .filter(p => p.data.lastUpdated)
-  .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
-  .slice(0, 5);
+  .map(p => ({
+    player: p,
+    gitDate: getGitLastModified(`src/content/players/${p.id}.yaml`),
+  }));
+
+// Primary sort by lastUpdated (month bucket), tiebreak by git timestamp
+playersWithDates.sort((a, b) => {
+  const luCmp = (b.player.data.lastUpdated || '').localeCompare(a.player.data.lastUpdated || '');
+  if (luCmp !== 0) return luCmp;
+  return (b.gitDate || '').localeCompare(a.gitDate || '');
+});
+
+const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
+  ...p.player,
+  gitDate: p.gitDate ? p.gitDate.slice(0, 10) : p.player.data.lastUpdated,
+}));
 
 // ===========================================
 // INTERESTING FACTS
@@ -885,7 +906,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             {recentPlayers.map(p => (
               <div class="recent-item">
                 <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                <span class="date">{p.data.lastUpdated}</span>
+                <span class="date">{p.gitDate}</span>
               </div>
             ))}
           </div>
