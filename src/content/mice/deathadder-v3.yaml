@@ -1,9 +1,0 @@
-name: "Razer DeathAdder V3"
-brand: "Razer"
-weight: "59g"
-shape: "Ergonomic"
-sensor: "Focus Pro 30K"
-dpiRange: "100-30000"
-pollingRate: "8000Hz"
-connection: "Wired"
-buttons: 5
