@@ -1,4 +1,6 @@
 name: "7Hz Sonus"
 brand: "7Hz"
 type: "In-Ear"
+driver: "1DD + 1BA"
+impedance: "30Ω"
 connection: "Wired"
