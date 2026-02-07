@@ -4,6 +4,12 @@ steamId: "76561197977412349"
 category: duel
 dataSource: player
 lastUpdated: 2025-02
+duelRating: 1213
+duelGames: 8
+ctfRating: 16.68
+ctfGames: 196
+tdmRating: 22.11
+tdmGames: 5
 dpi: 4800
 sensitivity: 0.29
 m_cpi: 0
