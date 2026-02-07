@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-02-06",
-  "totalPlayers": 2287,
-  "playersWithProfiles": 75,
+  "generatedAt": "2026-02-07",
+  "totalPlayers": 2288,
+  "playersWithProfiles": 81,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -4615,8 +4615,8 @@
     {
       "steamId": "76561197971635353",
       "name": "BeukeR",
-      "slug": "beuker",
-      "hasProfile": true,
+      "slug": null,
+      "hasProfile": false,
       "ratings": {
         "ctf": 25.261369705200195,
         "tdm": 22.4172306060791,
@@ -4626,6 +4626,22 @@
         "ctf": 908,
         "tdm": 45,
         "2v2": 7
+      }
+    },
+    {
+      "steamId": "76561197971635344",
+      "name": "BeukeR",
+      "slug": "beuker",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 25.26,
+        "tdm": 22.42,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 908,
+        "tdm": 45,
+        "2v2": null
       }
     },
     {
@@ -6455,8 +6471,8 @@
     {
       "steamId": "76561199044683584",
       "name": "Chet0!!",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "cheto",
+      "hasProfile": true,
       "ratings": {
         "ctf": 15.137974739074707,
         "tdm": 14.586236953735352,
@@ -15095,8 +15111,8 @@
     {
       "steamId": "76561197960736529",
       "name": "iOio_",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "ioio",
+      "hasProfile": true,
       "ratings": {
         "ctf": 30.677724838256836,
         "tdm": null,
@@ -20695,8 +20711,8 @@
     {
       "steamId": "76561198004545167",
       "name": "Morda",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "morda",
+      "hasProfile": true,
       "ratings": {
         "ctf": 10.444267272949219,
         "tdm": 11.219002723693848,
@@ -25522,6 +25538,22 @@
         "ctf": 230,
         "tdm": 532,
         "2v2": 145
+      }
+    },
+    {
+      "steamId": "76561198279892880",
+      "name": "r3cke",
+      "slug": "r3cke",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 16.633502960205078,
+        "tdm": 17.25713539123535,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 4461,
+        "tdm": 67,
+        "2v2": null
       }
     },
     {
@@ -31511,8 +31543,8 @@
     {
       "steamId": "76561197977412349",
       "name": "TK",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "tk",
+      "hasProfile": true,
       "ratings": {
         "ctf": 16.683881759643555,
         "tdm": 22.113611221313477,
@@ -32193,22 +32225,6 @@
       "gamesPlayed": {
         "ctf": null,
         "tdm": 1,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198279892880",
-      "name": "ttv/r3cke",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 16.633502960205078,
-        "tdm": 17.25713539123535,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 4461,
-        "tdm": 67,
         "2v2": null
       }
     },
@@ -33703,8 +33719,8 @@
     {
       "steamId": "76561198098777141",
       "name": "Wallsnag",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "wallsnag",
+      "hasProfile": true,
       "ratings": {
         "ctf": 22.077360153198242,
         "tdm": 18.574724197387695,
