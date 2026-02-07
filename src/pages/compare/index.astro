@@ -192,7 +192,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
         html += compareRow('eDPI', p1.edpi, p2.edpi, true);
         html += compareRow('cm/360', formatCm360(p1), formatCm360(p2), true);
-        html += compareRow('Acceleration', p1.acceleration ? 'Yes' : 'No', p2.acceleration ? 'Yes' : 'No');
+        html += compareRow('Acceleration',
+          p1.acceleration ? (p1.accelValue ? String(p1.accelValue) : 'On') : 'Off',
+          p2.acceleration ? (p2.accelValue ? String(p2.accelValue) : 'On') : 'Off');
 
         // Section: Game Settings
         html += sectionHeader('Game Settings');
@@ -241,13 +243,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       function compareRow(label, val1, val2, isNumeric = false) {
         const v1 = val1 !== undefined && val1 !== null ? String(val1) : '';
         const v2 = val2 !== undefined && val2 !== null ? String(val2) : '';
-        const isDiff = v1 !== v2;
-        const diffClass = isDiff ? 'diff' : 'same';
+        const isSame = v1 !== '' && v2 !== '' && v1 === v2;
+        const diffClass = isSame ? 'same-highlight' : '';
         const numClass = isNumeric ? 'numeric' : '';
 
         // Only show arrow on Player 2 column (right side)
         let diffIndicator2 = '';
-        if (isDiff && isNumeric && v1 && v2) {
+        if (!isSame && isNumeric && v1 && v2) {
           const n1 = parseFloat(v1);
           const n2 = parseFloat(v2);
           if (!isNaN(n1) && !isNaN(n2)) {
@@ -267,8 +269,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       function compareHardwareRow(label, hw1, hw2) {
         const name1 = hw1?.name || '';
         const name2 = hw2?.name || '';
-        const isDiff = name1 !== name2;
-        const diffClass = isDiff ? 'diff' : 'same';
+        const isSame = name1 !== '' && name2 !== '' && name1 === name2;
+        const diffClass = isSame ? 'same-highlight' : '';
 
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
@@ -445,14 +447,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     padding-left: 1.5rem;
   }
 
-  .compare-table :global(.value-cell.diff) {
+  .compare-table :global(.value-cell.same-highlight) {
     background: rgba(255, 107, 53, 0.1);
     color: var(--accent-primary, #ff6b35);
     font-weight: 500;
-  }
-
-  .compare-table :global(.value-cell.same) {
-    color: var(--text-primary, #e8e8f0);
   }
 
   .compare-table :global(.value-cell.numeric) {
