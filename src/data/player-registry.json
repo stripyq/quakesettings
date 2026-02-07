@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 81,
+  "playersWithProfiles": 82,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -17559,8 +17559,8 @@
     {
       "steamId": "76561198254687687",
       "name": "KRL",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "krl",
+      "hasProfile": true,
       "ratings": {
         "ctf": 24.052600860595703,
         "tdm": 16.3620662689209,
