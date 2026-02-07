@@ -239,7 +239,7 @@ const movementPresets = [
 
           <div class="form-group">
             <label for="sensitivity">In-game Sensitivity * <code class="cvar">/sensitivity</code></label>
-            <input type="number" id="sensitivity" name="sensitivity" required step="0.01" min="0.1" max="30" placeholder="e.g., 1.5">
+            <input type="number" id="sensitivity" name="sensitivity" required step="any" min="0.01" max="100" placeholder="e.g., 1.5">
             <small>Use dot (.) as decimal separator, not comma (,)</small>
           </div>
         </div>
@@ -269,7 +269,7 @@ const movementPresets = [
 
         <div class="form-group accel-value-group hidden">
           <label for="accelValue">Accel Value <code class="cvar">cl_mouseAccel</code></label>
-          <input type="number" id="accelValue" name="accelValue" step="0.001" placeholder="e.g., 0.02">
+          <input type="number" id="accelValue" name="accelValue" step="any" placeholder="e.g., 0.02">
           <small>Your <code class="cvar">cl_mouseAccel</code> value if using in-game accel</small>
         </div>
 
@@ -319,7 +319,7 @@ const movementPresets = [
             <label for="m_yaw">
               <code class="cvar">m_yaw</code>
             </label>
-            <input type="number" id="m_yaw" name="m_yaw" step="0.001" value="0.022">
+            <input type="number" id="m_yaw" name="m_yaw" step="any" value="0.022">
             <small>Default is 0.022. Only change if you modified this cvar.</small>
           </div>
         </div>

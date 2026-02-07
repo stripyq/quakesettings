@@ -6,9 +6,10 @@ dataSource: player
 lastUpdated: 2025-02
 dpi: 400
 sensitivity: 2
-m_yaw: 0.020
+m_yaw: 0.0185642
+m_pitch: -0.0205642
 edpi: 800
-cm360: 57.15
+cm360: 61.57
 acceleration: true
 accelValue: 0.001
 rawInput: true

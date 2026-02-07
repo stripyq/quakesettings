@@ -1,0 +1,8 @@
+name: "Beyerdynamic MMX 300"
+brand: "Beyerdynamic"
+type: "Closed-back"
+driverSize: "45mm"
+frequencyResponse: "5Hz - 35kHz"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: true
