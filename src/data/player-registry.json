@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 84,
+  "playersWithProfiles": 85,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -17911,8 +17911,8 @@
     {
       "steamId": "76561198047335245",
       "name": "L1NKIN",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "l1nkin",
+      "hasProfile": true,
       "ratings": {
         "ctf": 34.857547760009766,
         "tdm": null,
