@@ -81,6 +81,11 @@
       "brand": "ATK"
     },
     {
+      "slug": "atk-blazing-sky-z1-ultra",
+      "name": "ATK Blazing Sky Z1 Ultra",
+      "brand": "ATK"
+    },
+    {
       "slug": "atk-f1-v2-extreme",
       "name": "ATK F1 V2 Extreme",
       "brand": "ATK"
@@ -2026,6 +2031,11 @@
       "slug": "cisa-pad-v2",
       "name": "Cisa Pad V2",
       "brand": "Cisa"
+    },
+    {
+      "slug": "cooler-master-mp511",
+      "name": "Cooler Master MP511",
+      "brand": "Cooler Master"
     },
     {
       "slug": "corepad-xxxl",
@@ -4743,6 +4753,11 @@
     }
   ],
   "headsets": [
+    {
+      "slug": "7hz-sonus",
+      "name": "7Hz Sonus",
+      "brand": "7Hz"
+    },
     {
       "slug": "akg-k99",
       "name": "AKG K99",
