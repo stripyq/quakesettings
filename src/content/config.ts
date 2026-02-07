@@ -164,6 +164,8 @@ const playersCollection = defineCollection({
     edpi: z.number(),
     cm360: z.number().nullable().optional(),
     m_cpi: z.number().nullable().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
+    m_yaw: z.number().nullable().optional(), // Horizontal sensitivity multiplier (default 0.022)
+    m_pitch: z.number().nullable().optional(), // Vertical sensitivity multiplier (negative = inverted)
     acceleration: z.boolean().optional().default(false),
     accelValue: z.number().nullable().optional(),
     rawInput: z.boolean().optional().default(true),
