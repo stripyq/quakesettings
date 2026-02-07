@@ -1637,22 +1637,6 @@
       }
     },
     {
-      "steamId": "76561198048532604",
-      "name": "2Z^Latrommi",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": null,
-        "tdm": 42.584503173828125,
-        "2v2": 37.50571823120117
-      },
-      "gamesPlayed": {
-        "ctf": null,
-        "tdm": 225,
-        "2v2": 19
-      }
-    },
-    {
       "steamId": "76561197993217689",
       "name": "3ACCbIXA",
       "slug": null,
@@ -18162,6 +18146,22 @@
         "ctf": null,
         "tdm": null,
         "2v2": 2
+      }
+    },
+    {
+      "steamId": "76561198048532604",
+      "name": "Latrommi",
+      "slug": null,
+      "hasProfile": false,
+      "ratings": {
+        "ctf": 23.18,
+        "tdm": 42.584503173828125,
+        "2v2": 37.50571823120117
+      },
+      "gamesPlayed": {
+        "ctf": 4,
+        "tdm": 225,
+        "2v2": 19
       }
     },
     {
