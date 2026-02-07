@@ -188,18 +188,29 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
         // Section: Mouse Settings
         html += sectionHeader('Mouse Settings');
-        html += compareRow('DPI', p1.dpi, p2.dpi, true);
-        html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
-        html += compareRow('eDPI', p1.edpi, p2.edpi, true);
         html += compareRow('cm/360', formatCm360(p1), formatCm360(p2), true);
         html += compareRow('Acceleration',
           p1.acceleration ? (p1.accelValue ? String(p1.accelValue) : 'On') : 'Off',
           p2.acceleration ? (p2.accelValue ? String(p2.accelValue) : 'On') : 'Off');
+        html += compareRow('eDPI', p1.edpi, p2.edpi, true);
+        html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
+        html += compareRow('DPI', p1.dpi, p2.dpi, true);
+        html += compareRow('m_yaw', formatValue(p1.m_yaw), formatValue(p2.m_yaw));
+        html += compareRow('m_pitch', formatValue(p1.m_pitch), formatValue(p2.m_pitch));
+
+        // Section: Mouse Hardware
+        html += sectionHeader('Mouse Hardware');
+        html += compareHardwareRow('Mouse', p1.mouseData, p2.mouseData);
+        html += compareRow('Mouse Shape', formatValue(p1.mouseData?.shape), formatValue(p2.mouseData?.shape));
+        html += compareRow('Grip Style', formatValue(p1.grip), formatValue(p2.grip));
+        html += compareHardwareRow('Mousepad', p1.mousepadData, p2.mousepadData);
+        html += compareRow('Skates', formatValue(p1.skates), formatValue(p2.skates));
 
         // Section: Game Settings
         html += sectionHeader('Game Settings');
         html += compareRow('FOV', p1.fov, p2.fov, true);
         html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair));
+        html += compareRow('Enemy Model', formatValue(p1.enemyModel), formatValue(p2.enemyModel));
 
         // Section: Key Bindings
         html += sectionHeader('Key Bindings');
@@ -209,11 +220,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         html += compareRow('Right', formatBind(p1.right), formatBind(p2.right));
         html += compareRow('Jump', formatBind(p1.jump), formatBind(p2.jump));
         html += compareRow('Fire', formatBind(p1.attack), formatBind(p2.attack));
+        html += compareRow('Zoom', formatBind(p1.zoom), formatBind(p2.zoom));
+        html += compareRow('Crouch', formatBind(p1.crouch), formatBind(p2.crouch));
 
-        // Section: Hardware
-        html += sectionHeader('Hardware');
-        html += compareHardwareRow('Mouse', p1.mouseData, p2.mouseData);
-        html += compareHardwareRow('Mousepad', p1.mousepadData, p2.mousepadData);
+        // Section: Other Hardware
+        html += sectionHeader('Other Hardware');
         html += compareHardwareRow('Keyboard', p1.keyboardData, p2.keyboardData);
         html += compareHardwareRow('Monitor', p1.monitorData, p2.monitorData);
         html += compareHardwareRow('Headset', p1.headsetData, p2.headsetData);
