@@ -4515,6 +4515,11 @@
       "brand": "LG"
     },
     {
+      "slug": "lg-27gx790a-b",
+      "name": "LG UltraGear 27GX790A-B",
+      "brand": "LG"
+    },
+    {
       "slug": "lg-ultragear-27gx790b",
       "name": "LG UltraGear 27GX790B",
       "brand": "LG"
@@ -4794,6 +4799,11 @@
     {
       "slug": "logitech-g-pro-x-wireless-headset",
       "name": "Logitech G Pro X Wireless",
+      "brand": "Logitech"
+    },
+    {
+      "slug": "logitech-g335",
+      "name": "Logitech G335",
       "brand": "Logitech"
     },
     {

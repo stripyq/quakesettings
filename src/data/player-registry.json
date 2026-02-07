@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 86,
+  "playersWithProfiles": 87,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -24055,8 +24055,8 @@
     {
       "steamId": "76561198025225261",
       "name": "pecka",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "pecka",
+      "hasProfile": true,
       "ratings": {
         "ctf": 16.794559478759766,
         "tdm": 27.720314025878906,

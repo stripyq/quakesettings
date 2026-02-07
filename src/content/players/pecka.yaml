@@ -1,0 +1,42 @@
+name: "pecka"
+country: "RU"
+steamId: "76561198025225261"
+category: "tdm"
+lastUpdated: "2026-02"
+dataSource: "player"
+
+duelRating: 1041
+duelGames: 794
+ctfRating: 17.16
+ctfGames: 244
+tdmRating: 27.69
+tdmGames: 2369
+
+dpi: 1600
+sensitivity: 1.7
+edpi: 2720
+rawInput: true
+grip: "Fingertip"
+
+fov: 95
+crosshair: "2"
+crosshairColor: "Red"
+enemyModel: "Keel"
+
+forward: "e"
+back: "d"
+left: "s"
+right: "f"
+jump: "space"
+crouch: "alt"
+attack: "mouse1"
+
+mouse: "logitech-g-pro-x-superlight-ii"
+mousepad: "lethal-gaming-gear-saturn-pro-soft-xl"
+keyboard: "aula-win68-he"
+monitor: "lg-27gx790a-b"
+headset: "logitech-g335"
+skates: "Stock"
+
+gpuBrand: "NVIDIA"
+cpuBrand: "Intel"

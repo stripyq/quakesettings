@@ -1,0 +1,8 @@
+name: "Logitech G335"
+brand: "Logitech"
+type: "Open-back"
+driverSize: "40mm"
+frequencyResponse: "20-20,000 Hz"
+impedance: "36 Ω"
+connection: "Wired"
+microphone: "Flip-to-mute"
