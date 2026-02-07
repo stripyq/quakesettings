@@ -64,11 +64,32 @@ const topDpiValues = [...dpiDistribution.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 4);
 
-// Sensitivity distribution by cm/360
-const lowSens = cm360Values.filter(v => v > 35).length; // High cm/360 = low sens
-const midSens = cm360Values.filter(v => v >= 20 && v <= 35).length;
-const highSens = cm360Values.filter(v => v < 20).length; // Low cm/360 = high sens
-const totalSensPlayers = cm360Values.length;
+// cm/360 distribution buckets with accel player breakdown
+const cm360BucketDefs = [
+  { label: 'Very High Sens', range: '< 15 cm', min: 0, max: 15 },
+  { label: 'High Sens', range: '15\u201320 cm', min: 15, max: 20 },
+  { label: 'Medium-High Sens', range: '20\u201325 cm', min: 20, max: 25 },
+  { label: 'Medium Sens', range: '25\u201330 cm', min: 25, max: 30 },
+  { label: 'Medium-Low Sens', range: '30\u201335 cm', min: 30, max: 35 },
+  { label: 'Low Sens', range: '35\u201345 cm', min: 35, max: 45 },
+  { label: 'Very Low Sens', range: '45\u201355 cm', min: 45, max: 55 },
+  { label: 'Extremely Low Sens', range: '> 55 cm', min: 55, max: Infinity },
+];
+
+const playerCm360Data = players.map(p => ({
+  cm360: calculateCm360(p.data),
+  hasAccel: !!p.data.acceleration,
+}));
+
+const cm360Buckets = cm360BucketDefs.map(def => {
+  const inRange = playerCm360Data.filter(d => d.cm360 >= def.min && d.cm360 < def.max);
+  return {
+    ...def,
+    total: inRange.length,
+    accel: inRange.filter(d => d.hasAccel).length,
+  };
+});
+const maxBucketTotal = Math.max(...cm360Buckets.map(b => b.total), 1);
 
 // ===========================================
 // HARDWARE POPULARITY
@@ -494,43 +515,60 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
     </section>
 
-    <div class="two-col">
-      <!-- SENSITIVITY DISTRIBUTION -->
-      <section class="stat-card">
-        <h2>Sensitivity Distribution</h2>
-        <p class="card-subtitle">Based on cm/360 values</p>
-        <div class="distribution">
-          <div class="dist-bar">
-            <div class="dist-fill low" style={`width: ${(lowSens / totalSensPlayers) * 100}%`}></div>
-            <span>Low (&gt;35cm): {lowSens} ({Math.round((lowSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-          <div class="dist-bar">
-            <div class="dist-fill mid" style={`width: ${(midSens / totalSensPlayers) * 100}%`}></div>
-            <span>Medium (20-35cm): {midSens} ({Math.round((midSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-          <div class="dist-bar">
-            <div class="dist-fill high" style={`width: ${(highSens / totalSensPlayers) * 100}%`}></div>
-            <span>High (&lt;20cm): {highSens} ({Math.round((highSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- DPI DISTRIBUTION -->
-      <section class="stat-card">
-        <h2>DPI Distribution</h2>
-        <div class="popularity-list">
-          {topDpiValues.map(([dpi, count]) => (
-            <div class="popularity-item">
-              <span class="name">{dpi} DPI</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+    <!-- cm/360 DISTRIBUTION -->
+    <section class="stat-card wide">
+      <h2>cm/360 Distribution</h2>
+      <p class="card-subtitle">Base sensitivity distribution across all players</p>
+      <div class="cm360-legend">
+        <span class="cm360-legend-item"><span class="cm360-swatch orange"></span> All players</span>
+        <span class="cm360-legend-item"><span class="cm360-swatch cyan"></span> Accel players</span>
+      </div>
+      <div class="cm360-chart">
+        {cm360Buckets.map(bucket => (
+          <div class="cm360-row">
+            <div class="cm360-label">
+              <span class="cm360-label-name">{bucket.label}</span>
+              <span class="cm360-label-range">{bucket.range}</span>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+            <div class="cm360-bars">
+              <div class="cm360-bar-track">
+                {bucket.total > 0 ? (
+                  <div class="cm360-bar-main" style={`width: ${(bucket.total / maxBucketTotal) * 100}%`}></div>
+                ) : null}
+              </div>
+              <div class="cm360-bar-track accel">
+                {bucket.accel > 0 ? (
+                  <div class="cm360-bar-accel" style={`width: ${(bucket.accel / maxBucketTotal) * 100}%`}></div>
+                ) : null}
+              </div>
+            </div>
+            <div class="cm360-stats">{bucket.total} total / {bucket.accel} accel</div>
+          </div>
+        ))}
+      </div>
+      <div class="cm360-summary">
+        <div class="cm360-summary-item"><strong>Average:</strong> {formatCm360(avgCm360)} cm/360</div>
+        <div class="cm360-summary-item"><strong>Median:</strong> {formatCm360(medianCm360)} cm/360</div>
+        <div class="cm360-summary-item"><strong>Min / Max:</strong> {formatCm360(minCm360)} / {formatCm360(maxCm360)} cm/360</div>
+      </div>
+      <p class="cm360-note"><em>Note:</em> For accel players, cm/360 represents their base (slowest) sensitivity. Effective sensitivity varies with mouse speed.</p>
+    </section>
+
+    <!-- DPI DISTRIBUTION -->
+    <section class="stat-card">
+      <h2>DPI Distribution</h2>
+      <div class="popularity-list">
+        {topDpiValues.map(([dpi, count]) => (
+          <div class="popularity-item">
+            <span class="name">{dpi} DPI</span>
+            <div class="bar-wrapper">
+              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            </div>
+            <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- ========== HARDWARE SECTION ========== -->
     <h3 class="section-header">Hardware</h3>
@@ -1093,42 +1131,145 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: var(--accent-primary, #ff6b35);
   }
 
-  .distribution {
+  /* cm/360 Distribution Chart */
+  .cm360-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cm360-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #aaa);
+  }
+
+  .cm360-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .cm360-swatch.orange {
+    background: linear-gradient(90deg, #ff6b35, #ff8c42);
+  }
+
+  .cm360-swatch.cyan {
+    background: linear-gradient(90deg, #00b4d8, #00d9ff);
+  }
+
+  .cm360-chart {
     display: flex;
     flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .cm360-row {
+    display: flex;
+    align-items: flex-start;
     gap: 0.75rem;
   }
 
-  .dist-bar {
-    position: relative;
-    height: 2rem;
-    background: var(--bg-secondary, #12121a);
+  .cm360-label {
+    width: 160px;
+    min-width: 160px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2px;
+  }
+
+  .cm360-label-name {
+    font-size: 0.8rem;
+    color: #aaa;
+    line-height: 1.2;
+  }
+
+  .cm360-label-range {
+    font-size: 0.7rem;
+    color: #666;
+  }
+
+  .cm360-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cm360-bar-track {
+    height: 24px;
+    background: #0f0f23;
     border-radius: 4px;
     overflow: hidden;
   }
 
-  .dist-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
+  .cm360-bar-track.accel {
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  .cm360-bar-main {
     height: 100%;
+    background: linear-gradient(90deg, #ff6b35, #ff8c42);
     border-radius: 4px;
     transition: width 0.3s ease;
   }
 
-  .dist-fill.low { background: #3498db; }
-  .dist-fill.mid { background: #2ecc71; }
-  .dist-fill.high { background: #e74c3c; }
+  .cm360-bar-accel {
+    height: 100%;
+    background: linear-gradient(90deg, #00b4d8, #00d9ff);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
 
-  .dist-bar span {
-    position: absolute;
-    left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+  .cm360-stats {
+    width: 120px;
+    min-width: 120px;
+    font-size: 0.75rem;
+    color: #888;
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .cm360-summary {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+    font-size: 0.85rem;
+    color: var(--text-secondary, #aaa);
+    flex-wrap: wrap;
+  }
+
+  .cm360-note {
+    margin-top: 0.75rem;
     font-size: 0.8rem;
-    color: white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    z-index: 1;
+    color: var(--text-secondary, #666);
+  }
+
+  .cm360-note em {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  @media (max-width: 700px) {
+    .cm360-label {
+      width: 100px;
+      min-width: 100px;
+    }
+
+    .cm360-stats {
+      display: none;
+    }
+
+    .cm360-summary {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
 
   .popularity-list {
