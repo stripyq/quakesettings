@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 83,
+  "playersWithProfiles": 84,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -7250,22 +7250,6 @@
         "ctf": 6,
         "tdm": null,
         "2v2": null
-      }
-    },
-    {
-      "steamId": "76561197961473367",
-      "name": "CUBA BóBr:B",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 19.2161922454834,
-        "tdm": 30.959463119506836,
-        "2v2": 26.32752799987793
-      },
-      "gamesPlayed": {
-        "ctf": 121,
-        "tdm": 1771,
-        "2v2": 161
       }
     },
     {
@@ -20226,6 +20210,22 @@
         "ctf": null,
         "tdm": 3,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561197961473367",
+      "name": "mezz",
+      "slug": "mezz",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 19.2161922454834,
+        "tdm": 30.959463119506836,
+        "2v2": 26.32752799987793
+      },
+      "gamesPlayed": {
+        "ctf": 121,
+        "tdm": 1771,
+        "2v2": 161
       }
     },
     {
