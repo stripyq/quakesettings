@@ -1,0 +1,8 @@
+name: "Razer Gigantus V2"
+brand: "Razer"
+surface: "Cloth"
+speed: "Control"
+variants:
+  - base: "Standard"
+    thickness: "3mm"
+    sizes: ["M", "L", "XXL", "3XL"]

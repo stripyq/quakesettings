@@ -1,0 +1,8 @@
+name: "Pulsar ParaBrake"
+brand: "Pulsar"
+surface: "Microfiber"
+speed: "Very slow"
+variants:
+  - base: "Standard"
+    thickness: "4mm"
+    sizes: ["L", "XL", "XXL"]

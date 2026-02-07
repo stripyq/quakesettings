@@ -36,7 +36,8 @@ zoom: ""
 weaponNext: ""
 weaponPrev: ""
 mouse: logitech-g-pro-wireless
-mousepad: steelseries-qck-heavy
+mousepad: steelseries-qck
+mousepadBase: "Heavy"
 keyboard: microsoft
 monitor: benq-xl2420t
 headset: hyperx-cloud-mix

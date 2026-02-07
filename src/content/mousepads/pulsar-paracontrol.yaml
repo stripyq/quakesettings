@@ -1,0 +1,8 @@
+name: "Pulsar ParaControl"
+brand: "Pulsar"
+surface: "Polyester"
+speed: "Slow"
+variants:
+  - base: "Standard"
+    thickness: "4mm"
+    sizes: ["L", "XL", "XL Extended", "XL Square", "XXL", "XXL Extended"]

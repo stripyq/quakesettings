@@ -24,7 +24,8 @@ right: d
 jump: Space
 attack: Mouse1
 mouse: logitech-g302
-mousepad: steelseries-qck-large
+mousepad: steelseries-qck
+mousepadSize: "Large"
 keyboard: ducky-one-2
 monitor: iiyama-g-master-gb2470hsu-b1
 headset: sony-wh-1000xm4

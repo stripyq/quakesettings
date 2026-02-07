@@ -1518,24 +1518,27 @@
       "brand": "A4tech"
     },
     {
-      "slug": "aim1-inazuma-hard-large",
-      "name": "AIM1 Inazuma Hard Large",
-      "brand": "AIM1"
-    },
-    {
-      "slug": "aim1-inazuma-hard-xl",
-      "name": "AIM1 Inazuma Hard XL",
-      "brand": "AIM1"
-    },
-    {
-      "slug": "aim1-inazuma-soft-large",
-      "name": "AIM1 Inazuma Soft Large",
-      "brand": "AIM1"
-    },
-    {
-      "slug": "aim1-inazuma-soft-xl",
-      "name": "AIM1 Inazuma Soft XL",
-      "brand": "AIM1"
+      "slug": "aim1-inazuma",
+      "name": "AIM1 Inazuma",
+      "brand": "AIM1",
+      "variants": [
+        {
+          "base": "Hard",
+          "thickness": "3.5mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3.5mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        }
+      ]
     },
     {
       "slug": "aim1-kagero",
@@ -1961,39 +1964,24 @@
       "brand": "Dornfinger"
     },
     {
-      "slug": "dornfinger-rawpad-v2-3xl",
-      "name": "Dornfinger Rawpad v2 3XL",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-large",
-      "name": "Dornfinger Rawpad v2 Large",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-large-square",
-      "name": "Dornfinger Rawpad v2 Large Square",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-medium",
-      "name": "Dornfinger Rawpad v2 Medium",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-pro",
-      "name": "Dornfinger Rawpad v2 Pro",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-xl-square",
-      "name": "Dornfinger Rawpad v2 XL Square",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dornfinger-rawpad-v2-xxl",
-      "name": "Dornfinger Rawpad v2 XXL",
-      "brand": "Dornfinger"
+      "slug": "dornfinger-rawpad-v2",
+      "name": "Dornfinger Rawpad V2",
+      "brand": "Dornfinger",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "4mm",
+          "sizes": [
+            "M",
+            "L",
+            "L Square",
+            "XL Square",
+            "XXL",
+            "3XL",
+            "Pro"
+          ]
+        }
+      ]
     },
     {
       "slug": "endgame-gear-em-b",
@@ -2171,19 +2159,20 @@
       "brand": "Kibu"
     },
     {
-      "slug": "kingjade-liu-li-v2-large",
-      "name": "KingJade Liu Li V2 Large",
-      "brand": "KingJade"
-    },
-    {
-      "slug": "kingjade-liu-li-v2-medium",
-      "name": "KingJade Liu Li V2 Medium",
-      "brand": "KingJade"
-    },
-    {
-      "slug": "kingjade-liu-li-v2-xl",
-      "name": "KingJade Liu Li V2 XL",
-      "brand": "KingJade"
+      "slug": "kingjade-liu-li-v2",
+      "name": "KingJade Liu Li V2",
+      "brand": "KingJade",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "4mm",
+          "sizes": [
+            "M",
+            "L",
+            "XL"
+          ]
+        }
+      ]
     },
     {
       "slug": "kurosun-shogun-large",
@@ -2206,144 +2195,106 @@
       "brand": "LAMZU"
     },
     {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-firm-xl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Firm XL",
-      "brand": "Lethal Gaming Gear"
+      "slug": "lethal-gaming-gear-jupiter-pro-v2",
+      "name": "Lethal Gaming Gear Jupiter Pro V2",
+      "brand": "Lethal Gaming Gear",
+      "variants": [
+        {
+          "base": "Firm",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-firm-xl-square",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Firm XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-firm-xxl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Firm XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-soft-xl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Soft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-soft-xl-square",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Soft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-soft-xxl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Soft XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-xsoft-xl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Xsoft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-xsoft-xl-square",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Xsoft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-jupiter-pro-v2-xsoft-xxl",
-      "name": "Lethal Gaming Gear Jupiter Pro v2 Xsoft XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-firm-xl",
-      "name": "Lethal Gaming Gear Neptune Pro Firm XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-firm-xl-square",
-      "name": "Lethal Gaming Gear Neptune Pro Firm XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-firm-xxl",
-      "name": "Lethal Gaming Gear Neptune Pro Firm XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-soft-xl",
-      "name": "Lethal Gaming Gear Neptune Pro Soft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-soft-xl-square",
-      "name": "Lethal Gaming Gear Neptune Pro Soft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-soft-xxl",
-      "name": "Lethal Gaming Gear Neptune Pro Soft XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-xsoft-xl",
-      "name": "Lethal Gaming Gear Neptune Pro Xsoft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-xsoft-xl-square",
-      "name": "Lethal Gaming Gear Neptune Pro Xsoft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-neptune-pro-xsoft-xxl",
-      "name": "Lethal Gaming Gear Neptune Pro Xsoft XXL",
-      "brand": "Lethal Gaming Gear"
+      "slug": "lethal-gaming-gear-neptune-pro",
+      "name": "Lethal Gaming Gear Neptune Pro",
+      "brand": "Lethal Gaming Gear",
+      "variants": [
+        {
+          "base": "Firm",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "3mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "lethal-gaming-gear-saturn-pro",
       "name": "Lethal Gaming Gear Saturn Pro",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-firm-xl",
-      "name": "Lethal Gaming Gear Saturn Pro Firm XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-firm-xl-square",
-      "name": "Lethal Gaming Gear Saturn Pro Firm XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-firm-xxl",
-      "name": "Lethal Gaming Gear Saturn Pro Firm XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-soft-xl",
-      "name": "Lethal Gaming Gear Saturn Pro Soft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-soft-xl-square",
-      "name": "Lethal Gaming Gear Saturn Pro Soft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-soft-xxl",
-      "name": "Lethal Gaming Gear Saturn Pro Soft XXL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-xsoft-xl",
-      "name": "Lethal Gaming Gear Saturn Pro Xsoft XL",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-xsoft-xl-square",
-      "name": "Lethal Gaming Gear Saturn Pro Xsoft XL Square",
-      "brand": "Lethal Gaming Gear"
-    },
-    {
-      "slug": "lethal-gaming-gear-saturn-pro-xsoft-xxl",
-      "name": "Lethal Gaming Gear Saturn Pro Xsoft XXL",
-      "brand": "Lethal Gaming Gear"
+      "brand": "Lethal Gaming Gear",
+      "variants": [
+        {
+          "base": "Firm",
+          "thickness": "4mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "4mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "lethal-gaming-gear-venus-pro",
@@ -2391,64 +2342,85 @@
       "brand": "Padsmith"
     },
     {
-      "slug": "pulsar-es1-3mm-large",
-      "name": "Pulsar ES1 3mm Large",
-      "brand": "Pulsar"
+      "slug": "pulsar-es1",
+      "name": "Pulsar ES1",
+      "brand": "Pulsar",
+      "variants": [
+        {
+          "base": "3mm",
+          "thickness": "3mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        },
+        {
+          "base": "4mm",
+          "thickness": "4mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        }
+      ]
     },
     {
-      "slug": "pulsar-es1-3mm-xl",
-      "name": "Pulsar ES1 3mm XL",
-      "brand": "Pulsar"
+      "slug": "pulsar-es2",
+      "name": "Pulsar ES2",
+      "brand": "Pulsar",
+      "variants": [
+        {
+          "base": "3mm",
+          "thickness": "3mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        },
+        {
+          "base": "4mm",
+          "thickness": "4mm",
+          "sizes": [
+            "Large",
+            "XL"
+          ]
+        }
+      ]
     },
     {
-      "slug": "pulsar-es1-4mm-large",
-      "name": "Pulsar ES1 4mm Large",
-      "brand": "Pulsar"
+      "slug": "pulsar-parabrake",
+      "name": "Pulsar ParaBrake",
+      "brand": "Pulsar",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "4mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
-      "slug": "pulsar-es1-4mm-xl",
-      "name": "Pulsar ES1 4mm XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-es2-3mm-large",
-      "name": "Pulsar ES2 3mm Large",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-es2-3mm-xl",
-      "name": "Pulsar ES2 3mm XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-es2-4mm-large",
-      "name": "Pulsar ES2 4mm Large",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-es2-4mm-xl",
-      "name": "Pulsar ES2 4mm XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-parabrake-large",
-      "name": "Pulsar ParaBrake Large",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-parabrake-xl",
-      "name": "Pulsar ParaBrake XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-parabrake-xxl",
-      "name": "Pulsar ParaBrake XXL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paracontrol-large",
-      "name": "Pulsar ParaControl Large",
-      "brand": "Pulsar"
+      "slug": "pulsar-paracontrol",
+      "name": "Pulsar ParaControl",
+      "brand": "Pulsar",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "4mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XL Extended",
+            "XL Square",
+            "XXL",
+            "XXL Extended"
+          ]
+        }
+      ]
     },
     {
       "slug": "pulsar-paracontrol-v2",
@@ -2456,44 +2428,20 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-paracontrol-xl",
-      "name": "Pulsar ParaControl XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paracontrol-xl-extended",
-      "name": "Pulsar ParaControl XL Extended",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paracontrol-xl-square",
-      "name": "Pulsar ParaControl XL Square",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paracontrol-xxl",
-      "name": "Pulsar ParaControl XXL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paracontrol-xxl-extended",
-      "name": "Pulsar ParaControl XXL Extended",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paraspeed-large",
-      "name": "Pulsar ParaSpeed Large",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paraspeed-xl",
-      "name": "Pulsar ParaSpeed XL",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-paraspeed-xxl",
-      "name": "Pulsar ParaSpeed XXL",
-      "brand": "Pulsar"
+      "slug": "pulsar-paraspeed",
+      "name": "Pulsar ParaSpeed",
+      "brand": "Pulsar",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "pulsar-superglide-mousepad",
@@ -2521,44 +2469,42 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-gigantus-v2",
+      "name": "Razer Gigantus V2",
+      "brand": "Razer",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "3mm",
+          "sizes": [
+            "M",
+            "L",
+            "XXL",
+            "3XL"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "razer-gigantus",
       "name": "Razer Gigantus V2",
       "brand": "Razer"
     },
     {
-      "slug": "razer-gigantus-v2-3xl",
-      "name": "Razer Gigantus V2 3XL",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-gigantus-v2-large",
-      "name": "Razer Gigantus V2 Large",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-gigantus-v2-medium",
-      "name": "Razer Gigantus V2 Medium",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-gigantus-v2-xxl",
-      "name": "Razer Gigantus V2 XXL",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-goliathus-chroma-3xl",
-      "name": "Razer Goliathus Chroma 3XL",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-goliathus-chroma-extended",
-      "name": "Razer Goliathus Chroma Extended",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-goliathus-chroma-medium",
-      "name": "Razer Goliathus Chroma Medium",
-      "brand": "Razer"
+      "slug": "razer-goliathus-chroma",
+      "name": "Razer Goliathus Chroma",
+      "brand": "Razer",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "3mm",
+          "sizes": [
+            "M",
+            "Extended",
+            "3XL"
+          ]
+        }
+      ]
     },
     {
       "slug": "razer-goliathus-control",
@@ -2598,22 +2544,25 @@
     {
       "slug": "steelseries-qck",
       "name": "SteelSeries QcK",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-qck-heavy",
-      "name": "SteelSeries QcK Heavy",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-qck-heavy-xxl",
-      "name": "SteelSeries QcK Heavy XXL",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-qck-large",
-      "name": "SteelSeries QcK Large",
-      "brand": "SteelSeries"
+      "brand": "SteelSeries",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "2mm",
+          "sizes": [
+            "Standard",
+            "Large"
+          ]
+        },
+        {
+          "base": "Heavy",
+          "thickness": "6mm",
+          "sizes": [
+            "Standard",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "superbeings-lab-massimo-pro",
@@ -2716,24 +2665,27 @@
       "brand": "VAXEE"
     },
     {
-      "slug": "vaxee-pe-black-large",
-      "name": "VAXEE PE Black Large",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-pe-black-xl",
-      "name": "VAXEE PE Black XL",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-pe-large",
-      "name": "VAXEE PE Large",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-pe-xl",
-      "name": "VAXEE PE XL",
-      "brand": "VAXEE"
+      "slug": "vaxee-pe",
+      "name": "VAXEE PE",
+      "brand": "VAXEE",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "3.5mm",
+          "sizes": [
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "base": "Black",
+          "thickness": "3.5mm",
+          "sizes": [
+            "L",
+            "XL"
+          ]
+        }
+      ]
     },
     {
       "slug": "vxe-dragonfly-pad",
@@ -2801,24 +2753,21 @@
       "brand": "X-raypad"
     },
     {
-      "slug": "x-raypad-aqua-control-plus-v2-large",
-      "name": "X-Raypad Aqua Control Plus V2 Large",
-      "brand": "X-Raypad"
-    },
-    {
-      "slug": "x-raypad-aqua-control-plus-v2-xl",
-      "name": "X-Raypad Aqua Control Plus V2 XL",
-      "brand": "X-Raypad"
-    },
-    {
-      "slug": "x-raypad-aqua-control-plus-v2-xl-square",
-      "name": "X-Raypad Aqua Control Plus V2 XL Square",
-      "brand": "X-Raypad"
-    },
-    {
-      "slug": "x-raypad-aqua-control-plus-v2-xxl",
-      "name": "X-Raypad Aqua Control Plus V2 XXL",
-      "brand": "X-Raypad"
+      "slug": "x-raypad-aqua-control-plus-v2",
+      "name": "X-Raypad Aqua Control Plus V2",
+      "brand": "X-Raypad",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XL Square",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "x-raypad-p-chen-heavy-bee-xl",
@@ -2831,19 +2780,20 @@
       "brand": "X-Raypad"
     },
     {
-      "slug": "xtrfy-gp5-large",
-      "name": "Xtrfy GP5 Large",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-gp5-medium",
-      "name": "Xtrfy GP5 Medium",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-gp5-xl",
-      "name": "Xtrfy GP5 XL+",
-      "brand": "Xtrfy"
+      "slug": "xtrfy-gp5",
+      "name": "Xtrfy GP5",
+      "brand": "Xtrfy",
+      "variants": [
+        {
+          "base": "Standard",
+          "thickness": "4mm",
+          "sizes": [
+            "M",
+            "L",
+            "XL"
+          ]
+        }
+      ]
     },
     {
       "slug": "xtrfy-gpz1",

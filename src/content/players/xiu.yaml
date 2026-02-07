@@ -22,7 +22,8 @@ right: d
 jump: CAPSLOCK
 attack: Mouse1
 mouse: pulsar-xlite-wireless
-mousepad: steelseries-qck-large
+mousepad: steelseries-qck
+mousepadSize: "Large"
 keyboard: cooler-master-mk730
 monitor: acer-gn246hl
 headset: hyperx-cloud-ii

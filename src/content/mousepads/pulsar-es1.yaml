@@ -1,0 +1,11 @@
+name: "Pulsar ES1"
+brand: "Pulsar"
+surface: "Hybrid"
+speed: "Quick"
+variants:
+  - base: "3mm"
+    thickness: "3mm"
+    sizes: ["Large", "XL"]
+  - base: "4mm"
+    thickness: "4mm"
+    sizes: ["Large", "XL"]

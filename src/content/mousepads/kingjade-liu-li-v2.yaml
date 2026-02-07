@@ -1,0 +1,8 @@
+name: "KingJade Liu Li V2"
+brand: "KingJade"
+surface: "Glass coated cloth"
+speed: "Fast"
+variants:
+  - base: "Standard"
+    thickness: "4mm"
+    sizes: ["M", "L", "XL"]

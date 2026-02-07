@@ -2,6 +2,10 @@ name: "SteelSeries QcK"
 brand: "SteelSeries"
 surface: "Cloth"
 speed: "Control"
-dimensions: "320 x 270 x 2mm"
-thickness: "2mm"
-base: "Rubber"
+variants:
+  - base: "Standard"
+    thickness: "2mm"
+    sizes: ["Standard", "Large"]
+  - base: "Heavy"
+    thickness: "6mm"
+    sizes: ["Standard", "XXL"]

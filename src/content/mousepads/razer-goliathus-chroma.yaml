@@ -1,0 +1,8 @@
+name: "Razer Goliathus Chroma"
+brand: "Razer"
+surface: "Cloth"
+speed: "Balanced"
+variants:
+  - base: "Standard"
+    thickness: "3mm"
+    sizes: ["M", "Extended", "3XL"]

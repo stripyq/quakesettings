@@ -1,0 +1,8 @@
+name: "Dornfinger Rawpad V2"
+brand: "Dornfinger"
+surface: "Cloth"
+speed: "Quick"
+variants:
+  - base: "Standard"
+    thickness: "4mm"
+    sizes: ["M", "L", "L Square", "XL Square", "XXL", "3XL", "Pro"]
