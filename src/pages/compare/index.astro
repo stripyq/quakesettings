@@ -119,13 +119,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       }
 
       function formatCm360(player) {
-        if (player.cm360) return player.cm360.toFixed(2);
-        if (player.m_cpi) {
+        let val;
+        if (player.cm360) val = player.cm360;
+        else if (player.m_cpi) {
           // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
           // When m_cpi = DPI, this simplifies to 360 / sensitivity
-          return (360 * player.m_cpi / (player.sensitivity * player.dpi)).toFixed(2);
+          val = 360 * player.m_cpi / (player.sensitivity * player.dpi);
+        } else {
+          val = 41563.6 / (player.dpi * player.sensitivity);
         }
-        return (41563.6 / (player.dpi * player.sensitivity)).toFixed(2);
+        const fixed = val.toFixed(2);
+        return fixed.endsWith('.00') ? Math.round(val).toString() : fixed;
       }
 
       function formatBind(val) {
