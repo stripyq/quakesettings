@@ -1106,6 +1106,11 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-cobra",
+      "name": "Razer Cobra",
+      "brand": "Razer"
+    },
+    {
       "slug": "razer-cobra-pro",
       "name": "Razer Cobra Pro",
       "brand": "Razer"
@@ -4035,6 +4040,11 @@
       "brand": "SteelSeries"
     },
     {
+      "slug": "steelseries-apex-9-mini",
+      "name": "SteelSeries Apex 9 Mini",
+      "brand": "SteelSeries"
+    },
+    {
       "slug": "steelseries-apex-pro",
       "name": "SteelSeries Apex Pro",
       "brand": "SteelSeries"
@@ -4469,6 +4479,11 @@
     {
       "slug": "benq-xl2420t",
       "name": "BenQ XL2420T",
+      "brand": "BenQ"
+    },
+    {
+      "slug": "benq-xl2420z",
+      "name": "BenQ XL2420Z",
       "brand": "BenQ"
     },
     {
