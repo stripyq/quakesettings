@@ -4565,6 +4565,11 @@
       "brand": "MSI"
     },
     {
+      "slug": "nokia-multigraph-449e",
+      "name": "Nokia Multigraph 449E",
+      "brand": "Nokia"
+    },
+    {
       "slug": "philips-27m2n5500xd",
       "name": "Philips 27M2N5500XD",
       "brand": "Philips"
@@ -4839,6 +4844,11 @@
     {
       "slug": "sennheiser-cx400",
       "name": "Sennheiser CX400",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-game-zero",
+      "name": "Sennheiser Game Zero",
       "brand": "Sennheiser"
     },
     {

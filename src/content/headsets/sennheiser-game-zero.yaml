@@ -1,0 +1,8 @@
+name: "Sennheiser Game Zero"
+brand: "Sennheiser"
+type: "Closed-back"
+driverSize: "40mm"
+frequencyResponse: "15-28,000 Hz"
+impedance: "50 Ω"
+connection: "Wired"
+microphone: "Flip-to-mute"

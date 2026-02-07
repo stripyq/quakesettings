@@ -1,0 +1,39 @@
+name: "ph0en|X"
+country: "SE"
+steamId: "76561198228590616"
+category: "ctf"
+lastUpdated: "2026-02"
+dataSource: "player"
+
+duelRating: 1485
+duelGames: 2
+ctfRating: 32.3
+ctfGames: 32
+
+dpi: 400
+sensitivity: 7
+edpi: 2800
+rawInput: true
+grip: "Hybrid"
+
+fov: 85
+crosshair: "6"
+crosshairColor: "White"
+enemyModel: "Keel"
+
+forward: "uparrow"
+back: "downarrow"
+left: "leftarrow"
+right: "rightarrow"
+jump: "ctrl"
+crouch: "shift"
+attack: "mouse1"
+
+mouse: "logitech-g402-hyperion-fury"
+mousepad: "steelseries-qck"
+monitor: "nokia-multigraph-449e"
+headset: "sennheiser-game-zero"
+skates: "Stock"
+
+gpuBrand: "NVIDIA"
+cpuBrand: "Intel"
