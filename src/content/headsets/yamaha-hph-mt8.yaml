@@ -1,0 +1,7 @@
+name: "Yamaha HPH-MT8"
+brand: "Yamaha"
+type: "Over-ear"
+driver: "45mm"
+frequencyResponse: "15Hz-28kHz"
+impedance: "37"
+hasMicrophone: false

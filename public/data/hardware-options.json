@@ -511,6 +511,11 @@
       "brand": "Glorious"
     },
     {
+      "slug": "glorious-model-o-wireless",
+      "name": "Glorious Model O Wireless",
+      "brand": "Glorious"
+    },
+    {
       "slug": "glorious-model-o3",
       "name": "Glorious Model O3",
       "brand": "Glorious"
@@ -676,6 +681,11 @@
       "brand": "Lamzu"
     },
     {
+      "slug": "lamzu-inca",
+      "name": "Lamzu Inca",
+      "brand": "Lamzu"
+    },
+    {
       "slug": "lamzu-maya-x",
       "name": "Lamzu Maya X",
       "brand": "Lamzu"
@@ -701,18 +711,8 @@
       "brand": "Logitech"
     },
     {
-      "slug": "g-pro-wireless",
-      "name": "Logitech G Pro Wireless",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g-pro-wireless",
       "name": "Logitech G Pro Wireless",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "g-pro-superlight",
-      "name": "Logitech G Pro X Superlight",
       "brand": "Logitech"
     },
     {
@@ -1126,11 +1126,6 @@
       "brand": "Razer"
     },
     {
-      "slug": "deathadder-v3",
-      "name": "Razer DeathAdder V3",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-deathadder-v3",
       "name": "Razer DeathAdder V3",
       "brand": "Razer"
@@ -1167,11 +1162,6 @@
     },
     {
       "slug": "razer-viper-v3-pro",
-      "name": "Razer Viper V3 Pro",
-      "brand": "Razer"
-    },
-    {
-      "slug": "viper-v3-pro",
       "name": "Razer Viper V3 Pro",
       "brand": "Razer"
     },
@@ -1908,18 +1898,8 @@
       "brand": "Artisan"
     },
     {
-      "slug": "artisan-hayate-otsu-",
-      "name": "Artisan Hayate Otsu",
-      "brand": "Artisan"
-    },
-    {
       "slug": "artisan-hayate-otsu",
       "name": "Artisan Hayate Otsu",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-hien-",
-      "name": "Artisan Hien",
       "brand": "Artisan"
     },
     {
@@ -1928,12 +1908,12 @@
       "brand": "Artisan"
     },
     {
-      "slug": "artisan-raiden-",
+      "slug": "artisan-raiden",
       "name": "Artisan Raiden",
       "brand": "Artisan"
     },
     {
-      "slug": "artisan-zero-",
+      "slug": "artisan-zero",
       "name": "Artisan Zero",
       "brand": "Artisan"
     },
@@ -2043,7 +2023,7 @@
       "brand": "Cisa"
     },
     {
-      "slug": "corepad-xxxl-",
+      "slug": "corepad-xxxl",
       "name": "Corepad Xxxl ",
       "brand": "Corepad"
     },
@@ -2078,12 +2058,17 @@
       "brand": "Corsair"
     },
     {
+      "slug": "csl-xxl-speed-titanwolf",
+      "name": "CSL XXL Speed Gaming Mouse Mat Titanwolf",
+      "brand": "CSL"
+    },
+    {
       "slug": "dark-project-x-playerman-white-glass-dp-id-0002",
       "name": "Dark Project X Playerman White Glass Dp Id 0002",
       "brand": "Dark"
     },
     {
-      "slug": "dexp-gm-m-biohazard-",
+      "slug": "dexp-gm-m-biohazard",
       "name": "Dexp Gm M Biohazard ",
       "brand": "Dexp"
     },
@@ -2638,11 +2623,6 @@
       "brand": "Pwnage"
     },
     {
-      "slug": "razer-atlas-",
-      "name": "Razer Atlas",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-atlas",
       "name": "Razer Atlas",
       "brand": "Razer"
@@ -2803,7 +2783,7 @@
       "brand": "Tenta-X"
     },
     {
-      "slug": "trust-gxt-756-",
+      "slug": "trust-gxt-756",
       "name": "Trust Gxt 756 ",
       "brand": "Trust"
     },
@@ -2903,6 +2883,11 @@
       "brand": "WALLHACK"
     },
     {
+      "slug": "wlmouse-maomaoshe-balanced",
+      "name": "Wlmouse MAOMAOSHE (Balanced)",
+      "brand": "Wlmouse"
+    },
+    {
       "slug": "wraith-blade-x-pro",
       "name": "Wraith Blade X Pro",
       "brand": "Wraith"
@@ -2928,7 +2913,7 @@
       "brand": "Wraith"
     },
     {
-      "slug": "x-raypad-aqua-control-pro-",
+      "slug": "x-raypad-aqua-control-pro",
       "name": "X-raypad Aqua Control Pro",
       "brand": "X-raypad"
     },
@@ -3093,6 +3078,11 @@
       "slug": "boyi-66pro",
       "name": "BOYI 66Pro",
       "brand": "BOYI"
+    },
+    {
+      "slug": "cherry-keyboard",
+      "name": "Cherry Keyboard",
+      "brand": "Cherry"
     },
     {
       "slug": "chili-s75h",
@@ -3550,6 +3540,11 @@
       "brand": "Lamzu"
     },
     {
+      "slug": "lamzu-jet75-magnetic",
+      "name": "LAMZU Jet75 Magnetic",
+      "brand": "Lamzu"
+    },
+    {
       "slug": "latenpow-looting60",
       "name": "Latenpow Looting60",
       "brand": "Latenpow"
@@ -3612,6 +3607,11 @@
     {
       "slug": "logitech-k120",
       "name": "Logitech K120",
+      "brand": "Logitech"
+    },
+    {
+      "slug": "logitech-k280e",
+      "name": "Logitech K280e",
       "brand": "Logitech"
     },
     {
@@ -3798,6 +3798,11 @@
       "slug": "nyfter-75",
       "name": "Nyfter 75",
       "brand": "Nyfter"
+    },
+    {
+      "slug": "ozone-keyboard",
+      "name": "Ozone Keyboard",
+      "brand": "Ozone"
     },
     {
       "slug": "piifox-walker75",
@@ -4307,6 +4312,11 @@
       "brand": "Acer"
     },
     {
+      "slug": "acer-predator-xb273ugx",
+      "name": "Acer Predator XB273UGX",
+      "brand": "Acer"
+    },
+    {
       "slug": "acer-predator-xb323u",
       "name": "Acer Predator XB323U",
       "brand": "Acer"
@@ -4477,11 +4487,6 @@
       "brand": "BenQ"
     },
     {
-      "slug": "benq-zowie-xl2546k",
-      "name": "BenQ Zowie XL2546K",
-      "brand": "BenQ"
-    },
-    {
       "slug": "benq-zowie-xl2566k",
       "name": "BenQ Zowie XL2566K",
       "brand": "BenQ"
@@ -4497,7 +4502,7 @@
       "brand": "BenQ"
     },
     {
-      "slug": "benq-xl2546k",
+      "slug": "benq-zowie-xl2546k",
       "name": "BenQ Zowie XL2546K",
       "brand": "BenQ Zowie"
     },
@@ -4557,6 +4562,11 @@
       "brand": "HKC"
     },
     {
+      "slug": "hp-omen",
+      "name": "HP Omen",
+      "brand": "HP"
+    },
+    {
       "slug": "iiyama-g-master-gb2470hsu-b1",
       "name": "Iiyama G-Master GB2470HSU-B1",
       "brand": "Iiyama"
@@ -4578,11 +4588,6 @@
     },
     {
       "slug": "lg-32gs95ue-b",
-      "name": "LG 32GS95UE-B",
-      "brand": "LG"
-    },
-    {
-      "slug": "lg-32gs95ue",
       "name": "LG 32GS95UE-B",
       "brand": "LG"
     },
@@ -4629,6 +4634,11 @@
     {
       "slug": "msi-optix-g271",
       "name": "MSI Optix G271",
+      "brand": "MSI"
+    },
+    {
+      "slug": "msi-optix-g274qpx",
+      "name": "MSI Optix G274QPX",
       "brand": "MSI"
     },
     {
@@ -4702,6 +4712,11 @@
       "brand": "Titan Army"
     },
     {
+      "slug": "viewsonic-xg2401",
+      "name": "ViewSonic XG2401",
+      "brand": "ViewSonic"
+    },
+    {
       "slug": "xiaomi-g27i",
       "name": "Xiaomi G27i",
       "brand": "Xiaomi"
@@ -4769,8 +4784,8 @@
       "brand": "Beyerdynamic"
     },
     {
-      "slug": "beyerdynamic-dt990-pro",
-      "name": "Beyerdynamic DT 990 Pro",
+      "slug": "beyerdynamic-mmx-300",
+      "name": "Beyerdynamic MMX 300",
       "brand": "Beyerdynamic"
     },
     {
@@ -4949,6 +4964,11 @@
       "brand": "Sony"
     },
     {
+      "slug": "sony-mdr-xd300",
+      "name": "Sony MDR-XD300",
+      "brand": "Sony"
+    },
+    {
       "slug": "sony-wh-1000xm4",
       "name": "Sony WH-1000XM4",
       "brand": "Sony"
@@ -4996,6 +5016,11 @@
     {
       "slug": "yamaha-eph-55",
       "name": "Yamaha EPH-55",
+      "brand": "Yamaha"
+    },
+    {
+      "slug": "yamaha-hph-mt8",
+      "name": "Yamaha HPH-MT8",
       "brand": "Yamaha"
     }
   ]
