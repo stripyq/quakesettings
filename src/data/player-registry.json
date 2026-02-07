@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-07",
   "totalPlayers": 2288,
-  "playersWithProfiles": 85,
+  "playersWithProfiles": 86,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -24295,8 +24295,8 @@
     {
       "steamId": "76561198228590616",
       "name": "ph0en|X",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "ph0enix",
+      "hasProfile": true,
       "ratings": {
         "ctf": 38.542388916015625,
         "tdm": 29.55745506286621,
