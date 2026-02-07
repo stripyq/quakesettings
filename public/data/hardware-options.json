@@ -2508,6 +2508,11 @@
       "brand": "Logitech"
     },
     {
+      "slug": "logitech-g740",
+      "name": "Logitech G740",
+      "brand": "Logitech"
+    },
+    {
       "slug": "logitech-g840",
       "name": "Logitech G840",
       "brand": "Logitech"
@@ -4577,6 +4582,11 @@
       "brand": "Dell"
     },
     {
+      "slug": "eizo-foris-2735",
+      "name": "Eizo Foris 2735",
+      "brand": "Eizo"
+    },
+    {
       "slug": "aorus-fo27q3",
       "name": "AORUS FO27Q3",
       "brand": "Gigabyte"
@@ -5017,6 +5027,11 @@
       "slug": "sony-wh-1000xm4",
       "name": "Sony WH-1000XM4",
       "brand": "Sony"
+    },
+    {
+      "slug": "steelseries-arctis-7-wireless",
+      "name": "SteelSeries Arctis 7 Wireless",
+      "brand": "SteelSeries"
     },
     {
       "slug": "steelseries-arctis-nova-3x",
