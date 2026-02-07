@@ -1,7 +1,8 @@
-name: BenQ Zowie XL2546K
-brand: BenQ
-size: "24.5\""
+name: "BenQ Zowie XL2546K"
+brand: "BenQ Zowie"
+size: "24.5 inch"
 resolution: "1920x1080"
 refreshRate: "240Hz"
 panelType: "TN"
-responseTime: "1ms"
+responseTime: "0.5ms"
+adaptiveSync: "None (DyAc+)"

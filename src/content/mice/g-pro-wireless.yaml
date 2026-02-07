@@ -1,9 +1,0 @@
-name: "Logitech G Pro Wireless"
-brand: "Logitech"
-weight: "80g"
-shape: "Ambidextrous"
-sensor: "HERO 25K"
-dpiRange: "100-25600"
-pollingRate: "1000Hz"
-connection: "Wireless"
-buttons: 8
