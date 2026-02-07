@@ -2863,13 +2863,8 @@
       "brand": "VAXEE"
     },
     {
-      "slug": "vgn-dragonfly-pad",
-      "name": "VGN Dragonfly Pad",
-      "brand": "VGN"
-    },
-    {
       "slug": "vxe-dragonfly-pad",
-      "name": "VXE Dragonfly Pad",
+      "name": "VXE/VGN Dragonfly Pad",
       "brand": "VXE"
     },
     {
