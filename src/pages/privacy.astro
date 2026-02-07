@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy & Data" description="Privacy information and data practices for QL Pro Settings">
+  <main class="main-content privacy-page">
+    <div class="page-header">
+      <h1>Privacy & Data</h1>
+    </div>
+
+    <section class="privacy-section">
+      <h2>What This Site Shows</h2>
+      <ul>
+        <li>Player nicknames and game settings</li>
+        <li>Steam IDs from public leaderboards (HoQ, QLStats, QLLR)</li>
+        <li>Skill ratings from public leaderboards</li>
+        <li>Hardware preferences</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>Data Sources</h2>
+      <p><strong>Public leaderboards:</strong></p>
+      <ul>
+        <li><a href="http://88.214.20.58/" target="_blank" rel="noopener noreferrer">HoQ (House of Quake)</a> &ndash; CTF/TDM ratings</li>
+        <li><a href="https://qlstats.net/" target="_blank" rel="noopener noreferrer">QLStats</a> &ndash; Duel ratings</li>
+        <li><a href="https://qllr.xyz/" target="_blank" rel="noopener noreferrer">QLLR</a> &ndash; CTF ratings</li>
+      </ul>
+      <p><strong>Voluntary submissions:</strong></p>
+      <p>Players can submit their own settings via the <a href="submit/">submit form</a>.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>No Tracking</h2>
+      <ul class="no-bullets">
+        <li>No analytics</li>
+        <li>No cookies</li>
+        <li>No ads</li>
+        <li>No data sharing or selling</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>Form Submissions</h2>
+      <p>Processed via <a href="https://formspree.io/" target="_blank" rel="noopener noreferrer">Formspree</a>. By submitting, you agree to your settings being published.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>Using This Data</h2>
+      <p>Player settings are community-submitted. Ratings come from HoQ, QLStats, and QLLR. Feel free to reference this site. A link back is appreciated but not required.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>Removal Requests</h2>
+      <p>Want your profile removed? Contact <strong>stripy</strong> on Discord.</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .privacy-page {
+    max-width: 720px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .privacy-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .privacy-section h2 {
+    color: var(--accent-primary);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .privacy-section ul {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0;
+  }
+
+  .privacy-section li {
+    margin-bottom: 0.35rem;
+    color: var(--text-secondary);
+  }
+
+  .privacy-section ul.no-bullets {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .privacy-section p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .privacy-section a {
+    color: var(--link-internal);
+    text-decoration: none;
+  }
+
+  .privacy-section a:hover {
+    text-decoration: underline;
+  }
+</style>

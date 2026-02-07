@@ -117,8 +117,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <div class="player-page">
     <div class="player-header">
       <h1>{p.name}</h1>
-      {p.realName && <p class="real-name">{p.realName}</p>}
-
       <div class="player-ratings-display">
         <div class="rating-item">
           <span class="rating-label">Duel:</span>
@@ -132,6 +130,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <span class="rating-label">TDM:</span>
           <span class="rating-value tdm">{formatRating(p.tdmRating, 'tdm')}</span>
         </div>
+        {p.qllrCtfRating && (
+          <div class="rating-item">
+            <span class="rating-label">CSQL:</span>
+            <a href={`https://qllr.xyz/player/${p.steamId}`} target="_blank" rel="noopener noreferrer" class="rating-value csql">{p.qllrCtfRating.toFixed(1)}</a>
+          </div>
+        )}
       </div>
       <p class="ratings-disclaimer">Not real-time · Updated periodically</p>
 
@@ -382,10 +386,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     margin-bottom: 0.25rem;
   }
 
-  .real-name {
-    color: var(--text-secondary, #9090a0);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+  .ratings-disclaimer {
+    font-size: 0.75em;
+    color: #666;
+    margin: 0.35rem 0 0;
   }
 
   .player-ratings-display {
@@ -432,6 +436,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .rating-value.tdm {
     color: #2ecc71;
+  }
+
+  .rating-value.csql {
+    color: #f39c12;
+    text-decoration: none;
+  }
+
+  .rating-value.csql:hover {
+    text-decoration: underline;
   }
 
   .player-meta {
