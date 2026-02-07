@@ -1,6 +1,7 @@
 /**
  * Mousepad grouping utility
  * Groups mousepads by model, stripping size suffixes
+ * Also handles Artisan-style pads with built-in variants (base/thickness/sizes)
  */
 
 // Size suffixes to strip from model names (order matters - check longer ones first)
@@ -67,13 +68,23 @@ export function sortSizes(sizes: string[]): string[] {
 }
 
 /**
- * Represents a size variant of a mousepad
+ * Represents a size variant of a mousepad (for size-grouped pads)
  */
 export interface SizeVariant {
   id: string;
   size: string;
   normalizedSize: string;
   dimensions: string;
+  players: any[];
+}
+
+/**
+ * Represents a base variant for Artisan-style pads (Mid/Soft/XSoft)
+ */
+export interface BaseVariant {
+  base: string;
+  thickness: string;
+  sizes: string[];
   players: any[];
 }
 
@@ -86,21 +97,64 @@ export interface GroupedMousepad {
   surface: string;
   speed: string;
   variants: SizeVariant[];
+  baseVariants?: BaseVariant[];
+  hasBaseVariants: boolean;
   totalUsage: number;
   allPlayers: any[];
 }
 
 /**
  * Group mousepads by base model name
+ * Handles two types:
+ * 1. Pads with `variants` array (Artisan-style) → shows base variants (Mid/Soft/XSoft)
+ * 2. Pads without `variants` → groups by size suffix in name
+ *
  * @param mousepads - Array of mousepad data objects with id, data, usage, players
  * @returns Map of base model name to grouped mousepad data
  */
-export function groupMousepadsByModel<T extends { id: string; data: { name: string; brand: string; surface?: string; speed?: string; speedType?: string; dimensions?: string; size?: string }; usage: number; players: any[] }>(
+export function groupMousepadsByModel<T extends { id: string; data: { name: string; brand: string; surface?: string; speed?: string; speedType?: string; dimensions?: string; size?: string; variants?: Array<{ base: string; thickness: string; sizes: string[] }> }; usage: number; players: any[] }>(
   mousepads: T[]
 ): Map<string, GroupedMousepad> {
   const groups = new Map<string, GroupedMousepad>();
 
   for (const pad of mousepads) {
+    // Check if this pad has built-in variants (Artisan-style)
+    if (pad.data.variants && pad.data.variants.length > 0) {
+      // Create a group directly from the single pad with its variants
+      const baseVariants: BaseVariant[] = pad.data.variants.map(v => {
+        // Find players matching this base variant
+        const basePlayers = pad.players.filter(
+          (p: any) => p.data.mousepadBase === v.base
+        );
+        return {
+          base: v.base,
+          thickness: v.thickness,
+          sizes: v.sizes,
+          players: basePlayers,
+        };
+      });
+
+      // Players without a mousepadBase (generic Artisan references)
+      const unspecifiedPlayers = pad.players.filter(
+        (p: any) => !p.data.mousepadBase
+      );
+
+      groups.set(pad.data.name, {
+        baseModel: pad.data.name,
+        brand: pad.data.brand,
+        surface: pad.data.surface || '',
+        speed: pad.data.speed || pad.data.speedType || '',
+        variants: [],
+        baseVariants,
+        hasBaseVariants: true,
+        totalUsage: pad.usage,
+        allPlayers: pad.players,
+      });
+
+      continue;
+    }
+
+    // Standard size-suffix grouping
     const baseName = getBaseModelName(pad.data.name);
     const size = getSizeFromName(pad.data.name);
 
@@ -111,6 +165,7 @@ export function groupMousepadsByModel<T extends { id: string; data: { name: stri
         surface: pad.data.surface || '',
         speed: pad.data.speed || pad.data.speedType || '',
         variants: [],
+        hasBaseVariants: false,
         totalUsage: 0,
         allPlayers: []
       });
@@ -134,30 +189,38 @@ export function groupMousepadsByModel<T extends { id: string; data: { name: stri
 
   // Sort variants within each group by size
   for (const group of groups.values()) {
-    group.variants.sort((a, b) => {
-      const aIndex = SIZE_ORDER.findIndex(s => s.toUpperCase() === a.size.toUpperCase());
-      const bIndex = SIZE_ORDER.findIndex(s => s.toUpperCase() === b.size.toUpperCase());
-      if (aIndex === -1 && bIndex === -1) return a.size.localeCompare(b.size);
-      if (aIndex === -1) return 1;
-      if (bIndex === -1) return -1;
-      return aIndex - bIndex;
-    });
+    if (!group.hasBaseVariants) {
+      group.variants.sort((a, b) => {
+        const aIndex = SIZE_ORDER.findIndex(s => s.toUpperCase() === a.size.toUpperCase());
+        const bIndex = SIZE_ORDER.findIndex(s => s.toUpperCase() === b.size.toUpperCase());
+        if (aIndex === -1 && bIndex === -1) return a.size.localeCompare(b.size);
+        if (aIndex === -1) return 1;
+        if (bIndex === -1) return -1;
+        return aIndex - bIndex;
+      });
+    }
   }
 
   return groups;
 }
 
 /**
- * Check if a mousepad model has multiple size variants
+ * Check if a mousepad model has expandable rows
  */
 export function hasMultipleSizes(group: GroupedMousepad): boolean {
+  if (group.hasBaseVariants) return true;
   return group.variants.length > 1;
 }
 
 /**
- * Get size badges string for display (e.g., "L / XL / XXL")
+ * Get size/variant badges string for display
+ * For base-variant pads: "Mid / Soft / XSoft"
+ * For size-grouped pads: "L / XL / XXL"
  */
 export function getSizeBadges(group: GroupedMousepad): string {
+  if (group.hasBaseVariants && group.baseVariants) {
+    return group.baseVariants.map(v => v.base).join(' / ');
+  }
   if (group.variants.length === 1 && group.variants[0].size === 'One Size') {
     return '';
   }

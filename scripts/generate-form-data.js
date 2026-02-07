@@ -202,6 +202,8 @@ function generateCollectedPlayers() {
     // Hardware (slugs)
     mouse: p.mouse || '',
     mousepad: p.mousepad || '',
+    mousepadBase: p.mousepadBase || '',
+    mousepadSize: p.mousepadSize || '',
     keyboard: p.keyboard || '',
     monitor: p.monitor || '',
     headset: p.headset || '',
@@ -234,11 +236,18 @@ function generateHardwareOptions() {
   const hardware = {};
   for (const [category, items] of Object.entries(categories)) {
     hardware[category] = items
-      .map(item => ({
-        slug: item.slug,
-        name: item.name,
-        brand: item.brand || ''
-      }))
+      .map(item => {
+        const entry = {
+          slug: item.slug,
+          name: item.name,
+          brand: item.brand || ''
+        };
+        // Include variant data for mousepads that have it (Artisan-style)
+        if (category === 'mousepads' && item.variants && item.variants.length > 0) {
+          entry.variants = item.variants;
+        }
+        return entry;
+      })
       .sort((a, b) => {
         // Sort by brand, then name
         if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);

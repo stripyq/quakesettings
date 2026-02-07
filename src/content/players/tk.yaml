@@ -34,7 +34,9 @@ crouch: ctrl
 attack: mouse1
 zoom: mouse2
 mouse: logitech-g-pro-x-superlight
-mousepad: artisan-fx-hayate-otsu-v2-mid-xl
+mousepad: artisan-hayate-otsu
+mousepadBase: Mid
+mousepadSize: XL
 keyboard: cherry-keyboard
 monitor: acer-predator-xb273ugx
 headset: beyerdynamic-mmx-300

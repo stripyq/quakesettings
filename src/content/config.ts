@@ -64,6 +64,12 @@ const mousepadsCollection = defineCollection({
     size: z.string().optional(), // Legacy field
     thickness: z.string().optional(),
     base: z.string().optional(),
+    note: z.string().optional(),
+    variants: z.array(z.object({
+      base: z.string(),
+      thickness: z.string(),
+      sizes: z.array(z.string()),
+    })).optional(),
     image: z.string().optional(),
       }),
 });
@@ -195,6 +201,8 @@ const playersCollection = defineCollection({
     // Hardware References (filenames without extension)
     mouse: z.string().optional(),
     mousepad: z.string().optional(),
+    mousepadBase: z.string().optional(), // Variant base: Mid, Soft, XSoft
+    mousepadSize: z.string().optional(), // Variant size: S, M, L, XL, XXL
     keyboard: z.string().optional(),
     monitor: z.string().optional(),
     headset: z.string().optional(),

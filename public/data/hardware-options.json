@@ -1563,369 +1563,232 @@
       "brand": "Aqirys"
     },
     {
-      "slug": "artisan-fx-hayate-otsu-v2-mid-large",
-      "name": "Artisan FX Hayate-Otsu V2 Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-mid-xl",
-      "name": "Artisan FX Hayate-Otsu V2 Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-mid-xxl",
-      "name": "Artisan FX Hayate-Otsu V2 Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-soft-large",
-      "name": "Artisan FX Hayate-Otsu V2 Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-soft-xl",
-      "name": "Artisan FX Hayate-Otsu V2 Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-soft-xxl",
-      "name": "Artisan FX Hayate-Otsu V2 Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-xsoft-large",
-      "name": "Artisan FX Hayate-Otsu V2 XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-xsoft-xl",
-      "name": "Artisan FX Hayate-Otsu V2 XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hayate-otsu-v2-xsoft-xxl",
-      "name": "Artisan FX Hayate-Otsu V2 XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-mid-large",
-      "name": "Artisan FX Hien Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-mid-medium",
-      "name": "Artisan FX Hien Mid Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-mid-small",
-      "name": "Artisan FX Hien Mid Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-mid-xl",
-      "name": "Artisan FX Hien Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-mid-xxl",
-      "name": "Artisan FX Hien Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-soft-large",
-      "name": "Artisan FX Hien Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-soft-medium",
-      "name": "Artisan FX Hien Soft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-soft-small",
-      "name": "Artisan FX Hien Soft Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-soft-xl",
-      "name": "Artisan FX Hien Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-soft-xxl",
-      "name": "Artisan FX Hien Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-xsoft-large",
-      "name": "Artisan FX Hien XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-xsoft-medium",
-      "name": "Artisan FX Hien XSoft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-xsoft-small",
-      "name": "Artisan FX Hien XSoft Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-xsoft-xl",
-      "name": "Artisan FX Hien XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-hien-xsoft-xxl",
-      "name": "Artisan FX Hien XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-mid-large",
-      "name": "Artisan FX Key-83 Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-mid-xl",
-      "name": "Artisan FX Key-83 Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-mid-xxl",
-      "name": "Artisan FX Key-83 Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-soft-large",
-      "name": "Artisan FX Key-83 Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-soft-xl",
-      "name": "Artisan FX Key-83 Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-soft-xxl",
-      "name": "Artisan FX Key-83 Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-xsoft-large",
-      "name": "Artisan FX Key-83 XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-xsoft-xl",
-      "name": "Artisan FX Key-83 XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-key-83-xsoft-xxl",
-      "name": "Artisan FX Key-83 XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-mid-large",
-      "name": "Artisan FX Raiden Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-mid-medium",
-      "name": "Artisan FX Raiden Mid Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-mid-xl",
-      "name": "Artisan FX Raiden Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-mid-xxl",
-      "name": "Artisan FX Raiden Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-soft-large",
-      "name": "Artisan FX Raiden Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-soft-medium",
-      "name": "Artisan FX Raiden Soft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-soft-xl",
-      "name": "Artisan FX Raiden Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-soft-xxl",
-      "name": "Artisan FX Raiden Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-xsoft-large",
-      "name": "Artisan FX Raiden XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-xsoft-medium",
-      "name": "Artisan FX Raiden XSoft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-xsoft-xl",
-      "name": "Artisan FX Raiden XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-raiden-xsoft-xxl",
-      "name": "Artisan FX Raiden XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-mid-large",
-      "name": "Artisan FX Type-99 Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-mid-xl",
-      "name": "Artisan FX Type-99 Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-mid-xxl",
-      "name": "Artisan FX Type-99 Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-soft-large",
-      "name": "Artisan FX Type-99 Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-soft-xl",
-      "name": "Artisan FX Type-99 Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-soft-xxl",
-      "name": "Artisan FX Type-99 Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-xsoft-large",
-      "name": "Artisan FX Type-99 XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-xsoft-xl",
-      "name": "Artisan FX Type-99 XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-type-99-xsoft-xxl",
-      "name": "Artisan FX Type-99 XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-mid-large",
-      "name": "Artisan FX Zero Mid Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-mid-medium",
-      "name": "Artisan FX Zero Mid Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-mid-small",
-      "name": "Artisan FX Zero Mid Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-mid-xl",
-      "name": "Artisan FX Zero Mid XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-mid-xxl",
-      "name": "Artisan FX Zero Mid XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-soft-large",
-      "name": "Artisan FX Zero Soft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-soft-medium",
-      "name": "Artisan FX Zero Soft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-soft-small",
-      "name": "Artisan FX Zero Soft Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-soft-xl",
-      "name": "Artisan FX Zero Soft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-soft-xxl",
-      "name": "Artisan FX Zero Soft XXL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-xsoft-large",
-      "name": "Artisan FX Zero XSoft Large",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-xsoft-medium",
-      "name": "Artisan FX Zero XSoft Medium",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-xsoft-small",
-      "name": "Artisan FX Zero XSoft Small",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-xsoft-xl",
-      "name": "Artisan FX Zero XSoft XL",
-      "brand": "Artisan"
-    },
-    {
-      "slug": "artisan-fx-zero-xsoft-xxl",
-      "name": "Artisan FX Zero XSoft XXL",
-      "brand": "Artisan"
-    },
-    {
       "slug": "artisan-hayate-otsu",
       "name": "Artisan Hayate Otsu",
-      "brand": "Artisan"
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "artisan-hien",
       "name": "Artisan Hien",
-      "brand": "Artisan"
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "artisan-key-83",
+      "name": "Artisan Key-83",
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "artisan-raiden",
       "name": "Artisan Raiden",
-      "brand": "Artisan"
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "artisan-type-99",
+      "name": "Artisan Type-99",
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "artisan-zero",
       "name": "Artisan Zero",
-      "brand": "Artisan"
+      "brand": "Artisan",
+      "variants": [
+        {
+          "base": "Mid",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "Soft",
+          "thickness": "3mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        },
+        {
+          "base": "XSoft",
+          "thickness": "4mm",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ]
     },
     {
       "slug": "asus-rog-moonstone-ace-l",

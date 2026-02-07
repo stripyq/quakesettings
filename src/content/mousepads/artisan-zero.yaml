@@ -1,7 +1,15 @@
 name: "Artisan Zero"
 brand: "Artisan"
-surface: "Cloth"
+surface: "Polyester"
 speed: "Control"
-dimensions: "420 x 330 x 4mm"
-thickness: "4mm"
-base: "Foam"
+note: "FX version has stitched edges"
+variants:
+  - base: "Mid"
+    thickness: "3mm"
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  - base: "Soft"
+    thickness: "3mm"
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  - base: "XSoft"
+    thickness: "4mm"
+    sizes: ["S", "M", "L", "XL", "XXL"]

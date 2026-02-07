@@ -183,6 +183,22 @@ const movementPresets = [
             </select>
             <small>If your exact model isn't listed, choose 'Other'</small>
             <input type="text" id="mousepadOther" name="mousepadOther" class="other-input hidden" placeholder="Enter mousepad model">
+            <div id="mousepad-variants" class="mousepad-variants hidden">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="mousepadBase">Base / Hardness</label>
+                  <select id="mousepadBase" name="mousepadBase">
+                    <option value="">-- Select --</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="mousepadSize">Size</label>
+                  <select id="mousepadSize" name="mousepadSize">
+                    <option value="">-- Select --</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -715,6 +731,22 @@ const movementPresets = [
 
   .other-input {
     margin-top: 0.5rem;
+  }
+
+  .mousepad-variants {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+  }
+
+  .mousepad-variants .form-row {
+    margin-bottom: 0;
+  }
+
+  .mousepad-variants .form-group {
+    margin-bottom: 0;
   }
 
   /* Tooltip */
@@ -1348,6 +1380,18 @@ const movementPresets = [
 
     setSelectValue('mouse', data.mouse);
     setSelectValue('mousepad', data.mousepad);
+    // Show variant dropdowns and prefill if applicable
+    if (data.mousepad) {
+      updateMousepadVariants(data.mousepad);
+      if (data.mousepadBase) {
+        mousepadBaseSelect.value = data.mousepadBase;
+        // Trigger change to populate sizes
+        mousepadBaseSelect.onchange?.call(mousepadBaseSelect);
+        if (data.mousepadSize) {
+          mousepadSizeSelect.value = data.mousepadSize;
+        }
+      }
+    }
     setSelectValue('keyboard', data.keyboard);
     setSelectValue('monitor', data.monitor);
     setSelectValue('headset', data.headset);
@@ -1504,7 +1548,12 @@ const movementPresets = [
     }
   });
 
-  // Toggle "Other" input for hardware selects
+  // Mousepad variant elements
+  const mousepadVariantsPanel = document.getElementById('mousepad-variants');
+  const mousepadBaseSelect = document.getElementById('mousepadBase');
+  const mousepadSizeSelect = document.getElementById('mousepadSize');
+
+  // Toggle "Other" input for hardware selects + mousepad variant handling
   for (const [id, select] of Object.entries(hardwareSelects)) {
     select.addEventListener('change', function() {
       const otherInput = document.getElementById(id + 'Other');
@@ -1515,7 +1564,57 @@ const movementPresets = [
         otherInput.classList.add('hidden');
         otherInput.value = '';
       }
+
+      // Handle mousepad variant dropdowns
+      if (id === 'mousepad') {
+        updateMousepadVariants(this.value);
+      }
     });
+  }
+
+  function updateMousepadVariants(slug) {
+    if (!slug || slug === '__other__') {
+      mousepadVariantsPanel.classList.add('hidden');
+      mousepadBaseSelect.innerHTML = '<option value="">-- Select --</option>';
+      mousepadSizeSelect.innerHTML = '<option value="">-- Select --</option>';
+      return;
+    }
+
+    const pads = hardwareOptions.mousepads || [];
+    const pad = pads.find(p => p.slug === slug);
+
+    if (!pad || !pad.variants || pad.variants.length === 0) {
+      mousepadVariantsPanel.classList.add('hidden');
+      mousepadBaseSelect.innerHTML = '<option value="">-- Select --</option>';
+      mousepadSizeSelect.innerHTML = '<option value="">-- Select --</option>';
+      return;
+    }
+
+    // Populate base select
+    mousepadBaseSelect.innerHTML = '<option value="">-- Select --</option>';
+    for (const v of pad.variants) {
+      const opt = document.createElement('option');
+      opt.value = v.base;
+      opt.textContent = `${v.base} (${v.thickness})`;
+      mousepadBaseSelect.appendChild(opt);
+    }
+
+    // Update sizes when base changes
+    mousepadBaseSelect.onchange = function() {
+      const selectedBase = this.value;
+      const variant = pad.variants.find(v => v.base === selectedBase);
+      mousepadSizeSelect.innerHTML = '<option value="">-- Select --</option>';
+      if (variant) {
+        for (const size of variant.sizes) {
+          const opt = document.createElement('option');
+          opt.value = size;
+          opt.textContent = size;
+          mousepadSizeSelect.appendChild(opt);
+        }
+      }
+    };
+
+    mousepadVariantsPanel.classList.remove('hidden');
   }
 
   // Toggle accel value field

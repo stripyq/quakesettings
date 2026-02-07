@@ -39,7 +39,9 @@ zoom: mouse2
 weaponNext: ''
 weaponPrev: ''
 mouse: razer-viper-v3-pro
-mousepad: artisan-fx-zero-mid-xl
+mousepad: artisan-zero
+mousepadBase: Mid
+mousepadSize: XL
 keyboard: corsair-strafe
 monitor: aoc-g2490vxa
 headset: jbl-wireless

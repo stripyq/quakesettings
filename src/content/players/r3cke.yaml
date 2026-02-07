@@ -33,7 +33,9 @@ crouch: shift
 attack: mouse1
 zoom: mouse4
 mouse: razer-deathadder-v4-pro
-mousepad: artisan-fx-zero-soft-xxl
+mousepad: artisan-zero
+mousepadBase: Soft
+mousepadSize: XXL
 keyboard: wooting-60he-plus
 monitor: samsung-odyssey-oled-g60sd
 headset: sony-mdr-xd300

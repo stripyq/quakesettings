@@ -1,15 +1,15 @@
-name: "Artisan Raiden"
+name: "Artisan Type-99"
 brand: "Artisan"
 surface: "Polyester"
-speed: "Fast"
+speed: "Balanced"
 note: "FX version has stitched edges"
 variants:
   - base: "Mid"
     thickness: "3mm"
-    sizes: ["S", "M", "L", "XL", "XXL"]
+    sizes: ["L", "XL", "XXL"]
   - base: "Soft"
     thickness: "3mm"
-    sizes: ["S", "M", "L", "XL", "XXL"]
+    sizes: ["L", "XL", "XXL"]
   - base: "XSoft"
     thickness: "4mm"
-    sizes: ["S", "M", "L", "XL", "XXL"]
+    sizes: ["L", "XL", "XXL"]
