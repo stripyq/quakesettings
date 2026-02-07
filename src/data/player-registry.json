@@ -17931,12 +17931,12 @@
       "hasProfile": false,
       "ratings": {
         "ctf": 34.857547760009766,
-        "tdm": null,
+        "tdm": 28.11,
         "2v2": 28.108322143554688
       },
       "gamesPlayed": {
         "ctf": 51,
-        "tdm": null,
+        "tdm": 1,
         "2v2": 1
       }
     },
