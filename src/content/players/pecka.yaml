@@ -21,6 +21,7 @@ grip: "Fingertip"
 fov: 95
 crosshair: "2"
 crosshairColor: "Red"
+crosshairSize: "16"
 enemyModel: "Keel"
 
 forward: "e"
@@ -33,7 +34,7 @@ attack: "mouse1"
 
 mouse: "logitech-g-pro-x-superlight-ii"
 mousepad: "lethal-gaming-gear-saturn-pro-soft-xl"
-keyboard: "aula-win68-he"
+keyboard: "aula-win68-he-max"
 monitor: "lg-27gx790a-b"
 headset: "logitech-g335"
 skates: "Stock"
