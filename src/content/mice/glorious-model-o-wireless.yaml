@@ -1,0 +1,9 @@
+name: "Glorious Model O Wireless"
+brand: "Glorious"
+weight: "69g"
+shape: "Ambidextrous"
+sensor: "BAMF"
+dpiRange: "100-19000"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 6
