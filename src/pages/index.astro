@@ -27,6 +27,11 @@ function calculateCm360(player: any): number {
   return Math.round((41563.6 / (player.dpi * player.sensitivity)) * 100) / 100;
 }
 
+function formatNum(n: number): string {
+  const fixed = n.toFixed(2);
+  return fixed.endsWith('.00') ? Math.round(n).toString() : fixed;
+}
+
 // Get team rating (higher of CTF or TDM)
 function getTeamRating(player: any): { rating: number | null; type: 'ctf' | 'tdm' | null } {
   const ctf = player.ctfRating;
@@ -166,7 +171,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               </td>
               <td class="num">{player.data.dpi}</td>
               <td class="num">{player.data.sensitivity}</td>
-              <td class="num">{cm360.toFixed(2)}</td>
+              <td class="num">{formatNum(cm360)}</td>
               <td class={`accel-cell ${hasAccel ? 'accel-on' : ''}`}>{hasAccel ? '✓' : '–'}</td>
               <td class="num">{player.data.fov}</td>
               <td class="hw-cell">

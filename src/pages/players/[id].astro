@@ -51,6 +51,12 @@ function calculateCm360(playerData: any): number {
 
 const currentCm360 = calculateCm360(p);
 
+// Format number: strip trailing .00, otherwise show up to 2 decimals
+function formatNum(n: number): string {
+  const fixed = n.toFixed(2);
+  return fixed.endsWith('.00') ? Math.round(n).toString() : fixed;
+}
+
 // Find players with similar cm/360 (within 15% range)
 const similarSens = otherPlayers
   .map(pl => ({
@@ -160,7 +166,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <tr><td>DPI</td><td>{p.dpi}</td></tr>
             <tr><td>In-game Sensitivity</td><td>{p.sensitivity}</td></tr>
             <tr><td>eDPI</td><td>{p.edpi}</td></tr>
-            <tr><td>cm/360</td><td>{currentCm360.toFixed(2)}</td></tr>
+            <tr><td>cm/360</td><td>{formatNum(currentCm360)}</td></tr>
             {p.grip && <tr><td>Grip Style</td><td>{p.grip}</td></tr>}
             <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
             <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
@@ -297,7 +303,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="similar-groups">
           {similarSens.length > 0 && (
             <div class="similar-group">
-              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {currentCm360.toFixed(2)})</span></h3>
+              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {formatNum(currentCm360)})</span></h3>
               <div class="similar-players">
                 {similarSens.map(({ player: pl, cm360 }) => (
                   <a
@@ -306,7 +312,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                     title={pl.data.acceleration ? 'This player uses mouse acceleration — base sensitivity shown' : undefined}
                   >
                     <span class="player-name">{pl.data.name}</span>
-                    <span class="player-stat">{cm360.toFixed(2)} cm/360</span>
+                    <span class="player-stat">{formatNum(cm360)} cm/360</span>
                   </a>
                 ))}
               </div>
