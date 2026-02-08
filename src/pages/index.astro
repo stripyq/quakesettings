@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all players and hardware
-const players = await getCollection('players');
+// Get all players and hardware (filter out unpublished)
+const allPlayers = await getCollection('players');
+const players = allPlayers.filter(p => p.data.published !== false);
 const mice = await getCollection('mice');
 const keyboards = await getCollection('keyboards');
 const headsets = await getCollection('headsets');

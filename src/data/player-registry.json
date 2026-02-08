@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-08",
   "totalPlayers": 2288,
-  "playersWithProfiles": 89,
+  "playersWithProfiles": 101,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -7253,22 +7253,6 @@
       }
     },
     {
-      "steamId": "76561198088925347",
-      "name": "CUBA lumi",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 26.716209411621094,
-        "tdm": 34.097869873046875,
-        "2v2": 31.8214054107666
-      },
-      "gamesPlayed": {
-        "ctf": 506,
-        "tdm": 390,
-        "2v2": 31
-      }
-    },
-    {
       "steamId": "76561198120081651",
       "name": "Cucaramba",
       "slug": null,
@@ -9047,8 +9031,8 @@
     {
       "steamId": "76561198107461408",
       "name": "Dloobiq",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "dloobiq",
+      "hasProfile": true,
       "ratings": {
         "ctf": 26.526443481445312,
         "tdm": 24.212419509887695,
@@ -14437,6 +14421,22 @@
       }
     },
     {
+      "steamId": "76561198141767332",
+      "name": "hypnoi",
+      "slug": "hypnoi",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 26.140064239501953,
+        "tdm": 23.471546173095703,
+        "2v2": 27.5998592376709
+      },
+      "gamesPlayed": {
+        "ctf": 230,
+        "tdm": 532,
+        "2v2": 145
+      }
+    },
+    {
       "steamId": "76561198058642020",
       "name": "Hypnotic",
       "slug": null,
@@ -16711,8 +16711,8 @@
     {
       "steamId": "76561197973893045",
       "name": "KHAN",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "khan",
+      "hasProfile": true,
       "ratings": {
         "ctf": 16.771644592285156,
         "tdm": 22.979217529296875,
@@ -17127,8 +17127,8 @@
     {
       "steamId": "76561198039145005",
       "name": "knz",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "knz",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.517709732055664,
         "tdm": 18.470056533813477,
@@ -18946,6 +18946,22 @@
         "ctf": 1,
         "tdm": 1,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198088925347",
+      "name": "Lumi",
+      "slug": "lumi",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 26.716209411621094,
+        "tdm": 34.097869873046875,
+        "2v2": 31.8214054107666
+      },
+      "gamesPlayed": {
+        "ctf": 506,
+        "tdm": 390,
+        "2v2": 31
       }
     },
     {
@@ -21095,8 +21111,8 @@
     {
       "steamId": "76561198257362399",
       "name": "mult",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "mult",
+      "hasProfile": true,
       "ratings": {
         "ctf": 31.004608154296875,
         "tdm": null,
@@ -21767,8 +21783,8 @@
     {
       "steamId": "76561198141993917",
       "name": "nebulas0n9",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "nebulas0n9",
+      "hasProfile": true,
       "ratings": {
         "ctf": 12.668198585510254,
         "tdm": 17.05631446838379,
@@ -22866,6 +22882,22 @@
         "ctf": null,
         "tdm": 29,
         "2v2": 273
+      }
+    },
+    {
+      "steamId": "76561198000088567",
+      "name": "Nvc",
+      "slug": "nvc",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 20.70969581604004,
+        "tdm": 24.328203201293945,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 1077,
+        "tdm": 19,
+        "2v2": null
       }
     },
     {
@@ -24151,8 +24183,8 @@
     {
       "steamId": "76561198062139103",
       "name": "pengelephant",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "pengelephant",
+      "hasProfile": true,
       "ratings": {
         "ctf": 30.30706024169922,
         "tdm": 16.90259552001953,
@@ -25303,8 +25335,8 @@
     {
       "steamId": "76561198105088252",
       "name": "PYTON",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "pyton",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.43899917602539,
         "tdm": null,
@@ -25506,22 +25538,6 @@
         "ctf": null,
         "tdm": null,
         "2v2": 59
-      }
-    },
-    {
-      "steamId": "76561198141767332",
-      "name": "R34.hypnoi",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 26.140064239501953,
-        "tdm": 23.471546173095703,
-        "2v2": 27.5998592376709
-      },
-      "gamesPlayed": {
-        "ctf": 230,
-        "tdm": 532,
-        "2v2": 145
       }
     },
     {
@@ -30295,8 +30311,8 @@
     {
       "steamId": "76561197990531413",
       "name": "supremee",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "supremee",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.175155639648438,
         "tdm": null,
@@ -32401,22 +32417,6 @@
       "gamesPlayed": {
         "ctf": 7,
         "tdm": null,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198000088567",
-      "name": "twitch.tv/justnvc",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 20.70969581604004,
-        "tdm": 24.328203201293945,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 1077,
-        "tdm": 19,
         "2v2": null
       }
     },
@@ -35655,8 +35655,8 @@
     {
       "steamId": "76561198154954843",
       "name": "zoza",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "zoza",
+      "hasProfile": true,
       "ratings": {
         "ctf": 17.803691864013672,
         "tdm": null,

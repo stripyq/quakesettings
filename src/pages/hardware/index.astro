@@ -10,8 +10,9 @@ const keyboards = await getCollection('keyboards');
 const mousepads = await getCollection('mousepads');
 const headsets = await getCollection('headsets');
 
-// Get all players to count hardware usage
-const players = await getCollection('players');
+// Get all players to count hardware usage (filter out unpublished)
+const allPlayers = await getCollection('players');
+const players = allPlayers.filter(p => p.data.published !== false);
 
 // Get players who use each hardware
 function getPlayersUsing(hardwareId: string, field: string) {

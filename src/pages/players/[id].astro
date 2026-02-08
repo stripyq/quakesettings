@@ -3,7 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const players = await getCollection('players');
+  const allPlayers = await getCollection('players');
+  const players = allPlayers.filter(p => p.data.published !== false);
   return players.map((player) => ({
     params: { id: player.id },
     props: { player },
