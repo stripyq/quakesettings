@@ -974,6 +974,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
     </div>
 
+    <div class="s-disclaimer">
+      <p><strong>cm/360&deg;</strong> = how many centimeters it takes for you to complete a 360 degree turn. This is also called your real sensitivity.</p>
+      <p><strong>eDPI</strong> = mouse DPI &times; ingame sens</p>
+      <p class="s-disclaimer-note"><em>Note:</em> Does not account for in-game acceleration. If mouse acceleration is enabled, the movement distance required to turn 360&deg; will of course vary depending on the speed of your mouse movement. But can still be used as comparable &ldquo;base&rdquo; sensitivity.</p>
+    </div>
+
     <footer class="s-footer">
       <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> &bull; CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
     </footer>
@@ -1529,6 +1535,29 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .s-footer a:hover {
     color: #c9d1d9;
     text-decoration: underline;
+  }
+
+  /* --- Disclaimer/Glossary --- */
+  .s-disclaimer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #30363d;
+    font-size: 0.8rem;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+
+  .s-disclaimer p {
+    margin-bottom: 8px;
+  }
+
+  .s-disclaimer strong {
+    color: #c9d1d9;
+  }
+
+  .s-disclaimer-note {
+    font-style: italic;
+    margin-top: 12px;
   }
 
   /* ===========================================
