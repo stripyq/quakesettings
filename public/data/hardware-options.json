@@ -1286,6 +1286,11 @@
       "brand": "VAXEE"
     },
     {
+      "slug": "vaxee-outset-ax",
+      "name": "VAXEE OUTSET AX",
+      "brand": "VAXEE"
+    },
+    {
       "slug": "vaxee-xe-wireless",
       "name": "VAXEE XE Wireless",
       "brand": "VAXEE"
@@ -3166,6 +3171,11 @@
       "slug": "flux-keyboard",
       "name": "Flux Keyboard",
       "brand": "Flux"
+    },
+    {
+      "slug": "fujitsu-siemens",
+      "name": "Fujitsu-Siemens",
+      "brand": "Fujitsu-Siemens"
     },
     {
       "slug": "gamakay-tk68-he",
