@@ -524,6 +524,37 @@ vid_restart</code></pre>
     </div>
   </section>
 
+  <!-- SECTION 9: Experimental / Optional -->
+  <section class="settings-section collapsible" id="experimental">
+    <h2>Experimental / Optional (Test on Your System)</h2>
+    <p class="section-subtitle">Non-default tweaks that may help on some systems. Revert if you see issues.</p>
+
+    <h3>r_ignoreFastPath</h3>
+    <p>In Quake Live the default is <code>r_ignoreFastPath 1</code>, which means the engine ignores its fast render path. Setting it to <code>0</code> allows the fast render path and <strong>may</strong> improve performance on some systems &mdash; but it&rsquo;s not guaranteed and can cause visual glitches or instability on others.</p>
+
+    <div class="info-box">
+      <strong>How to test:</strong> Set <code>r_ignoreFastPath 0</code>, run <code>vid_restart</code>, and play a few maps. If you see visual glitches, flickering, or crashes, revert to the default (<code>r_ignoreFastPath 1</code>).
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>cfg</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>// Optional (non-default): try enabling fast render path
+r_ignoreFastPath 0
+vid_restart
+
+// If you see issues, revert to default:
+r_ignoreFastPath 1
+vid_restart</code></pre>
+    </div>
+
+    <div class="warning-box">
+      <strong>Important:</strong> This is NOT included in the main performance presets above. Only use it if you want to experiment. A <code>vid_restart</code> is required after changing this value.
+    </div>
+  </section>
+
   <div class="back-link">
     <a href={`${base}useful/`}>← Back to Useful Links</a>
   </div>

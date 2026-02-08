@@ -9,12 +9,14 @@ const mice = await getCollection('mice');
 const monitors = await getCollection('monitors');
 const keyboards = await getCollection('keyboards');
 const mousepads = await getCollection('mousepads');
+const headsets = await getCollection('headsets');
 
 // Create lookup maps
 const miceMap = new Map(mice.map(m => [m.id, m.data]));
 const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
 const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
 const mousepadsMap = new Map(mousepads.map(p => [p.id, p.data]));
+const headsetsMap = new Map(headsets.map(h => [h.id, h.data]));
 
 // Calculate cm/360 for a player
 function calculateCm360(playerData: any): number {
@@ -237,6 +239,51 @@ const topCpuBrands = [...cpuBrands.entries()]
   .sort((a, b) => b[1] - a[1]);
 const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
 const maxCpuCount = topCpuBrands.length > 0 ? topCpuBrands[0][1] : 1;
+
+// Monitor brand distribution
+const monitorBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.monitor) {
+    const monitorData = monitorsMap.get(p.data.monitor);
+    const brand = monitorData?.brand || 'Unknown';
+    monitorBrands.set(brand, (monitorBrands.get(brand) || 0) + 1);
+  }
+});
+const topMonitorBrands = [...monitorBrands.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const totalMonitorBrandPlayers = [...monitorBrands.values()].reduce((a, b) => a + b, 0);
+const maxMonitorBrandCount = topMonitorBrands.length > 0 ? topMonitorBrands[0][1] : 1;
+
+// Keyboard brand distribution
+const keyboardBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.keyboard) {
+    const kbData = keyboardsMap.get(p.data.keyboard);
+    const brand = kbData?.brand || 'Unknown';
+    keyboardBrands.set(brand, (keyboardBrands.get(brand) || 0) + 1);
+  }
+});
+const topKeyboardBrands = [...keyboardBrands.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const totalKeyboardBrandPlayers = [...keyboardBrands.values()].reduce((a, b) => a + b, 0);
+const maxKeyboardBrandCount = topKeyboardBrands.length > 0 ? topKeyboardBrands[0][1] : 1;
+
+// Headset brand distribution
+const headsetBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.headset) {
+    const hsData = headsetsMap.get(p.data.headset);
+    const brand = hsData?.brand || 'Unknown';
+    headsetBrands.set(brand, (headsetBrands.get(brand) || 0) + 1);
+  }
+});
+const topHeadsetBrands = [...headsetBrands.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const totalHeadsetBrandPlayers = [...headsetBrands.values()].reduce((a, b) => a + b, 0);
+const maxHeadsetBrandCount = topHeadsetBrands.length > 0 ? topHeadsetBrands[0][1] : 1;
 
 // ===========================================
 // MONITOR SIZE VS REFRESH RATE HEATMAP
@@ -549,7 +596,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="s-bar-list">
           {topMice.slice(0, 8).map((mouse) => (
             <div class="s-bar-row">
-              <span class="s-bar-label">{mouse.name}</span>
+              <span class="s-bar-label s-bar-label-wide">{mouse.name}</span>
               <div class="s-bar-container">
                 <div class="s-bar" style={`width: ${(mouse.count / maxMiceCount) * 100}%; background: #238636`}>
                   <span class="s-bar-count">{mouse.count}</span>
@@ -649,6 +696,65 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 </div>
               </div>
               <span class="s-bar-pct">{Math.round((count / totalCpuPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="s-three-col">
+      <!-- Top Monitor Brands -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Monitor Brands</h2>
+        <p class="s-card-sub">{totalMonitorBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topMonitorBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxMonitorBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalMonitorBrandPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Top Keyboard Brands -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Keyboard Brands</h2>
+        <p class="s-card-sub">{totalKeyboardBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topKeyboardBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxKeyboardBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalKeyboardBrandPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Top Headset Brands -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Headset Brands</h2>
+        <p class="s-card-sub">{totalHeadsetBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topHeadsetBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxHeadsetBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalHeadsetBrandPlayers) * 100)}%</span>
             </div>
           ))}
         </div>
@@ -787,15 +893,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <span class="s-section-title" style="color: #8957e5">GAME SETTINGS</span>
     </div>
 
-    <div class="s-three-col">
+    <div class="s-four-col">
       <!-- FOV Distribution -->
       <div class="s-card">
         <h2 class="s-card-title">FOV Distribution</h2>
-        <p class="s-card-sub">Average FOV: {avgFov}&deg;</p>
+        <p class="s-card-sub">Average: {avgFov}&deg;</p>
         <div class="s-bar-list">
           {topFovValues.map(([fov, count]) => (
             <div class="s-bar-row">
-              <span class="s-bar-label">{fov}&deg;</span>
+              <span class="s-bar-label s-bar-label-narrow">{fov}&deg;</span>
               <div class="s-bar-container">
                 <div class="s-bar" style={`width: ${(count / maxFovCount) * 100}%; background: #8957e5`}>
                   <span class="s-bar-count">{count}</span>
@@ -810,13 +916,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <!-- Crosshair Color (special: bars ARE the color) -->
       <div class="s-card">
         <h2 class="s-card-title">Crosshair Color</h2>
-        <p class="s-card-sub">{totalCrosshairColorPlayers} players with data</p>
+        <p class="s-card-sub">{totalCrosshairColorPlayers} players</p>
         <div class="s-bar-list">
           {topCrosshairColors.map(([color, count]) => {
             const colorStyle = crosshairColorMap[color] || { bg: '#8957e5' };
             return (
               <div class="s-bar-row">
-                <span class="s-bar-label">{color}</span>
+                <span class="s-bar-label s-bar-label-narrow">{color}</span>
                 <div class="s-bar-container">
                   <div
                     class="s-bar"
@@ -835,11 +941,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <!-- Crosshair Style -->
       <div class="s-card">
         <h2 class="s-card-title">Crosshair Style</h2>
-        <p class="s-card-sub">cg_drawCrosshair values</p>
+        <p class="s-card-sub">cg_drawCrosshair</p>
         <div class="s-bar-list">
           {crosshairStyleData.map(({ type, count, percentage, description }) => (
             <div class="s-bar-row">
-              <span class="s-bar-label" title={description}>Type {type}</span>
+              <span class="s-bar-label s-bar-label-narrow" title={description}>Type {type}</span>
               <div class="s-bar-container">
                 <div class="s-bar" style={`width: ${(count / maxCrosshairStyleCount) * 100}%; background: #8957e5`}>
                   <span class="s-bar-count">{count}</span>
@@ -850,17 +956,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           ))}
         </div>
       </div>
-    </div>
 
-    <!-- Enemy Model (single row below) -->
-    <div class="s-two-col">
+      <!-- Enemy Model -->
       <div class="s-card">
         <h2 class="s-card-title">Enemy Model</h2>
-        <p class="s-card-sub">{totalEnemyModelPlayers} players with data</p>
+        <p class="s-card-sub">{totalEnemyModelPlayers} players</p>
         <div class="s-bar-list">
           {topEnemyModels.map(([model, count]) => (
             <div class="s-bar-row">
-              <span class="s-bar-label">{model}</span>
+              <span class="s-bar-label s-bar-label-narrow">{model}</span>
               <div class="s-bar-container">
                 <div class="s-bar" style={`width: ${(count / maxEnemyModelCount) * 100}%; background: #8957e5`}>
                   <span class="s-bar-count">{count}</span>
@@ -871,7 +975,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           ))}
         </div>
       </div>
-      <div>{/* spacer for layout */}</div>
     </div>
 
     <!-- ========== SECTION 4: CONTROLS ========== -->
@@ -1075,6 +1178,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     gap: 24px;
   }
 
+  .s-four-col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
   /* --- Cards --- */
   .s-card {
     background: #161b22;
@@ -1136,6 +1245,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .s-bar-label-wide {
+    width: 160px;
+    min-width: 160px;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  .s-bar-label-narrow {
+    width: 60px;
+    min-width: 60px;
+    font-size: 0.7rem;
   }
 
   .s-bar-label-mono {
@@ -1569,6 +1692,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .s-three-col {
       grid-template-columns: 1fr 1fr;
     }
+
+    .s-four-col {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   /* Mobile */
@@ -1585,10 +1712,24 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       grid-template-columns: 1fr;
     }
 
+    .s-four-col {
+      grid-template-columns: 1fr;
+    }
+
     .s-bar-label {
       width: 80px;
       min-width: 80px;
       font-size: 0.75rem;
+    }
+
+    .s-bar-label-wide {
+      width: 130px;
+      min-width: 130px;
+    }
+
+    .s-bar-label-narrow {
+      width: 60px;
+      min-width: 60px;
     }
 
     .s-card {
