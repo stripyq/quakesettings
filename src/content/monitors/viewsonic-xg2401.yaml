@@ -1,6 +1,6 @@
 name: "ViewSonic XG2401"
 brand: "ViewSonic"
-size: "24 inch"
+size: "24\""
 resolution: "1920x1080"
 refreshRate: "144Hz"
 panelType: "TN"

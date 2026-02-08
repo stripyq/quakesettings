@@ -1,6 +1,6 @@
 name: "Samsung Odyssey OLED G80SH"
 brand: "Samsung"
-size: "32 inch"
+size: "32\""
 resolution: "3840x2160"
 panelType: "QD-OLED"
 refreshRate: "240Hz"

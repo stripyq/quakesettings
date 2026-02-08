@@ -1,6 +1,6 @@
 name: "MSI Optix G274QPX"
 brand: "MSI"
-size: "27"
+size: "27\""
 resolution: "2560x1440"
 panelType: "IPS"
-refreshRate: "240"
+refreshRate: "240Hz"
