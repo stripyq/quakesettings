@@ -607,10 +607,81 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
     </div>
 
+    <!-- ========== HARDWARE SECTION ========== -->
+    <h3 class="section-header">Hardware</h3>
+
+    <div class="two-col">
+      <section class="stat-card">
+        <h2>Mouse Brands</h2>
+        <p class="card-subtitle">{totalMouseBrandPlayers} players with data</p>
+        <div class="popularity-list">
+          {topMouseBrands.map(([brand, count]) => (
+            <div class="popularity-item">
+              <span class="name">{brand}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style={`width: ${(count / totalMouseBrandPlayers) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / totalMouseBrandPlayers) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="stat-card">
+        <h2>Mousepad Brands</h2>
+        <div class="popularity-list">
+          {topMousepadBrands.map(([brand, count]) => (
+            <div class="popularity-item">
+              <span class="name">{brand}</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <div class="two-col">
+      {totalGripPlayers > 0 ? (
+        <section class="stat-card">
+          <h2>Grip Style</h2>
+          <p class="card-subtitle">{totalGripPlayers} players with data</p>
+          <div class="popularity-list">
+            {gripDistribution.map(([style, count]) => (
+              <div class="popularity-item">
+                <span class="name">{style}</span>
+                <div class="bar-wrapper">
+                  <div class="bar-fill accent" style={`width: ${(count / totalGripPlayers) * 100}%`}></div>
+                </div>
+                <span class="count">{count} ({Math.round((count / totalGripPlayers) * 100)}%)</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : <section class="stat-card"><h2>Grip Style</h2><p>No data available</p></section>}
+
+      <section class="stat-card">
+        <h2>DPI Distribution</h2>
+        <p class="card-subtitle">Average DPI: {avgDpi}</p>
+        <div class="popularity-list">
+          {topDpiValues.map(([dpi, count]) => (
+            <div class="popularity-item">
+              <span class="name">{dpi} DPI</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+              </div>
+              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
     <!-- ========== SENSITIVITY SECTION ========== -->
     <h3 class="section-header">Sensitivity</h3>
 
-    <!-- Row 1: cm/360 Distribution (full width) -->
     <section class="stat-card wide">
       <h2>cm/360 Distribution</h2>
       <p class="card-subtitle">Base sensitivity distribution across all players</p>
@@ -649,74 +720,49 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <p class="cm360-note"><em>Note:</em> For accel players, cm/360 represents their base (slowest) sensitivity. Effective sensitivity varies with mouse speed.</p>
     </section>
 
-    <!-- Row 2: Heatmap (55%) + DPI (45%) -->
-    <div class="two-col-55-45">
-      <section class="stat-card">
-        <h2>cm/360 vs Mousepad Type</h2>
-        <p class="card-subtitle">{totalPadTypePlayers} players with mousepad speed data</p>
-        <div class="pad-heatmap">
-          <div class="pad-heatmap-grid">
-            <div class="pad-heatmap-corner"></div>
-            <div class="pad-heatmap-col-header speed">Speed</div>
-            <div class="pad-heatmap-col-header balanced">Balanced</div>
-            <div class="pad-heatmap-col-header control">Control</div>
-            {padHeatmapRows.map(row => (
-              <>
-                <div class="pad-heatmap-label">
-                  <span class="pad-heatmap-label-name">{row.label}</span>
-                  <span class="pad-heatmap-label-range">{row.range}</span>
-                </div>
-                {row.cells.map(cell => (
-                  <div
-                    class="pad-heatmap-cell"
-                    style={`background-color: ${cell.bg}`}
-                    title={`${row.label} + ${cell.type}: ${cell.count} players`}
-                  >
-                    {cell.count > 0 ? cell.count : ''}
-                  </div>
-                ))}
-              </>
-            ))}
-          </div>
-          <div class="pad-heatmap-legend">
-            <span class="pad-heatmap-legend-label">Fewer players</span>
-            <div class="pad-heatmap-legend-bar">
-              <div class="pad-legend-grad speed-grad"></div>
-              <div class="pad-legend-grad balanced-grad"></div>
-              <div class="pad-legend-grad control-grad"></div>
-            </div>
-            <span class="pad-heatmap-legend-label">More players</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>DPI Distribution</h2>
-        <p class="card-subtitle">Average DPI: {avgDpi}</p>
-        <div class="popularity-list">
-          {topDpiValues.map(([dpi, count]) => (
-            <div class="popularity-item">
-              <span class="name">{dpi} DPI</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+    <section class="stat-card wide">
+      <h2>cm/360 vs Mousepad Type</h2>
+      <p class="card-subtitle">{totalPadTypePlayers} players with mousepad speed data</p>
+      <div class="pad-heatmap">
+        <div class="pad-heatmap-grid">
+          <div class="pad-heatmap-corner"></div>
+          <div class="pad-heatmap-col-header speed">Speed</div>
+          <div class="pad-heatmap-col-header balanced">Balanced</div>
+          <div class="pad-heatmap-col-header control">Control</div>
+          {padHeatmapRows.map(row => (
+            <>
+              <div class="pad-heatmap-label">
+                <span class="pad-heatmap-label-name">{row.label}</span>
+                <span class="pad-heatmap-label-range">{row.range}</span>
               </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
+              {row.cells.map(cell => (
+                <div
+                  class="pad-heatmap-cell"
+                  style={`background-color: ${cell.bg}`}
+                  title={`${row.label} + ${cell.type}: ${cell.count} players`}
+                >
+                  {cell.count > 0 ? cell.count : ''}
+                </div>
+              ))}
+            </>
           ))}
         </div>
-        <div class="sensitivity-info">
-          <p><strong>cm/360</strong> = centimeters to complete a 360 turn (real sensitivity)</p>
-          <p><strong>eDPI</strong> = mouse DPI x ingame sens</p>
-          <p class="disclaimer-note"><em>Note:</em> cm/360 does not account for mouse acceleration.</p>
+        <div class="pad-heatmap-legend">
+          <span class="pad-heatmap-legend-label">Fewer players</span>
+          <div class="pad-heatmap-legend-bar">
+            <div class="pad-legend-grad speed-grad"></div>
+            <div class="pad-legend-grad balanced-grad"></div>
+            <div class="pad-legend-grad control-grad"></div>
+          </div>
+          <span class="pad-heatmap-legend-label">More players</span>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ========== GAME SETTINGS SECTION ========== -->
     <h3 class="section-header">Game Settings</h3>
 
-    <!-- Row 3: FOV + Grip Style -->
-    <div class="two-col">
+    <div class="three-col">
       <section class="stat-card">
         <h2>FOV Distribution</h2>
         <p class="card-subtitle">Average FOV: {avgFov}</p>
@@ -733,27 +779,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </section>
 
-      {totalGripPlayers > 0 ? (
-        <section class="stat-card">
-          <h2>Grip Style</h2>
-          <p class="card-subtitle">{totalGripPlayers} players with data</p>
-          <div class="popularity-list">
-            {gripDistribution.map(([style, count]) => (
-              <div class="popularity-item">
-                <span class="name">{style}</span>
-                <div class="bar-wrapper">
-                  <div class="bar-fill accent" style={`width: ${(count / totalGripPlayers) * 100}%`}></div>
-                </div>
-                <span class="count">{count} ({Math.round((count / totalGripPlayers) * 100)}%)</span>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : <section class="stat-card"><h2>Grip Style</h2><p>No data available</p></section>}
-    </div>
-
-    <!-- Row 4: Crosshair Color + Enemy Model + Movement Keys -->
-    <div class="three-col">
       <section class="stat-card">
         <h2>Crosshair Color</h2>
         <p class="card-subtitle">{totalCrosshairColorPlayers} players with data</p>
@@ -785,309 +810,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           ))}
         </div>
       </section>
-
-      <section class="stat-card">
-        <h2>Movement Keys</h2>
-        <div class="binds-list">
-          {topMovementPatterns.map(([pattern, count]) => (
-            <div class="bind-item">
-              <span class="bind-keys">{formatBindString(pattern)}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
-
-    <!-- Crosshair Styles + Jump Key -->
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Crosshair Styles</h2>
-        <p class="card-subtitle">cg_drawCrosshair values</p>
-        <div class="crosshair-grid">
-          {crosshairData.map(({ type, count, percentage, visual }) => (
-            <div class="crosshair-item">
-              <div class="crosshair-preview" data-type={visual.shape}>
-                {visual.shape === 'cross' && <div class="ch ch-cross"></div>}
-                {visual.shape === 'cross-thick' && <div class="ch ch-cross-thick"></div>}
-                {visual.shape === 'cross-gap' && <div class="ch ch-cross-gap"></div>}
-                {visual.shape === 'dot' && <div class="ch ch-dot"></div>}
-                {visual.shape === 'dot-large' && <div class="ch ch-dot-large"></div>}
-                {visual.shape === 'circle' && <div class="ch ch-circle"></div>}
-                {visual.shape === 'circle-dot' && <div class="ch ch-circle-dot"></div>}
-                {visual.shape === 'circle-crosshair' && <div class="ch ch-circle-crosshair"></div>}
-                {visual.shape === 'x-mark' && <div class="ch ch-x"></div>}
-                {visual.shape === 'triangle' && <div class="ch ch-triangle"></div>}
-                {visual.shape === 'chevron' && <div class="ch ch-chevron"></div>}
-                {visual.shape === 'unknown' && <div class="ch ch-unknown">?</div>}
-              </div>
-              <div class="crosshair-info">
-                <span class="crosshair-type">Type {type}</span>
-                <span class="crosshair-count">{count} ({percentage}%)</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Jump Key</h2>
-        <div class="binds-list">
-          {topJumpKeys.map(([key, count]) => (
-            <div class="bind-item">
-              <span class="bind-keys">{key}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">Other Settings</h3>
-        <div class="trend-stats">
-          <div class="trend-item">
-            <span class="trend-value">{accelPercentage}%</span>
-            <span class="trend-label">Acceleration</span>
-          </div>
-          <div class="trend-item">
-            <span class="trend-value">{mcpiPercentage}%</span>
-            <span class="trend-label">m_cpi</span>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ========== HARDWARE SECTION ========== -->
-    <h3 class="section-header">Hardware</h3>
-
-    <div class="two-col">
-      <!-- TOP MICE -->
-      <section class="stat-card">
-        <h2>Most Popular Mice</h2>
-        <div class="popularity-list">
-          {topMice.slice(0, 5).map((mouse, i) => (
-            <div class="popularity-item">
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{mouse.name}</span>
-              <span class="count">{mouse.count} ({mouse.percentage}%)</span>
-            </div>
-          ))}
-        </div>
-        {topMice.length > 5 && (
-          <details class="more-items">
-            <summary>Show more</summary>
-            <div class="popularity-list">
-              {topMice.slice(5).map((mouse, i) => (
-                <div class="popularity-item">
-                  <span class="rank">#{i + 6}</span>
-                  <span class="name">{mouse.name}</span>
-                  <span class="count">{mouse.count} ({mouse.percentage}%)</span>
-                </div>
-              ))}
-            </div>
-          </details>
-        )}
-      </section>
-
-      <!-- MOUSE BRAND POPULARITY -->
-      <section class="stat-card">
-        <h2>Mouse Brands</h2>
-        <p class="card-subtitle">{totalMouseBrandPlayers} players with data</p>
-        <div class="popularity-list">
-          {topMouseBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalMouseBrandPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalMouseBrandPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      <!-- MOUSE SHAPE & WEIGHT -->
-      <section class="stat-card">
-        <h2>Mouse Shape & Weight</h2>
-        <h3 class="subsection-title">Shape Preference</h3>
-        <div class="popularity-list compact">
-          {topMouseShapes.map(([shape, count]) => (
-            <div class="popularity-item">
-              <span class="name">{shape}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">Weight Distribution</h3>
-        <div class="popularity-list compact">
-          {topMouseWeights.map(([weight, count]) => (
-            <div class="popularity-item">
-              <span class="name">{weight}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- TOP MOUSEPADS -->
-      <section class="stat-card">
-        <h2>Most Popular Mousepads</h2>
-        <p class="card-subtitle">Grouped by model (all sizes combined)</p>
-        <div class="popularity-list">
-          {topMousepads.slice(0, 5).map((pad, i) => (
-            <div class="popularity-item">
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{pad.name}</span>
-              <span class="count">{pad.count} ({pad.percentage}%)</span>
-            </div>
-          ))}
-        </div>
-        {topMousepads.length > 5 && (
-          <details class="more-items">
-            <summary>Show more</summary>
-            <div class="popularity-list">
-              {topMousepads.slice(5).map((pad, i) => (
-                <div class="popularity-item">
-                  <span class="rank">#{i + 6}</span>
-                  <span class="name">{pad.name}</span>
-                  <span class="count">{pad.count} ({pad.percentage}%)</span>
-                </div>
-              ))}
-            </div>
-          </details>
-        )}
-      </section>
-    </div>
-
-    <div class="two-col">
-      <!-- MOUSEPAD BRANDS + MONITOR REFRESH -->
-      <section class="stat-card">
-        <h2>Mousepad Brands</h2>
-        <div class="popularity-list">
-          {topMousepadBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Monitor Refresh Rates</h2>
-        <div class="popularity-list">
-          {topRefreshRates.map(([rate, count]) => (
-            <div class="popularity-item">
-              <span class="name">{rate}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Top Keyboard Brands</h2>
-        <div class="popularity-list">
-          {topKeyboardBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>GPU / CPU Brand</h2>
-        <h3 class="subsection-title">GPU ({totalGpuPlayers} players)</h3>
-        <div class="popularity-list compact">
-          {topGpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalGpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalGpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">CPU ({totalCpuPlayers} players)</h3>
-        <div class="popularity-list compact">
-          {topCpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / totalCpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalCpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <!-- MONITOR SIZE VS REFRESH RATE HEATMAP -->
-    <section class="stat-card wide">
-      <h2>Monitor Size vs Refresh Rate</h2>
-      <p class="card-subtitle">Heatmap showing player monitor preferences</p>
-      <div class="heatmap-container">
-        <div class="heatmap-y-label">Size (inches)</div>
-        <div class="heatmap-wrapper">
-          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 1fr)`}>
-            <div class="heatmap-cell header"></div>
-            {refreshBins.map(rate => (
-              <div class="heatmap-cell header">{rate}</div>
-            ))}
-            {[...sizeBins].reverse().map(size => (
-              <>
-                <div class="heatmap-cell row-label">{size}"</div>
-                {refreshBins.map(rate => {
-                  const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
-                  const intensity = count / heatmapMax;
-                  return (
-                    <div
-                      class="heatmap-cell data"
-                      style={`background-color: ${count > 0 ? `rgba(78, 205, 196, ${0.2 + intensity * 0.8})` : 'var(--bg-secondary)'}`}
-                      title={`${size}" @ ${rate}Hz: ${count} players`}
-                    >
-                      {count > 0 ? count : ''}
-                    </div>
-                  );
-                })}
-              </>
-            ))}
-          </div>
-          <div class="heatmap-x-label">Refresh Rate (Hz)</div>
-        </div>
-        <div class="heatmap-legend">
-          <span class="legend-label">High</span>
-          <div class="legend-gradient"></div>
-          <span class="legend-label">Low</span>
-        </div>
-      </div>
-    </section>
 
     <!-- ========== PLAYERS SECTION ========== -->
     <h3 class="section-header">Players</h3>
