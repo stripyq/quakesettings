@@ -301,6 +301,11 @@
       "brand": "Endgame Gear"
     },
     {
+      "slug": "endgame-gear-xm2w-4k-v2",
+      "name": "Endgame Gear XM2w 4K V2",
+      "brand": "Endgame Gear"
+    },
+    {
       "slug": "epomaker-carbon-x",
       "name": "Epomaker Carbon X",
       "brand": "Epomaker"
@@ -2588,6 +2593,11 @@
       "slug": "teevolution-genesis-gravis",
       "name": "Teevolution Genesis Gravis",
       "brand": "Teevolution"
+    },
+    {
+      "slug": "tekkusai-phantom",
+      "name": "Tekkusai Phantom",
+      "brand": "Tekkusai"
     },
     {
       "slug": "tenta-x-cataclysm",
