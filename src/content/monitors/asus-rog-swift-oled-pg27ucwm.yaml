@@ -1,6 +1,6 @@
 name: "ASUS ROG Swift OLED PG27UCWM"
 brand: "ASUS"
-size: "27 inch"
+size: "27\""
 resolution: "3840x2160"
 panelType: "RGB OLED"
 refreshRate: "240Hz (480Hz @ 1080p)"

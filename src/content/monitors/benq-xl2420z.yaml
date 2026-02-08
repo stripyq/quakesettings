@@ -1,6 +1,6 @@
 name: "BenQ XL2420Z"
 brand: "BenQ"
-size: "24"
+size: "24\""
 resolution: "1920x1080"
 panelType: "TN"
-refreshRate: "144"
+refreshRate: "144Hz"
