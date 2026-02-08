@@ -35,5 +35,5 @@ jump: MOUSE2
 crouch: ctrl
 attack: MOUSE1
 zoom: space
-gpu: AMD
-cpu: AMD
+gpuBrand: AMD
+cpuBrand: AMD

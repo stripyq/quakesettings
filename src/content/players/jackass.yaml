@@ -30,5 +30,5 @@ headset: "jabra-elite-10-gen-2"
 enemyModel: Tank Jr.
 grip: Fingertip
 skates: Stock
-gpu: AMD
-cpu: AMD
+gpuBrand: AMD
+cpuBrand: AMD

@@ -128,39 +128,55 @@ const totalPadTypePlayers = [...padHeatmap.values()].reduce((a, b) => a + b, 0);
 // HARDWARE STATS
 // ===========================================
 
-// Mouse brand popularity
+// Helper: sort entries with known values by count desc, "Other" second-to-last, "Unknown" last
+function sortWithUnknownLast(entries: [string, number][]): [string, number][] {
+  const unknown = entries.find(([k]) => k === 'Unknown');
+  const other = entries.find(([k]) => k === 'Other');
+  const rest = entries.filter(([k]) => k !== 'Unknown' && k !== 'Other').sort((a, b) => b[1] - a[1]);
+  if (other && other[1] > 0) rest.push(other);
+  if (unknown && unknown[1] > 0) rest.push(unknown);
+  return rest;
+}
+
+// Mouse brand popularity (all players)
 const mouseBrands = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mouse) {
     const mouseData = miceMap.get(p.data.mouse);
-    const brand = mouseData?.brand || 'Unknown';
+    const brand = mouseData?.brand || 'Other';
     mouseBrands.set(brand, (mouseBrands.get(brand) || 0) + 1);
+  } else {
+    mouseBrands.set('Unknown', (mouseBrands.get('Unknown') || 0) + 1);
   }
 });
-const topMouseBrands = [...mouseBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
-const totalMouseBrandPlayers = [...mouseBrands.values()].reduce((a, b) => a + b, 0);
+const topMouseBrands = sortWithUnknownLast([...mouseBrands.entries()]).slice(0, 10);
 const maxMouseBrandCount = topMouseBrands.length > 0 ? topMouseBrands[0][1] : 1;
 
-// Mice (specific models)
+// Mice (specific models) — all players
 const mouseUsage = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mouse) {
     mouseUsage.set(p.data.mouse, (mouseUsage.get(p.data.mouse) || 0) + 1);
+  } else {
+    mouseUsage.set('__unknown__', (mouseUsage.get('__unknown__') || 0) + 1);
   }
 });
 const topMice = [...mouseUsage.entries()]
-  .sort((a, b) => b[1] - a[1])
+  .sort((a, b) => {
+    if (a[0] === '__unknown__') return 1;
+    if (b[0] === '__unknown__') return -1;
+    return b[1] - a[1];
+  })
   .slice(0, 10)
   .map(([id, count]) => ({
-    name: miceMap.get(id)?.name || id,
+    name: id === '__unknown__' ? 'Unknown' : (miceMap.get(id)?.name || id),
     count,
-    percentage: Math.round((count / players.length) * 100)
+    percentage: Math.round((count / players.length) * 100),
+    isMuted: id === '__unknown__',
   }));
 const maxMiceCount = topMice.length > 0 ? topMice[0].count : 1;
 
-// Mousepad models (grouped by base model name)
+// Mousepad models (grouped by base model name) — all players
 const mousepadModels = new Map<string, { count: number; brand: string }>();
 players.forEach(p => {
   if (p.data.mousepad) {
@@ -173,73 +189,89 @@ players.forEach(p => {
       } else {
         mousepadModels.set(baseModel, { count: 1, brand: pad.brand });
       }
+    } else {
+      const existing = mousepadModels.get('Other');
+      if (existing) existing.count++;
+      else mousepadModels.set('Other', { count: 1, brand: 'Other' });
     }
+  } else {
+    const existing = mousepadModels.get('Unknown');
+    if (existing) existing.count++;
+    else mousepadModels.set('Unknown', { count: 1, brand: 'Unknown' });
   }
 });
 const topMousepads = [...mousepadModels.entries()]
-  .sort((a, b) => b[1].count - a[1].count)
+  .sort((a, b) => {
+    if (a[0] === 'Unknown') return 1;
+    if (b[0] === 'Unknown') return -1;
+    if (a[0] === 'Other') return 1;
+    if (b[0] === 'Other') return -1;
+    return b[1].count - a[1].count;
+  })
   .slice(0, 10)
   .map(([name, data]) => ({
     name,
     count: data.count,
-    percentage: Math.round((data.count / players.length) * 100)
+    percentage: Math.round((data.count / players.length) * 100),
+    isMuted: name === 'Unknown' || name === 'Other',
   }));
 const maxMousepadCount = topMousepads.length > 0 ? topMousepads[0].count : 1;
 
-// Grip style distribution
+// Grip style distribution — all players
 const gripStyles = new Map<string, number>();
 players.forEach(p => {
   if (p.data.grip) {
     gripStyles.set(p.data.grip, (gripStyles.get(p.data.grip) || 0) + 1);
+  } else {
+    gripStyles.set('Unknown', (gripStyles.get('Unknown') || 0) + 1);
   }
 });
-const gripDistribution = [...gripStyles.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalGripPlayers = [...gripStyles.values()].reduce((a, b) => a + b, 0);
+const gripDistribution = sortWithUnknownLast([...gripStyles.entries()]);
 const maxGripCount = gripDistribution.length > 0 ? gripDistribution[0][1] : 1;
 
-// Mouse shape distribution
+// Mouse shape distribution — all players
 const mouseShapeDistribution = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mouse) {
     const mouseData = miceMap.get(p.data.mouse);
     if (mouseData) {
-      const shape = mouseData.shape || 'Unknown';
+      const shape = mouseData.shape || 'Other';
       mouseShapeDistribution.set(shape, (mouseShapeDistribution.get(shape) || 0) + 1);
+    } else {
+      mouseShapeDistribution.set('Other', (mouseShapeDistribution.get('Other') || 0) + 1);
     }
+  } else {
+    mouseShapeDistribution.set('Unknown', (mouseShapeDistribution.get('Unknown') || 0) + 1);
   }
 });
-const topMouseShapes = [...mouseShapeDistribution.entries()]
-  .sort((a, b) => b[1] - a[1]);
+const topMouseShapes = sortWithUnknownLast([...mouseShapeDistribution.entries()]);
 const maxShapeCount = topMouseShapes.length > 0 ? topMouseShapes[0][1] : 1;
 
-// GPU Brand distribution
+// GPU Brand distribution — all players
 const gpuBrands = new Map<string, number>();
 players.forEach(p => {
-  const brand = p.data.gpuBrand || p.data.gpu;
-  if (brand) {
-    const normalizedBrand = brand.toUpperCase();
+  if (p.data.gpuBrand) {
+    const normalizedBrand = p.data.gpuBrand.toUpperCase();
     gpuBrands.set(normalizedBrand, (gpuBrands.get(normalizedBrand) || 0) + 1);
+  } else {
+    gpuBrands.set('Unknown', (gpuBrands.get('Unknown') || 0) + 1);
   }
 });
-const topGpuBrands = [...gpuBrands.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
-const maxGpuCount = topGpuBrands.length > 0 ? topGpuBrands[0][1] : 1;
+const topGpuBrands = sortWithUnknownLast([...gpuBrands.entries()]);
+const totalGpuPlayers = players.length;
 
-// CPU Brand distribution
+// CPU Brand distribution — all players
 const cpuBrands = new Map<string, number>();
 players.forEach(p => {
-  const brand = p.data.cpuBrand || p.data.cpu;
-  if (brand) {
-    const normalizedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
+  if (p.data.cpuBrand) {
+    const normalizedBrand = p.data.cpuBrand.charAt(0).toUpperCase() + p.data.cpuBrand.slice(1).toLowerCase();
     cpuBrands.set(normalizedBrand, (cpuBrands.get(normalizedBrand) || 0) + 1);
+  } else {
+    cpuBrands.set('Unknown', (cpuBrands.get('Unknown') || 0) + 1);
   }
 });
-const topCpuBrands = [...cpuBrands.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
-const maxCpuCount = topCpuBrands.length > 0 ? topCpuBrands[0][1] : 1;
+const topCpuBrands = sortWithUnknownLast([...cpuBrands.entries()]);
+const totalCpuPlayers = players.length;
 
 // Donut chart helpers - brand-specific colors
 const brandColors: Record<string, string> = {
@@ -252,6 +284,7 @@ const brandColors: Record<string, string> = {
 const defaultDonutColors = ['#238636', '#2ea043', '#3fb950', '#56d364'];
 
 function getBrandColor(brand: string, index: number): string {
+  if (brand === 'Unknown') return '#30363d';
   return brandColors[brand] || defaultDonutColors[index % defaultDonutColors.length];
 }
 
@@ -270,49 +303,46 @@ function buildConicGradient(entries: [string, number][], total: number): string 
 const gpuGradient = buildConicGradient(topGpuBrands, totalGpuPlayers);
 const cpuGradient = buildConicGradient(topCpuBrands, totalCpuPlayers);
 
-// Monitor brand distribution
+// Monitor brand distribution — all players
 const monitorBrands = new Map<string, number>();
 players.forEach(p => {
   if (p.data.monitor) {
     const monitorData = monitorsMap.get(p.data.monitor);
-    const brand = monitorData?.brand || 'Unknown';
+    const brand = monitorData?.brand || 'Other';
     monitorBrands.set(brand, (monitorBrands.get(brand) || 0) + 1);
+  } else {
+    monitorBrands.set('Unknown', (monitorBrands.get('Unknown') || 0) + 1);
   }
 });
-const topMonitorBrands = [...monitorBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
-const totalMonitorBrandPlayers = [...monitorBrands.values()].reduce((a, b) => a + b, 0);
+const topMonitorBrands = sortWithUnknownLast([...monitorBrands.entries()]).slice(0, 8);
 const maxMonitorBrandCount = topMonitorBrands.length > 0 ? topMonitorBrands[0][1] : 1;
 
-// Keyboard brand distribution
+// Keyboard brand distribution — all players
 const keyboardBrands = new Map<string, number>();
 players.forEach(p => {
   if (p.data.keyboard) {
     const kbData = keyboardsMap.get(p.data.keyboard);
-    const brand = kbData?.brand || 'Unknown';
+    const brand = kbData?.brand || 'Other';
     keyboardBrands.set(brand, (keyboardBrands.get(brand) || 0) + 1);
+  } else {
+    keyboardBrands.set('Unknown', (keyboardBrands.get('Unknown') || 0) + 1);
   }
 });
-const topKeyboardBrands = [...keyboardBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
-const totalKeyboardBrandPlayers = [...keyboardBrands.values()].reduce((a, b) => a + b, 0);
+const topKeyboardBrands = sortWithUnknownLast([...keyboardBrands.entries()]).slice(0, 8);
 const maxKeyboardBrandCount = topKeyboardBrands.length > 0 ? topKeyboardBrands[0][1] : 1;
 
-// Headset brand distribution
+// Headset brand distribution — all players
 const headsetBrands = new Map<string, number>();
 players.forEach(p => {
   if (p.data.headset) {
     const hsData = headsetsMap.get(p.data.headset);
-    const brand = hsData?.brand || 'Unknown';
+    const brand = hsData?.brand || 'Other';
     headsetBrands.set(brand, (headsetBrands.get(brand) || 0) + 1);
+  } else {
+    headsetBrands.set('Unknown', (headsetBrands.get('Unknown') || 0) + 1);
   }
 });
-const topHeadsetBrands = [...headsetBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
-const totalHeadsetBrandPlayers = [...headsetBrands.values()].reduce((a, b) => a + b, 0);
+const topHeadsetBrands = sortWithUnknownLast([...headsetBrands.entries()]).slice(0, 8);
 const maxHeadsetBrandCount = topHeadsetBrands.length > 0 ? topHeadsetBrands[0][1] : 1;
 
 // ===========================================
@@ -623,14 +653,14 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <h2 class="s-card-title">Top Mouse Brands</h2>
         <div class="s-bar-list">
           {topMouseBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${brand === 'Unknown' || brand === 'Other' ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label">{brand}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxMouseBrandCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(count / maxMouseBrandCount) * 100}%; background: ${brand === 'Unknown' || brand === 'Other' ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{count}</span>
                 </div>
               </div>
-              <span class="s-bar-pct">{Math.round((count / totalMouseBrandPlayers) * 100)}%</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
@@ -640,10 +670,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <h2 class="s-card-title">Top Mice</h2>
         <div class="s-bar-list">
           {topMice.slice(0, 8).map((mouse) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${mouse.isMuted ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label s-bar-label-wide">{mouse.name}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(mouse.count / maxMiceCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(mouse.count / maxMiceCount) * 100}%; background: ${mouse.isMuted ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{mouse.count}</span>
                 </div>
               </div>
@@ -661,10 +691,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <p class="s-card-sub">Grouped by model (all sizes)</p>
         <div class="s-bar-list">
           {topMousepads.slice(0, 8).map((pad) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${pad.isMuted ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label">{pad.name}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(pad.count / maxMousepadCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(pad.count / maxMousepadCount) * 100}%; background: ${pad.isMuted ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{pad.count}</span>
                 </div>
               </div>
@@ -676,15 +706,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
       <div class="s-card">
         <h2 class="s-card-title">Grip Style</h2>
-        <p class="s-card-sub">{totalGripPlayers} players with data</p>
         <div class="s-vbar-chart">
           {gripDistribution.map(([style, count]) => {
-            const pct = Math.round((count / totalGripPlayers) * 100);
+            const pct = Math.round((count / players.length) * 100);
+            const isMuted = style === 'Unknown' || style === 'Other';
             return (
               <div class="s-vbar-item">
-                <span class="s-vbar-pct">{pct}%</span>
-                <div class="s-vbar" style={`height: ${(count / maxGripCount) * 100}px; background: #238636`}></div>
-                <span class="s-vbar-label">{style}</span>
+                <span class={`s-vbar-pct ${isMuted ? 's-vbar-muted' : ''}`}>{pct}%</span>
+                <div class="s-vbar" style={`height: ${(count / maxGripCount) * 100}px; background: ${isMuted ? '#30363d' : '#238636'}`}></div>
+                <span class={`s-vbar-label ${isMuted ? 's-vbar-muted' : ''}`}>{style}</span>
               </div>
             );
           })}
@@ -696,12 +726,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="s-vbar-chart">
           {topMouseShapes.map(([shape, count]) => {
             const pct = Math.round((count / players.length) * 100);
+            const isMuted = shape === 'Unknown' || shape === 'Other';
             const shortLabel = shape === 'Ambidextrous' ? 'Ambi' : shape === 'Symmetrical' ? 'Sym' : shape === 'Ergonomic' ? 'Ergo' : shape;
             return (
               <div class="s-vbar-item">
-                <span class="s-vbar-pct">{pct}%</span>
-                <div class="s-vbar" style={`height: ${(count / maxShapeCount) * 100}px; background: #238636`}></div>
-                <span class="s-vbar-label">{shortLabel}</span>
+                <span class={`s-vbar-pct ${isMuted ? 's-vbar-muted' : ''}`}>{pct}%</span>
+                <div class="s-vbar" style={`height: ${(count / maxShapeCount) * 100}px; background: ${isMuted ? '#30363d' : '#238636'}`}></div>
+                <span class={`s-vbar-label ${isMuted ? 's-vbar-muted' : ''}`}>{shortLabel}</span>
               </div>
             );
           })}
@@ -713,17 +744,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="s-hw-row3">
       <div class="s-card">
         <h2 class="s-card-title">Top Monitor Brands</h2>
-        <p class="s-card-sub">{totalMonitorBrandPlayers} players with data</p>
         <div class="s-bar-list">
           {topMonitorBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${brand === 'Unknown' || brand === 'Other' ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label">{brand}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxMonitorBrandCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(count / maxMonitorBrandCount) * 100}%; background: ${brand === 'Unknown' || brand === 'Other' ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{count}</span>
                 </div>
               </div>
-              <span class="s-bar-pct">{Math.round((count / totalMonitorBrandPlayers) * 100)}%</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
@@ -772,17 +802,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="s-three-col">
       <div class="s-card">
         <h2 class="s-card-title">Top Keyboard Brands</h2>
-        <p class="s-card-sub">{totalKeyboardBrandPlayers} players with data</p>
         <div class="s-bar-list">
           {topKeyboardBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${brand === 'Unknown' || brand === 'Other' ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label">{brand}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxKeyboardBrandCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(count / maxKeyboardBrandCount) * 100}%; background: ${brand === 'Unknown' || brand === 'Other' ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{count}</span>
                 </div>
               </div>
-              <span class="s-bar-pct">{Math.round((count / totalKeyboardBrandPlayers) * 100)}%</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
@@ -790,17 +819,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
       <div class="s-card">
         <h2 class="s-card-title">Top Headset Brands</h2>
-        <p class="s-card-sub">{totalHeadsetBrandPlayers} players with data</p>
         <div class="s-bar-list">
           {topHeadsetBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
+            <div class={`s-bar-row ${brand === 'Unknown' || brand === 'Other' ? 's-bar-muted' : ''}`}>
               <span class="s-bar-label">{brand}</span>
               <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxHeadsetBrandCount) * 100}%; background: #238636`}>
+                <div class="s-bar" style={`width: ${(count / maxHeadsetBrandCount) * 100}%; background: ${brand === 'Unknown' || brand === 'Other' ? '#30363d' : '#238636'}`}>
                   <span class="s-bar-count">{count}</span>
                 </div>
               </div>
-              <span class="s-bar-pct">{Math.round((count / totalHeadsetBrandPlayers) * 100)}%</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
@@ -1345,6 +1373,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     text-align: right;
     font-size: 0.75rem;
     color: #8b949e;
+  }
+
+  /* --- Muted styles for Unknown/Other --- */
+  .s-bar-muted .s-bar-label,
+  .s-bar-muted .s-bar-pct {
+    color: #484f58;
+  }
+
+  .s-vbar-muted {
+    color: #484f58 !important;
   }
 
   /* --- Vertical Bar Charts --- */

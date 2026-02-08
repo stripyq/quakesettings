@@ -36,5 +36,5 @@ jump: space
 crouch: MOUSE2
 attack: MOUSE1
 zoom: shift
-gpu: NVIDIA
-cpu: Intel
+gpuBrand: NVIDIA
+cpuBrand: Intel

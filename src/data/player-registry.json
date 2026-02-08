@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-08",
   "totalPlayers": 2288,
-  "playersWithProfiles": 101,
+  "playersWithProfiles": 102,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -8807,8 +8807,8 @@
     {
       "steamId": "76561198380825290",
       "name": "DimebaG",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "dimebag",
+      "hasProfile": true,
       "ratings": {
         "ctf": 24.844650268554688,
         "tdm": 23.36810302734375,

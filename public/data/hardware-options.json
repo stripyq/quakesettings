@@ -1,6 +1,11 @@
 {
   "mice": [
     {
+      "slug": "adesso-imouse-e7",
+      "name": "Adesso iMouse E7 Vertical",
+      "brand": "Adesso"
+    },
+    {
       "slug": "ajazz-aj139-v2-mc",
       "name": "AJAZZ AJ139 V2 MC",
       "brand": "AJAZZ"
@@ -2019,6 +2024,11 @@
       "brand": "Endgame Gear"
     },
     {
+      "slug": "endgame-gear-mpc-890",
+      "name": "Endgame Gear MPC 890",
+      "brand": "Endgame Gear"
+    },
+    {
       "slug": "esptiger-eba",
       "name": "Esptiger EBA",
       "brand": "Esptiger"
@@ -2835,6 +2845,11 @@
     {
       "slug": "akko-3061s",
       "name": "Akko 3061S",
+      "brand": "Akko"
+    },
+    {
+      "slug": "akko-5108b",
+      "name": "Akko 5108B",
       "brand": "Akko"
     },
     {
@@ -4695,6 +4710,11 @@
       "slug": "beyerdynamic-mmx-300",
       "name": "Beyerdynamic MMX 300",
       "brand": "Beyerdynamic"
+    },
+    {
+      "slug": "cooler-master-mh752",
+      "name": "Cooler Master MH752",
+      "brand": "Cooler Master"
     },
     {
       "slug": "creative-fatal1ty",
