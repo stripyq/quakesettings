@@ -241,14 +241,25 @@ const topCpuBrands = [...cpuBrands.entries()]
 const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
 const maxCpuCount = topCpuBrands.length > 0 ? topCpuBrands[0][1] : 1;
 
-// Donut chart helpers
-const donutColors = ['#238636', '#2ea043', '#3fb950', '#56d364'];
+// Donut chart helpers - brand-specific colors
+const brandColors: Record<string, string> = {
+  'NVIDIA': '#76B900',
+  'AMD': '#ED1C24',
+  'INTEL': '#0071C5',
+  'Intel': '#0071C5',
+  'Amd': '#ED1C24',
+};
+const defaultDonutColors = ['#238636', '#2ea043', '#3fb950', '#56d364'];
+
+function getBrandColor(brand: string, index: number): string {
+  return brandColors[brand] || defaultDonutColors[index % defaultDonutColors.length];
+}
 
 function buildConicGradient(entries: [string, number][], total: number): string {
   let angle = 0;
   const stops: string[] = [];
-  entries.forEach(([, count], i) => {
-    const color = donutColors[i % donutColors.length];
+  entries.forEach(([brand, count], i) => {
+    const color = getBrandColor(brand, i);
     const nextAngle = angle + (count / total) * 360;
     stops.push(`${color} ${angle.toFixed(1)}deg ${nextAngle.toFixed(1)}deg`);
     angle = nextAngle;
@@ -685,11 +696,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="s-vbar-chart">
           {topMouseShapes.map(([shape, count]) => {
             const pct = Math.round((count / players.length) * 100);
+            const shortLabel = shape === 'Ambidextrous' ? 'Ambi' : shape === 'Symmetrical' ? 'Sym' : shape === 'Ergonomic' ? 'Ergo' : shape;
             return (
               <div class="s-vbar-item">
                 <span class="s-vbar-pct">{pct}%</span>
                 <div class="s-vbar" style={`height: ${(count / maxShapeCount) * 100}px; background: #238636`}></div>
-                <span class="s-vbar-label">{shape}</span>
+                <span class="s-vbar-label">{shortLabel}</span>
               </div>
             );
           })}
@@ -805,7 +817,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <div class="s-donut-legend">
               {topGpuBrands.map(([brand, count], i) => (
                 <div class="s-donut-legend-item">
-                  <span class="s-donut-swatch" style={`background: ${donutColors[i % donutColors.length]}`}></span>
+                  <span class="s-donut-swatch" style={`background: ${getBrandColor(brand, i)}`}></span>
                   <span>{brand} {Math.round((count / totalGpuPlayers) * 100)}%</span>
                 </div>
               ))}
@@ -819,7 +831,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             <div class="s-donut-legend">
               {topCpuBrands.map(([brand, count], i) => (
                 <div class="s-donut-legend-item">
-                  <span class="s-donut-swatch" style={`background: ${donutColors[i % donutColors.length]}`}></span>
+                  <span class="s-donut-swatch" style={`background: ${getBrandColor(brand, i)}`}></span>
                   <span>{brand} {Math.round((count / totalCpuPlayers) * 100)}%</span>
                 </div>
               ))}
@@ -1340,9 +1352,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
     height: 140px;
-    padding-top: 20px;
+    margin-top: 24px;
+    padding-bottom: 8px;
   }
 
   .s-vbar-item {
@@ -1354,22 +1367,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   .s-vbar-pct {
     font-size: 0.75rem;
-    font-weight: 600;
-    color: #f0f6fc;
+    font-weight: 500;
+    color: #c9d1d9;
   }
 
   .s-vbar {
-    width: 40px;
+    width: 45px;
     border-radius: 4px 4px 0 0;
-    min-height: 4px;
+    min-height: 8px;
   }
 
   .s-vbar-label {
     font-size: 0.7rem;
     color: #8b949e;
     text-align: center;
-    max-width: 60px;
-    word-wrap: break-word;
+    white-space: nowrap;
   }
 
   /* --- Donut Charts --- */
