@@ -1,0 +1,10 @@
+name: "Endgame Gear XM2w 4K V2"
+brand: "Endgame Gear"
+weight: "61.5g"
+shape: "Symmetrical"
+dimensions: "122 x 66 x 38.5mm"
+sensor: "PAW3950"
+dpiRange: "50-30000"
+pollingRate: "4000Hz"
+buttons: 7
+connection: "Wireless"
