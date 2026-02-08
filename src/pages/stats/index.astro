@@ -20,8 +20,6 @@ const mousepadsMap = new Map(mousepads.map(p => [p.id, p.data]));
 function calculateCm360(playerData: any): number {
   if (playerData.cm360) return playerData.cm360;
   if (playerData.m_cpi) {
-    // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
-    // When m_cpi = DPI, this simplifies to 360 / sensitivity
     return Math.round((360 * playerData.m_cpi / (playerData.sensitivity * playerData.dpi)) * 100) / 100;
   }
   return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
@@ -31,7 +29,6 @@ function calculateCm360(playerData: any): number {
 // SENSITIVITY STATS
 // ===========================================
 
-// cm/360 calculations (includes all players - cm/360 is base sensitivity, accel is applied on top)
 const cm360Values = players.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
 const avgCm360 = cm360Values.length > 0
   ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
@@ -41,28 +38,6 @@ const medianCm360 = cm360Values.length > 0
   : 0;
 const minCm360 = cm360Values.length > 0 ? Math.min(...cm360Values) : 0;
 const maxCm360 = cm360Values.length > 0 ? Math.max(...cm360Values) : 0;
-
-// eDPI stats
-const edpiValues = players.map(p => p.data.edpi).filter(v => v).sort((a, b) => a - b);
-const avgEdpi = Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length);
-const medianEdpi = edpiValues.length > 0 ? edpiValues[Math.floor(edpiValues.length / 2)] : 0;
-const minEdpi = Math.min(...edpiValues);
-const maxEdpi = Math.max(...edpiValues);
-
-// DPI distribution
-const dpiValues = players.map(p => p.data.dpi).filter(v => v);
-const avgDpi = Math.round(dpiValues.reduce((a, b) => a + b, 0) / dpiValues.length);
-const dpiDistribution = new Map<number, number>();
-dpiValues.forEach(dpi => {
-  // Round to common DPI values
-  const rounded = [400, 800, 1600, 3200].reduce((prev, curr) =>
-    Math.abs(curr - dpi) < Math.abs(prev - dpi) ? curr : prev
-  );
-  dpiDistribution.set(rounded, (dpiDistribution.get(rounded) || 0) + 1);
-});
-const topDpiValues = [...dpiDistribution.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 4);
 
 // cm/360 distribution buckets with accel player breakdown
 const cm360BucketDefs = [
@@ -104,11 +79,6 @@ function getSpeedCategory(speed: string): string | null {
 }
 
 const padTypes = ['Speed', 'Balanced', 'Control'] as const;
-const padTypeRgb: Record<string, string> = {
-  Speed: '255, 107, 53',
-  Balanced: '168, 85, 247',
-  Control: '0, 180, 216',
-};
 
 // Build heatmap counts
 const padHeatmap = new Map<string, number>();
@@ -129,46 +99,31 @@ players.forEach(p => {
   }
 });
 
-// Per-column max for independent color scaling
-const padTypeMaxes: Record<string, number> = { Speed: 1, Balanced: 1, Control: 1 };
-padHeatmap.forEach((count, key) => {
-  const type = key.split('|')[1];
-  if (count > padTypeMaxes[type]) padTypeMaxes[type] = count;
-});
+// Neutral heatmap scale for cm/360 vs pad type
+const neutralHeatColors = ['#21262d', '#2d333b', '#3d444d', '#4d555e', '#5d656f', '#6e7681'];
+const padHeatmapMax = Math.max(...padHeatmap.values(), 1);
 
-// Pre-compute heatmap rows with style strings
+function getNeutralHeatColor(count: number, max: number): string {
+  if (count === 0) return neutralHeatColors[0];
+  const ratio = count / max;
+  const index = Math.min(Math.floor(ratio * 5) + 1, 5);
+  return neutralHeatColors[index];
+}
+
 const padHeatmapRows = cm360BucketDefs.map(bucket => ({
   label: bucket.label,
   range: bucket.range,
   cells: padTypes.map(type => {
     const count = padHeatmap.get(`${bucket.label}|${type}`) || 0;
-    const max = padTypeMaxes[type];
-    const intensity = count > 0 ? 0.25 + (count / max) * 0.75 : 0;
-    const bg = count > 0
-      ? `rgba(${padTypeRgb[type]}, ${intensity.toFixed(2)})`
-      : '#1a1a2e';
-    return { type, count, bg };
+    return { type, count, bg: getNeutralHeatColor(count, padHeatmapMax) };
   }),
 }));
 
-// Total players with mousepad type data
 const totalPadTypePlayers = [...padHeatmap.values()].reduce((a, b) => a + b, 0);
 
-// Mice
-const mouseUsage = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.mouse) {
-    mouseUsage.set(p.data.mouse, (mouseUsage.get(p.data.mouse) || 0) + 1);
-  }
-});
-const topMice = [...mouseUsage.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 10)
-  .map(([id, count]) => ({
-    name: miceMap.get(id)?.name || id,
-    count,
-    percentage: Math.round((count / players.length) * 100)
-  }));
+// ===========================================
+// HARDWARE STATS
+// ===========================================
 
 // Mouse brand popularity
 const mouseBrands = new Map<string, number>();
@@ -183,45 +138,24 @@ const topMouseBrands = [...mouseBrands.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 8);
 const totalMouseBrandPlayers = [...mouseBrands.values()].reduce((a, b) => a + b, 0);
+const maxMouseBrandCount = topMouseBrands.length > 0 ? topMouseBrands[0][1] : 1;
 
-// Monitors by refresh rate
-const monitorRefreshRates = new Map<string, number>();
+// Mice (specific models)
+const mouseUsage = new Map<string, number>();
 players.forEach(p => {
-  if (p.data.monitor) {
-    const monitor = monitorsMap.get(p.data.monitor);
-    const refreshRate = monitor?.refreshRate || 'Unknown';
-    monitorRefreshRates.set(refreshRate, (monitorRefreshRates.get(refreshRate) || 0) + 1);
+  if (p.data.mouse) {
+    mouseUsage.set(p.data.mouse, (mouseUsage.get(p.data.mouse) || 0) + 1);
   }
 });
-const topRefreshRates = [...monitorRefreshRates.entries()]
+const topMice = [...mouseUsage.entries()]
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Keyboard brands
-const keyboardBrands = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.keyboard) {
-    const kb = keyboardsMap.get(p.data.keyboard);
-    const brand = kb?.brand || 'Unknown';
-    keyboardBrands.set(brand, (keyboardBrands.get(brand) || 0) + 1);
-  }
-});
-const topKeyboardBrands = [...keyboardBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Mousepad brands
-const mousepadBrands = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.mousepad) {
-    const pad = mousepadsMap.get(p.data.mousepad);
-    const brand = pad?.brand || 'Unknown';
-    mousepadBrands.set(brand, (mousepadBrands.get(brand) || 0) + 1);
-  }
-});
-const topMousepadBrands = [...mousepadBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
+  .slice(0, 10)
+  .map(([id, count]) => ({
+    name: miceMap.get(id)?.name || id,
+    count,
+    percentage: Math.round((count / players.length) * 100)
+  }));
+const maxMiceCount = topMice.length > 0 ? topMice[0].count : 1;
 
 // Mousepad models (grouped by base model name)
 const mousepadModels = new Map<string, { count: number; brand: string }>();
@@ -247,13 +181,40 @@ const topMousepads = [...mousepadModels.entries()]
     count: data.count,
     percentage: Math.round((data.count / players.length) * 100)
   }));
+const maxMousepadCount = topMousepads.length > 0 ? topMousepads[0].count : 1;
 
-// GPU Brand distribution (check both gpuBrand and gpu fields)
+// Grip style distribution
+const gripStyles = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.grip) {
+    gripStyles.set(p.data.grip, (gripStyles.get(p.data.grip) || 0) + 1);
+  }
+});
+const gripDistribution = [...gripStyles.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const totalGripPlayers = [...gripStyles.values()].reduce((a, b) => a + b, 0);
+const maxGripCount = gripDistribution.length > 0 ? gripDistribution[0][1] : 1;
+
+// Mouse shape distribution
+const mouseShapeDistribution = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.mouse) {
+    const mouseData = miceMap.get(p.data.mouse);
+    if (mouseData) {
+      const shape = mouseData.shape || 'Unknown';
+      mouseShapeDistribution.set(shape, (mouseShapeDistribution.get(shape) || 0) + 1);
+    }
+  }
+});
+const topMouseShapes = [...mouseShapeDistribution.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const maxShapeCount = topMouseShapes.length > 0 ? topMouseShapes[0][1] : 1;
+
+// GPU Brand distribution
 const gpuBrands = new Map<string, number>();
 players.forEach(p => {
   const brand = p.data.gpuBrand || p.data.gpu;
   if (brand) {
-    // Normalize to uppercase for consistency
     const normalizedBrand = brand.toUpperCase();
     gpuBrands.set(normalizedBrand, (gpuBrands.get(normalizedBrand) || 0) + 1);
   }
@@ -261,13 +222,13 @@ players.forEach(p => {
 const topGpuBrands = [...gpuBrands.entries()]
   .sort((a, b) => b[1] - a[1]);
 const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
+const maxGpuCount = topGpuBrands.length > 0 ? topGpuBrands[0][1] : 1;
 
-// CPU Brand distribution (check both cpuBrand and cpu fields)
+// CPU Brand distribution
 const cpuBrands = new Map<string, number>();
 players.forEach(p => {
   const brand = p.data.cpuBrand || p.data.cpu;
   if (brand) {
-    // Normalize: capitalize first letter
     const normalizedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
     cpuBrands.set(normalizedBrand, (cpuBrands.get(normalizedBrand) || 0) + 1);
   }
@@ -275,9 +236,57 @@ players.forEach(p => {
 const topCpuBrands = [...cpuBrands.entries()]
   .sort((a, b) => b[1] - a[1]);
 const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
+const maxCpuCount = topCpuBrands.length > 0 ? topCpuBrands[0][1] : 1;
 
 // ===========================================
-// SETTINGS TRENDS
+// MONITOR SIZE VS REFRESH RATE HEATMAP
+// ===========================================
+
+function parseMonitorSize(size: string): number | null {
+  const match = size.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : null;
+}
+
+function parseRefreshRate(rate: string): number | null {
+  const match = rate.match(/(\d+)/);
+  return match ? parseInt(match[1]) : null;
+}
+
+const sizeBins = [18, 21, 23, 24, 25, 27, 28, 32, 34];
+const refreshBins = [60, 120, 144, 165, 180, 240, 280, 360, 500];
+
+const monitorHeatmap: Map<string, number> = new Map();
+players.forEach(p => {
+  if (p.data.monitor) {
+    const monitorData = monitorsMap.get(p.data.monitor);
+    if (monitorData) {
+      const size = parseMonitorSize(monitorData.size || '');
+      const refresh = parseRefreshRate(monitorData.refreshRate || '');
+      if (size !== null && refresh !== null) {
+        const sizeBin = sizeBins.reduce((prev, curr) =>
+          Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
+        );
+        const refreshBin = refreshBins.reduce((prev, curr) =>
+          Math.abs(curr - refresh) < Math.abs(prev - refresh) ? curr : prev
+        );
+        const key = `${sizeBin}-${refreshBin}`;
+        monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
+      }
+    }
+  }
+});
+
+const heatmapMax = Math.max(...monitorHeatmap.values(), 1);
+
+function getMonitorHeatColor(count: number, max: number): string {
+  if (count === 0) return neutralHeatColors[0];
+  const ratio = count / max;
+  const index = Math.min(Math.floor(ratio * 5) + 1, 5);
+  return neutralHeatColors[index];
+}
+
+// ===========================================
+// GAME SETTINGS
 // ===========================================
 
 // FOV distribution
@@ -290,35 +299,11 @@ fovValues.forEach(fov => {
 const topFovValues = [...fovDistribution.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 5);
+const maxFovCount = topFovValues.length > 0 ? topFovValues[0][1] : 1;
 
 // Acceleration users
 const accelUsers = players.filter(p => p.data.acceleration).length;
 const accelPercentage = Math.round((accelUsers / players.length) * 100);
-
-// m_cpi users
-const mcpiUsers = players.filter(p => p.data.m_cpi).length;
-const mcpiPercentage = Math.round((mcpiUsers / players.length) * 100);
-
-// Crosshair types
-const crosshairTypes = new Map<string, number>();
-players.forEach(p => {
-  const ch = p.data.crosshair || 'Unknown';
-  crosshairTypes.set(ch, (crosshairTypes.get(ch) || 0) + 1);
-});
-const topCrosshairs = [...crosshairTypes.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Grip style distribution
-const gripStyles = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.grip) {
-    gripStyles.set(p.data.grip, (gripStyles.get(p.data.grip) || 0) + 1);
-  }
-});
-const gripDistribution = [...gripStyles.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalGripPlayers = [...gripStyles.values()].reduce((a, b) => a + b, 0);
 
 // Crosshair color distribution
 const crosshairColors = new Map<string, number>();
@@ -331,6 +316,55 @@ const topCrosshairColors = [...crosshairColors.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 8);
 const totalCrosshairColorPlayers = [...crosshairColors.values()].reduce((a, b) => a + b, 0);
+const maxCrosshairColorCount = topCrosshairColors.length > 0 ? topCrosshairColors[0][1] : 1;
+
+// Crosshair color to bar color mapping (muted versions)
+const crosshairColorMap: Record<string, { bg: string; border?: string }> = {
+  'Green': { bg: '#238636' },
+  'Yellow': { bg: '#9e6a03' },
+  'Cyan': { bg: '#1f6feb' },
+  'Red': { bg: '#da3633' },
+  'White': { bg: '#6e7681' },
+  'Magenta': { bg: '#8957e5' },
+  'Black': { bg: '#21262d', border: '1px solid #484f58' },
+  'Orange': { bg: '#bd5600' },
+  'Blue': { bg: '#1f6feb' },
+  'Pink': { bg: '#8957e5' },
+};
+
+// Crosshair style distribution
+const crosshairTypes = new Map<string, number>();
+players.forEach(p => {
+  const ch = p.data.crosshair || 'Unknown';
+  crosshairTypes.set(ch, (crosshairTypes.get(ch) || 0) + 1);
+});
+
+const crosshairVisuals: Record<string, string> = {
+  '1': 'Circle with dot',
+  '2': 'Cross (+)',
+  '3': 'Cross with gap',
+  '4': 'Small dot',
+  '5': 'Large dot',
+  '6': 'Dot',
+  '7': 'Thick cross',
+  '8': 'Circle',
+  '9': 'Cross with gap',
+  '10': 'X shape',
+  '11': 'Triangle',
+  '12': 'Chevron',
+  '13': 'Circle crosshair',
+};
+
+const crosshairStyleData = [...crosshairTypes.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8)
+  .map(([type, count]) => ({
+    type,
+    count,
+    percentage: Math.round((count / players.length) * 100),
+    description: crosshairVisuals[type] || `Type ${type}`,
+  }));
+const maxCrosshairStyleCount = crosshairStyleData.length > 0 ? crosshairStyleData[0].count : 1;
 
 // Enemy model distribution
 const enemyModels = new Map<string, number>();
@@ -343,18 +377,55 @@ const topEnemyModels = [...enemyModels.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 8);
 const totalEnemyModelPlayers = [...enemyModels.values()].reduce((a, b) => a + b, 0);
+const maxEnemyModelCount = topEnemyModels.length > 0 ? topEnemyModels[0][1] : 1;
+
+// ===========================================
+// KEY BINDINGS STATISTICS
+// ===========================================
+
+const movementPatterns = new Map<string, number>();
+const jumpKeys = new Map<string, number>();
+
+players.forEach(p => {
+  const forward = (p.data.forward || 'W').toUpperCase();
+  const left = (p.data.left || 'A').toUpperCase();
+  const back = (p.data.back || 'S').toUpperCase();
+  const right = (p.data.right || 'D').toUpperCase();
+
+  let pattern = `${forward}${left}${back}${right}`;
+  if (pattern === 'WASD') pattern = 'WASD';
+  else if (pattern === 'ESDF') pattern = 'ESDF';
+  else if (pattern === 'RFDG') pattern = 'RFDG';
+  else if (forward.includes('ARROW') || forward.includes('UP')) pattern = 'Arrow Keys';
+  else if (forward.includes('KP_') || forward.includes('NUMPAD')) pattern = 'Numpad';
+
+  movementPatterns.set(pattern, (movementPatterns.get(pattern) || 0) + 1);
+
+  let jump = (p.data.jump || 'Space');
+  if (jump.toLowerCase() === 'space' || jump.toLowerCase() === 'spacebar') jump = 'Space';
+  else if (jump.toLowerCase().includes('mouse2') || jump.toLowerCase() === 'mwheeldown' || jump.toLowerCase() === 'm2') jump = 'Mouse2';
+  else if (jump.toLowerCase().includes('mwheel')) jump = 'Mwheel';
+  else if (jump.toLowerCase().includes('mouse')) jump = 'Mouse Button';
+  else if (jump.toLowerCase() === 'shift') jump = 'Shift';
+  else if (jump.toLowerCase() === 'ctrl' || jump.toLowerCase() === 'control') jump = 'Ctrl';
+
+  jumpKeys.set(jump, (jumpKeys.get(jump) || 0) + 1);
+});
+
+const topMovementPatterns = [...movementPatterns.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const maxMovementCount = topMovementPatterns.length > 0 ? topMovementPatterns[0][1] : 1;
+const topJumpKeys = [...jumpKeys.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const maxJumpCount = topJumpKeys.length > 0 ? topJumpKeys[0][1] : 1;
 
 // ===========================================
 // PLAYER STATS
 // ===========================================
 
-// Categories
-const categoryDuel = players.filter(p => p.data.category === 'duel').length;
-const categoryCTF = players.filter(p => p.data.category === 'ctf').length;
-const categoryTDM = players.filter(p => p.data.category === 'tdm').length;
-const categoryOther = players.length - categoryDuel - categoryCTF - categoryTDM;
-
-// Recently updated: rank by lastUpdated (intentional signal), use git date for precise display
+// Recently updated
 function getGitLastModified(filePath: string): string | null {
   try {
     return execSync(`git log -1 --format=%aI -- "${filePath}"`, { encoding: 'utf-8' }).trim() || null;
@@ -368,7 +439,6 @@ const playersWithDates = players
     gitDate: getGitLastModified(`src/content/players/${p.id}.yaml`),
   }));
 
-// Primary sort by lastUpdated (month bucket), tiebreak by git timestamp
 playersWithDates.sort((a, b) => {
   const luCmp = (b.player.data.lastUpdated || '').localeCompare(a.player.data.lastUpdated || '');
   if (luCmp !== 0) return luCmp;
@@ -384,186 +454,23 @@ const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
 // INTERESTING FACTS
 // ===========================================
 
-// Lowest sens player (highest cm/360)
 const lowestSensPlayer = players.reduce((prev, curr) =>
   calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
 );
-
-// Highest sens player (lowest cm/360)
 const highestSensPlayer = players.reduce((prev, curr) =>
   calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
 );
 
-// ===========================================
-// MOUSE SHAPE & SIZE STATISTICS
-// ===========================================
+// Highest and lowest FOV
+const playersWithFov = players.filter(p => p.data.fov);
+const highestFovPlayer = playersWithFov.length > 0
+  ? playersWithFov.reduce((prev, curr) => curr.data.fov > prev.data.fov ? curr : prev)
+  : null;
+const lowestFovPlayer = playersWithFov.length > 0
+  ? playersWithFov.reduce((prev, curr) => curr.data.fov < prev.data.fov ? curr : prev)
+  : null;
 
-// Mouse shape distribution
-const mouseShapeDistribution = new Map<string, number>();
-const mouseWeightDistribution = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.mouse) {
-    const mouseData = miceMap.get(p.data.mouse);
-    if (mouseData) {
-      // Shape
-      const shape = mouseData.shape || 'Unknown';
-      mouseShapeDistribution.set(shape, (mouseShapeDistribution.get(shape) || 0) + 1);
-
-      // Weight (categorize)
-      if (mouseData.weight && mouseData.weight !== 'Unknown') {
-        const weightNum = parseFloat(mouseData.weight);
-        let weightCategory = 'Unknown';
-        if (weightNum < 70) weightCategory = 'Ultralight (<70g)';
-        else if (weightNum < 90) weightCategory = 'Light (70-89g)';
-        else if (weightNum < 110) weightCategory = 'Medium (90-109g)';
-        else weightCategory = 'Heavy (110g+)';
-        mouseWeightDistribution.set(weightCategory, (mouseWeightDistribution.get(weightCategory) || 0) + 1);
-      }
-    }
-  }
-});
-
-const topMouseShapes = [...mouseShapeDistribution.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const topMouseWeights = [...mouseWeightDistribution.entries()]
-  .sort((a, b) => {
-    // Sort by weight category order
-    const order = ['Ultralight (<70g)', 'Light (70-89g)', 'Medium (90-109g)', 'Heavy (110g+)', 'Unknown'];
-    return order.indexOf(a[0]) - order.indexOf(b[0]);
-  });
-
-// ===========================================
-// MONITOR SIZE VS REFRESH RATE HEATMAP
-// ===========================================
-
-// Parse size to number (e.g., "27 inch" or "27\"" -> 27)
-function parseMonitorSize(size: string): number | null {
-  const match = size.match(/(\d+(?:\.\d+)?)/);
-  return match ? parseFloat(match[1]) : null;
-}
-
-// Parse refresh rate to number (e.g., "360Hz" -> 360)
-function parseRefreshRate(rate: string): number | null {
-  const match = rate.match(/(\d+)/);
-  return match ? parseInt(match[1]) : null;
-}
-
-// Define bins for the heatmap
-const sizeBins = [18, 21, 23, 24, 25, 27, 28, 32, 34];
-const refreshBins = [60, 120, 144, 165, 180, 240, 280, 360, 500];
-
-// Build heatmap data
-const monitorHeatmap: Map<string, number> = new Map();
-players.forEach(p => {
-  if (p.data.monitor) {
-    const monitorData = monitorsMap.get(p.data.monitor);
-    if (monitorData) {
-      const size = parseMonitorSize(monitorData.size || '');
-      const refresh = parseRefreshRate(monitorData.refreshRate || '');
-
-      if (size !== null && refresh !== null) {
-        // Find closest size bin
-        const sizeBin = sizeBins.reduce((prev, curr) =>
-          Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
-        );
-        // Find closest refresh bin
-        const refreshBin = refreshBins.reduce((prev, curr) =>
-          Math.abs(curr - refresh) < Math.abs(prev - refresh) ? curr : prev
-        );
-
-        const key = `${sizeBin}-${refreshBin}`;
-        monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
-      }
-    }
-  }
-});
-
-// Calculate max for color scaling
-const heatmapMax = Math.max(...monitorHeatmap.values(), 1);
-
-// ===========================================
-// KEY BINDINGS STATISTICS
-// ===========================================
-
-// Movement keys analysis
-const movementPatterns = new Map<string, number>();
-const jumpKeys = new Map<string, number>();
-
-players.forEach(p => {
-  // Analyze movement pattern
-  const forward = (p.data.forward || 'W').toUpperCase();
-  const left = (p.data.left || 'A').toUpperCase();
-  const back = (p.data.back || 'S').toUpperCase();
-  const right = (p.data.right || 'D').toUpperCase();
-
-  let pattern = `${forward}${left}${back}${right}`;
-
-  // Normalize common patterns
-  if (pattern === 'WASD') pattern = 'WASD';
-  else if (pattern === 'ESDF') pattern = 'ESDF';
-  else if (pattern === 'RFDG') pattern = 'RFDG';
-  else if (forward.includes('ARROW') || forward.includes('UP')) pattern = 'Arrow Keys';
-  else if (forward.includes('KP_') || forward.includes('NUMPAD')) pattern = 'Numpad';
-
-  movementPatterns.set(pattern, (movementPatterns.get(pattern) || 0) + 1);
-
-  // Analyze jump key
-  let jump = (p.data.jump || 'Space');
-  // Normalize
-  if (jump.toLowerCase() === 'space' || jump.toLowerCase() === 'spacebar') jump = 'Space';
-  else if (jump.toLowerCase().includes('mouse2') || jump.toLowerCase() === 'mwheeldown' || jump.toLowerCase() === 'm2') jump = 'Mouse2';
-  else if (jump.toLowerCase().includes('mouse')) jump = 'Mouse Button';
-  else if (jump.toLowerCase() === 'shift') jump = 'Shift';
-  else if (jump.toLowerCase() === 'ctrl' || jump.toLowerCase() === 'control') jump = 'Ctrl';
-
-  jumpKeys.set(jump, (jumpKeys.get(jump) || 0) + 1);
-});
-
-const topMovementPatterns = [...movementPatterns.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
-const topJumpKeys = [...jumpKeys.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
-
-// Format bind strings to add space after MOUSE1/MOUSE2
-function formatBindString(bind: string): string {
-  return bind.replace(/^(MOUSE[12])([A-Z])/, '$1 $2');
-}
-
-// ===========================================
-// CROSSHAIR VISUALIZATION DATA
-// ===========================================
-
-// Crosshair type to visual description mapping
-const crosshairVisuals: Record<string, { shape: string; description: string }> = {
-  '1': { shape: 'circle-dot', description: 'Circle with dot' },
-  '2': { shape: 'cross', description: 'Cross (+)' },
-  '3': { shape: 'cross-gap', description: 'Cross with gap' },
-  '4': { shape: 'dot', description: 'Small dot' },
-  '5': { shape: 'dot-large', description: 'Large dot' },
-  '6': { shape: 'dot', description: 'Dot' },
-  '7': { shape: 'cross-thick', description: 'Thick cross' },
-  '8': { shape: 'circle', description: 'Circle' },
-  '9': { shape: 'cross-gap', description: 'Cross with gap' },
-  '10': { shape: 'x-mark', description: 'X shape' },
-  '11': { shape: 'triangle', description: 'Triangle' },
-  '12': { shape: 'chevron', description: 'Chevron' },
-  '13': { shape: 'circle-crosshair', description: 'Circle crosshair' },
-};
-
-// Get crosshair data with counts
-const crosshairData = [...crosshairTypes.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 10)
-  .map(([type, count]) => ({
-    type,
-    count,
-    percentage: Math.round((count / players.length) * 100),
-    visual: crosshairVisuals[type] || { shape: 'unknown', description: `Type ${type}` }
-  }));
-
-// Format cm/360 values - remove .00 for whole numbers
+// Format cm/360 values
 function formatCm360(value: number): string {
   const fixed = value.toFixed(2);
   return fixed.endsWith('.00') ? Math.round(value).toString() : fixed;
@@ -572,359 +479,287 @@ function formatCm360(value: number): string {
 // Summary card: most popular mouse
 const topMouseName = topMice.length > 0 ? topMice[0].name : 'N/A';
 
-// Ensure base URL has trailing slash
+// Format bind strings
+function formatBindString(bind: string): string {
+  return bind.replace(/^(MOUSE[12])([A-Z])/, '$1 $2');
+}
+
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout title="Statistics">
-  <div class="page-header">
-    <h1>Player Statistics</h1>
-    <p>Aggregated data from {players.length} Quake Live players</p>
-  </div>
+  <div class="stats-page">
+    <div class="page-header">
+      <h1>Player Statistics</h1>
+      <p>Aggregated data from {players.length} Quake Live players</p>
+    </div>
 
-  <div class="stats-container">
     <!-- ========== SUMMARY CARDS ========== -->
-    <div class="summary-cards">
-      <div class="summary-card">
-        <span class="summary-value">{players.length}</span>
-        <span class="summary-label">Total Players</span>
+    <div class="s-summary-cards">
+      <div class="s-summary-card">
+        <span class="s-summary-value">{players.length}</span>
+        <span class="s-summary-label">Total Players</span>
       </div>
-      <div class="summary-card">
-        <span class="summary-value">{formatCm360(avgCm360)}</span>
-        <span class="summary-label">Avg cm/360</span>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{formatCm360(avgCm360)}</span>
+        <span class="s-summary-label">Avg cm/360</span>
       </div>
-      <div class="summary-card">
-        <span class="summary-value">{formatCm360(medianCm360)}</span>
-        <span class="summary-label">Median cm/360</span>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{accelPercentage}%</span>
+        <span class="s-summary-label">Accel Users</span>
       </div>
-      <div class="summary-card">
-        <span class="summary-value">{accelPercentage}%</span>
-        <span class="summary-label">Use Accel</span>
+      <div class="s-summary-card">
+        <span class="s-summary-value s-summary-value-sm">{topMouseName}</span>
+        <span class="s-summary-label">Top Mouse</span>
       </div>
-      <div class="summary-card">
-        <span class="summary-value summary-value-sm">{topMouseName}</span>
-        <span class="summary-label">#1 Mouse</span>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{avgFov}&deg;</span>
+        <span class="s-summary-label">Avg FOV</span>
       </div>
     </div>
 
-    <!-- ========== HARDWARE SECTION ========== -->
-    <h3 class="section-header">Hardware</h3>
+    <!-- ========== SECTION 1: HARDWARE ========== -->
+    <div class="s-section-header" style="--section-color: #238636">
+      <div class="s-section-icon" style="background: #238636">&#128433;&#65039;</div>
+      <span class="s-section-title" style="color: #238636">HARDWARE</span>
+    </div>
 
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Most Popular Mice</h2>
-        <div class="popularity-list">
-          {topMice.slice(0, 5).map((mouse, i) => (
-            <div class="popularity-item">
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{mouse.name}</span>
-              <span class="count">{mouse.count} ({mouse.percentage}%)</span>
-            </div>
-          ))}
-        </div>
-        {topMice.length > 5 && (
-          <details class="more-items">
-            <summary>Show more</summary>
-            <div class="popularity-list">
-              {topMice.slice(5).map((mouse, i) => (
-                <div class="popularity-item">
-                  <span class="rank">#{i + 6}</span>
-                  <span class="name">{mouse.name}</span>
-                  <span class="count">{mouse.count} ({mouse.percentage}%)</span>
-                </div>
-              ))}
-            </div>
-          </details>
-        )}
-      </section>
-
-      <section class="stat-card">
-        <h2>Mouse Brands</h2>
-        <p class="card-subtitle">{totalMouseBrandPlayers} players with data</p>
-        <div class="popularity-list">
+    <div class="s-two-col">
+      <!-- Top Mouse Brands -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Mouse Brands</h2>
+        <div class="s-bar-list">
           {topMouseBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalMouseBrandPlayers) * 100}%`}></div>
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxMouseBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
               </div>
-              <span class="count">{count} ({Math.round((count / totalMouseBrandPlayers) * 100)}%)</span>
+              <span class="s-bar-pct">{Math.round((count / totalMouseBrandPlayers) * 100)}%</span>
             </div>
           ))}
         </div>
-      </section>
+      </div>
+
+      <!-- Top Mice -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Mice</h2>
+        <div class="s-bar-list">
+          {topMice.slice(0, 8).map((mouse) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{mouse.name}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(mouse.count / maxMiceCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{mouse.count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{mouse.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Mouse Shape & Weight</h2>
-        <h3 class="subsection-title">Shape Preference</h3>
-        <div class="popularity-list compact">
+    <div class="s-two-col">
+      <!-- Top Mousepads -->
+      <div class="s-card">
+        <h2 class="s-card-title">Top Mousepads</h2>
+        <p class="s-card-sub">Grouped by model (all sizes)</p>
+        <div class="s-bar-list">
+          {topMousepads.slice(0, 8).map((pad) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{pad.name}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(pad.count / maxMousepadCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{pad.count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{pad.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Grip Style -->
+      <div class="s-card">
+        <h2 class="s-card-title">Grip Style</h2>
+        <p class="s-card-sub">{totalGripPlayers} players with data</p>
+        <div class="s-bar-list">
+          {gripDistribution.map(([style, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{style}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxGripCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalGripPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="s-two-col">
+      <!-- Mouse Shape -->
+      <div class="s-card">
+        <h2 class="s-card-title">Mouse Shape</h2>
+        <div class="s-bar-list">
           {topMouseShapes.map(([shape, count]) => (
-            <div class="popularity-item">
-              <span class="name">{shape}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">Weight Distribution</h3>
-        <div class="popularity-list compact">
-          {topMouseWeights.map(([weight, count]) => (
-            <div class="popularity-item">
-              <span class="name">{weight}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Most Popular Mousepads</h2>
-        <p class="card-subtitle">Grouped by model (all sizes combined)</p>
-        <div class="popularity-list">
-          {topMousepads.slice(0, 5).map((pad, i) => (
-            <div class="popularity-item">
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{pad.name}</span>
-              <span class="count">{pad.count} ({pad.percentage}%)</span>
-            </div>
-          ))}
-        </div>
-        {topMousepads.length > 5 && (
-          <details class="more-items">
-            <summary>Show more</summary>
-            <div class="popularity-list">
-              {topMousepads.slice(5).map((pad, i) => (
-                <div class="popularity-item">
-                  <span class="rank">#{i + 6}</span>
-                  <span class="name">{pad.name}</span>
-                  <span class="count">{pad.count} ({pad.percentage}%)</span>
+            <div class="s-bar-row">
+              <span class="s-bar-label">{shape}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxShapeCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
                 </div>
-              ))}
-            </div>
-          </details>
-        )}
-      </section>
-    </div>
-
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Mousepad Brands</h2>
-        <div class="popularity-list">
-          {topMousepadBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
               </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
-      <section class="stat-card">
-        <h2>Monitor Refresh Rates</h2>
-        <div class="popularity-list">
-          {topRefreshRates.map(([rate, count]) => (
-            <div class="popularity-item">
-              <span class="name">{rate}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Top Keyboard Brands</h2>
-        <div class="popularity-list">
-          {topKeyboardBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>GPU / CPU Brand</h2>
-        <h3 class="subsection-title">GPU ({totalGpuPlayers} players)</h3>
-        <div class="popularity-list compact">
+      <!-- GPU / CPU Brand -->
+      <div class="s-card">
+        <h2 class="s-card-title">GPU / CPU Brand</h2>
+        <h3 class="s-subsection-title">GPU ({totalGpuPlayers} players)</h3>
+        <div class="s-bar-list s-bar-list-compact">
           {topGpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalGpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalGpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">CPU ({totalCpuPlayers} players)</h3>
-        <div class="popularity-list compact">
-          {topCpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / totalCpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalCpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      {totalGripPlayers > 0 ? (
-        <section class="stat-card">
-          <h2>Grip Style</h2>
-          <p class="card-subtitle">{totalGripPlayers} players with data</p>
-          <div class="popularity-list">
-            {gripDistribution.map(([style, count]) => (
-              <div class="popularity-item">
-                <span class="name">{style}</span>
-                <div class="bar-wrapper">
-                  <div class="bar-fill accent" style={`width: ${(count / totalGripPlayers) * 100}%`}></div>
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxGpuCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
                 </div>
-                <span class="count">{count} ({Math.round((count / totalGripPlayers) * 100)}%)</span>
               </div>
-            ))}
-          </div>
-        </section>
-      ) : <section class="stat-card"><h2>Grip Style</h2><p>No data available</p></section>}
-
-      <section class="stat-card">
-        <h2>DPI Distribution</h2>
-        <p class="card-subtitle">Average DPI: {avgDpi}</p>
-        <div class="popularity-list">
-          {topDpiValues.map(([dpi, count]) => (
-            <div class="popularity-item">
-              <span class="name">{dpi} DPI</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+              <span class="s-bar-pct">{Math.round((count / totalGpuPlayers) * 100)}%</span>
             </div>
           ))}
         </div>
-      </section>
+        <h3 class="s-subsection-title">CPU ({totalCpuPlayers} players)</h3>
+        <div class="s-bar-list s-bar-list-compact">
+          {topCpuBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxCpuCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalCpuPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <section class="stat-card wide">
-      <h2>Monitor Size vs Refresh Rate</h2>
-      <p class="card-subtitle">Heatmap showing player monitor preferences</p>
-      <div class="heatmap-container">
-        <div class="heatmap-y-label">Size (inches)</div>
-        <div class="heatmap-wrapper">
-          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 1fr)`}>
-            <div class="heatmap-cell header"></div>
-            {refreshBins.map(rate => (
-              <div class="heatmap-cell header">{rate}</div>
-            ))}
-            {[...sizeBins].reverse().map(size => (
-              <>
-                <div class="heatmap-cell row-label">{size}"</div>
-                {refreshBins.map(rate => {
-                  const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
-                  const intensity = count / heatmapMax;
-                  return (
-                    <div
-                      class="heatmap-cell data"
-                      style={`background-color: ${count > 0 ? `rgba(78, 205, 196, ${0.2 + intensity * 0.8})` : 'var(--bg-secondary)'}`}
-                      title={`${size}" @ ${rate}Hz: ${count} players`}
-                    >
-                      {count > 0 ? count : ''}
+    <!-- Monitor Size vs Refresh Rate Heatmap (full width) -->
+    <div class="s-card s-card-wide">
+      <h2 class="s-card-title">Monitor Size vs Refresh Rate</h2>
+      <div class="s-heatmap-scroll">
+        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 70px)`}>
+          <div class="s-heatmap-cell s-hm-corner"></div>
+          {refreshBins.map(rate => (
+            <div class="s-heatmap-cell s-hm-header">{rate}Hz</div>
+          ))}
+          {[...sizeBins].reverse().map(size => (
+            <>
+              <div class="s-heatmap-cell s-hm-rowlabel">{size}"</div>
+              {refreshBins.map(rate => {
+                const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
+                return (
+                  <div
+                    class="s-heatmap-cell s-hm-data"
+                    style={`background-color: ${getMonitorHeatColor(count, heatmapMax)}`}
+                    title={`${size}" @ ${rate}Hz: ${count} players`}
+                  >
+                    {count > 0 ? count : ''}
+                  </div>
+                );
+              })}
+            </>
+          ))}
+        </div>
+      </div>
+      <div class="s-heatmap-legend">
+        <span class="s-heatmap-legend-label">0</span>
+        <div class="s-heatmap-legend-bar">
+          {neutralHeatColors.map(c => (
+            <div class="s-heatmap-legend-swatch" style={`background: ${c}`}></div>
+          ))}
+        </div>
+        <span class="s-heatmap-legend-label">Max</span>
+      </div>
+    </div>
+
+    <!-- ========== SECTION 2: SENSITIVITY ========== -->
+    <div class="s-section-header" style="--section-color: #1f6feb">
+      <div class="s-section-icon" style="background: #1f6feb">&#127919;</div>
+      <span class="s-section-title" style="color: #1f6feb">SENSITIVITY</span>
+    </div>
+
+    <div class="s-two-col">
+      <!-- cm/360 Distribution -->
+      <div class="s-card">
+        <h2 class="s-card-title">cm/360 Distribution</h2>
+        <div class="s-cm360-legend">
+          <span class="s-cm360-legend-item"><span class="s-cm360-swatch" style="background: #1f6feb"></span> All players</span>
+          <span class="s-cm360-legend-item"><span class="s-cm360-swatch" style="background: #58a6ff"></span> Accel players</span>
+        </div>
+        <div class="s-cm360-chart">
+          {cm360Buckets.map(bucket => (
+            <div class="s-cm360-row">
+              <div class="s-cm360-label">
+                <span class="s-cm360-name">{bucket.label}</span>
+                <span class="s-cm360-range">{bucket.range}</span>
+              </div>
+              <div class="s-cm360-bars">
+                <div class="s-cm360-track">
+                  {bucket.total > 0 && (
+                    <div class="s-cm360-fill" style={`width: ${(bucket.total / maxBucketTotal) * 100}%; background: #1f6feb`}>
+                      <span class="s-cm360-fill-count">{bucket.total}</span>
                     </div>
-                  );
-                })}
-              </>
-            ))}
-          </div>
-          <div class="heatmap-x-label">Refresh Rate (Hz)</div>
-        </div>
-        <div class="heatmap-legend">
-          <span class="legend-label">High</span>
-          <div class="legend-gradient"></div>
-          <span class="legend-label">Low</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SENSITIVITY SECTION ========== -->
-    <h3 class="section-header">Sensitivity</h3>
-
-    <section class="stat-card wide">
-      <h2>cm/360 Distribution</h2>
-      <p class="card-subtitle">Base sensitivity distribution across all players</p>
-      <div class="cm360-legend">
-        <span class="cm360-legend-item"><span class="cm360-swatch orange"></span> All players</span>
-        <span class="cm360-legend-item"><span class="cm360-swatch cyan"></span> Accel players</span>
-      </div>
-      <div class="cm360-chart">
-        {cm360Buckets.map(bucket => (
-          <div class="cm360-row">
-            <div class="cm360-label">
-              <span class="cm360-label-name">{bucket.label}</span>
-              <span class="cm360-label-range">{bucket.range}</span>
-            </div>
-            <div class="cm360-bars">
-              <div class="cm360-bar-track">
-                {bucket.total > 0 ? (
-                  <div class="cm360-bar-main" style={`width: ${(bucket.total / maxBucketTotal) * 100}%`}></div>
-                ) : null}
-              </div>
-              <div class="cm360-bar-track accel">
-                {bucket.accel > 0 ? (
-                  <div class="cm360-bar-accel" style={`width: ${(bucket.accel / maxBucketTotal) * 100}%`}></div>
-                ) : null}
+                  )}
+                </div>
+                {bucket.accel > 0 && (
+                  <div class="s-cm360-track s-cm360-track-sm">
+                    <div class="s-cm360-fill" style={`width: ${(bucket.accel / maxBucketTotal) * 100}%; background: #58a6ff`}>
+                      <span class="s-cm360-fill-count">{bucket.accel}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-            <div class="cm360-stats">{bucket.total} total / {bucket.accel} accel</div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div class="s-cm360-summary">
+          <span><strong>Average:</strong> {formatCm360(avgCm360)}</span>
+          <span><strong>Median:</strong> {formatCm360(medianCm360)}</span>
+          <span><strong>Min/Max:</strong> {formatCm360(minCm360)} / {formatCm360(maxCm360)}</span>
+        </div>
+        <p class="s-cm360-note"><em>Note:</em> For accel players, cm/360 represents base (slowest) sensitivity</p>
       </div>
-      <div class="cm360-summary">
-        <div class="cm360-summary-item"><strong>Average:</strong> {formatCm360(avgCm360)} cm/360</div>
-        <div class="cm360-summary-item"><strong>Median:</strong> {formatCm360(medianCm360)} cm/360</div>
-        <div class="cm360-summary-item"><strong>Min / Max:</strong> {formatCm360(minCm360)} / {formatCm360(maxCm360)} cm/360</div>
-      </div>
-      <p class="cm360-note"><em>Note:</em> For accel players, cm/360 represents their base (slowest) sensitivity. Effective sensitivity varies with mouse speed.</p>
-    </section>
 
-    <section class="stat-card wide">
-      <h2>cm/360 vs Mousepad Type</h2>
-      <p class="card-subtitle">{totalPadTypePlayers} players with mousepad speed data</p>
-      <div class="pad-heatmap">
-        <div class="pad-heatmap-grid">
-          <div class="pad-heatmap-corner"></div>
-          <div class="pad-heatmap-col-header speed">Speed</div>
-          <div class="pad-heatmap-col-header balanced">Balanced</div>
-          <div class="pad-heatmap-col-header control">Control</div>
+      <!-- cm/360 vs Mousepad Type -->
+      <div class="s-card">
+        <h2 class="s-card-title">cm/360 vs Mousepad Type</h2>
+        <p class="s-card-sub">{totalPadTypePlayers} players with mousepad speed data</p>
+        <div class="s-pad-heatmap-grid">
+          <div class="s-pad-corner"></div>
+          <div class="s-pad-colheader">Speed</div>
+          <div class="s-pad-colheader">Balanced</div>
+          <div class="s-pad-colheader">Control</div>
           {padHeatmapRows.map(row => (
             <>
-              <div class="pad-heatmap-label">
-                <span class="pad-heatmap-label-name">{row.label}</span>
-                <span class="pad-heatmap-label-range">{row.range}</span>
+              <div class="s-pad-rowlabel">
+                <span class="s-pad-rowlabel-name">{row.label}</span>
+                <span class="s-pad-rowlabel-range">{row.range}</span>
               </div>
               {row.cells.map(cell => (
                 <div
-                  class="pad-heatmap-cell"
+                  class="s-pad-cell"
                   style={`background-color: ${cell.bg}`}
                   title={`${row.label} + ${cell.type}: ${cell.count} players`}
                 >
@@ -934,1306 +769,857 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             </>
           ))}
         </div>
-        <div class="pad-heatmap-legend">
-          <span class="pad-heatmap-legend-label">Fewer players</span>
-          <div class="pad-heatmap-legend-bar">
-            <div class="pad-legend-grad speed-grad"></div>
-            <div class="pad-legend-grad balanced-grad"></div>
-            <div class="pad-legend-grad control-grad"></div>
+        <div class="s-heatmap-legend">
+          <span class="s-heatmap-legend-label">0</span>
+          <div class="s-heatmap-legend-bar">
+            {neutralHeatColors.map(c => (
+              <div class="s-heatmap-legend-swatch" style={`background: ${c}`}></div>
+            ))}
           </div>
-          <span class="pad-heatmap-legend-label">More players</span>
+          <span class="s-heatmap-legend-label">Max</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ========== GAME SETTINGS SECTION ========== -->
-    <h3 class="section-header">Game Settings</h3>
+    <!-- ========== SECTION 3: GAME SETTINGS ========== -->
+    <div class="s-section-header" style="--section-color: #8957e5">
+      <div class="s-section-icon" style="background: #8957e5">&#9881;&#65039;</div>
+      <span class="s-section-title" style="color: #8957e5">GAME SETTINGS</span>
+    </div>
 
-    <div class="three-col">
-      <section class="stat-card">
-        <h2>FOV Distribution</h2>
-        <p class="card-subtitle">Average FOV: {avgFov}</p>
-        <div class="popularity-list">
+    <div class="s-three-col">
+      <!-- FOV Distribution -->
+      <div class="s-card">
+        <h2 class="s-card-title">FOV Distribution</h2>
+        <p class="s-card-sub">Average FOV: {avgFov}&deg;</p>
+        <div class="s-bar-list">
           {topFovValues.map(([fov, count]) => (
-            <div class="popularity-item">
-              <span class="name">{fov}°</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            <div class="s-bar-row">
+              <span class="s-bar-label">{fov}&deg;</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxFovCount) * 100}%; background: #8957e5`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
               </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Crosshair Color</h2>
-        <p class="card-subtitle">{totalCrosshairColorPlayers} players with data</p>
-        <div class="popularity-list compact">
-          {topCrosshairColors.map(([color, count]) => (
-            <div class="popularity-item">
-              <span class="name">{color}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalCrosshairColorPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalCrosshairColorPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Enemy Model</h2>
-        <p class="card-subtitle">{totalEnemyModelPlayers} players with data</p>
-        <div class="popularity-list compact">
-          {topEnemyModels.map(([model, count]) => (
-            <div class="popularity-item">
-              <span class="name">{model}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / totalEnemyModelPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalEnemyModelPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      <section class="stat-card">
-        <h2>Crosshair Styles</h2>
-        <p class="card-subtitle">cg_drawCrosshair values</p>
-        <div class="crosshair-grid">
-          {crosshairData.map(({ type, count, percentage, visual }) => (
-            <div class="crosshair-item">
-              <div class="crosshair-preview" data-type={visual.shape}>
-                {visual.shape === 'cross' && <div class="ch ch-cross"></div>}
-                {visual.shape === 'cross-thick' && <div class="ch ch-cross-thick"></div>}
-                {visual.shape === 'cross-gap' && <div class="ch ch-cross-gap"></div>}
-                {visual.shape === 'dot' && <div class="ch ch-dot"></div>}
-                {visual.shape === 'dot-large' && <div class="ch ch-dot-large"></div>}
-                {visual.shape === 'circle' && <div class="ch ch-circle"></div>}
-                {visual.shape === 'circle-dot' && <div class="ch ch-circle-dot"></div>}
-                {visual.shape === 'circle-crosshair' && <div class="ch ch-circle-crosshair"></div>}
-                {visual.shape === 'x-mark' && <div class="ch ch-x"></div>}
-                {visual.shape === 'triangle' && <div class="ch ch-triangle"></div>}
-                {visual.shape === 'chevron' && <div class="ch ch-chevron"></div>}
-                {visual.shape === 'unknown' && <div class="ch ch-unknown">?</div>}
-              </div>
-              <div class="crosshair-info">
-                <span class="crosshair-type">Type {type}</span>
-                <span class="crosshair-count">{count} ({percentage}%)</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stat-card">
-        <h2>Jump Key</h2>
-        <div class="binds-list">
-          {topJumpKeys.map(([key, count]) => (
-            <div class="bind-item">
-              <span class="bind-keys">{key}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">Other Settings</h3>
-        <div class="trend-stats">
-          <div class="trend-item">
-            <span class="trend-value">{accelPercentage}%</span>
-            <span class="trend-label">Acceleration</span>
-          </div>
-          <div class="trend-item">
-            <span class="trend-value">{mcpiPercentage}%</span>
-            <span class="trend-label">m_cpi</span>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <section class="stat-card wide">
-      <h2>Movement Keys</h2>
-      <div class="binds-list">
-        {topMovementPatterns.map(([pattern, count]) => (
-          <div class="bind-item">
-            <span class="bind-keys">{formatBindString(pattern)}</span>
-            <div class="bar-wrapper">
-              <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-            </div>
-            <span class="count">{Math.round((count / players.length) * 100)}%</span>
-          </div>
-        ))}
       </div>
-    </section>
 
-    <!-- ========== PLAYERS SECTION ========== -->
-    <h3 class="section-header">Players</h3>
-
-    <div class="three-col">
-      <section class="stat-card">
-        <h2>Players by Category</h2>
-        <div class="category-grid">
-          <div class="category-item">
-            <span class="category-count">{categoryDuel}</span>
-            <span class="category-label">Duel</span>
-          </div>
-          <div class="category-item">
-            <span class="category-count">{categoryCTF}</span>
-            <span class="category-label">CTF</span>
-          </div>
-          <div class="category-item">
-            <span class="category-count">{categoryTDM}</span>
-            <span class="category-label">TDM</span>
-          </div>
-          {categoryOther > 0 && (
-            <div class="category-item">
-              <span class="category-count">{categoryOther}</span>
-              <span class="category-label">Other</span>
-            </div>
-          )}
+      <!-- Crosshair Color (special: bars ARE the color) -->
+      <div class="s-card">
+        <h2 class="s-card-title">Crosshair Color</h2>
+        <p class="s-card-sub">{totalCrosshairColorPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topCrosshairColors.map(([color, count]) => {
+            const colorStyle = crosshairColorMap[color] || { bg: '#8957e5' };
+            return (
+              <div class="s-bar-row">
+                <span class="s-bar-label">{color}</span>
+                <div class="s-bar-container">
+                  <div
+                    class="s-bar"
+                    style={`width: ${(count / maxCrosshairColorCount) * 100}%; background: ${colorStyle.bg}; ${colorStyle.border ? `border: ${colorStyle.border}` : ''}`}
+                  >
+                    <span class="s-bar-count">{count}</span>
+                  </div>
+                </div>
+                <span class="s-bar-pct">{Math.round((count / totalCrosshairColorPlayers) * 100)}%</span>
+              </div>
+            );
+          })}
         </div>
-      </section>
+      </div>
 
+      <!-- Crosshair Style -->
+      <div class="s-card">
+        <h2 class="s-card-title">Crosshair Style</h2>
+        <p class="s-card-sub">cg_drawCrosshair values</p>
+        <div class="s-bar-list">
+          {crosshairStyleData.map(({ type, count, percentage, description }) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label" title={description}>Type {type}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxCrosshairStyleCount) * 100}%; background: #8957e5`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Enemy Model (single row below) -->
+    <div class="s-two-col">
+      <div class="s-card">
+        <h2 class="s-card-title">Enemy Model</h2>
+        <p class="s-card-sub">{totalEnemyModelPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topEnemyModels.map(([model, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{model}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxEnemyModelCount) * 100}%; background: #8957e5`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalEnemyModelPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>{/* spacer for layout */}</div>
+    </div>
+
+    <!-- ========== SECTION 4: CONTROLS ========== -->
+    <div class="s-section-header" style="--section-color: #da3633">
+      <div class="s-section-icon" style="background: #da3633">&#9000;&#65039;</div>
+      <span class="s-section-title" style="color: #da3633">CONTROLS</span>
+    </div>
+
+    <div class="s-two-col">
+      <!-- Movement Keys -->
+      <div class="s-card">
+        <h2 class="s-card-title">Movement Keys</h2>
+        <div class="s-bar-list">
+          {topMovementPatterns.map(([pattern, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label s-bar-label-mono">{formatBindString(pattern)}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxMovementCount) * 100}%; background: #da3633`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Jump Key -->
+      <div class="s-card">
+        <h2 class="s-card-title">Jump Key</h2>
+        <div class="s-bar-list">
+          {topJumpKeys.map(([key, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label s-bar-label-mono">{key}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxJumpCount) * 100}%; background: #da3633`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SECTION 5: PLAYERS ========== -->
+    <div class="s-section-header" style="--section-color: #d29922">
+      <div class="s-section-icon" style="background: #d29922">&#128101;</div>
+      <span class="s-section-title" style="color: #d29922">PLAYERS</span>
+    </div>
+
+    <div class="s-two-col">
+      <!-- Recently Updated -->
       {recentPlayers.length > 0 && (
-        <section class="stat-card">
-          <h2>Recently Updated</h2>
-          <div class="recent-list">
-            {recentPlayers.map(p => (
-              <div class="recent-item">
-                <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                <span class="date">{p.gitDate}</span>
+        <div class="s-card">
+          <h2 class="s-card-title">Recently Updated</h2>
+          <div class="s-recent-list">
+            {recentPlayers.map((p, i) => (
+              <div class="s-recent-item">
+                <span class="s-recent-rank">{i + 1}</span>
+                <a href={`${base}players/${p.id}/`} class="s-recent-name">{p.data.name}</a>
+                {p.data.country && <span class="s-recent-country">{p.data.country}</span>}
+                <span class="s-recent-date">{p.gitDate}</span>
               </div>
             ))}
           </div>
-        </section>
+        </div>
       )}
 
-      <section class="stat-card highlight">
-        <h2>Interesting Facts</h2>
-        <div class="facts-list">
-          <div class="fact-item">
-            <span class="fact-icon">🐢</span>
-            <div class="fact-content">
-              <strong>Lowest Sensitivity</strong>
-              <p>
-                <a href={`${base}players/${lowestSensPlayer.id}/`}>{lowestSensPlayer.data.name}</a>
-                uses {formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360
-              </p>
-            </div>
+      <!-- Interesting Facts -->
+      <div class="s-card">
+        <h2 class="s-card-title">Interesting Facts</h2>
+        <div class="s-facts-grid">
+          <div class="s-fact-card">
+            <span class="s-fact-label">Highest Sensitivity</span>
+            <a href={`${base}players/${highestSensPlayer.id}/`} class="s-fact-value">{highestSensPlayer.data.name}</a>
+            <span class="s-fact-detail">{formatCm360(calculateCm360(highestSensPlayer.data))} cm/360</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-icon">⚡</span>
-            <div class="fact-content">
-              <strong>Highest Sensitivity</strong>
-              <p>
-                <a href={`${base}players/${highestSensPlayer.id}/`}>{highestSensPlayer.data.name}</a>
-                uses {formatCm360(calculateCm360(highestSensPlayer.data))} cm/360
-              </p>
-            </div>
+          <div class="s-fact-card">
+            <span class="s-fact-label">Lowest Sensitivity</span>
+            <a href={`${base}players/${lowestSensPlayer.id}/`} class="s-fact-value">{lowestSensPlayer.data.name}</a>
+            <span class="s-fact-detail">{formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360</span>
           </div>
+          {highestFovPlayer && (
+            <div class="s-fact-card">
+              <span class="s-fact-label">Highest FOV</span>
+              <a href={`${base}players/${highestFovPlayer.id}/`} class="s-fact-value">{highestFovPlayer.data.name}</a>
+              <span class="s-fact-detail">{highestFovPlayer.data.fov}&deg;</span>
+            </div>
+          )}
+          {lowestFovPlayer && (
+            <div class="s-fact-card">
+              <span class="s-fact-label">Lowest FOV</span>
+              <a href={`${base}players/${lowestFovPlayer.id}/`} class="s-fact-value">{lowestFovPlayer.data.name}</a>
+              <span class="s-fact-detail">{lowestFovPlayer.data.fov}&deg;</span>
+            </div>
+          )}
         </div>
-      </section>
+      </div>
     </div>
-  </div>
 
-  <footer class="stats-footer">
-    <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> • CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
-  </footer>
+    <footer class="s-footer">
+      <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> &bull; CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
+    </footer>
+  </div>
 </BaseLayout>
 
 <style>
-  .stats-container {
+  /* ===========================================
+     Stats Page - GitHub-Inspired Dark Theme
+     =========================================== */
+
+  .stats-page {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  /* Summary Cards */
-  .summary-cards {
+  /* --- Summary Cards --- */
+  .s-summary-cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
   }
 
-  .summary-card {
-    background: var(--bg-card, #1a1a24);
-    border: 1px solid var(--border-color, #2a2a35);
+  .s-summary-card {
+    background: #161b22;
+    border: 1px solid #30363d;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 16px;
     text-align: center;
-    border-top: 3px solid var(--accent-primary, #ff6b35);
   }
 
-  .summary-value {
+  .s-summary-value {
     display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-primary, #ff6b35);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #f0f6fc;
     line-height: 1.2;
   }
 
-  .summary-value-sm {
+  .s-summary-value-sm {
     font-size: 0.95rem;
+    line-height: 1.8;
   }
 
-  .summary-label {
+  .s-summary-label {
     display: block;
-    font-size: 0.7rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    color: #8b949e;
     margin-top: 0.35rem;
   }
 
-  @media (max-width: 700px) {
-    .summary-cards {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  /* --- Section Headers --- */
+  .s-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #30363d;
+    margin-top: 0.5rem;
   }
 
-  @media (max-width: 450px) {
-    .summary-cards {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .s-section-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
   }
 
-  /* 55/45 two-column layout */
-  .two-col-55-45 {
-    display: grid;
-    grid-template-columns: 55fr 45fr;
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 700px) {
-    .two-col-55-45 {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .section-header {
-    font-size: 0.9rem;
-    color: var(--text-secondary, #888);
+  .s-section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 1rem 0 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    letter-spacing: 1px;
   }
 
-  .two-col {
+  /* --- Grid Layouts --- */
+  .s-two-col {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
-  .three-col {
+  .s-three-col {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
   }
 
-  @media (max-width: 900px) {
-    .three-col {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 700px) {
-    .two-col,
-    .three-col {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .stat-card {
-    background: var(--bg-card, #1a1a24);
+  /* --- Cards --- */
+  .s-card {
+    background: #161b22;
+    border: 1px solid #30363d;
     border-radius: 8px;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color, #2a2a35);
+    padding: 1.25rem;
   }
 
-  .stat-card.wide {
+  .s-card-wide {
     width: 100%;
   }
 
-  .stat-card.highlight {
-    border-color: var(--accent-primary, #ff6b35);
-    background: linear-gradient(135deg, var(--bg-card, #1a1a24) 0%, rgba(255, 107, 53, 0.05) 100%);
-  }
-
-  .stat-card h2 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: var(--accent-primary, #ff6b35);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .card-subtitle {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-    margin-top: -0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .big-stat {
-    text-align: center;
-    padding: 1rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .stat-label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  .stat-details {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-  }
-
-  .stat-details div {
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-note {
-    font-size: 0.75rem;
-    color: var(--text-secondary, #666);
-    margin-top: 0.75rem;
-    font-style: italic;
-  }
-
-  .sensitivity-info {
-    margin-top: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    font-size: 0.85rem;
-    color: var(--text-secondary, #a0a0b0);
-  }
-
-  .sensitivity-info p {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .disclaimer-note {
-    margin-top: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .disclaimer-note em {
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  /* cm/360 Distribution Chart */
-  .cm360-legend {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .cm360-legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary, #aaa);
-  }
-
-  .cm360-swatch {
-    width: 12px;
-    height: 12px;
-    border-radius: 2px;
-    display: inline-block;
-  }
-
-  .cm360-swatch.orange {
-    background: linear-gradient(90deg, #ff6b35, #ff8c42);
-  }
-
-  .cm360-swatch.cyan {
-    background: linear-gradient(90deg, #00b4d8, #00d9ff);
-  }
-
-  .cm360-chart {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .cm360-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .cm360-label {
-    width: 160px;
-    min-width: 160px;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    padding-top: 2px;
-  }
-
-  .cm360-label-name {
-    font-size: 0.8rem;
-    color: #aaa;
-    line-height: 1.2;
-  }
-
-  .cm360-label-range {
-    font-size: 0.7rem;
-    color: #666;
-  }
-
-  .cm360-bars {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .cm360-bar-track {
-    height: 24px;
-    background: #0f0f23;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .cm360-bar-track.accel {
-    height: 12px;
-    border-radius: 3px;
-  }
-
-  .cm360-bar-main {
-    height: 100%;
-    background: linear-gradient(90deg, #ff6b35, #ff8c42);
-    border-radius: 4px;
-    transition: width 0.3s ease;
-  }
-
-  .cm360-bar-accel {
-    height: 100%;
-    background: linear-gradient(90deg, #00b4d8, #00d9ff);
-    border-radius: 3px;
-    transition: width 0.3s ease;
-  }
-
-  .cm360-stats {
-    width: 120px;
-    min-width: 120px;
-    font-size: 0.75rem;
-    color: #888;
-    padding-top: 3px;
-    white-space: nowrap;
-  }
-
-  .cm360-summary {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    font-size: 0.85rem;
-    color: var(--text-secondary, #aaa);
-    flex-wrap: wrap;
-  }
-
-  .cm360-note {
-    margin-top: 0.75rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary, #666);
-  }
-
-  .cm360-note em {
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  @media (max-width: 700px) {
-    .cm360-label {
-      width: 100px;
-      min-width: 100px;
-    }
-
-    .cm360-stats {
-      display: none;
-    }
-
-    .cm360-summary {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-
-  /* cm/360 vs Mousepad Type Heatmap */
-  .pad-heatmap-grid {
-    display: grid;
-    grid-template-columns: 160px repeat(3, 1fr);
-    gap: 4px;
-  }
-
-  .pad-heatmap-corner {
-    /* empty top-left cell */
-  }
-
-  .pad-heatmap-col-header {
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 0.5rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .pad-heatmap-col-header.speed { color: #ff6b35; }
-  .pad-heatmap-col-header.balanced { color: #a855f7; }
-  .pad-heatmap-col-header.control { color: #00b4d8; }
-
-  .pad-heatmap-label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: right;
-    padding-right: 0.75rem;
-  }
-
-  .pad-heatmap-label-name {
-    font-size: 0.8rem;
-    color: #aaa;
-    line-height: 1.2;
-  }
-
-  .pad-heatmap-label-range {
-    font-size: 0.7rem;
-    color: #666;
-  }
-
-  .pad-heatmap-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary, #fff);
-    cursor: default;
-    transition: transform 0.1s;
-  }
-
-  .pad-heatmap-cell:hover {
-    transform: scale(1.05);
-    z-index: 1;
-  }
-
-  .pad-heatmap-legend {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-
-  .pad-heatmap-legend-label {
-    font-size: 0.7rem;
-    color: #888;
-  }
-
-  .pad-heatmap-legend-bar {
-    display: flex;
-    gap: 4px;
-  }
-
-  .pad-legend-grad {
-    width: 80px;
-    height: 10px;
-    border-radius: 3px;
-  }
-
-  .pad-legend-grad.speed-grad {
-    background: linear-gradient(90deg, rgba(255, 107, 53, 0.15), rgba(255, 107, 53, 1));
-  }
-
-  .pad-legend-grad.balanced-grad {
-    background: linear-gradient(90deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 1));
-  }
-
-  .pad-legend-grad.control-grad {
-    background: linear-gradient(90deg, rgba(0, 180, 216, 0.15), rgba(0, 180, 216, 1));
-  }
-
-  @media (max-width: 700px) {
-    .pad-heatmap-grid {
-      grid-template-columns: 100px repeat(3, 1fr);
-    }
-
-    .pad-heatmap-col-header {
-      font-size: 0.7rem;
-    }
-
-    .pad-heatmap-cell {
-      min-height: 32px;
-      font-size: 12px;
-    }
-
-    .pad-legend-grad {
-      width: 50px;
-    }
-  }
-
-  .popularity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .popularity-list.compact {
-    gap: 0.35rem;
-  }
-
-  .popularity-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-  }
-
-  .popularity-item:last-child {
-    border-bottom: none;
-  }
-
-  .rank {
-    font-weight: 700;
-    color: var(--accent-primary, #ff6b35);
-    min-width: 2rem;
-  }
-
-  .name {
-    flex: 1;
-    font-size: 0.9rem;
-  }
-
-  .count {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-    text-align: right;
-  }
-
-  .bar-wrapper {
-    flex: 1;
-    height: 6px;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 3px;
-    overflow: hidden;
-    margin: 0 0.5rem;
-  }
-
-  .bar-fill {
-    height: 100%;
-    background: var(--accent-secondary, #4ecdc4);
-    border-radius: 3px;
-  }
-
-  .bar-fill.accent {
-    background: var(--accent-primary, #ff6b35);
-  }
-
-  .subsection-title {
-    font-size: 0.85rem;
-    margin-top: 1.25rem;
+  .s-card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f0f6fc;
     margin-bottom: 0.75rem;
-    color: var(--text-secondary, #888);
+  }
+
+  .s-card-sub {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .s-subsection-title {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
 
-  .trend-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .trend-item {
-    text-align: center;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .trend-value {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .trend-label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 1rem;
-  }
-
-  .category-item {
-    text-align: center;
-    padding: 1rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .category-count {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .category-label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  .facts-list {
+  /* --- Bar Chart Rows --- */
+  .s-bar-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 6px;
   }
 
-  .fact-item {
+  .s-bar-list-compact {
+    gap: 4px;
+  }
+
+  .s-bar-row {
     display: flex;
-    gap: 1rem;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    align-items: center;
+    gap: 8px;
   }
 
-  .fact-icon {
-    font-size: 1.5rem;
+  .s-bar-label {
+    width: 100px;
+    min-width: 100px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #8b949e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .fact-content strong {
-    display: block;
-    color: var(--text-primary, #fff);
-    margin-bottom: 0.25rem;
+  .s-bar-label-mono {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    letter-spacing: 0.03em;
   }
 
-  .fact-content p {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-    margin: 0;
+  .s-bar-container {
+    flex: 1;
+    background: #21262d;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
   }
 
-  .fact-content a {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: none;
+  .s-bar {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    min-width: fit-content;
+    transition: width 0.3s ease;
   }
 
-  .fact-content a:hover {
-    text-decoration: underline;
+  .s-bar-count {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #f0f6fc;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   }
 
-  .recent-list {
+  .s-bar-pct {
+    width: 40px;
+    min-width: 40px;
+    text-align: right;
+    font-size: 0.75rem;
+    color: #8b949e;
+  }
+
+  /* --- cm/360 Distribution --- */
+  .s-cm360-legend {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .s-cm360-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #8b949e;
+  }
+
+  .s-cm360-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .s-cm360-chart {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .recent-item {
+  .s-cm360-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    align-items: flex-start;
+    gap: 8px;
   }
 
-  .recent-item:last-child {
-    border-bottom: none;
-  }
-
-  .recent-item a {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: none;
-  }
-
-  .recent-item a:hover {
-    text-decoration: underline;
-  }
-
-  .recent-item .date {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-  }
-
-  .more-items {
-    margin-top: 0.75rem;
-  }
-
-  .more-items summary {
-    cursor: pointer;
-    color: var(--accent-secondary, #4ecdc4);
-    font-size: 0.85rem;
-  }
-
-  .more-items summary:hover {
-    text-decoration: underline;
-  }
-
-  .more-items .popularity-list {
-    margin-top: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .stat-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .trend-stats {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .stats-footer {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    text-align: center;
-  }
-
-  .stats-footer p {
-    font-size: 0.75rem;
-    color: var(--text-secondary, #666);
-  }
-
-  .stats-footer a {
-    color: var(--text-secondary, #888);
-    text-decoration: none;
-  }
-
-  .stats-footer a:hover {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: underline;
-  }
-
-  /* Heatmap Styles */
-  .heatmap-container {
+  .s-cm360-label {
+    width: 120px;
+    min-width: 120px;
+    text-align: right;
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
   }
 
-  .heatmap-y-label {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
+  .s-cm360-name {
     font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
+    color: #c9d1d9;
+    line-height: 1.2;
   }
 
-  .heatmap-wrapper {
+  .s-cm360-range {
+    font-size: 0.65rem;
+    color: #484f58;
+  }
+
+  .s-cm360-bars {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .s-cm360-track {
+    height: 20px;
+    background: #21262d;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .s-cm360-track-sm {
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  .s-cm360-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+    min-width: fit-content;
+  }
+
+  .s-cm360-fill-count {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #f0f6fc;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .s-cm360-track-sm .s-cm360-fill-count {
+    font-size: 0.55rem;
+  }
+
+  .s-cm360-summary {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #30363d;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+  }
+
+  .s-cm360-note {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #8b949e;
+  }
+
+  .s-cm360-note em {
+    color: #c9d1d9;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* --- Heatmaps (shared) --- */
+  .s-heatmap-scroll {
     overflow-x: auto;
   }
 
-  .heatmap-grid {
+  .s-heatmap-grid {
     display: grid;
     gap: 2px;
     min-width: 500px;
   }
 
-  .heatmap-cell {
+  .s-heatmap-cell {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
-    min-height: 2rem;
-    padding: 0.25rem;
+    font-weight: 500;
+    color: #f0f6fc;
+    min-height: 28px;
   }
 
-  .heatmap-cell.header {
-    color: var(--text-secondary, #888);
-    font-weight: 600;
-    font-size: 0.7rem;
+  .s-hm-corner {
+    /* empty */
   }
 
-  .heatmap-cell.row-label {
-    color: var(--text-secondary, #888);
+  .s-hm-header {
+    color: #8b949e;
+    font-size: 0.65rem;
     font-weight: 600;
+  }
+
+  .s-hm-rowlabel {
+    color: #8b949e;
     font-size: 0.7rem;
+    font-weight: 600;
     justify-content: flex-end;
-    padding-right: 0.5rem;
+    padding-right: 8px;
   }
 
-  .heatmap-cell.data {
-    background: var(--bg-secondary, #12121a);
+  .s-hm-data {
     border-radius: 3px;
-    color: var(--text-primary, #fff);
-    font-weight: 600;
     cursor: default;
     transition: transform 0.1s;
   }
 
-  .heatmap-cell.data:hover {
-    transform: scale(1.1);
+  .s-hm-data:hover {
+    transform: scale(1.08);
     z-index: 1;
   }
 
-  .heatmap-x-label {
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-  }
-
-  .heatmap-legend {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .legend-gradient {
-    width: 1rem;
-    height: 6rem;
-    background: linear-gradient(to bottom, rgba(78, 205, 196, 1), rgba(78, 205, 196, 0.2));
-    border-radius: 3px;
-  }
-
-  .legend-label {
-    font-size: 0.65rem;
-    color: var(--text-secondary, #888);
-  }
-
-  /* Binds Styles */
-  .binds-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bind-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.35rem 0;
-  }
-
-  .bind-keys {
-    min-width: 100px;
-    font-family: monospace;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-secondary, #4ecdc4);
-    letter-spacing: 0.05em;
-  }
-
-  /* Crosshair Styles */
-  .crosshair-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-  }
-
-  .crosshair-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .crosshair-preview {
-    width: 48px;
-    height: 48px;
+  .s-heatmap-legend {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1a1a24;
-    border-radius: 4px;
-    border: 1px solid var(--border-color, #2a2a35);
+    gap: 0.5rem;
+    margin-top: 0.75rem;
   }
 
-  .ch {
-    position: relative;
+  .s-heatmap-legend-label {
+    font-size: 0.65rem;
+    color: #8b949e;
   }
 
-  /* Cross (+) */
-  .ch-cross::before,
-  .ch-cross::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-cross::before {
-    width: 2px;
-    height: 16px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-cross::after {
-    width: 16px;
-    height: 2px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  .s-heatmap-legend-bar {
+    display: flex;
+    gap: 2px;
   }
 
-  /* Thick Cross */
-  .ch-cross-thick::before,
-  .ch-cross-thick::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-cross-thick::before {
-    width: 4px;
-    height: 20px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-cross-thick::after {
+  .s-heatmap-legend-swatch {
     width: 20px;
-    height: 4px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    height: 10px;
+    border-radius: 2px;
   }
 
-  /* Cross with Gap */
-  .ch-cross-gap {
-    width: 24px;
-    height: 24px;
-  }
-  .ch-cross-gap::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 8px;
-    background: #4ecdc4;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    box-shadow: 0 16px 0 #4ecdc4;
-  }
-  .ch-cross-gap::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 2px;
-    background: #4ecdc4;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    box-shadow: 16px 0 0 #4ecdc4;
+  /* --- cm/360 vs Pad Type Heatmap --- */
+  .s-pad-heatmap-grid {
+    display: grid;
+    grid-template-columns: 120px repeat(3, 1fr);
+    gap: 4px;
   }
 
-  /* Dot */
-  .ch-dot {
-    width: 4px;
-    height: 4px;
-    background: #4ecdc4;
-    border-radius: 50%;
+  .s-pad-corner {
+    /* empty */
   }
 
-  .ch-dot-large {
-    width: 8px;
-    height: 8px;
-    background: #4ecdc4;
-    border-radius: 50%;
+  .s-pad-colheader {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #c9d1d9;
+    padding: 0.4rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
-  /* Circle */
-  .ch-circle {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
+  .s-pad-rowlabel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    padding-right: 0.5rem;
   }
 
-  /* Circle with Dot */
-  .ch-circle-dot {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
-    position: relative;
-  }
-  .ch-circle-dot::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #4ecdc4;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .s-pad-rowlabel-name {
+    font-size: 0.7rem;
+    color: #c9d1d9;
+    line-height: 1.2;
   }
 
-  /* Circle Crosshair */
-  .ch-circle-crosshair {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
-    position: relative;
-  }
-  .ch-circle-crosshair::before,
-  .ch-circle-crosshair::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-circle-crosshair::before {
-    width: 2px;
-    height: 8px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-circle-crosshair::after {
-    width: 8px;
-    height: 2px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  .s-pad-rowlabel-range {
+    font-size: 0.6rem;
+    color: #484f58;
   }
 
-  /* X Mark */
-  .ch-x {
-    width: 16px;
-    height: 16px;
-    position: relative;
-  }
-  .ch-x::before,
-  .ch-x::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: #4ecdc4;
-    left: 50%;
-    top: 50%;
-  }
-  .ch-x::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  .ch-x::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+  .s-pad-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #f0f6fc;
+    cursor: default;
+    transition: transform 0.1s;
   }
 
-  /* Triangle */
-  .ch-triangle {
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 14px solid #4ecdc4;
+  .s-pad-cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
   }
 
-  /* Chevron */
-  .ch-chevron {
-    width: 16px;
-    height: 16px;
-    position: relative;
-  }
-  .ch-chevron::before,
-  .ch-chevron::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 12px;
-    background: #4ecdc4;
-    bottom: 0;
-  }
-  .ch-chevron::before {
-    left: 2px;
-    transform: rotate(-30deg);
-  }
-  .ch-chevron::after {
-    right: 2px;
-    transform: rotate(30deg);
+  /* --- Recently Updated --- */
+  .s-recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  /* Unknown */
-  .ch-unknown {
-    color: var(--text-secondary, #888);
-    font-size: 1.25rem;
+  .s-recent-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #21262d;
+    border-radius: 6px;
+    margin-bottom: 6px;
   }
 
-  .crosshair-info {
+  .s-recent-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .s-recent-rank {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #484f58;
+    min-width: 1.5rem;
+  }
+
+  .s-recent-name {
+    flex: 1;
+    color: var(--link-internal, #4ecdc4);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .s-recent-name:hover {
+    text-decoration: underline;
+  }
+
+  .s-recent-country {
+    font-size: 0.75rem;
+    color: #8b949e;
+  }
+
+  .s-recent-date {
+    font-size: 0.75rem;
+    color: #8b949e;
+  }
+
+  /* --- Interesting Facts --- */
+  .s-facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .s-fact-card {
+    background: #21262d;
+    border-radius: 6px;
+    border-left: 3px solid #30363d;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .s-fact-label {
+    font-size: 0.7rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .s-fact-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--link-internal, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .s-fact-value:hover {
+    text-decoration: underline;
+  }
+
+  .s-fact-detail {
+    font-size: 0.8rem;
+    color: #c9d1d9;
+  }
+
+  /* --- Footer --- */
+  .s-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #30363d;
     text-align: center;
   }
 
-  .crosshair-type {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-primary, #fff);
+  .s-footer p {
+    font-size: 0.75rem;
+    color: #484f58;
   }
 
-  .crosshair-count {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-secondary, #888);
+  .s-footer a {
+    color: #8b949e;
+    text-decoration: none;
   }
 
-  @media (max-width: 600px) {
-    .heatmap-container {
+  .s-footer a:hover {
+    color: #c9d1d9;
+    text-decoration: underline;
+  }
+
+  /* ===========================================
+     Responsive
+     =========================================== */
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .s-three-col {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .s-summary-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .s-two-col {
+      grid-template-columns: 1fr;
+    }
+
+    .s-three-col {
+      grid-template-columns: 1fr;
+    }
+
+    .s-bar-label {
+      width: 80px;
+      min-width: 80px;
+      font-size: 0.75rem;
+    }
+
+    .s-card {
+      padding: 1rem;
+    }
+
+    .s-cm360-label {
+      width: 90px;
+      min-width: 90px;
+    }
+
+    .s-pad-heatmap-grid {
+      grid-template-columns: 90px repeat(3, 1fr);
+    }
+
+    .s-heatmap-grid .s-hm-data,
+    .s-pad-cell {
+      min-height: 24px;
+      font-size: 0.7rem;
+    }
+
+    .s-facts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .s-cm360-summary {
       flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .s-summary-cards {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .heatmap-y-label {
-      writing-mode: horizontal-tb;
-      transform: none;
+    .s-summary-value {
+      font-size: 1.35rem;
     }
 
-    .crosshair-grid {
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    .s-bar-label {
+      width: 70px;
+      min-width: 70px;
+    }
+
+    .s-cm360-label {
+      width: 75px;
+      min-width: 75px;
+    }
+
+    .s-cm360-name {
+      font-size: 0.65rem;
+    }
+
+    .s-pad-heatmap-grid {
+      grid-template-columns: 75px repeat(3, 1fr);
+    }
+
+    .s-pad-rowlabel-name {
+      font-size: 0.6rem;
     }
   }
 </style>
