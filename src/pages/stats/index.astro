@@ -14,22 +14,28 @@ const monitorsMap = new Map(monitors.map(m => [m.id, m.data]));
 const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
 const mousepadsMap = new Map(mousepads.map(p => [p.id, p.data]));
 
+// Ensure base URL has trailing slash
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 // Calculate cm/360 for a player
 function calculateCm360(playerData: any): number {
   if (playerData.cm360) return playerData.cm360;
   if (playerData.m_cpi) {
-    // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
-    // When m_cpi = DPI, this simplifies to 360 / sensitivity
     return Math.round((360 * playerData.m_cpi / (playerData.sensitivity * playerData.dpi)) * 100) / 100;
   }
   return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
 }
 
+// Format cm/360 values - remove .00 for whole numbers
+function formatCm360(value: number): string {
+  const fixed = value.toFixed(2);
+  return fixed.endsWith('.00') ? Math.round(value).toString() : fixed;
+}
+
 // ===========================================
-// SENSITIVITY STATS
+// SUMMARY STATS
 // ===========================================
 
-// cm/360 calculations (includes all players - cm/360 is base sensitivity, accel is applied on top)
 const cm360Values = players.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
 const avgCm360 = cm360Values.length > 0
   ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
@@ -40,153 +46,62 @@ const medianCm360 = cm360Values.length > 0
 const minCm360 = cm360Values.length > 0 ? Math.min(...cm360Values) : 0;
 const maxCm360 = cm360Values.length > 0 ? Math.max(...cm360Values) : 0;
 
-// eDPI stats
-const edpiValues = players.map(p => p.data.edpi).filter(v => v).sort((a, b) => a - b);
-const avgEdpi = Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length);
-const medianEdpi = edpiValues.length > 0 ? edpiValues[Math.floor(edpiValues.length / 2)] : 0;
-const minEdpi = Math.min(...edpiValues);
-const maxEdpi = Math.max(...edpiValues);
+const accelUsers = players.filter(p => p.data.acceleration).length;
+const accelPercentage = Math.round((accelUsers / players.length) * 100);
 
-// DPI distribution
-const dpiValues = players.map(p => p.data.dpi).filter(v => v);
-const avgDpi = Math.round(dpiValues.reduce((a, b) => a + b, 0) / dpiValues.length);
-const dpiDistribution = new Map<number, number>();
-dpiValues.forEach(dpi => {
-  // Round to common DPI values
-  const rounded = [400, 800, 1600, 3200].reduce((prev, curr) =>
-    Math.abs(curr - dpi) < Math.abs(prev - dpi) ? curr : prev
-  );
-  dpiDistribution.set(rounded, (dpiDistribution.get(rounded) || 0) + 1);
-});
-const topDpiValues = [...dpiDistribution.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 4);
+const fovValues = players.map(p => p.data.fov).filter(v => v);
+const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
 
-// Sensitivity distribution by cm/360
-const lowSens = cm360Values.filter(v => v > 35).length; // High cm/360 = low sens
-const midSens = cm360Values.filter(v => v >= 20 && v <= 35).length;
-const highSens = cm360Values.filter(v => v < 20).length; // Low cm/360 = high sens
-const totalSensPlayers = cm360Values.length;
-
-// ===========================================
-// HARDWARE POPULARITY
-// ===========================================
-
-// Mice
+// Top mouse (most popular model)
 const mouseUsage = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mouse) {
     mouseUsage.set(p.data.mouse, (mouseUsage.get(p.data.mouse) || 0) + 1);
   }
 });
+const topMouseEntry = [...mouseUsage.entries()].sort((a, b) => b[1] - a[1])[0];
+const topMouseName = topMouseEntry ? (miceMap.get(topMouseEntry[0])?.name || topMouseEntry[0]) : 'N/A';
+
+// ===========================================
+// SECTION 1: HARDWARE
+// ===========================================
+
+// Mouse brands
+const mouseBrands = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.mouse) {
+    const mouseData = miceMap.get(p.data.mouse);
+    const brand = mouseData?.brand || 'Unknown';
+    mouseBrands.set(brand, (mouseBrands.get(brand) || 0) + 1);
+  }
+});
+const topMouseBrands = [...mouseBrands.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+
+// Top mice (specific models)
 const topMice = [...mouseUsage.entries()]
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 10)
+  .slice(0, 8)
   .map(([id, count]) => ({
     name: miceMap.get(id)?.name || id,
     count,
     percentage: Math.round((count / players.length) * 100)
   }));
 
-// Monitors by refresh rate
-const monitorRefreshRates = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.monitor) {
-    const monitor = monitorsMap.get(p.data.monitor);
-    const refreshRate = monitor?.refreshRate || 'Unknown';
-    monitorRefreshRates.set(refreshRate, (monitorRefreshRates.get(refreshRate) || 0) + 1);
-  }
-});
-const topRefreshRates = [...monitorRefreshRates.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Keyboard brands
-const keyboardBrands = new Map<string, number>();
-players.forEach(p => {
-  if (p.data.keyboard) {
-    const kb = keyboardsMap.get(p.data.keyboard);
-    const brand = kb?.brand || 'Unknown';
-    keyboardBrands.set(brand, (keyboardBrands.get(brand) || 0) + 1);
-  }
-});
-const topKeyboardBrands = [...keyboardBrands.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Mousepad brands
-const mousepadBrands = new Map<string, number>();
+// Top mousepads (specific models)
+const mousepadUsage = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mousepad) {
-    const pad = mousepadsMap.get(p.data.mousepad);
-    const brand = pad?.brand || 'Unknown';
-    mousepadBrands.set(brand, (mousepadBrands.get(brand) || 0) + 1);
+    mousepadUsage.set(p.data.mousepad, (mousepadUsage.get(p.data.mousepad) || 0) + 1);
   }
 });
-const topMousepadBrands = [...mousepadBrands.entries()]
+const topMousepads = [...mousepadUsage.entries()]
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// GPU Brand distribution (check both gpuBrand and gpu fields)
-const gpuBrands = new Map<string, number>();
-players.forEach(p => {
-  const brand = p.data.gpuBrand || p.data.gpu;
-  if (brand) {
-    // Normalize to uppercase for consistency
-    const normalizedBrand = brand.toUpperCase();
-    gpuBrands.set(normalizedBrand, (gpuBrands.get(normalizedBrand) || 0) + 1);
-  }
-});
-const topGpuBrands = [...gpuBrands.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
-
-// CPU Brand distribution (check both cpuBrand and cpu fields)
-const cpuBrands = new Map<string, number>();
-players.forEach(p => {
-  const brand = p.data.cpuBrand || p.data.cpu;
-  if (brand) {
-    // Normalize: capitalize first letter
-    const normalizedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
-    cpuBrands.set(normalizedBrand, (cpuBrands.get(normalizedBrand) || 0) + 1);
-  }
-});
-const topCpuBrands = [...cpuBrands.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
-
-// ===========================================
-// SETTINGS TRENDS
-// ===========================================
-
-// FOV distribution
-const fovValues = players.map(p => p.data.fov).filter(v => v);
-const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
-const fovDistribution = new Map<number, number>();
-fovValues.forEach(fov => {
-  fovDistribution.set(fov, (fovDistribution.get(fov) || 0) + 1);
-});
-const topFovValues = [...fovDistribution.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
-
-// Acceleration users
-const accelUsers = players.filter(p => p.data.acceleration).length;
-const accelPercentage = Math.round((accelUsers / players.length) * 100);
-
-// m_cpi users
-const mcpiUsers = players.filter(p => p.data.m_cpi).length;
-const mcpiPercentage = Math.round((mcpiUsers / players.length) * 100);
-
-// Crosshair types
-const crosshairTypes = new Map<string, number>();
-players.forEach(p => {
-  const ch = p.data.crosshair || 'Unknown';
-  crosshairTypes.set(ch, (crosshairTypes.get(ch) || 0) + 1);
-});
-const topCrosshairs = [...crosshairTypes.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 5);
+  .slice(0, 8)
+  .map(([id, count]) => ({
+    name: mousepadsMap.get(id)?.name || id,
+    count,
+    percentage: Math.round((count / players.length) * 100)
+  }));
 
 // Grip style distribution
 const gripStyles = new Map<string, number>();
@@ -195,99 +110,59 @@ players.forEach(p => {
     gripStyles.set(p.data.grip, (gripStyles.get(p.data.grip) || 0) + 1);
   }
 });
-const gripDistribution = [...gripStyles.entries()]
-  .sort((a, b) => b[1] - a[1]);
+const gripDistribution = [...gripStyles.entries()].sort((a, b) => b[1] - a[1]);
 const totalGripPlayers = [...gripStyles.values()].reduce((a, b) => a + b, 0);
-
-// ===========================================
-// PLAYER STATS
-// ===========================================
-
-// Categories
-const categoryDuel = players.filter(p => p.data.category === 'duel').length;
-const categoryCTF = players.filter(p => p.data.category === 'ctf').length;
-const categoryTDM = players.filter(p => p.data.category === 'tdm').length;
-const categoryOther = players.length - categoryDuel - categoryCTF - categoryTDM;
-
-// Recently updated (sort by lastUpdated)
-const recentPlayers = [...players]
-  .filter(p => p.data.lastUpdated)
-  .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
-  .slice(0, 5);
-
-// ===========================================
-// INTERESTING FACTS
-// ===========================================
-
-// Lowest sens player (highest cm/360)
-const lowestSensPlayer = players.reduce((prev, curr) =>
-  calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
-);
-
-// Highest sens player (lowest cm/360)
-const highestSensPlayer = players.reduce((prev, curr) =>
-  calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
-);
-
-// ===========================================
-// MOUSE SHAPE & SIZE STATISTICS
-// ===========================================
 
 // Mouse shape distribution
 const mouseShapeDistribution = new Map<string, number>();
-const mouseWeightDistribution = new Map<string, number>();
 players.forEach(p => {
   if (p.data.mouse) {
     const mouseData = miceMap.get(p.data.mouse);
     if (mouseData) {
-      // Shape
       const shape = mouseData.shape || 'Unknown';
       mouseShapeDistribution.set(shape, (mouseShapeDistribution.get(shape) || 0) + 1);
-
-      // Weight (categorize)
-      if (mouseData.weight && mouseData.weight !== 'Unknown') {
-        const weightNum = parseFloat(mouseData.weight);
-        let weightCategory = 'Unknown';
-        if (weightNum < 70) weightCategory = 'Ultralight (<70g)';
-        else if (weightNum < 90) weightCategory = 'Light (70-89g)';
-        else if (weightNum < 110) weightCategory = 'Medium (90-109g)';
-        else weightCategory = 'Heavy (110g+)';
-        mouseWeightDistribution.set(weightCategory, (mouseWeightDistribution.get(weightCategory) || 0) + 1);
-      }
     }
   }
 });
+const topMouseShapes = [...mouseShapeDistribution.entries()].sort((a, b) => b[1] - a[1]);
 
-const topMouseShapes = [...mouseShapeDistribution.entries()]
-  .sort((a, b) => b[1] - a[1]);
-const topMouseWeights = [...mouseWeightDistribution.entries()]
-  .sort((a, b) => {
-    // Sort by weight category order
-    const order = ['Ultralight (<70g)', 'Light (70-89g)', 'Medium (90-109g)', 'Heavy (110g+)', 'Unknown'];
-    return order.indexOf(a[0]) - order.indexOf(b[0]);
-  });
+// GPU Brand distribution
+const gpuBrands = new Map<string, number>();
+players.forEach(p => {
+  const brand = p.data.gpuBrand || p.data.gpu;
+  if (brand) {
+    const normalizedBrand = brand.toUpperCase();
+    gpuBrands.set(normalizedBrand, (gpuBrands.get(normalizedBrand) || 0) + 1);
+  }
+});
+const topGpuBrands = [...gpuBrands.entries()].sort((a, b) => b[1] - a[1]);
+const totalGpuPlayers = [...gpuBrands.values()].reduce((a, b) => a + b, 0);
 
-// ===========================================
-// MONITOR SIZE VS REFRESH RATE HEATMAP
-// ===========================================
+// CPU Brand distribution
+const cpuBrands = new Map<string, number>();
+players.forEach(p => {
+  const brand = p.data.cpuBrand || p.data.cpu;
+  if (brand) {
+    const normalizedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
+    cpuBrands.set(normalizedBrand, (cpuBrands.get(normalizedBrand) || 0) + 1);
+  }
+});
+const topCpuBrands = [...cpuBrands.entries()].sort((a, b) => b[1] - a[1]);
+const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
 
-// Parse size to number (e.g., "27 inch" or "27\"" -> 27)
+// Monitor heatmap
 function parseMonitorSize(size: string): number | null {
   const match = size.match(/(\d+(?:\.\d+)?)/);
   return match ? parseFloat(match[1]) : null;
 }
-
-// Parse refresh rate to number (e.g., "360Hz" -> 360)
 function parseRefreshRate(rate: string): number | null {
   const match = rate.match(/(\d+)/);
   return match ? parseInt(match[1]) : null;
 }
 
-// Define bins for the heatmap
-const sizeBins = [18, 21, 23, 24, 25, 27, 28, 32, 34];
-const refreshBins = [60, 120, 144, 165, 180, 240, 280, 360, 500];
+const sizeBins = [21, 24, 25, 27, 32, 34];
+const refreshBins = [60, 144, 165, 240, 280, 360, 500];
 
-// Build heatmap data
 const monitorHeatmap: Map<string, number> = new Map();
 players.forEach(p => {
   if (p.data.monitor) {
@@ -295,360 +170,419 @@ players.forEach(p => {
     if (monitorData) {
       const size = parseMonitorSize(monitorData.size || '');
       const refresh = parseRefreshRate(monitorData.refreshRate || '');
-
       if (size !== null && refresh !== null) {
-        // Find closest size bin
         const sizeBin = sizeBins.reduce((prev, curr) =>
           Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
         );
-        // Find closest refresh bin
         const refreshBin = refreshBins.reduce((prev, curr) =>
           Math.abs(curr - refresh) < Math.abs(prev - refresh) ? curr : prev
         );
-
         const key = `${sizeBin}-${refreshBin}`;
         monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
       }
     }
   }
 });
-
-// Calculate max for color scaling
 const heatmapMax = Math.max(...monitorHeatmap.values(), 1);
 
+function getHeatColor(count: number, max: number): string {
+  if (count === 0) return '#21262d';
+  const ratio = count / max;
+  if (ratio <= 0.2) return '#2d333b';
+  if (ratio <= 0.4) return '#3d444d';
+  if (ratio <= 0.6) return '#4d555e';
+  if (ratio <= 0.8) return '#5d656f';
+  return '#6e7681';
+}
+
 // ===========================================
-// KEY BINDINGS STATISTICS
+// SECTION 2: SENSITIVITY
 // ===========================================
 
-// Movement keys analysis
+// cm/360 distribution bins with accel breakdown
+const cm360Bins = [
+  { label: '<15', min: 0, max: 15 },
+  { label: '15-20', min: 15, max: 20 },
+  { label: '20-25', min: 20, max: 25 },
+  { label: '25-30', min: 25, max: 30 },
+  { label: '30-35', min: 30, max: 35 },
+  { label: '35-40', min: 35, max: 40 },
+  { label: '40-45', min: 40, max: 45 },
+  { label: '45+', min: 45, max: Infinity },
+];
+
+const cm360Distribution = cm360Bins.map(bin => {
+  const inBin = players.filter(p => {
+    const cm = calculateCm360(p.data);
+    return cm >= bin.min && cm < bin.max;
+  });
+  return {
+    label: bin.label,
+    total: inBin.length,
+    accel: inBin.filter(p => p.data.acceleration).length,
+    noAccel: inBin.filter(p => !p.data.acceleration).length,
+  };
+});
+const maxCm360Bin = Math.max(...cm360Distribution.map(b => b.total), 1);
+
+// cm/360 vs mousepad type heatmap
+const mousepadTypes = ['Cloth', 'Hard', 'Glass', 'Hybrid'];
+const cm360SensBins = ['<20', '20-30', '30-40', '40+'];
+
+const cm360MousepadHeatmap: Map<string, number> = new Map();
+players.forEach(p => {
+  if (p.data.mousepad) {
+    const padData = mousepadsMap.get(p.data.mousepad);
+    if (padData) {
+      const surface = padData.surface || 'Cloth';
+      const cm = calculateCm360(p.data);
+      let sensBin: string;
+      if (cm < 20) sensBin = '<20';
+      else if (cm < 30) sensBin = '20-30';
+      else if (cm < 40) sensBin = '30-40';
+      else sensBin = '40+';
+
+      const key = `${sensBin}-${surface}`;
+      cm360MousepadHeatmap.set(key, (cm360MousepadHeatmap.get(key) || 0) + 1);
+    }
+  }
+});
+const cm360PadMax = Math.max(...cm360MousepadHeatmap.values(), 1);
+
+// ===========================================
+// SECTION 3: GAME SETTINGS
+// ===========================================
+
+// FOV distribution
+const fovDistribution = new Map<number, number>();
+fovValues.forEach(fov => {
+  fovDistribution.set(fov, (fovDistribution.get(fov) || 0) + 1);
+});
+const topFovValues = [...fovDistribution.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+const maxFovCount = Math.max(...topFovValues.map(([_, c]) => c), 1);
+
+// Crosshair color distribution
+const crosshairColors = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.crosshairColor) {
+    // Handle multi-color entries like "Blue, Yellow"
+    const colors = p.data.crosshairColor.split(',').map((c: string) => c.trim());
+    colors.forEach((color: string) => {
+      crosshairColors.set(color, (crosshairColors.get(color) || 0) + 1);
+    });
+  }
+});
+const crosshairColorDist = [...crosshairColors.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const maxCrosshairColor = Math.max(...crosshairColorDist.map(([_, c]) => c), 1);
+
+// Map crosshair color names to CSS colors
+function getCrosshairBarColor(color: string): string {
+  const map: Record<string, string> = {
+    'Green': '#238636',
+    'Yellow': '#9e6a03',
+    'Cyan': '#1f6feb',
+    'Red': '#da3633',
+    'White': '#6e7681',
+    'Pink': '#db61a2',
+    'Magenta': '#8957e5',
+    'Blue': '#1f6feb',
+    'Black': '#21262d',
+    'Orange': '#d29922',
+  };
+  return map[color] || '#6e7681';
+}
+
+// Crosshair style distribution
+const crosshairTypes = new Map<string, number>();
+players.forEach(p => {
+  const ch = p.data.crosshair || 'Unknown';
+  // Handle multi-crosshair entries like "2, 7, 3"
+  const types = ch.split(',').map((c: string) => c.trim());
+  types.forEach((type: string) => {
+    crosshairTypes.set(type, (crosshairTypes.get(type) || 0) + 1);
+  });
+});
+const topCrosshairs = [...crosshairTypes.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
+const maxCrosshairCount = Math.max(...topCrosshairs.map(([_, c]) => c), 1);
+
+// Crosshair type descriptions
+const crosshairDesc: Record<string, string> = {
+  '1': 'Circle+Dot',
+  '2': 'Cross',
+  '3': 'Cross Gap',
+  '4': 'Small Dot',
+  '5': 'Large Dot',
+  '6': 'Dot',
+  '7': 'Thick Cross',
+  '8': 'Circle',
+  '9': 'Cross Gap',
+  '10': 'X Shape',
+  '11': 'Triangle',
+  '12': 'Chevron',
+  '13': 'Circle CH',
+};
+
+// Enemy model distribution
+const enemyModels = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.enemyModel) {
+    enemyModels.set(p.data.enemyModel, (enemyModels.get(p.data.enemyModel) || 0) + 1);
+  }
+});
+const enemyModelDist = [...enemyModels.entries()]
+  .sort((a, b) => b[1] - a[1]);
+const totalEnemyModelPlayers = [...enemyModels.values()].reduce((a, b) => a + b, 0);
+const maxEnemyModel = Math.max(...enemyModelDist.map(([_, c]) => c), 1);
+
+// ===========================================
+// SECTION 4: CONTROLS
+// ===========================================
+
 const movementPatterns = new Map<string, number>();
 const jumpKeys = new Map<string, number>();
 
 players.forEach(p => {
-  // Analyze movement pattern
   const forward = (p.data.forward || 'W').toUpperCase();
   const left = (p.data.left || 'A').toUpperCase();
   const back = (p.data.back || 'S').toUpperCase();
   const right = (p.data.right || 'D').toUpperCase();
-
   let pattern = `${forward}${left}${back}${right}`;
-
-  // Normalize common patterns
   if (pattern === 'WASD') pattern = 'WASD';
   else if (pattern === 'ESDF') pattern = 'ESDF';
   else if (pattern === 'RFDG') pattern = 'RFDG';
   else if (forward.includes('ARROW') || forward.includes('UP')) pattern = 'Arrow Keys';
   else if (forward.includes('KP_') || forward.includes('NUMPAD')) pattern = 'Numpad';
-
   movementPatterns.set(pattern, (movementPatterns.get(pattern) || 0) + 1);
 
-  // Analyze jump key
   let jump = (p.data.jump || 'Space');
-  // Normalize
   if (jump.toLowerCase() === 'space' || jump.toLowerCase() === 'spacebar') jump = 'Space';
   else if (jump.toLowerCase().includes('mouse2') || jump.toLowerCase() === 'mwheeldown' || jump.toLowerCase() === 'm2') jump = 'Mouse2';
   else if (jump.toLowerCase().includes('mouse')) jump = 'Mouse Button';
   else if (jump.toLowerCase() === 'shift') jump = 'Shift';
   else if (jump.toLowerCase() === 'ctrl' || jump.toLowerCase() === 'control') jump = 'Ctrl';
-
   jumpKeys.set(jump, (jumpKeys.get(jump) || 0) + 1);
 });
 
 const topMovementPatterns = [...movementPatterns.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
+  .sort((a, b) => b[1] - a[1]).slice(0, 6);
+const maxMovement = Math.max(...topMovementPatterns.map(([_, c]) => c), 1);
 const topJumpKeys = [...jumpKeys.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
-
-// Format bind strings to add space after MOUSE1/MOUSE2
-function formatBindString(bind: string): string {
-  return bind.replace(/^(MOUSE[12])([A-Z])/, '$1 $2');
-}
+  .sort((a, b) => b[1] - a[1]).slice(0, 6);
+const maxJump = Math.max(...topJumpKeys.map(([_, c]) => c), 1);
 
 // ===========================================
-// CROSSHAIR VISUALIZATION DATA
+// SECTION 5: PLAYERS
 // ===========================================
 
-// Crosshair type to visual description mapping
-const crosshairVisuals: Record<string, { shape: string; description: string }> = {
-  '1': { shape: 'circle-dot', description: 'Circle with dot' },
-  '2': { shape: 'cross', description: 'Cross (+)' },
-  '3': { shape: 'cross-gap', description: 'Cross with gap' },
-  '4': { shape: 'dot', description: 'Small dot' },
-  '5': { shape: 'dot-large', description: 'Large dot' },
-  '6': { shape: 'dot', description: 'Dot' },
-  '7': { shape: 'cross-thick', description: 'Thick cross' },
-  '8': { shape: 'circle', description: 'Circle' },
-  '9': { shape: 'cross-gap', description: 'Cross with gap' },
-  '10': { shape: 'x-mark', description: 'X shape' },
-  '11': { shape: 'triangle', description: 'Triangle' },
-  '12': { shape: 'chevron', description: 'Chevron' },
-  '13': { shape: 'circle-crosshair', description: 'Circle crosshair' },
-};
+const recentPlayers = [...players]
+  .filter(p => p.data.lastUpdated)
+  .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
+  .slice(0, 5);
 
-// Get crosshair data with counts
-const crosshairData = [...crosshairTypes.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 10)
-  .map(([type, count]) => ({
-    type,
-    count,
-    percentage: Math.round((count / players.length) * 100),
-    visual: crosshairVisuals[type] || { shape: 'unknown', description: `Type ${type}` }
-  }));
-
-// Format cm/360 values - remove .00 for whole numbers
-function formatCm360(value: number): string {
-  const fixed = value.toFixed(2);
-  return fixed.endsWith('.00') ? Math.round(value).toString() : fixed;
-}
-
-// Ensure base URL has trailing slash
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+// Interesting facts
+const lowestSensPlayer = players.reduce((prev, curr) =>
+  calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
+);
+const highestSensPlayer = players.reduce((prev, curr) =>
+  calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
+);
+const highestFovPlayer = players.reduce((prev, curr) =>
+  (curr.data.fov || 0) > (prev.data.fov || 0) ? curr : prev
+);
+const lowestFovPlayer = players.reduce((prev, curr) =>
+  (curr.data.fov || 999) < (prev.data.fov || 999) ? curr : prev
+);
 ---
 
 <BaseLayout title="Statistics">
-  <div class="page-header">
-    <h1>Player Statistics</h1>
-    <p>Aggregated data from {players.length} Quake Live players</p>
-  </div>
-
-  <div class="stats-container">
-    <!-- ========== SENSITIVITY SECTION ========== -->
-    <section class="stat-card wide">
-      <h2>Sensitivity Overview</h2>
-      <div class="stat-row">
-        <div class="big-stat">
-          <span class="stat-number">{formatCm360(avgCm360)}</span>
-          <span class="stat-label">Average cm/360</span>
-        </div>
-        <div class="big-stat">
-          <span class="stat-number">{formatCm360(medianCm360)}</span>
-          <span class="stat-label">Median cm/360</span>
-        </div>
-        <div class="big-stat">
-          <span class="stat-number">{avgEdpi}</span>
-          <span class="stat-label">Average eDPI</span>
-        </div>
-        <div class="big-stat">
-          <span class="stat-number">{medianEdpi}</span>
-          <span class="stat-label">Median eDPI</span>
-        </div>
+  <div class="stats-page">
+    <!-- SUMMARY CARDS -->
+    <div class="summary-row">
+      <div class="summary-card">
+        <span class="summary-value">{players.length}</span>
+        <span class="summary-label">Total Players</span>
       </div>
-      <div class="stat-details">
-        <div><strong>cm/360 Range:</strong> {formatCm360(minCm360)} - {formatCm360(maxCm360)}</div>
-        <div><strong>eDPI Range:</strong> {minEdpi} - {maxEdpi}</div>
+      <div class="summary-card">
+        <span class="summary-value">{formatCm360(avgCm360)}</span>
+        <span class="summary-label">Avg cm/360</span>
       </div>
-      <div class="sensitivity-info">
-        <p><strong>cm/360°</strong> = how many centimeters it takes for you to complete a 360 degree turn. This is also called your real sensitivity.</p>
-        <p><strong>eDPI</strong> = mouse DPI × ingame sens</p>
-        <p class="disclaimer-note"><em>Note:</em> Does not account for in-game acceleration. If mouse acceleration is enabled, the movement distance required to turn 360° will of course vary depending on the speed of your mouse movement. But can still be used as comparable "base" sensitivity.</p>
+      <div class="summary-card">
+        <span class="summary-value">{accelPercentage}%</span>
+        <span class="summary-label">Accel Users</span>
       </div>
-    </section>
-
-    <div class="two-col">
-      <!-- SENSITIVITY DISTRIBUTION -->
-      <section class="stat-card">
-        <h2>Sensitivity Distribution</h2>
-        <p class="card-subtitle">Based on cm/360 values</p>
-        <div class="distribution">
-          <div class="dist-bar">
-            <div class="dist-fill low" style={`width: ${(lowSens / totalSensPlayers) * 100}%`}></div>
-            <span>Low (&gt;35cm): {lowSens} ({Math.round((lowSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-          <div class="dist-bar">
-            <div class="dist-fill mid" style={`width: ${(midSens / totalSensPlayers) * 100}%`}></div>
-            <span>Medium (20-35cm): {midSens} ({Math.round((midSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-          <div class="dist-bar">
-            <div class="dist-fill high" style={`width: ${(highSens / totalSensPlayers) * 100}%`}></div>
-            <span>High (&lt;20cm): {highSens} ({Math.round((highSens / totalSensPlayers) * 100)}%)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- DPI DISTRIBUTION -->
-      <section class="stat-card">
-        <h2>DPI Distribution</h2>
-        <div class="popularity-list">
-          {topDpiValues.map(([dpi, count]) => (
-            <div class="popularity-item">
-              <span class="name">{dpi} DPI</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div class="summary-card">
+        <span class="summary-value summary-value-sm">{topMouseName}</span>
+        <span class="summary-label">Top Mouse</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-value">{avgFov}&deg;</span>
+        <span class="summary-label">Avg FOV</span>
+      </div>
     </div>
 
-    <!-- ========== HARDWARE SECTION ========== -->
-    <h3 class="section-header">Hardware</h3>
+    <!-- SECTION 1: HARDWARE -->
+    <div class="section-header hardware">
+      <div class="section-icon hardware">🖱️</div>
+      <h2>Hardware</h2>
+    </div>
 
     <div class="two-col">
-      <!-- TOP MICE -->
-      <section class="stat-card">
-        <h2>Most Popular Mice</h2>
-        <div class="popularity-list">
-          {topMice.slice(0, 5).map((mouse, i) => (
-            <div class="popularity-item">
-              <span class="rank">#{i + 1}</span>
-              <span class="name">{mouse.name}</span>
-              <span class="count">{mouse.count} ({mouse.percentage}%)</span>
+      <div class="card">
+        <h3>Mouse Brands</h3>
+        <div class="bar-list">
+          {topMouseBrands.map(([brand, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{brand}</span>
+              <div class="bar-track">
+                <div class="bar-fill hardware" style={`width: ${(count / players.length) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
-        {topMice.length > 5 && (
-          <details class="more-items">
-            <summary>Show more</summary>
-            <div class="popularity-list">
-              {topMice.slice(5).map((mouse, i) => (
-                <div class="popularity-item">
-                  <span class="rank">#{i + 6}</span>
-                  <span class="name">{mouse.name}</span>
-                  <span class="count">{mouse.count} ({mouse.percentage}%)</span>
+      </div>
+      <div class="card">
+        <h3>Top Mice</h3>
+        <div class="bar-list">
+          {topMice.map((mouse) => (
+            <div class="bar-row">
+              <span class="bar-label">{mouse.name}</span>
+              <div class="bar-track">
+                <div class="bar-fill hardware" style={`width: ${(mouse.count / players.length) * 100}%`}>
+                  <span class="bar-count">{mouse.count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{mouse.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>Top Mousepads</h3>
+        <div class="bar-list">
+          {topMousepads.map((pad) => (
+            <div class="bar-row">
+              <span class="bar-label">{pad.name}</span>
+              <div class="bar-track">
+                <div class="bar-fill hardware" style={`width: ${(pad.count / players.length) * 100}%`}>
+                  <span class="bar-count">{pad.count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{pad.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card">
+        <h3>Grip Style</h3>
+        {totalGripPlayers > 0 ? (
+          <>
+            <p class="card-note">{totalGripPlayers} players with data</p>
+            <div class="bar-list">
+              {gripDistribution.map(([style, count]) => (
+                <div class="bar-row">
+                  <span class="bar-label">{style}</span>
+                  <div class="bar-track">
+                    <div class="bar-fill hardware" style={`width: ${(count / totalGripPlayers) * 100}%`}>
+                      <span class="bar-count">{count}</span>
+                    </div>
+                  </div>
+                  <span class="bar-pct">{Math.round((count / totalGripPlayers) * 100)}%</span>
                 </div>
               ))}
             </div>
-          </details>
+          </>
+        ) : (
+          <p class="card-note">No grip data available</p>
         )}
-      </section>
+      </div>
+    </div>
 
-      <!-- MOUSE SHAPE & WEIGHT -->
-      <section class="stat-card">
-        <h2>Mouse Shape & Weight</h2>
-        <h3 class="subsection-title">Shape Preference</h3>
-        <div class="popularity-list compact">
+    <div class="two-col">
+      <div class="card">
+        <h3>Mouse Shape</h3>
+        <div class="bar-list">
           {topMouseShapes.map(([shape, count]) => (
-            <div class="popularity-item">
-              <span class="name">{shape}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
+            <div class="bar-row">
+              <span class="bar-label">{shape}</span>
+              <div class="bar-track">
+                <div class="bar-fill hardware" style={`width: ${(count / players.length) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
               </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
             </div>
           ))}
         </div>
-        <h3 class="subsection-title">Weight Distribution</h3>
-        <div class="popularity-list compact">
-          {topMouseWeights.map(([weight, count]) => (
-            <div class="popularity-item">
-              <span class="name">{weight}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
+      </div>
+      <div class="card">
+        <h3>GPU / CPU Brand</h3>
+        <div class="mini-charts">
+          <div class="mini-chart">
+            <h4>GPU <span class="chip-count">{totalGpuPlayers} players</span></h4>
+            <div class="bar-list">
+              {topGpuBrands.map(([brand, count]) => (
+                <div class="bar-row">
+                  <span class="bar-label">{brand}</span>
+                  <div class="bar-track">
+                    <div class="bar-fill hardware" style={`width: ${(count / totalGpuPlayers) * 100}%`}>
+                      <span class="bar-count">{count}</span>
+                    </div>
+                  </div>
+                  <span class="bar-pct">{Math.round((count / totalGpuPlayers) * 100)}%</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div class="mini-chart">
+            <h4>CPU <span class="chip-count">{totalCpuPlayers} players</span></h4>
+            <div class="bar-list">
+              {topCpuBrands.map(([brand, count]) => (
+                <div class="bar-row">
+                  <span class="bar-label">{brand}</span>
+                  <div class="bar-track">
+                    <div class="bar-fill hardware" style={`width: ${(count / totalCpuPlayers) * 100}%`}>
+                      <span class="bar-count">{count}</span>
+                    </div>
+                  </div>
+                  <span class="bar-pct">{Math.round((count / totalCpuPlayers) * 100)}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
 
-    <div class="two-col">
-      <!-- MONITOR REFRESH RATES -->
-      <section class="stat-card">
-        <h2>Monitor Refresh Rates</h2>
-        <div class="popularity-list">
-          {topRefreshRates.map(([rate, count]) => (
-            <div class="popularity-item">
-              <span class="name">{rate}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / players.length) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- KEYBOARD & MOUSEPAD BRANDS -->
-      <section class="stat-card">
-        <h2>Other Hardware</h2>
-        <h3 class="subsection-title">Top Keyboard Brands</h3>
-        <div class="popularity-list compact">
-          {topKeyboardBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <span class="count">{count}</span>
-            </div>
-          ))}
-        </div>
-        <h3 class="subsection-title">Top Mousepad Brands</h3>
-        <div class="popularity-list compact">
-          {topMousepadBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <span class="count">{count}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <div class="two-col">
-      <!-- GPU BRAND -->
-      <section class="stat-card">
-        <h2>GPU Brand</h2>
-        <p class="card-subtitle">{totalGpuPlayers} players with data</p>
-        <div class="popularity-list">
-          {topGpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalGpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalGpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- CPU BRAND -->
-      <section class="stat-card">
-        <h2>CPU Brand</h2>
-        <p class="card-subtitle">{totalCpuPlayers} players with data</p>
-        <div class="popularity-list">
-          {topCpuBrands.map(([brand, count]) => (
-            <div class="popularity-item">
-              <span class="name">{brand}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / totalCpuPlayers) * 100}%`}></div>
-              </div>
-              <span class="count">{count} ({Math.round((count / totalCpuPlayers) * 100)}%)</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <!-- MONITOR SIZE VS REFRESH RATE HEATMAP -->
-    <section class="stat-card wide">
-      <h2>Monitor Size vs Refresh Rate</h2>
-      <p class="card-subtitle">Heatmap showing player monitor preferences</p>
+    <div class="card wide">
+      <h3>Monitor Size vs Refresh Rate</h3>
       <div class="heatmap-container">
         <div class="heatmap-y-label">Size (inches)</div>
         <div class="heatmap-wrapper">
-          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 1fr)`}>
-            <!-- Header row -->
-            <div class="heatmap-cell header"></div>
+          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 70px)`}>
+            <div class="hm-cell hm-header"></div>
             {refreshBins.map(rate => (
-              <div class="heatmap-cell header">{rate}</div>
+              <div class="hm-cell hm-header">{rate}Hz</div>
             ))}
-
-            <!-- Data rows -->
             {[...sizeBins].reverse().map(size => (
               <>
-                <div class="heatmap-cell row-label">{size}"</div>
+                <div class="hm-cell hm-row-label">{size}"</div>
                 {refreshBins.map(rate => {
                   const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
-                  const intensity = count / heatmapMax;
                   return (
                     <div
-                      class="heatmap-cell data"
-                      style={`background-color: ${count > 0 ? `rgba(78, 205, 196, ${0.2 + intensity * 0.8})` : 'var(--bg-secondary)'}`}
+                      class="hm-cell hm-data"
+                      style={`background-color: ${getHeatColor(count, heatmapMax)}`}
                       title={`${size}" @ ${rate}Hz: ${count} players`}
                     >
                       {count > 0 ? count : ''}
@@ -658,242 +592,300 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
               </>
             ))}
           </div>
-          <div class="heatmap-x-label">Refresh Rate (Hz)</div>
+          <div class="heatmap-x-label">Refresh Rate</div>
         </div>
         <div class="heatmap-legend">
-          <span class="legend-label">High</span>
-          <div class="legend-gradient"></div>
-          <span class="legend-label">Low</span>
+          <span class="legend-lbl">More</span>
+          <div class="legend-scale">
+            <div class="legend-cell" style="background: #6e7681"></div>
+            <div class="legend-cell" style="background: #5d656f"></div>
+            <div class="legend-cell" style="background: #4d555e"></div>
+            <div class="legend-cell" style="background: #3d444d"></div>
+            <div class="legend-cell" style="background: #2d333b"></div>
+            <div class="legend-cell" style="background: #21262d"></div>
+          </div>
+          <span class="legend-lbl">Less</span>
         </div>
       </div>
-    </section>
-
-    <!-- ========== SETTINGS SECTION ========== -->
-    <h3 class="section-header">Settings & Controls</h3>
-
-    <div class="three-col">
-      <!-- SETTINGS TRENDS -->
-      <section class="stat-card">
-        <h2>Settings Trends</h2>
-        <div class="trend-stats">
-          <div class="trend-item">
-            <span class="trend-value">{avgFov}°</span>
-            <span class="trend-label">Average FOV</span>
-          </div>
-          <div class="trend-item">
-            <span class="trend-value">{accelPercentage}%</span>
-            <span class="trend-label">Use Acceleration</span>
-          </div>
-          <div class="trend-item">
-            <span class="trend-value">{mcpiPercentage}%</span>
-            <span class="trend-label">Use m_cpi</span>
-          </div>
-        </div>
-        <h3 class="subsection-title">Top FOV Values</h3>
-        <div class="popularity-list compact">
-          {topFovValues.map(([fov, count]) => (
-            <div class="popularity-item">
-              <span class="name">{fov}°</span>
-              <span class="count">{count} players</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- KEY BINDINGS - MOVEMENT -->
-      <section class="stat-card">
-        <h2>Movement Keys</h2>
-        <div class="binds-list">
-          {topMovementPatterns.map(([pattern, count]) => (
-            <div class="bind-item">
-              <span class="bind-keys">{formatBindString(pattern)}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- KEY BINDINGS - JUMP -->
-      <section class="stat-card">
-        <h2>Jump Key</h2>
-        <div class="binds-list">
-          {topJumpKeys.map(([key, count]) => (
-            <div class="bind-item">
-              <span class="bind-keys">{key}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill accent" style={`width: ${(count / players.length) * 100}%`}></div>
-              </div>
-              <span class="count">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
 
-    <!-- CROSSHAIR TYPES WITH VISUALS -->
-    <section class="stat-card wide">
-      <h2>Crosshair Styles</h2>
-      <p class="card-subtitle">cg_drawCrosshair values and visual representation</p>
-      <div class="crosshair-grid">
-        {crosshairData.map(({ type, count, percentage, visual }) => (
-          <div class="crosshair-item">
-            <div class="crosshair-preview" data-type={visual.shape}>
-              {visual.shape === 'cross' && <div class="ch ch-cross"></div>}
-              {visual.shape === 'cross-thick' && <div class="ch ch-cross-thick"></div>}
-              {visual.shape === 'cross-gap' && <div class="ch ch-cross-gap"></div>}
-              {visual.shape === 'dot' && <div class="ch ch-dot"></div>}
-              {visual.shape === 'dot-large' && <div class="ch ch-dot-large"></div>}
-              {visual.shape === 'circle' && <div class="ch ch-circle"></div>}
-              {visual.shape === 'circle-dot' && <div class="ch ch-circle-dot"></div>}
-              {visual.shape === 'circle-crosshair' && <div class="ch ch-circle-crosshair"></div>}
-              {visual.shape === 'x-mark' && <div class="ch ch-x"></div>}
-              {visual.shape === 'triangle' && <div class="ch ch-triangle"></div>}
-              {visual.shape === 'chevron' && <div class="ch ch-chevron"></div>}
-              {visual.shape === 'unknown' && <div class="ch ch-unknown">?</div>}
-            </div>
-            <div class="crosshair-info">
-              <span class="crosshair-type">Type {type}</span>
-              <span class="crosshair-count">{count} ({percentage}%)</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    <!-- SECTION 2: SENSITIVITY -->
+    <div class="section-header sensitivity">
+      <div class="section-icon sensitivity">🎯</div>
+      <h2>Sensitivity</h2>
+    </div>
 
-    <!-- GRIP STYLE DISTRIBUTION -->
-    {totalGripPlayers > 0 && (
-      <section class="stat-card">
-        <h2>Grip Style Distribution</h2>
-        <p class="card-subtitle">{totalGripPlayers} players with data</p>
-        <div class="popularity-list">
-          {gripDistribution.map(([style, count]) => (
-            <div class="popularity-item">
-              <span class="name">{style}</span>
-              <div class="bar-wrapper">
-                <div class="bar-fill" style={`width: ${(count / totalGripPlayers) * 100}%`}></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>cm/360 Distribution</h3>
+        <div class="bar-list">
+          {cm360Distribution.map((bin) => (
+            <div class="bar-row">
+              <span class="bar-label">{bin.label}</span>
+              <div class="bar-track">
+                <div class="bar-fill sensitivity" style={`width: ${(bin.noAccel / maxCm360Bin) * 100}%`}>
+                  {bin.noAccel > 0 && <span class="bar-count">{bin.noAccel}</span>}
+                </div>
+                {bin.accel > 0 && (
+                  <div class="bar-fill-accel" style={`width: ${(bin.accel / maxCm360Bin) * 100}%; left: ${(bin.noAccel / maxCm360Bin) * 100}%`}>
+                    <span class="bar-count">{bin.accel}</span>
+                  </div>
+                )}
               </div>
-              <span class="count">{count} ({Math.round((count / totalGripPlayers) * 100)}%)</span>
+              <span class="bar-pct">{bin.total}</span>
             </div>
           ))}
         </div>
-      </section>
-    )}
-
-    <!-- ========== PLAYERS SECTION ========== -->
-    <h3 class="section-header">Players</h3>
-
-    <div class="three-col">
-      <!-- PLAYER CATEGORIES -->
-      <section class="stat-card">
-        <h2>Players by Category</h2>
-        <div class="category-grid">
-          <div class="category-item">
-            <span class="category-count">{categoryDuel}</span>
-            <span class="category-label">Duel</span>
-          </div>
-          <div class="category-item">
-            <span class="category-count">{categoryCTF}</span>
-            <span class="category-label">CTF</span>
-          </div>
-          <div class="category-item">
-            <span class="category-count">{categoryTDM}</span>
-            <span class="category-label">TDM</span>
-          </div>
-          {categoryOther > 0 && (
-            <div class="category-item">
-              <span class="category-count">{categoryOther}</span>
-              <span class="category-label">Other</span>
-            </div>
-          )}
+        <div class="accel-legend">
+          <span class="accel-legend-item"><span class="dot sensitivity-dot"></span> No accel</span>
+          <span class="accel-legend-item"><span class="dot accel-dot"></span> Accel</span>
         </div>
-      </section>
-
-      <!-- RECENTLY UPDATED -->
-      {recentPlayers.length > 0 && (
-        <section class="stat-card">
-          <h2>Recently Updated</h2>
-          <div class="recent-list">
-            {recentPlayers.map(p => (
-              <div class="recent-item">
-                <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                <span class="date">{p.data.lastUpdated}</span>
-              </div>
+        <div class="sens-stats">
+          <div><strong>Average:</strong> {formatCm360(avgCm360)} cm</div>
+          <div><strong>Median:</strong> {formatCm360(medianCm360)} cm</div>
+          <div><strong>Range:</strong> {formatCm360(minCm360)} – {formatCm360(maxCm360)} cm</div>
+        </div>
+        <p class="card-note">For accel players, cm/360 represents base (slowest) sensitivity</p>
+      </div>
+      <div class="card">
+        <h3>cm/360 vs Mousepad Type</h3>
+        <div class="heatmap-wrapper compact">
+          <div class="heatmap-grid" style={`grid-template-columns: auto repeat(${mousepadTypes.length}, 1fr)`}>
+            <div class="hm-cell hm-header"></div>
+            {mousepadTypes.map(type => (
+              <div class="hm-cell hm-header">{type}</div>
+            ))}
+            {cm360SensBins.map(sensBin => (
+              <>
+                <div class="hm-cell hm-row-label">{sensBin}</div>
+                {mousepadTypes.map(padType => {
+                  const count = cm360MousepadHeatmap.get(`${sensBin}-${padType}`) || 0;
+                  return (
+                    <div
+                      class="hm-cell hm-data"
+                      style={`background-color: ${getHeatColor(count, cm360PadMax)}`}
+                      title={`${sensBin} cm/360, ${padType}: ${count} players`}
+                    >
+                      {count > 0 ? count : ''}
+                    </div>
+                  );
+                })}
+              </>
             ))}
           </div>
-        </section>
-      )}
+          <div class="heatmap-axes">
+            <span class="axis-label">cm/360 range ↓</span>
+            <span class="axis-label">Mousepad surface →</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!-- INTERESTING FACTS -->
-      <section class="stat-card highlight">
-        <h2>Interesting Facts</h2>
-        <div class="facts-list">
-          <div class="fact-item">
-            <span class="fact-icon">🐢</span>
-            <div class="fact-content">
-              <strong>Lowest Sensitivity</strong>
-              <p>
-                <a href={`${base}players/${lowestSensPlayer.id}/`}>{lowestSensPlayer.data.name}</a>
-                uses {formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360
-              </p>
+    <!-- SECTION 3: GAME SETTINGS -->
+    <div class="section-header settings">
+      <div class="section-icon settings">⚙️</div>
+      <h2>Game Settings</h2>
+    </div>
+
+    <div class="three-col">
+      <div class="card">
+        <h3>FOV Distribution</h3>
+        <div class="bar-list">
+          {topFovValues.map(([fov, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{fov}&deg;</span>
+              <div class="bar-track">
+                <div class="bar-fill settings" style={`width: ${(count / maxFovCount) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card">
+        <h3>Crosshair Color</h3>
+        <div class="bar-list">
+          {crosshairColorDist.map(([color, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{color}</span>
+              <div class="bar-track">
+                <div class="bar-fill-color" style={`width: ${(count / maxCrosshairColor) * 100}%; background-color: ${getCrosshairBarColor(color)}; ${color === 'Black' ? 'border: 1px solid #30363d;' : ''}`}>
+                  <span class="bar-count" style={`color: ${color === 'Black' || color === 'Blue' || color === 'Red' || color === 'Green' ? '#f0f6fc' : '#0d1117'}`}>{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card">
+        <h3>Crosshair Style</h3>
+        <div class="bar-list">
+          {topCrosshairs.map(([type, count]) => (
+            <div class="bar-row">
+              <span class="bar-label" title={crosshairDesc[type] || `Type ${type}`}>Type {type}</span>
+              <div class="bar-track">
+                <div class="bar-fill settings" style={`width: ${(count / maxCrosshairCount) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {enemyModelDist.length > 0 && (
+      <div class="card">
+        <h3>Enemy Model</h3>
+        <p class="card-note">{totalEnemyModelPlayers} players with data</p>
+        <div class="bar-list inline-bars">
+          {enemyModelDist.map(([model, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{model}</span>
+              <div class="bar-track">
+                <div class="bar-fill settings" style={`width: ${(count / maxEnemyModel) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / totalEnemyModelPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- SECTION 4: CONTROLS -->
+    <div class="section-header controls">
+      <div class="section-icon controls">⌨️</div>
+      <h2>Controls</h2>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>Movement Keys</h3>
+        <div class="bar-list">
+          {topMovementPatterns.map(([pattern, count]) => (
+            <div class="bar-row">
+              <span class="bar-label mono">{pattern}</span>
+              <div class="bar-track">
+                <div class="bar-fill controls" style={`width: ${(count / maxMovement) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card">
+        <h3>Jump Key</h3>
+        <div class="bar-list">
+          {topJumpKeys.map(([key, count]) => (
+            <div class="bar-row">
+              <span class="bar-label mono">{key}</span>
+              <div class="bar-track">
+                <div class="bar-fill controls" style={`width: ${(count / maxJump) * 100}%`}>
+                  <span class="bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="bar-pct">{Math.round((count / players.length) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: PLAYERS -->
+    <div class="section-header players-section">
+      <div class="section-icon players-section">👥</div>
+      <h2>Players</h2>
+    </div>
+
+    <div class="two-col">
+      {recentPlayers.length > 0 && (
+        <div class="card">
+          <h3>Recently Updated</h3>
+          <div class="recent-list">
+            {recentPlayers.map((p, i) => (
+              <a href={`${base}players/${p.id}/`} class="recent-item">
+                <span class="recent-rank">#{i + 1}</span>
+                <span class="recent-name">{p.data.name}</span>
+                <span class="recent-date">{p.data.lastUpdated}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      <div class="card">
+        <h3>Interesting Facts</h3>
+        <div class="facts-grid">
+          <div class="fact-card">
+            <span class="fact-emoji">🐢</span>
+            <div class="fact-info">
+              <span class="fact-title">Lowest Sensitivity</span>
+              <a href={`${base}players/${lowestSensPlayer.id}/`}>{lowestSensPlayer.data.name}</a>
+              <span class="fact-detail">{formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360</span>
             </div>
           </div>
-          <div class="fact-item">
-            <span class="fact-icon">⚡</span>
-            <div class="fact-content">
-              <strong>Highest Sensitivity</strong>
-              <p>
-                <a href={`${base}players/${highestSensPlayer.id}/`}>{highestSensPlayer.data.name}</a>
-                uses {formatCm360(calculateCm360(highestSensPlayer.data))} cm/360
-              </p>
+          <div class="fact-card">
+            <span class="fact-emoji">⚡</span>
+            <div class="fact-info">
+              <span class="fact-title">Highest Sensitivity</span>
+              <a href={`${base}players/${highestSensPlayer.id}/`}>{highestSensPlayer.data.name}</a>
+              <span class="fact-detail">{formatCm360(calculateCm360(highestSensPlayer.data))} cm/360</span>
             </div>
           </div>
-          <div class="fact-item">
-            <span class="fact-icon">📊</span>
-            <div class="fact-content">
-              <strong>Total Players</strong>
-              <p>{players.length} players in the database</p>
+          <div class="fact-card">
+            <span class="fact-emoji">🔭</span>
+            <div class="fact-info">
+              <span class="fact-title">Highest FOV</span>
+              <a href={`${base}players/${highestFovPlayer.id}/`}>{highestFovPlayer.data.name}</a>
+              <span class="fact-detail">{highestFovPlayer.data.fov}&deg;</span>
+            </div>
+          </div>
+          <div class="fact-card">
+            <span class="fact-emoji">🔍</span>
+            <div class="fact-info">
+              <span class="fact-title">Lowest FOV</span>
+              <a href={`${base}players/${lowestFovPlayer.id}/`}>{lowestFovPlayer.data.name}</a>
+              <span class="fact-detail">{lowestFovPlayer.data.fov}&deg;</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 
   <footer class="stats-footer">
-    <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> • CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
+    <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> · CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a> · CSQL ratings via <a href="https://qllr.xyz" target="_blank" rel="noopener">QLLR</a></p>
   </footer>
 </BaseLayout>
 
 <style>
-  .stats-container {
+  /* ========================================
+     BASE & LAYOUT
+     ======================================== */
+
+  .stats-page {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .section-header {
-    font-size: 0.9rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 1rem 0 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    gap: 1.25rem;
   }
 
   .two-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .three-col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   @media (max-width: 900px) {
@@ -902,398 +894,301 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 640px) {
     .two-col,
     .three-col {
       grid-template-columns: 1fr;
     }
   }
 
-  .stat-card {
-    background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color, #2a2a35);
+  /* ========================================
+     SUMMARY CARDS
+     ======================================== */
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
   }
 
-  .stat-card.wide {
+  @media (max-width: 900px) {
+    .summary-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .summary-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .summary-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .summary-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    line-height: 1.2;
+  }
+
+  .summary-value-sm {
+    font-size: 1rem;
+  }
+
+  .summary-label {
+    font-size: 0.8rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ========================================
+     SECTION HEADERS
+     ======================================== */
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #30363d;
+    margin-top: 1rem;
+  }
+
+  .section-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .section-icon.hardware { background: rgba(35, 134, 54, 0.2); }
+  .section-icon.sensitivity { background: rgba(31, 111, 235, 0.2); }
+  .section-icon.settings { background: rgba(137, 87, 229, 0.2); }
+  .section-icon.controls { background: rgba(218, 54, 51, 0.2); }
+  .section-icon.players-section { background: rgba(210, 153, 34, 0.2); }
+
+  .section-header h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  .section-header.hardware h2 { color: #238636; }
+  .section-header.sensitivity h2 { color: #1f6feb; }
+  .section-header.settings h2 { color: #8957e5; }
+  .section-header.controls h2 { color: #da3633; }
+  .section-header.players-section h2 { color: #d29922; }
+
+  /* ========================================
+     CARDS
+     ======================================== */
+
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .card.wide {
     width: 100%;
   }
 
-  .stat-card.highlight {
-    border-color: var(--accent-primary, #ff6b35);
-    background: linear-gradient(135deg, var(--bg-card, #1a1a24) 0%, rgba(255, 107, 53, 0.05) 100%);
+  .card h3 {
+    font-size: 0.9rem;
+    color: #c9d1d9;
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
   }
 
-  .stat-card h2 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: var(--accent-primary, #ff6b35);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .card-subtitle {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-    margin-top: -0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .big-stat {
-    text-align: center;
-    padding: 1rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .stat-label {
-    display: block;
+  .card-note {
     font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
+    color: #8b949e;
+    margin: -0.5rem 0 0.75rem 0;
   }
 
-  .stat-details {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-  }
+  /* ========================================
+     BAR CHARTS
+     ======================================== */
 
-  .stat-details div {
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-note {
-    font-size: 0.75rem;
-    color: var(--text-secondary, #666);
-    margin-top: 0.75rem;
-    font-style: italic;
-  }
-
-  .sensitivity-info {
-    margin-top: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    font-size: 0.85rem;
-    color: var(--text-secondary, #a0a0b0);
-  }
-
-  .sensitivity-info p {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .disclaimer-note {
-    margin-top: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .disclaimer-note em {
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .distribution {
+  .bar-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 6px;
   }
 
-  .dist-bar {
-    position: relative;
-    height: 2rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .dist-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.3s ease;
-  }
-
-  .dist-fill.low { background: #3498db; }
-  .dist-fill.mid { background: #2ecc71; }
-  .dist-fill.high { background: #e74c3c; }
-
-  .dist-bar span {
-    position: absolute;
-    left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    color: white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    z-index: 1;
-  }
-
-  .popularity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .popularity-list.compact {
-    gap: 0.35rem;
-  }
-
-  .popularity-item {
+  .bar-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    gap: 8px;
   }
 
-  .popularity-item:last-child {
-    border-bottom: none;
-  }
-
-  .rank {
-    font-weight: 700;
-    color: var(--accent-primary, #ff6b35);
-    min-width: 2rem;
-  }
-
-  .name {
-    flex: 1;
-    font-size: 0.9rem;
-  }
-
-  .count {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
+  .bar-label {
+    width: 100px;
     text-align: right;
+    font-size: 0.8rem;
+    color: #8b949e;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .bar-wrapper {
+  .bar-label.mono {
+    font-family: monospace;
+    letter-spacing: 0.03em;
+    color: #c9d1d9;
+  }
+
+  .bar-track {
     flex: 1;
-    height: 6px;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 3px;
+    background: #21262d;
+    height: 20px;
+    border-radius: 4px;
     overflow: hidden;
-    margin: 0 0.5rem;
+    position: relative;
   }
 
   .bar-fill {
     height: 100%;
-    background: var(--accent-secondary, #4ecdc4);
-    border-radius: 3px;
-  }
-
-  .bar-fill.accent {
-    background: var(--accent-primary, #ff6b35);
-  }
-
-  .subsection-title {
-    font-size: 0.85rem;
-    margin-top: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  .trend-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .trend-item {
-    text-align: center;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .trend-value {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .trend-label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 1rem;
-  }
-
-  .category-item {
-    text-align: center;
-    padding: 1rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .category-count {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .category-label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  .facts-list {
+    border-radius: 4px;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .fact-item {
-    display: flex;
-    gap: 1rem;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .fact-icon {
-    font-size: 1.5rem;
-  }
-
-  .fact-content strong {
-    display: block;
-    color: var(--text-primary, #fff);
-    margin-bottom: 0.25rem;
-  }
-
-  .fact-content p {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-    margin: 0;
-  }
-
-  .fact-content a {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: none;
-  }
-
-  .fact-content a:hover {
-    text-decoration: underline;
-  }
-
-  .recent-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .recent-item {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
+    padding: 0 6px;
+    min-width: fit-content;
+    position: relative;
   }
 
-  .recent-item:last-child {
-    border-bottom: none;
+  .bar-fill.hardware { background: #238636; }
+  .bar-fill.sensitivity { background: #1f6feb; }
+  .bar-fill.settings { background: #8957e5; }
+  .bar-fill.controls { background: #da3633; }
+  .bar-fill.players-section { background: #d29922; }
+
+  .bar-fill-accel {
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    position: absolute;
+    top: 0;
+    background: rgba(31, 111, 235, 0.4);
+    min-width: fit-content;
   }
 
-  .recent-item a {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: none;
+  .bar-fill-color {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    min-width: fit-content;
   }
 
-  .recent-item a:hover {
-    text-decoration: underline;
+  .bar-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    white-space: nowrap;
   }
 
-  .recent-item .date {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-  }
-
-  .more-items {
-    margin-top: 0.75rem;
-  }
-
-  .more-items summary {
-    cursor: pointer;
-    color: var(--accent-secondary, #4ecdc4);
-    font-size: 0.85rem;
-  }
-
-  .more-items summary:hover {
-    text-decoration: underline;
-  }
-
-  .more-items .popularity-list {
-    margin-top: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .stat-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .trend-stats {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .stats-footer {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color, #2a2a35);
-    text-align: center;
-  }
-
-  .stats-footer p {
+  .bar-pct {
+    width: 40px;
+    text-align: right;
     font-size: 0.75rem;
-    color: var(--text-secondary, #666);
+    color: #8b949e;
+    flex-shrink: 0;
   }
 
-  .stats-footer a {
-    color: var(--text-secondary, #888);
-    text-decoration: none;
+  .inline-bars .bar-label {
+    width: 80px;
   }
 
-  .stats-footer a:hover {
-    color: var(--accent-secondary, #4ecdc4);
-    text-decoration: underline;
+  .accel-legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #8b949e;
   }
 
-  /* Heatmap Styles */
+  .accel-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  .sensitivity-dot { background: #1f6feb; }
+  .accel-dot { background: rgba(31, 111, 235, 0.4); }
+
+  .sens-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #30363d;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+    flex-wrap: wrap;
+  }
+
+  .sens-stats strong {
+    color: #8b949e;
+  }
+
+  /* ========================================
+     MINI CHARTS (GPU/CPU)
+     ======================================== */
+
+  .mini-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mini-chart h4 {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .chip-count {
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: #484f58;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ========================================
+     HEATMAPS
+     ======================================== */
+
   .heatmap-container {
     display: flex;
     align-items: center;
@@ -1304,9 +1199,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
+    font-size: 0.7rem;
+    color: #8b949e;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .heatmap-wrapper {
@@ -1314,366 +1210,236 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     overflow-x: auto;
   }
 
+  .heatmap-wrapper.compact {
+    overflow-x: visible;
+  }
+
   .heatmap-grid {
     display: grid;
     gap: 2px;
-    min-width: 500px;
+    min-width: fit-content;
   }
 
-  .heatmap-cell {
+  .hm-cell {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
-    min-height: 2rem;
-    padding: 0.25rem;
+    font-weight: 500;
+    min-height: 28px;
   }
 
-  .heatmap-cell.header {
-    color: var(--text-secondary, #888);
-    font-weight: 600;
+  .hm-header {
+    color: #8b949e;
     font-size: 0.7rem;
+    font-weight: 600;
   }
 
-  .heatmap-cell.row-label {
-    color: var(--text-secondary, #888);
-    font-weight: 600;
+  .hm-row-label {
+    color: #8b949e;
     font-size: 0.7rem;
+    font-weight: 600;
     justify-content: flex-end;
-    padding-right: 0.5rem;
+    padding-right: 8px;
   }
 
-  .heatmap-cell.data {
-    background: var(--bg-secondary, #12121a);
+  .hm-data {
     border-radius: 3px;
-    color: var(--text-primary, #fff);
-    font-weight: 600;
+    color: #f0f6fc;
     cursor: default;
     transition: transform 0.1s;
   }
 
-  .heatmap-cell.data:hover {
-    transform: scale(1.1);
+  .hm-data:hover {
+    transform: scale(1.08);
     z-index: 1;
   }
 
   .heatmap-x-label {
     text-align: center;
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
+    font-size: 0.7rem;
+    color: #8b949e;
     text-transform: uppercase;
-    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
   }
 
   .heatmap-legend {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: 4px;
   }
 
-  .legend-gradient {
-    width: 1rem;
-    height: 6rem;
-    background: linear-gradient(to bottom, rgba(78, 205, 196, 1), rgba(78, 205, 196, 0.2));
-    border-radius: 3px;
+  .legend-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
-  .legend-label {
+  .legend-cell {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+  }
+
+  .legend-lbl {
+    font-size: 0.6rem;
+    color: #8b949e;
+  }
+
+  .heatmap-axes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  .axis-label {
     font-size: 0.65rem;
-    color: var(--text-secondary, #888);
+    color: #484f58;
   }
 
-  /* Binds Styles */
-  .binds-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bind-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.35rem 0;
-  }
-
-  .bind-keys {
-    min-width: 100px;
-    font-family: monospace;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-secondary, #4ecdc4);
-    letter-spacing: 0.05em;
-  }
-
-  /* Crosshair Styles */
-  .crosshair-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-  }
-
-  .crosshair-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
-  }
-
-  .crosshair-preview {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1a1a24;
-    border-radius: 4px;
-    border: 1px solid var(--border-color, #2a2a35);
-  }
-
-  .ch {
-    position: relative;
-  }
-
-  /* Cross (+) */
-  .ch-cross::before,
-  .ch-cross::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-cross::before {
-    width: 2px;
-    height: 16px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-cross::after {
-    width: 16px;
-    height: 2px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Thick Cross */
-  .ch-cross-thick::before,
-  .ch-cross-thick::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-cross-thick::before {
-    width: 4px;
-    height: 20px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-cross-thick::after {
-    width: 20px;
-    height: 4px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Cross with Gap */
-  .ch-cross-gap {
-    width: 24px;
-    height: 24px;
-  }
-  .ch-cross-gap::before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 8px;
-    background: #4ecdc4;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    box-shadow: 0 16px 0 #4ecdc4;
-  }
-  .ch-cross-gap::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 2px;
-    background: #4ecdc4;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    box-shadow: 16px 0 0 #4ecdc4;
-  }
-
-  /* Dot */
-  .ch-dot {
-    width: 4px;
-    height: 4px;
-    background: #4ecdc4;
-    border-radius: 50%;
-  }
-
-  .ch-dot-large {
-    width: 8px;
-    height: 8px;
-    background: #4ecdc4;
-    border-radius: 50%;
-  }
-
-  /* Circle */
-  .ch-circle {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
-  }
-
-  /* Circle with Dot */
-  .ch-circle-dot {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
-    position: relative;
-  }
-  .ch-circle-dot::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #4ecdc4;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Circle Crosshair */
-  .ch-circle-crosshair {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #4ecdc4;
-    border-radius: 50%;
-    position: relative;
-  }
-  .ch-circle-crosshair::before,
-  .ch-circle-crosshair::after {
-    content: '';
-    position: absolute;
-    background: #4ecdc4;
-  }
-  .ch-circle-crosshair::before {
-    width: 2px;
-    height: 8px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .ch-circle-crosshair::after {
-    width: 8px;
-    height: 2px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* X Mark */
-  .ch-x {
-    width: 16px;
-    height: 16px;
-    position: relative;
-  }
-  .ch-x::before,
-  .ch-x::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: #4ecdc4;
-    left: 50%;
-    top: 50%;
-  }
-  .ch-x::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  .ch-x::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-
-  /* Triangle */
-  .ch-triangle {
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 14px solid #4ecdc4;
-  }
-
-  /* Chevron */
-  .ch-chevron {
-    width: 16px;
-    height: 16px;
-    position: relative;
-  }
-  .ch-chevron::before,
-  .ch-chevron::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 12px;
-    background: #4ecdc4;
-    bottom: 0;
-  }
-  .ch-chevron::before {
-    left: 2px;
-    transform: rotate(-30deg);
-  }
-  .ch-chevron::after {
-    right: 2px;
-    transform: rotate(30deg);
-  }
-
-  /* Unknown */
-  .ch-unknown {
-    color: var(--text-secondary, #888);
-    font-size: 1.25rem;
-  }
-
-  .crosshair-info {
-    text-align: center;
-  }
-
-  .crosshair-type {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-primary, #fff);
-  }
-
-  .crosshair-count {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-secondary, #888);
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .heatmap-container {
       flex-direction: column;
     }
-
     .heatmap-y-label {
       writing-mode: horizontal-tb;
       transform: none;
     }
+  }
 
-    .crosshair-grid {
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  /* ========================================
+     RECENTLY UPDATED
+     ======================================== */
+
+  .recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recent-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #21262d;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .recent-item:hover {
+    background: #30363d;
+  }
+
+  .recent-rank {
+    font-size: 0.75rem;
+    color: #484f58;
+    font-weight: 600;
+    min-width: 20px;
+  }
+
+  .recent-name {
+    flex: 1;
+    color: #c9d1d9;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .recent-date {
+    font-size: 0.75rem;
+    color: #484f58;
+  }
+
+  /* ========================================
+     INTERESTING FACTS
+     ======================================== */
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .facts-grid {
+      grid-template-columns: 1fr;
     }
+  }
+
+  .fact-card {
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #21262d;
+    border-radius: 6px;
+  }
+
+  .fact-emoji {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .fact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .fact-title {
+    font-size: 0.7rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .fact-info a {
+    color: #c9d1d9;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fact-info a:hover {
+    color: #f0f6fc;
+    text-decoration: underline;
+  }
+
+  .fact-detail {
+    font-size: 0.75rem;
+    color: #484f58;
+  }
+
+  /* ========================================
+     FOOTER
+     ======================================== */
+
+  .stats-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #30363d;
+    text-align: center;
+  }
+
+  .stats-footer p {
+    font-size: 0.75rem;
+    color: #484f58;
+  }
+
+  .stats-footer a {
+    color: #8b949e;
+    text-decoration: none;
+  }
+
+  .stats-footer a:hover {
+    color: #c9d1d9;
+    text-decoration: underline;
   }
 </style>

@@ -176,6 +176,8 @@ const playersCollection = defineCollection({
     fov: z.number(),
     crosshair: z.string().optional().default('2'),
     crosshairSize: z.string().optional(),
+    crosshairColor: z.string().optional(),
+    enemyModel: z.string().optional(),
     invertedMouse: z.boolean().optional().default(false),
 
     // Key Bindings
@@ -196,6 +198,7 @@ const playersCollection = defineCollection({
     keyboard: z.string().optional(),
     monitor: z.string().optional(),
     headset: z.string().optional(),
+    skates: z.string().optional(),
 
     // System Hardware
     gpuBrand: z.string().optional(), // NVIDIA, AMD, INTEL
