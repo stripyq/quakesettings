@@ -241,6 +241,24 @@ const topCpuBrands = [...cpuBrands.entries()]
 const totalCpuPlayers = [...cpuBrands.values()].reduce((a, b) => a + b, 0);
 const maxCpuCount = topCpuBrands.length > 0 ? topCpuBrands[0][1] : 1;
 
+// Donut chart helpers
+const donutColors = ['#238636', '#2ea043', '#3fb950', '#56d364'];
+
+function buildConicGradient(entries: [string, number][], total: number): string {
+  let angle = 0;
+  const stops: string[] = [];
+  entries.forEach(([, count], i) => {
+    const color = donutColors[i % donutColors.length];
+    const nextAngle = angle + (count / total) * 360;
+    stops.push(`${color} ${angle.toFixed(1)}deg ${nextAngle.toFixed(1)}deg`);
+    angle = nextAngle;
+  });
+  return `conic-gradient(${stops.join(', ')})`;
+}
+
+const gpuGradient = buildConicGradient(topGpuBrands, totalGpuPlayers);
+const cpuGradient = buildConicGradient(topCpuBrands, totalCpuPlayers);
+
 // Monitor brand distribution
 const monitorBrands = new Map<string, number>();
 players.forEach(p => {
@@ -340,11 +358,13 @@ players.forEach(p => {
 
 const heatmapMax = Math.max(...monitorHeatmap.values(), 1);
 
+const greenHeatColors = ['#21262d', '#0d3321', '#144620', '#1a5a28', '#238636', '#2ea043', '#3fb950'];
+
 function getMonitorHeatColor(count: number, max: number): string {
-  if (count === 0) return neutralHeatColors[0];
+  if (count === 0) return greenHeatColors[0];
   const ratio = count / max;
-  const index = Math.min(Math.floor(ratio * 5) + 1, 5);
-  return neutralHeatColors[index];
+  const index = Math.min(Math.floor(ratio * 6) + 1, 6);
+  return greenHeatColors[index];
 }
 
 // ===========================================
@@ -646,35 +666,33 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <div class="s-card">
         <h2 class="s-card-title">Grip Style</h2>
         <p class="s-card-sub">{totalGripPlayers} players with data</p>
-        <div class="s-bar-list">
-          {gripDistribution.map(([style, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{style}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxGripCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
+        <div class="s-vbar-chart">
+          {gripDistribution.map(([style, count]) => {
+            const pct = Math.round((count / totalGripPlayers) * 100);
+            return (
+              <div class="s-vbar-item">
+                <span class="s-vbar-pct">{pct}%</span>
+                <div class="s-vbar" style={`height: ${(count / maxGripCount) * 100}px; background: #238636`}></div>
+                <span class="s-vbar-label">{style}</span>
               </div>
-              <span class="s-bar-pct">{Math.round((count / totalGripPlayers) * 100)}%</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
       <div class="s-card">
         <h2 class="s-card-title">Mouse Shape</h2>
-        <div class="s-bar-list">
-          {topMouseShapes.map(([shape, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{shape}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxShapeCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
+        <div class="s-vbar-chart">
+          {topMouseShapes.map(([shape, count]) => {
+            const pct = Math.round((count / players.length) * 100);
+            return (
+              <div class="s-vbar-item">
+                <span class="s-vbar-pct">{pct}%</span>
+                <div class="s-vbar" style={`height: ${(count / maxShapeCount) * 100}px; background: #238636`}></div>
+                <span class="s-vbar-label">{shape}</span>
               </div>
-              <span class="s-bar-pct">{Math.round((count / players.length) * 100)}%</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
@@ -729,7 +747,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="s-heatmap-legend">
           <span class="s-heatmap-legend-label">0</span>
           <div class="s-heatmap-legend-bar">
-            {neutralHeatColors.map(c => (
+            {greenHeatColors.map(c => (
               <div class="s-heatmap-legend-swatch" style={`background: ${c}`}></div>
             ))}
           </div>
@@ -778,33 +796,35 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
       <div class="s-card">
         <h2 class="s-card-title">GPU / CPU Brand</h2>
-        <h3 class="s-subsection-title">GPU ({totalGpuPlayers} players)</h3>
-        <div class="s-bar-list s-bar-list-compact">
-          {topGpuBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{brand}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxGpuCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
-              </div>
-              <span class="s-bar-pct">{Math.round((count / totalGpuPlayers) * 100)}%</span>
+        <div class="s-donut-row">
+          <div class="s-donut-group">
+            <h3 class="s-subsection-title">GPU ({totalGpuPlayers})</h3>
+            <div class="s-donut" style={`background: ${gpuGradient}`}>
+              <div class="s-donut-hole"></div>
             </div>
-          ))}
-        </div>
-        <h3 class="s-subsection-title">CPU ({totalCpuPlayers} players)</h3>
-        <div class="s-bar-list s-bar-list-compact">
-          {topCpuBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{brand}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxCpuCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
+            <div class="s-donut-legend">
+              {topGpuBrands.map(([brand, count], i) => (
+                <div class="s-donut-legend-item">
+                  <span class="s-donut-swatch" style={`background: ${donutColors[i % donutColors.length]}`}></span>
+                  <span>{brand} {Math.round((count / totalGpuPlayers) * 100)}%</span>
                 </div>
-              </div>
-              <span class="s-bar-pct">{Math.round((count / totalCpuPlayers) * 100)}%</span>
+              ))}
             </div>
-          ))}
+          </div>
+          <div class="s-donut-group">
+            <h3 class="s-subsection-title">CPU ({totalCpuPlayers})</h3>
+            <div class="s-donut" style={`background: ${cpuGradient}`}>
+              <div class="s-donut-hole"></div>
+            </div>
+            <div class="s-donut-legend">
+              {topCpuBrands.map(([brand, count], i) => (
+                <div class="s-donut-legend-item">
+                  <span class="s-donut-swatch" style={`background: ${donutColors[i % donutColors.length]}`}></span>
+                  <span>{brand} {Math.round((count / totalCpuPlayers) * 100)}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1315,6 +1335,96 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: #8b949e;
   }
 
+  /* --- Vertical Bar Charts --- */
+  .s-vbar-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    height: 140px;
+    padding-top: 20px;
+  }
+
+  .s-vbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .s-vbar-pct {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #f0f6fc;
+  }
+
+  .s-vbar {
+    width: 40px;
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+  }
+
+  .s-vbar-label {
+    font-size: 0.7rem;
+    color: #8b949e;
+    text-align: center;
+    max-width: 60px;
+    word-wrap: break-word;
+  }
+
+  /* --- Donut Charts --- */
+  .s-donut-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+  }
+
+  .s-donut-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .s-donut {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .s-donut-hole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    background: #161b22;
+    border-radius: 50%;
+  }
+
+  .s-donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .s-donut-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: #8b949e;
+  }
+
+  .s-donut-swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
   /* --- cm/360 Distribution --- */
   .s-cm360-legend {
     display: flex;
@@ -1781,6 +1891,25 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .s-cm360-summary {
       flex-direction: column;
       gap: 0.25rem;
+    }
+
+    .s-donut {
+      width: 60px;
+      height: 60px;
+    }
+
+    .s-donut-hole {
+      width: 34px;
+      height: 34px;
+    }
+
+    .s-vbar-chart {
+      gap: 12px;
+      height: 120px;
+    }
+
+    .s-vbar {
+      width: 32px;
     }
   }
 
