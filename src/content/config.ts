@@ -173,17 +173,20 @@ const playersCollection = defineCollection({
     edpi: z.number(),
     cm360: z.number().nullable().optional(),
     m_cpi: z.number().nullable().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
-    m_yaw: z.number().nullable().optional(), // Horizontal sensitivity multiplier (default 0.022)
+    m_yaw: z.number().optional().default(0.022), // Horizontal sensitivity multiplier (default 0.022)
     m_pitch: z.number().nullable().optional(), // Vertical sensitivity multiplier (negative = inverted)
     acceleration: z.boolean().optional().default(false),
     accelValue: z.number().nullable().optional(),
     rawInput: z.boolean().optional().default(true),
+    windowsSensitivity: z.number().nullable().optional(),
     grip: z.string().optional(), // Grip style: Palm, Claw, Fingertip, Hybrid
 
     // Game Settings
     fov: z.number(),
     crosshair: z.string().optional().default('2'),
+    crosshairColor: z.string().optional(),
     crosshairSize: z.string().optional(),
+    enemyModel: z.string().optional(),
     invertedMouse: z.boolean().optional().default(false),
 
     // Key Bindings
@@ -197,6 +200,9 @@ const playersCollection = defineCollection({
     zoom: z.string().optional().default('Mouse2'),
     weaponNext: z.string().optional(),
     weaponPrev: z.string().optional(),
+
+    // Peripherals
+    skates: z.string().optional(), // Mouse skates: Stock, Aftermarket
 
     // Hardware References (filenames without extension)
     mouse: z.string().optional(),
