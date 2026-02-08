@@ -300,8 +300,20 @@ function parseRefreshRate(rate: string): number | null {
   return match ? parseInt(match[1]) : null;
 }
 
-const sizeBins = [18, 21, 23, 24, 25, 27, 28, 32, 34];
-const refreshBins = [60, 120, 144, 165, 180, 240, 280, 360, 500];
+// Consolidated size groups: ≤24" → "24\"", 25" → "25\"", 27-28" → "27\"", ≥32" → "32\"+"
+const sizeGroups = [
+  { label: '24"', match: (s: number) => s <= 24 },
+  { label: '25"', match: (s: number) => s === 25 },
+  { label: '27"', match: (s: number) => s >= 27 && s <= 28 },
+  { label: '32"+', match: (s: number) => s >= 32 },
+];
+// Consolidated refresh groups: ≤144 → "144Hz", 165-240 → "240Hz", 280-360 → "360Hz", ≥500 → "500Hz+"
+const refreshGroups = [
+  { label: '144Hz', match: (r: number) => r <= 144 },
+  { label: '240Hz', match: (r: number) => r >= 165 && r <= 240 },
+  { label: '360Hz', match: (r: number) => r >= 280 && r <= 360 },
+  { label: '500Hz+', match: (r: number) => r >= 500 },
+];
 
 const monitorHeatmap: Map<string, number> = new Map();
 players.forEach(p => {
@@ -311,14 +323,12 @@ players.forEach(p => {
       const size = parseMonitorSize(monitorData.size || '');
       const refresh = parseRefreshRate(monitorData.refreshRate || '');
       if (size !== null && refresh !== null) {
-        const sizeBin = sizeBins.reduce((prev, curr) =>
-          Math.abs(curr - size) < Math.abs(prev - size) ? curr : prev
-        );
-        const refreshBin = refreshBins.reduce((prev, curr) =>
-          Math.abs(curr - refresh) < Math.abs(prev - refresh) ? curr : prev
-        );
-        const key = `${sizeBin}-${refreshBin}`;
-        monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
+        const sizeGroup = sizeGroups.find(g => g.match(size));
+        const refreshGroup = refreshGroups.find(g => g.match(refresh));
+        if (sizeGroup && refreshGroup) {
+          const key = `${sizeGroup.label}-${refreshGroup.label}`;
+          monitorHeatmap.set(key, (monitorHeatmap.get(key) || 0) + 1);
+        }
       }
     }
   }
@@ -766,21 +776,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="s-card s-card-wide">
       <h2 class="s-card-title">Monitor Size vs Refresh Rate</h2>
       <div class="s-heatmap-scroll">
-        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshBins.length}, 70px)`}>
+        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshGroups.length}, 80px)`}>
           <div class="s-heatmap-cell s-hm-corner"></div>
-          {refreshBins.map(rate => (
-            <div class="s-heatmap-cell s-hm-header">{rate}Hz</div>
+          {refreshGroups.map(rg => (
+            <div class="s-heatmap-cell s-hm-header">{rg.label}</div>
           ))}
-          {[...sizeBins].reverse().map(size => (
+          {[...sizeGroups].reverse().map(sg => (
             <>
-              <div class="s-heatmap-cell s-hm-rowlabel">{size}"</div>
-              {refreshBins.map(rate => {
-                const count = monitorHeatmap.get(`${size}-${rate}`) || 0;
+              <div class="s-heatmap-cell s-hm-rowlabel">{sg.label}</div>
+              {refreshGroups.map(rg => {
+                const count = monitorHeatmap.get(`${sg.label}-${rg.label}`) || 0;
                 return (
                   <div
                     class="s-heatmap-cell s-hm-data"
                     style={`background-color: ${getMonitorHeatColor(count, heatmapMax)}`}
-                    title={`${size}" @ ${rate}Hz: ${count} players`}
+                    title={`${sg.label} @ ${rg.label}: ${count} players`}
                   >
                     {count > 0 ? count : ''}
                   </div>
