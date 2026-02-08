@@ -586,8 +586,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <span class="s-section-title" style="color: #238636">HARDWARE</span>
     </div>
 
+    <!-- Row 1: Mouse Brands + Top Mice -->
     <div class="s-two-col">
-      <!-- Top Mouse Brands -->
       <div class="s-card">
         <h2 class="s-card-title">Top Mouse Brands</h2>
         <div class="s-bar-list">
@@ -605,7 +605,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </div>
 
-      <!-- Top Mice -->
       <div class="s-card">
         <h2 class="s-card-title">Top Mice</h2>
         <div class="s-bar-list">
@@ -624,8 +623,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
     </div>
 
-    <div class="s-two-col">
-      <!-- Top Mousepads -->
+    <!-- Row 2: Mousepads + Grip Style + Mouse Shape -->
+    <div class="s-three-col">
       <div class="s-card">
         <h2 class="s-card-title">Top Mousepads</h2>
         <p class="s-card-sub">Grouped by model (all sizes)</p>
@@ -644,7 +643,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </div>
 
-      <!-- Grip Style -->
       <div class="s-card">
         <h2 class="s-card-title">Grip Style</h2>
         <p class="s-card-sub">{totalGripPlayers} players with data</p>
@@ -662,10 +660,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           ))}
         </div>
       </div>
-    </div>
 
-    <div class="s-two-col">
-      <!-- Mouse Shape -->
       <div class="s-card">
         <h2 class="s-card-title">Mouse Shape</h2>
         <div class="s-bar-list">
@@ -682,8 +677,105 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           ))}
         </div>
       </div>
+    </div>
 
-      <!-- GPU / CPU Brand -->
+    <!-- Row 3: Monitor Brands (40%) + Heatmap (60%) -->
+    <div class="s-hw-row3">
+      <div class="s-card">
+        <h2 class="s-card-title">Top Monitor Brands</h2>
+        <p class="s-card-sub">{totalMonitorBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topMonitorBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxMonitorBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalMonitorBrandPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="s-card">
+        <h2 class="s-card-title">Monitor Size vs Refresh Rate</h2>
+        <div class="s-heatmap-scroll">
+          <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshGroups.length}, 65px)`}>
+            <div class="s-heatmap-cell s-hm-corner"></div>
+            {refreshGroups.map(rg => (
+              <div class="s-heatmap-cell s-hm-header">{rg.label}Hz</div>
+            ))}
+            {[...sizeGroups].reverse().map(sg => (
+              <>
+                <div class="s-heatmap-cell s-hm-rowlabel">{sg.label}</div>
+                {refreshGroups.map(rg => {
+                  const count = monitorHeatmap.get(`${sg.label}-${rg.label}`) || 0;
+                  return (
+                    <div
+                      class="s-heatmap-cell s-hm-data"
+                      style={`background-color: ${getMonitorHeatColor(count, heatmapMax)}`}
+                      title={`${sg.label} @ ${rg.label}Hz: ${count} players`}
+                    >
+                      {count > 0 ? count : ''}
+                    </div>
+                  );
+                })}
+              </>
+            ))}
+          </div>
+        </div>
+        <div class="s-heatmap-legend">
+          <span class="s-heatmap-legend-label">0</span>
+          <div class="s-heatmap-legend-bar">
+            {neutralHeatColors.map(c => (
+              <div class="s-heatmap-legend-swatch" style={`background: ${c}`}></div>
+            ))}
+          </div>
+          <span class="s-heatmap-legend-label">Max</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: Keyboard Brands + Headset Brands + GPU/CPU -->
+    <div class="s-three-col">
+      <div class="s-card">
+        <h2 class="s-card-title">Top Keyboard Brands</h2>
+        <p class="s-card-sub">{totalKeyboardBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topKeyboardBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxKeyboardBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalKeyboardBrandPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="s-card">
+        <h2 class="s-card-title">Top Headset Brands</h2>
+        <p class="s-card-sub">{totalHeadsetBrandPlayers} players with data</p>
+        <div class="s-bar-list">
+          {topHeadsetBrands.map(([brand, count]) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label">{brand}</span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(count / maxHeadsetBrandCount) * 100}%; background: #238636`}>
+                  <span class="s-bar-count">{count}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct">{Math.round((count / totalHeadsetBrandPlayers) * 100)}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div class="s-card">
         <h2 class="s-card-title">GPU / CPU Brand</h2>
         <h3 class="s-subsection-title">GPU ({totalGpuPlayers} players)</h3>
@@ -714,104 +806,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
             </div>
           ))}
         </div>
-      </div>
-    </div>
-
-    <div class="s-three-col">
-      <!-- Top Monitor Brands -->
-      <div class="s-card">
-        <h2 class="s-card-title">Top Monitor Brands</h2>
-        <p class="s-card-sub">{totalMonitorBrandPlayers} players with data</p>
-        <div class="s-bar-list">
-          {topMonitorBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{brand}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxMonitorBrandCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
-              </div>
-              <span class="s-bar-pct">{Math.round((count / totalMonitorBrandPlayers) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Top Keyboard Brands -->
-      <div class="s-card">
-        <h2 class="s-card-title">Top Keyboard Brands</h2>
-        <p class="s-card-sub">{totalKeyboardBrandPlayers} players with data</p>
-        <div class="s-bar-list">
-          {topKeyboardBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{brand}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxKeyboardBrandCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
-              </div>
-              <span class="s-bar-pct">{Math.round((count / totalKeyboardBrandPlayers) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Top Headset Brands -->
-      <div class="s-card">
-        <h2 class="s-card-title">Top Headset Brands</h2>
-        <p class="s-card-sub">{totalHeadsetBrandPlayers} players with data</p>
-        <div class="s-bar-list">
-          {topHeadsetBrands.map(([brand, count]) => (
-            <div class="s-bar-row">
-              <span class="s-bar-label">{brand}</span>
-              <div class="s-bar-container">
-                <div class="s-bar" style={`width: ${(count / maxHeadsetBrandCount) * 100}%; background: #238636`}>
-                  <span class="s-bar-count">{count}</span>
-                </div>
-              </div>
-              <span class="s-bar-pct">{Math.round((count / totalHeadsetBrandPlayers) * 100)}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Monitor Size vs Refresh Rate Heatmap (full width) -->
-    <div class="s-card s-card-wide">
-      <h2 class="s-card-title">Monitor Size vs Refresh Rate</h2>
-      <div class="s-heatmap-scroll">
-        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshGroups.length}, 65px)`}>
-          <div class="s-heatmap-cell s-hm-corner"></div>
-          {refreshGroups.map(rg => (
-            <div class="s-heatmap-cell s-hm-header">{rg.label}Hz</div>
-          ))}
-          {[...sizeGroups].reverse().map(sg => (
-            <>
-              <div class="s-heatmap-cell s-hm-rowlabel">{sg.label}</div>
-              {refreshGroups.map(rg => {
-                const count = monitorHeatmap.get(`${sg.label}-${rg.label}`) || 0;
-                return (
-                  <div
-                    class="s-heatmap-cell s-hm-data"
-                    style={`background-color: ${getMonitorHeatColor(count, heatmapMax)}`}
-                    title={`${sg.label} @ ${rg.label}: ${count} players`}
-                  >
-                    {count > 0 ? count : ''}
-                  </div>
-                );
-              })}
-            </>
-          ))}
-        </div>
-      </div>
-      <div class="s-heatmap-legend">
-        <span class="s-heatmap-legend-label">0</span>
-        <div class="s-heatmap-legend-bar">
-          {neutralHeatColors.map(c => (
-            <div class="s-heatmap-legend-swatch" style={`background: ${c}`}></div>
-          ))}
-        </div>
-        <span class="s-heatmap-legend-label">Max</span>
       </div>
     </div>
 
@@ -1199,6 +1193,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     gap: 16px;
   }
 
+  .s-hw-row3 {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 24px;
+  }
+
   /* --- Cards --- */
   .s-card {
     background: #161b22;
@@ -1434,8 +1434,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   /* --- Heatmaps (shared) --- */
   .s-heatmap-scroll {
     overflow-x: auto;
-    display: flex;
-    justify-content: center;
   }
 
   .s-heatmap-grid {
@@ -1713,6 +1711,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .s-four-col {
       grid-template-columns: 1fr 1fr;
     }
+
+    .s-hw-row3 {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Mobile */
@@ -1730,6 +1732,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     }
 
     .s-four-col {
+      grid-template-columns: 1fr;
+    }
+
+    .s-hw-row3 {
       grid-template-columns: 1fr;
     }
 
