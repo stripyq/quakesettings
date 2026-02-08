@@ -196,7 +196,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
         html += compareRow('DPI', p1.dpi, p2.dpi, true);
         html += compareRow('m_yaw', formatValue(p1.m_yaw), formatValue(p2.m_yaw));
-        html += compareRow('m_pitch', formatValue(p1.m_pitch), formatValue(p2.m_pitch));
 
         // Section: Mouse Hardware
         html += sectionHeader('Mouse Hardware');
@@ -254,8 +253,9 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       function compareRow(label, val1, val2, isNumeric = false) {
         const v1 = val1 !== undefined && val1 !== null ? String(val1) : '';
         const v2 = val2 !== undefined && val2 !== null ? String(val2) : '';
+        const isSame = v1 !== '' && v2 !== '' && v1 === v2;
         const isDiff = v1 !== '' && v2 !== '' && v1 !== v2;
-        const diffClass = isDiff ? 'diff-highlight' : '';
+        const highlightClass = isSame ? 'same-highlight' : '';
         const numClass = isNumeric ? 'numeric' : '';
 
         // Only show arrow on Player 2 column (right side)
@@ -272,21 +272,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${diffClass} ${numClass}">${v1}</td>
-          <td class="value-cell ${diffClass} ${numClass}">${v2}${diffIndicator2}</td>
+          <td class="value-cell ${highlightClass} ${numClass}">${v1}</td>
+          <td class="value-cell ${highlightClass} ${numClass}">${v2}${diffIndicator2}</td>
         </tr>`;
       }
 
       function compareHardwareRow(label, hw1, hw2) {
         const name1 = hw1?.name || '';
         const name2 = hw2?.name || '';
-        const isDiff = name1 !== '' && name2 !== '' && name1 !== name2;
-        const diffClass = isDiff ? 'diff-highlight' : '';
+        const isSame = name1 !== '' && name2 !== '' && name1 === name2;
+        const highlightClass = isSame ? 'same-highlight' : '';
 
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${diffClass}">${name1}</td>
-          <td class="value-cell ${diffClass}">${name2}</td>
+          <td class="value-cell ${highlightClass}">${name1}</td>
+          <td class="value-cell ${highlightClass}">${name2}</td>
         </tr>`;
       }
 
@@ -458,7 +458,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     padding-left: 1.5rem;
   }
 
-  .compare-table :global(.value-cell.diff-highlight) {
+  .compare-table :global(.value-cell.same-highlight) {
     background: rgba(255, 107, 53, 0.1);
     color: var(--accent-primary, #ff6b35);
     font-weight: 500;
