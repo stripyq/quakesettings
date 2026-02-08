@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-08",
   "totalPlayers": 2288,
-  "playersWithProfiles": 88,
+  "playersWithProfiles": 89,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -8391,8 +8391,8 @@
     {
       "steamId": "76561197964623506",
       "name": "dehumanizeR",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "dehumanizer",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.979204177856445,
         "tdm": 30.232011795043945,

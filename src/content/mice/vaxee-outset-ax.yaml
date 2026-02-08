@@ -1,0 +1,10 @@
+name: "VAXEE OUTSET AX"
+brand: "VAXEE"
+weight: "67g"
+shape: "Ergonomic"
+dimensions: "124 x 67 x 43mm"
+sensor: "PAW3395"
+dpiRange: "50-26000"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wired"
