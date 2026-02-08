@@ -593,6 +593,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           return asc ? aNum - bNum : bNum - aNum;
         }
 
+        // Handle refresh rate (extract number from "240Hz")
+        if (col === 'refresh') {
+          const aNum = parseInt((aVal as string).replace(/[^0-9]/g, '')) || 0;
+          const bNum = parseInt((bVal as string).replace(/[^0-9]/g, '')) || 0;
+          return asc ? aNum - bNum : bNum - aNum;
+        }
+
+        // Handle size (extract number from "24.5\"")
+        if (col === 'size') {
+          const aNum = parseFloat((aVal as string).replace(/[^0-9.]/g, '')) || 0;
+          const bNum = parseFloat((bVal as string).replace(/[^0-9.]/g, '')) || 0;
+          return asc ? aNum - bNum : bNum - aNum;
+        }
+
         // String comparison
         return asc
           ? (aVal as string).localeCompare(bVal as string)
