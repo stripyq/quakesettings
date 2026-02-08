@@ -163,6 +163,7 @@ const movementPresets = [
       <!-- Hardware Section -->
       <section class="form-section">
         <h2>Hardware</h2>
+        <small>If your exact model isn't listed in any dropdown, choose 'Other' and type it in.</small>
 
         <div class="form-row">
           <div class="form-group">
@@ -171,7 +172,7 @@ const movementPresets = [
               <option value="">-- Select Mouse --</option>
               <option value="__other__">Other (type below)</option>
             </select>
-            <small>If your exact model isn't listed, choose 'Other'</small>
+
             <input type="text" id="mouseOther" name="mouseOther" class="other-input hidden" placeholder="Enter mouse model">
           </div>
 
@@ -181,7 +182,7 @@ const movementPresets = [
               <option value="">-- Select Mousepad --</option>
               <option value="__other__">Other (type below)</option>
             </select>
-            <small>If your exact model isn't listed, choose 'Other'</small>
+
             <input type="text" id="mousepadOther" name="mousepadOther" class="other-input hidden" placeholder="Enter mousepad model">
             <div id="mousepad-variants" class="mousepad-variants hidden">
               <div class="form-row">
@@ -209,7 +210,7 @@ const movementPresets = [
               <option value="">-- Select Keyboard --</option>
               <option value="__other__">Other (type below)</option>
             </select>
-            <small>If your exact model isn't listed, choose 'Other'</small>
+
             <input type="text" id="keyboardOther" name="keyboardOther" class="other-input hidden" placeholder="Enter keyboard model">
           </div>
 
@@ -219,7 +220,7 @@ const movementPresets = [
               <option value="">-- Select Monitor --</option>
               <option value="__other__">Other (type below)</option>
             </select>
-            <small>If your exact model isn't listed, choose 'Other'</small>
+
             <input type="text" id="monitorOther" name="monitorOther" class="other-input hidden" placeholder="Enter monitor model">
           </div>
         </div>
@@ -231,7 +232,7 @@ const movementPresets = [
               <option value="">-- Select Headset --</option>
               <option value="__other__">Other (type below)</option>
             </select>
-            <small>If your exact model isn't listed, choose 'Other'</small>
+
             <input type="text" id="headsetOther" name="headsetOther" class="other-input hidden" placeholder="Enter headset model">
           </div>
 
@@ -241,7 +242,7 @@ const movementPresets = [
               <option value="">-- Select --</option>
               <option value="Stock">Stock</option>
               <option value="Aftermarket">Aftermarket</option>
-              <option value="None">None</option>
+
             </select>
           </div>
         </div>
@@ -326,7 +327,7 @@ const movementPresets = [
 
           <div class="form-group">
             <label for="invertedMouse">
-              Inverted Mouse <code class="cvar">m_pitch</code>
+              Inverted Mouse
             </label>
             <select id="invertedMouse" name="invertedMouse">
               <option value="false">No</option>
@@ -472,6 +473,12 @@ const movementPresets = [
             <div class="color-swatch color-custom" data-color="Custom" title="Custom">?</div>
           </div>
           <input type="text" id="crosshairColorCustom" class="other-input hidden" placeholder="Enter custom color (e.g., RGB value)">
+        </div>
+
+        <!-- Crosshair Size -->
+        <div class="form-group">
+          <label for="crosshairSize">Crosshair Size <code class="cvar">cg_crosshairSize</code></label>
+          <input type="number" id="crosshairSize" name="crosshairSize" step="any" min="1" max="100" placeholder="e.g., 24">
         </div>
       </section>
 
@@ -1440,6 +1447,7 @@ const movementPresets = [
       }
     }
 
+    if (data.crosshairSize) document.getElementById('crosshairSize').value = data.crosshairSize;
     if (data.enemyModel) document.getElementById('enemyModel').value = data.enemyModel;
 
     // Movement - try to match preset
