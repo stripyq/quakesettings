@@ -34,5 +34,5 @@ left: a
 right: d
 jump: space
 attack: MOUSE1
-gpu: AMD
-cpu: AMD
+gpuBrand: AMD
+cpuBrand: AMD

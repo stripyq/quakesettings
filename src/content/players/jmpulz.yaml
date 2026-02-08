@@ -27,5 +27,5 @@ headset: "hyperx-cloud-ii"
 enemyModel: Tank Jr.
 grip: Hybrid
 skates: Aftermarket
-gpu: NVIDIA
-cpu: Intel
+gpuBrand: NVIDIA
+cpuBrand: Intel

@@ -29,5 +29,5 @@ headset: "sony-wh-1000xm4"
 enemyModel: Tank Jr.
 grip: Palm
 skates: Stock
-gpu: NVIDIA
-cpu: Intel
+gpuBrand: NVIDIA
+cpuBrand: Intel

@@ -28,5 +28,5 @@ headset: ""
 enemyModel: Keel
 grip: Hybrid
 skates: Aftermarket
-gpu: NVIDIA
-cpu: AMD
+gpuBrand: NVIDIA
+cpuBrand: AMD

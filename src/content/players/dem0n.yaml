@@ -45,8 +45,8 @@ mousepadSize: XL
 keyboard: corsair-strafe
 monitor: aoc-g2490vxa
 headset: jbl-wireless
-cpu: Intel
-gpu: NVIDIA
+cpuBrand: Intel
+gpuBrand: NVIDIA
 enemyModel: Keel
 crosshairColor: White
 grip: Hybrid
