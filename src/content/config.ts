@@ -103,6 +103,7 @@ const playersCollection = defineCollection({
     country: z.string().optional().default('Unknown'),
     team: z.string().optional(),
     category: z.string().optional().default('duel'),
+    published: z.boolean().optional().default(true), // false = ratings-only, no settings page
     lastUpdated: z.string().optional(), // Date string YYYY-MM
 
     // Player Identity (for external data matching)
@@ -167,10 +168,10 @@ const playersCollection = defineCollection({
     source: z.string().optional(), // Description of source e.g., "Player submission", "Interview", "Stream"
     sourceUrl: z.string().optional(), // Link to source (stream VOD, interview, etc.)
 
-    // Mouse Settings
-    dpi: z.number(),
-    sensitivity: z.number(),
-    edpi: z.number(),
+    // Mouse Settings (optional for unpublished/ratings-only players)
+    dpi: z.number().optional(),
+    sensitivity: z.number().optional(),
+    edpi: z.number().optional(),
     cm360: z.number().nullable().optional(),
     m_cpi: z.number().nullable().optional(), // Custom CPI setting - if set, cm360 = 360 / sensitivity
     m_yaw: z.number().optional().default(0.022), // Horizontal sensitivity multiplier (default 0.022)
@@ -181,8 +182,8 @@ const playersCollection = defineCollection({
     windowsSensitivity: z.number().nullable().optional(),
     grip: z.string().optional(), // Grip style: Palm, Claw, Fingertip, Hybrid
 
-    // Game Settings
-    fov: z.number(),
+    // Game Settings (optional for unpublished/ratings-only players)
+    fov: z.number().optional(),
     crosshair: z.string().optional().default('2'),
     crosshairColor: z.string().optional(),
     crosshairSize: z.string().optional(),

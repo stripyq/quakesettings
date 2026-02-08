@@ -2,8 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all data for client-side comparison
-const players = await getCollection('players');
+// Get all data for client-side comparison (filter out unpublished)
+const allPlayers = await getCollection('players');
+const players = allPlayers.filter(p => p.data.published !== false);
 const mice = await getCollection('mice');
 const mousepads = await getCollection('mousepads');
 const keyboards = await getCollection('keyboards');

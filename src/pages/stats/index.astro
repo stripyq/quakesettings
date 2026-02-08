@@ -4,7 +4,8 @@ import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
 import { execSync } from 'child_process';
 
-const players = await getCollection('players');
+const allPlayers = await getCollection('players');
+const players = allPlayers.filter(p => p.data.published !== false);
 const mice = await getCollection('mice');
 const monitors = await getCollection('monitors');
 const keyboards = await getCollection('keyboards');
