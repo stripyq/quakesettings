@@ -92,8 +92,67 @@ const cm360Buckets = cm360BucketDefs.map(def => {
 const maxBucketTotal = Math.max(...cm360Buckets.map(b => b.total), 1);
 
 // ===========================================
-// HARDWARE POPULARITY
+// cm/360 vs MOUSEPAD TYPE HEATMAP
 // ===========================================
+
+function getSpeedCategory(speed: string): string | null {
+  const s = speed.toLowerCase();
+  if (['extremely fast', 'very fast', 'fast', 'quick', 'speed'].includes(s)) return 'Speed';
+  if (['balanced'].includes(s)) return 'Balanced';
+  if (['control', 'slow', 'very slow', 'extremely slow'].includes(s)) return 'Control';
+  return null;
+}
+
+const padTypes = ['Speed', 'Balanced', 'Control'] as const;
+const padTypeRgb: Record<string, string> = {
+  Speed: '255, 107, 53',
+  Balanced: '168, 85, 247',
+  Control: '0, 180, 216',
+};
+
+// Build heatmap counts
+const padHeatmap = new Map<string, number>();
+players.forEach(p => {
+  if (p.data.mousepad) {
+    const pad = mousepadsMap.get(p.data.mousepad);
+    if (pad?.speed) {
+      const category = getSpeedCategory(pad.speed);
+      if (category) {
+        const cm360 = calculateCm360(p.data);
+        const bucket = cm360BucketDefs.find(b => cm360 >= b.min && cm360 < b.max);
+        if (bucket) {
+          const key = `${bucket.label}|${category}`;
+          padHeatmap.set(key, (padHeatmap.get(key) || 0) + 1);
+        }
+      }
+    }
+  }
+});
+
+// Per-column max for independent color scaling
+const padTypeMaxes: Record<string, number> = { Speed: 1, Balanced: 1, Control: 1 };
+padHeatmap.forEach((count, key) => {
+  const type = key.split('|')[1];
+  if (count > padTypeMaxes[type]) padTypeMaxes[type] = count;
+});
+
+// Pre-compute heatmap rows with style strings
+const padHeatmapRows = cm360BucketDefs.map(bucket => ({
+  label: bucket.label,
+  range: bucket.range,
+  cells: padTypes.map(type => {
+    const count = padHeatmap.get(`${bucket.label}|${type}`) || 0;
+    const max = padTypeMaxes[type];
+    const intensity = count > 0 ? 0.25 + (count / max) * 0.75 : 0;
+    const bg = count > 0
+      ? `rgba(${padTypeRgb[type]}, ${intensity.toFixed(2)})`
+      : '#1a1a2e';
+    return { type, count, bg };
+  }),
+}));
+
+// Total players with mousepad type data
+const totalPadTypePlayers = [...padHeatmap.values()].reduce((a, b) => a + b, 0);
 
 // Mice
 const mouseUsage = new Map<string, number>();
@@ -552,6 +611,49 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <div class="cm360-summary-item"><strong>Min / Max:</strong> {formatCm360(minCm360)} / {formatCm360(maxCm360)} cm/360</div>
       </div>
       <p class="cm360-note"><em>Note:</em> For accel players, cm/360 represents their base (slowest) sensitivity. Effective sensitivity varies with mouse speed.</p>
+    </section>
+
+    <!-- cm/360 vs MOUSEPAD TYPE HEATMAP -->
+    <section class="stat-card wide">
+      <h2>cm/360 vs Mousepad Type</h2>
+      <p class="card-subtitle">{totalPadTypePlayers} players with mousepad speed data</p>
+      <div class="pad-heatmap">
+        <div class="pad-heatmap-grid">
+          <!-- Header row -->
+          <div class="pad-heatmap-corner"></div>
+          <div class="pad-heatmap-col-header speed">Speed</div>
+          <div class="pad-heatmap-col-header balanced">Balanced</div>
+          <div class="pad-heatmap-col-header control">Control</div>
+
+          <!-- Data rows -->
+          {padHeatmapRows.map(row => (
+            <>
+              <div class="pad-heatmap-label">
+                <span class="pad-heatmap-label-name">{row.label}</span>
+                <span class="pad-heatmap-label-range">{row.range}</span>
+              </div>
+              {row.cells.map(cell => (
+                <div
+                  class="pad-heatmap-cell"
+                  style={`background-color: ${cell.bg}`}
+                  title={`${row.label} + ${cell.type}: ${cell.count} players`}
+                >
+                  {cell.count > 0 ? cell.count : ''}
+                </div>
+              ))}
+            </>
+          ))}
+        </div>
+        <div class="pad-heatmap-legend">
+          <span class="pad-heatmap-legend-label">Fewer players</span>
+          <div class="pad-heatmap-legend-bar">
+            <div class="pad-legend-grad speed-grad"></div>
+            <div class="pad-legend-grad balanced-grad"></div>
+            <div class="pad-legend-grad control-grad"></div>
+          </div>
+          <span class="pad-heatmap-legend-label">More players</span>
+        </div>
+      </div>
     </section>
 
     <!-- DPI DISTRIBUTION -->
@@ -1269,6 +1371,122 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     .cm360-summary {
       flex-direction: column;
       gap: 0.5rem;
+    }
+  }
+
+  /* cm/360 vs Mousepad Type Heatmap */
+  .pad-heatmap-grid {
+    display: grid;
+    grid-template-columns: 160px repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .pad-heatmap-corner {
+    /* empty top-left cell */
+  }
+
+  .pad-heatmap-col-header {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pad-heatmap-col-header.speed { color: #ff6b35; }
+  .pad-heatmap-col-header.balanced { color: #a855f7; }
+  .pad-heatmap-col-header.control { color: #00b4d8; }
+
+  .pad-heatmap-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    padding-right: 0.75rem;
+  }
+
+  .pad-heatmap-label-name {
+    font-size: 0.8rem;
+    color: #aaa;
+    line-height: 1.2;
+  }
+
+  .pad-heatmap-label-range {
+    font-size: 0.7rem;
+    color: #666;
+  }
+
+  .pad-heatmap-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary, #fff);
+    cursor: default;
+    transition: transform 0.1s;
+  }
+
+  .pad-heatmap-cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
+  }
+
+  .pad-heatmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .pad-heatmap-legend-label {
+    font-size: 0.7rem;
+    color: #888;
+  }
+
+  .pad-heatmap-legend-bar {
+    display: flex;
+    gap: 4px;
+  }
+
+  .pad-legend-grad {
+    width: 80px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  .pad-legend-grad.speed-grad {
+    background: linear-gradient(90deg, rgba(255, 107, 53, 0.15), rgba(255, 107, 53, 1));
+  }
+
+  .pad-legend-grad.balanced-grad {
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 1));
+  }
+
+  .pad-legend-grad.control-grad {
+    background: linear-gradient(90deg, rgba(0, 180, 216, 0.15), rgba(0, 180, 216, 1));
+  }
+
+  @media (max-width: 700px) {
+    .pad-heatmap-grid {
+      grid-template-columns: 100px repeat(3, 1fr);
+    }
+
+    .pad-heatmap-col-header {
+      font-size: 0.7rem;
+    }
+
+    .pad-heatmap-cell {
+      min-height: 32px;
+      font-size: 12px;
+    }
+
+    .pad-legend-grad {
+      width: 50px;
     }
   }
 
