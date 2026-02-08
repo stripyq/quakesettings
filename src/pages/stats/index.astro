@@ -300,19 +300,23 @@ function parseRefreshRate(rate: string): number | null {
   return match ? parseInt(match[1]) : null;
 }
 
-// Consolidated size groups: ≤24" → "24\"", 25" → "25\"", 27-28" → "27\"", ≥32" → "32\"+"
+// Size groups: 6 rows
 const sizeGroups = [
-  { label: '24"', match: (s: number) => s <= 24 },
-  { label: '25"', match: (s: number) => s === 25 },
-  { label: '27"', match: (s: number) => s >= 27 && s <= 28 },
-  { label: '32"+', match: (s: number) => s >= 32 },
+  { label: '≤23"', match: (s: number) => s < 24 },
+  { label: '24"', match: (s: number) => s >= 24 && s < 25 },
+  { label: '25"', match: (s: number) => s >= 25 && s < 26 },
+  { label: '27"', match: (s: number) => s >= 26 && s < 28 },
+  { label: '28"', match: (s: number) => s >= 28 && s < 30 },
+  { label: '32"+', match: (s: number) => s >= 30 },
 ];
-// Consolidated refresh groups: ≤144 → "144Hz", 165-240 → "240Hz", 280-360 → "360Hz", ≥500 → "500Hz+"
+// Refresh groups: 6 columns
 const refreshGroups = [
-  { label: '144Hz', match: (r: number) => r <= 144 },
-  { label: '240Hz', match: (r: number) => r >= 165 && r <= 240 },
-  { label: '360Hz', match: (r: number) => r >= 280 && r <= 360 },
-  { label: '500Hz+', match: (r: number) => r >= 500 },
+  { label: '60-120', match: (r: number) => r <= 120 },
+  { label: '144', match: (r: number) => r > 120 && r <= 144 },
+  { label: '165-180', match: (r: number) => r > 144 && r <= 180 },
+  { label: '240', match: (r: number) => r > 180 && r <= 240 },
+  { label: '280-360', match: (r: number) => r > 240 && r <= 360 },
+  { label: '500+', match: (r: number) => r > 360 },
 ];
 
 const monitorHeatmap: Map<string, number> = new Map();
@@ -776,10 +780,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="s-card s-card-wide">
       <h2 class="s-card-title">Monitor Size vs Refresh Rate</h2>
       <div class="s-heatmap-scroll">
-        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshGroups.length}, 80px)`}>
+        <div class="s-heatmap-grid" style={`grid-template-columns: auto repeat(${refreshGroups.length}, 65px)`}>
           <div class="s-heatmap-cell s-hm-corner"></div>
           {refreshGroups.map(rg => (
-            <div class="s-heatmap-cell s-hm-header">{rg.label}</div>
+            <div class="s-heatmap-cell s-hm-header">{rg.label}Hz</div>
           ))}
           {[...sizeGroups].reverse().map(sg => (
             <>
