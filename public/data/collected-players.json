@@ -2604,7 +2604,7 @@
     "skates": "",
     "fov": 107,
     "crosshair": "2",
-    "crosshairColor": "25",
+    "crosshairColor": "White",
     "enemyModel": "Keel",
     "forward": "w",
     "back": "s",

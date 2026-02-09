@@ -15,7 +15,7 @@ m_yaw: 0.030
 acceleration: false
 fov: 107
 crosshair: "2"
-crosshairColor: "25"
+crosshairColor: White
 crosshairSize: "20"
 enemyModel: Keel
 forward: w
