@@ -7,9 +7,14 @@ category: ctf
 lastUpdated: "2026-02"
 dataSource: player
 
-# Ratings (preserved existing)
+# Ratings
 ctfRating: 25.44
 ctfGames: 832
+caRating: 20.9
+caGames: 16
+duelRating: 1395
+duelRatingSource: qlstats
+duelGames: 64
 
 # Hardware
 mouse: razer-deathadder-v2
