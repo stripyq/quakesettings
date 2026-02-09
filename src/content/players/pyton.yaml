@@ -10,8 +10,8 @@ dataSource: player
 # Ratings
 ctfRating: 25.44
 ctfGames: 832
-caRating: 20.9
-caGames: 16
+qllrCtfRating: 20.9
+qllrCtfGames: 16
 duelRating: 1395
 duelRatingSource: qlstats
 duelGames: 64
