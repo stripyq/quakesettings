@@ -1,0 +1,8 @@
+name: "HyperX Cloud III"
+brand: "HyperX"
+type: "Closed-back"
+driverSize: "53mm"
+frequencyResponse: "10Hz - 21kHz"
+impedance: "64 Ohm"
+connection: "Wired"
+microphone: true
