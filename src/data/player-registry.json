@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-09",
   "totalPlayers": 2288,
-  "playersWithProfiles": 103,
+  "playersWithProfiles": 104,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -22999,8 +22999,8 @@
     {
       "steamId": "76561197972946521",
       "name": "oddi",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "oddi",
+      "hasProfile": true,
       "ratings": {
         "ctf": 21.41766357421875,
         "tdm": 32.43864059448242,
