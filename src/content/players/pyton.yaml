@@ -2,6 +2,53 @@ name: PYTON
 country: PL
 team: "Old Sexy Quakers"
 steamId: "76561198105088252"
-published: false
+published: true
+category: ctf
+lastUpdated: "2026-02"
+dataSource: player
+
+# Ratings (preserved existing)
 ctfRating: 25.44
 ctfGames: 832
+
+# Hardware
+mouse: razer-deathadder-v2
+mousepad: razer-goliathus-control
+keyboard: "Fury Hornet NFU-0865"
+monitor: asus-vg248qe
+headset: hyperx-cloud-iii
+skates: Stock
+
+# Mouse Settings
+dpi: 800
+sensitivity: 11.064
+m_cpi: 800
+m_yaw: 0.022
+edpi: 8851.2
+cm360: 32.54
+acceleration: false
+rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
+grip: Fingertip
+
+# Game Settings
+fov: 101
+enemyModel: Keel
+crosshair: "2"
+crosshairColor: Yellow
+crosshairSize: "18"
+
+# Binds
+forward: w
+back: s
+left: a
+right: d
+jump: mouse2
+crouch: space
+attack: mouse1
+zoom: mouse3
+
+# System
+gpuBrand: NVIDIA
+cpuBrand: Intel
