@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-09",
   "totalPlayers": 2288,
-  "playersWithProfiles": 102,
+  "playersWithProfiles": 103,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -10050,22 +10050,6 @@
         "ctf": null,
         "tdm": 2,
         "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198054844275",
-      "name": "EGB PAVEL",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 20.892818450927734,
-        "tdm": 37.27510070800781,
-        "2v2": 39.46566390991211
-      },
-      "gamesPlayed": {
-        "ctf": 4,
-        "tdm": 329,
-        "2v2": 261
       }
     },
     {
@@ -24002,6 +23986,22 @@
         "ctf": null,
         "tdm": 1,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198054844275",
+      "name": "pavel",
+      "slug": "pavel",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 20.892818450927734,
+        "tdm": 37.27510070800781,
+        "2v2": 39.46566390991211
+      },
+      "gamesPlayed": {
+        "ctf": 4,
+        "tdm": 329,
+        "2v2": 261
       }
     },
     {
