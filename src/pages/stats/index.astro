@@ -640,10 +640,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <!-- ========== SUMMARY CARDS ========== -->
     <div class="s-summary-cards">
       <div class="s-summary-card">
-        <span class="s-summary-value">{players.length}</span>
-        <span class="s-summary-label">Total Players</span>
-      </div>
-      <div class="s-summary-card">
         <span class="s-summary-value">{formatCm360(avgCm360)}</span>
         <span class="s-summary-label">Avg cm/360</span>
       </div>
@@ -664,12 +660,16 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <span class="s-summary-label">Accel Users</span>
       </div>
       <div class="s-summary-card">
+        <span class="s-summary-value">{avgFov}&deg;</span>
+        <span class="s-summary-label">Avg FOV</span>
+      </div>
+      <div class="s-summary-card">
         <span class="s-summary-value s-summary-value-sm">{topMouseName}</span>
         <span class="s-summary-label">Top Mouse</span>
       </div>
       <div class="s-summary-card">
-        <span class="s-summary-value">{avgFov}&deg;</span>
-        <span class="s-summary-label">Avg FOV</span>
+        <span class="s-summary-value">{players.length}</span>
+        <span class="s-summary-label">Total Players</span>
       </div>
     </div>
 
