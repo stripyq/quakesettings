@@ -1,0 +1,57 @@
+name: "Eteto"
+country: HU
+steamId: "76561198257679175"
+published: true
+category: tdm
+lastUpdated: "2026-02"
+dataSource: player
+
+# Ratings
+tdmRating: 25.11
+tdmGames: 5017
+ctfRating: 13.69
+ctfGames: 408
+tdm2v2Rating: 31.94
+tdm2v2Games: 5
+
+# Hardware
+mouse: razer-deathadder-essential
+mousepad: steelseries-qck
+mousepadBase: Heavy
+mousepadSize: Standard
+keyboard: logitech-k120
+monitor: asus-vg248qe
+skates: Stock
+
+# Mouse Settings
+dpi: 1800
+sensitivity: 1.75
+m_yaw: 0.022
+edpi: 3150
+cm360: 13.19
+acceleration: false
+rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
+grip: Palm
+
+# Game Settings
+fov: 105
+enemyModel: Mynx
+crosshair: "6"
+crosshairColor: Yellow
+crosshairSize: "35"
+
+# Binds
+forward: uparrow
+back: downarrow
+left: leftarrow
+right: rightarrow
+jump: mouse2
+crouch: num0
+attack: mouse1
+zoom: pageup
+
+# System
+gpuBrand: AMD
+cpuBrand: AMD
