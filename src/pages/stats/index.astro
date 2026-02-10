@@ -32,7 +32,7 @@ function calculateCm360(playerData: any): number {
 // SENSITIVITY STATS
 // ===========================================
 
-const cm360Values = players.map(p => calculateCm360(p.data)).sort((a, b) => a - b);
+const cm360Values = players.map(p => calculateCm360(p.data)).filter(v => isFinite(v) && v > 0).sort((a, b) => a - b);
 const avgCm360 = cm360Values.length > 0
   ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
   : 0;
@@ -57,7 +57,7 @@ const cm360BucketDefs = [
 const playerCm360Data = players.map(p => ({
   cm360: calculateCm360(p.data),
   hasAccel: !!p.data.acceleration,
-}));
+})).filter(d => isFinite(d.cm360) && d.cm360 > 0);
 
 const cm360Buckets = cm360BucketDefs.map(def => {
   const inRange = playerCm360Data.filter(d => d.cm360 >= def.min && d.cm360 < def.max);
@@ -577,10 +577,14 @@ const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
 // INTERESTING FACTS
 // ===========================================
 
-const lowestSensPlayer = players.reduce((prev, curr) =>
+const playersWithValidCm360 = players.filter(p => {
+  const cm = calculateCm360(p.data);
+  return isFinite(cm) && cm > 0;
+});
+const lowestSensPlayer = playersWithValidCm360.reduce((prev, curr) =>
   calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
 );
-const highestSensPlayer = players.reduce((prev, curr) =>
+const highestSensPlayer = playersWithValidCm360.reduce((prev, curr) =>
   calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
 );
 
