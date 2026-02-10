@@ -374,8 +374,8 @@ const refreshGroups = [
   { label: '144', match: (r: number) => r > 120 && r <= 144 },
   { label: '165-180', match: (r: number) => r > 144 && r <= 180 },
   { label: '240', match: (r: number) => r > 180 && r <= 240 },
-  { label: '280-360', match: (r: number) => r > 240 && r <= 360 },
-  { label: '500+', match: (r: number) => r > 360 },
+  { label: '280-499', match: (r: number) => r > 240 && r < 500 },
+  { label: '500+', match: (r: number) => r >= 500 },
 ];
 
 const monitorHeatmap: Map<string, number> = new Map();
