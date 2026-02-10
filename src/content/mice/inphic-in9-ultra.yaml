@@ -1,0 +1,10 @@
+name: "INPHIC IN9 Ultra"
+brand: "INPHIC"
+dimensions: "129 x 80 x 43mm"
+weight: "103g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

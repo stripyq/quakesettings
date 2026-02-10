@@ -1,0 +1,10 @@
+name: "Cybeart Xeus"
+brand: "Cybeart"
+dimensions: "120 x 63 x 38mm"
+weight: "39g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950"
+dpiRange: "100-42000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

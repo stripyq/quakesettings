@@ -1,0 +1,10 @@
+name: "Chilkey Glacier LW 8K M"
+brand: "Chilkey"
+dimensions: "118 x 61.6 x 39mm"
+weight: "49g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950"
+dpiRange: "100-30000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 5

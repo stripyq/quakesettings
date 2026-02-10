@@ -1,0 +1,10 @@
+name: "INPHIC IN9"
+brand: "INPHIC"
+dimensions: "129 x 80 x 43mm"
+weight: "92g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3325"
+dpiRange: "100-10000"
+pollingRate: "1000Hz"
+connection: "Wireless"
+buttons: 5
