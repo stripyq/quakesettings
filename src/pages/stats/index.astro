@@ -42,6 +42,22 @@ const medianCm360 = cm360Values.length > 0
 const minCm360 = cm360Values.length > 0 ? Math.min(...cm360Values) : 0;
 const maxCm360 = cm360Values.length > 0 ? Math.max(...cm360Values) : 0;
 
+// eDPI stats
+const edpiValues = players
+  .map(p => {
+    if (p.data.edpi) return p.data.edpi;
+    if (p.data.dpi && p.data.sensitivity) return p.data.dpi * p.data.sensitivity;
+    return NaN;
+  })
+  .filter(v => isFinite(v) && v > 0)
+  .sort((a, b) => a - b);
+const avgEdpi = edpiValues.length > 0
+  ? Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length)
+  : 0;
+const medianEdpi = edpiValues.length > 0
+  ? Math.round(edpiValues[Math.floor(edpiValues.length / 2)])
+  : 0;
+
 // cm/360 distribution buckets with accel player breakdown
 const cm360BucketDefs = [
   { label: 'Very High Sens', range: '< 15 cm', min: 0, max: 15 },
@@ -563,9 +579,9 @@ const playersWithDates = players
   }));
 
 playersWithDates.sort((a, b) => {
-  const luCmp = (b.player.data.lastUpdated || '').localeCompare(a.player.data.lastUpdated || '');
-  if (luCmp !== 0) return luCmp;
-  return (b.gitDate || '').localeCompare(a.gitDate || '');
+  const aDate = a.gitDate || a.player.data.lastUpdated || '';
+  const bDate = b.gitDate || b.player.data.lastUpdated || '';
+  return bDate.localeCompare(aDate);
 });
 
 const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
@@ -630,6 +646,18 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <div class="s-summary-card">
         <span class="s-summary-value">{formatCm360(avgCm360)}</span>
         <span class="s-summary-label">Avg cm/360</span>
+      </div>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{formatCm360(medianCm360)}</span>
+        <span class="s-summary-label">Median cm/360</span>
+      </div>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{avgEdpi}</span>
+        <span class="s-summary-label">Avg eDPI</span>
+      </div>
+      <div class="s-summary-card">
+        <span class="s-summary-value">{medianEdpi}</span>
+        <span class="s-summary-label">Median eDPI</span>
       </div>
       <div class="s-summary-card">
         <span class="s-summary-value">{accelPercentage}%</span>
@@ -1178,7 +1206,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   /* --- Summary Cards --- */
   .s-summary-cards {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
 
