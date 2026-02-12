@@ -579,9 +579,9 @@ const playersWithDates = players
   }));
 
 playersWithDates.sort((a, b) => {
-  const aDate = a.gitDate || a.player.data.lastUpdated || '';
-  const bDate = b.gitDate || b.player.data.lastUpdated || '';
-  return bDate.localeCompare(aDate);
+  const luCmp = (b.player.data.lastUpdated || '').localeCompare(a.player.data.lastUpdated || '');
+  if (luCmp !== 0) return luCmp;
+  return (b.gitDate || '').localeCompare(a.gitDate || '');
 });
 
 const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
