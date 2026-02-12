@@ -2,6 +2,51 @@ name: mult
 country: RU
 team: "Old Sexy Quakers"
 steamId: "76561198257362399"
-published: false
-ctfRating: 31
-ctfGames: 821
+published: true
+category: ctf
+lastUpdated: "2026-02"
+dataSource: player
+
+# Ratings
+ctfRating: 30.33
+ctfGames: 843
+qllrCtfRating: 20.9
+qllrCtfGames: 16
+
+# Hardware
+mouse: logitech-mx518
+skates: Stock
+
+# Mouse Settings
+dpi: 400
+sensitivity: 3.1
+m_yaw: 0.0205
+edpi: 1240
+cm360: 35.97
+acceleration: true
+accelValue: 0.17
+rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
+grip: Hybrid
+
+# Game Settings
+fov: 97
+enemyModel: Keel
+crosshair: "2"
+crosshairColor: White
+crosshairSize: "13"
+
+# Binds
+forward: w
+back: s
+left: a
+right: d
+jump: mouse2
+crouch: ctrl
+attack: mouse1
+zoom: space
+
+# System
+gpuBrand: NVIDIA
+cpuBrand: Intel
