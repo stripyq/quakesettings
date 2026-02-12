@@ -1,0 +1,10 @@
+name: "VAXEE ZYGEN NP-01S V2 Wireless"
+brand: "VAXEE"
+dimensions: "123 x 58 x 37mm"
+weight: "57g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3950"
+dpiRange: "50-30000"
+pollingRate: "4000Hz"
+connection: "Wireless"
+buttons: 5

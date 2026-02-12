@@ -1,0 +1,10 @@
+name: "VAXEE XE V2 Wireless"
+brand: "VAXEE"
+dimensions: "122 x 61 x 38mm"
+weight: "59g"
+shape: "Ambidextrous"
+sensor: "PixArt PAW3950"
+dpiRange: "50-30000"
+pollingRate: "4000Hz"
+connection: "Wireless"
+buttons: 5
