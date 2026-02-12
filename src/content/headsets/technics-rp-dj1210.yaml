@@ -1,0 +1,8 @@
+name: "Technics RP-DJ1210"
+brand: "Technics"
+type: "Closed-back"
+driverSize: "41mm"
+frequencyResponse: "5Hz - 30kHz"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
