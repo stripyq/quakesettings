@@ -1,0 +1,10 @@
+name: "VAXEE OUTSET AX Wireless"
+brand: "VAXEE"
+dimensions: "124 x 67 x 43mm"
+weight: "72g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+connection: "Wireless"
+buttons: 5

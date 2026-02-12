@@ -1,0 +1,10 @@
+name: "VAXEE ZYGEN NP-01 Wireless"
+brand: "VAXEE"
+dimensions: "118 x 66 x 39mm"
+weight: "72g"
+shape: "Ergonomic"
+sensor: "PixArt PAW3395"
+dpiRange: "50-26000"
+pollingRate: "4000Hz"
+connection: "Wireless"
+buttons: 5
