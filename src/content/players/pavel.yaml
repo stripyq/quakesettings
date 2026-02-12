@@ -11,12 +11,12 @@ tdmGames: 329
 tdm2v2Rating: 39.47
 tdm2v2Games: 261
 dpi: 800
-sensitivity: 1
+sensitivity: 0.74
 m_yaw: 0.030
-edpi: 800
-cm360: 38.1
+edpi: 592
+cm360: 51.49
 acceleration: false
-fov: 107
+fov: 102
 crosshair: "2"
 crosshairColor: White
 crosshairSize: "20"
@@ -31,6 +31,7 @@ attack: mouse1
 zoom: mouse2
 mouse: razer-viper-mini
 mousepad: spyre-loque
+keyboard: attack-shark-x68-he
 monitor: asus-tuf-gaming-vg279qm
 headset: havit-h2002d
 gpuBrand: NVIDIA
