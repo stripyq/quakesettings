@@ -1,0 +1,8 @@
+name: "Havit H2002D"
+brand: "Havit"
+type: "Closed-back"
+driverSize: "53mm"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "64 Ohm"
+connection: "Wired"
+microphone: true

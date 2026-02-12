@@ -1,0 +1,10 @@
+name: "Logitech MX518"
+brand: "Logitech"
+dimensions: "131 x 73 x 43mm"
+weight: "85g"
+shape: "Ergonomic"
+sensor: "Logitech HERO 16K"
+dpiRange: "100-16000"
+pollingRate: "1000Hz"
+connection: "Wired"
+buttons: 5

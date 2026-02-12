@@ -10,8 +10,11 @@ tdmRating: 37.28
 tdmGames: 329
 tdm2v2Rating: 39.47
 tdm2v2Games: 261
+dpi: 800
 sensitivity: 1
 m_yaw: 0.030
+edpi: 800
+cm360: 38.1
 acceleration: false
 fov: 107
 crosshair: "2"
@@ -26,4 +29,8 @@ jump: space
 crouch: ctrl
 attack: mouse1
 zoom: mouse2
+mouse: razer-viper-mini
+mousepad: spyre-loque
+monitor: asus-tuf-gaming-vg279qm
+headset: havit-h2002d
 gpuBrand: NVIDIA
