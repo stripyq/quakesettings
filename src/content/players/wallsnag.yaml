@@ -11,10 +11,10 @@ ctfGames: 2380
 tdmRating: 18.57
 tdmGames: 336
 dpi: 400
-sensitivity: 4.1
+sensitivity: 3
 m_yaw: 0.022
-edpi: 1640
-cm360: 25.34
+edpi: 1200
+cm360: 34.64
 acceleration: false
 rawInput: true
 windowsSensitivity: 6
