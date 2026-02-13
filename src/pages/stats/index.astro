@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
-import { execSync } from 'child_process';
 
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
@@ -371,6 +370,11 @@ function parseMonitorSize(size: string): number | null {
 }
 
 function parseRefreshRate(rate: string): number | null {
+  // Extract highest Hz value (e.g., "240Hz (480Hz @ 1080p)" → 480)
+  const hzMatches = [...rate.matchAll(/(\d+)\s*Hz/gi)];
+  if (hzMatches.length > 0) {
+    return Math.max(...hzMatches.map(m => parseInt(m[1])));
+  }
   const match = rate.match(/(\d+)/);
   return match ? parseInt(match[1]) : null;
 }
@@ -564,30 +568,11 @@ const maxJumpCount = topJumpKeys.length > 0 ? topJumpKeys[0][1] : 1;
 // PLAYER STATS
 // ===========================================
 
-// Recently updated
-function getGitLastModified(filePath: string): string | null {
-  try {
-    return execSync(`git log -1 --format=%aI -- "${filePath}"`, { encoding: 'utf-8' }).trim() || null;
-  } catch { return null; }
-}
-
-const playersWithDates = players
+// Recently updated — sorted by lastUpdated (YYYY-MM-DD or YYYY-MM)
+const recentPlayers = players
   .filter(p => p.data.lastUpdated)
-  .map(p => ({
-    player: p,
-    gitDate: getGitLastModified(`src/content/players/${p.id}.yaml`),
-  }));
-
-playersWithDates.sort((a, b) => {
-  const luCmp = (b.player.data.lastUpdated || '').localeCompare(a.player.data.lastUpdated || '');
-  if (luCmp !== 0) return luCmp;
-  return (b.gitDate || '').localeCompare(a.gitDate || '');
-});
-
-const recentPlayers = playersWithDates.slice(0, 5).map(p => ({
-  ...p.player,
-  gitDate: p.gitDate ? p.gitDate.slice(0, 10) : p.player.data.lastUpdated,
-}));
+  .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
+  .slice(0, 5);
 
 // ===========================================
 // INTERESTING FACTS
@@ -1139,7 +1124,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 <span class="s-recent-rank">{i + 1}</span>
                 <a href={`${base}players/${p.id}/`} class="s-recent-name">{p.data.name}</a>
                 {p.data.country && <span class="s-recent-country">{p.data.country}</span>}
-                <span class="s-recent-date">{p.gitDate}</span>
+                <span class="s-recent-date">{p.data.lastUpdated}</span>
               </div>
             ))}
           </div>
