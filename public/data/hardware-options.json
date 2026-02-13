@@ -216,6 +216,11 @@
       "brand": "Chilkey"
     },
     {
+      "slug": "chilkey-glacier-lw-8k-m",
+      "name": "Chilkey Glacier LW 8K M",
+      "brand": "Chilkey"
+    },
+    {
       "slug": "cooler-master-mm712",
       "name": "Cooler Master MM712",
       "brand": "Cooler Master"
@@ -256,8 +261,28 @@
       "brand": "CRDRAKO"
     },
     {
+      "slug": "cybeart-artemis",
+      "name": "Cybeart Artemis",
+      "brand": "Cybeart"
+    },
+    {
+      "slug": "cybeart-ghost",
+      "name": "Cybeart Ghost",
+      "brand": "Cybeart"
+    },
+    {
+      "slug": "cybeart-xeus",
+      "name": "Cybeart Xeus",
+      "brand": "Cybeart"
+    },
+    {
       "slug": "dareu-a950-gm",
       "name": "Dareu A950 GM",
+      "brand": "Dareu"
+    },
+    {
+      "slug": "dareu-a950-pro",
+      "name": "Dareu A950 Pro",
       "brand": "Dareu"
     },
     {
@@ -606,6 +631,16 @@
       "brand": "INPHIC"
     },
     {
+      "slug": "inphic-in9",
+      "name": "INPHIC IN9",
+      "brand": "INPHIC"
+    },
+    {
+      "slug": "inphic-in9-ultra",
+      "name": "INPHIC IN9 Ultra",
+      "brand": "INPHIC"
+    },
+    {
       "slug": "ipi-qi-pro",
       "name": "IPI Qi Pro",
       "brand": "IPI"
@@ -798,6 +833,11 @@
     {
       "slug": "logitech-mx-master-4",
       "name": "Logitech MX Master 4",
+      "brand": "Logitech"
+    },
+    {
+      "slug": "logitech-mx518",
+      "name": "Logitech MX518",
       "brand": "Logitech"
     },
     {
@@ -1211,6 +1251,11 @@
       "brand": "Redragon"
     },
     {
+      "slug": "redragon-m725-lit",
+      "name": "Redragon M725-LIT",
+      "brand": "Redragon"
+    },
+    {
       "slug": "redragon-m818-std",
       "name": "Redragon M818-STD",
       "brand": "Redragon"
@@ -1296,8 +1341,33 @@
       "brand": "VAXEE"
     },
     {
+      "slug": "vaxee-outset-ax-wireless",
+      "name": "VAXEE OUTSET AX Wireless",
+      "brand": "VAXEE"
+    },
+    {
+      "slug": "vaxee-xe-v2-wireless",
+      "name": "VAXEE XE V2 Wireless",
+      "brand": "VAXEE"
+    },
+    {
       "slug": "vaxee-xe-wireless",
       "name": "VAXEE XE Wireless",
+      "brand": "VAXEE"
+    },
+    {
+      "slug": "vaxee-xe-s-wireless",
+      "name": "VAXEE XE-S Wireless",
+      "brand": "VAXEE"
+    },
+    {
+      "slug": "vaxee-np-01-wireless",
+      "name": "VAXEE ZYGEN NP-01 Wireless",
+      "brand": "VAXEE"
+    },
+    {
+      "slug": "vaxee-np-01s-v2-wireless",
+      "name": "VAXEE ZYGEN NP-01S V2 Wireless",
       "brand": "VAXEE"
     },
     {
@@ -2557,6 +2627,11 @@
       "brand": "Sharkoon"
     },
     {
+      "slug": "spyre-loque",
+      "name": "Spyre Loque",
+      "brand": "Spyre"
+    },
+    {
       "slug": "spyre-manta",
       "name": "Spyre Manta",
       "brand": "Spyre"
@@ -2711,6 +2786,11 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "virtus-pro",
+      "name": "Virtus.pro Mousepad",
+      "brand": "Virtus.pro"
     },
     {
       "slug": "vxe-dragonfly-pad",
@@ -2925,6 +3005,11 @@
     {
       "slug": "attack-shark-k85",
       "name": "Attack Shark K85",
+      "brand": "Attack Shark"
+    },
+    {
+      "slug": "attack-shark-x68-he",
+      "name": "Attack Shark X68 HE",
       "brand": "Attack Shark"
     },
     {
@@ -3451,6 +3536,11 @@
       "slug": "leopold-fc750r",
       "name": "Leopold FC750R",
       "brand": "Leopold"
+    },
+    {
+      "slug": "lingbao-k98",
+      "name": "Lingbao K98",
+      "brand": "Lingbao"
     },
     {
       "slug": "logitech-g-pro",
@@ -4630,6 +4720,11 @@
       "brand": "Samsung"
     },
     {
+      "slug": "tcl-25g64",
+      "name": "TCL 25G64",
+      "brand": "TCL"
+    },
+    {
       "slug": "titan-army-m27e6v-pro",
       "name": "Titan Army M27E6V-Pro",
       "brand": "Titan Army"
@@ -4739,6 +4834,11 @@
     {
       "slug": "havit-h2002bg",
       "name": "Havit H2002BG",
+      "brand": "Havit"
+    },
+    {
+      "slug": "havit-h2002d",
+      "name": "Havit H2002D",
       "brand": "Havit"
     },
     {
@@ -4959,6 +5059,11 @@
     {
       "slug": "technics-eah-a800",
       "name": "Technics EAH-A800",
+      "brand": "Technics"
+    },
+    {
+      "slug": "technics-rp-dj1210",
+      "name": "Technics RP-DJ1210",
       "brand": "Technics"
     },
     {
