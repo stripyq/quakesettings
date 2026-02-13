@@ -3548,6 +3548,11 @@
       "brand": "Logitech"
     },
     {
+      "slug": "logitech-g-pro-x-tkl-rapid",
+      "name": "Logitech G Pro X TKL Rapid",
+      "brand": "Logitech"
+    },
+    {
       "slug": "logitech-g413",
       "name": "Logitech G413",
       "brand": "Logitech"
@@ -4989,6 +4994,11 @@
     {
       "slug": "sennheiser-hd-800s",
       "name": "Sennheiser HD 800S",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-ie40-pro",
+      "name": "Sennheiser IE40 Pro",
       "brand": "Sennheiser"
     },
     {

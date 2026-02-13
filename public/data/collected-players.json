@@ -1669,15 +1669,15 @@
     "crouch": "",
     "attack": "",
     "zoom": "",
-    "mouse": "",
-    "mousepad": "",
+    "mouse": "logitech-g-pro-x2-superstrike",
+    "mousepad": "logitech-g840",
     "mousepadBase": "",
     "mousepadSize": "",
-    "keyboard": "",
+    "keyboard": "logitech-g-pro-x-tkl-rapid",
     "monitor": "",
-    "headset": "",
-    "gpu": "",
-    "cpu": ""
+    "headset": "sennheiser-ie40-pro",
+    "gpu": "NVIDIA",
+    "cpu": "Intel"
   },
   {
     "slug": "khan",
@@ -3006,8 +3006,8 @@
     "keyboard": "logitech-g-pro",
     "monitor": "",
     "headset": "logitech-g-pro-headset",
-    "gpu": "",
-    "cpu": ""
+    "gpu": "NVIDIA",
+    "cpu": "AMD"
   },
   {
     "slug": "randall",

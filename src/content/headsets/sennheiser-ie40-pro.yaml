@@ -1,0 +1,8 @@
+name: "Sennheiser IE40 Pro"
+brand: "Sennheiser"
+type: "In-ear"
+driverSize: "10mm"
+frequencyResponse: "20Hz - 18kHz"
+impedance: "20 Ohm"
+connection: "Wired"
+microphone: false
