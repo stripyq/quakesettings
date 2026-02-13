@@ -8,5 +8,5 @@ mouse: logitech-g-pro-wireless
 mousepad: logitech-g840
 keyboard: logitech-g-pro
 headset: logitech-g-pro-headset
-gpuBrand: NVIDIA
-cpuBrand: AMD
+gpu: NVIDIA
+cpu: AMD

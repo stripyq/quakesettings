@@ -4,3 +4,35 @@ country: DE
 category: duel
 lastUpdated: "2025-01"
 dataSource: collected
+
+# Hardware
+mouse: logitech-g-pro-x2-superstrike
+mousepad: logitech-g840
+keyboard: logitech-g-pro-x-tkl-rapid
+headset: sennheiser-ie40-pro
+gpu: NVIDIA
+cpu: Intel
+
+# Mouse Settings
+sensitivity: 3
+acceleration: true
+accelValue: 0.14
+rawInput: true
+invertedMouse: false
+
+# Game Settings
+fov: 100
+enemyModel: Keel
+crosshair: "2"
+crosshairColor: Green
+crosshairSize: "28"
+
+# Binds
+forward: w
+back: s
+left: a
+right: d
+jump: mouse2
+crouch: shift
+attack: mouse1
+zoom: e
