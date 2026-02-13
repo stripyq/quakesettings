@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-02-09",
-  "totalPlayers": 2288,
-  "playersWithProfiles": 104,
+  "generatedAt": "2026-02-13",
+  "totalPlayers": 2291,
+  "playersWithProfiles": 108,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -10407,8 +10407,8 @@
     {
       "steamId": "76561198257679175",
       "name": "Eteto",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "eteto",
+      "hasProfile": true,
       "ratings": {
         "ctf": 13.693617820739746,
         "tdm": 25.10838508605957,
@@ -16066,6 +16066,22 @@
         "ctf": null,
         "tdm": 2928,
         "2v2": 617
+      }
+    },
+    {
+      "steamId": "76561197982199355",
+      "name": "K1llsen",
+      "slug": "k1llsen",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
       }
     },
     {
@@ -25813,6 +25829,22 @@
       }
     },
     {
+      "steamId": "76561197989948663",
+      "name": "RAISY",
+      "slug": "raisy",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      }
+    },
+    {
       "steamId": "76561198156273988",
       "name": "RaiZo",
       "slug": null,
@@ -34802,6 +34834,22 @@
         "ctf": null,
         "tdm": 1,
         "2v2": 2
+      }
+    },
+    {
+      "steamId": "76561197985620716",
+      "name": "yarr",
+      "slug": "yarr",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
       }
     },
     {
