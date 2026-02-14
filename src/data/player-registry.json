@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-02-13",
+  "generatedAt": "2026-02-14",
   "totalPlayers": 2291,
   "playersWithProfiles": 108,
   "players": [
@@ -16070,7 +16070,7 @@
     },
     {
       "steamId": "76561197982199355",
-      "name": "K1llsen",
+      "name": "k1llsen",
       "slug": "k1llsen",
       "hasProfile": true,
       "ratings": {

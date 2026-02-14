@@ -1,31 +1,41 @@
-name: K1llsen
-steamId: "76561197982199355"
+name: k1llsen
 country: DE
+steamId: "76561197982199355"
+published: true
 category: duel
-lastUpdated: "2025-01"
+lastUpdated: "2026-02"
 dataSource: collected
+
+# Ratings
+duelRating: 2426
+duelRatingSource: qlstats
+duelGames: 2102
 
 # Hardware
 mouse: logitech-g-pro-x2-superstrike
-mousepad: logitech-g840
+mousepad: logitech-g640
 keyboard: logitech-g-pro-x-tkl-rapid
-headset: sennheiser-ie40-pro
-gpu: NVIDIA
-cpu: Intel
+monitor: benq-zowie-xl2540
+headset: logitech-g-pro-x-wireless-headset
+skates: Stock
 
 # Mouse Settings
-sensitivity: 3
+dpi: 400
+sensitivity: 2.35
+m_cpi: 0
+m_yaw: 0.022
 acceleration: true
-accelValue: 0.14
+accelValue: 0.035
 rawInput: true
+windowsSensitivity: 6
 invertedMouse: false
+grip: Hybrid
 
 # Game Settings
 fov: 100
 enemyModel: Keel
-crosshair: "2"
-crosshairColor: Green
-crosshairSize: "28"
+crosshairColor: Yellow
+crosshairSize: "20"
 
 # Binds
 forward: w
@@ -35,4 +45,8 @@ right: d
 jump: mouse2
 crouch: shift
 attack: mouse1
-zoom: e
+zoom: mouse4
+
+# System
+gpuBrand: NVIDIA
+cpuBrand: Intel
