@@ -36,3 +36,9 @@ jump: space
 attack: MOUSE1
 gpuBrand: AMD
 cpuBrand: AMD
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 40
+accuracy_lg: 30
+accuracy_rg: 51

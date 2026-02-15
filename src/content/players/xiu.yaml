@@ -32,3 +32,9 @@ enemyModel: Keel
 crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: overkill
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_lg: 41
+accuracy_rg: 44

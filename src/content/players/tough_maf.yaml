@@ -40,3 +40,9 @@ headset: 7hz-sonus
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 41
+accuracy_lg: 30
+accuracy_rg: 50

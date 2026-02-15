@@ -54,3 +54,9 @@ zoom: space
 # System
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: overkill
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 32
+accuracy_lg: 41
+accuracy_rg: 52

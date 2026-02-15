@@ -35,3 +35,9 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: trinity
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 30
+accuracy_lg: 39
+accuracy_rg: 43

@@ -27,3 +27,9 @@ crouch: c
 attack: mouse1
 zoom: "0"
 gpuBrand: NVIDIA
+favorite_map: hiddenfortress
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 44
+accuracy_lg: 36
+accuracy_rg: 58

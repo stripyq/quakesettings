@@ -42,3 +42,9 @@ headset: sony-mdr-xd300
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 30
+accuracy_lg: 35
+accuracy_rg: 51

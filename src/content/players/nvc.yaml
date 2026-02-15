@@ -7,3 +7,9 @@ ctfRating: 20.71
 ctfGames: 1077
 tdmRating: 24.33
 tdmGames: 19
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_lg: 42
+accuracy_rg: 54

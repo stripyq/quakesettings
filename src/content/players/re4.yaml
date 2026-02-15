@@ -41,3 +41,9 @@ skates: Stock
 enemyModel: Tank Jr.
 gpuBrand: AMD
 cpuBrand: AMD
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 35
+accuracy_lg: 32
+accuracy_rg: 48

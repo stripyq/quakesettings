@@ -26,3 +26,9 @@ back: s
 left: a
 right: d
 dataSource: player
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_lg: 36
+accuracy_rg: 64

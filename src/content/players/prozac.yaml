@@ -36,3 +36,9 @@ enemyModel: Keel
 crosshairColor: Blue
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: deepinside
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 41
+accuracy_lg: 35
+accuracy_rg: 57
