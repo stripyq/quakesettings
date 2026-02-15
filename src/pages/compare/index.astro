@@ -128,15 +128,23 @@ const schema = {
         return parseFloat(Number(num).toFixed(2)).toString();
       }
 
+      // cm/360 calculation - two modes:
+      // 1. Standard (m_cpi = 0): cm/360 = (360 / (m_yaw × dpi × sens)) × 2.54
+      // 2. With m_cpi > 0: cm/360 = (360 / sens) × (m_cpi / dpi)
+      // Sources:
+      //   https://funender.com/quake/mouse/index.html
+      //   https://www.esreality.com/post/2256180/re-mouse-sensitivity/
       function formatCm360(player) {
         let val;
-        if (player.cm360) val = player.cm360;
-        else if (player.m_cpi) {
-          // When m_cpi is set: cm360 = 360 × m_cpi / (sensitivity × DPI)
-          // When m_cpi = DPI, this simplifies to 360 / sensitivity
-          val = 360 * player.m_cpi / (player.sensitivity * player.dpi);
+        if (player.dpi && player.sensitivity) {
+          if (player.m_cpi && player.m_cpi > 0) {
+            val = (360 / player.sensitivity) * (player.m_cpi / player.dpi);
+          } else {
+            const yaw = player.m_yaw || 0.022;
+            val = (360 / (yaw * player.dpi * player.sensitivity)) * 2.54;
+          }
         } else {
-          val = 41563.6 / (player.dpi * player.sensitivity);
+          val = player.cm360 || 0;
         }
         const fixed = val.toFixed(2);
         return fixed.endsWith('.00') ? Math.round(val).toString() : fixed;
@@ -179,10 +187,14 @@ const schema = {
         }
 
         function getCm360Raw(player) {
-          if (player.cm360) return player.cm360;
-          if (player.m_cpi) return 360 * player.m_cpi / (player.sensitivity * player.dpi);
-          if (player.dpi && player.sensitivity) return 41563.6 / (player.dpi * player.sensitivity);
-          return null;
+          if (player.dpi && player.sensitivity) {
+            if (player.m_cpi && player.m_cpi > 0) {
+              return (360 / player.sensitivity) * (player.m_cpi / player.dpi);
+            }
+            const yaw = player.m_yaw || 0.022;
+            return (360 / (yaw * player.dpi * player.sensitivity)) * 2.54;
+          }
+          return player.cm360 || null;
         }
 
         function getRating(player) {

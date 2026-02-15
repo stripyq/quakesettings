@@ -8,7 +8,7 @@ dpi: 3200
 sensitivity: 0.28864
 m_yaw: 0.022
 edpi: 923.65
-cm360: 17.95
+cm360: 45.0
 acceleration: false
 rawInput: true
 fov: 95
