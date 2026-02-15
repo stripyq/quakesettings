@@ -2,9 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
+import playerRegistry from '../../data/player-registry.json';
 
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
+
+// Build lookup from player-registry (HoQ game counts) by steamId
+const hoqGamesMap = new Map<string, { ctf: number; tdm: number }>();
+for (const p of playerRegistry.players) {
+  hoqGamesMap.set(p.steamId, {
+    ctf: p.gamesPlayed?.ctf || 0,
+    tdm: p.gamesPlayed?.tdm || 0,
+  });
+}
 const mice = await getCollection('mice');
 const monitors = await getCollection('monitors');
 const keyboards = await getCollection('keyboards');
@@ -579,8 +589,13 @@ const recentPlayers = players
 // ===========================================
 
 // Filter: must have >= 100 games across duel, CTF, and TDM combined
+// Uses HoQ game counts from player-registry when YAML fields are missing
 function getCompetitiveGames(d: any): number {
-  return (d.duelGames || 0) + (d.ctfGames || 0) + (d.tdmGames || 0);
+  const hoq = d.steamId ? hoqGamesMap.get(String(d.steamId)) : undefined;
+  const ctf = d.ctfGames || hoq?.ctf || 0;
+  const tdm = d.tdmGames || hoq?.tdm || 0;
+  const duel = d.duelGames || 0;
+  return duel + ctf + tdm;
 }
 const accuracyEligible = players.filter(p => getCompetitiveGames(p.data) >= 100);
 
