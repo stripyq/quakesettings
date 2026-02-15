@@ -11,7 +11,7 @@ cm360: 17.95
 acceleration: false
 rawInput: true
 fov: 95
-crosshair: 2
+crosshair: "2"
 enemyModel: Keel
 forward: w
 back: s
