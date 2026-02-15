@@ -162,13 +162,13 @@ const schema = {
                         p1.accuracy_rl != null || p2.accuracy_rl != null;
         if (!hasAny) return '';
 
-        // 5 axes: pentagon layout
+        // 5 axes: weapons grouped together, then cm/360° and Rating
         const axes = [
           { label: 'RG', angle: 90 },
           { label: 'LG', angle: 18 },
-          { label: 'Rating', angle: 306 },
-          { label: 'RL', angle: 234 },
-          { label: 'cm/360\u00b0', angle: 162 }
+          { label: 'RL', angle: -54 },
+          { label: 'cm/360\u00b0', angle: -126 },
+          { label: 'Rating', angle: 162 }
         ];
         const cx = 160, cy = 150, outerR = 100;
 
@@ -203,10 +203,10 @@ const schema = {
             ? Math.max(0, Math.min(100, ((rating - 15) / 20) * 100))
             : 50;
 
-          return [rg, lg, ratingNorm, rl, cm360Norm];
+          return [rg, lg, rl, cm360Norm, ratingNorm];
         }
 
-        // Grid rings at 20, 40, 60, 80, 100
+        // Grid rings
         let gridSvg = '';
         [20, 40, 60, 80, 100].forEach(pct => {
           const r = (pct / 100) * outerR;
@@ -267,47 +267,39 @@ const schema = {
           playerDots(p1, p1Color) +
           playerDots(p2, p2Color);
 
-        // Value breakdown below chart (show actual values, not normalized)
+        // Format display values
         function fmtCm360(player) {
           const v = getCm360Raw(player);
-          if (v == null) return '\u2014';
+          if (v == null) return '';
           const fixed = v.toFixed(1);
           return fixed.endsWith('.0') ? Math.round(v) + ' cm' : fixed + ' cm';
         }
 
         function fmtRating(player) {
           const v = getRating(player);
-          if (v == null) return '\u2014';
+          if (v == null) return '';
           return parseFloat(Number(v).toFixed(2)).toString();
         }
 
-        const breakdownRows = [
-          { label: 'RG', v1: p1.accuracy_rg != null ? p1.accuracy_rg + '%' : '\u2014', v2: p2.accuracy_rg != null ? p2.accuracy_rg + '%' : '\u2014' },
-          { label: 'LG', v1: p1.accuracy_lg != null ? p1.accuracy_lg + '%' : '\u2014', v2: p2.accuracy_lg != null ? p2.accuracy_lg + '%' : '\u2014' },
-          { label: 'RL', v1: p1.accuracy_rl != null ? p1.accuracy_rl + '%' : '\u2014', v2: p2.accuracy_rl != null ? p2.accuracy_rl + '%' : '\u2014' },
-          { label: 'cm/360\u00b0', v1: fmtCm360(p1), v2: fmtCm360(p2) },
-          { label: 'Rating', v1: fmtRating(p1), v2: fmtRating(p2) },
-        ];
-
-        let valuesHtml = '<div class="radar-values">';
-        breakdownRows.forEach(row => {
-          valuesHtml += '<div class="radar-val-row"><span class="radar-val-label">' + row.label + '</span>' +
-            '<span class="radar-val p1-val">' + row.v1 + '</span>' +
-            '<span class="radar-val p2-val">' + row.v2 + '</span></div>';
-        });
-        valuesHtml += '</div>';
-
-        return '<tr class="data-row"><td colspan="3" class="radar-cell">' +
+        // Chart row: legend above, then chart
+        let html = '<tr class="data-row"><td colspan="3" class="radar-cell">' +
           '<div class="radar-chart-wrapper">' +
-          '<div class="radar-title">Player Comparison</div>' +
-          '<svg viewBox="0 0 320 300" width="320" height="300" xmlns="http://www.w3.org/2000/svg">' +
-          svgContent + '</svg>' +
           '<div class="radar-legend">' +
           '<span class="radar-legend-item"><span class="radar-swatch" style="background:' + p1Color + '"></span>' + p1.name + '</span>' +
           '<span class="radar-legend-item"><span class="radar-swatch" style="background:' + p2Color + '"></span>' + p2.name + '</span>' +
           '</div>' +
-          valuesHtml +
+          '<svg viewBox="0 0 320 300" width="320" height="300" xmlns="http://www.w3.org/2000/svg">' +
+          svgContent + '</svg>' +
           '</div></td></tr>';
+
+        // Value rows as regular table rows
+        html += compareRow('RG', p1.accuracy_rg != null ? p1.accuracy_rg + '%' : '', p2.accuracy_rg != null ? p2.accuracy_rg + '%' : '');
+        html += compareRow('LG', p1.accuracy_lg != null ? p1.accuracy_lg + '%' : '', p2.accuracy_lg != null ? p2.accuracy_lg + '%' : '');
+        html += compareRow('RL', p1.accuracy_rl != null ? p1.accuracy_rl + '%' : '', p2.accuracy_rl != null ? p2.accuracy_rl + '%' : '');
+        html += compareRow('cm/360\u00b0', fmtCm360(p1), fmtCm360(p2));
+        html += compareRow('Rating', fmtRating(p1), fmtRating(p2));
+
+        return html;
       }
 
       function updateComparison() {
@@ -711,19 +703,10 @@ const schema = {
     background: rgba(18, 18, 26, 0.5);
   }
 
-  .compare-table :global(.radar-title) {
-    color: var(--text-secondary, #9090a0);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-
   .compare-table :global(.radar-legend) {
     display: flex;
     gap: 1.5rem;
-    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
     font-size: 0.8rem;
     color: #d1d5db;
   }
@@ -741,39 +724,4 @@ const schema = {
     border-radius: 2px;
   }
 
-  .compare-table :global(.radar-values) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    margin-top: 0.75rem;
-    font-size: 0.8rem;
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .compare-table :global(.radar-val-row) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .compare-table :global(.radar-val-label) {
-    color: var(--text-secondary, #9090a0);
-    font-weight: 600;
-    width: 4rem;
-  }
-
-  .compare-table :global(.radar-val) {
-    font-family: monospace;
-    width: 4.5rem;
-    text-align: right;
-  }
-
-  .compare-table :global(.p1-val) {
-    color: #3b82f6;
-  }
-
-  .compare-table :global(.p2-val) {
-    color: #f97316;
-  }
 </style>
