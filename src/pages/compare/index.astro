@@ -156,6 +156,112 @@ const schema = {
           .join('');
       }
 
+      function radarChartRow(p1, p2) {
+        const hasAny = p1.accuracy_rg != null || p2.accuracy_rg != null ||
+                        p1.accuracy_lg != null || p2.accuracy_lg != null ||
+                        p1.accuracy_rl != null || p2.accuracy_rl != null;
+        if (!hasAny) return '';
+
+        const weapons = [
+          { label: 'RG', key: 'accuracy_rg' },
+          { label: 'LG', key: 'accuracy_lg' },
+          { label: 'RL', key: 'accuracy_rl' },
+        ];
+        const numAxes = weapons.length;
+        const cx = 150, cy = 140, outerR = 100;
+        const angleOffset = -Math.PI / 2; // RG at top
+
+        function polarToCart(angleDeg, r) {
+          const angle = (angleDeg * Math.PI / 180) + angleOffset;
+          return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+        }
+
+        const axisAngles = weapons.map((_, i) => (360 / numAxes) * i);
+
+        // Grid rings at 20, 40, 60, 80, 100
+        let gridSvg = '';
+        [20, 40, 60, 80, 100].forEach(pct => {
+          const r = (pct / 100) * outerR;
+          const pts = axisAngles.map(a => {
+            const p = polarToCart(a, r);
+            return p.x + ',' + p.y;
+          }).join(' ');
+          gridSvg += '<polygon points="' + pts + '" fill="none" stroke="#374151" stroke-width="1"/>';
+        });
+
+        // Axis lines + labels
+        let axesSvg = '';
+        weapons.forEach((w, i) => {
+          const outer = polarToCart(axisAngles[i], outerR);
+          axesSvg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + outer.x + '" y2="' + outer.y + '" stroke="#374151" stroke-width="1"/>';
+          const labelPos = polarToCart(axisAngles[i], outerR + 16);
+          axesSvg += '<text x="' + labelPos.x + '" y="' + labelPos.y + '" fill="#d1d5db" font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="central">' + w.label + '</text>';
+        });
+
+        // Tick labels on the RG axis (top)
+        let tickSvg = '';
+        [20, 40, 60, 80, 100].forEach(pct => {
+          const r = (pct / 100) * outerR;
+          const p = polarToCart(0, r);
+          tickSvg += '<text x="' + (p.x + 14) + '" y="' + p.y + '" fill="#6b7280" font-size="9" text-anchor="start" dominant-baseline="central">' + pct + '</text>';
+        });
+
+        // Player polygons
+        function playerPoly(player, color, opacity) {
+          const pts = weapons.map((w, i) => {
+            const val = player[w.key] != null ? player[w.key] : 0;
+            const r = (val / 100) * outerR;
+            const p = polarToCart(axisAngles[i], r);
+            return p.x + ',' + p.y;
+          }).join(' ');
+          return '<polygon points="' + pts + '" fill="' + color + '" fill-opacity="' + opacity + '" stroke="' + color + '" stroke-width="2"/>';
+        }
+
+        // Player dots
+        function playerDots(player, color) {
+          let dots = '';
+          weapons.forEach((w, i) => {
+            const val = player[w.key] != null ? player[w.key] : 0;
+            const r = (val / 100) * outerR;
+            const p = polarToCart(axisAngles[i], r);
+            dots += '<circle cx="' + p.x + '" cy="' + p.y + '" r="3" fill="' + color + '"/>';
+          });
+          return dots;
+        }
+
+        const p1Color = '#3b82f6';
+        const p2Color = '#f97316';
+
+        const svgContent = gridSvg + axesSvg + tickSvg +
+          playerPoly(p1, p1Color, 0.25) +
+          playerPoly(p2, p2Color, 0.25) +
+          playerDots(p1, p1Color) +
+          playerDots(p2, p2Color);
+
+        // Value labels below chart
+        let valuesHtml = '<div class="radar-values">';
+        weapons.forEach(w => {
+          const v1 = p1[w.key] != null ? p1[w.key] + '%' : '\u2014';
+          const v2 = p2[w.key] != null ? p2[w.key] + '%' : '\u2014';
+          valuesHtml += '<div class="radar-val-row"><span class="radar-val-label">' + w.label + '</span>' +
+            '<span class="radar-val p1-val">' + v1 + '</span>' +
+            '<span class="radar-val p2-val">' + v2 + '</span></div>';
+        });
+        valuesHtml += '</div>';
+
+        return '<tr class="data-row"><td colspan="3" class="radar-cell">' +
+          '<div class="radar-chart-wrapper">' +
+          '<div class="radar-title">Weapon Accuracy</div>' +
+          '<svg viewBox="0 0 300 280" width="300" height="280" xmlns="http://www.w3.org/2000/svg">' +
+          svgContent + '</svg>' +
+          '<div class="radar-legend">' +
+          '<span class="radar-legend-item"><span class="radar-swatch" style="background:' + p1Color + '"></span>' + p1.name + '</span>' +
+          '<span class="radar-legend-item"><span class="radar-swatch" style="background:' + p2Color + '"></span>' + p2.name + '</span>' +
+          '</div>' +
+          valuesHtml +
+          '</div></td></tr>';
+      }
+
       function updateComparison() {
         const p1Id = player1Select.value;
         const p2Id = player2Select.value;
@@ -260,15 +366,7 @@ const schema = {
           html += compareRow('Favorite Map', p1.favorite_map || '\u2014', p2.favorite_map || '\u2014');
           html += compareRow('Favorite Gametype', p1.favorite_gametype || '\u2014', p2.favorite_gametype || '\u2014');
           html += compareRow('Favorite Weapon', p1.favorite_weapon || '\u2014', p2.favorite_weapon || '\u2014');
-          html += compareRow('RL Accuracy',
-            p1.accuracy_rl != null ? p1.accuracy_rl + '%' : '\u2014',
-            p2.accuracy_rl != null ? p2.accuracy_rl + '%' : '\u2014', true);
-          html += compareRow('LG Accuracy',
-            p1.accuracy_lg != null ? p1.accuracy_lg + '%' : '\u2014',
-            p2.accuracy_lg != null ? p2.accuracy_lg + '%' : '\u2014', true);
-          html += compareRow('RG Accuracy',
-            p1.accuracy_rg != null ? p1.accuracy_rg + '%' : '\u2014',
-            p2.accuracy_rg != null ? p2.accuracy_rg + '%' : '\u2014', true);
+          html += radarChartRow(p1, p2);
         }
 
         compareBody.innerHTML = html;
@@ -550,5 +648,84 @@ const schema = {
     .player-header :global(.header-name) {
       font-size: 1rem;
     }
+  }
+
+  .compare-table :global(.radar-cell) {
+    padding: 0 !important;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .compare-table :global(.radar-chart-wrapper) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    background: rgba(18, 18, 26, 0.5);
+  }
+
+  .compare-table :global(.radar-title) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .compare-table :global(.radar-legend) {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #d1d5db;
+  }
+
+  .compare-table :global(.radar-legend-item) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .compare-table :global(.radar-swatch) {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  .compare-table :global(.radar-values) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .compare-table :global(.radar-val-row) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .compare-table :global(.radar-val-label) {
+    color: var(--text-secondary, #9090a0);
+    font-weight: 600;
+    width: 2rem;
+  }
+
+  .compare-table :global(.radar-val) {
+    font-family: monospace;
+    width: 3rem;
+    text-align: right;
+  }
+
+  .compare-table :global(.p1-val) {
+    color: #3b82f6;
+  }
+
+  .compare-table :global(.p2-val) {
+    color: #f97316;
   }
 </style>
