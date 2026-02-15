@@ -28,6 +28,8 @@ mousepad: "la-onda-blitz"
 keyboard: "logitech-g413"
 monitor: "samsung-crg5"
 headset: "audio-technica-ath-m50x"
+ctfGames: 845
+tdmGames: 491
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

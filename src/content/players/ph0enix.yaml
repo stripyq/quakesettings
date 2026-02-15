@@ -6,9 +6,10 @@ lastUpdated: "2026-02"
 dataSource: "player"
 
 duelRating: 1485
+ctfGames: 1066
+tdmGames: 1
 duelGames: 2
 ctfRating: 32.3
-ctfGames: 32
 
 dpi: 400
 sensitivity: 7

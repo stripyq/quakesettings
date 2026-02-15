@@ -46,6 +46,8 @@ enemyModel: Tank Jr.
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 293
+tdmGames: 43
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

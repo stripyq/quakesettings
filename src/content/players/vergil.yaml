@@ -36,6 +36,8 @@ enemyModel: Keel
 crosshairColor: Cyan
 gpuBrand: NVIDIA
 cpuBrand: AMD
+ctfGames: 1296
+tdmGames: 1
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

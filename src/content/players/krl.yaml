@@ -5,9 +5,7 @@ category: duel
 dataSource: player
 lastUpdated: 2026-02
 ctfRating: 24.17
-ctfGames: 1247
 tdmRating: 16.36
-tdmGames: 8
 dpi: 400
 sensitivity: 1.7
 edpi: 680
@@ -34,6 +32,8 @@ keyboard: steelseries-apex-9-mini
 monitor: benq-xl2420z
 headset: hyperx-cloud-alpha
 skates: Stock
+ctfGames: 1234
+tdmGames: 8
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

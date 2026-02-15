@@ -34,6 +34,8 @@ enemyModel: Keel
 crosshairColor: Blue
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 20
+tdmGames: 31
 favorite_map: limbus
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher

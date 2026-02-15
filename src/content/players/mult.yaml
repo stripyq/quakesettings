@@ -9,7 +9,6 @@ dataSource: player
 
 # Ratings
 ctfRating: 30.33
-ctfGames: 843
 qllrCtfRating: 20.9
 qllrCtfGames: 16
 
@@ -54,6 +53,7 @@ zoom: space
 # System
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 821
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

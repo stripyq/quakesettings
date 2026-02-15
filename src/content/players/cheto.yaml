@@ -6,9 +6,7 @@ category: duel
 dataSource: player
 lastUpdated: 2026-02
 ctfRating: 15.4
-ctfGames: 3941
 tdmRating: 14.37
-tdmGames: 156
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022
@@ -36,6 +34,8 @@ keyboard: ozone-keyboard
 monitor: hp-omen
 headset: logitech-g-pro-headset
 skates: None
+ctfGames: 3925
+tdmGames: 155
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

@@ -35,6 +35,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 367
+tdmGames: 45
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

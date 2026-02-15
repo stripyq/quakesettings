@@ -33,6 +33,8 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 386
+tdmGames: 113
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

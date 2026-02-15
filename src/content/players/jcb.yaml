@@ -5,13 +5,14 @@ team: "wAnnaBees"
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 38.33
-ctfGames: 2043
 ctfRatingUpdated: "2026-02-04"
 qllrCtfRating: 31.52
 qllrCtfGames: 57
 tdmRating: 29.55
 tdmRatingUpdated: "2026-01-31"
 duelRating: 1142
+ctfGames: 2043
+tdmGames: 9
 duelGames: 47
 duelRatingUpdated: "2026-02-04"
 dataSource: player

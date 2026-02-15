@@ -35,6 +35,8 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 7
+tdmGames: 4
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

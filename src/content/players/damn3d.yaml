@@ -10,6 +10,8 @@ ctfRatingUpdated: "2026-01-31"
 qllrCtfRating: 19.56
 qllrCtfGames: 13
 duelRating: 1227
+ctfGames: 846
+tdmGames: 73
 duelGames: 122
 duelRatingUpdated: "2026-02-04"
 dataSource: player

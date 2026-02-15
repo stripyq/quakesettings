@@ -32,6 +32,8 @@ skates: Stock
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
+ctfGames: 176
+tdmGames: 2087
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
