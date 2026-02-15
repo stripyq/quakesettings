@@ -320,7 +320,12 @@ const schema = {
     <!-- HoQ Stats -->
     {hasHoqStats && (
       <section class="hoq-section">
-        <h2>Playstyle</h2>
+        <div class="hoq-header">
+          <h2>Playstyle</h2>
+          {p.steamId && (
+            <span class="hoq-attr">Stats via <a href={`http://88.214.20.58/player/${p.steamId}`} target="_blank" rel="noopener">HoQ</a></span>
+          )}
+        </div>
         <div class="hoq-grid">
           <div class="hoq-favorites">
             <table class="settings-table">
@@ -898,14 +903,35 @@ const schema = {
     margin-bottom: 2rem;
   }
 
-  .hoq-section h2 {
-    font-size: 1.1rem;
+  .hoq-header {
+    display: flex;
+    align-items: baseline;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-section h2 {
+    font-size: 1.1rem;
     color: var(--accent-primary, #ff6b35);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .hoq-attr {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .hoq-attr a {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .hoq-attr a:hover {
+    text-decoration: underline;
   }
 
   .hoq-grid {
