@@ -220,6 +220,16 @@ const playersCollection = defineCollection({
     gpu: z.string().optional(), // Alias for gpuBrand (legacy)
     cpu: z.string().optional(), // Alias for cpuBrand (legacy)
 
+    // HoQ Favorites
+    favorite_map: z.string().optional(),
+    favorite_gametype: z.string().optional(),
+    favorite_weapon: z.string().optional(),
+
+    // Weapon Accuracies (percentage as number, no % sign)
+    accuracy_rl: z.number().nullable().optional(),
+    accuracy_rg: z.number().nullable().optional(),
+    accuracy_lg: z.number().nullable().optional(),
+
     // Config file path
     configFile: z.string().optional(),
   }),
