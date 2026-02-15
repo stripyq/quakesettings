@@ -563,6 +563,30 @@ vid_restart</code></pre>
     </div>
   </section>
 
+  <!-- SECTION 10: Map Switch Crashes -->
+  <section class="settings-section collapsible" id="map-switch-crashes">
+    <h2>Map Switch Crashes</h2>
+    <p class="section-subtitle">If your game crashes when switching maps, your Local Storage file may be oversized.</p>
+
+    <p><strong>Location:</strong></p>
+    <div class="code-block small">
+      <pre><code>Steam\steamapps\common\Quake Live\&lt;YourSteamID&gt;\Local Storage\</code></pre>
+    </div>
+
+    <p>When <code>asset_ql_0.localstorage</code> exceeds ~100 MB, map switch crashes can occur. This file grows over time and can reach 500+ MB.</p>
+
+    <h3>Fix</h3>
+    <ol class="troubleshoot-list">
+      <li><strong>Close Quake Live</strong></li>
+      <li><strong>Delete the contents of the Local Storage folder</strong></li>
+      <li><strong>Restart the game</strong></li>
+    </ol>
+
+    <div class="info-box">
+      <strong>Note:</strong> This only resets server browser filter preferences. Config, binds, and settings are unaffected.
+    </div>
+  </section>
+
   <div class="back-link">
     <a href={`${base}useful/`}>← Back to Useful Links</a>
   </div>
