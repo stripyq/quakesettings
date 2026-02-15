@@ -593,7 +593,7 @@ const topLgAccuracy = players
 const topRlAccuracy = players
   .filter(p => p.data.accuracy_rl != null)
   .sort((a, b) => b.data.accuracy_rl! - a.data.accuracy_rl!)
-  .slice(0, 10)
+  .slice(0, 20)
   .map(p => ({ id: p.id, name: p.data.name, value: p.data.accuracy_rl! }));
 
 // ===========================================
@@ -1129,7 +1129,7 @@ const schema = {
       </div>
 
       <div class="s-card">
-        <h2 class="s-card-title">Top 10 RL Accuracy</h2>
+        <h2 class="s-card-title">Top 20 RL Accuracy</h2>
         <p class="s-card-sub">Rocket Launcher</p>
         <div class="s-leaderboard">
           {topRlAccuracy.map((p, i) => (
