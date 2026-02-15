@@ -569,7 +569,7 @@ const maxJumpCount = topJumpKeys.length > 0 ? topJumpKeys[0][1] : 1;
 // PLAYER STATS
 // ===========================================
 
-// Recently updated — sorted by lastUpdated (YYYY-MM-DD or YYYY-MM)
+// Recently updated — sorted by lastUpdated (full ISO timestamp for ordering)
 const recentPlayers = players
   .filter(p => p.data.lastUpdated)
   .sort((a, b) => (b.data.lastUpdated || '').localeCompare(a.data.lastUpdated || ''))
@@ -1215,7 +1215,7 @@ const schema = {
                 <span class="s-recent-rank">{i + 1}</span>
                 <a href={`${base}players/${p.id}/`} class="s-recent-name">{p.data.name}</a>
                 {p.data.country && <span class="s-recent-country">{p.data.country}</span>}
-                <span class="s-recent-date">{p.data.lastUpdated}</span>
+                <span class="s-recent-date">{p.data.lastUpdated?.substring(0, 10)}</span>
               </div>
             ))}
           </div>
