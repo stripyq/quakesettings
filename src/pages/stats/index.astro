@@ -579,13 +579,12 @@ const recentPlayers = players
 // WEAPON ACCURACY LEADERBOARDS
 // ===========================================
 
-// Filter: must have >= 100 games across duel, CTF, and TDM combined
+// Filter: must have >= 100 team mode games (CTF + TDM)
 // Game counts come from YAML only (synced from HoQ via scripts/sync-hoq-games.cjs)
 function getCompetitiveGames(d: any): number {
   const ctf = d.ctfGames || 0;
   const tdm = d.tdmGames || 0;
-  const duel = d.duelGames || 0;
-  return duel + ctf + tdm;
+  return ctf + tdm;
 }
 const accuracyEligible = players.filter(p => getCompetitiveGames(p.data) >= 100);
 
@@ -1108,7 +1107,7 @@ const schema = {
     <div class="s-section-header" style="--section-color: #f85149">
       <div class="s-section-icon" style="background: #f85149">&#127919;</div>
       <span class="s-section-title" style="color: #f85149">WEAPON ACCURACY LEADERBOARDS</span>
-      <span class="s-section-attr">Stats via <a href="http://88.214.20.58/matches/" target="_blank" rel="noopener">HoQ</a></span>
+      <span class="s-section-attr">Stats via <a href="http://88.214.20.58/matches/" target="_blank" rel="noopener">HoQ</a> &middot; Players with 100+ CTF and/or TDM games</span>
     </div>
 
     <div class="s-three-col">
