@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-02-15",
   "totalPlayers": 2291,
-  "playersWithProfiles": 108,
+  "playersWithProfiles": 109,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -21222,9 +21222,9 @@
     },
     {
       "steamId": "76561198117978344",
-      "name": "ṁǔτⱥṅτ›",
-      "slug": null,
-      "hasProfile": false,
+      "name": "mutant",
+      "slug": "mutant",
+      "hasProfile": true,
       "ratings": {
         "ctf": 24.05807876586914,
         "tdm": 31.107351303100586,
