@@ -4,11 +4,12 @@ country: Unknown
 team: "Astral Starlight"
 category: ctf
 lastUpdated: 2025-01
-duelRating: 1254
+duelRating: 2050
 duelRatingUpdated: "2026-01-31"
+duelGames: 67
 tdmRating: 15.03
 tdmRatingUpdated: "2026-01-31"
-ctfRating: 14.63
+ctfRating: 16.52
 ctfRatingUpdated: "2026-01-31"
 qllrCtfRating: 28.08
 qllrCtfGames: 10
@@ -35,7 +36,7 @@ skates: Stock
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 9099
+ctfGames: 9248
 tdmGames: 64
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
