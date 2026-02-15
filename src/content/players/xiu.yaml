@@ -32,6 +32,7 @@ enemyModel: Keel
 crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 15
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

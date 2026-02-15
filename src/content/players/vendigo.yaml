@@ -34,6 +34,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
+ctfGames: 1
+tdmGames: 1797
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

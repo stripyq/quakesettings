@@ -4,11 +4,11 @@ steamId: "76561197964623506"
 category: tdm
 lastUpdated: 2026-02
 duelRating: 1361
+ctfGames: 413
+tdmGames: 1130
 duelGames: 432
 tdmRating: 30.23
-tdmGames: 1130
 ctfRating: 25.01
-ctfGames: 431
 dataSource: collected
 dpi: 400
 sensitivity: 1.2

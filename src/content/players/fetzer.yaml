@@ -36,6 +36,8 @@ enemyModel: Tank Jr.
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: AMD
+ctfGames: 1
+tdmGames: 1
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Rocket Launcher

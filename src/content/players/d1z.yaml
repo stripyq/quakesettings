@@ -2,12 +2,12 @@ name: d1z
 country: RU
 steamId: "76561198075079469"
 tdmRating: 25.25
-tdmGames: 362
 tdmRatingUpdated: "2026-02-04"
 ctfRating: 22.34
-ctfGames: 176
 ctfRatingUpdated: "2026-02-04"
 duelRating: 1554
+ctfGames: 173
+tdmGames: 362
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii

@@ -36,6 +36,8 @@ enemyModel: Keel
 crosshairColor: Blue
 gpuBrand: NVIDIA
 cpuBrand: AMD
+ctfGames: 22
+tdmGames: 311
 favorite_map: deepinside
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

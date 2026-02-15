@@ -35,6 +35,8 @@ skates: Stock
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+ctfGames: 9099
+tdmGames: 64
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

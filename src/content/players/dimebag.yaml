@@ -5,10 +5,11 @@ category: tdm
 dataSource: collected
 lastUpdated: 2026-02
 tdmRating: 23.99
-tdmGames: 3942
 tdm2v2Rating: 21.38
 tdm2v2Games: 91
 duelRating: 1215
+ctfGames: 2
+tdmGames: 3939
 duelGames: 380
 dpi: 2400
 sensitivity: 0.92

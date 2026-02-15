@@ -5,10 +5,10 @@ category: duel
 dataSource: player
 lastUpdated: 2026-02
 ctfRating: 11.21
-ctfGames: 687
 tdmRating: 11.22
-tdmGames: 35
 duelRating: 1041
+ctfGames: 680
+tdmGames: 35
 duelGames: 30
 dpi: 1600
 sensitivity: 1
