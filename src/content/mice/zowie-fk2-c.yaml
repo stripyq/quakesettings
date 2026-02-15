@@ -1,0 +1,10 @@
+name: "Zowie FK2-C"
+brand: "Zowie"
+weight: "73g"
+shape: "Ambidextrous"
+dimensions: "124 x 58 x 36mm"
+sensor: "3360"
+dpiRange: "400-3200"
+pollingRate: "1000Hz"
+buttons: 5
+connection: "Wired"
