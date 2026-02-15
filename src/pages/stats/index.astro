@@ -578,14 +578,11 @@ const recentPlayers = players
 // WEAPON ACCURACY LEADERBOARDS
 // ===========================================
 
-// Filter: must have 100+ total games AND have played duel, CTF, or TDM
-function getTotalGames(d: any): number {
-  return (d.duelGames || 0) + (d.ctfGames || 0) + (d.tdmGames || 0) + (d.caGames || 0);
+// Filter: must have >= 100 games across duel, CTF, and TDM combined
+function getCompetitiveGames(d: any): number {
+  return (d.duelGames || 0) + (d.ctfGames || 0) + (d.tdmGames || 0);
 }
-function hasCompetitiveMode(d: any): boolean {
-  return (d.duelGames || 0) > 0 || (d.ctfGames || 0) > 0 || (d.tdmGames || 0) > 0;
-}
-const accuracyEligible = players.filter(p => getTotalGames(p.data) >= 100 && hasCompetitiveMode(p.data));
+const accuracyEligible = players.filter(p => getCompetitiveGames(p.data) >= 100);
 
 const topRgAccuracy = accuracyEligible
   .filter(p => p.data.accuracy_rg != null)
