@@ -76,9 +76,21 @@ const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.na
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "QL Pro Settings",
+  "url": "https://stripyq.github.io/quakesettings/",
+  "description": "Quake Live pro player settings and hardware database",
+  "publisher": {
+    "@type": "Organization",
+    "name": "QL Pro Settings"
+  }
+};
 ---
 
-<BaseLayout title="Quake Player Database" description="Browse settings, configs, and hardware from 96+ competitive Quake Live players. Find sensitivity, crosshair, keybinds, and gear used by the pros.">
+<BaseLayout title="Quake Player Database" description="Browse settings, configs, and hardware from 96+ competitive Quake Live players. Find sensitivity, crosshair, keybinds, and gear used by the pros." schema={schema}>
   <div class="page-header">
     <h1>Quake Live Pro Settings</h1>
     <p>Mouse settings, hardware, and configs from {players.length} players</p>

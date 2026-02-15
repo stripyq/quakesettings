@@ -2,9 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Quake Live Guides and Resources",
+  "description": "Helpful guides, tools, and resources for Quake Live players",
+  "url": "https://stripyq.github.io/quakesettings/useful/"
+};
 ---
 
-<BaseLayout title="Useful Links" description="Helpful links, tools, and guides for Quake Live players. Performance optimization, network settings, and community resources.">
+<BaseLayout title="Useful Links" description="Helpful links, tools, and guides for Quake Live players. Performance optimization, network settings, and community resources." schema={schema}>
   <div class="page-header">
     <h1>Useful Links</h1>
     <p>Community resources, guides, and tools for Quake Live</p>

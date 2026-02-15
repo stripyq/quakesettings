@@ -68,9 +68,17 @@ const sortedMice = mouseData.sort((a, b) => {
   if (bReviewers !== aReviewers) return bReviewers - aReviewers;
   return getPlayerCount(b.mouse) - getPlayerCount(a.mouse);
 });
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recommended Gaming Mice for Quake Live",
+  "description": "Best gaming mice recommended by competitive Quake Live players",
+  "url": "https://stripyq.github.io/quakesettings/recommendations/mice/"
+};
 ---
 
-<BaseLayout title="Mice Recommendations" description="Best gaming mice for Quake Live recommended by competitive players. Lightweight, precise sensors, and pro-approved picks.">
+<BaseLayout title="Mice Recommendations" description="Best gaming mice for Quake Live recommended by competitive players. Lightweight, precise sensors, and pro-approved picks." schema={schema}>
   <div class="page-header">
     <h1>Gaming Mice Recommendations</h1>
     <p>Recommended mice from top reviewers (2025)</p>

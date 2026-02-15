@@ -34,9 +34,18 @@ const playersData = Object.fromEntries(
 const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Quake Live Player Comparison Tool",
+  "description": "Compare settings and hardware between Quake Live players",
+  "url": "https://stripyq.github.io/quakesettings/compare/",
+  "applicationCategory": "GameApplication"
+};
 ---
 
-<BaseLayout title="Compare Players" description="Compare settings and hardware between Quake Live players side-by-side. See sensitivity, keybinds, crosshairs, and gear differences.">
+<BaseLayout title="Compare Players" description="Compare settings and hardware between Quake Live players side-by-side. See sensitivity, keybinds, crosshairs, and gear differences." schema={schema}>
   <div class="page-header">
     <h1>Compare Players</h1>
     <p>Select two players to compare their settings side by side</p>
