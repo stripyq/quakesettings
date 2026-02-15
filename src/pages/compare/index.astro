@@ -36,7 +36,7 @@ const sortedPlayers = players.sort((a, b) => a.data.name.localeCompare(b.data.na
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
-<BaseLayout title="Compare Players">
+<BaseLayout title="Compare Players" description="Compare settings and hardware between Quake Live players side-by-side. See sensitivity, keybinds, crosshairs, and gear differences.">
   <div class="page-header">
     <h1>Compare Players</h1>
     <p>Select two players to compare their settings side by side</p>

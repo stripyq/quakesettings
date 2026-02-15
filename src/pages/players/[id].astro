@@ -138,7 +138,7 @@ const hasMousepadVariant = !!(p.mousepadBase || p.mousepadSize);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
-<BaseLayout title={p.name}>
+<BaseLayout title={p.name} description={`${p.name}'s Quake Live settings and hardware. DPI, sensitivity, crosshair, keybinds, mouse, keyboard, and monitor.`}>
   <div class="player-page">
     <div class="player-header">
       <h1>{p.name}</h1>
