@@ -7,3 +7,9 @@ ctfRating: 26.53
 ctfGames: 4568
 tdmRating: 24.21
 tdmGames: 671
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 37
+accuracy_lg: 30
+accuracy_rg: 46

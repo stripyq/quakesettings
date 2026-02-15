@@ -44,3 +44,9 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 46
+accuracy_lg: 36
+accuracy_rg: 52

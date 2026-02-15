@@ -57,3 +57,9 @@ zoom: mouse3
 # System
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 41
+accuracy_lg: 35
+accuracy_rg: 49

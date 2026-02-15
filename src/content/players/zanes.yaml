@@ -37,3 +37,9 @@ enemyModel: Tank Jr.
 crosshairColor: Orange
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: hiddenfortress
+favorite_gametype: Team Deathmatch
+favorite_weapon: Lightning Gun
+accuracy_rl: 45
+accuracy_lg: 34
+accuracy_rg: 53

@@ -39,3 +39,9 @@ monitor: viewsonic-xg2401
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 34
+accuracy_lg: 33
+accuracy_rg: 51

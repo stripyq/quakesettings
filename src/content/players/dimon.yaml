@@ -31,3 +31,9 @@ grip: Palm
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: campgrounds
+favorite_gametype: Team Deathmatch (2v2)
+favorite_weapon: Lightning Gun
+accuracy_rl: 43
+accuracy_lg: 32
+accuracy_rg: 49

@@ -51,3 +51,9 @@ zoom: mouse4
 # System
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 46
+accuracy_lg: 45
+accuracy_rg: 58

@@ -35,3 +35,9 @@ crouch: Ctrl
 attack: Mouse1
 gpuBrand: AMD
 cpuBrand: AMD
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 35
+accuracy_lg: 32
+accuracy_rg: 49

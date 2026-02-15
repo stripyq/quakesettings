@@ -36,3 +36,9 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: campgrounds
+favorite_gametype: Team Deathmatch (2v2)
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_lg: 40
+accuracy_rg: 55

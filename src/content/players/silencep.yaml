@@ -35,3 +35,9 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 34
+accuracy_lg: 46
+accuracy_rg: 59

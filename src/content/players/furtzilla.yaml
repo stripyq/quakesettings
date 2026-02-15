@@ -32,3 +32,9 @@ skates: Stock
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 42
+accuracy_lg: 35
+accuracy_rg: 51

@@ -36,3 +36,9 @@ enemyModel: Tank Jr.
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: AMD
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Rocket Launcher
+accuracy_rl: 33
+accuracy_lg: 26
+accuracy_rg: 47

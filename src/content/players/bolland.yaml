@@ -33,3 +33,9 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 44
+accuracy_lg: 30
+accuracy_rg: 52

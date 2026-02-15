@@ -29,3 +29,9 @@ grip: Hybrid
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 37
+accuracy_lg: 30
+accuracy_rg: 49

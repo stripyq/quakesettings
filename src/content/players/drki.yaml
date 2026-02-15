@@ -33,3 +33,9 @@ skates: Aftermarket
 crosshairColor: Green
 gpuBrand: INTEL
 cpuBrand: Intel
+favorite_map: hiddenfortress
+favorite_gametype: Team Deathmatch
+favorite_weapon: Rocket Launcher
+accuracy_rl: 44
+accuracy_lg: 29
+accuracy_rg: 49

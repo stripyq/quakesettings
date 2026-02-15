@@ -33,3 +33,9 @@ skates: Stock
 crosshairColor: White
 gpuBrand: INTEL
 cpuBrand: Intel
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Lightning Gun
+accuracy_rl: 33
+accuracy_lg: 32
+accuracy_rg: 52
