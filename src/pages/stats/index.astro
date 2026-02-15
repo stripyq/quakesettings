@@ -578,19 +578,28 @@ const recentPlayers = players
 // WEAPON ACCURACY LEADERBOARDS
 // ===========================================
 
-const topRgAccuracy = players
+// Filter: must have 100+ total games AND have played duel, CTF, or TDM
+function getTotalGames(d: any): number {
+  return (d.duelGames || 0) + (d.ctfGames || 0) + (d.tdmGames || 0) + (d.caGames || 0);
+}
+function hasCompetitiveMode(d: any): boolean {
+  return (d.duelGames || 0) > 0 || (d.ctfGames || 0) > 0 || (d.tdmGames || 0) > 0;
+}
+const accuracyEligible = players.filter(p => getTotalGames(p.data) >= 100 && hasCompetitiveMode(p.data));
+
+const topRgAccuracy = accuracyEligible
   .filter(p => p.data.accuracy_rg != null)
   .sort((a, b) => b.data.accuracy_rg! - a.data.accuracy_rg!)
   .slice(0, 20)
   .map(p => ({ id: p.id, name: p.data.name, value: p.data.accuracy_rg! }));
 
-const topLgAccuracy = players
+const topLgAccuracy = accuracyEligible
   .filter(p => p.data.accuracy_lg != null)
   .sort((a, b) => b.data.accuracy_lg! - a.data.accuracy_lg!)
   .slice(0, 20)
   .map(p => ({ id: p.id, name: p.data.name, value: p.data.accuracy_lg! }));
 
-const topRlAccuracy = players
+const topRlAccuracy = accuracyEligible
   .filter(p => p.data.accuracy_rl != null)
   .sort((a, b) => b.data.accuracy_rl! - a.data.accuracy_rl!)
   .slice(0, 20)
