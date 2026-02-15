@@ -5,9 +5,17 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 const title = "Optimal Network Settings - Quake Live";
 const description = "Optimal network and connection settings for Quake Live. Reduce ping, fix packet loss, and configure rate settings for smooth gameplay.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Optimal Network Settings for Quake Live",
+  "description": "Configure your connection for lowest ping and stable gameplay",
+  "url": "https://stripyq.github.io/quakesettings/useful/network/"
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <div class="page-header">
     <nav class="breadcrumb">
       <a href={`${base}useful/`}>Useful</a> &gt; Network Settings

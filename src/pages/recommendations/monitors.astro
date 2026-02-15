@@ -75,9 +75,17 @@ const sortedMonitors = monitorData.sort((a, b) => {
   if (bReviewers !== aReviewers) return bReviewers - aReviewers;
   return getPlayerCount(b.name) - getPlayerCount(a.name);
 });
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recommended Gaming Monitors for Quake Live",
+  "description": "Best high refresh rate monitors for competitive Quake Live",
+  "url": "https://stripyq.github.io/quakesettings/recommendations/monitors/"
+};
 ---
 
-<BaseLayout title="Monitor Recommendations" description="Best gaming monitors for Quake Live. High refresh rate 240Hz-500Hz displays used by competitive players.">
+<BaseLayout title="Monitor Recommendations" description="Best gaming monitors for Quake Live. High refresh rate 240Hz-500Hz displays used by competitive players." schema={schema}>
   <div class="page-header">
     <h1>Monitor Recommendations</h1>
     <p>Recommended monitors from top reviewers (2025)</p>

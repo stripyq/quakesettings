@@ -85,9 +85,17 @@ const sortedPads = mousepadData.sort((a, b) => {
   if (bReviewers !== aReviewers) return bReviewers - aReviewers;
   return getPlayerCount(b.name) - getPlayerCount(a.name);
 });
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recommended Mousepads for Quake Live",
+  "description": "Best mousepads for competitive Quake Live",
+  "url": "https://stripyq.github.io/quakesettings/recommendations/mousepads/"
+};
 ---
 
-<BaseLayout title="Mousepad Recommendations" description="Best mousepads for Quake Live. Speed, control, and hybrid pads recommended by competitive players.">
+<BaseLayout title="Mousepad Recommendations" description="Best mousepads for Quake Live. Speed, control, and hybrid pads recommended by competitive players." schema={schema}>
   <div class="page-header">
     <h1>Mousepad Recommendations</h1>
     <p>Recommended mousepads from top reviewers (2025)</p>
