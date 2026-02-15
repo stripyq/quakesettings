@@ -6,6 +6,10 @@ country: ""
 team: ""
 category: ctf
 lastUpdated: 2024-12
+ctfRating: 24.06
+ctfGames: 1077
+tdmRating: 31.11
+tdmGames: 118
 dataSource: player
 source: ""
 sourceUrl: ""
