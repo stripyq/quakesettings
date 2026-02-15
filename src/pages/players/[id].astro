@@ -161,20 +161,31 @@ const schema = {
       <div class="player-ratings-display">
         <div class="rating-item">
           <span class="rating-label">Duel:</span>
-          <span class="rating-value duel">{formatRating(p.duelRating, 'duel')}</span>
+          <div class="rating-value-container">
+            <span class="rating-value duel">{formatRating(p.duelRating, 'duel')}</span>
+            {p.duelGames > 0 && <span class="game-count">{p.duelGames} {p.duelGames === 1 ? 'game' : 'games'}</span>}
+          </div>
         </div>
         <div class="rating-item">
           <span class="rating-label">CTF:</span>
-          <span class="rating-value ctf">{formatRating(p.ctfRating, 'ctf')}</span>
+          <div class="rating-value-container">
+            <span class="rating-value ctf">{formatRating(p.ctfRating, 'ctf')}</span>
+            {p.ctfGames > 0 && <span class="game-count">{p.ctfGames} {p.ctfGames === 1 ? 'game' : 'games'}</span>}
+          </div>
         </div>
         <div class="rating-item">
           <span class="rating-label">TDM:</span>
-          <span class="rating-value tdm">{formatRating(p.tdmRating, 'tdm')}</span>
+          <div class="rating-value-container">
+            <span class="rating-value tdm">{formatRating(p.tdmRating, 'tdm')}</span>
+            {p.tdmGames > 0 && <span class="game-count">{p.tdmGames} {p.tdmGames === 1 ? 'game' : 'games'}</span>}
+          </div>
         </div>
         {p.qllrCtfRating && (
           <div class="rating-item">
             <span class="rating-label">CSQL:</span>
-            <a href={`https://qllr.xyz/player/${p.steamId}`} target="_blank" rel="noopener noreferrer" class="rating-value csql">{p.qllrCtfRating.toFixed(1)}</a>
+            <div class="rating-value-container">
+              <a href={`https://qllr.xyz/player/${p.steamId}`} target="_blank" rel="noopener noreferrer" class="rating-value csql">{p.qllrCtfRating.toFixed(1)}</a>
+            </div>
           </div>
         )}
       </div>
@@ -515,6 +526,17 @@ const schema = {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
+  }
+
+  .rating-value-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-count {
+    font-size: 0.75rem;
+    color: #6b7280;
+    line-height: 1.2;
   }
 
   .ratings-disclaimer {
