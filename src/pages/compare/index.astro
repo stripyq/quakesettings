@@ -162,28 +162,56 @@ const schema = {
                         p1.accuracy_rl != null || p2.accuracy_rl != null;
         if (!hasAny) return '';
 
-        const weapons = [
-          { label: 'RG', key: 'accuracy_rg' },
-          { label: 'LG', key: 'accuracy_lg' },
-          { label: 'RL', key: 'accuracy_rl' },
+        // 5 axes: pentagon layout
+        const axes = [
+          { label: 'RG', angle: 90 },
+          { label: 'LG', angle: 18 },
+          { label: 'Rating', angle: 306 },
+          { label: 'RL', angle: 234 },
+          { label: 'cm/360\u00b0', angle: 162 }
         ];
-        const numAxes = weapons.length;
-        const cx = 150, cy = 140, outerR = 100;
-        const angleOffset = -Math.PI / 2; // RG at top
+        const cx = 160, cy = 150, outerR = 100;
 
         function polarToCart(angleDeg, r) {
-          const angle = (angleDeg * Math.PI / 180) + angleOffset;
-          return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+          const rad = angleDeg * Math.PI / 180;
+          return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
         }
 
-        const axisAngles = weapons.map((_, i) => (360 / numAxes) * i);
+        function getCm360Raw(player) {
+          if (player.cm360) return player.cm360;
+          if (player.m_cpi) return 360 * player.m_cpi / (player.sensitivity * player.dpi);
+          if (player.dpi && player.sensitivity) return 41563.6 / (player.dpi * player.sensitivity);
+          return null;
+        }
+
+        function getRating(player) {
+          return player.ctfRating || player.tdmRating || null;
+        }
+
+        function getPlayerValues(player) {
+          const rg = player.accuracy_rg || 0;
+          const lg = player.accuracy_lg || 0;
+          const rl = player.accuracy_rl || 0;
+
+          const cm360 = getCm360Raw(player);
+          const cm360Norm = cm360 != null
+            ? Math.max(0, Math.min(100, 100 - ((cm360 - 10) / 60) * 100))
+            : 50;
+
+          const rating = getRating(player);
+          const ratingNorm = rating != null
+            ? Math.max(0, Math.min(100, ((rating - 15) / 20) * 100))
+            : 50;
+
+          return [rg, lg, ratingNorm, rl, cm360Norm];
+        }
 
         // Grid rings at 20, 40, 60, 80, 100
         let gridSvg = '';
         [20, 40, 60, 80, 100].forEach(pct => {
           const r = (pct / 100) * outerR;
-          const pts = axisAngles.map(a => {
-            const p = polarToCart(a, r);
+          const pts = axes.map(a => {
+            const p = polarToCart(a.angle, r);
             return p.x + ',' + p.y;
           }).join(' ');
           gridSvg += '<polygon points="' + pts + '" fill="none" stroke="#374151" stroke-width="1"/>';
@@ -191,40 +219,41 @@ const schema = {
 
         // Axis lines + labels
         let axesSvg = '';
-        weapons.forEach((w, i) => {
-          const outer = polarToCart(axisAngles[i], outerR);
+        axes.forEach(a => {
+          const outer = polarToCart(a.angle, outerR);
           axesSvg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + outer.x + '" y2="' + outer.y + '" stroke="#374151" stroke-width="1"/>';
-          const labelPos = polarToCart(axisAngles[i], outerR + 16);
-          axesSvg += '<text x="' + labelPos.x + '" y="' + labelPos.y + '" fill="#d1d5db" font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="central">' + w.label + '</text>';
+          const labelPos = polarToCart(a.angle, outerR + 18);
+          axesSvg += '<text x="' + labelPos.x + '" y="' + labelPos.y + '" fill="#d1d5db" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="central">' + a.label + '</text>';
         });
 
         // Tick labels on the RG axis (top)
         let tickSvg = '';
         [20, 40, 60, 80, 100].forEach(pct => {
           const r = (pct / 100) * outerR;
-          const p = polarToCart(0, r);
+          const p = polarToCart(90, r);
           tickSvg += '<text x="' + (p.x + 14) + '" y="' + p.y + '" fill="#6b7280" font-size="9" text-anchor="start" dominant-baseline="central">' + pct + '</text>';
         });
 
-        // Player polygons
-        function playerPoly(player, color, opacity) {
-          const pts = weapons.map((w, i) => {
-            const val = player[w.key] != null ? player[w.key] : 0;
+        // Player polygons (P2 uses dashed stroke for distinction)
+        function playerPoly(player, color, dashed) {
+          const values = getPlayerValues(player);
+          const pts = values.map((val, i) => {
             const r = (val / 100) * outerR;
-            const p = polarToCart(axisAngles[i], r);
+            const p = polarToCart(axes[i].angle, r);
             return p.x + ',' + p.y;
           }).join(' ');
-          return '<polygon points="' + pts + '" fill="' + color + '" fill-opacity="' + opacity + '" stroke="' + color + '" stroke-width="2"/>';
+          const dashAttr = dashed ? ' stroke-dasharray="6,3"' : '';
+          return '<polygon points="' + pts + '" fill="' + color + '" fill-opacity="0.35" stroke="' + color + '" stroke-width="3"' + dashAttr + '/>';
         }
 
         // Player dots
         function playerDots(player, color) {
+          const values = getPlayerValues(player);
           let dots = '';
-          weapons.forEach((w, i) => {
-            const val = player[w.key] != null ? player[w.key] : 0;
+          values.forEach((val, i) => {
             const r = (val / 100) * outerR;
-            const p = polarToCart(axisAngles[i], r);
-            dots += '<circle cx="' + p.x + '" cy="' + p.y + '" r="3" fill="' + color + '"/>';
+            const p = polarToCart(axes[i].angle, r);
+            dots += '<circle cx="' + p.x + '" cy="' + p.y + '" r="5" fill="' + color + '"/>';
           });
           return dots;
         }
@@ -233,26 +262,45 @@ const schema = {
         const p2Color = '#f97316';
 
         const svgContent = gridSvg + axesSvg + tickSvg +
-          playerPoly(p1, p1Color, 0.25) +
-          playerPoly(p2, p2Color, 0.25) +
+          playerPoly(p1, p1Color, false) +
+          playerPoly(p2, p2Color, true) +
           playerDots(p1, p1Color) +
           playerDots(p2, p2Color);
 
-        // Value labels below chart
+        // Value breakdown below chart (show actual values, not normalized)
+        function fmtCm360(player) {
+          const v = getCm360Raw(player);
+          if (v == null) return '\u2014';
+          const fixed = v.toFixed(1);
+          return fixed.endsWith('.0') ? Math.round(v) + ' cm' : fixed + ' cm';
+        }
+
+        function fmtRating(player) {
+          const v = getRating(player);
+          if (v == null) return '\u2014';
+          return parseFloat(Number(v).toFixed(2)).toString();
+        }
+
+        const breakdownRows = [
+          { label: 'RG', v1: p1.accuracy_rg != null ? p1.accuracy_rg + '%' : '\u2014', v2: p2.accuracy_rg != null ? p2.accuracy_rg + '%' : '\u2014' },
+          { label: 'LG', v1: p1.accuracy_lg != null ? p1.accuracy_lg + '%' : '\u2014', v2: p2.accuracy_lg != null ? p2.accuracy_lg + '%' : '\u2014' },
+          { label: 'RL', v1: p1.accuracy_rl != null ? p1.accuracy_rl + '%' : '\u2014', v2: p2.accuracy_rl != null ? p2.accuracy_rl + '%' : '\u2014' },
+          { label: 'cm/360\u00b0', v1: fmtCm360(p1), v2: fmtCm360(p2) },
+          { label: 'Rating', v1: fmtRating(p1), v2: fmtRating(p2) },
+        ];
+
         let valuesHtml = '<div class="radar-values">';
-        weapons.forEach(w => {
-          const v1 = p1[w.key] != null ? p1[w.key] + '%' : '\u2014';
-          const v2 = p2[w.key] != null ? p2[w.key] + '%' : '\u2014';
-          valuesHtml += '<div class="radar-val-row"><span class="radar-val-label">' + w.label + '</span>' +
-            '<span class="radar-val p1-val">' + v1 + '</span>' +
-            '<span class="radar-val p2-val">' + v2 + '</span></div>';
+        breakdownRows.forEach(row => {
+          valuesHtml += '<div class="radar-val-row"><span class="radar-val-label">' + row.label + '</span>' +
+            '<span class="radar-val p1-val">' + row.v1 + '</span>' +
+            '<span class="radar-val p2-val">' + row.v2 + '</span></div>';
         });
         valuesHtml += '</div>';
 
         return '<tr class="data-row"><td colspan="3" class="radar-cell">' +
           '<div class="radar-chart-wrapper">' +
-          '<div class="radar-title">Weapon Accuracy</div>' +
-          '<svg viewBox="0 0 300 280" width="300" height="280" xmlns="http://www.w3.org/2000/svg">' +
+          '<div class="radar-title">Player Comparison</div>' +
+          '<svg viewBox="0 0 320 300" width="320" height="300" xmlns="http://www.w3.org/2000/svg">' +
           svgContent + '</svg>' +
           '<div class="radar-legend">' +
           '<span class="radar-legend-item"><span class="radar-swatch" style="background:' + p1Color + '"></span>' + p1.name + '</span>' +
@@ -700,7 +748,7 @@ const schema = {
     margin-top: 0.75rem;
     font-size: 0.8rem;
     width: 100%;
-    max-width: 220px;
+    max-width: 280px;
   }
 
   .compare-table :global(.radar-val-row) {
@@ -712,12 +760,12 @@ const schema = {
   .compare-table :global(.radar-val-label) {
     color: var(--text-secondary, #9090a0);
     font-weight: 600;
-    width: 2rem;
+    width: 4rem;
   }
 
   .compare-table :global(.radar-val) {
     font-family: monospace;
-    width: 3rem;
+    width: 4.5rem;
     text-align: right;
   }
 
