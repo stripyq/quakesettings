@@ -5,7 +5,7 @@ qlstatsNick: ""
 country: ""
 team: ""
 category: ctf
-lastUpdated: 2026-02
+lastUpdated: 2024-12
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -17,6 +17,7 @@ acceleration: false
 rawInput: true
 fov: 93
 crosshair: "7"
+crosshairSize: "26"
 crosshairColor: Yellow
 invertedMouse: false
 forward: W
@@ -24,9 +25,9 @@ back: S
 left: A
 right: D
 jump: Space
-crouch: ""
+crouch: x
 attack: Mouse1
-zoom: ""
+zoom: Mouse2
 weaponNext: ""
 weaponPrev: ""
 mouse: zowie-fk2-c
@@ -38,3 +39,6 @@ headset: philips-fidelio-x2
 gpuBrand: NVIDIA
 cpuBrand: Intel
 enemyModel: Tank Jr.
+accuracy_lg: 44
+accuracy_rg: 66
+accuracy_rl: 46
