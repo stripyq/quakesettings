@@ -1134,7 +1134,7 @@ const schema = {
         <p class="s-card-sub">Railgun</p>
         <div class="s-leaderboard">
           {topRgAccuracy.map((p) => (
-            <div class="s-lb-row">
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
               <span class="s-lb-rank">{p.rank}.</span>
               <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
               <span class="s-lb-value">{p.value}%</span>
@@ -1148,7 +1148,7 @@ const schema = {
         <p class="s-card-sub">Lightning Gun</p>
         <div class="s-leaderboard">
           {topLgAccuracy.map((p) => (
-            <div class="s-lb-row">
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
               <span class="s-lb-rank">{p.rank}.</span>
               <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
               <span class="s-lb-value">{p.value}%</span>
@@ -1162,7 +1162,7 @@ const schema = {
         <p class="s-card-sub">Rocket Launcher</p>
         <div class="s-leaderboard">
           {topRlAccuracy.map((p) => (
-            <div class="s-lb-row">
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
               <span class="s-lb-rank">{p.rank}.</span>
               <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
               <span class="s-lb-value">{p.value}%</span>
@@ -1892,11 +1892,9 @@ const schema = {
     text-align: right;
   }
 
-  .s-lb-row:nth-child(1) .s-lb-rank,
-  .s-lb-row:nth-child(2) .s-lb-rank,
-  .s-lb-row:nth-child(3) .s-lb-rank {
-    color: #f85149;
-  }
+  .s-lb-top1 .s-lb-rank { color: #f1c40f; }
+  .s-lb-top2 .s-lb-rank { color: #bdc3c7; }
+  .s-lb-top3 .s-lb-rank { color: #e67e22; }
 
   .s-lb-name {
     flex: 1;
