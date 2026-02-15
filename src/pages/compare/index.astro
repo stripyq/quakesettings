@@ -253,6 +253,24 @@ const schema = {
           }
         }
 
+        // Section: HoQ Stats (only show if at least one player has data)
+        const hasHoq = p1.favorite_map || p2.favorite_map || p1.accuracy_rg || p2.accuracy_rg;
+        if (hasHoq) {
+          html += sectionHeader('HoQ Stats');
+          html += compareRow('Favorite Map', p1.favorite_map || '\u2014', p2.favorite_map || '\u2014');
+          html += compareRow('Favorite Gametype', p1.favorite_gametype || '\u2014', p2.favorite_gametype || '\u2014');
+          html += compareRow('Favorite Weapon', p1.favorite_weapon || '\u2014', p2.favorite_weapon || '\u2014');
+          html += compareRow('RL Accuracy',
+            p1.accuracy_rl != null ? p1.accuracy_rl + '%' : '\u2014',
+            p2.accuracy_rl != null ? p2.accuracy_rl + '%' : '\u2014', true);
+          html += compareRow('LG Accuracy',
+            p1.accuracy_lg != null ? p1.accuracy_lg + '%' : '\u2014',
+            p2.accuracy_lg != null ? p2.accuracy_lg + '%' : '\u2014', true);
+          html += compareRow('RG Accuracy',
+            p1.accuracy_rg != null ? p1.accuracy_rg + '%' : '\u2014',
+            p2.accuracy_rg != null ? p2.accuracy_rg + '%' : '\u2014', true);
+        }
+
         compareBody.innerHTML = html;
       }
 
