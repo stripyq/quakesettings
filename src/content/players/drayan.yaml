@@ -13,7 +13,7 @@ dataSource: verified
 source: ""
 sourceUrl: ""
 dpi: 3200
-m_cpi: 1
+m_cpi: 3200
 sensitivity: 18
 edpi: 57600
 cm360: 20

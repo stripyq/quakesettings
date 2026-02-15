@@ -1,8 +1,8 @@
 {
   "version": "2.0",
   "generatedAt": "2026-02-15",
-  "totalPlayers": 2291,
-  "playersWithProfiles": 109,
+  "totalPlayers": 2289,
+  "playersWithProfiles": 111,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -4599,8 +4599,8 @@
     {
       "steamId": "76561197971635353",
       "name": "BeukeR",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "beuker",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.261369705200195,
         "tdm": 22.4172306060791,
@@ -4610,22 +4610,6 @@
         "ctf": 908,
         "tdm": 45,
         "2v2": 7
-      }
-    },
-    {
-      "steamId": "76561197971635344",
-      "name": "BeukeR",
-      "slug": "beuker",
-      "hasProfile": true,
-      "ratings": {
-        "ctf": 25.26,
-        "tdm": 22.42,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 908,
-        "tdm": 45,
-        "2v2": null
       }
     },
     {
@@ -8405,19 +8389,19 @@
       }
     },
     {
-      "steamId": "76561198257310624",
+      "steamId": "76561198257310626",
       "name": "deisma",
       "slug": "deisma",
       "hasProfile": true,
       "ratings": {
-        "ctf": 10.07,
-        "tdm": 21.4,
-        "2v2": null
+        "ctf": 10.07424545288086,
+        "tdm": 21.39876937866211,
+        "2v2": 35.28329086303711
       },
       "gamesPlayed": {
-        "ctf": null,
-        "tdm": null,
-        "2v2": null
+        "ctf": 1656,
+        "tdm": 199,
+        "2v2": 4
       }
     },
     {
@@ -11750,9 +11734,9 @@
     },
     {
       "steamId": "76561198895628868",
-      "name": "fr0z",
-      "slug": null,
-      "hasProfile": false,
+      "name": "Fr0zik",
+      "slug": "fr0zik",
+      "hasProfile": true,
       "ratings": {
         "ctf": 28.241867065429688,
         "tdm": null,
@@ -13682,6 +13666,22 @@
         "ctf": null,
         "tdm": 2,
         "2v2": 2
+      }
+    },
+    {
+      "steamId": "76561198013356693",
+      "name": "headz",
+      "slug": "headz",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 24.73927116394043,
+        "tdm": 19.690032958984375,
+        "2v2": 17.973339080810547
+      },
+      "gamesPlayed": {
+        "ctf": 3689,
+        "tdm": 676,
+        "2v2": 78
       }
     },
     {
@@ -30837,22 +30837,6 @@
       }
     },
     {
-      "steamId": "76561198257310626",
-      "name": "TDM",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 10.07424545288086,
-        "tdm": 21.39876937866211,
-        "2v2": 35.28329086303711
-      },
-      "gamesPlayed": {
-        "ctf": 1656,
-        "tdm": 199,
-        "2v2": 4
-      }
-    },
-    {
       "steamId": "76561198040941120",
       "name": "teammatesalesman",
       "slug": null,
@@ -35970,22 +35954,6 @@
         "ctf": null,
         "tdm": null,
         "2v2": 1
-      }
-    },
-    {
-      "steamId": "76561198013356693",
-      "name": "ΗΞ∆ĐƵ",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 24.73927116394043,
-        "tdm": 19.690032958984375,
-        "2v2": 17.973339080810547
-      },
-      "gamesPlayed": {
-        "ctf": 3689,
-        "tdm": 676,
-        "2v2": 78
       }
     },
     {

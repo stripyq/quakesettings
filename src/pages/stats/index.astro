@@ -19,13 +19,21 @@ const keyboardsMap = new Map(keyboards.map(k => [k.id, k.data]));
 const mousepadsMap = new Map(mousepads.map(p => [p.id, p.data]));
 const headsetsMap = new Map(headsets.map(h => [h.id, h.data]));
 
-// Calculate cm/360 for a player
+// cm/360 calculation - two modes:
+// 1. Standard (m_cpi = 0): cm/360 = (360 / (m_yaw × dpi × sens)) × 2.54
+// 2. With m_cpi > 0: cm/360 = (360 / sens) × (m_cpi / dpi)
+// Sources:
+//   https://funender.com/quake/mouse/index.html
+//   https://www.esreality.com/post/2256180/re-mouse-sensitivity/
 function calculateCm360(playerData: any): number {
-  if (playerData.cm360) return playerData.cm360;
-  if (playerData.m_cpi) {
-    return Math.round((360 * playerData.m_cpi / (playerData.sensitivity * playerData.dpi)) * 100) / 100;
+  if (playerData.dpi && playerData.sensitivity) {
+    if (playerData.m_cpi && playerData.m_cpi > 0) {
+      return Math.round(((360 / playerData.sensitivity) * (playerData.m_cpi / playerData.dpi)) * 100) / 100;
+    }
+    const yaw = playerData.m_yaw || 0.022;
+    return Math.round(((360 / (yaw * playerData.dpi * playerData.sensitivity)) * 2.54) * 100) / 100;
   }
-  return Math.round((41563.6 / (playerData.dpi * playerData.sensitivity)) * 100) / 100;
+  return playerData.cm360 || 0;
 }
 
 // ===========================================
