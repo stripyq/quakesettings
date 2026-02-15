@@ -1,6 +1,6 @@
 name: BeukeR
 country: NL
-steamId: "76561197971635344"
+steamId: "76561197971635353"
 category: ctf
 ctfRating: 25.26
 ctfGames: 908
@@ -45,3 +45,9 @@ headset: beyerdynamic-dt-770-pro
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 37
+accuracy_lg: 37
+accuracy_rg: 52

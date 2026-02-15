@@ -1,4 +1,11 @@
 name: Fr0zik
+steamId: "76561198895628868"
 country: CZ
 team: "Czesnecka"
 published: false
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 41
+accuracy_lg: 33
+accuracy_rg: 51
