@@ -136,7 +136,7 @@ const hasMousepadVariant = !!(p.mousepadBase || p.mousepadSize);
 
 // HoQ Stats
 const hasHoqStats = !!(p.favorite_map || p.favorite_gametype || p.favorite_weapon || p.accuracy_rl != null || p.accuracy_lg != null || p.accuracy_rg != null);
-const maxAccuracy = Math.max(p.accuracy_rl ?? 0, p.accuracy_lg ?? 0, p.accuracy_rg ?? 0, 1);
+const avgAccuracy = { rl: 40.5, lg: 35.7, rg: 52.6 };
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -343,7 +343,8 @@ const schema = {
                     <span class="acc-icon" title="Rocket Launcher">&#128640;</span>
                     <span class="acc-label">RL</span>
                     <div class="acc-track">
-                      <div class="acc-fill acc-fill-rl" style={`width: ${(p.accuracy_rl / maxAccuracy) * 100}%`}></div>
+                      <div class={`acc-fill acc-fill-rl${p.accuracy_rl >= avgAccuracy.rl ? ' above-avg' : ''}`} style={`width: ${p.accuracy_rl}%`}></div>
+                      <div class="acc-avg-marker" style={`left: ${avgAccuracy.rl}%`} title={`Player average: ${avgAccuracy.rl}%`}></div>
                     </div>
                     <span class="acc-value">{p.accuracy_rl}%</span>
                   </div>
@@ -353,7 +354,8 @@ const schema = {
                     <span class="acc-icon" title="Lightning Gun">&#9889;</span>
                     <span class="acc-label">LG</span>
                     <div class="acc-track">
-                      <div class="acc-fill acc-fill-lg" style={`width: ${(p.accuracy_lg / maxAccuracy) * 100}%`}></div>
+                      <div class={`acc-fill acc-fill-lg${p.accuracy_lg >= avgAccuracy.lg ? ' above-avg' : ''}`} style={`width: ${p.accuracy_lg}%`}></div>
+                      <div class="acc-avg-marker" style={`left: ${avgAccuracy.lg}%`} title={`Player average: ${avgAccuracy.lg}%`}></div>
                     </div>
                     <span class="acc-value">{p.accuracy_lg}%</span>
                   </div>
@@ -363,7 +365,8 @@ const schema = {
                     <span class="acc-icon" title="Railgun">&#127919;</span>
                     <span class="acc-label">RG</span>
                     <div class="acc-track">
-                      <div class="acc-fill acc-fill-rg" style={`width: ${(p.accuracy_rg / maxAccuracy) * 100}%`}></div>
+                      <div class={`acc-fill acc-fill-rg${p.accuracy_rg >= avgAccuracy.rg ? ' above-avg' : ''}`} style={`width: ${p.accuracy_rg}%`}></div>
+                      <div class="acc-avg-marker" style={`left: ${avgAccuracy.rg}%`} title={`Player average: ${avgAccuracy.rg}%`}></div>
                     </div>
                     <span class="acc-value">{p.accuracy_rg}%</span>
                   </div>
@@ -990,7 +993,7 @@ const schema = {
     height: 20px;
     background: var(--bg-secondary, #12121a);
     border-radius: 4px;
-    overflow: hidden;
+    position: relative;
   }
 
   .acc-fill {
@@ -1002,13 +1005,31 @@ const schema = {
   .acc-fill-rl {
     background: #e67e22;
   }
+  .acc-fill-rl.above-avg {
+    background: #27ae60;
+  }
 
   .acc-fill-lg {
     background: #3498db;
   }
+  .acc-fill-lg.above-avg {
+    background: #27ae60;
+  }
 
   .acc-fill-rg {
     background: #2ecc71;
+  }
+  .acc-fill-rg.above-avg {
+    background: #27ae60;
+  }
+
+  .acc-avg-marker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: help;
   }
 
   .acc-value {
