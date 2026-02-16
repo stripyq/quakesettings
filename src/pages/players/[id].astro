@@ -227,7 +227,7 @@ const schema = {
               <tr><td class="sub-setting">Raw Value</td><td>{p.accelValue}</td></tr>
             )}
             {p.acceleration && realAccel != null && (
-              <tr><td class="sub-setting"><span class="real-accel-label">Real Accel <span class="tooltip" title="Real Accel normalizes acceleration across different DPI settings, allowing direct comparison between players.">?</span></span></td><td>{formatNum(realAccel)}</td></tr>
+              <tr><td class="sub-setting"><span class="real-accel-label">Real Accel <span class="tooltip" title="Real Accel normalizes acceleration across different DPI settings, allowing direct comparison between players. Assumes cl_mouseAccelStyle 0 (default).">?</span></span></td><td>{formatNum(realAccel)}</td></tr>
             )}
             {p.acceleration && p.accelValue != null && realAccel == null && !p.dpi && (
               <tr><td class="sub-setting">Real Accel</td><td class="text-muted">Needs DPI</td></tr>
