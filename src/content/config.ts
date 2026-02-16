@@ -178,6 +178,8 @@ const playersCollection = defineCollection({
     m_pitch: z.number().nullable().optional(), // Vertical sensitivity multiplier (negative = inverted)
     acceleration: z.boolean().optional().default(false),
     accelValue: z.number().nullable().optional(),
+    accelStyle: z.number().nullable().optional(), // cl_mouseAccelStyle: 0 = legacy (default), 1 = power curve
+    accelOffset: z.number().nullable().optional(), // cl_mouseAccelOffset
     rawInput: z.boolean().optional().default(true),
     windowsSensitivity: z.number().nullable().optional(),
     grip: z.string().optional(), // Grip style: Palm, Claw, Fingertip, Hybrid

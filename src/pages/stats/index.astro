@@ -457,6 +457,26 @@ const maxFovCount = topFovValues.length > 0 ? topFovValues[0][1] : 1;
 const accelUsers = players.filter(p => p.data.acceleration).length;
 const accelPercentage = Math.round((accelUsers / players.length) * 100);
 
+// Real Accel leaderboard
+// Formula (style 0): ((dpi × windowsSens / 2.54)² × m_yaw × accelValue) / 1000
+// Source: https://funender.com/quake/mouse/index.html
+function calculateRealAccel(d: any): number | null {
+  if (!d.acceleration || !d.accelValue || d.accelValue <= 0) return null;
+  if (!d.dpi) return null;
+  if (d.accelStyle === 1) return null;
+  const yaw = d.m_yaw || 0.022;
+  const windowsSens = d.rawInput ? 1 : (d.windowsSensitivity || 1);
+  const dpiTerm = (d.dpi * windowsSens) / 2.54;
+  return Math.round((Math.pow(dpiTerm, 2) * yaw * d.accelValue) / 1000 * 100) / 100;
+}
+
+const realAccelPlayers = players
+  .map(p => ({ id: p.id, name: p.data.name, realAccel: calculateRealAccel(p.data), accelValue: p.data.accelValue, dpi: p.data.dpi }))
+  .filter((p): p is typeof p & { realAccel: number } => p.realAccel !== null)
+  .sort((a, b) => b.realAccel - a.realAccel)
+  .slice(0, 10);
+const maxRealAccel = realAccelPlayers.length > 0 ? realAccelPlayers[0].realAccel : 1;
+
 // Crosshair color distribution
 const crosshairColors = new Map<string, number>();
 players.forEach(p => {
@@ -1031,6 +1051,28 @@ const schema = {
       </div>
     </div>
 
+    <!-- Real Accel Leaderboard -->
+    {realAccelPlayers.length > 0 && (
+      <div class="s-card" style="max-width: 480px;">
+        <h2 class="s-card-title">Highest Real Accel</h2>
+        <p class="s-card-sub">DPI-normalized accel (style 0 only) &middot; {accelUsers} accel users ({accelPercentage}%)</p>
+        <div class="s-bar-list">
+          {realAccelPlayers.map((p) => (
+            <div class="s-bar-row">
+              <span class="s-bar-label"><a href={`${base}players/${p.id}/`} class="s-bar-link">{p.name}</a></span>
+              <div class="s-bar-container">
+                <div class="s-bar" style={`width: ${(p.realAccel / maxRealAccel) * 100}%; background: #58a6ff`}>
+                  <span class="s-bar-count">{p.realAccel.toFixed(2)}</span>
+                </div>
+              </div>
+              <span class="s-bar-pct" title={`Raw: ${p.accelValue} @ ${p.dpi} DPI`}>{p.accelValue}</span>
+            </div>
+          ))}
+        </div>
+        <p class="s-cm360-note"><em>Note:</em> Real Accel normalizes acceleration across different DPI settings. Assumes cl_mouseAccelStyle 0 (default). <a href="https://funender.com/quake/mouse/index.html" target="_blank" rel="noopener" style="color: var(--accent-secondary, #4ecdc4)">Formula source</a></p>
+      </div>
+    )}
+
     <!-- ========== SECTION 3: GAME SETTINGS ========== -->
     <div class="s-section-header" style="--section-color: #8957e5">
       <div class="s-section-icon" style="background: #8957e5">&#9881;&#65039;</div>
@@ -1462,6 +1504,16 @@ const schema = {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .s-bar-link {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .s-bar-link:hover {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: underline;
   }
 
   .s-bar-label-wide {
