@@ -1474,7 +1474,7 @@
     "name": "ioRek",
     "steamId": "76561197960736529",
     "country": "FR",
-    "dpi": 1000,
+    "dpi": 800,
     "sensitivity": 1.8,
     "acceleration": false,
     "accelValue": "",
