@@ -11,10 +11,10 @@ ctfGames: 1703
 duelGames: 30
 qllrCtfRating: 28.61
 qllrCtfGames: 54
-dpi: 1000
+dpi: 800
 sensitivity: 1.8
-edpi: 1800
-cm360: 23.09
+edpi: 1440
+cm360: 28.87
 acceleration: false
 rawInput: true
 windowsSensitivity: 6
