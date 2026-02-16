@@ -150,6 +150,26 @@ const schema = {
         return fixed.endsWith('.00') ? Math.round(val).toString() : fixed;
       }
 
+      // Real Accel calculation — normalizes acceleration across different DPI settings
+      // Formula (style 0/legacy): ((dpi × windowsSens / 2.54)² × m_yaw × accelValue) / 1000
+      // Source: https://funender.com/quake/mouse/index.html
+      function calculateRealAccel(player) {
+        if (!player.acceleration || !player.accelValue || player.accelValue <= 0) return null;
+        if (!player.dpi) return null;
+        if (player.accelStyle === 1) return null;
+        const yaw = player.m_yaw || 0.022;
+        const windowsSens = player.rawInput ? 1 : (player.windowsSensitivity || 1);
+        const dpiTerm = (player.dpi * windowsSens) / 2.54;
+        const realAccel = (Math.pow(dpiTerm, 2) * yaw * player.accelValue) / 1000;
+        return Math.round(realAccel * 100) / 100;
+      }
+
+      function formatRealAccel(val) {
+        if (val === null) return '';
+        const fixed = val.toFixed(2);
+        return fixed.endsWith('.00') ? Math.round(val).toString() : fixed;
+      }
+
       function formatBind(val) {
         if (!val) return '';
         return String(val).toUpperCase();
@@ -354,6 +374,14 @@ const schema = {
         html += compareRow('Acceleration',
           p1.acceleration ? (p1.accelValue ? String(p1.accelValue) : 'On') : 'Off',
           p2.acceleration ? (p2.accelValue ? String(p2.accelValue) : 'On') : 'Off');
+
+        // Show Real Accel row if either player uses accel
+        const p1RealAccel = calculateRealAccel(p1);
+        const p2RealAccel = calculateRealAccel(p2);
+        if (p1RealAccel !== null || p2RealAccel !== null) {
+          html += compareRow('Real Accel', formatRealAccel(p1RealAccel), formatRealAccel(p2RealAccel), true);
+        }
+
         html += compareRow('eDPI', p1.edpi, p2.edpi, true);
         html += compareRow('Sensitivity', p1.sensitivity, p2.sensitivity, true);
         html += compareRow('DPI', p1.dpi, p2.dpi, true);

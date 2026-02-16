@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { calculateRealAccel } from '../../utils/accel';
 
 export async function getStaticPaths() {
   const allPlayers = await getCollection('players');
@@ -57,6 +58,7 @@ function calculateCm360(playerData: any): number {
 }
 
 const currentCm360 = calculateCm360(p);
+const realAccel = calculateRealAccel(p);
 
 // Format number: strip trailing .00, otherwise show up to 2 decimals
 function formatNum(n: number): string {
@@ -221,6 +223,21 @@ const schema = {
             <tr><td>cm/360</td><td>{formatNum(currentCm360)}</td></tr>
             {p.grip && <tr><td>Grip Style</td><td>{p.grip}</td></tr>}
             <tr><td>Mouse Acceleration</td><td>{p.acceleration ? 'On' : 'Off'}</td></tr>
+            {p.acceleration && p.accelValue != null && (
+              <tr><td class="sub-setting">Raw Value</td><td>{p.accelValue}</td></tr>
+            )}
+            {p.acceleration && realAccel != null && (
+              <tr><td class="sub-setting"><span class="real-accel-label">Real Accel <span class="tooltip" title="Real Accel normalizes acceleration across different DPI settings, allowing direct comparison between players.">?</span></span></td><td>{formatNum(realAccel)}</td></tr>
+            )}
+            {p.acceleration && p.accelValue != null && realAccel == null && !p.dpi && (
+              <tr><td class="sub-setting">Real Accel</td><td class="text-muted">Needs DPI</td></tr>
+            )}
+            {p.acceleration && p.accelStyle != null && (
+              <tr><td class="sub-setting">Style</td><td>{p.accelStyle}</td></tr>
+            )}
+            {p.acceleration && p.accelOffset != null && (
+              <tr><td class="sub-setting">Offset</td><td>{p.accelOffset}</td></tr>
+            )}
             <tr><td>Raw Input</td><td>{p.rawInput ? 'On' : 'Off'}</td></tr>
           </tbody>
         </table>
@@ -655,6 +672,36 @@ const schema = {
   .settings-table td:first-child {
     color: var(--text-secondary, #9090a0);
     width: 50%;
+  }
+
+  .sub-setting {
+    padding-left: 1rem !important;
+    font-size: 0.85em;
+  }
+
+  .text-muted {
+    color: var(--text-secondary, #9090a0);
+    font-style: italic;
+  }
+
+  .real-accel-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .tooltip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--border-color, #2a2a35);
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.65rem;
+    cursor: help;
+    font-weight: 600;
   }
 
   .player-actions {
