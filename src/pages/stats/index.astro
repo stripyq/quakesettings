@@ -1449,6 +1449,7 @@ const schema = {
     border: 1px solid #30363d;
     border-radius: 8px;
     padding: 1.25rem;
+    min-width: 0;
   }
 
   .s-card-wide {
@@ -1504,6 +1505,7 @@ const schema = {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .s-bar-link {
@@ -1787,6 +1789,7 @@ const schema = {
   /* --- Heatmaps (shared) --- */
   .s-heatmap-scroll {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .s-heatmap-grid {
@@ -2154,8 +2157,9 @@ const schema = {
     }
 
     .s-bar-label-wide {
-      width: 130px;
-      min-width: 130px;
+      width: 110px;
+      min-width: 110px;
+      font-size: 0.7rem;
     }
 
     .s-bar-label-narrow {
@@ -2174,6 +2178,24 @@ const schema = {
 
     .s-pad-heatmap-grid {
       grid-template-columns: 90px repeat(3, 1fr);
+    }
+
+    .s-heatmap-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .s-hm-rowlabel {
+      position: sticky;
+      left: 0;
+      background: #161b22;
+      z-index: 1;
+    }
+
+    .s-hm-corner {
+      position: sticky;
+      left: 0;
+      background: #161b22;
+      z-index: 1;
     }
 
     .s-heatmap-grid .s-hm-data,
@@ -2223,6 +2245,17 @@ const schema = {
     .s-bar-label {
       width: 70px;
       min-width: 70px;
+    }
+
+    .s-bar-label-wide {
+      width: 90px;
+      min-width: 90px;
+    }
+
+    .s-bar-pct {
+      width: 32px;
+      min-width: 32px;
+      font-size: 0.65rem;
     }
 
     .s-cm360-label {
