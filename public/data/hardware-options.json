@@ -1,69 +1,9 @@
 {
   "mice": [
     {
-      "slug": "8bitdo-retro-r8",
-      "name": "8BitDo Retro R8",
-      "brand": "8BitDo"
-    },
-    {
-      "slug": "a4tech-bloody-v7",
-      "name": "A4Tech Bloody V7",
-      "brand": "A4Tech"
-    },
-    {
-      "slug": "a4tech-xl-750bh",
-      "name": "A4Tech XL-750BH",
-      "brand": "A4Tech"
-    },
-    {
-      "slug": "a4tech-xl-750bk",
-      "name": "A4Tech XL-750BK",
-      "brand": "A4Tech"
-    },
-    {
-      "slug": "acer-cestus-330",
-      "name": "Acer Cestus 330",
-      "brand": "Acer"
-    },
-    {
       "slug": "adesso-imouse-e7",
       "name": "Adesso iMouse E7 Vertical",
       "brand": "Adesso"
-    },
-    {
-      "slug": "aigo-gm80",
-      "name": "Aigo GM80",
-      "brand": "Aigo"
-    },
-    {
-      "slug": "aigo-gm80-plus",
-      "name": "Aigo GM80 Plus",
-      "brand": "Aigo"
-    },
-    {
-      "slug": "aigo-gm80-pro",
-      "name": "Aigo GM80 Pro",
-      "brand": "Aigo"
-    },
-    {
-      "slug": "aim1-shigure",
-      "name": "AIM1 Shigure",
-      "brand": "AIM1"
-    },
-    {
-      "slug": "ajazz-aj099",
-      "name": "AJAZZ AJ099",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj139-pro",
-      "name": "AJAZZ AJ139 Pro",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj139-pro-4k",
-      "name": "AJAZZ AJ139 Pro 4K",
-      "brand": "AJAZZ"
     },
     {
       "slug": "ajazz-aj139-v2-mc",
@@ -81,134 +21,9 @@
       "brand": "AJAZZ"
     },
     {
-      "slug": "ajazz-aj159",
-      "name": "AJAZZ AJ159",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj159-pro",
-      "name": "AJAZZ AJ159 PRO",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj159apex",
-      "name": "AJAZZ AJ159APEX",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj159p",
-      "name": "AJAZZ AJ159P",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179",
-      "name": "AJAZZ AJ179",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179-apex",
-      "name": "AJAZZ AJ179 APEX",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179-pro",
-      "name": "AJAZZ AJ179 PRO",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179-v2",
-      "name": "AJAZZ AJ179 V2",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179-v2-max",
-      "name": "AJAZZ AJ179 V2 Max",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj179p",
-      "name": "AJAZZ AJ179P",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj199",
-      "name": "AJAZZ AJ199",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj199-4k",
-      "name": "AJAZZ AJ199 4K",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj199-mc",
-      "name": "AJAZZ AJ199 MC",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-aj199-pro-4k",
-      "name": "AJAZZ AJ199 Pro 4K",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-am3-max",
-      "name": "AJAZZ AM3 Max",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-am3-pro",
-      "name": "AJAZZ AM3 Pro",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-m259",
-      "name": "AJAZZ M259",
-      "brand": "AJAZZ"
-    },
-    {
       "slug": "ajazz-nj08",
       "name": "AJAZZ NJ08",
       "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-t520",
-      "name": "AJAZZ T520",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "ajazz-t520-max",
-      "name": "AJAZZ T520 Max",
-      "brand": "AJAZZ"
-    },
-    {
-      "slug": "akko-ag-one-8k",
-      "name": "Akko AG ONE 8K",
-      "brand": "Akko"
-    },
-    {
-      "slug": "akko-ag-one-nearlink",
-      "name": "Akko AG One NearLink",
-      "brand": "Akko"
-    },
-    {
-      "slug": "akko-ag325",
-      "name": "Akko AG325",
-      "brand": "Akko"
-    },
-    {
-      "slug": "akko-ag325c",
-      "name": "Akko AG325C",
-      "brand": "Akko"
-    },
-    {
-      "slug": "akko-ag325w",
-      "name": "Akko AG325W",
-      "brand": "Akko"
-    },
-    {
-      "slug": "akko-akko",
-      "name": "Akko Akko",
-      "brand": "Akko"
     },
     {
       "slug": "akko-dash-max",
@@ -226,199 +41,14 @@
       "brand": "Akko"
     },
     {
-      "slug": "akko-pulse-01",
-      "name": "Akko Pulse 01",
-      "brand": "Akko"
-    },
-    {
-      "slug": "alienware-aw320m",
-      "name": "Alienware AW320M",
-      "brand": "Alienware"
-    },
-    {
-      "slug": "alienware-aw610m",
-      "name": "Alienware AW610M",
-      "brand": "Alienware"
-    },
-    {
-      "slug": "alienware-aw620m",
-      "name": "Alienware AW620M",
-      "brand": "Alienware"
-    },
-    {
-      "slug": "alienware-aw720m",
-      "name": "Alienware AW720M",
-      "brand": "Alienware"
-    },
-    {
-      "slug": "alienware-pro-wireless",
-      "name": "Alienware Pro Wireless",
-      "brand": "Alienware"
-    },
-    {
-      "slug": "amazon-basics-mouse",
-      "name": "Amazon Basics Mouse",
-      "brand": "Amazon"
-    },
-    {
-      "slug": "angry-miao-am-infinity-mouse",
-      "name": "Angry Miao AM Infinity Mouse",
-      "brand": "Angry"
-    },
-    {
-      "slug": "antgamer-agm535r",
-      "name": "ANTGAMER AGM535R",
-      "brand": "ANTGAMER"
-    },
-    {
-      "slug": "apple-magic-mouse",
-      "name": "Apple Magic Mouse",
-      "brand": "Apple"
-    },
-    {
-      "slug": "aqirys-tga-alpha",
-      "name": "Aqirys TGA Alpha",
-      "brand": "Aqirys"
-    },
-    {
       "slug": "arbiter-studio-akitsu-medium",
       "name": "Arbiter Studio Akitsu Medium",
       "brand": "Arbiter Studio"
     },
     {
-      "slug": "ardor-gaming-fury",
-      "name": "Ardor Gaming Fury",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-fury-beast",
-      "name": "Ardor Gaming Fury Beast",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-fury-pro",
-      "name": "Ardor Gaming Fury Pro",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-immortality",
-      "name": "Ardor Gaming Immortality",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-immortality-pro-wireless",
-      "name": "Ardor Gaming Immortality Pro Wireless",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-phantom-pro",
-      "name": "Ardor Gaming Phantom Pro",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-phantom-pro-v2",
-      "name": "Ardor Gaming Phantom Pro V2",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-phantom-pro-wired",
-      "name": "Ardor Gaming Phantom Pro Wired",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-prime",
-      "name": "Ardor Gaming Prime",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-prime-wireless",
-      "name": "Ardor Gaming Prime Wireless",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-prime-x",
-      "name": "Ardor Gaming Prime X",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-ulta-big-back",
-      "name": "Ardor Gaming Ulta (big back)",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-ulta-mid-back",
-      "name": "Ardor Gaming Ulta (mid back)",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "ardor-gaming-ulta-small-back",
-      "name": "Ardor Gaming Ulta (small back)",
-      "brand": "Ardor"
-    },
-    {
-      "slug": "arye-fcc-1",
-      "name": "ARYE FCC-1",
-      "brand": "ARYE"
-    },
-    {
       "slug": "arye-rcc-1",
       "name": "ARYE RCC-1",
       "brand": "ARYE"
-    },
-    {
-      "slug": "asus-proart-md300",
-      "name": "ASUS ProArt MD300",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-chakram",
-      "name": "ASUS ROG Chakram",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-chakram-core",
-      "name": "ASUS ROG Chakram Core",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-chakram-x",
-      "name": "ASUS ROG Chakram X",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-ii",
-      "name": "ASUS ROG Gladius II",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-ii-core",
-      "name": "ASUS ROG Gladius II Core",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-ii-origin",
-      "name": "ASUS ROG Gladius II Origin",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-ii-wireless",
-      "name": "ASUS ROG Gladius II Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-iii",
-      "name": "ASUS ROG Gladius III",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-gladius-iii-wireless",
-      "name": "ASUS ROG Gladius III Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-harpe-ace",
-      "name": "ASUS ROG Harpe Ace",
-      "brand": "ASUS"
     },
     {
       "slug": "asus-rog-harpe-ace-2",
@@ -431,28 +61,8 @@
       "brand": "ASUS"
     },
     {
-      "slug": "asus-rog-harpe-ace-extreme",
-      "name": "ASUS ROG Harpe Ace Extreme",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-harpe-ace-mini",
-      "name": "ASUS ROG Harpe Ace Mini",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-harpe-ii-ace",
-      "name": "ASUS ROG Harpe II Ace",
-      "brand": "ASUS"
-    },
-    {
       "slug": "asus-rog-harpe-mini-core",
       "name": "ASUS ROG Harpe Mini Core",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-keris",
-      "name": "ASUS ROG Keris",
       "brand": "ASUS"
     },
     {
@@ -461,128 +71,13 @@
       "brand": "ASUS"
     },
     {
-      "slug": "asus-rog-keris-ii-origin",
-      "name": "ASUS ROG Keris II Origin",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-keris-wireless",
-      "name": "ASUS ROG Keris Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-pugio",
-      "name": "ASUS ROG Pugio",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-sica",
-      "name": "ASUS ROG Sica",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-spatha",
-      "name": "ASUS ROG Spatha",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-spatha-x",
-      "name": "ASUS ROG Spatha X",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-carry",
-      "name": "ASUS ROG Strix Carry",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-evolve",
-      "name": "ASUS ROG Strix Evolve",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-impact",
-      "name": "ASUS ROG Strix Impact",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-impact-ii",
-      "name": "ASUS ROG Strix Impact II",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-impact-ii-wireless",
-      "name": "ASUS ROG Strix Impact II Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-impact-iii",
-      "name": "ASUS ROG Strix Impact III",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-rog-strix-impact-iii-wireless",
-      "name": "ASUS ROG Strix Impact III Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-tuf-gaming-m3",
-      "name": "ASUS TUF Gaming M3",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-tuf-gaming-m3-gen-ii",
-      "name": "ASUS TUF Gaming M3 Gen II",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-tuf-m4-air",
-      "name": "ASUS TUF M4 Air",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "asus-tuf-m4-wireless",
-      "name": "ASUS TUF M4 Wireless",
-      "brand": "ASUS"
-    },
-    {
-      "slug": "atk-a9",
-      "name": "ATK A9",
-      "brand": "ATK"
-    },
-    {
       "slug": "atk-a9-air",
       "name": "ATK A9 Air",
       "brand": "ATK"
     },
     {
-      "slug": "atk-a9-plus",
-      "name": "ATK A9 Plus",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-a9-pro",
-      "name": "ATK A9 Pro",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-a9-pro-max",
-      "name": "ATK A9 Pro Max",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-a9-se",
-      "name": "ATK A9 SE",
-      "brand": "ATK"
-    },
-    {
       "slug": "atk-a9-ultimate",
       "name": "ATK A9 Ultimate",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-a9-ultra",
-      "name": "ATK A9 Ultra",
       "brand": "ATK"
     },
     {
@@ -593,31 +88,6 @@
     {
       "slug": "atk-blazing-sky-z1-ultra",
       "name": "ATK Blazing Sky Z1 Ultra",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-duckbill",
-      "name": "ATK Duckbill",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-f1-extreme",
-      "name": "ATK F1 Extreme",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-f1-pro",
-      "name": "ATK F1 Pro",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-f1-pro-max",
-      "name": "ATK F1 Pro Max",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-f1-ultimate",
-      "name": "ATK F1 Ultimate",
       "brand": "ATK"
     },
     {
@@ -636,11 +106,6 @@
       "brand": "ATK"
     },
     {
-      "slug": "atk-fierce-x",
-      "name": "ATK Fierce X",
-      "brand": "ATK"
-    },
-    {
       "slug": "atk-ghost-extreme",
       "name": "ATK GHOST Extreme",
       "brand": "ATK"
@@ -651,46 +116,6 @@
       "brand": "ATK"
     },
     {
-      "slug": "atk-u2",
-      "name": "ATK U2",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-mini",
-      "name": "ATK U2 Mini",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-plus",
-      "name": "ATK U2 Plus",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-pro",
-      "name": "ATK U2 Pro",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-pro-max",
-      "name": "ATK U2 Pro Max",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-se",
-      "name": "ATK U2 SE",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-ultimate",
-      "name": "ATK U2 Ultimate",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-u2-ultra",
-      "name": "ATK U2 Ultra",
-      "brand": "ATK"
-    },
-    {
       "slug": "atk-u2-v2-mini",
       "name": "ATK U2 V2 Mini",
       "brand": "ATK"
@@ -698,41 +123,6 @@
     {
       "slug": "atk-u2-v2-ultimate",
       "name": "ATK U2 V2 Ultimate",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1",
-      "name": "ATK X1",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-pro",
-      "name": "ATK X1 Pro",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-pro-max",
-      "name": "ATK X1 Pro Max",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-s",
-      "name": "ATK X1 S",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-se",
-      "name": "ATK X1 SE",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-ultimate",
-      "name": "ATK X1 Ultimate",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-x1-ultra",
-      "name": "ATK X1 Ultra",
       "brand": "ATK"
     },
     {
@@ -761,64 +151,9 @@
       "brand": "ATK"
     },
     {
-      "slug": "atk-z1-pro-max",
-      "name": "ATK Z1 Pro Max",
-      "brand": "ATK"
-    },
-    {
-      "slug": "atk-z1-ultra",
-      "name": "ATK Z1 Ultra",
-      "brand": "ATK"
-    },
-    {
       "slug": "atk-z1-v2-ultimate",
       "name": "ATK Z1 V2 Ultimate",
       "brand": "ATK"
-    },
-    {
-      "slug": "atompalm-hydrogen",
-      "name": "Atompalm Hydrogen",
-      "brand": "Atompalm"
-    },
-    {
-      "slug": "atompalm-hydrogen-2",
-      "name": "Atompalm Hydrogen 2",
-      "brand": "Atompalm"
-    },
-    {
-      "slug": "attack-shark-g3",
-      "name": "Attack Shark G3",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-g3-pro",
-      "name": "Attack Shark G3 Pro",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-r1",
-      "name": "Attack Shark R1",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-r11-ultra",
-      "name": "Attack Shark R11 Ultra",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-r2",
-      "name": "Attack Shark R2",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-r3",
-      "name": "Attack Shark R3",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-r5-ultra",
-      "name": "Attack Shark R5 Ultra",
-      "brand": "Attack"
     },
     {
       "slug": "attack-shark-r6",
@@ -831,11 +166,6 @@
       "brand": "Attack Shark"
     },
     {
-      "slug": "attack-shark-v5",
-      "name": "Attack Shark V5",
-      "brand": "Attack"
-    },
-    {
       "slug": "attack-shark-v6",
       "name": "Attack Shark V6",
       "brand": "Attack Shark"
@@ -846,104 +176,9 @@
       "brand": "Attack Shark"
     },
     {
-      "slug": "attack-shark-x1",
-      "name": "Attack Shark X1",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x11",
-      "name": "Attack Shark X11",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x11-se",
-      "name": "Attack Shark X11 SE",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x11-ultra",
-      "name": "Attack Shark X11 Ultra",
-      "brand": "Attack Shark"
-    },
-    {
-      "slug": "attack-shark-x3",
-      "name": "Attack Shark X3",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x3-max",
-      "name": "Attack Shark X3 Max",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x3-pro",
-      "name": "Attack Shark X3 Pro",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x6",
-      "name": "Attack Shark X6",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x8-plus",
-      "name": "Attack Shark X8 Plus",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x8-pro",
-      "name": "Attack Shark X8 Pro",
-      "brand": "Attack"
-    },
-    {
-      "slug": "attack-shark-x8-se",
-      "name": "Attack Shark X8 SE",
-      "brand": "Attack"
-    },
-    {
       "slug": "attack-shark-x8-ultimate",
       "name": "Attack Shark X8 Ultimate",
       "brand": "Attack Shark"
-    },
-    {
-      "slug": "attack-shark-x8-ultra",
-      "name": "Attack Shark X8 Ultra",
-      "brand": "Attack"
-    },
-    {
-      "slug": "aula-sc360",
-      "name": "AULA SC360",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc580",
-      "name": "AULA SC580",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc620",
-      "name": "AULA SC620",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc680",
-      "name": "AULA SC680",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc800",
-      "name": "AULA SC800",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc900-max",
-      "name": "AULA SC900 Max",
-      "brand": "AULA"
-    },
-    {
-      "slug": "aula-sc900-pro",
-      "name": "AULA SC900 Pro",
-      "brand": "AULA"
     },
     {
       "slug": "aula-x9",
@@ -961,31 +196,6 @@
       "brand": "AULA"
     },
     {
-      "slug": "ausdom-g03-pro",
-      "name": "Ausdom G03 Pro",
-      "brand": "Ausdom"
-    },
-    {
-      "slug": "ausdom-g03-ultra",
-      "name": "Ausdom G03 Ultra",
-      "brand": "Ausdom"
-    },
-    {
-      "slug": "ausdom-g04-air",
-      "name": "Ausdom G04 Air",
-      "brand": "Ausdom"
-    },
-    {
-      "slug": "ausdom-g04-pro",
-      "name": "Ausdom G04 Pro",
-      "brand": "Ausdom"
-    },
-    {
-      "slug": "ausdom-g04-ultra",
-      "name": "Ausdom G04 Ultra",
-      "brand": "Ausdom"
-    },
-    {
       "slug": "be-quiet-dark-perk-ergo",
       "name": "be quiet! Dark Perk Ergo",
       "brand": "be quiet!"
@@ -996,63 +206,8 @@
       "brand": "be quiet!"
     },
     {
-      "slug": "cc-beanmouse-large",
-      "name": "CC Beanmouse Large",
-      "brand": "CC"
-    },
-    {
-      "slug": "cc-beanmouse-lhd-large",
-      "name": "CC Beanmouse LHD Large",
-      "brand": "CC"
-    },
-    {
-      "slug": "cc-beanmouse-lhd-small",
-      "name": "CC Beanmouse LHD Small",
-      "brand": "CC"
-    },
-    {
-      "slug": "cc-beanmouse-small",
-      "name": "CC Beanmouse Small",
-      "brand": "CC"
-    },
-    {
-      "slug": "chaos-m3-mini",
-      "name": "Chaos M3 Mini",
-      "brand": "Chaos"
-    },
-    {
       "slug": "cherry-mw5500",
       "name": "Cherry MW5500",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m50",
-      "name": "Cherry Xtrfy M50",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m50-wireless",
-      "name": "Cherry Xtrfy M50 Wireless",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m64-pro-8k-wireless",
-      "name": "Cherry Xtrfy M64 Pro 8K Wireless",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m64-wireless",
-      "name": "Cherry Xtrfy M64 Wireless",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m68-pro-8k-wireless",
-      "name": "Cherry Xtrfy M68 Pro 8K Wireless",
-      "brand": "Cherry"
-    },
-    {
-      "slug": "cherry-xtrfy-m68-wireless",
-      "name": "Cherry Xtrfy M68 Wireless",
       "brand": "Cherry"
     },
     {
@@ -1066,89 +221,9 @@
       "brand": "Chilkey"
     },
     {
-      "slug": "commatech-fkmini4",
-      "name": "COMMATECH FKMINI4",
-      "brand": "COMMATECH"
-    },
-    {
-      "slug": "cooler-master-cm110",
-      "name": "Cooler Master CM110",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-cm310",
-      "name": "Cooler Master CM310",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm310",
-      "name": "Cooler Master MM310",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm530",
-      "name": "Cooler Master MM530",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm531",
-      "name": "Cooler Master MM531",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm710",
-      "name": "Cooler Master MM710",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm711",
-      "name": "Cooler Master MM711",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm711-lite",
-      "name": "Cooler Master MM711 Lite",
-      "brand": "Cooler"
-    },
-    {
       "slug": "cooler-master-mm712",
       "name": "Cooler Master MM712",
       "brand": "Cooler Master"
-    },
-    {
-      "slug": "cooler-master-mm720",
-      "name": "Cooler Master MM720",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm730",
-      "name": "Cooler Master MM730",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm731",
-      "name": "Cooler Master MM731",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm830",
-      "name": "Cooler Master MM830",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "cooler-master-mm831",
-      "name": "Cooler Master MM831",
-      "brand": "Cooler"
-    },
-    {
-      "slug": "coolm0dz-finalt1p",
-      "name": "cOoLm0Dz finalt1p",
-      "brand": "cOoLm0Dz"
-    },
-    {
-      "slug": "coolm0dz-opt1p",
-      "name": "cOoLm0Dz OPt1p",
-      "brand": "cOoLm0Dz"
     },
     {
       "slug": "coolm0dz-qt1p",
@@ -1156,143 +231,8 @@
       "brand": "cOoLm0Dz"
     },
     {
-      "slug": "corsair-dark-core-rgb-pro",
-      "name": "Corsair Dark Core RGB Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-dark-core-rgb-pro-se",
-      "name": "Corsair Dark Core RGB Pro SE",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-darkstar-wireless",
-      "name": "Corsair Darkstar Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-glaive-pro",
-      "name": "Corsair Glaive Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-glaive-rgb",
-      "name": "Corsair Glaive RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-harpoon-rgb",
-      "name": "Corsair Harpoon RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-harpoon-rgb-pro",
-      "name": "Corsair Harpoon RGB Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-harpoon-rgb-wireless",
-      "name": "Corsair Harpoon RGB Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-ironclaw-rgb",
-      "name": "Corsair Ironclaw RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-ironclaw-rgb-wireless",
-      "name": "Corsair Ironclaw RGB Wireless",
-      "brand": "Corsair"
-    },
-    {
       "slug": "corsair-ironclaw-wireless-se",
       "name": "Corsair Ironclaw Wireless SE",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-katar-elite-wireless",
-      "name": "Corsair Katar Elite Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-katar-pro-wireless",
-      "name": "Corsair Katar Pro Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-katar-pro-xt",
-      "name": "Corsair Katar Pro XT",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m55-rgb-pro",
-      "name": "Corsair M55 RGB Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m55-wired",
-      "name": "Corsair M55 Wired",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m55-wireless",
-      "name": "Corsair M55 Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m65-rgb-elite",
-      "name": "Corsair M65 RGB Elite",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m65-rgb-pro",
-      "name": "Corsair M65 RGB Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m65-rgb-ultra",
-      "name": "Corsair M65 RGB Ultra",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m65-rgb-ultra-wireless",
-      "name": "Corsair M65 RGB Ultra Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m75",
-      "name": "Corsair M75",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m75-air-wireless",
-      "name": "Corsair M75 Air Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-m75-wireless",
-      "name": "Corsair M75 Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-nightsabre-wireless",
-      "name": "Corsair Nightsabre Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-nightsword-rgb",
-      "name": "Corsair Nightsword RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-sabre-pro",
-      "name": "Corsair Sabre Pro",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-sabre-rgb-pro",
-      "name": "Corsair Sabre RGB Pro",
       "brand": "Corsair"
     },
     {
@@ -1316,39 +256,9 @@
       "brand": "Corsair"
     },
     {
-      "slug": "corsair-scimitar-elite-wireless",
-      "name": "Corsair Scimitar Elite Wireless",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-scimitar-elite-wireless-se",
-      "name": "Corsair Scimitar Elite Wireless SE",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-scimitar-pro-rgb",
-      "name": "Corsair Scimitar Pro RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-scimitar-rgb",
-      "name": "Corsair Scimitar RGB",
-      "brand": "Corsair"
-    },
-    {
-      "slug": "corsair-scimitar-rgb-elite",
-      "name": "Corsair Scimitar RGB Elite",
-      "brand": "Corsair"
-    },
-    {
       "slug": "crdrako-ko-one",
       "name": "CRDRAKO KO-ONE",
       "brand": "CRDRAKO"
-    },
-    {
-      "slug": "cryomods-fractal-wireless",
-      "name": "CryoMods Fractal Wireless",
-      "brand": "CryoMods"
     },
     {
       "slug": "cybeart-artemis",
@@ -1366,16 +276,6 @@
       "brand": "Cybeart"
     },
     {
-      "slug": "dareu-a950",
-      "name": "Dareu A950",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a950-air",
-      "name": "Dareu A950 Air",
-      "brand": "Dareu"
-    },
-    {
       "slug": "dareu-a950-gm",
       "name": "Dareu A950 GM",
       "brand": "Dareu"
@@ -1386,189 +286,9 @@
       "brand": "Dareu"
     },
     {
-      "slug": "dareu-a950-pro-4k",
-      "name": "Dareu A950 Pro 4K",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a950-pro-4k-magnesium",
-      "name": "Dareu A950 Pro 4K Magnesium",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a955",
-      "name": "Dareu A955",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a980",
-      "name": "Dareu A980",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a980-pro",
-      "name": "Dareu A980 Pro",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-a980-pro-max",
-      "name": "Dareu A980 Pro Max",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-ae6",
-      "name": "Dareu AE6",
-      "brand": "Dareu"
-    },
-    {
       "slug": "dareu-ae7-pro",
       "name": "Dareu AE7 Pro",
       "brand": "Dareu"
-    },
-    {
-      "slug": "dareu-em901",
-      "name": "Dareu EM901",
-      "brand": "Dareu"
-    },
-    {
-      "slug": "dark-project-nexus",
-      "name": "Dark Project Nexus",
-      "brand": "Dark"
-    },
-    {
-      "slug": "dark-project-nexus-ultra",
-      "name": "Dark Project Nexus Ultra",
-      "brand": "Dark"
-    },
-    {
-      "slug": "dark-project-novus",
-      "name": "Dark Project Novus",
-      "brand": "Dark"
-    },
-    {
-      "slug": "dark-project-novus-pro",
-      "name": "Dark Project Novus Pro",
-      "brand": "Dark"
-    },
-    {
-      "slug": "dark-project-novus-se",
-      "name": "Dark Project Novus SE",
-      "brand": "Dark"
-    },
-    {
-      "slug": "darmoshark-m2",
-      "name": "Darmoshark M2",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m2-air",
-      "name": "Darmoshark M2 Air",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m2-pro",
-      "name": "Darmoshark M2 Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3",
-      "name": "Darmoshark M3",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-4k",
-      "name": "Darmoshark M3 4K",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-micro",
-      "name": "Darmoshark M3 Micro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-micro-pro",
-      "name": "Darmoshark M3 Micro Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-pro",
-      "name": "Darmoshark M3 Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-pro-max",
-      "name": "Darmoshark M3 Pro Max",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-v2",
-      "name": "Darmoshark M3 V2",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-xs",
-      "name": "Darmoshark M3 XS",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3-xs-pro",
-      "name": "Darmoshark M3 XS Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3s",
-      "name": "Darmoshark M3S",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3s-max",
-      "name": "Darmoshark M3S MAX",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m3s-pro",
-      "name": "Darmoshark M3S Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m5",
-      "name": "Darmoshark M5",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m5-air",
-      "name": "Darmoshark M5 Air",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-m5-pro",
-      "name": "Darmoshark M5 Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-n3",
-      "name": "Darmoshark N3",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-n3-pro",
-      "name": "Darmoshark N3 Pro",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-n5",
-      "name": "Darmoshark N5",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-n7",
-      "name": "Darmoshark N7",
-      "brand": "Darmoshark"
-    },
-    {
-      "slug": "darmoshark-n7-max",
-      "name": "Darmoshark N7 Max",
-      "brand": "Darmoshark"
     },
     {
       "slug": "delux-m400",
@@ -1576,149 +296,9 @@
       "brand": "Delux"
     },
     {
-      "slug": "delux-m500-pro",
-      "name": "Delux M500 Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m600",
-      "name": "Delux M600",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m600-pro",
-      "name": "Delux M600 Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m600-ultra",
-      "name": "Delux M600 Ultra",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m700",
-      "name": "Delux M700",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m700-pro",
-      "name": "Delux M700 Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m700-ultra",
-      "name": "Delux M700 Ultra",
-      "brand": "Delux"
-    },
-    {
       "slug": "delux-m800-mini",
       "name": "Delux M800 Mini",
       "brand": "Delux"
-    },
-    {
-      "slug": "delux-m800-mini-pro",
-      "name": "Delux M800 Mini Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m800-mini-ultra",
-      "name": "Delux M800 Mini Ultra",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m800-pro",
-      "name": "Delux M800 Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m800-pro-3395",
-      "name": "Delux M800 Pro 3395",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m800-ultra",
-      "name": "Delux M800 Ultra",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m900-mini-pro",
-      "name": "Delux M900 Mini Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m900-mini-ultra",
-      "name": "Delux M900 Mini Ultra",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m900-pro",
-      "name": "Delux M900 Pro",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m900-se",
-      "name": "Delux M900 SE",
-      "brand": "Delux"
-    },
-    {
-      "slug": "delux-m900-ultra",
-      "name": "Delux M900 Ultra",
-      "brand": "Delux"
-    },
-    {
-      "slug": "dornfinger-veno-s",
-      "name": "Dornfinger Veno-S",
-      "brand": "Dornfinger"
-    },
-    {
-      "slug": "dream-machines-dm1-fps",
-      "name": "Dream Machines DM1 FPS",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm2-comfy-s",
-      "name": "Dream Machines DM2 Comfy S",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm4-evo",
-      "name": "Dream Machines DM4 Evo",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm4-evo-s",
-      "name": "Dream Machines DM4 Evo S",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm5-blink",
-      "name": "Dream Machines DM5 Blink",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm6-duo",
-      "name": "Dream Machines DM6 Duo",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm6-holey",
-      "name": "Dream Machines DM6 Holey",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm6-holey-s",
-      "name": "Dream Machines DM6 Holey S",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm6-trio",
-      "name": "Dream Machines DM6 Trio",
-      "brand": "Dream"
-    },
-    {
-      "slug": "dream-machines-dm8-mini-pro",
-      "name": "Dream Machines DM8 Mini Pro",
-      "brand": "Dream Machines"
     },
     {
       "slug": "dream-machines-dm9-skill-wired",
@@ -1731,56 +311,6 @@
       "brand": "Dream Machines"
     },
     {
-      "slug": "drevo-falcon",
-      "name": "Drevo Falcon",
-      "brand": "Drevo"
-    },
-    {
-      "slug": "ducky-feather",
-      "name": "Ducky Feather",
-      "brand": "Ducky"
-    },
-    {
-      "slug": "edifier-hecate-g3m-pro",
-      "name": "Edifier Hecate G3M Pro",
-      "brand": "Edifier"
-    },
-    {
-      "slug": "edifier-hecate-g5m",
-      "name": "Edifier Hecate G5M",
-      "brand": "Edifier"
-    },
-    {
-      "slug": "edifier-hecate-g5m-pro",
-      "name": "Edifier Hecate G5M Pro",
-      "brand": "Edifier"
-    },
-    {
-      "slug": "elecom-vm501bk",
-      "name": "ELECOM VM501BK",
-      "brand": "ELECOM"
-    },
-    {
-      "slug": "elecom-vm501lbk",
-      "name": "ELECOM VM501LBK",
-      "brand": "ELECOM"
-    },
-    {
-      "slug": "elecom-vm510bk",
-      "name": "ELECOM VM510BK",
-      "brand": "ELECOM"
-    },
-    {
-      "slug": "elecom-vm600pe",
-      "name": "ELECOM VM600PE",
-      "brand": "ELECOM"
-    },
-    {
-      "slug": "elecom-vm610bk",
-      "name": "ELECOM VM610BK",
-      "brand": "ELECOM"
-    },
-    {
       "slug": "elecom-vm800",
       "name": "ELECOM VM800",
       "brand": "ELECOM"
@@ -1791,69 +321,9 @@
       "brand": "ELECOM"
     },
     {
-      "slug": "endgame-gear-op1",
-      "name": "Endgame Gear OP1",
-      "brand": "Endgame"
-    },
-    {
       "slug": "endgame-gear-op1-8k",
       "name": "Endgame Gear OP1 8K",
       "brand": "Endgame Gear"
-    },
-    {
-      "slug": "endgame-gear-op1-8k-purple",
-      "name": "Endgame Gear OP1 8k Purple",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-op1-8k-v2",
-      "name": "Endgame Gear OP1 8k v2",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-op1-rgb",
-      "name": "Endgame Gear OP1 RGB",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-op1w-4k",
-      "name": "Endgame Gear OP1w 4k",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-op1w-4k-v2",
-      "name": "Endgame Gear OP1w 4k v2",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-op1we",
-      "name": "Endgame Gear OP1we",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-xm1",
-      "name": "Endgame Gear XM1",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-xm1-rgb",
-      "name": "Endgame Gear XM1 RGB",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-xm1r",
-      "name": "Endgame Gear XM1r",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-xm2-8k",
-      "name": "Endgame Gear XM2 8k",
-      "brand": "Endgame"
-    },
-    {
-      "slug": "endgame-gear-xm2-8k-v2",
-      "name": "Endgame Gear XM2 8k v2",
-      "brand": "Endgame"
     },
     {
       "slug": "endgame-gear-xm2w",
@@ -1861,74 +331,14 @@
       "brand": "Endgame Gear"
     },
     {
-      "slug": "endgame-gear-xm2w-4k",
-      "name": "Endgame Gear XM2w 4k",
-      "brand": "Endgame"
-    },
-    {
       "slug": "endgame-gear-xm2w-4k-v2",
       "name": "Endgame Gear XM2w 4K V2",
       "brand": "Endgame Gear"
     },
     {
-      "slug": "endgame-gear-xm2we",
-      "name": "Endgame Gear XM2we",
-      "brand": "Endgame"
-    },
-    {
       "slug": "epomaker-carbon-x",
       "name": "Epomaker Carbon X",
       "brand": "Epomaker"
-    },
-    {
-      "slug": "epomaker-carbonx",
-      "name": "Epomaker CarbonX",
-      "brand": "Epomaker"
-    },
-    {
-      "slug": "epomaker-click",
-      "name": "Epomaker Click",
-      "brand": "Epomaker"
-    },
-    {
-      "slug": "epomaker-click-lite",
-      "name": "Epomaker Click Lite",
-      "brand": "Epomaker"
-    },
-    {
-      "slug": "evga-x12",
-      "name": "EVGA X12",
-      "brand": "EVGA"
-    },
-    {
-      "slug": "evga-x15",
-      "name": "EVGA X15",
-      "brand": "EVGA"
-    },
-    {
-      "slug": "evga-x17",
-      "name": "EVGA X17",
-      "brand": "EVGA"
-    },
-    {
-      "slug": "evga-x20",
-      "name": "EVGA X20",
-      "brand": "EVGA"
-    },
-    {
-      "slug": "eweadn-a5",
-      "name": "EWEADN A5",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-a5-pro",
-      "name": "EWEADN A5 Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-a5-ultra",
-      "name": "EWEADN A5 Ultra",
-      "brand": "EWEADN"
     },
     {
       "slug": "eweadn-a7",
@@ -1938,21 +348,6 @@
     {
       "slug": "eweadn-a7-pro",
       "name": "EWEADN A7 Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-l1",
-      "name": "EWEADN L1",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-l1-pro",
-      "name": "EWEADN L1 Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-m9",
-      "name": "EWEADN M9",
       "brand": "EWEADN"
     },
     {
@@ -1976,23 +371,8 @@
       "brand": "EWEADN"
     },
     {
-      "slug": "eweadn-s9",
-      "name": "EWEADN S9",
-      "brand": "EWEADN"
-    },
-    {
       "slug": "eweadn-s9-max",
       "name": "EWEADN S9 Max",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-s9-pro",
-      "name": "EWEADN S9+ Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-s9-ultra",
-      "name": "EWEADN S9+ Ultra",
       "brand": "EWEADN"
     },
     {
@@ -2006,33 +386,13 @@
       "brand": "EWEADN"
     },
     {
-      "slug": "eweadn-x21",
-      "name": "EWEADN X21",
+      "slug": "eweadn-s9-pro",
+      "name": "EWEADN S9+ Pro",
       "brand": "EWEADN"
     },
     {
-      "slug": "eweadn-x21-pro",
-      "name": "EWEADN X21 Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-x23",
-      "name": "EWEADN X23",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-x23-max",
-      "name": "EWEADN X23 Max",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-x23-pro",
-      "name": "EWEADN X23 Pro",
-      "brand": "EWEADN"
-    },
-    {
-      "slug": "eweadn-x23-se",
-      "name": "EWEADN X23 SE",
+      "slug": "eweadn-s9-ultra",
+      "name": "EWEADN S9+ Ultra",
       "brand": "EWEADN"
     },
     {
@@ -2041,153 +401,13 @@
       "brand": "EWEADN"
     },
     {
-      "slug": "fallen-pantera-pro",
-      "name": "Fallen Pantera Pro",
-      "brand": "Fallen"
-    },
-    {
-      "slug": "fantech-aria-e",
-      "name": "Fantech Aria E",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-aria-ii",
-      "name": "Fantech Aria II",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-aria-ii-pro",
-      "name": "Fantech Aria II Pro",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-aria-xd7",
-      "name": "Fantech Aria XD7",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-go-xd5",
-      "name": "Fantech Go XD5",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-helios-ii-pro",
-      "name": "Fantech Helios II Pro",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-helios-ii-pro-s",
-      "name": "Fantech Helios II Pro S",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-helios-xd3",
-      "name": "Fantech Helios XD3",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-helios-xd3v2",
-      "name": "Fantech Helios XD3V2",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-tanto",
-      "name": "Fantech Tanto",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-tanto-e",
-      "name": "Fantech Tanto E",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-tanto-s",
-      "name": "Fantech Tanto S",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fantech-x11-daredevil",
-      "name": "Fantech X11 Daredevil",
-      "brand": "Fantech"
-    },
-    {
-      "slug": "fiberaim-hafif",
-      "name": "Fiberaim Hafif",
-      "brand": "Fiberaim"
-    },
-    {
-      "slug": "finalmouse-air58",
-      "name": "Finalmouse Air58",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-scream-one",
-      "name": "Finalmouse Scream One",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-starlight-12-medium",
-      "name": "Finalmouse Starlight-12 Medium",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-starlight-12-small",
-      "name": "Finalmouse Starlight-12 Small",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ultralight-2",
-      "name": "Finalmouse Ultralight 2",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ultralight-phantom",
-      "name": "Finalmouse Ultralight Phantom",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ultralight-pro",
-      "name": "Finalmouse Ultralight Pro",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ultralight-pro-sunset",
-      "name": "Finalmouse Ultralight Pro Sunset",
-      "brand": "Finalmouse"
-    },
-    {
       "slug": "finalmouse-ultralightx-cheetah",
       "name": "Finalmouse UltralightX Cheetah",
       "brand": "Finalmouse"
     },
     {
-      "slug": "finalmouse-ultralightx-cheetah-s",
-      "name": "Finalmouse UltralightX Cheetah (S)",
-      "brand": "Finalmouse"
-    },
-    {
       "slug": "finalmouse-ultralightx-lion-m",
       "name": "Finalmouse UltralightX Lion M",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ultralightx-tiger-l",
-      "name": "Finalmouse UltralightX Tiger (L)",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-competition-classic",
-      "name": "Finalmouse ULX Competition Classic",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-competition-medium",
-      "name": "Finalmouse ULX Competition Medium",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-competition-small",
-      "name": "Finalmouse ULX Competition Small",
       "brand": "Finalmouse"
     },
     {
@@ -2206,36 +426,6 @@
       "brand": "Finalmouse"
     },
     {
-      "slug": "finalmouse-ulx-pro-series-cheetah-s",
-      "name": "Finalmouse ULX Pro Series Cheetah (S)",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-pro-series-lion-m",
-      "name": "Finalmouse ULX Pro Series Lion (M)",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-pro-series-tiger-l",
-      "name": "Finalmouse ULX Pro Series Tiger (L)",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-prophecy-classic",
-      "name": "Finalmouse ULX Prophecy Classic",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-prophecy-medium",
-      "name": "Finalmouse ULX Prophecy Medium",
-      "brand": "Finalmouse"
-    },
-    {
-      "slug": "finalmouse-ulx-prophecy-small",
-      "name": "Finalmouse ULX Prophecy Small",
-      "brand": "Finalmouse"
-    },
-    {
       "slug": "finalmouse-ulx-sakura-classic",
       "name": "Finalmouse ULX Sakura Classic",
       "brand": "Finalmouse"
@@ -2251,18 +441,8 @@
       "brand": "Finalmouse"
     },
     {
-      "slug": "finemax-noah",
-      "name": "FineMax Noah",
-      "brand": "FineMax"
-    },
-    {
       "slug": "flick-edge",
       "name": "Flick Edge",
-      "brand": "Flick"
-    },
-    {
-      "slug": "flick-fire",
-      "name": "Flick Fire",
       "brand": "Flick"
     },
     {
@@ -2283,11 +463,6 @@
     {
       "slug": "flickshot-evora-pro-lhd",
       "name": "Flickshot Evora Pro LHD",
-      "brand": "Flickshot"
-    },
-    {
-      "slug": "flickshot-one-pro",
-      "name": "Flickshot One Pro",
       "brand": "Flickshot"
     },
     {
@@ -2326,68 +501,8 @@
       "brand": "Flickshot"
     },
     {
-      "slug": "fnatic-bolt",
-      "name": "Fnatic Bolt",
-      "brand": "Fnatic"
-    },
-    {
-      "slug": "fnatic-clutch-2",
-      "name": "Fnatic CLUTCH 2",
-      "brand": "Fnatic"
-    },
-    {
-      "slug": "freewolf-a6",
-      "name": "Freewolf A6",
-      "brand": "Freewolf"
-    },
-    {
-      "slug": "freewolf-a7",
-      "name": "Freewolf A7",
-      "brand": "Freewolf"
-    },
-    {
-      "slug": "g-wolves-fenrir-asym-8k",
-      "name": "G-Wolves Fenrir Asym 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-fenrir-max-8k",
-      "name": "G-Wolves Fenrir Max 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-fenrir-pro-8k",
-      "name": "G-Wolves Fenrir Pro 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hsk",
-      "name": "G-Wolves HSK",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hsk-plus",
-      "name": "G-Wolves HSK Plus",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hsk-plus-4k",
-      "name": "G-Wolves HSK Plus 4K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hsk-plus-lite",
-      "name": "G-Wolves HSK Plus Lite",
-      "brand": "G-Wolves"
-    },
-    {
       "slug": "g-wolves-hsk-pro-4k",
       "name": "G-Wolves HSK Pro 4K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hsk-pro-ace",
-      "name": "G-Wolves HSK Pro Ace",
       "brand": "G-Wolves"
     },
     {
@@ -2396,98 +511,8 @@
       "brand": "G-Wolves"
     },
     {
-      "slug": "g-wolves-ht-s2-8k",
-      "name": "G-Wolves HT-S2 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-ht-s2-pro-8k",
-      "name": "G-Wolves HT-S2 Pro 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htm",
-      "name": "G-Wolves HTM",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htm-ace",
-      "name": "G-Wolves HTM Ace",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htm-plus-8k",
-      "name": "G-Wolves HTM Plus 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htm-wireless",
-      "name": "G-Wolves HTM Wireless",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htr-8k",
-      "name": "G-Wolves HTR 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htr-pro-8k",
-      "name": "G-Wolves HTR Pro 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts",
-      "name": "G-Wolves HTS",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-ace-wireless",
-      "name": "G-Wolves HTS Ace Wireless",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-plus",
-      "name": "G-Wolves HTS Plus",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-plus-4k",
-      "name": "G-Wolves HTS Plus 4K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-plus-8k",
-      "name": "G-Wolves HTS Plus 8K",
-      "brand": "G-Wolves"
-    },
-    {
       "slug": "g-wolves-hts-ultra",
       "name": "G-Wolves HTS Ultra",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-ultra-8k",
-      "name": "G-Wolves HTS Ultra 8K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-hts-wireless",
-      "name": "G-Wolves HTS Wireless",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htx-4k",
-      "name": "G-Wolves HTX 4K",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htx-ace",
-      "name": "G-Wolves HTX Ace",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-htx-mini-8k",
-      "name": "G-Wolves HTX Mini 8K",
       "brand": "G-Wolves"
     },
     {
@@ -2496,108 +521,13 @@
       "brand": "G-Wolves"
     },
     {
-      "slug": "g-wolves-htx-ultra-8k",
-      "name": "G-Wolves HTX Ultra 8K",
-      "brand": "G-Wolves"
-    },
-    {
       "slug": "g-wolves-lycan-8k",
       "name": "G-Wolves LYCAN 8K",
       "brand": "G-Wolves"
     },
     {
-      "slug": "g-wolves-skoll",
-      "name": "G-Wolves Skoll",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-skoll-mini",
-      "name": "G-Wolves Skoll Mini",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "g-wolves-vuk",
-      "name": "G-Wolves VUK",
-      "brand": "G-Wolves"
-    },
-    {
-      "slug": "gamesense-meta-wired",
-      "name": "Gamesense META Wired",
-      "brand": "Gamesense"
-    },
-    {
-      "slug": "gamesense-mvp-wired",
-      "name": "Gamesense MVP Wired",
-      "brand": "Gamesense"
-    },
-    {
-      "slug": "gamesense-mvp-wireless",
-      "name": "Gamesense MVP Wireless",
-      "brand": "Gamesense"
-    },
-    {
-      "slug": "ganss-flx3",
-      "name": "GANSS FLX3",
-      "brand": "GANSS"
-    },
-    {
-      "slug": "ganss-flx3-4k",
-      "name": "GANSS FLX3 4K",
-      "brand": "GANSS"
-    },
-    {
-      "slug": "gitoper-g1",
-      "name": "GITOPER G1",
-      "brand": "GITOPER"
-    },
-    {
-      "slug": "gitoper-g2",
-      "name": "GITOPER G2",
-      "brand": "GITOPER"
-    },
-    {
-      "slug": "gitoper-g3",
-      "name": "GITOPER G3",
-      "brand": "GITOPER"
-    },
-    {
-      "slug": "glorious-model-d",
-      "name": "Glorious Model D",
-      "brand": "Glorious"
-    },
-    {
       "slug": "glorious-model-d-2",
       "name": "Glorious Model D 2",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-2-pro-1k",
-      "name": "Glorious Model D 2 Pro 1K",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-2-pro-4k-8k",
-      "name": "Glorious Model D 2 Pro 4K/8K",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-2-wired",
-      "name": "Glorious Model D 2 Wired",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-2-wireless",
-      "name": "Glorious Model D 2 Wireless",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-pro",
-      "name": "Glorious Model D Pro",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-d-wireless",
-      "name": "Glorious Model D Wireless",
       "brand": "Glorious"
     },
     {
@@ -2611,16 +541,6 @@
       "brand": "Glorious"
     },
     {
-      "slug": "glorious-model-i",
-      "name": "Glorious Model I",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-i-2-wireless",
-      "name": "Glorious Model I 2 Wireless",
-      "brand": "Glorious"
-    },
-    {
       "slug": "glorious-model-o",
       "name": "Glorious Model O",
       "brand": "Glorious"
@@ -2628,46 +548,6 @@
     {
       "slug": "glorious-model-o-2",
       "name": "Glorious Model O 2",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-mini",
-      "name": "Glorious Model O 2 Mini",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-mini-wireless",
-      "name": "Glorious Model O 2 Mini Wireless",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-pro-1k",
-      "name": "Glorious Model O 2 Pro 1K",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-pro-4k-8k",
-      "name": "Glorious Model O 2 Pro 4K/8K",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-wired",
-      "name": "Glorious Model O 2 Wired",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-2-wireless",
-      "name": "Glorious Model O 2 Wireless",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-eternal",
-      "name": "Glorious Model O Eternal",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-model-o-pro",
-      "name": "Glorious Model O Pro",
       "brand": "Glorious"
     },
     {
@@ -2684,36 +564,6 @@
       "slug": "glorious-model-o3-wired",
       "name": "Glorious Model O3 Wired",
       "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-series-2-pro",
-      "name": "Glorious Series 2 Pro",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "glorious-series-one-pro",
-      "name": "Glorious Series One Pro",
-      "brand": "Glorious"
-    },
-    {
-      "slug": "gravastar-mercury-m1-pro",
-      "name": "GravaStar Mercury M1 Pro",
-      "brand": "GravaStar"
-    },
-    {
-      "slug": "gravastar-mercury-m2",
-      "name": "GravaStar Mercury M2",
-      "brand": "GravaStar"
-    },
-    {
-      "slug": "gravastar-mercury-x",
-      "name": "GravaStar Mercury X",
-      "brand": "GravaStar"
-    },
-    {
-      "slug": "gravastar-mercury-x-pro",
-      "name": "GravaStar Mercury X Pro",
-      "brand": "GravaStar"
     },
     {
       "slug": "hator-pulsar-3",
@@ -2746,93 +596,13 @@
       "brand": "Hator"
     },
     {
-      "slug": "haunterwell-hfc",
-      "name": "HaunterWell HFC",
-      "brand": "HaunterWell"
-    },
-    {
-      "slug": "haunterwell-hmf",
-      "name": "HaunterWell HMF",
-      "brand": "HaunterWell"
-    },
-    {
-      "slug": "haunterwell-hz1",
-      "name": "HaunterWell HZ1",
-      "brand": "HaunterWell"
-    },
-    {
-      "slug": "haunterwell-hzs",
-      "name": "HaunterWell HZS",
-      "brand": "HaunterWell"
-    },
-    {
-      "slug": "higround-yuma",
-      "name": "Higround Yuma",
-      "brand": "Higround"
-    },
-    {
-      "slug": "hitscan-hyperlight",
-      "name": "Hitscan Hyperlight",
-      "brand": "Hitscan"
-    },
-    {
-      "slug": "hk-gaming-sirius-m",
-      "name": "HK Gaming Sirius M",
-      "brand": "HK"
-    },
-    {
       "slug": "home-of-victory-mouse2",
       "name": "Home of Victory Mouse2",
       "brand": "Home of Victory"
     },
     {
-      "slug": "huo-ji-e-yooso",
-      "name": "HUO JI E-YOOSO",
-      "brand": "HUO"
-    },
-    {
       "slug": "hyperx-pulsefire-core",
       "name": "HyperX Pulsefire Core",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-dart",
-      "name": "HyperX Pulsefire Dart",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-fps-pro",
-      "name": "HyperX Pulsefire FPS Pro",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-fuse",
-      "name": "HyperX Pulsefire Fuse",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-haste",
-      "name": "HyperX Pulsefire Haste",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-haste-2-core-wireless",
-      "name": "HyperX Pulsefire Haste 2 Core Wireless",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-haste-2-mini",
-      "name": "HyperX Pulsefire Haste 2 Mini",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-haste-2-pro",
-      "name": "HyperX Pulsefire Haste 2 Pro",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-haste-2-s",
-      "name": "HyperX Pulsefire Haste 2 S",
       "brand": "HyperX"
     },
     {
@@ -2846,123 +616,13 @@
       "brand": "HyperX"
     },
     {
-      "slug": "hyperx-pulsefire-haste-wireless",
-      "name": "HyperX Pulsefire Haste Wireless",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-raid",
-      "name": "HyperX Pulsefire Raid",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-saga-pro",
-      "name": "HyperX Pulsefire Saga Pro",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-surge",
-      "name": "HyperX Pulsefire Surge",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "hyperx-pulsefire-warp",
-      "name": "HyperX Pulsefire Warp",
-      "brand": "HyperX"
-    },
-    {
-      "slug": "ifyoo-g03-long",
-      "name": "IFYOO G03 (Long)",
-      "brand": "IFYOO"
-    },
-    {
-      "slug": "ifyoo-g03-short",
-      "name": "IFYOO G03 (Short)",
-      "brand": "IFYOO"
-    },
-    {
-      "slug": "ifyoo-g63",
-      "name": "IFYOO G63",
-      "brand": "IFYOO"
-    },
-    {
-      "slug": "imecoo-p1",
-      "name": "Imecoo P1",
-      "brand": "Imecoo"
-    },
-    {
-      "slug": "incott-029",
-      "name": "Incott 029",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-029-pro",
-      "name": "Incott 029 Pro",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-029-sc",
-      "name": "Incott 029 SC",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-039",
-      "name": "Incott 039",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-039-pro",
-      "name": "Incott 039 Pro",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-039-sc",
-      "name": "Incott 039 SC",
-      "brand": "Incott"
-    },
-    {
       "slug": "incott-g23",
       "name": "Incott G23",
       "brand": "Incott"
     },
     {
-      "slug": "incott-g23-pro",
-      "name": "Incott G23 Pro",
-      "brand": "Incott"
-    },
-    {
       "slug": "incott-g23-v2",
       "name": "Incott G23 V2",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-g23-v2-pro",
-      "name": "Incott G23 V2 Pro",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-g23-v2-sc",
-      "name": "Incott G23 V2 SC",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-g24",
-      "name": "Incott G24",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-g24-pro",
-      "name": "Incott G24 Pro",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-ghero",
-      "name": "Incott GHERO",
-      "brand": "Incott"
-    },
-    {
-      "slug": "incott-ghero-pro",
-      "name": "Incott GHERO Pro",
       "brand": "Incott"
     },
     {
@@ -2976,24 +636,9 @@
       "brand": "INPHIC"
     },
     {
-      "slug": "inphic-in9-pro",
-      "name": "INPHIC IN9 Pro",
-      "brand": "INPHIC"
-    },
-    {
       "slug": "inphic-in9-ultra",
       "name": "INPHIC IN9 Ultra",
       "brand": "INPHIC"
-    },
-    {
-      "slug": "inzone-mouse-a",
-      "name": "INZONE Mouse-A",
-      "brand": "INZONE"
-    },
-    {
-      "slug": "ipi-float",
-      "name": "IPI Float",
-      "brand": "IPI"
     },
     {
       "slug": "ipi-qi-pro",
@@ -3001,79 +646,9 @@
       "brand": "IPI"
     },
     {
-      "slug": "irocks-m31r",
-      "name": "Irocks M31R",
-      "brand": "Irocks"
-    },
-    {
-      "slug": "irok-he3",
-      "name": "IROK HE3",
-      "brand": "IROK"
-    },
-    {
-      "slug": "irok-he3-pro",
-      "name": "IROK HE3 PRO",
-      "brand": "IROK"
-    },
-    {
-      "slug": "irok-he3-se",
-      "name": "IROK HE3 SE",
-      "brand": "IROK"
-    },
-    {
       "slug": "irok-he6",
       "name": "IROK HE6",
       "brand": "IROK"
-    },
-    {
-      "slug": "ironcat-hpc01m",
-      "name": "Ironcat HPC01M",
-      "brand": "Ironcat"
-    },
-    {
-      "slug": "ironcat-hpc01m-pro",
-      "name": "Ironcat HPC01M Pro",
-      "brand": "Ironcat"
-    },
-    {
-      "slug": "ironcat-hpc02",
-      "name": "Ironcat HPC02",
-      "brand": "Ironcat"
-    },
-    {
-      "slug": "ironcat-hpc02m",
-      "name": "Ironcat HPC02M",
-      "brand": "Ironcat"
-    },
-    {
-      "slug": "ixilab-x1",
-      "name": "IXILAB X1",
-      "brand": "IXILAB"
-    },
-    {
-      "slug": "ixilab-x1-pro",
-      "name": "IXILAB X1 Pro",
-      "brand": "IXILAB"
-    },
-    {
-      "slug": "ixilab-x1-pro-max",
-      "name": "IXILAB X1 Pro Max",
-      "brand": "IXILAB"
-    },
-    {
-      "slug": "iyx-amber",
-      "name": "IYX Amber",
-      "brand": "IYX"
-    },
-    {
-      "slug": "jamesdonkey-rsr5",
-      "name": "JamesDonkey RSR5",
-      "brand": "JamesDonkey"
-    },
-    {
-      "slug": "jamesdonkey-rsr5s",
-      "name": "JamesDonkey RSR5s",
-      "brand": "JamesDonkey"
     },
     {
       "slug": "jamesdonkey-rsr7",
@@ -3106,133 +681,8 @@
       "brand": "Keychron"
     },
     {
-      "slug": "keychron-lemokey-g1",
-      "name": "Keychron Lemokey G1",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-lemokey-g2",
-      "name": "Keychron Lemokey G2",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m1-wired",
-      "name": "Keychron M1 Wired",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m1-wireless",
-      "name": "Keychron M1 Wireless",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m2",
-      "name": "Keychron M2",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m2-4k",
-      "name": "Keychron M2 4K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m2-8k",
-      "name": "Keychron M2 8K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m2-mini",
-      "name": "Keychron M2 Mini",
-      "brand": "Keychron"
-    },
-    {
       "slug": "keychron-m3",
       "name": "Keychron M3",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-4k",
-      "name": "Keychron M3 4K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-8k",
-      "name": "Keychron M3 8K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-lite",
-      "name": "Keychron M3 Lite",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-mini",
-      "name": "Keychron M3 Mini",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-mini-4k",
-      "name": "Keychron M3 Mini 4K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-mini-4k-metal-edition",
-      "name": "Keychron M3 Mini 4K - Metal Edition",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m3-mini-8k",
-      "name": "Keychron M3 Mini 8K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m4",
-      "name": "Keychron M4",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m4-4k",
-      "name": "Keychron M4 4K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m4-8k",
-      "name": "Keychron M4 8K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m5",
-      "name": "Keychron M5",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m6",
-      "name": "Keychron M6",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m6-4k",
-      "name": "Keychron M6 4K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m6-8k",
-      "name": "Keychron M6 8K",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m6-lite",
-      "name": "Keychron M6 Lite",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m7",
-      "name": "Keychron M7",
-      "brand": "Keychron"
-    },
-    {
-      "slug": "keychron-m7-8k",
-      "name": "Keychron M7 8K",
       "brand": "Keychron"
     },
     {
@@ -3266,91 +716,6 @@
       "brand": "Kreo"
     },
     {
-      "slug": "kysona-aztec",
-      "name": "Kysona Aztec",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-jupiter-pro",
-      "name": "Kysona Jupiter Pro",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-jupiter-se",
-      "name": "Kysona Jupiter SE",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-jupiter-ultra",
-      "name": "Kysona Jupiter Ultra",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-m511",
-      "name": "Kysona M511",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-m600",
-      "name": "Kysona M600",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-m600-v2",
-      "name": "Kysona M600 V2",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-m617",
-      "name": "Kysona M617",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-m660",
-      "name": "Kysona M660",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-mars-se",
-      "name": "Kysona Mars SE",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-mercury-pro",
-      "name": "Kysona Mercury Pro",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-mercury-se",
-      "name": "Kysona Mercury SE",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-mercury-ultra",
-      "name": "Kysona Mercury Ultra",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-saturn-pro",
-      "name": "Kysona Saturn Pro",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-saturn-se",
-      "name": "Kysona Saturn SE",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-uranus-pro",
-      "name": "Kysona Uranus Pro",
-      "brand": "Kysona"
-    },
-    {
-      "slug": "kysona-uranus-se",
-      "name": "Kysona Uranus SE",
-      "brand": "Kysona"
-    },
-    {
       "slug": "kysona-vela-se",
       "name": "Kysona Vela SE",
       "brand": "Kysona"
@@ -3366,74 +731,14 @@
       "brand": "Lamzu"
     },
     {
-      "slug": "lamzu-atlantis-mini-4k",
-      "name": "LAMZU Atlantis Mini 4K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-atlantis-mini-champion",
-      "name": "LAMZU Atlantis Mini Champion",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-atlantis-mini-pro",
-      "name": "LAMZU Atlantis Mini Pro",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-atlantis-og-v2",
-      "name": "LAMZU Atlantis OG V2",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-atlantis-og-v2-4k",
-      "name": "LAMZU Atlantis OG V2 4K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-atlantis-og-v2-pro",
-      "name": "LAMZU Atlantis OG V2 Pro",
-      "brand": "LAMZU"
-    },
-    {
       "slug": "lamzu-inca",
       "name": "Lamzu Inca",
       "brand": "Lamzu"
     },
     {
-      "slug": "lamzu-maya",
-      "name": "LAMZU MAYA",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-maya-4k",
-      "name": "LAMZU MAYA 4K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-maya-champion-edition",
-      "name": "LAMZU MAYA Champion Edition",
-      "brand": "LAMZU"
-    },
-    {
       "slug": "lamzu-maya-x",
       "name": "Lamzu Maya X",
       "brand": "Lamzu"
-    },
-    {
-      "slug": "lamzu-paro",
-      "name": "LAMZU Paro",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-paro-aurora",
-      "name": "LAMZU Paro Aurora",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-tachi",
-      "name": "LAMZU Tachi",
-      "brand": "LAMZU"
     },
     {
       "slug": "lamzu-thorn",
@@ -3446,88 +751,13 @@
       "brand": "Lamzu"
     },
     {
-      "slug": "lamzu-x-aimlabs-maya-x",
-      "name": "LAMZU x Aimlabs MAYA X",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-x-fnatic-maya-8k",
-      "name": "LAMZU x Fnatic MAYA 8K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-x-fnatic-maya-x-8k",
-      "name": "LAMZU x Fnatic MAYA X 8K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-x-fnatic-thorn-4k",
-      "name": "LAMZU x Fnatic Thorn 4K",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lamzu-x-reject-paro-reject-special-edition",
-      "name": "LAMZU x REJECT Paro Reject Special Edition",
-      "brand": "LAMZU"
-    },
-    {
-      "slug": "lenovo-legion-m300s",
-      "name": "Lenovo Legion M300s",
-      "brand": "Lenovo"
-    },
-    {
-      "slug": "lenovo-legion-m410",
-      "name": "Lenovo Legion M410",
-      "brand": "Lenovo"
-    },
-    {
-      "slug": "lenovo-legion-m600s",
-      "name": "Lenovo Legion M600s",
-      "brand": "Lenovo"
-    },
-    {
-      "slug": "lenovo-yoga-pro",
-      "name": "Lenovo Yoga Pro",
-      "brand": "Lenovo"
-    },
-    {
       "slug": "lethal-gaming-gear-la-1",
       "name": "Lethal Gaming Gear LA-1",
       "brand": "Lethal Gaming Gear"
     },
     {
-      "slug": "lofree-hypace",
-      "name": "Lofree Hypace",
-      "brand": "Lofree"
-    },
-    {
-      "slug": "lofree-touch",
-      "name": "Lofree Touch",
-      "brand": "Lofree"
-    },
-    {
-      "slug": "logitech-b100",
-      "name": "Logitech B100",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-ergo-m575",
-      "name": "Logitech ERGO M575",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g-mx518",
-      "name": "Logitech G MX518",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g-pro",
       "name": "Logitech G Pro",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g-pro-2-lightspeed",
-      "name": "Logitech G Pro 2 Lightspeed",
       "brand": "Logitech"
     },
     {
@@ -3541,18 +771,8 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g-pro-x-superlight-2",
-      "name": "Lozer G Pro X Superlight 2",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g-pro-x-superlight-2-dex",
-      "name": "Logitech G Pro X Superlight 2 DEX",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g-pro-x-superlight-2-se",
-      "name": "Logitech G Pro X Superlight 2 SE",
+      "slug": "logitech-g-pro-x-superlight-ii",
+      "name": "Logitech G Pro X Superlight 2",
       "brand": "Logitech"
     },
     {
@@ -3561,18 +781,8 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g-pro-x-superlight-ii",
-      "name": "Logitech G Pro X Superlight 2",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g-pro-x2-superstrike",
       "name": "Logitech G Pro X2 Superstrike",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g100s",
-      "name": "Logitech G100s",
       "brand": "Logitech"
     },
     {
@@ -3581,43 +791,13 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g103-prodigy",
-      "name": "Logitech G103 Prodigy",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g203-lightsync",
       "name": "Logitech G203 Lightsync",
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g203-prodigy",
-      "name": "Logitech G203 Prodigy",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g3",
-      "name": "Logitech G3",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g300s",
-      "name": "Logitech G300s",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g302",
       "name": "Logitech G302",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g303-daedalus-apex",
-      "name": "Logitech G303 Daedalus Apex",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g303-shroud-edition",
-      "name": "Logitech G303 Shroud Edition",
       "brand": "Logitech"
     },
     {
@@ -3636,23 +816,8 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g309",
-      "name": "Logitech G309",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g309-lightspeed",
       "name": "Logitech G309 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g400",
-      "name": "Logitech G400",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g400s",
-      "name": "Logitech G400s",
       "brand": "Logitech"
     },
     {
@@ -3661,223 +826,8 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g403",
-      "name": "Logitech G403",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g403-hero",
-      "name": "Logitech G403 Hero",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g403-wireless",
-      "name": "Logitech G403 Wireless",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g502-hero",
-      "name": "Logitech G502 Hero",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g502-lightspeed",
-      "name": "Logitech G502 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g502-x",
-      "name": "Logitech G502 X",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g502-x-lightspeed",
-      "name": "Logitech G502 X Lightspeed",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-g502-x-plus",
       "name": "Logitech G502 X Plus",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g600",
-      "name": "Logitech G600",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g602",
-      "name": "Logitech G602",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g603-lightspeed",
-      "name": "Logitech G603 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g604-lightspeed",
-      "name": "Logitech G604 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g703-lightspeed",
-      "name": "Logitech G703 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g705",
-      "name": "Logitech G705",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g900",
-      "name": "Logitech G900",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g903-lightspeed",
-      "name": "Logitech G903 Lightspeed",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-g9x",
-      "name": "Logitech G9x",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-lift-vertical",
-      "name": "Logitech Lift Vertical",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m100",
-      "name": "Logitech M100",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m170",
-      "name": "Logitech M170",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m171",
-      "name": "Logitech M171",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m185",
-      "name": "Logitech M185",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m187",
-      "name": "Logitech M187",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m190",
-      "name": "Logitech M190",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m196",
-      "name": "Logitech M196",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m238",
-      "name": "Logitech M238",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m240",
-      "name": "Logitech M240",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m280",
-      "name": "Logitech M280",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m340",
-      "name": "Logitech M340",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m510",
-      "name": "Logitech M510",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m550",
-      "name": "Logitech M550",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m550-l",
-      "name": "Logitech M550 L",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m650",
-      "name": "Logitech M650",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m650-l",
-      "name": "Logitech M650 L",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m650-l-left",
-      "name": "Logitech M650 L Left",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m705-marathon",
-      "name": "Logitech M705 Marathon",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-m720-triathlon",
-      "name": "Logitech M720 Triathlon",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-anywhere",
-      "name": "Logitech MX Anywhere",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-anywhere-2s",
-      "name": "Logitech MX Anywhere 2S",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-anywhere-3s",
-      "name": "Logitech MX Anywhere 3S",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-master",
-      "name": "Logitech MX Master",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-master-2s",
-      "name": "Logitech MX Master 2S",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-master-3",
-      "name": "Logitech MX Master 3",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-mx-master-3s",
-      "name": "Logitech MX Master 3S",
       "brand": "Logitech"
     },
     {
@@ -3886,34 +836,14 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-mx-vertical",
-      "name": "Logitech MX Vertical",
-      "brand": "Logitech"
-    },
-    {
       "slug": "logitech-mx518",
       "name": "Logitech MX518",
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-pebble-2-m350s",
-      "name": "Logitech Pebble 2 M350s",
+      "slug": "logitech-g-pro-x-superlight-2",
+      "name": "Lozer G Pro X Superlight 2",
       "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-pebble-m350",
-      "name": "Logitech Pebble M350",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "logitech-pop-mouse",
-      "name": "Logitech POP Mouse",
-      "brand": "Logitech"
-    },
-    {
-      "slug": "ltc-gm022",
-      "name": "LTC GM022",
-      "brand": "LTC"
     },
     {
       "slug": "lunafury-luna33",
@@ -3931,44 +861,9 @@
       "brand": "LunaFury"
     },
     {
-      "slug": "machenike-l7-air",
-      "name": "MACHENIKE L7 Air",
-      "brand": "MACHENIKE"
-    },
-    {
-      "slug": "machenike-l8-air",
-      "name": "MACHENIKE L8 Air",
-      "brand": "MACHENIKE"
-    },
-    {
-      "slug": "machenike-l8-max",
-      "name": "MACHENIKE L8 Max",
-      "brand": "MACHENIKE"
-    },
-    {
-      "slug": "machenike-l8-pro",
-      "name": "MACHENIKE L8 Pro",
-      "brand": "MACHENIKE"
-    },
-    {
-      "slug": "machenike-m7-pro",
-      "name": "MACHENIKE M7 Pro",
-      "brand": "MACHENIKE"
-    },
-    {
       "slug": "mad-catz-r-a-t-dws",
       "name": "Mad Catz R.A.T. DWS",
       "brand": "Mad Catz"
-    },
-    {
-      "slug": "madlions-mad-g",
-      "name": "Madlions Mad G",
-      "brand": "Madlions"
-    },
-    {
-      "slug": "madlions-mad-g-max",
-      "name": "Madlions Mad G Max",
-      "brand": "Madlions"
     },
     {
       "slug": "mambasnake-m2",
@@ -3976,63 +871,8 @@
       "brand": "MAMBASNAKE"
     },
     {
-      "slug": "mambasnake-m3",
-      "name": "MAMBASNAKE M3",
-      "brand": "MAMBASNAKE"
-    },
-    {
-      "slug": "mambasnake-m4",
-      "name": "MAMBASNAKE M4",
-      "brand": "MAMBASNAKE"
-    },
-    {
-      "slug": "mambasnake-m5-ultra",
-      "name": "MAMBASNAKE M5 Ultra",
-      "brand": "MAMBASNAKE"
-    },
-    {
-      "slug": "mchose-a5",
-      "name": "MCHOSE A5",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a5-pro",
-      "name": "MCHOSE A5 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a5-pro-max",
-      "name": "MCHOSE A5 Pro Max",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a5-ultra",
-      "name": "MCHOSE A5 Ultra",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a5-v2-ultra",
-      "name": "MCHOSE A5 V2 Ultra",
-      "brand": "MCHOSE"
-    },
-    {
       "slug": "mchose-a5-v3",
       "name": "MCHOSE A5 V3",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a7",
-      "name": "MCHOSE A7",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a7-pro",
-      "name": "MCHOSE A7 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-a7-ultra",
-      "name": "MCHOSE A7 Ultra",
       "brand": "MCHOSE"
     },
     {
@@ -4051,91 +891,6 @@
       "brand": "MCHOSE"
     },
     {
-      "slug": "mchose-a7x-ultra",
-      "name": "MCHOSE A7X Ultra",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-ax5",
-      "name": "MCHOSE AX5",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-ax5-pro",
-      "name": "MCHOSE AX5 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-ax5-pro-max",
-      "name": "MCHOSE AX5 Pro Max",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-ax5-v2",
-      "name": "MCHOSE AX5 V2",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3",
-      "name": "MCHOSE G3",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-a",
-      "name": "MCHOSE G3 A",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-max",
-      "name": "MCHOSE G3 Max",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-pro",
-      "name": "MCHOSE G3 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-se",
-      "name": "MCHOSE G3 SE",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-ultra",
-      "name": "MCHOSE G3 Ultra",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-v2",
-      "name": "MCHOSE G3 V2",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g3-v2-pro",
-      "name": "MCHOSE G3 V2 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g7",
-      "name": "MCHOSE G7",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g7-max",
-      "name": "MCHOSE G7 Max",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-g7-pro",
-      "name": "MCHOSE G7 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-k7-ultra",
-      "name": "MCHOSE K7 Ultra",
-      "brand": "MCHOSE"
-    },
-    {
       "slug": "mchose-l7",
       "name": "MCHOSE L7",
       "brand": "MCHOSE"
@@ -4146,79 +901,9 @@
       "brand": "MCHOSE"
     },
     {
-      "slug": "mchose-l7-pro",
-      "name": "MCHOSE L7 Pro+",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-l7-ultra",
-      "name": "MCHOSE L7 Ultra+",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-m7",
-      "name": "MCHOSE M7",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-m7-pro",
-      "name": "MCHOSE M7 Pro",
-      "brand": "MCHOSE"
-    },
-    {
-      "slug": "mchose-m7-ultra",
-      "name": "MCHOSE M7 Ultra",
-      "brand": "MCHOSE"
-    },
-    {
       "slug": "melgeek-horus",
       "name": "MelGeek Horus",
       "brand": "MelGeek"
-    },
-    {
-      "slug": "metaphyuni-m6",
-      "name": "Metaphyuni M6",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-metapanda-p1",
-      "name": "Metaphyuni Metapanda P1",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-metapanda-p1-pro",
-      "name": "Metaphyuni Metapanda P1 Pro",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-metapanda-p1-pro-max",
-      "name": "Metaphyuni Metapanda P1 Pro Max",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-p2",
-      "name": "Metaphyuni P2",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-p2-lite",
-      "name": "Metaphyuni P2 Lite",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "metaphyuni-p2-pro",
-      "name": "Metaphyuni P2 Pro",
-      "brand": "Metaphyuni"
-    },
-    {
-      "slug": "microsoft-classic-intellimouse",
-      "name": "Microsoft Classic IntelliMouse",
-      "brand": "Microsoft"
-    },
-    {
-      "slug": "microsoft-comfort-mouse-4500",
-      "name": "Microsoft Comfort Mouse 4500",
-      "brand": "Microsoft"
     },
     {
       "slug": "microsoft-intellimouse-optical-1-1a",
@@ -4226,139 +911,9 @@
       "brand": "Microsoft"
     },
     {
-      "slug": "microsoft-pro-intellimouse",
-      "name": "Microsoft Pro IntelliMouse",
-      "brand": "Microsoft"
-    },
-    {
-      "slug": "microsoft-sidewinder-x8",
-      "name": "Microsoft Sidewinder X8",
-      "brand": "Microsoft"
-    },
-    {
-      "slug": "microsoft-wheel-mouse-optical",
-      "name": "Microsoft Wheel Mouse Optical",
-      "brand": "Microsoft"
-    },
-    {
-      "slug": "midnight-thread-c1",
-      "name": "Midnight Thread C1",
-      "brand": "Midnight"
-    },
-    {
-      "slug": "mighty-mouse-mm8k",
-      "name": "Mighty Mouse MM8K",
-      "brand": "Mighty"
-    },
-    {
-      "slug": "mionix-castor",
-      "name": "Mionix Castor",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-castor-pro",
-      "name": "Mionix Castor Pro",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-naos-3200",
-      "name": "Mionix Naos 3200",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-naos-7000",
-      "name": "Mionix Naos 7000",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-naos-8200",
-      "name": "Mionix Naos 8200",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-naos-pro",
-      "name": "Mionix Naos Pro",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "mionix-naos-qg",
-      "name": "Mionix Naos QG",
-      "brand": "Mionix"
-    },
-    {
-      "slug": "monka-g995w",
-      "name": "Monka G995W",
-      "brand": "Monka"
-    },
-    {
-      "slug": "monka-m1",
-      "name": "Monka M1",
-      "brand": "Monka"
-    },
-    {
-      "slug": "monka-m1-pro",
-      "name": "Monka M1 Pro",
-      "brand": "Monka"
-    },
-    {
-      "slug": "monka-m1-pro-max",
-      "name": "Monka M1 Pro Max",
-      "brand": "Monka"
-    },
-    {
-      "slug": "monka-m3",
-      "name": "Monka M3",
-      "brand": "Monka"
-    },
-    {
-      "slug": "monka-m3-pro",
-      "name": "Monka M3 Pro",
-      "brand": "Monka"
-    },
-    {
-      "slug": "motospeed-x1",
-      "name": "Motospeed X1",
-      "brand": "Motospeed"
-    },
-    {
-      "slug": "motospeed-x6",
-      "name": "Motospeed X6",
-      "brand": "Motospeed"
-    },
-    {
-      "slug": "motospeed-x6-max",
-      "name": "Motospeed X6 Max",
-      "brand": "Motospeed"
-    },
-    {
       "slug": "mountain-makalu-67",
       "name": "Mountain Makalu 67",
       "brand": "Mountain"
-    },
-    {
-      "slug": "mountain-makalu-max",
-      "name": "Mountain Makalu Max",
-      "brand": "Mountain"
-    },
-    {
-      "slug": "msi-clutch-gm41",
-      "name": "MSI Clutch GM41",
-      "brand": "MSI"
-    },
-    {
-      "slug": "ninjutso-katana-superlight",
-      "name": "Ninjutso Katana Superlight",
-      "brand": "Ninjutso"
-    },
-    {
-      "slug": "ninjutso-katana-ultralight",
-      "name": "Ninjutso Katana Ultralight",
-      "brand": "Ninjutso"
-    },
-    {
-      "slug": "ninjutso-origin-one-x",
-      "name": "Ninjutso Origin One X",
-      "brand": "Ninjutso"
     },
     {
       "slug": "ninjutso-sora",
@@ -4366,104 +921,9 @@
       "brand": "Ninjutso"
     },
     {
-      "slug": "ninjutso-sora-4k",
-      "name": "Ninjutso Sora 4K",
-      "brand": "Ninjutso"
-    },
-    {
       "slug": "ninjutso-sora-v2",
       "name": "Ninjutso Sora V2",
       "brand": "Ninjutso"
-    },
-    {
-      "slug": "ninjutso-ten",
-      "name": "Ninjutso Ten",
-      "brand": "Ninjutso"
-    },
-    {
-      "slug": "ninjutso-ten-air",
-      "name": "Ninjutso Ten Air",
-      "brand": "Ninjutso"
-    },
-    {
-      "slug": "nintendo-joy-con-2",
-      "name": "Nintendo Joy-Con 2",
-      "brand": "Nintendo"
-    },
-    {
-      "slug": "nitrite-labs-carbon-xt1-wired",
-      "name": "Nitrite Labs Carbon XT1 Wired",
-      "brand": "Nitrite"
-    },
-    {
-      "slug": "nitrite-labs-carbon-xt1-wireless",
-      "name": "Nitrite Labs Carbon XT1 Wireless",
-      "brand": "Nitrite"
-    },
-    {
-      "slug": "nixeus-revel",
-      "name": "Nixeus Revel",
-      "brand": "Nixeus"
-    },
-    {
-      "slug": "nixeus-revel-fit",
-      "name": "Nixeus Revel Fit",
-      "brand": "Nixeus"
-    },
-    {
-      "slug": "nixeus-revel-x",
-      "name": "Nixeus Revel-X",
-      "brand": "Nixeus"
-    },
-    {
-      "slug": "noir-m1",
-      "name": "Noir M1",
-      "brand": "Noir"
-    },
-    {
-      "slug": "noir-m1-lite",
-      "name": "Noir M1 Lite",
-      "brand": "Noir"
-    },
-    {
-      "slug": "noir-m2",
-      "name": "Noir M2",
-      "brand": "Noir"
-    },
-    {
-      "slug": "noir-m2-mg",
-      "name": "Noir M2 MG",
-      "brand": "Noir"
-    },
-    {
-      "slug": "noir-m2-pro",
-      "name": "Noir M2 Pro",
-      "brand": "Noir"
-    },
-    {
-      "slug": "nyfter-elt-4k",
-      "name": "Nyfter ELT 4K",
-      "brand": "Nyfter"
-    },
-    {
-      "slug": "nzxt-lift",
-      "name": "NZXT Lift",
-      "brand": "NZXT"
-    },
-    {
-      "slug": "nzxt-lift-2-ergo",
-      "name": "NZXT Lift 2 Ergo",
-      "brand": "NZXT"
-    },
-    {
-      "slug": "nzxt-lift-2-symm",
-      "name": "NZXT Lift 2 Symm",
-      "brand": "NZXT"
-    },
-    {
-      "slug": "nzxt-lift-elite-wireless",
-      "name": "NZXT Lift Elite Wireless",
-      "brand": "NZXT"
     },
     {
       "slug": "orbital-pathfinder-aah-000",
@@ -4473,16 +933,6 @@
     {
       "slug": "orbital-pathfinder-aah-222",
       "name": "Orbital Pathfinder AAH-222",
-      "brand": "Orbital"
-    },
-    {
-      "slug": "orbital-pathfinder-aam-000",
-      "name": "Orbital Pathfinder AAM-000",
-      "brand": "Orbital"
-    },
-    {
-      "slug": "orbital-pathfinder-aam-222",
-      "name": "Orbital Pathfinder AAM-222",
       "brand": "Orbital"
     },
     {
@@ -4546,89 +996,9 @@
       "brand": "Orbital"
     },
     {
-      "slug": "phylina-s450",
-      "name": "PHYLINA S450",
-      "brand": "PHYLINA"
-    },
-    {
-      "slug": "phylina-s450-4k",
-      "name": "PHYLINA S450 4K",
-      "brand": "PHYLINA"
-    },
-    {
-      "slug": "phylina-s480",
-      "name": "PHYLINA S480",
-      "brand": "PHYLINA"
-    },
-    {
-      "slug": "pichau-hive-s",
-      "name": "Pichau Hive S",
-      "brand": "Pichau"
-    },
-    {
       "slug": "piranha-mouse-zen8k",
       "name": "Piranha Mouse Zen8K",
       "brand": "Piranha Mouse"
-    },
-    {
-      "slug": "pmm-aim-8k",
-      "name": "PMM AIM 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-blaze",
-      "name": "PMM BLAZE",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-core",
-      "name": "PMM CORE",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-craze-8k",
-      "name": "PMM CRAZE 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-cyber-4-0",
-      "name": "PMM CYBER 4.0",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-cyber-4-1",
-      "name": "PMM CYBER 4.1",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-cyber-8k",
-      "name": "PMM CYBER 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-cyber-zk",
-      "name": "PMM CYBER ZK",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-fuse",
-      "name": "PMM FUSE",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-fuse-8k",
-      "name": "PMM Fuse 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-neo-8k",
-      "name": "PMM NEO 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-nite-8k",
-      "name": "PMM NITE 8K",
-      "brand": "PMM"
     },
     {
       "slug": "pmm-pulse",
@@ -4639,61 +1009,6 @@
       "slug": "pmm-pulse-w",
       "name": "PMM PULSE W",
       "brand": "PMM"
-    },
-    {
-      "slug": "pmm-titan-8k-l",
-      "name": "PMM TITAN 8K L",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-titan-m",
-      "name": "PMM TITAN M",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-titan-s",
-      "name": "PMM TITAN S",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-vortex-4k-m",
-      "name": "PMM VORTEX 4K M",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-vortex-8k-m",
-      "name": "PMM VORTEX 8K M",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-vortex-8k-s",
-      "name": "PMM VORTEX 8K S",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-vortex-m",
-      "name": "PMM VORTEX M",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-vortex-s",
-      "name": "PMM VORTEX S",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-zen-8k",
-      "name": "PMM ZEN 8K",
-      "brand": "PMM"
-    },
-    {
-      "slug": "pmm-zen-8k-mini",
-      "name": "PMM ZEN 8K Mini",
-      "brand": "PMM"
-    },
-    {
-      "slug": "precision-gg-titan-0",
-      "name": "Precision GG Titan-0",
-      "brand": "Precision"
     },
     {
       "slug": "press-play-atlas",
@@ -4731,11 +1046,6 @@
       "brand": "Project W"
     },
     {
-      "slug": "pulsar-es-fs1",
-      "name": "Pulsar eS FS1",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-feinmann-f01",
       "name": "Pulsar Feinmann F01",
       "brand": "Pulsar"
@@ -4743,21 +1053,6 @@
     {
       "slug": "pulsar-jvx",
       "name": "Pulsar JVX",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-pro-series-jv-x",
-      "name": "Pulsar Pro Series JV-X",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-susanto-x",
-      "name": "Pulsar Susanto-X",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-tenz-signature-edition",
-      "name": "Pulsar TenZ Signature Edition",
       "brand": "Pulsar"
     },
     {
@@ -4776,73 +1071,8 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-x2-crazylight-mini",
-      "name": "Pulsar X2 CrazyLight Mini",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-x2-mini",
       "name": "Pulsar X2 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2-v3",
-      "name": "Pulsar X2 v3",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2-v3-es-mini",
-      "name": "Pulsar X2 v3 eS Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2-v3-mini",
-      "name": "Pulsar X2 v3 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2-wired",
-      "name": "Pulsar X2 Wired",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a",
-      "name": "Pulsar X2A",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a-es",
-      "name": "Pulsar X2A eS",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a-mini",
-      "name": "Pulsar X2A Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a-v3",
-      "name": "Pulsar X2A v3",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a-v3-es-mini",
-      "name": "Pulsar X2A v3 eS Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2a-wired",
-      "name": "Pulsar X2A Wired",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2f",
-      "name": "Pulsar X2F",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h",
-      "name": "Pulsar X2H",
       "brand": "Pulsar"
     },
     {
@@ -4856,51 +1086,6 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-x2h-es",
-      "name": "Pulsar X2H eS",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-mini",
-      "name": "Pulsar X2H Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-v3",
-      "name": "Pulsar X2H v3",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-v3-es",
-      "name": "Pulsar X2H v3 eS",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-v3-es-mini",
-      "name": "Pulsar X2H v3 eS Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-v3-mini",
-      "name": "Pulsar X2H v3 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2h-wired",
-      "name": "Pulsar X2H Wired",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2n-crazylight-medium",
-      "name": "Pulsar X2N CrazyLight Medium",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x2n-crazylight-mini",
-      "name": "Pulsar X2N CrazyLight Mini",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-x2v2",
       "name": "Pulsar X2V2",
       "brand": "Pulsar"
@@ -4911,18 +1096,8 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-x3",
-      "name": "Pulsar X3",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-x3-crazylight-mini",
       "name": "Pulsar X3 CrazyLight Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x3-lhd",
-      "name": "Pulsar X3 LHD",
       "brand": "Pulsar"
     },
     {
@@ -4931,48 +1106,8 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-x3-lhd-mini",
-      "name": "Pulsar X3 LHD Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-x3-mini",
-      "name": "Pulsar X3 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite",
-      "name": "Pulsar Xlite",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-xlite-crazylight-medium",
       "name": "Pulsar Xlite CrazyLight Medium",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-crazylight-mini",
-      "name": "Pulsar Xlite CrazyLight Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v2-mini-wireless",
-      "name": "Pulsar Xlite V2 Mini Wireless",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v2-wireless",
-      "name": "Pulsar Xlite V2 Wireless",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v3-es",
-      "name": "Pulsar Xlite v3 eS",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v3-large",
-      "name": "Pulsar Xlite v3 Large",
       "brand": "Pulsar"
     },
     {
@@ -4981,214 +1116,9 @@
       "brand": "Pulsar"
     },
     {
-      "slug": "pulsar-xlite-v3-mini",
-      "name": "Pulsar Xlite v3 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v4-es-medium",
-      "name": "Pulsar Xlite v4 eS Medium",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v4-es-mini",
-      "name": "Pulsar Xlite v4 eS Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v4-large",
-      "name": "Pulsar Xlite v4 Large",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v4-medium",
-      "name": "Pulsar Xlite v4 Medium",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-v4-mini",
-      "name": "Pulsar Xlite v4 Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-xlite-wired",
-      "name": "Pulsar Xlite Wired",
-      "brand": "Pulsar"
-    },
-    {
       "slug": "pulsar-xlite-wireless",
       "name": "Pulsar Xlite Wireless",
       "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-zywoo-the-chosen-mouse-medium",
-      "name": "Pulsar ZywOo The Chosen Mouse - Medium",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "pulsar-zywoo-the-chosen-mouse-mini",
-      "name": "Pulsar ZywOo The Chosen Mouse - Mini",
-      "brand": "Pulsar"
-    },
-    {
-      "slug": "puretrak-valor-wireless",
-      "name": "PureTrak Valor Wireless",
-      "brand": "PureTrak"
-    },
-    {
-      "slug": "pwnage-ambi-wireless",
-      "name": "Pwnage Ambi Wireless",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-ergo",
-      "name": "Pwnage Ergo",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-ergo-wireless",
-      "name": "Pwnage Ergo Wireless",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-stormbreaker",
-      "name": "Pwnage StormBreaker",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-stormbreaker-max-cf",
-      "name": "Pwnage StormBreaker Max CF",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-stormbreaker-v2",
-      "name": "Pwnage StormBreaker V2",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-stormbreaker-v3",
-      "name": "Pwnage StormBreaker V3",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-symm-1",
-      "name": "Pwnage Symm 1",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-symm-1-wireless",
-      "name": "Pwnage Symm 1 Wireless",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-symm-2",
-      "name": "Pwnage Symm 2",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-symm-2-wireless",
-      "name": "Pwnage Symm 2 Wireless",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-symm-3",
-      "name": "Pwnage Symm 3",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "pwnage-trinity-cf",
-      "name": "Pwnage Trinity CF",
-      "brand": "Pwnage"
-    },
-    {
-      "slug": "ragnok-2-firegrip",
-      "name": "Ragnok 2 (FireGrip)",
-      "brand": "Ragnok"
-    },
-    {
-      "slug": "ragnok-ergostrike7",
-      "name": "Ragnok ErgoStrike7",
-      "brand": "Ragnok"
-    },
-    {
-      "slug": "rakk-bulus",
-      "name": "RAKK BULUS",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-gahum",
-      "name": "RAKK Gahum",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-kaptan-trimode",
-      "name": "RAKK Kaptan Trimode",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-kaptan-wired",
-      "name": "RAKK Kaptan Wired",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-mag-an",
-      "name": "RAKK MAG-AN",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-talan",
-      "name": "RAKK Talan",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-talan-aero",
-      "name": "RAKK Talan Aero",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-talan-air",
-      "name": "RAKK Talan Air",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rakk-tanaw",
-      "name": "RAKK Tanaw",
-      "brand": "RAKK"
-    },
-    {
-      "slug": "rampage-blitz-ultimate",
-      "name": "Rampage Blitz Ultimate",
-      "brand": "Rampage"
-    },
-    {
-      "slug": "rampage-prote-m5",
-      "name": "Rampage Prote M5",
-      "brand": "Rampage"
-    },
-    {
-      "slug": "rampage-zenith-pro",
-      "name": "Rampage Zenith Pro",
-      "brand": "Rampage"
-    },
-    {
-      "slug": "rapoo-mt760",
-      "name": "Rapoo MT760",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-mt760-mini",
-      "name": "Rapoo MT760 Mini",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-mt760-pro",
-      "name": "Rapoo MT760 Pro",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt0",
-      "name": "Rapoo VT0",
-      "brand": "Rapoo"
     },
     {
       "slug": "rapoo-vt0-gen-2",
@@ -5196,18 +1126,8 @@
       "brand": "Rapoo"
     },
     {
-      "slug": "rapoo-vt0-max",
-      "name": "Rapoo VT0 Max",
-      "brand": "Rapoo"
-    },
-    {
       "slug": "rapoo-vt0-max-gen-2",
       "name": "Rapoo VT0 Max Gen-2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt1-air-max",
-      "name": "Rapoo VT1 Air Max",
       "brand": "Rapoo"
     },
     {
@@ -5221,76 +1141,6 @@
       "brand": "Rapoo"
     },
     {
-      "slug": "rapoo-vt1-pro",
-      "name": "Rapoo VT1 Pro",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt1-pro-max",
-      "name": "Rapoo VT1 Pro Max",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt2",
-      "name": "Rapoo VT2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt2-max",
-      "name": "Rapoo VT2 Max",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3-gen-2",
-      "name": "Rapoo VT3 Gen-2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3-max-gen-2",
-      "name": "Rapoo VT3 Max Gen-2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3-pro",
-      "name": "Rapoo VT3 Pro",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3-pro-max",
-      "name": "Rapoo VT3 Pro Max",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3s-gen-2",
-      "name": "Rapoo VT3S Gen-2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3s-max-gen-2",
-      "name": "Rapoo VT3S Max Gen-2",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt3s-old",
-      "name": "Rapoo VT3S (Old)",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt7",
-      "name": "Rapoo VT7",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt7-max",
-      "name": "Rapoo VT7 Max",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt9-air",
-      "name": "Rapoo VT9 Air",
-      "brand": "Rapoo"
-    },
-    {
       "slug": "rapoo-vt9-gen-2",
       "name": "Rapoo VT9 Gen-2",
       "brand": "Rapoo"
@@ -5301,173 +1151,13 @@
       "brand": "Rapoo"
     },
     {
-      "slug": "rapoo-vt9-pro",
-      "name": "Rapoo VT9 Pro",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt9-pro-4k",
-      "name": "Rapoo VT9 Pro 4K",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt9-pro-mini",
-      "name": "Rapoo VT9 Pro Mini",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt900",
-      "name": "Rapoo VT900",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt960-pro",
-      "name": "Rapoo VT960 Pro",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rapoo-vt9s",
-      "name": "Rapoo VT9S",
-      "brand": "Rapoo"
-    },
-    {
-      "slug": "rawm-er21",
-      "name": "RAWM ER21",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-er21-pro",
-      "name": "RAWM ER21 Pro",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-es21",
-      "name": "RAWM ES21",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-es21-m",
-      "name": "RAWM ES21 M",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-es21-pro",
-      "name": "RAWM ES21 Pro",
-      "brand": "RAWM"
-    },
-    {
       "slug": "rawm-leviathan-v4",
       "name": "RAWM Leviathan V4",
       "brand": "RAWM"
     },
     {
-      "slug": "rawm-mh01",
-      "name": "RAWM MH01",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-mh01-pro",
-      "name": "RAWM MH01 Pro",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-ml01",
-      "name": "RAWM ML01",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-ml01-plus",
-      "name": "RAWM ML01 Plus",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-sh01",
-      "name": "RAWM SH01",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-sh01-pro",
-      "name": "RAWM SH01 Pro",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-sl01",
-      "name": "RAWM SL01",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "rawm-sl01-pro",
-      "name": "RAWM SL01 Pro",
-      "brand": "RAWM"
-    },
-    {
-      "slug": "razer-abyssus-2014",
-      "name": "Razer Abyssus 2014",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-abyssus-essential",
-      "name": "Razer Abyssus Essential",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-atheris",
-      "name": "Razer Atheris",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk",
-      "name": "Razer Basilisk",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-essential",
-      "name": "Razer Basilisk Essential",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-mobile",
-      "name": "Razer Basilisk Mobile",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-ultimate",
-      "name": "Razer Basilisk Ultimate",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-v2",
-      "name": "Razer Basilisk V2",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-v3",
-      "name": "Razer Basilisk V3",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-v3-35k",
-      "name": "Razer Basilisk V3 35K",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-basilisk-v3-pro",
       "name": "Razer Basilisk V3 Pro",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-v3-pro-35k",
-      "name": "Razer Basilisk V3 Pro 35K",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-v3-x-hyperspeed",
-      "name": "Razer Basilisk V3 X HyperSpeed",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-basilisk-x-hyperspeed",
-      "name": "Razer Basilisk X HyperSpeed",
       "brand": "Razer"
     },
     {
@@ -5476,38 +1166,13 @@
       "brand": "Razer"
     },
     {
-      "slug": "razer-cobra-hyperspeed",
-      "name": "Razer Cobra HyperSpeed",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-cobra-pro",
       "name": "Razer Cobra Pro",
       "brand": "Razer"
     },
     {
-      "slug": "razer-copperhead",
-      "name": "Razer Copperhead",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-deathadder-chroma",
-      "name": "Razer DeathAdder Chroma",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-deathadder-elite",
-      "name": "Razer DeathAdder Elite",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-deathadder-essential",
       "name": "Razer DeathAdder Essential",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-deathadder-expert",
-      "name": "Razer DeathAdder Expert",
       "brand": "Razer"
     },
     {
@@ -5521,23 +1186,8 @@
       "brand": "Razer"
     },
     {
-      "slug": "razer-deathadder-v2-pro",
-      "name": "Razer DeathAdder V2 Pro",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-deathadder-v2-x-hyperspeed",
-      "name": "Razer DeathAdder V2 X HyperSpeed",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-deathadder-v3",
       "name": "Razer DeathAdder V3",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-deathadder-v3-hyperspeed",
-      "name": "Razer DeathAdder V3 HyperSpeed",
       "brand": "Razer"
     },
     {
@@ -5551,123 +1201,8 @@
       "brand": "Razer"
     },
     {
-      "slug": "razer-diamondback-2015",
-      "name": "Razer Diamondback 2015",
-      "brand": "Razer"
-    },
-    {
       "slug": "razer-hello-kitty-viper-mini",
       "name": "Razer Hello Kitty Viper Mini",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-imperator",
-      "name": "Razer Imperator",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-krait-2013",
-      "name": "Razer Krait 2013",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-lancehead",
-      "name": "Razer Lancehead",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-lancehead-wireless",
-      "name": "Razer Lancehead Wireless",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-mamba-elite",
-      "name": "Razer Mamba Elite",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-mamba-wireless",
-      "name": "Razer Mamba Wireless",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-left-handed",
-      "name": "Razer Naga Left-Handed",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-pro",
-      "name": "Razer Naga Pro",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-trinity",
-      "name": "Razer Naga Trinity",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-v2-hyperspeed",
-      "name": "Razer Naga V2 HyperSpeed",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-v2-pro",
-      "name": "Razer Naga V2 Pro",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-naga-x",
-      "name": "Razer Naga X",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-orochi-2009",
-      "name": "Razer Orochi 2009",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-orochi-2013",
-      "name": "Razer Orochi 2013",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-orochi-2015",
-      "name": "Razer Orochi 2015",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-orochi-v2",
-      "name": "Razer Orochi V2",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-ouroboros",
-      "name": "Razer Ouroboros",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-pro-click",
-      "name": "Razer Pro Click",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-pro-click-mini",
-      "name": "Razer Pro Click Mini",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-pro-click-v2",
-      "name": "Razer Pro Click V2",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-pro-click-v2-vertical",
-      "name": "Razer Pro Click V2 Vertical",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-viper",
-      "name": "Razer Viper",
       "brand": "Razer"
     },
     {
@@ -5678,21 +1213,6 @@
     {
       "slug": "razer-viper-mini",
       "name": "Razer Viper Mini",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-viper-mini-signature-edition",
-      "name": "Razer Viper Mini Signature Edition",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-viper-ultimate",
-      "name": "Razer Viper Ultimate",
-      "brand": "Razer"
-    },
-    {
-      "slug": "razer-viper-v2-pro",
-      "name": "Razer Viper V2 Pro",
       "brand": "Razer"
     },
     {
@@ -5711,16 +1231,6 @@
       "brand": "Razer"
     },
     {
-      "slug": "realforce-rm1",
-      "name": "Realforce RM1",
-      "brand": "Realforce"
-    },
-    {
-      "slug": "redragon-g49-pro",
-      "name": "Redragon G49 Pro",
-      "brand": "Redragon"
-    },
-    {
       "slug": "redragon-m617-lit",
       "name": "Redragon M617 LIT",
       "brand": "Redragon"
@@ -5736,26 +1246,6 @@
       "brand": "Redragon"
     },
     {
-      "slug": "redragon-m656-gainer",
-      "name": "Redragon M656 Gainer",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m693",
-      "name": "Redragon M693",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m711-cobra",
-      "name": "Redragon M711 Cobra",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m724",
-      "name": "Redragon M724",
-      "brand": "Redragon"
-    },
-    {
       "slug": "redragon-m725",
       "name": "Redragon M725",
       "brand": "Redragon"
@@ -5766,68 +1256,8 @@
       "brand": "Redragon"
     },
     {
-      "slug": "redragon-m810-pro",
-      "name": "Redragon M810 Pro",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m813-pro",
-      "name": "Redragon M813 Pro",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m813-wired",
-      "name": "Redragon M813 Wired",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m817",
-      "name": "Redragon M817",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m817-pro",
-      "name": "Redragon M817 Pro",
-      "brand": "Redragon"
-    },
-    {
       "slug": "redragon-m818-std",
       "name": "Redragon M818-STD",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m908-impact",
-      "name": "Redragon M908 Impact",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m913-impact-elite",
-      "name": "Redragon M913 Impact Elite",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m916-pro",
-      "name": "Redragon M916 Pro",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m916-pro-4k",
-      "name": "Redragon M916 Pro 4K",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m916-ult-8k",
-      "name": "Redragon M916 Ult 8K",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m991",
-      "name": "Redragon M991",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m995",
-      "name": "Redragon M995",
       "brand": "Redragon"
     },
     {
@@ -5836,109 +1266,14 @@
       "brand": "Redragon"
     },
     {
-      "slug": "redragon-m995-pro",
-      "name": "Redragon M995 Pro",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "redragon-m996",
-      "name": "Redragon M996",
-      "brand": "Redragon"
-    },
-    {
-      "slug": "rexus-daxa-air-iv",
-      "name": "Rexus Daxa Air IV",
-      "brand": "Rexus"
-    },
-    {
-      "slug": "rk-royal-kludge-m3",
-      "name": "RK Royal Kludge M3",
-      "brand": "RK"
-    },
-    {
-      "slug": "rk-royal-kludge-m30",
-      "name": "RK Royal Kludge M30",
-      "brand": "RK"
-    },
-    {
-      "slug": "roccat-burst-core",
-      "name": "ROCCAT Burst Core",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-burst-pro",
-      "name": "ROCCAT Burst Pro",
-      "brand": "ROCCAT"
-    },
-    {
       "slug": "roccat-burst-pro-air",
       "name": "Roccat Burst Pro Air",
       "brand": "Roccat"
     },
     {
-      "slug": "roccat-kain-100-aimo",
-      "name": "ROCCAT Kain 100 AIMO",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kain-120-aimo",
-      "name": "ROCCAT Kain 120 AIMO",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kain-200-aimo",
-      "name": "ROCCAT Kain 200 AIMO",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kone-aimo-remastered",
-      "name": "ROCCAT Kone AIMO Remastered",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kone-pro",
-      "name": "ROCCAT Kone Pro",
-      "brand": "ROCCAT"
-    },
-    {
       "slug": "roccat-kone-pro-air",
       "name": "Roccat Kone Pro Air",
       "brand": "Roccat"
-    },
-    {
-      "slug": "roccat-kone-pure-ultra",
-      "name": "ROCCAT Kone Pure Ultra",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kone-xp",
-      "name": "ROCCAT Kone XP",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-kone-xp-air",
-      "name": "ROCCAT Kone XP Air",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-lua",
-      "name": "ROCCAT LUA",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-pure-air",
-      "name": "ROCCAT Pure Air",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-pure-sel",
-      "name": "ROCCAT Pure SEL",
-      "brand": "ROCCAT"
-    },
-    {
-      "slug": "roccat-tyon",
-      "name": "ROCCAT Tyon",
-      "brand": "ROCCAT"
     },
     {
       "slug": "saipin-c2",
@@ -5951,118 +1286,8 @@
       "brand": "Saipin"
     },
     {
-      "slug": "santali-s1-o",
-      "name": "Santali S1-O",
-      "brand": "Santali"
-    },
-    {
-      "slug": "scyrox-v6",
-      "name": "Scyrox V6",
-      "brand": "Scyrox"
-    },
-    {
-      "slug": "scyrox-v8",
-      "name": "Scyrox V8",
-      "brand": "Scyrox"
-    },
-    {
-      "slug": "solakaka-sm802",
-      "name": "SOLAKAKA SM802",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "solakaka-sm802-pro",
-      "name": "SOLAKAKA SM802 Pro",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "solakaka-sm805",
-      "name": "SOLAKAKA SM805",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "solakaka-sm809",
-      "name": "SOLAKAKA SM809",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "solakaka-sm809-pro",
-      "name": "SOLAKAKA SM809 Pro",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "solakaka-sm850",
-      "name": "SOLAKAKA SM850",
-      "brand": "SOLAKAKA"
-    },
-    {
-      "slug": "spc-gear-lix-plus-wireless",
-      "name": "SPC Gear LIX Plus Wireless",
-      "brand": "SPC"
-    },
-    {
-      "slug": "sprime-pm1",
-      "name": "Sprime PM1",
-      "brand": "Sprime"
-    },
-    {
-      "slug": "steelseries-aerox-3",
-      "name": "SteelSeries Aerox 3",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-aerox-3-wireless",
-      "name": "SteelSeries Aerox 3 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-aerox-5",
-      "name": "SteelSeries Aerox 5",
-      "brand": "SteelSeries"
-    },
-    {
       "slug": "steelseries-aerox-5-wireless",
       "name": "SteelSeries Aerox 5 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-aerox-9-wireless",
-      "name": "SteelSeries Aerox 9 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-kana-v2",
-      "name": "SteelSeries Kana V2",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-kinzu-v2",
-      "name": "SteelSeries Kinzu V2",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-kinzu-v2-pro",
-      "name": "SteelSeries Kinzu V2 Pro",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-kinzu-v3",
-      "name": "SteelSeries Kinzu V3",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-prime",
-      "name": "SteelSeries Prime",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-prime-mini",
-      "name": "SteelSeries Prime Mini",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-prime-mini-wireless",
-      "name": "SteelSeries Prime Mini Wireless",
       "brand": "SteelSeries"
     },
     {
@@ -6071,189 +1296,9 @@
       "brand": "SteelSeries"
     },
     {
-      "slug": "steelseries-rival-110",
-      "name": "SteelSeries Rival 110",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-3",
-      "name": "SteelSeries Rival 3",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-3-gen-2",
-      "name": "SteelSeries Rival 3 Gen 2",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-3-gen-2-wireless",
-      "name": "SteelSeries Rival 3 Gen 2 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-3-wireless",
-      "name": "SteelSeries Rival 3 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-300",
-      "name": "SteelSeries Rival 300",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-300s",
-      "name": "SteelSeries Rival 300S",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-310",
-      "name": "SteelSeries Rival 310",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-5",
-      "name": "SteelSeries Rival 5",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-500",
-      "name": "SteelSeries Rival 500",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-600",
-      "name": "SteelSeries Rival 600",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-650-wireless",
-      "name": "SteelSeries Rival 650 Wireless",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-rival-710",
-      "name": "SteelSeries Rival 710",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-sensei-310",
-      "name": "SteelSeries Sensei 310",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "steelseries-sensei-ten",
-      "name": "SteelSeries Sensei Ten",
-      "brand": "SteelSeries"
-    },
-    {
-      "slug": "strayfe-m55-pro-8k",
-      "name": "strayfe M55 Pro 8k",
-      "brand": "strayfe"
-    },
-    {
-      "slug": "swiftpoint-creator",
-      "name": "Swiftpoint Creator",
-      "brand": "Swiftpoint"
-    },
-    {
-      "slug": "swiftpoint-ergopoint",
-      "name": "Swiftpoint ErgoPoint",
-      "brand": "Swiftpoint"
-    },
-    {
-      "slug": "swiftpoint-tracer",
-      "name": "Swiftpoint Tracer",
-      "brand": "Swiftpoint"
-    },
-    {
-      "slug": "swiftpoint-z2",
-      "name": "Swiftpoint Z2",
-      "brand": "Swiftpoint"
-    },
-    {
-      "slug": "sylical-helix",
-      "name": "SyLical HELIX",
-      "brand": "SyLical"
-    },
-    {
       "slug": "t-vevo-terrior",
       "name": "T-Vevo Terrior",
       "brand": "T-Vevo"
-    },
-    {
-      "slug": "teamwolf-lurker-mk-01",
-      "name": "Teamwolf Lurker MK-01",
-      "brand": "Teamwolf"
-    },
-    {
-      "slug": "tecware-ex1",
-      "name": "Tecware EX1",
-      "brand": "Tecware"
-    },
-    {
-      "slug": "tecware-pulse-elite",
-      "name": "Tecware Pulse Elite",
-      "brand": "Tecware"
-    },
-    {
-      "slug": "teevolution-aria-xd7",
-      "name": "Teevolution Aria XD7",
-      "brand": "Teevolution"
-    },
-    {
-      "slug": "teevolution-helios-ii-pro",
-      "name": "Teevolution Helios II Pro",
-      "brand": "Teevolution"
-    },
-    {
-      "slug": "teevolution-terra",
-      "name": "Teevolution Terra",
-      "brand": "Teevolution"
-    },
-    {
-      "slug": "tenten-zero-gravity",
-      "name": "TenTen Zero Gravity",
-      "brand": "TenTen"
-    },
-    {
-      "slug": "thunderobot-ml4",
-      "name": "ThundeRobot ML4",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml6-pro",
-      "name": "ThundeRobot ML6 Pro",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml602",
-      "name": "ThundeRobot ML602",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml8",
-      "name": "ThundeRobot ML8",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml9-mini",
-      "name": "ThundeRobot ML9 Mini",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml901",
-      "name": "ThundeRobot ML901",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml903",
-      "name": "ThundeRobot ML903",
-      "brand": "ThundeRobot"
-    },
-    {
-      "slug": "thunderobot-ml9s",
-      "name": "ThundeRobot ML9S",
-      "brand": "ThundeRobot"
     },
     {
       "slug": "thunderobot-mlx",
@@ -6261,74 +1306,9 @@
       "brand": "ThundeRobot"
     },
     {
-      "slug": "tmkb-falcon-m1se",
-      "name": "TMKB Falcon M1SE",
-      "brand": "TMKB"
-    },
-    {
-      "slug": "turtle-beach-burst-ii-air",
-      "name": "Turtle Beach Burst II Air",
-      "brand": "Turtle"
-    },
-    {
       "slug": "turtle-beach-burst-ii-pro",
       "name": "Turtle Beach Burst II Pro",
       "brand": "Turtle Beach"
-    },
-    {
-      "slug": "turtle-beach-kone-ii",
-      "name": "Turtle Beach Kone II",
-      "brand": "Turtle"
-    },
-    {
-      "slug": "turtle-beach-kone-ii-air",
-      "name": "Turtle Beach Kone II Air",
-      "brand": "Turtle"
-    },
-    {
-      "slug": "turtle-beach-kone-xp-air",
-      "name": "Turtle Beach Kone XP Air",
-      "brand": "Turtle"
-    },
-    {
-      "slug": "turtle-beach-pure-air",
-      "name": "Turtle Beach Pure Air",
-      "brand": "Turtle"
-    },
-    {
-      "slug": "turtle-beach-pure-sel",
-      "name": "Turtle Beach Pure SEL",
-      "brand": "Turtle"
-    },
-    {
-      "slug": "unius-black-lotus",
-      "name": "UNIUS Black Lotus",
-      "brand": "UNIUS"
-    },
-    {
-      "slug": "vaidemi-nimbus",
-      "name": "Vaidemi Nimbus",
-      "brand": "Vaidemi"
-    },
-    {
-      "slug": "valkyrie-vk-m1",
-      "name": "Valkyrie VK M1",
-      "brand": "Valkyrie"
-    },
-    {
-      "slug": "valkyrie-vk-m1-pro",
-      "name": "Valkyrie VK M1 Pro",
-      "brand": "Valkyrie"
-    },
-    {
-      "slug": "valkyrie-vk-m2",
-      "name": "Valkyrie VK M2",
-      "brand": "Valkyrie"
-    },
-    {
-      "slug": "valkyrie-vk-m2-pro",
-      "name": "Valkyrie VK M2 Pro",
-      "brand": "Valkyrie"
     },
     {
       "slug": "valkyrie-vk-m3",
@@ -6346,53 +1326,8 @@
       "brand": "Valkyrie"
     },
     {
-      "slug": "vancer-gemini-castor",
-      "name": "Vancer Gemini Castor",
-      "brand": "Vancer"
-    },
-    {
-      "slug": "vancer-gemini-pollux",
-      "name": "Vancer Gemini Pollux",
-      "brand": "Vancer"
-    },
-    {
-      "slug": "vancer-gretxa",
-      "name": "Vancer Gretxa",
-      "brand": "Vancer"
-    },
-    {
-      "slug": "vancer-groove",
-      "name": "Vancer Groove",
-      "brand": "Vancer"
-    },
-    {
-      "slug": "vancer-thrash",
-      "name": "Vancer Thrash",
-      "brand": "Vancer"
-    },
-    {
-      "slug": "vancer-x-arbiter-studio-akitsu",
-      "name": "Vancer x Arbiter Studio AKITSU",
-      "brand": "Vancer"
-    },
-    {
       "slug": "vaxee-e1",
       "name": "VAXEE E1",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-e1-wireless-4k",
-      "name": "VAXEE E1 Wireless 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-np-01-wireless",
-      "name": "VAXEE ZYGEN NP-01 Wireless",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-np-01s-v2-wireless",
-      "name": "VAXEE ZYGEN NP-01S V2 Wireless",
       "brand": "VAXEE"
     },
     {
@@ -6411,41 +1346,6 @@
       "brand": "VAXEE"
     },
     {
-      "slug": "vaxee-outset-ax-wireless-4k",
-      "name": "VAXEE OUTSET AX Wireless 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-x-ninjutso-sora-4k",
-      "name": "VAXEE x Ninjutso Sora 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-xe",
-      "name": "VAXEE XE",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-xe-s-l-wireless-4k",
-      "name": "VAXEE XE-S L Wireless 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-xe-s-wireless",
-      "name": "VAXEE XE-S Wireless",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-xe-s-wireless-4k",
-      "name": "VAXEE XE-S Wireless 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-xe-v2",
-      "name": "VAXEE XE v2",
-      "brand": "VAXEE"
-    },
-    {
       "slug": "vaxee-xe-v2-wireless",
       "name": "VAXEE XE V2 Wireless",
       "brand": "VAXEE"
@@ -6456,43 +1356,18 @@
       "brand": "VAXEE"
     },
     {
-      "slug": "vaxee-xe-wireless-4k",
-      "name": "VAXEE XE Wireless 4K",
+      "slug": "vaxee-xe-s-wireless",
+      "name": "VAXEE XE-S Wireless",
       "brand": "VAXEE"
     },
     {
-      "slug": "vaxee-zygen-np-01",
-      "name": "VAXEE ZYGEN NP-01",
+      "slug": "vaxee-np-01-wireless",
+      "name": "VAXEE ZYGEN NP-01 Wireless",
       "brand": "VAXEE"
     },
     {
-      "slug": "vaxee-zygen-np-01-wireless-4k",
-      "name": "VAXEE ZYGEN NP-01 Wireless 4K",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-zygen-np-01s",
-      "name": "VAXEE ZYGEN NP-01S",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-zygen-np-01s-ergo",
-      "name": "VAXEE ZYGEN NP-01S Ergo",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-zygen-np-01s-v2",
-      "name": "VAXEE ZYGEN NP-01S v2",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-zygen-np-01s-wireless",
-      "name": "VAXEE ZYGEN NP-01S Wireless",
-      "brand": "VAXEE"
-    },
-    {
-      "slug": "vaxee-zygen-np-01s-wireless-4k",
-      "name": "VAXEE ZYGEN NP-01S Wireless 4K",
+      "slug": "vaxee-np-01s-v2-wireless",
+      "name": "VAXEE ZYGEN NP-01S V2 Wireless",
       "brand": "VAXEE"
     },
     {
@@ -6521,21 +1396,6 @@
       "brand": "VGN"
     },
     {
-      "slug": "vgn-dragonfly-f1-moba",
-      "name": "VGN Dragonfly F1 MOBA",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-dragonfly-f1-pro",
-      "name": "VGN Dragonfly F1 Pro",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-dragonfly-f1-pro-max",
-      "name": "VGN Dragonfly F1 Pro Max",
-      "brand": "VGN"
-    },
-    {
       "slug": "vgn-dragonfly-f1-se",
       "name": "VGN Dragonfly F1 SE",
       "brand": "VGN"
@@ -6546,43 +1406,8 @@
       "brand": "VGN"
     },
     {
-      "slug": "vgn-dragonfly-f2-pro-max",
-      "name": "VGN Dragonfly F2 Pro Max",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-dragonfly-f2-ultra",
-      "name": "VGN Dragonfly F2 Ultra",
-      "brand": "VGN"
-    },
-    {
       "slug": "vgn-dragonfly-king",
       "name": "VGN Dragonfly King",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-r1",
-      "name": "VGN R1",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-r1-nearlink",
-      "name": "VGN R1 Nearlink",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-r1-pro",
-      "name": "VGN R1 Pro",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-r1-pro-max",
-      "name": "VGN R1 Pro Max",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-r1-se",
-      "name": "VGN R1 SE+",
       "brand": "VGN"
     },
     {
@@ -6591,18 +1416,8 @@
       "brand": "VGN"
     },
     {
-      "slug": "vgn-y2-pro",
-      "name": "VGN Y2 Pro",
-      "brand": "VGN"
-    },
-    {
       "slug": "vgn-y2-pro-max",
       "name": "VGN Y2 Pro Max",
-      "brand": "VGN"
-    },
-    {
-      "slug": "vgn-y2-ultra",
-      "name": "VGN Y2 Ultra",
       "brand": "VGN"
     },
     {
@@ -6646,33 +1461,8 @@
       "brand": "VortexSeries"
     },
     {
-      "slug": "vxe-mad-r",
-      "name": "VXE MAD R",
-      "brand": "VXE"
-    },
-    {
-      "slug": "vxe-mad-r-major",
-      "name": "VXE MAD R Major",
-      "brand": "VXE"
-    },
-    {
-      "slug": "vxe-r1",
-      "name": "VXE R1",
-      "brand": "VXE"
-    },
-    {
-      "slug": "vxe-r1-nearlink",
-      "name": "VXE R1 Nearlink",
-      "brand": "VXE"
-    },
-    {
       "slug": "vxe-r1-pro",
       "name": "VXE R1 Pro",
-      "brand": "VXE"
-    },
-    {
-      "slug": "vxe-r1-pro-max",
-      "name": "VXE R1 Pro Max",
       "brand": "VXE"
     },
     {
@@ -6681,49 +1471,9 @@
       "brand": "VXE"
     },
     {
-      "slug": "vxe-r1-se",
-      "name": "VXE R1 SE+",
-      "brand": "VXE"
-    },
-    {
-      "slug": "waizowl-cloud",
-      "name": "Waizowl Cloud",
-      "brand": "Waizowl"
-    },
-    {
       "slug": "waizowl-cloud-ultra",
       "name": "Waizowl Cloud Ultra",
       "brand": "Waizowl"
-    },
-    {
-      "slug": "waizowl-cloud-v2",
-      "name": "Waizowl Cloud V2",
-      "brand": "Waizowl"
-    },
-    {
-      "slug": "waizowl-cloud-xs",
-      "name": "Waizowl Cloud XS",
-      "brand": "Waizowl"
-    },
-    {
-      "slug": "waizowl-ogm-one",
-      "name": "Waizowl OGM One",
-      "brand": "Waizowl"
-    },
-    {
-      "slug": "waizowl-ogm-pro",
-      "name": "Waizowl OGM Pro",
-      "brand": "Waizowl"
-    },
-    {
-      "slug": "waizowl-ogm-pro-v2",
-      "name": "Waizowl OGM Pro V2",
-      "brand": "Waizowl"
-    },
-    {
-      "slug": "wlmouse-beast-miao",
-      "name": "WLmouse Beast Miao",
-      "brand": "WLmouse"
     },
     {
       "slug": "wlmouse-beast-x",
@@ -6731,39 +1481,9 @@
       "brand": "WLMouse"
     },
     {
-      "slug": "wlmouse-beast-x-8k",
-      "name": "WLmouse Beast X 8K",
-      "brand": "WLmouse"
-    },
-    {
       "slug": "wlmouse-beast-x-max",
       "name": "WLMouse Beast X Max",
       "brand": "WLMouse"
-    },
-    {
-      "slug": "wlmouse-beast-x-mini",
-      "name": "WLmouse Beast X Mini",
-      "brand": "WLmouse"
-    },
-    {
-      "slug": "wlmouse-beast-x-mini-pro",
-      "name": "WLmouse Beast X Mini Pro",
-      "brand": "WLmouse"
-    },
-    {
-      "slug": "wlmouse-beast-x-pro",
-      "name": "WLmouse Beast X Pro",
-      "brand": "WLmouse"
-    },
-    {
-      "slug": "wlmouse-huan",
-      "name": "WLMOUSE Huan",
-      "brand": "WLMOUSE"
-    },
-    {
-      "slug": "wlmouse-strider",
-      "name": "WLmouse Strider",
-      "brand": "WLmouse"
     },
     {
       "slug": "wlmouse-sword-x",
@@ -6771,9 +1491,9 @@
       "brand": "WLMouse"
     },
     {
-      "slug": "wlmouse-ying",
-      "name": "WLmouse Ying",
-      "brand": "WLmouse"
+      "slug": "wlmouse-huan",
+      "name": "WLMOUSE Huan",
+      "brand": "WLMOUSE"
     },
     {
       "slug": "wooting-60he-mouse",
@@ -6791,18 +1511,8 @@
       "brand": "Wraith"
     },
     {
-      "slug": "xenics-titan-gx-air-wireless",
-      "name": "Xenics Titan GX Air Wireless",
-      "brand": "Xenics"
-    },
-    {
       "slug": "xiaomi-wireless-mouse-3",
       "name": "Xiaomi Wireless Mouse 3",
-      "brand": "Xiaomi"
-    },
-    {
-      "slug": "xiaomi-x1",
-      "name": "Xiaomi X1",
       "brand": "Xiaomi"
     },
     {
@@ -6811,74 +1521,9 @@
       "brand": "XIBERIA"
     },
     {
-      "slug": "xinshuntian-g820",
-      "name": "Xinshuntian G820",
-      "brand": "Xinshuntian"
-    },
-    {
-      "slug": "xtrfy-m4",
-      "name": "Xtrfy M4",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-m4-wireless",
-      "name": "Xtrfy M4 Wireless",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-m42",
-      "name": "Xtrfy M42",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-m42-lower-back",
-      "name": "Xtrfy M42 (lower back)",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-m42-wireless",
-      "name": "Xtrfy M42 Wireless",
-      "brand": "Xtrfy"
-    },
-    {
       "slug": "xtrfy-m8-wireless",
       "name": "Xtrfy M8 Wireless",
       "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-mz1",
-      "name": "Xtrfy MZ1",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtrfy-mz1-wireless",
-      "name": "Xtrfy MZ1 Wireless",
-      "brand": "Xtrfy"
-    },
-    {
-      "slug": "xtro-eris",
-      "name": "xtro Eris",
-      "brand": "xtro"
-    },
-    {
-      "slug": "xyder-amalight-4k",
-      "name": "Xyder Amalight 4K",
-      "brand": "Xyder"
-    },
-    {
-      "slug": "zaopin-z1",
-      "name": "Zaopin Z1",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z1-pro",
-      "name": "Zaopin Z1 Pro",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z1-pro-max",
-      "name": "Zaopin Z1 Pro Max",
-      "brand": "Zaopin"
     },
     {
       "slug": "zaopin-z11",
@@ -6891,93 +1536,13 @@
       "brand": "Zaopin"
     },
     {
-      "slug": "zaopin-z2",
-      "name": "Zaopin Z2",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z2-max",
-      "name": "Zaopin Z2 Max",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z2-mini",
-      "name": "Zaopin Z2 Mini",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z2-mini-4k",
-      "name": "Zaopin Z2 Mini 4K",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-z2-mini-max-8k",
-      "name": "Zaopin Z2 Mini Max 8K",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-zpw",
-      "name": "Zaopin ZPW",
-      "brand": "Zaopin"
-    },
-    {
-      "slug": "zaopin-zpw-max",
-      "name": "Zaopin ZPW Max",
-      "brand": "Zaopin"
-    },
-    {
       "slug": "zaunkoenig-m2k",
       "name": "Zaunkoenig M2K",
       "brand": "Zaunkoenig"
     },
     {
-      "slug": "zaunkoenig-m3k",
-      "name": "Zaunkoenig M3K",
-      "brand": "Zaunkoenig"
-    },
-    {
-      "slug": "zeromouse-blade",
-      "name": "zeromouse Blade",
-      "brand": "zeromouse"
-    },
-    {
-      "slug": "zowie-am",
-      "name": "Zowie AM",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec1-b",
-      "name": "Zowie EC1-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec1-b-v2",
-      "name": "Zowie EC1-B V2",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec1-c",
-      "name": "Zowie EC1-C",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec1-cw",
-      "name": "Zowie EC1-CW",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec1-dw",
-      "name": "Zowie EC1-DW",
-      "brand": "Zowie"
-    },
-    {
       "slug": "zowie-ec2-b",
       "name": "Zowie EC2-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-ec2-b-v2",
-      "name": "Zowie EC2-B V2",
       "brand": "Zowie"
     },
     {
@@ -6996,48 +1561,13 @@
       "brand": "Zowie"
     },
     {
-      "slug": "zowie-ec3-c",
-      "name": "Zowie EC3-C",
-      "brand": "Zowie"
-    },
-    {
       "slug": "zowie-ec3-cw",
       "name": "Zowie EC3-CW",
       "brand": "Zowie"
     },
     {
-      "slug": "zowie-ec3-dw",
-      "name": "Zowie EC3-DW",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-fk1-b",
-      "name": "Zowie FK1-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-fk1-b-v2",
-      "name": "Zowie FK1-B V2",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-fk1-c",
-      "name": "Zowie FK1-C",
-      "brand": "Zowie"
-    },
-    {
       "slug": "zowie-fk2",
       "name": "Zowie FK2",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-fk2-b",
-      "name": "Zowie FK2-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-fk2-b-v2",
-      "name": "Zowie FK2-B V2",
       "brand": "Zowie"
     },
     {
@@ -7051,53 +1581,8 @@
       "brand": "Zowie"
     },
     {
-      "slug": "zowie-fk2-dw",
-      "name": "Zowie FK2-DW",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-mico",
-      "name": "Zowie MiCO",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s1-b",
-      "name": "Zowie S1-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s1-b-v2",
-      "name": "Zowie S1-B V2",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s1-c",
-      "name": "Zowie S1-C",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s2-b",
-      "name": "Zowie S2-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s2-b-v2",
-      "name": "Zowie S2-B V2",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s2-c",
-      "name": "Zowie S2-C",
-      "brand": "Zowie"
-    },
-    {
       "slug": "zowie-s2-cw",
       "name": "Zowie S2-CW",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-s2-dw",
-      "name": "Zowie S2-DW",
       "brand": "Zowie"
     },
     {
@@ -7106,43 +1591,8 @@
       "brand": "Zowie"
     },
     {
-      "slug": "zowie-u2-dw",
-      "name": "Zowie U2-DW",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za11-b",
-      "name": "Zowie ZA11-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za11-c",
-      "name": "Zowie ZA11-C",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za12-b",
-      "name": "Zowie ZA12-B",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za12-c",
-      "name": "Zowie ZA12-C",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za13-b",
-      "name": "Zowie ZA13-B",
-      "brand": "Zowie"
-    },
-    {
       "slug": "zowie-za13-c",
       "name": "Zowie ZA13-C",
-      "brand": "Zowie"
-    },
-    {
-      "slug": "zowie-za13-dw",
-      "name": "Zowie ZA13-DW",
       "brand": "Zowie"
     }
   ],
