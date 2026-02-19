@@ -2,6 +2,11 @@ name: Lumi
 country: DE
 team: "Le Cubanitos"
 steamId: "76561198088925347"
+aliases:
+  - CUBAlumi
+  - lumi
+team2026: Le Cubanitos
+team2026Shortname: CUBA
 published: false
 ctfRating: 26.72
 ctfGames: 506

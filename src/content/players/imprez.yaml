@@ -1,5 +1,8 @@
 name: imprez
 steamId: "76561198256071177"
+aliases:
+  - "*4imprez"
+team2024: CTF4
 country: Unknown
 category: ctf
 lastUpdated: 2025-01

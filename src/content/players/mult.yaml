@@ -2,6 +2,11 @@ name: mult
 country: RU
 team: "Old Sexy Quakers"
 steamId: "76561198257362399"
+aliases:
+  - OsQmult
+team2024: Old sexy Quakers
+team2026: Old sexy Quakers
+team2026Shortname: OSQ
 published: true
 category: ctf
 lastUpdated: "2026-02-13"

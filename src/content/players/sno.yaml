@@ -1,6 +1,9 @@
 name: sno
 country: Unknown
 steamId: "76561198031267126"
+aliases:
+  - sno
+team2024: Flappy Flags
 ctfRating: 22
 ctfRatingUpdated: "2026-02-04"
 tdmRating: 19.29
