@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-02-17",
+  "generatedAt": "2026-02-20",
   "totalPlayers": 2289,
-  "playersWithProfiles": 111,
+  "playersWithProfiles": 139,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -721,22 +721,6 @@
       "gamesPlayed": {
         "ctf": 1,
         "tdm": 1,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198088011443",
-      "name": "[XII.spenzeR]",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 14.413681030273438,
-        "tdm": null,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 54,
-        "tdm": null,
         "2v2": null
       }
     },
@@ -2167,8 +2151,8 @@
     {
       "steamId": "76561198045866799",
       "name": "abso",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "abso",
+      "hasProfile": true,
       "ratings": {
         "ctf": 34.480995178222656,
         "tdm": 34.9581413269043,
@@ -3463,8 +3447,8 @@
     {
       "steamId": "76561198077156894",
       "name": "apex",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "apex",
+      "hasProfile": true,
       "ratings": {
         "ctf": 29.58192253112793,
         "tdm": 20.342716217041016,
@@ -3479,8 +3463,8 @@
     {
       "steamId": "76561198346024921",
       "name": "APH3X",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "aph3x",
+      "hasProfile": true,
       "ratings": {
         "ctf": 32.24637985229492,
         "tdm": 22.130783081054688,
@@ -6549,6 +6533,22 @@
       }
     },
     {
+      "steamId": "76561198393765487",
+      "name": "clawz",
+      "slug": "clawz",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 23.18943214416504,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 4,
+        "tdm": null,
+        "2v2": null
+      }
+    },
+    {
       "steamId": "76561198257403817",
       "name": "cleaner_le_magnifique",
       "slug": null,
@@ -6791,8 +6791,8 @@
     {
       "steamId": "76561197995232645",
       "name": "Cook",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "cook",
+      "hasProfile": true,
       "ratings": {
         "ctf": null,
         "tdm": null,
@@ -7223,8 +7223,8 @@
     {
       "steamId": "76561197997252303",
       "name": "cT",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "ct",
+      "hasProfile": true,
       "ratings": {
         "ctf": 19.695831298828125,
         "tdm": null,
@@ -7351,8 +7351,8 @@
     {
       "steamId": "76561199496005153",
       "name": "cYpReSss",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "cypresss",
+      "hasProfile": true,
       "ratings": {
         "ctf": 14.621824264526367,
         "tdm": null,
@@ -8502,9 +8502,9 @@
     },
     {
       "steamId": "76561198007682548",
-      "name": "Denzoa™",
-      "slug": null,
-      "hasProfile": false,
+      "name": "Denzoa",
+      "slug": "denzoa",
+      "hasProfile": true,
       "ratings": {
         "ctf": 9.84754467010498,
         "tdm": null,
@@ -10359,8 +10359,8 @@
     {
       "steamId": "76561198199452077",
       "name": "estoty Klyb",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "estoty-klyb",
+      "hasProfile": true,
       "ratings": {
         "ctf": 22.02436637878418,
         "tdm": 25.238502502441406,
@@ -10609,6 +10609,22 @@
       "gamesPlayed": {
         "ctf": 1,
         "tdm": null,
+        "2v2": null
+      }
+    },
+    {
+      "steamId": "76561197965938361",
+      "name": "exodus",
+      "slug": "exodus",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 32.83300018310547,
+        "tdm": 27.55658721923828,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 54,
+        "tdm": 11,
         "2v2": null
       }
     },
@@ -11104,38 +11120,6 @@
       },
       "gamesPlayed": {
         "ctf": 1,
-        "tdm": 1,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198191100033",
-      "name": "FF^mouse*",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 9.612053871154785,
-        "tdm": 23.3856201171875,
-        "2v2": 30.957359313964844
-      },
-      "gamesPlayed": {
-        "ctf": 14,
-        "tdm": 47,
-        "2v2": 5
-      }
-    },
-    {
-      "steamId": "76561198202091255",
-      "name": "FF^Zyb",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 1.3834478855133057,
-        "tdm": 11.169818878173828,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 5,
         "tdm": 1,
         "2v2": null
       }
@@ -12343,8 +12327,8 @@
     {
       "steamId": "76561197991370790",
       "name": "gaz",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "gaz",
+      "hasProfile": true,
       "ratings": {
         "ctf": 17.888154983520508,
         "tdm": 28.246164321899414,
@@ -13266,22 +13250,6 @@
         "ctf": null,
         "tdm": null,
         "2v2": 1
-      }
-    },
-    {
-      "steamId": "76561197965938361",
-      "name": "ᴴᴬᴴᴬ XDS",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 32.83300018310547,
-        "tdm": 27.55658721923828,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 54,
-        "tdm": 11,
-        "2v2": null
       }
     },
     {
@@ -15031,8 +14999,8 @@
     {
       "steamId": "76561198064199875",
       "name": "invi",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "invi",
+      "hasProfile": true,
       "ratings": {
         "ctf": 27.947214126586914,
         "tdm": 27.080549240112305,
@@ -15975,8 +15943,8 @@
     {
       "steamId": "76561198089070422",
       "name": "Juven1le",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "juven1le",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.967212677001953,
         "tdm": 30.349258422851562,
@@ -18119,8 +18087,8 @@
     {
       "steamId": "76561198048532604",
       "name": "Latrommi",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "latrommi",
+      "hasProfile": true,
       "ratings": {
         "ctf": 23.18,
         "tdm": 42.584503173828125,
@@ -19894,9 +19862,9 @@
     },
     {
       "steamId": "76561197985659232",
-      "name": "matr1x has you",
-      "slug": null,
-      "hasProfile": false,
+      "name": "matr1x",
+      "slug": "matr1x",
+      "hasProfile": true,
       "ratings": {
         "ctf": 14.431747436523438,
         "tdm": 25.54431915283203,
@@ -20882,6 +20850,22 @@
         "ctf": null,
         "tdm": 1,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198191100033",
+      "name": "mousestar",
+      "slug": "mousestar",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 9.612053871154785,
+        "tdm": 23.3856201171875,
+        "2v2": 30.957359313964844
+      },
+      "gamesPlayed": {
+        "ctf": 14,
+        "tdm": 47,
+        "2v2": 5
       }
     },
     {
@@ -24375,8 +24359,8 @@
     {
       "steamId": "76561198414877431",
       "name": "phaze",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "phaze",
+      "hasProfile": true,
       "ratings": {
         "ctf": 25.973901748657227,
         "tdm": 29.06947135925293,
@@ -24903,8 +24887,8 @@
     {
       "steamId": "76561198256203867",
       "name": "prestij",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "prestij",
+      "hasProfile": true,
       "ratings": {
         "ctf": 23.167261123657227,
         "tdm": 29.317298889160156,
@@ -25990,9 +25974,9 @@
     },
     {
       "steamId": "76561197993423662",
-      "name": "ratshit",
-      "slug": null,
-      "hasProfile": false,
+      "name": "Ratman",
+      "slug": "ratman",
+      "hasProfile": true,
       "ratings": {
         "ctf": 17.444194793701172,
         "tdm": 21.39696502685547,
@@ -26503,8 +26487,8 @@
     {
       "steamId": "76561198152936342",
       "name": "rindo",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "rindo",
+      "hasProfile": true,
       "ratings": {
         "ctf": -2.5480384826660156,
         "tdm": 6.899965286254883,
@@ -26855,8 +26839,8 @@
     {
       "steamId": "76561198043802405",
       "name": "Roxor",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "roxor",
+      "hasProfile": true,
       "ratings": {
         "ctf": null,
         "tdm": 25.45372200012207,
@@ -27202,22 +27186,6 @@
         "ctf": 18,
         "tdm": 104,
         "2v2": 4
-      }
-    },
-    {
-      "steamId": "76561198393765487",
-      "name": "safsafsadf",
-      "slug": null,
-      "hasProfile": false,
-      "ratings": {
-        "ctf": 23.18943214416504,
-        "tdm": null,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 4,
-        "tdm": null,
-        "2v2": null
       }
     },
     {
@@ -28071,8 +28039,8 @@
     {
       "steamId": "76561198200942503",
       "name": "shib",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "shib",
+      "hasProfile": true,
       "ratings": {
         "ctf": 9.086766242980957,
         "tdm": 17.68816566467285,
@@ -29525,6 +29493,22 @@
       }
     },
     {
+      "steamId": "76561198088011443",
+      "name": "Spenzer",
+      "slug": "spenzer",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 14.413681030273438,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 54,
+        "tdm": null,
+        "2v2": null
+      }
+    },
+    {
       "steamId": "76561198208200276",
       "name": "spfx",
       "slug": null,
@@ -30582,9 +30566,9 @@
     },
     {
       "steamId": "76561198246535026",
-      "name": "t100",
-      "slug": null,
-      "hasProfile": false,
+      "name": "t000",
+      "slug": "t000",
+      "hasProfile": true,
       "ratings": {
         "ctf": 5.886887073516846,
         "tdm": null,
@@ -33575,8 +33559,8 @@
     {
       "steamId": "76561198257391553",
       "name": "vulTure",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "vulture",
+      "hasProfile": true,
       "ratings": {
         "ctf": 24.435653686523438,
         "tdm": 29.339590072631836,
@@ -34663,8 +34647,8 @@
     {
       "steamId": "76561198017320685",
       "name": "Xron",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "xron",
+      "hasProfile": true,
       "ratings": {
         "ctf": 14.395367622375488,
         "tdm": 28.073211669921875,
@@ -34966,9 +34950,9 @@
     },
     {
       "steamId": "76561198054868921",
-      "name": "ynam",
-      "slug": null,
-      "hasProfile": false,
+      "name": "YNAM",
+      "slug": "ynam",
+      "hasProfile": true,
       "ratings": {
         "ctf": 29.04062271118164,
         "tdm": 23.557178497314453,
@@ -35826,6 +35810,22 @@
         "ctf": null,
         "tdm": 1,
         "2v2": 1
+      }
+    },
+    {
+      "steamId": "76561198202091255",
+      "name": "Zyb",
+      "slug": "zyb",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 1.3834478855133057,
+        "tdm": 11.169818878173828,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 5,
+        "tdm": 1,
+        "2v2": null
       }
     },
     {
