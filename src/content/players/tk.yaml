@@ -1,6 +1,8 @@
 name: TK
 country: DE
 steamId: "76561197977412349"
+aliases:
+  - TK
 category: duel
 dataSource: player
 lastUpdated: 2025-02

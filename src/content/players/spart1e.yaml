@@ -2,6 +2,11 @@ name: "SPART1E"
 country: "SE"
 team: "SHREKTALIKA"
 steamId: "76561198239142044"
+aliases:
+  - SPART1E
+team2024: SHREKTALIKA
+team2026: SHREKTALIKA
+team2026Shortname: SHREK
 category: "ctf"
 lastUpdated: "2026-02"
 dataSource: "player"

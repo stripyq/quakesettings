@@ -1,6 +1,9 @@
 name: "pecka"
 country: "RU"
 steamId: "76561198025225261"
+aliases: []
+team2026: "GdeFlag?"
+team2026Shortname: "GF?"
 category: "tdm"
 lastUpdated: "2026-02"
 dataSource: "player"

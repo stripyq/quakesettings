@@ -2,6 +2,11 @@ name: Nvc
 country: GB
 team: "Czesnecka"
 steamId: "76561198000088567"
+aliases:
+  - nvc
+  - twitch.tv/justnvc
+team2026: Czesnecka
+team2026Shortname: CZE
 published: false
 ctfRating: 20.71
 ctfGames: 1077

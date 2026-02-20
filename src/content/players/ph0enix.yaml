@@ -1,6 +1,9 @@
 name: "ph0en|X"
 country: "SE"
 steamId: "76561198228590616"
+aliases:
+  - "ph0en|X"
+team2024: The expendables
 category: "ctf"
 lastUpdated: "2026-02"
 dataSource: "player"

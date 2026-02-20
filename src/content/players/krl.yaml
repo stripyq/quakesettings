@@ -1,6 +1,9 @@
 name: KRL
 country: PL
 steamId: "76561198254687687"
+aliases:
+  - KRL
+team2024: Whatever name IDC
 category: duel
 dataSource: player
 lastUpdated: 2026-02

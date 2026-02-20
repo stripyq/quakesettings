@@ -109,6 +109,12 @@ const playersCollection = defineCollection({
     // Player Identity (for external data matching)
     steamId: z.string().optional(), // Steam64 ID (e.g., "76561198012345678")
     qlstatsNick: z.string().optional(), // Nickname on QLStats if different from name
+    aliases: z.array(z.string()).optional(), // Known alternative names/nicknames
+
+    // Team History
+    team2024: z.string().optional(), // Team in 2024 season
+    team2026: z.string().optional(), // Team in 2026 season
+    team2026Shortname: z.string().optional(), // Short/abbreviated team name for 2026
 
     // Ratings by game mode (cached from external sources)
     // Duel: Glicko rating from QLStats (integer, e.g., 1777)

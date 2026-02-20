@@ -2,6 +2,10 @@ name: knz
 country: HR
 team: "Le Cubanitos"
 steamId: "76561198039145005"
+aliases:
+  - CUBAknz
+team2026: Le Cubanitos
+team2026Shortname: CUBA
 published: false
 ctfRating: 25.52
 ctfGames: 2255
