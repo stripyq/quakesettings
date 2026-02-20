@@ -2,12 +2,12 @@
 
 *Generated: 2026-02-20*
 
-**Total teams:** 9  
+**Total teams:** 8  
 **Total rostered players:** 44
 
 ## Team Rosters
 
-### Aimdead brainers
+### Aimdead Brainers
 
 | Player | Duel | CTF | TDM | RG% | LG% | RL% | cm/360 |
 |--------|------|-----|-----|-----|-----|-----|--------|
@@ -57,20 +57,15 @@
 | knz | — | 25.5 | 18.5 | 59% | 34% | 34% | — |
 | Lumi | — | 26.7 | 34.1 | 56% | 38% | 42% | — |
 
-### Old sexy Quakers
-
-| Player | Duel | CTF | TDM | RG% | LG% | RL% | cm/360 |
-|--------|------|-----|-----|-----|-----|-----|--------|
-| hypnoi | — | 26.1 | 23.5 | 53% | 34% | 41% | — |
-| mult | — | 30.3 | — | 52% | 41% | 32% | 36.0 |
-| PYTON | 1395 | 25.4 | — | 49% | 35% | 41% | 32.5 |
-
 ### Old Sexy Quakers
 
 | Player | Duel | CTF | TDM | RG% | LG% | RL% | cm/360 |
 |--------|------|-----|-----|-----|-----|-----|--------|
 | Baldur | 1242 | 31.5 | 21.1 | 58% | 36% | 39% | 30.6 |
 | Chet0!! | — | 15.4 | 14.4 | 46% | 30% | 39% | 21.6 |
+| hypnoi | — | 26.1 | 23.5 | 53% | 34% | 41% | — |
+| mult | — | 30.3 | — | 52% | 41% | 32% | 36.0 |
+| PYTON | 1395 | 25.4 | — | 49% | 35% | 41% | 32.5 |
 | re4 | 1310 | 21.8 | 21.8 | 48% | 32% | 35% | 519.5 |
 
 ### SHREKTALIKA
@@ -100,13 +95,12 @@
 
 | Team | Players | Avg RG% | Avg LG% | Avg RL% | Avg cm/360 | Avg CTF | Avg TDM |
 |------|---------|---------|---------|---------|------------|---------|--------|
-| Aimdead brainers | 5 | 60.0% | 44.0% | 45.0% | 37.5 | 31.6 | 26.3 |
+| Aimdead Brainers | 5 | 60.0% | 44.0% | 45.0% | 37.5 | 31.6 | 26.3 |
 | Astral Starlight | 5 | 54.2% | 36.2% | 40.6% | 30.7 | 21.1 | 23.3 |
 | Czesnecka | 5 | 50.2% | 33.2% | 40.4% | 18.7 | 20.7 | 19.7 |
 | GdeFlag? | 5 | 49.8% | 37.0% | 39.5% | 26.4 | 27.2 | 29.9 |
 | Le Cubanitos | 5 | 57.4% | 35.4% | 42.0% | 34.0 | 27.6 | 26.7 |
-| Old sexy Quakers | 3 | 51.3% | 36.7% | 38.0% | 34.3 | 27.3 | 23.5 |
-| Old Sexy Quakers | 3 | 50.7% | 32.7% | 37.7% | 190.6 | 22.9 | 19.1 |
+| Old Sexy Quakers | 6 | 51.0% | 34.7% | 37.8% | 128.1 | 25.1 | 20.2 |
 | SHREKTALIKA | 7 | 56.4% | 38.4% | 42.9% | 32.0 | 38.2 | 31.4 |
 | wAnnaBees | 6 | 53.7% | 34.8% | 42.0% | 35.6 | 30.3 | 27.5 |
 
@@ -116,43 +110,40 @@
 
 | Rank | Team | Value |
 |------|------|-------|
-| 1 | Aimdead brainers | 60.0% |
+| 1 | Aimdead Brainers | 60.0% |
 | 2 | Le Cubanitos | 57.4% |
 | 3 | SHREKTALIKA | 56.4% |
 | 4 | Astral Starlight | 54.2% |
 | 5 | wAnnaBees | 53.7% |
-| 6 | Old sexy Quakers | 51.3% |
-| 7 | Old Sexy Quakers | 50.7% |
-| 8 | Czesnecka | 50.2% |
-| 9 | GdeFlag? | 49.8% |
+| 6 | Old Sexy Quakers | 51.0% |
+| 7 | Czesnecka | 50.2% |
+| 8 | GdeFlag? | 49.8% |
 
 ### Best Average LG Accuracy
 
 | Rank | Team | Value |
 |------|------|-------|
-| 1 | Aimdead brainers | 44.0% |
+| 1 | Aimdead Brainers | 44.0% |
 | 2 | SHREKTALIKA | 38.4% |
 | 3 | GdeFlag? | 37.0% |
-| 4 | Old sexy Quakers | 36.7% |
-| 5 | Astral Starlight | 36.2% |
-| 6 | Le Cubanitos | 35.4% |
-| 7 | wAnnaBees | 34.8% |
+| 4 | Astral Starlight | 36.2% |
+| 5 | Le Cubanitos | 35.4% |
+| 6 | wAnnaBees | 34.8% |
+| 7 | Old Sexy Quakers | 34.7% |
 | 8 | Czesnecka | 33.2% |
-| 9 | Old Sexy Quakers | 32.7% |
 
 ### Best Average RL Accuracy
 
 | Rank | Team | Value |
 |------|------|-------|
-| 1 | Aimdead brainers | 45.0% |
+| 1 | Aimdead Brainers | 45.0% |
 | 2 | SHREKTALIKA | 42.9% |
 | 3 | Le Cubanitos | 42.0% |
 | 4 | wAnnaBees | 42.0% |
 | 5 | Astral Starlight | 40.6% |
 | 6 | Czesnecka | 40.4% |
 | 7 | GdeFlag? | 39.5% |
-| 8 | Old sexy Quakers | 38.0% |
-| 9 | Old Sexy Quakers | 37.7% |
+| 8 | Old Sexy Quakers | 37.8% |
 
 ### Lowest Average cm/360 (fastest sensitivity)
 
@@ -163,24 +154,22 @@
 | 3 | Astral Starlight | 30.7 cm |
 | 4 | SHREKTALIKA | 32.0 cm |
 | 5 | Le Cubanitos | 34.0 cm |
-| 6 | Old sexy Quakers | 34.3 cm |
-| 7 | wAnnaBees | 35.6 cm |
-| 8 | Aimdead brainers | 37.5 cm |
-| 9 | Old Sexy Quakers | 190.6 cm |
+| 6 | wAnnaBees | 35.6 cm |
+| 7 | Aimdead Brainers | 37.5 cm |
+| 8 | Old Sexy Quakers | 128.1 cm |
 
 ### Highest Average CTF Rating
 
 | Rank | Team | Value |
 |------|------|-------|
 | 1 | SHREKTALIKA | 38.2 |
-| 2 | Aimdead brainers | 31.6 |
+| 2 | Aimdead Brainers | 31.6 |
 | 3 | wAnnaBees | 30.3 |
 | 4 | Le Cubanitos | 27.6 |
-| 5 | Old sexy Quakers | 27.3 |
-| 6 | GdeFlag? | 27.2 |
-| 7 | Old Sexy Quakers | 22.9 |
-| 8 | Astral Starlight | 21.1 |
-| 9 | Czesnecka | 20.7 |
+| 5 | GdeFlag? | 27.2 |
+| 6 | Old Sexy Quakers | 25.1 |
+| 7 | Astral Starlight | 21.1 |
+| 8 | Czesnecka | 20.7 |
 
 ### Highest Average TDM Rating
 
@@ -190,9 +179,8 @@
 | 2 | GdeFlag? | 29.9 |
 | 3 | wAnnaBees | 27.5 |
 | 4 | Le Cubanitos | 26.7 |
-| 5 | Aimdead brainers | 26.3 |
-| 6 | Old sexy Quakers | 23.5 |
-| 7 | Astral Starlight | 23.3 |
+| 5 | Aimdead Brainers | 26.3 |
+| 6 | Astral Starlight | 23.3 |
+| 7 | Old Sexy Quakers | 20.2 |
 | 8 | Czesnecka | 19.7 |
-| 9 | Old Sexy Quakers | 19.1 |
 
