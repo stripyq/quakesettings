@@ -157,6 +157,7 @@ const schema = {
             <tr
               class="player-row"
               data-name={player.data.name.toLowerCase()}
+              data-aliases={player.data.aliases?.map(a => a.toLowerCase()).join(',') || ''}
               data-category={player.data.category}
               data-dpi={player.data.dpi}
               data-sens={player.data.sensitivity}
@@ -249,14 +250,15 @@ const schema = {
         // Filter rows
         filteredRows = rows.filter(row => {
           const name = row.dataset.name || '';
+          const aliases = row.dataset.aliases || '';
           const mouse = row.dataset.mouse || '';
           const monitor = row.dataset.monitor || '';
           const keyboard = row.dataset.keyboard || '';
           const headset = row.dataset.headset || '';
           const cat = row.dataset.category || '';
 
-          // Search filter (searches player name and hardware)
-          if (search && !name.includes(search) && !mouse.includes(search) && !monitor.includes(search) && !keyboard.includes(search) && !headset.includes(search)) {
+          // Search filter (searches player name, aliases, and hardware)
+          if (search && !name.includes(search) && !aliases.includes(search) && !mouse.includes(search) && !monitor.includes(search) && !keyboard.includes(search) && !headset.includes(search)) {
             return false;
           }
 

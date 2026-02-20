@@ -36,9 +36,16 @@ const keyboardData = p.keyboard ? keyboardsMap.get(p.keyboard) : null;
 const monitorData = p.monitor ? monitorsMap.get(p.monitor) : null;
 const headsetData = p.headset ? headsetsMap.get(p.headset) : null;
 
-// Get all players for Similar Players section
+// Get all players for Similar Players and Teammates sections
 const allPlayers = await getCollection('players');
 const otherPlayers = allPlayers.filter(pl => pl.id !== player.id);
+
+// Find teammates (same team2026, excluding current player)
+const teammates = p.team2026
+  ? allPlayers
+      .filter(pl => pl.id !== player.id && pl.data.team2026 === p.team2026)
+      .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  : [];
 
 // cm/360 calculation - two modes:
 // 1. Standard (m_cpi = 0): cm/360 = (360 / (m_yaw × dpi × sens)) × 2.54
@@ -166,6 +173,9 @@ const schema = {
   <div class="player-page">
     <div class="player-header">
       <h1>{p.name}</h1>
+      {p.team2026 && (
+        <p class="player-team">CSQL Team '26: <span class="team-name">{p.team2026}</span></p>
+      )}
       <div class="player-ratings-display">
         <div class="rating-item">
           <span class="rating-label">Duel:</span>
@@ -433,6 +443,53 @@ const schema = {
       </section>
     )}
 
+    <!-- Team History -->
+    {(p.team2024 || p.team2026) && (
+      <section class="team-history-section">
+        <h2>Team History</h2>
+        <div class="team-history-list">
+          {p.team2024 && p.team2026 && p.team2024 === p.team2026 ? (
+            <div class="team-history-item">
+              <span class="team-year">2024–2026</span>
+              <span class="team-history-name">{p.team2026}</span>
+            </div>
+          ) : (
+            <>
+              {p.team2026 && (
+                <div class="team-history-item">
+                  <span class="team-year">2026</span>
+                  <span class="team-history-name">{p.team2026}</span>
+                </div>
+              )}
+              {p.team2024 && (
+                <div class="team-history-item">
+                  <span class="team-year">2024</span>
+                  <span class="team-history-name">{p.team2024}</span>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Teammates -->
+    {p.team2026 && teammates.length > 0 && (
+      <section class="teammates-section">
+        <h2>Teammates <span class="teammates-team">({p.team2026})</span></h2>
+        <div class="teammates-list">
+          {teammates.map(tm => (
+            <a
+              href={tm.data.published !== false ? `${base}players/${tm.id}/` : undefined}
+              class={`teammate-link ${tm.data.published === false ? 'no-profile' : ''}`}
+            >
+              {tm.data.name}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     <!-- Similar Players -->
     {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0 || sameKeyboard.length > 0 || sameMousepad.length > 0) && (
       <section class="similar-section">
@@ -527,6 +584,17 @@ const schema = {
 
   .player-header h1 {
     margin-bottom: 0.25rem;
+  }
+
+  .player-team {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #9090a0);
+    margin: 0.25rem 0 0;
+  }
+
+  .team-name {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
   }
 
   .ratings-disclaimer {
@@ -891,6 +959,105 @@ const schema = {
 
   .back-link:hover {
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .team-history-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .team-history-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .team-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .team-history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .team-year {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary, #9090a0);
+    min-width: 5rem;
+    font-family: monospace;
+  }
+
+  .team-history-name {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .teammates-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .teammates-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .teammates-team {
+    font-weight: normal;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+  }
+
+  .teammates-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .teammate-link {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .teammate-link:hover {
+    background: var(--accent-primary, #ff6b35);
+    color: white;
+  }
+
+  .teammate-link.no-profile {
+    color: var(--text-secondary, #9090a0);
+    cursor: default;
+  }
+
+  .teammate-link.no-profile:hover {
+    background: var(--bg-secondary, #12121a);
+    color: var(--text-secondary, #9090a0);
   }
 
   .similar-section {

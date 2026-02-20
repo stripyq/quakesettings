@@ -368,6 +368,11 @@ const schema = {
         // Build comparison table
         let html = '';
 
+        // Team row (show if at least one player has a team)
+        if (p1.team2026 || p2.team2026) {
+          html += compareRow('Team', p1.team2026 || '', p2.team2026 || '');
+        }
+
         // Section: Mouse Settings
         html += sectionHeader('Mouse Settings');
         html += compareRow('cm/360', formatCm360(p1), formatCm360(p2), true);
