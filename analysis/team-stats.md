@@ -3,7 +3,7 @@
 *Generated: 2026-02-20*
 
 **Total teams:** 8  
-**Total rostered players:** 45  
+**Total rostered players:** 44  
 **Players with profiles:** 31  
 **Players without teams:** 102
 
@@ -84,11 +84,10 @@
 | headz | — | — | — | — | 52% | 36% | 31% | — |
 | iceman | Yes | 1400 | 38.9 | 30.9 | 54% | 34% | 43% | 34.6 |
 | L1NKIN | Yes | 1366 | 34.9 | — | 63% | 42% | 44% | 30.1 |
-| LK | — | — | — | — | — | — | — | — |
 | MAKIE | Yes | 1651 | 31.3 | 23.4 | 52% | 40% | 49% | 26.6 |
 | MASTERMIND | Yes | 1345 | 43.9 | 35.4 | 62% | 40% | 44% | 45.0 |
 | SPART1E | Yes | 2070 | 33.6 | 34.6 | 58% | 40% | 46% | 26.0 |
-| **Average** | **6/8** | 1603 | 38.2 | 31.4 | 56.4% | 38.4% | 42.9% | 32.8 |
+| **Average** | **6/7** | 1603 | 38.2 | 31.4 | 56.4% | 38.4% | 42.9% | 32.8 |
 
 ### wAnnaBees (wB)
 
@@ -110,7 +109,7 @@
 |------|------|-------|----------------|
 | 1 | Aimdead Brainers | 60.0% | 4/5 |
 | 2 | Le Cubanitos | 57.4% | 5/5 |
-| 3 | SHREKTALIKA | 56.4% | 7/8 |
+| 3 | SHREKTALIKA | 56.4% | 7/7 |
 | 4 | Astral Starlight | 54.2% | 5/5 |
 | 5 | wAnnaBees | 53.7% | 6/6 |
 | 6 | Old Sexy Quakers | 51.0% | 6/6 |
@@ -122,7 +121,7 @@
 | Rank | Team | Value | Players w/ Data |
 |------|------|-------|----------------|
 | 1 | Aimdead Brainers | 44.0% | 4/5 |
-| 2 | SHREKTALIKA | 38.4% | 7/8 |
+| 2 | SHREKTALIKA | 38.4% | 7/7 |
 | 3 | GdeFlag? | 37.0% | 4/5 |
 | 4 | Astral Starlight | 36.2% | 5/5 |
 | 5 | Le Cubanitos | 35.4% | 5/5 |
@@ -135,7 +134,7 @@
 | Rank | Team | Value | Players w/ Data |
 |------|------|-------|----------------|
 | 1 | Aimdead Brainers | 45.0% | 4/5 |
-| 2 | SHREKTALIKA | 42.9% | 7/8 |
+| 2 | SHREKTALIKA | 42.9% | 7/7 |
 | 3 | Le Cubanitos | 42.0% | 5/5 |
 | 4 | wAnnaBees | 42.0% | 6/6 |
 | 5 | Astral Starlight | 40.6% | 5/5 |
@@ -147,7 +146,7 @@
 
 | Rank | Team | Value | Players w/ Data |
 |------|------|-------|----------------|
-| 1 | SHREKTALIKA | 38.2 | 6/8 |
+| 1 | SHREKTALIKA | 38.2 | 6/7 |
 | 2 | Aimdead Brainers | 31.6 | 4/5 |
 | 3 | wAnnaBees | 30.3 | 6/6 |
 | 4 | Le Cubanitos | 27.6 | 5/5 |
@@ -160,7 +159,7 @@
 
 | Rank | Team | Value | Players w/ Data |
 |------|------|-------|----------------|
-| 1 | SHREKTALIKA | 31.4 | 5/8 |
+| 1 | SHREKTALIKA | 31.4 | 5/7 |
 | 2 | GdeFlag? | 29.9 | 4/5 |
 | 3 | wAnnaBees | 27.5 | 4/6 |
 | 4 | Le Cubanitos | 26.7 | 4/5 |
@@ -174,7 +173,7 @@
 | Rank | Team | Value | Players w/ Data |
 |------|------|-------|----------------|
 | 1 | Astral Starlight | 1837.0 | 2/5 |
-| 2 | SHREKTALIKA | 1602.5 | 6/8 |
+| 2 | SHREKTALIKA | 1602.5 | 6/7 |
 | 3 | Aimdead Brainers | 1579.0 | 3/5 |
 | 4 | GdeFlag? | 1500.0 | 4/5 |
 | 5 | Czesnecka | 1356.0 | 1/5 |
@@ -189,7 +188,7 @@
 | 1 | Czesnecka | 18.7 cm | 13–25 cm | 2/5 |
 | 2 | GdeFlag? | 26.4 cm | 15–32 cm | 4/5 |
 | 3 | Astral Starlight | 30.7 cm | 27–35 cm | 3/5 |
-| 4 | SHREKTALIKA | 32.8 cm | 26–45 cm | 6/8 |
+| 4 | SHREKTALIKA | 32.8 cm | 26–45 cm | 6/7 |
 | 5 | Le Cubanitos | 34.0 cm | 21–52 cm | 3/5 |
 | 6 | wAnnaBees | 35.6 cm | 22–49 cm | 5/6 |
 | 7 | Aimdead Brainers | 37.5 cm | 27–45 cm | 3/5 |
@@ -205,7 +204,7 @@
 | GdeFlag? | 5 | 4 | 49.8% | 37.0% | 39.5% | 26.4 | 27.2 | 29.9 |
 | Le Cubanitos | 5 | 3 | 57.4% | 35.4% | 42.0% | 34.0 | 27.6 | 26.7 |
 | Old Sexy Quakers | 6 | 5 | 51.0% | 34.7% | 37.8% | 128.1 | 25.1 | 20.2 |
-| SHREKTALIKA | 8 | 6 | 56.4% | 38.4% | 42.9% | 32.8 | 38.2 | 31.4 |
+| SHREKTALIKA | 7 | 6 | 56.4% | 38.4% | 42.9% | 32.8 | 38.2 | 31.4 |
 | wAnnaBees | 6 | 5 | 53.7% | 34.8% | 42.0% | 35.6 | 30.3 | 27.5 |
 
 ## Notable Stats
@@ -219,8 +218,8 @@
 - **Highest team TDM rating:** SHREKTALIKA (31.4)
 - **Highest team Duel rating:** Astral Starlight (1837)
 - **Lowest average sensitivity:** Czesnecka (18.7 cm/360)
-- **Most players with profiles:** SHREKTALIKA (6/8)
-- **Largest roster:** SHREKTALIKA (8 players)
+- **Most players with profiles:** SHREKTALIKA (6/7)
+- **Largest roster:** SHREKTALIKA (7 players)
 
 ### Player Superlatives
 
@@ -344,5 +343,5 @@
 
 - **re4** has unusually high cm/360: 519.5 cm (Old Sexy Quakers)
 - **spooky** has unusually high cm/360: 450.0 cm (no team)
-- **3 rostered player(s) without any accuracy data:** Cook, Latrommi, LK
+- **2 rostered player(s) without any accuracy data:** Cook, Latrommi
 

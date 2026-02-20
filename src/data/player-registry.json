@@ -17877,6 +17877,22 @@
       }
     },
     {
+      "steamId": "76561198047335245",
+      "name": "L1NKIN",
+      "slug": "l1nkin",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": 34.857547760009766,
+        "tdm": null,
+        "2v2": 28.108322143554688
+      },
+      "gamesPlayed": {
+        "ctf": 51,
+        "tdm": null,
+        "2v2": 1
+      }
+    },
+    {
       "steamId": "76561198450700371",
       "name": "lackó",
       "slug": null,
@@ -18610,22 +18626,6 @@
         "ctf": null,
         "tdm": 6,
         "2v2": 3
-      }
-    },
-    {
-      "steamId": "76561198047335245",
-      "name": "LK",
-      "slug": "lk",
-      "hasProfile": true,
-      "ratings": {
-        "ctf": 34.857547760009766,
-        "tdm": null,
-        "2v2": 28.108322143554688
-      },
-      "gamesPlayed": {
-        "ctf": 51,
-        "tdm": null,
-        "2v2": 1
       }
     },
     {
