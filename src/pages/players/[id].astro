@@ -311,25 +311,6 @@ const schema = {
           </tbody>
         </table>
       </section>
-
-      <!-- Key Bindings -->
-      <section class="settings-section">
-        <h2>Key Bindings</h2>
-        <table class="settings-table">
-          <tbody>
-            <tr><td>Forward</td><td>{p.forward}</td></tr>
-            <tr><td>Back</td><td>{p.back}</td></tr>
-            <tr><td>Left</td><td>{p.left}</td></tr>
-            <tr><td>Right</td><td>{p.right}</td></tr>
-            <tr><td>Jump</td><td>{p.jump}</td></tr>
-            <tr><td>Crouch</td><td>{p.crouch}</td></tr>
-            <tr><td>Attack</td><td>{p.attack}</td></tr>
-            <tr><td>Zoom</td><td>{p.zoom}</td></tr>
-            {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
-            {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
-          </tbody>
-        </table>
-      </section>
     </div>
 
     <section class="hardware-full-section">
@@ -406,6 +387,109 @@ const schema = {
         )}
       </div>
     </section>
+
+    <!-- Key Bindings -->
+    <section class="keybinds-section">
+      <h2>Key Bindings</h2>
+      <div class="keybinds-grid">
+        <table class="settings-table">
+          <tbody>
+            <tr><td>Forward</td><td>{p.forward}</td></tr>
+            <tr><td>Back</td><td>{p.back}</td></tr>
+            <tr><td>Left</td><td>{p.left}</td></tr>
+            <tr><td>Right</td><td>{p.right}</td></tr>
+          </tbody>
+        </table>
+        <table class="settings-table">
+          <tbody>
+            <tr><td>Jump</td><td>{p.jump}</td></tr>
+            <tr><td>Crouch</td><td>{p.crouch}</td></tr>
+            <tr><td>Attack</td><td>{p.attack}</td></tr>
+            <tr><td>Zoom</td><td>{p.zoom}</td></tr>
+            {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
+            {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Similar Players -->
+    {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0 || sameKeyboard.length > 0 || sameMousepad.length > 0) && (
+      <section class="similar-section">
+        <h2>Similar Players</h2>
+        <div class="similar-groups">
+          {similarSens.length > 0 && (
+            <div class="similar-group">
+              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {formatNum(currentCm360)})</span></h3>
+              <div class="similar-players">
+                {similarSens.map(({ player: pl, cm360 }) => (
+                  <a
+                    href={`${base}players/${pl.id}/`}
+                    class={`similar-player ${pl.data.acceleration ? 'has-accel' : ''}`}
+                    title={pl.data.acceleration ? 'This player uses mouse acceleration — base sensitivity shown' : undefined}
+                  >
+                    <span class="player-name">{pl.data.name}</span>
+                    <span class="player-stat">{formatNum(cm360)} cm/360</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMouse.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Mouse <span class="similar-info">({mouseData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMouse.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMousepad.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Mousepad <span class="similar-info">({mousepadData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMousepad.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameKeyboard.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Keyboard <span class="similar-info">({keyboardData?.name})</span></h3>
+              <div class="similar-players">
+                {sameKeyboard.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {sameMonitor.length > 0 && (
+            <div class="similar-group">
+              <h3>Same Monitor <span class="similar-info">({monitorData?.name})</span></h3>
+              <div class="similar-players">
+                {sameMonitor.map(pl => (
+                  <a href={`${base}players/${pl.id}/`} class="similar-player">
+                    <span class="player-name">{pl.data.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
 
     <!-- HoQ Stats -->
     {hasHoqStats && (
@@ -638,129 +722,66 @@ const schema = {
     )}
 
     <!-- Data Source -->
-    {(p.source || p.lastUpdated) && (
+    {(p.source || p.lastUpdated || seasonStats) && (
       <section class="source-section">
         <h2>Data Source</h2>
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
-          {p.lastUpdated && <p><strong>Last Updated:</strong> {p.lastUpdated}</p>}
+          {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
+          {seasonStats && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
         </div>
       </section>
     )}
 
-    <!-- Similar Players -->
-    {(similarSens.length > 0 || sameMouse.length > 0 || sameMonitor.length > 0 || sameKeyboard.length > 0 || sameMousepad.length > 0) && (
-      <section class="similar-section">
-        <h2>Similar Players</h2>
-        <div class="similar-groups">
-          {similarSens.length > 0 && (
-            <div class="similar-group">
-              <h3>Similar Sensitivity <span class="similar-info">(cm/360: {formatNum(currentCm360)})</span></h3>
-              <div class="similar-players">
-                {similarSens.map(({ player: pl, cm360 }) => (
-                  <a
-                    href={`${base}players/${pl.id}/`}
-                    class={`similar-player ${pl.data.acceleration ? 'has-accel' : ''}`}
-                    title={pl.data.acceleration ? 'This player uses mouse acceleration — base sensitivity shown' : undefined}
-                  >
-                    <span class="player-name">{pl.data.name}</span>
-                    <span class="player-stat">{formatNum(cm360)} cm/360</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {sameMouse.length > 0 && (
-            <div class="similar-group">
-              <h3>Same Mouse <span class="similar-info">({mouseData?.name})</span></h3>
-              <div class="similar-players">
-                {sameMouse.map(pl => (
-                  <a href={`${base}players/${pl.id}/`} class="similar-player">
-                    <span class="player-name">{pl.data.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {sameMousepad.length > 0 && (
-            <div class="similar-group">
-              <h3>Same Mousepad <span class="similar-info">({mousepadData?.name})</span></h3>
-              <div class="similar-players">
-                {sameMousepad.map(pl => (
-                  <a href={`${base}players/${pl.id}/`} class="similar-player">
-                    <span class="player-name">{pl.data.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {sameKeyboard.length > 0 && (
-            <div class="similar-group">
-              <h3>Same Keyboard <span class="similar-info">({keyboardData?.name})</span></h3>
-              <div class="similar-players">
-                {sameKeyboard.map(pl => (
-                  <a href={`${base}players/${pl.id}/`} class="similar-player">
-                    <span class="player-name">{pl.data.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {sameMonitor.length > 0 && (
-            <div class="similar-group">
-              <h3>Same Monitor <span class="similar-info">({monitorData?.name})</span></h3>
-              <div class="similar-players">
-                {sameMonitor.map(pl => (
-                  <a href={`${base}players/${pl.id}/`} class="similar-player">
-                    <span class="player-name">{pl.data.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-    )}
-
-    <!-- Team Info (compact footer) -->
+    <!-- Team History -->
     {(p.team2024 || p.team2026 || teammates.length > 0) && (
-      <div class="team-footer">
-        {(p.team2024 || p.team2026) && (
-          <div class="team-footer-item">
-            <span class="team-footer-label">Team History:</span>
-            {p.team2024 && p.team2026 && p.team2024 === p.team2026 ? (
-              <span>2024–2026 {p.team2026}</span>
-            ) : (
-              <span>
-                {p.team2026 && <span>2026 {p.team2026}</span>}
-                {p.team2024 && p.team2026 && <span class="team-sep"> · </span>}
-                {p.team2024 && <span>2024 {p.team2024}</span>}
-              </span>
-            )}
-          </div>
-        )}
-        {p.team2026 && teammates.length > 0 && (
-          <div class="team-footer-item">
-            <span class="team-footer-label">Teammates:</span>
-            <span class="team-footer-mates">
-              {teammates.map((tm, i) => (
+      <section class="team-section">
+        <h2>Team History</h2>
+        <div class="team-content">
+          {(p.team2024 || p.team2026) && (
+            <div class="team-history-rows">
+              {p.team2024 && p.team2026 && p.team2024 === p.team2026 ? (
+                <div class="team-row">
+                  <span class="team-years">2024–2026</span>
+                  <span class="team-name">{p.team2026}</span>
+                </div>
+              ) : (
                 <>
-                  {i > 0 && <span class="team-sep"> · </span>}
-                  {tm.data.published !== false ? (
-                    <a href={`${base}players/${tm.id}/`} class="teammate-inline">{tm.data.name}</a>
-                  ) : (
-                    <span class="teammate-inline no-profile">{tm.data.name}</span>
+                  {p.team2026 && (
+                    <div class="team-row">
+                      <span class="team-years">2026</span>
+                      <span class="team-name">{p.team2026}</span>
+                    </div>
+                  )}
+                  {p.team2024 && (
+                    <div class="team-row">
+                      <span class="team-years">2024</span>
+                      <span class="team-name">{p.team2024}</span>
+                    </div>
                   )}
                 </>
-              ))}
-            </span>
-          </div>
-        )}
-      </div>
+              )}
+            </div>
+          )}
+          {p.team2026 && teammates.length > 0 && (
+            <div class="team-mates">
+              <span class="team-mates-label">Teammates:</span>
+              <span class="team-mates-list">
+                {teammates.map((tm, i) => (
+                  <>
+                    {i > 0 && <span class="team-sep"> · </span>}
+                    {tm.data.published !== false ? (
+                      <a href={`${base}players/${tm.id}/`} class="teammate-inline">{tm.data.name}</a>
+                    ) : (
+                      <span class="teammate-inline no-profile">{tm.data.name}</span>
+                    )}
+                  </>
+                ))}
+              </span>
+            </div>
+          )}
+        </div>
+      </section>
     )}
 
     <a href={base} class="back-link">← Back to all players</a>
@@ -1145,31 +1166,76 @@ const schema = {
     color: var(--accent-primary, #ff6b35);
   }
 
-  .team-footer {
+  .team-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .team-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .team-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .team-history-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .team-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .team-years {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary, #9090a0);
+    font-family: monospace;
+    min-width: 5rem;
+  }
+
+  .team-name {
+    font-size: 0.95rem;
+    color: var(--text-primary, #e8e8f0);
+    font-weight: 500;
+  }
+
+  .team-mates {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 2rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary, #6b7280);
-    margin-bottom: 1rem;
-    padding: 0.75rem 0;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding-top: 0.5rem;
     border-top: 1px solid var(--border-color, #2a2a35);
   }
 
-  .team-footer-item {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-    align-items: baseline;
-    line-height: 1.4;
-  }
-
-  .team-footer-label {
-    color: var(--text-secondary, #9090a0);
+  .team-mates-label {
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.7rem;
     letter-spacing: 0.03em;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .team-mates-list {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .team-sep {
@@ -1194,6 +1260,30 @@ const schema = {
   .teammate-inline.no-profile:hover {
     text-decoration: none;
     color: var(--text-secondary, #6b7280);
+  }
+
+  .keybinds-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .keybinds-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .keybinds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
 
   .similar-section {
@@ -1576,6 +1666,10 @@ const schema = {
     }
 
     .season-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .keybinds-grid {
       grid-template-columns: 1fr;
     }
   }
