@@ -80,17 +80,26 @@ function getAllPlayers() {
   return players;
 }
 
+async function fetchJson(url) {
+  try {
+    const res = await fetch(url);
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
+}
+
 async function fetchPlayerStats(steamId) {
   try {
-    const [careerRes, weaponRes] = await Promise.all([
-      fetch(`${API_BASE}/ctf/players/${steamId}`),
-      fetch(`${API_BASE}/ctf/weapons/${steamId}`),
+    const [career, weapons, flagStats, nemesis, favoriteVictim] = await Promise.all([
+      fetchJson(`${API_BASE}/ctf/players/${steamId}`),
+      fetchJson(`${API_BASE}/ctf/weapons/${steamId}`),
+      fetchJson(`${API_BASE}/ctf/ctf/${steamId}`),
+      fetchJson(`${API_BASE}/ctf/players/${steamId}/nemesis`),
+      fetchJson(`${API_BASE}/ctf/players/${steamId}/favorite-victim`),
     ]);
 
-    const career = careerRes.ok ? await careerRes.json() : null;
-    const weapons = weaponRes.ok ? await weaponRes.json() : null;
-
-    return { career, weapons };
+    return { career, weapons, flagStats, nemesis, favoriteVictim };
   } catch (error) {
     console.error(`  Error: ${error.message}`);
     return null;
@@ -131,12 +140,15 @@ async function main() {
 
     const stats = await fetchPlayerStats(steamId);
 
-    if (stats && (stats.career || stats.weapons)) {
-      results[steamId] = {
-        name,
-        ...stats,
-        fetchedAt: new Date().toISOString(),
-      };
+    const hasData = stats && (stats.career || stats.weapons || stats.flagStats);
+    if (hasData) {
+      const entry = { name, fetchedAt: new Date().toISOString() };
+      if (stats.career) entry.career = stats.career;
+      if (stats.weapons) entry.weapons = stats.weapons;
+      if (stats.flagStats) entry.flagStats = stats.flagStats;
+      if (stats.nemesis) entry.nemesis = stats.nemesis;
+      if (stats.favoriteVictim) entry.favoriteVictim = stats.favoriteVictim;
+      results[steamId] = entry;
       fetchedCount++;
       console.log('OK');
     } else if (stats) {

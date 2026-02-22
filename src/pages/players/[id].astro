@@ -180,6 +180,28 @@ const seasonMachinegun = getWeapon(seasonStats?.weapons, 'MACHINEGUN');
 const seasonPlasma = getWeapon(seasonStats?.weapons, 'PLASMA_GUN');
 const seasonGrenade = getWeapon(seasonStats?.weapons, 'GRENADE_LAUNCHER');
 
+// Flag stats and rivalries
+const flagStats = seasonStats?.flagStats || null;
+const nemesis = seasonStats?.nemesis || null;
+const favoriteVictim = seasonStats?.favoriteVictim || null;
+const hasRivalries = !!(nemesis || favoriteVictim);
+
+// Build steamId→slug lookup for rivalry links
+const steamIdToSlug = new Map<string, string>();
+for (const pl of allPlayers) {
+  if (pl.data.steamId) {
+    steamIdToSlug.set(pl.data.steamId, pl.id);
+  }
+}
+
+function getRivalrySlug(rivalData: any): string | null {
+  if (!rivalData?.steam_id) return null;
+  return steamIdToSlug.get(rivalData.steam_id) || null;
+}
+
+const nemesisSlug = getRivalrySlug(nemesis);
+const victimSlug = getRivalrySlug(favoriteVictim);
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
@@ -537,6 +559,68 @@ const schema = {
                   </tr>
                 )}
               </table>
+            </div>
+          )}
+          {flagStats && (
+            <div class="season-flags">
+              <h3>Flag Stats (Season)</h3>
+              <table class="settings-table">
+                {flagStats.flag_captures != null && (
+                  <tr><td>&#127988; Captures</td><td>{flagStats.flag_captures}</td></tr>
+                )}
+                {flagStats.flag_returns != null && (
+                  <tr><td>&#128737; Returns</td><td>{flagStats.flag_returns}</td></tr>
+                )}
+                {flagStats.avg_cap_time != null && (
+                  <tr><td>&#9201; Avg Cap Time</td><td>{flagStats.avg_cap_time}s</td></tr>
+                )}
+                {flagStats.flag_defends != null && (
+                  <tr><td>&#128737; Defends</td><td>{flagStats.flag_defends}</td></tr>
+                )}
+                {flagStats.flag_assists != null && (
+                  <tr><td>&#129309; Assists</td><td>{flagStats.flag_assists}</td></tr>
+                )}
+              </table>
+            </div>
+          )}
+
+          {hasRivalries && (
+            <div class="season-rivalries">
+              <h3>Rivalries</h3>
+              <div class="rivalry-cards">
+                {nemesis && (
+                  <div class="rivalry-card rivalry-nemesis">
+                    <span class="rivalry-icon">&#128520;</span>
+                    <div class="rivalry-info">
+                      <span class="rivalry-label">Nemesis</span>
+                      {nemesisSlug ? (
+                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesis.name}</a>
+                      ) : (
+                        <span class="rivalry-name">{nemesis.name}</span>
+                      )}
+                      {nemesis.kills != null && (
+                        <span class="rivalry-detail">killed you {nemesis.kills} times</span>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {favoriteVictim && (
+                  <div class="rivalry-card rivalry-victim">
+                    <span class="rivalry-icon">&#128526;</span>
+                    <div class="rivalry-info">
+                      <span class="rivalry-label">Favorite Victim</span>
+                      {victimSlug ? (
+                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{favoriteVictim.name}</a>
+                      ) : (
+                        <span class="rivalry-name">{favoriteVictim.name}</span>
+                      )}
+                      {favoriteVictim.deaths != null && (
+                        <span class="rivalry-detail">you killed {favoriteVictim.deaths} times</span>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -1398,6 +1482,79 @@ const schema = {
 
   .season-weapons .settings-table td:nth-child(3) {
     font-size: 0.8rem;
+  }
+
+  .season-flags h3,
+  .season-rivalries h3 {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .season-flags .settings-table td:first-child {
+    width: auto;
+    padding-right: 1.5rem;
+  }
+
+  .season-flags .settings-table td:nth-child(2) {
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  .rivalry-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rivalry-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .rivalry-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .rivalry-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .rivalry-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .rivalry-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  a.rivalry-name {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  a.rivalry-name:hover {
+    text-decoration: underline;
+  }
+
+  .rivalry-detail {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
   }
 
   @media (max-width: 768px) {
