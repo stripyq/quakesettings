@@ -14,6 +14,16 @@ try {
   // No season stats available yet - that's fine
 }
 
+// Load player registry for name lookups (e.g. rivalry names)
+let playerRegistry: Array<{ steamId: string; name: string; slug: string | null }> = [];
+try {
+  const registryPath = path.join(process.cwd(), 'src/data/player-registry.json');
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  playerRegistry = registry.players || [];
+} catch {
+  // Registry not available
+}
+
 export async function getStaticPaths() {
   const allPlayers = await getCollection('players');
   const players = allPlayers.filter(p => p.data.published !== false);
@@ -185,6 +195,15 @@ const flagData = seasonStats?.flagStats?.data || null;
 const nemesisData = seasonStats?.nemesis?.data || null;
 const victimData = seasonStats?.favoriteVictim?.data || null;
 const hasRivalries = !!(nemesisData || victimData);
+
+// Resolve rivalry names: prefer player registry name over API name (API returns current Steam name which may differ)
+function getRegistryName(steamId: string | undefined): string | null {
+  if (!steamId) return null;
+  const entry = playerRegistry.find(p => p.steamId === steamId);
+  return entry?.name || null;
+}
+const nemesisName = getRegistryName(nemesisData?.opponent_steam_id) || nemesisData?.opponent_name;
+const victimName = getRegistryName(victimData?.opponent_steam_id) || victimData?.opponent_name;
 
 // Build steamId→slug lookup for rivalry links
 const steamIdToSlug = new Map<string, string>();
@@ -678,9 +697,9 @@ const schema = {
                     <div class="rivalry-info">
                       <span class="rivalry-label">Nemesis</span>
                       {nemesisSlug ? (
-                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesisData.opponent_name}</a>
+                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesisName}</a>
                       ) : (
-                        <span class="rivalry-name">{nemesisData.opponent_name}</span>
+                        <span class="rivalry-name">{nemesisName}</span>
                       )}
                       {nemesisData.deaths_to != null && (
                         <span class="rivalry-detail">killed you {nemesisData.deaths_to} times</span>
@@ -694,9 +713,9 @@ const schema = {
                     <div class="rivalry-info">
                       <span class="rivalry-label">Favorite Victim</span>
                       {victimSlug ? (
-                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{victimData.opponent_name}</a>
+                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{victimName}</a>
                       ) : (
-                        <span class="rivalry-name">{victimData.opponent_name}</span>
+                        <span class="rivalry-name">{victimName}</span>
                       )}
                       {victimData.kills_against != null && (
                         <span class="rivalry-detail">you killed {victimData.kills_against} times</span>
