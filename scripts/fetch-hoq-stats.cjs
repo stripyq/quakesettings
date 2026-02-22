@@ -133,30 +133,61 @@ function parseHoqPage(html) {
     { name: 'Lightning Gun', key: 'accuracy_lg' },
   ];
 
+  // First, try to find the weapons table and detect the accuracy column by header
+  let accuracyColIndex = -1;
+  const headerRowMatch = html.match(/<thead[^>]*>[\s\S]*?<\/thead>/i)
+    || html.match(/<tr[^>]*>[\s\S]*?<th[\s\S]*?<\/tr>/i);
+  if (headerRowMatch) {
+    const thCells = [...headerRowMatch[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)];
+    for (let i = 0; i < thCells.length; i++) {
+      const text = thCells[i][1].replace(/<[^>]*>/g, '').trim().toLowerCase();
+      if (text === 'accuracy' || text === 'acc' || text === 'acc%') {
+        accuracyColIndex = i;
+        break;
+      }
+    }
+  }
+
   for (const { name, key } of weapons) {
-    // Find the table row containing this weapon, then extract accuracy percentage
-    // Pattern 1: weapon name followed by accuracy with % in the same row
+    // Find the table row containing this weapon
     const rowPattern = new RegExp(
       `<tr[^>]*>[\\s\\S]*?${name}[\\s\\S]*?<\\/tr>`,
       'i'
     );
     const rowMatch = html.match(rowPattern);
     if (rowMatch) {
-      // Look for a percentage in this row
-      const pctPattern = /([\d.]+)\s*%/g;
-      let pctMatch;
-      // Take the first percentage found (usually accuracy column)
-      while ((pctMatch = pctPattern.exec(rowMatch[0])) !== null) {
-        const accuracy = parseFloat(pctMatch[1]);
-        if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
-          result[key] = accuracy;
-          break;
+      // Extract all <td> cells from this row
+      const cells = [...rowMatch[0].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)]
+        .map(m => m[1].replace(/<[^>]*>/g, '').trim());
+
+      let accuracy = NaN;
+
+      // If we identified the accuracy column by header, use that index
+      if (accuracyColIndex >= 0 && accuracyColIndex < cells.length) {
+        accuracy = parseFloat(cells[accuracyColIndex].replace('%', ''));
+      }
+
+      // Fallback: find the cell that looks like a percentage value
+      if (isNaN(accuracy) || accuracy < 0 || accuracy > 100) {
+        for (const cell of cells) {
+          const pctMatch = cell.match(/^([\d.]+)\s*%?$/);
+          if (pctMatch) {
+            const val = parseFloat(pctMatch[1]);
+            if (!isNaN(val) && val >= 0 && val <= 100) {
+              accuracy = val;
+              break;
+            }
+          }
         }
+      }
+
+      if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
+        result[key] = accuracy;
       }
       continue;
     }
 
-    // Pattern 2: weapon name directly followed by accuracy
+    // Fallback: weapon name directly followed by accuracy
     const directPattern = new RegExp(
       `${name}[\\s\\S]*?(\\d{1,3}(?:\\.\\d+)?)\\s*%`,
       'i'

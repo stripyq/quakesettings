@@ -227,17 +227,17 @@ function updatePlayerYaml(playerPath, updates) {
   // Build new rating lines
   const newLines = [];
 
-  if (updates.duelRating) {
+  if (updates.duelRating != null) {
     newLines.push(`duelRating: ${updates.duelRating}`);
     newLines.push(`duelRatingUpdated: "${today}"`);
   }
 
-  if (updates.ctfRating) {
+  if (updates.ctfRating != null) {
     newLines.push(`ctfRating: ${updates.ctfRating}`);
     newLines.push(`ctfRatingUpdated: "${today}"`);
   }
 
-  if (updates.tdmRating) {
+  if (updates.tdmRating != null) {
     newLines.push(`tdmRating: ${updates.tdmRating}`);
     newLines.push(`tdmRatingUpdated: "${today}"`);
   }
@@ -298,43 +298,54 @@ async function main() {
   let updated = 0;
   let matched = 0;
 
+  // Build O(1) lookup maps keyed by normalized name and lowercase name
+  function buildLookup(ratingsMap) {
+    const byNormalized = new Map();
+    const byLower = new Map();
+    for (const [key, data] of ratingsMap) {
+      byNormalized.set(normalizeName(key), data);
+      byLower.set(key.toLowerCase(), data);
+    }
+    return { byNormalized, byLower };
+  }
+
+  const duelLookup = buildLookup(duelRatings);
+  const ctfLookup = buildLookup(ctfRatings);
+  const tdmLookup = buildLookup(tdmRatings);
+
+  function findRating(lookup, playerName) {
+    const normalized = normalizeName(playerName);
+    const lower = playerName.toLowerCase();
+    return lookup.byNormalized.get(normalized) || lookup.byLower.get(lower) || null;
+  }
+
   for (const player of players) {
-    const normalizedName = normalizeName(player.name);
     const updates = {};
 
     // Try to find duel rating
-    for (const [key, data] of duelRatings) {
-      if (normalizeName(key) === normalizedName ||
-          key.toLowerCase() === player.name.toLowerCase()) {
-        updates.duelRating = data.rating;
-        matched++;
-        break;
-      }
+    const duelMatch = findRating(duelLookup, player.name);
+    if (duelMatch) {
+      updates.duelRating = duelMatch.rating;
+      matched++;
     }
 
     // Try to find CTF rating
-    for (const [key, data] of ctfRatings) {
-      if (normalizeName(key) === normalizedName ||
-          key.toLowerCase() === player.name.toLowerCase()) {
-        updates.ctfRating = data.rating;
-        break;
-      }
+    const ctfMatch = findRating(ctfLookup, player.name);
+    if (ctfMatch) {
+      updates.ctfRating = ctfMatch.rating;
     }
 
     // Try to find TDM rating
-    for (const [key, data] of tdmRatings) {
-      if (normalizeName(key) === normalizedName ||
-          key.toLowerCase() === player.name.toLowerCase()) {
-        updates.tdmRating = data.rating;
-        break;
-      }
+    const tdmMatch = findRating(tdmLookup, player.name);
+    if (tdmMatch) {
+      updates.tdmRating = tdmMatch.rating;
     }
 
     // Update YAML if we have any ratings
     if (Object.keys(updates).length > 0) {
       const success = updatePlayerYaml(player.path, updates);
       if (success) {
-        console.log(`✓ Updated ${player.name}: Duel=${updates.duelRating || '-'}, CTF=${updates.ctfRating || '-'}, TDM=${updates.tdmRating || '-'}`);
+        console.log(`✓ Updated ${player.name}: Duel=${updates.duelRating != null ? updates.duelRating : '-'}, CTF=${updates.ctfRating != null ? updates.ctfRating : '-'}, TDM=${updates.tdmRating != null ? updates.tdmRating : '-'}`);
         updated++;
       }
     }
