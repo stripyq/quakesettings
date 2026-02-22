@@ -1078,7 +1078,7 @@ const schema = {
       <!-- FOV Distribution -->
       <div class="s-card">
         <h2 class="s-card-title">FOV Distribution</h2>
-        <p class="s-card-sub">Average: {avgFov}&deg;</p>
+        <p class="s-card-sub">Average: {avgFov != null ? `${avgFov}\u00B0` : '\u2014'}</p>
         <div class="s-bar-list">
           {topFovValues.map(([fov, count]) => (
             <div class="s-bar-row">

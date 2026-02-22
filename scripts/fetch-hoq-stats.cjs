@@ -65,7 +65,7 @@ function getPlayersWithSteamIds() {
 }
 
 // Parse HoQ player page HTML to extract favorites and weapon accuracies
-function parseHoqPage(html) {
+function parseHoqPage(html, playerName) {
   const result = {};
 
   // ---- FAVORITES ----
@@ -167,52 +167,26 @@ function parseHoqPage(html) {
       const cells = [...weaponRow[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)]
         .map(m => m[1].replace(/<[^>]*>/g, '').trim());
 
-      let accuracy = NaN;
-
-      // If we identified the accuracy column by header, use that index
+      // Only use accuracy if we identified the column by header
       if (accuracyColIndex >= 0 && accuracyColIndex < cells.length) {
-        accuracy = parseFloat(cells[accuracyColIndex].replace('%', ''));
-      }
-
-      // Fallback: find the cell that looks like a percentage value
-      if (isNaN(accuracy) || accuracy < 0 || accuracy > 100) {
-        for (const cell of cells) {
-          const pctMatch = cell.match(/^([\d.]+)\s*%?$/);
-          if (pctMatch) {
-            const val = parseFloat(pctMatch[1]);
-            if (!isNaN(val) && val >= 0 && val <= 100) {
-              accuracy = val;
-              break;
-            }
-          }
+        const accuracy = parseFloat(cells[accuracyColIndex].replace('%', ''));
+        if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
+          result[key] = accuracy;
         }
-      }
-
-      if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
-        result[key] = accuracy;
+      } else {
+        console.warn(`  Warning: no accuracy column header found for ${name} (player: ${playerName || 'unknown'}) — skipping`);
       }
       continue;
     }
 
-    // Fallback: weapon name directly followed by accuracy
-    const directPattern = new RegExp(
-      `${name}[\\s\\S]*?(\\d{1,3}(?:\\.\\d+)?)\\s*%`,
-      'i'
-    );
-    const directMatch = html.match(directPattern);
-    if (directMatch) {
-      const accuracy = parseFloat(directMatch[1]);
-      if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
-        result[key] = accuracy;
-      }
-    }
+    // No data row found for this weapon — skip silently
   }
 
   return result;
 }
 
 // Fetch a single player's HoQ page
-async function fetchPlayerStats(steamId) {
+async function fetchPlayerStats(steamId, playerName) {
   const url = `${HOQ_BASE}/${steamId}`;
 
   const response = await fetch(url, {
@@ -236,7 +210,7 @@ async function fetchPlayerStats(steamId) {
     return { html, stats: null };
   }
 
-  return { html, stats: parseHoqPage(html) };
+  return { html, stats: parseHoqPage(html, playerName) };
 }
 
 // Load pre-fetched stats from JSON file
@@ -343,7 +317,7 @@ async function main() {
     } else {
       try {
         process.stdout.write(`  Fetching ${player.name} (${player.steamId})...`);
-        const result = await fetchPlayerStats(player.steamId);
+        const result = await fetchPlayerStats(player.steamId, player.name);
 
         if (SAVE_HTML && result.html) {
           fs.writeFileSync(
