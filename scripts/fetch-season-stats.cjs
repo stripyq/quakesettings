@@ -91,16 +91,17 @@ async function fetchJson(url) {
 
 async function fetchPlayerStats(steamId) {
   try {
-    const [career, weapons, flagStats, nemesis, favoriteVictim, headToHead] = await Promise.all([
+    const [career, weapons, flagStats, nemesis, favoriteVictim, headToHead, mapStats] = await Promise.all([
       fetchJson(`${API_BASE}/ctf/players/${steamId}`),
       fetchJson(`${API_BASE}/ctf/weapons/${steamId}`),
       fetchJson(`${API_BASE}/ctf/ctf/${steamId}`),
       fetchJson(`${API_BASE}/ctf/players/${steamId}/nemesis`),
       fetchJson(`${API_BASE}/ctf/players/${steamId}/favorite-victim`),
       fetchJson(`${API_BASE}/ctf/players/${steamId}/head-to-head`),
+      fetchJson(`${API_BASE}/ctf/players/${steamId}/maps`),
     ]);
 
-    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead };
+    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead, mapStats };
   } catch (error) {
     console.error(`  Error: ${error.message}`);
     return null;
@@ -150,6 +151,7 @@ async function main() {
       if (stats.nemesis) entry.nemesis = stats.nemesis;
       if (stats.favoriteVictim) entry.favoriteVictim = stats.favoriteVictim;
       if (stats.headToHead) entry.headToHead = stats.headToHead;
+      if (stats.mapStats) entry.mapStats = stats.mapStats;
       results[steamId] = entry;
       fetchedCount++;
       console.log('OK');

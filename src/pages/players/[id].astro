@@ -190,6 +190,12 @@ const seasonMachinegun = getWeapon(seasonStats?.weapons, 'MACHINEGUN');
 const seasonPlasma = getWeapon(seasonStats?.weapons, 'PLASMA_GUN');
 const seasonGrenade = getWeapon(seasonStats?.weapons, 'GRENADE_LAUNCHER');
 
+// Map stats (API may wrap in .value or return a plain array)
+const mapStatsRaw = seasonStats?.mapStats;
+const mapStatsArray: any[] = Array.isArray(mapStatsRaw) ? mapStatsRaw
+  : Array.isArray(mapStatsRaw?.value) ? mapStatsRaw.value
+  : [];
+
 // Flag stats and rivalries (API wraps these in a .data property)
 const flagData = seasonStats?.flagStats?.data || null;
 const nemesisData = seasonStats?.nemesis?.data || null;
@@ -724,6 +730,34 @@ const schema = {
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {mapStatsArray.length > 0 && (
+            <div class="season-maps">
+              <h3>Map Performance (Season)</h3>
+              <table class="settings-table map-stats-table">
+                <thead>
+                  <tr>
+                    <th>Map</th>
+                    <th>Games</th>
+                    <th>Win%</th>
+                    <th>K/D</th>
+                    <th>DPM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mapStatsArray.map(m => (
+                    <tr>
+                      <td>{m.map}</td>
+                      <td>{m.matches}</td>
+                      <td class={m.win_rate >= 50 ? 'stat-good' : 'stat-bad'}>{m.win_rate}%</td>
+                      <td class={m.kd_ratio >= 1 ? 'stat-good' : 'stat-bad'}>{m.kd_ratio.toFixed(2)}</td>
+                      <td>{Math.round(m.dpm)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
@@ -1668,6 +1702,53 @@ const schema = {
   .rivalry-detail {
     font-size: 0.8rem;
     color: var(--text-secondary, #9090a0);
+  }
+
+  .season-maps {
+    grid-column: 1 / -1;
+  }
+
+  .season-maps h3 {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .map-stats-table {
+    width: 100%;
+  }
+
+  .map-stats-table thead th {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.4rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-weight: 600;
+  }
+
+  .map-stats-table tbody td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.9rem;
+    font-family: monospace;
+  }
+
+  .map-stats-table tbody td:first-child {
+    font-family: inherit;
+    color: var(--text-primary, #e8e8f0);
+    font-weight: 500;
+  }
+
+  .stat-good {
+    color: #2ecc71;
+  }
+
+  .stat-bad {
+    color: #e74c3c;
   }
 
   @media (max-width: 768px) {
