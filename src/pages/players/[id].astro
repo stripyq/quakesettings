@@ -684,25 +684,41 @@ const schema = {
     <!-- Key Bindings -->
     <section class="keybinds-section">
       <h2>Key Bindings</h2>
-      <div class="keybinds-grid">
-        <table class="settings-table">
-          <tbody>
-            <tr><td>Forward</td><td>{p.forward}</td></tr>
-            <tr><td>Back</td><td>{p.back}</td></tr>
-            <tr><td>Left</td><td>{p.left}</td></tr>
-            <tr><td>Right</td><td>{p.right}</td></tr>
-          </tbody>
-        </table>
-        <table class="settings-table">
-          <tbody>
-            <tr><td>Jump</td><td>{p.jump}</td></tr>
-            <tr><td>Crouch</td><td>{p.crouch}</td></tr>
-            <tr><td>Attack</td><td>{p.attack}</td></tr>
-            <tr><td>Zoom</td><td>{p.zoom}</td></tr>
-            {p.weaponNext && <tr><td>Next Weapon</td><td>{p.weaponNext}</td></tr>}
-            {p.weaponPrev && <tr><td>Prev Weapon</td><td>{p.weaponPrev}</td></tr>}
-          </tbody>
-        </table>
+      <div class="keybinds-compact">
+        <div class="keybind-row">
+          <span class="keybind-label">Forward</span><kbd>{p.forward}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Back</span><kbd>{p.back}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Left</span><kbd>{p.left}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Right</span><kbd>{p.right}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Jump</span><kbd>{p.jump}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Crouch</span><kbd>{p.crouch}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Attack</span><kbd>{p.attack}</kbd>
+        </div>
+        <div class="keybind-row">
+          <span class="keybind-label">Zoom</span><kbd>{p.zoom}</kbd>
+        </div>
+        {p.weaponNext && (
+          <div class="keybind-row">
+            <span class="keybind-label">Next Weapon</span><kbd>{p.weaponNext}</kbd>
+          </div>
+        )}
+        {p.weaponPrev && (
+          <div class="keybind-row">
+            <span class="keybind-label">Prev Weapon</span><kbd>{p.weaponPrev}</kbd>
+          </div>
+        )}
       </div>
     </section>
 
@@ -856,85 +872,120 @@ const schema = {
         <div class="season-grid">
           {seasonStats.career && (
             <div class="season-career">
-              <table class="settings-table stats-with-pct">
+              <div class="stat-rows">
                 {seasonStats.career.matches_played != null && (() => {
                   const pct = getPercentile(seasonStats.career.matches_played, allGames);
                   return (
-                    <tr>
-                      <td>Games</td>
-                      <td>{seasonStats.career.matches_played}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allGames))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Games</span>
+                      <span class="stat-value">{seasonStats.career.matches_played}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allGames))}</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.win_rate != null && (() => {
                   const pct = getPercentile(seasonStats.career.win_rate, allWinRate);
                   return (
-                    <tr>
-                      <td>Win Rate</td>
-                      <td>{seasonStats.career.win_rate}%</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allWinRate))}%)</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Win Rate</span>
+                      <span class="stat-value">{seasonStats.career.win_rate}%</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allWinRate))}%</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.kd_ratio != null && (() => {
                   const pct = getPercentile(seasonStats.career.kd_ratio, allKD);
                   return (
-                    <tr>
-                      <td>K/D</td>
-                      <td>{seasonStats.career.kd_ratio.toFixed(2)}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allKD), 2)})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">K/D</span>
+                      <span class="stat-value">{seasonStats.career.kd_ratio.toFixed(2)}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allKD), 2)}</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.total_kills != null && (() => {
                   const pct = getPercentile(seasonStats.career.total_kills, allKills);
                   return (
-                    <tr>
-                      <td>Kills</td>
-                      <td>{seasonStats.career.total_kills}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allKills))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Kills</span>
+                      <span class="stat-value">{seasonStats.career.total_kills}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allKills))}</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.total_deaths != null && (() => {
                   const pct = getPercentile(seasonStats.career.total_deaths, allDeaths, false);
                   return (
-                    <tr>
-                      <td>Deaths</td>
-                      <td>{seasonStats.career.total_deaths}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allDeaths))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Deaths</span>
+                      <span class="stat-value">{seasonStats.career.total_deaths}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allDeaths))}</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.damage_per_minute != null && (() => {
                   const pct = getPercentile(seasonStats.career.damage_per_minute, allDPM);
                   return (
-                    <tr>
-                      <td>DPM</td>
-                      <td>{Math.round(seasonStats.career.damage_per_minute)}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allDPM))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">DPM</span>
+                      <span class="stat-value">{Math.round(seasonStats.career.damage_per_minute)}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allDPM))}</span>
+                    </div>
                   );
                 })()}
                 {seasonStats.career.max_streak != null && (() => {
                   const pct = getPercentile(seasonStats.career.max_streak, allStreak);
                   return (
-                    <tr>
-                      <td>Best Streak</td>
-                      <td>{seasonStats.career.max_streak}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allStreak))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Best Streak</span>
+                      <span class="stat-value">{seasonStats.career.max_streak}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allStreak))}</span>
+                    </div>
                   );
                 })()}
-              </table>
+              </div>
             </div>
           )}
 
@@ -997,63 +1048,88 @@ const schema = {
           {flagData && (
             <div class="season-flags">
               <h3>Flag Stats (Season)</h3>
-              <table class="settings-table stats-with-pct">
+              <div class="stat-rows">
                 {flagData.captures != null && (() => {
                   const pct = getPercentile(flagData.captures, allCaptures);
                   return (
-                    <tr>
-                      <td>&#127988; Captures</td>
-                      <td>{flagData.captures}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allCaptures))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Captures</span>
+                      <span class="stat-value">{flagData.captures}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allCaptures))}</span>
+                    </div>
                   );
                 })()}
                 {flagData.returns != null && (() => {
                   const pct = getPercentile(flagData.returns, allReturns);
                   return (
-                    <tr>
-                      <td>&#128737; Returns</td>
-                      <td>{flagData.returns}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allReturns))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Returns</span>
+                      <span class="stat-value">{flagData.returns}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allReturns))}</span>
+                    </div>
                   );
                 })()}
                 {flagData.pickups != null && (() => {
                   const pct = getPercentile(flagData.pickups, allPickups);
                   return (
-                    <tr>
-                      <td>&#128230; Pickups</td>
-                      <td>{flagData.pickups}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allPickups))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Pickups</span>
+                      <span class="stat-value">{flagData.pickups}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allPickups))}</span>
+                    </div>
                   );
                 })()}
                 {flagData.defends != null && (() => {
                   const pct = getPercentile(flagData.defends, allDefends);
                   return (
-                    <tr>
-                      <td>&#128737; Defends</td>
-                      <td>{flagData.defends}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allDefends))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Defends</span>
+                      <span class="stat-value">{flagData.defends}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allDefends))}</span>
+                    </div>
                   );
                 })()}
                 {flagData.assists != null && (() => {
                   const pct = getPercentile(flagData.assists, allAssists);
                   return (
-                    <tr>
-                      <td>&#129309; Assists</td>
-                      <td>{flagData.assists}</td>
-                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
-                      <td class="stat-avg">(avg: {formatAvg(average(allAssists))})</td>
-                    </tr>
+                    <div class="stat-row">
+                      <span class="stat-label">Assists</span>
+                      <span class="stat-value">{flagData.assists}</span>
+                      <div class="stat-bar-wrap">
+                        <div class="stat-bar-track">
+                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
+                        </div>
+                      </div>
+                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(allAssists))}</span>
+                    </div>
                   );
                 })()}
-              </table>
+              </div>
             </div>
           )}
 
@@ -1071,9 +1147,15 @@ const schema = {
                       ) : (
                         <span class="rivalry-name">{nemesisName}</span>
                       )}
-                      {nemesisData.deaths_to != null && (
-                        <span class="rivalry-detail">killed you {nemesisData.deaths_to} times</span>
-                      )}
+                      <span class="rivalry-detail">
+                        {nemesisData.kills_against != null && nemesisData.deaths_to != null
+                          ? `${nemesisData.kills_against}-${nemesisData.deaths_to}`
+                          : nemesisData.deaths_to != null
+                            ? `died ${nemesisData.deaths_to} times`
+                            : ''}
+                        {nemesisData.kd_ratio != null && ` (${nemesisData.kd_ratio.toFixed(2)} K/D)`}
+                        {nemesisData.matches_together != null && ` · ${nemesisData.matches_together} ${nemesisData.matches_together === 1 ? 'game' : 'games'}`}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -1087,9 +1169,15 @@ const schema = {
                       ) : (
                         <span class="rivalry-name">{victimName}</span>
                       )}
-                      {victimData.kills_against != null && (
-                        <span class="rivalry-detail">you killed {victimData.kills_against} times</span>
-                      )}
+                      <span class="rivalry-detail">
+                        {victimData.kills_against != null && victimData.deaths_to != null
+                          ? `${victimData.kills_against}-${victimData.deaths_to}`
+                          : victimData.kills_against != null
+                            ? `killed ${victimData.kills_against} times`
+                            : ''}
+                        {victimData.kd_ratio != null && ` (${victimData.kd_ratio.toFixed(2)} K/D)`}
+                        {victimData.matches_together != null && ` · ${victimData.matches_together} ${victimData.matches_together === 1 ? 'game' : 'games'}`}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -1921,10 +2009,38 @@ const schema = {
     letter-spacing: 0.05em;
   }
 
-  .keybinds-grid {
+  .keybinds-compact {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .keybind-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .keybind-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    min-width: 5rem;
+  }
+
+  .keybinds-compact kbd {
+    display: inline-block;
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #3a3a45);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary, #e8e8f0);
+    text-transform: uppercase;
+    line-height: 1.4;
+    white-space: nowrap;
   }
 
   .similar-section {
@@ -2188,26 +2304,68 @@ const schema = {
     align-items: start;
   }
 
-  .season-career .settings-table {
-    width: auto;
+  .stat-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .season-career .settings-table td:first-child {
-    width: auto;
-    padding-right: 1.5rem;
+  .stat-row {
+    display: grid;
+    grid-template-columns: 5.5rem 4.5rem 1fr auto auto;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   }
 
-  .stats-with-pct td:nth-child(2) {
+  .stat-row:last-child {
+    border-bottom: none;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    white-space: nowrap;
+  }
+
+  .stat-value {
     font-weight: 600;
     font-family: monospace;
-    padding-right: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-primary, #e8e8f0);
+    text-align: right;
   }
+
+  .stat-bar-wrap {
+    min-width: 60px;
+    max-width: 120px;
+  }
+
+  .stat-bar-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .stat-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+
+  .pct-elite-bg { background: #2ecc71; }
+  .pct-good-bg { background: #7ed957; }
+  .pct-avg-bg { background: #f1c40f; }
+  .pct-below-bg { background: rgba(144, 144, 160, 0.4); }
 
   .stat-pct {
     font-size: 0.75rem;
     font-weight: 600;
-    padding-right: 0.5rem;
     white-space: nowrap;
+    text-align: right;
+    min-width: 4rem;
   }
 
   .pct-elite {
@@ -2227,9 +2385,11 @@ const schema = {
   }
 
   .stat-avg {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-secondary, #6b7280);
     white-space: nowrap;
+    min-width: 4.5rem;
+    text-align: right;
   }
 
   .season-weapons h3 {
@@ -2257,20 +2417,6 @@ const schema = {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.75rem;
-  }
-
-  .season-flags .settings-table {
-    width: auto;
-  }
-
-  .season-flags .settings-table td:first-child {
-    width: auto;
-    padding-right: 1.5rem;
-  }
-
-  .season-flags .settings-table td:nth-child(2) {
-    font-weight: 600;
-    font-family: monospace;
   }
 
   .rivalry-cards {
@@ -2396,8 +2542,17 @@ const schema = {
       grid-template-columns: 1fr;
     }
 
-    .keybinds-grid {
-      grid-template-columns: 1fr;
+    .keybinds-compact {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-row {
+      grid-template-columns: 5rem 3.5rem 1fr auto auto;
+      gap: 0.4rem;
+    }
+
+    .stat-bar-wrap {
+      min-width: 40px;
     }
   }
 </style>

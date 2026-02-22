@@ -57,7 +57,8 @@ function validateSteamId(id, playerName) {
 
   // Heuristic warning: IDs ending in 00 are highly suspect (common float rounding)
   // Only warn on YAML files, not HoQ (which is source of truth)
-  if (!playerName.startsWith('HoQ:') && id.endsWith('00')) {
+  const knownGoodIds = ['76561198129795100']; // FizzY
+  if (!playerName.startsWith('HoQ:') && id.endsWith('00') && !knownGoodIds.includes(id)) {
     console.warn(`  ⚠️  ${playerName}: steamId ends in 00 - verify not float-corrupted: ${id}`);
   }
 }
