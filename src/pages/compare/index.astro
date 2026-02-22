@@ -100,6 +100,8 @@ const schema = {
   </div>
 
   <div id="h2h-container" class="h2h-container hidden"></div>
+  <div id="season-compare-container" class="season-compare-container hidden"></div>
+  <div id="rivalries-container" class="rivalries-container hidden"></div>
 
   <div id="empty-state" class="empty-state">
     <p>Select two players above to compare their settings</p>
@@ -115,6 +117,8 @@ const schema = {
       const p1Header = document.getElementById('p1-header');
       const p2Header = document.getElementById('p2-header');
       const h2hContainer = document.getElementById('h2h-container');
+      const seasonCompareContainer = document.getElementById('season-compare-container');
+      const rivalriesContainer = document.getElementById('rivalries-container');
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -349,6 +353,8 @@ const schema = {
         if (!p1Id || !p2Id) {
           comparisonContainer.classList.add('hidden');
           h2hContainer.classList.add('hidden');
+          seasonCompareContainer.classList.add('hidden');
+          rivalriesContainer.classList.add('hidden');
           emptyState.classList.remove('hidden');
           return;
         }
@@ -465,6 +471,8 @@ const schema = {
 
         compareBody.innerHTML = html;
         updateH2H(p1, p2);
+        updateSeasonCompare(p1, p2);
+        updateRivalries(p1, p2);
       }
 
       function updateH2H(p1, p2) {
@@ -499,26 +507,215 @@ const schema = {
         if (p1Kills == null || p2Kills == null) return;
 
         const total = p1Kills + p2Kills;
-        const winRate = total > 0 ? ((p1Kills / total) * 100).toFixed(1) : '0.0';
+        const p1Pct = total > 0 ? (p1Kills / total) * 100 : 50;
+        const winRate = p1Pct.toFixed(1);
+        const matchesTogether = match.matches_together || match.games || match.total_games || null;
 
         h2hContainer.innerHTML =
           '<div class="h2h-card">' +
-            '<h3>Head to Head</h3>' +
-            '<div class="h2h-record">' +
-              '<span class="h2h-player h2h-p1">' + p1.name + '</span>' +
-              '<span class="h2h-score">' +
-                '<span class="h2h-kills h2h-p1-color">' + p1Kills + '</span>' +
-                '<span class="h2h-dash"> \u2013 </span>' +
-                '<span class="h2h-kills h2h-p2-color">' + p2Kills + '</span>' +
-              '</span>' +
-              '<span class="h2h-player h2h-p2">' + p2.name + '</span>' +
+            '<div class="h2h-title">Head to Head</div>' +
+            '<div class="h2h-matchup">' +
+              '<div class="h2h-side h2h-left">' +
+                '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
+                '<span class="h2h-kill-count h2h-p1-color">' + p1Kills + '</span>' +
+              '</div>' +
+              '<div class="h2h-vs">vs</div>' +
+              '<div class="h2h-side h2h-right">' +
+                '<span class="h2h-kill-count h2h-p2-color">' + p2Kills + '</span>' +
+                '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
+              '</div>' +
             '</div>' +
             '<div class="h2h-bar">' +
-              '<div class="h2h-bar-fill h2h-p1-bg" style="width:' + (total > 0 ? (p1Kills / total) * 100 : 50) + '%"></div>' +
+              '<div class="h2h-bar-p1" style="width:' + p1Pct + '%"></div>' +
+              '<div class="h2h-bar-p2" style="width:' + (100 - p1Pct) + '%"></div>' +
             '</div>' +
-            '<span class="h2h-winrate">' + winRate + '% win rate for ' + p1.name + '</span>' +
+            '<div class="h2h-meta">' +
+              '<span class="h2h-winrate">' + winRate + '% kill rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
+              (matchesTogether ? '<span class="h2h-games">' + matchesTogether + ' games together</span>' : '') +
+            '</div>' +
           '</div>';
         h2hContainer.classList.remove('hidden');
+      }
+
+      function updateSeasonCompare(p1, p2) {
+        seasonCompareContainer.classList.add('hidden');
+        seasonCompareContainer.innerHTML = '';
+
+        if (!p1.steamId || !p2.steamId) return;
+
+        const p1Stats = seasonStatsData[p1.steamId];
+        const p2Stats = seasonStatsData[p2.steamId];
+        if (!p1Stats && !p2Stats) return;
+
+        const p1Career = p1Stats?.career;
+        const p2Career = p2Stats?.career;
+        const p1Flags = p1Stats?.flagStats?.data || p1Stats?.flagStats;
+        const p2Flags = p2Stats?.flagStats?.data || p2Stats?.flagStats;
+
+        // Need at least some career data
+        if (!p1Career && !p2Career) return;
+
+        function getVal(obj, keys) {
+          if (!obj) return null;
+          for (const k of keys) {
+            if (obj[k] != null) return obj[k];
+          }
+          return null;
+        }
+
+        function calcWinRate(career) {
+          if (!career) return null;
+          const w = getVal(career, ['wins', 'total_wins']) || 0;
+          const l = getVal(career, ['losses', 'total_losses']) || 0;
+          const total = w + l;
+          return total > 0 ? ((w / total) * 100).toFixed(1) : null;
+        }
+
+        function calcKD(career) {
+          if (!career) return null;
+          const k = getVal(career, ['kills', 'total_kills']) || 0;
+          const d = getVal(career, ['deaths', 'total_deaths']) || 1;
+          return d > 0 ? (k / d).toFixed(2) : null;
+        }
+
+        function calcDPM(career) {
+          if (!career) return null;
+          const dmg = getVal(career, ['damage_dealt', 'total_damage', 'damage']) || 0;
+          const time = getVal(career, ['play_time', 'total_play_time', 'time_played']) || 0;
+          if (time <= 0) return null;
+          return Math.round(dmg / (time / 60));
+        }
+
+        // Build stat rows: [label, p1Value, p2Value, higherIsBetter]
+        const rows = [];
+
+        const p1Games = getVal(p1Career, ['games', 'total_games', 'matches']) || 0;
+        const p2Games = getVal(p2Career, ['games', 'total_games', 'matches']) || 0;
+        if (p1Games || p2Games) rows.push(['Games', p1Games || '\u2014', p2Games || '\u2014', true]);
+
+        const p1WR = calcWinRate(p1Career);
+        const p2WR = calcWinRate(p2Career);
+        if (p1WR || p2WR) rows.push(['Win Rate', p1WR ? p1WR + '%' : '\u2014', p2WR ? p2WR + '%' : '\u2014', true]);
+
+        const p1KD = calcKD(p1Career);
+        const p2KD = calcKD(p2Career);
+        if (p1KD || p2KD) rows.push(['K/D', p1KD || '\u2014', p2KD || '\u2014', true]);
+
+        const p1DPM = calcDPM(p1Career);
+        const p2DPM = calcDPM(p2Career);
+        if (p1DPM || p2DPM) rows.push(['DPM', p1DPM || '\u2014', p2DPM || '\u2014', true]);
+
+        const p1Kills = getVal(p1Career, ['kills', 'total_kills']) || 0;
+        const p2Kills = getVal(p2Career, ['kills', 'total_kills']) || 0;
+        if (p1Kills || p2Kills) rows.push(['Kills', p1Kills || '\u2014', p2Kills || '\u2014', true]);
+
+        const p1Streak = getVal(p1Career, ['best_streak', 'best_killstreak', 'kill_streak']) || 0;
+        const p2Streak = getVal(p2Career, ['best_streak', 'best_killstreak', 'kill_streak']) || 0;
+        if (p1Streak || p2Streak) rows.push(['Best Streak', p1Streak || '\u2014', p2Streak || '\u2014', true]);
+
+        // Flag stats
+        const p1Caps = getVal(p1Flags, ['captures', 'flag_captures', 'total_captures']) || 0;
+        const p2Caps = getVal(p2Flags, ['captures', 'flag_captures', 'total_captures']) || 0;
+        const p1Rets = getVal(p1Flags, ['returns', 'flag_returns', 'total_returns']) || 0;
+        const p2Rets = getVal(p2Flags, ['returns', 'flag_returns', 'total_returns']) || 0;
+
+        const hasFlags = p1Caps || p2Caps || p1Rets || p2Rets;
+
+        if (rows.length === 0 && !hasFlags) return;
+
+        function statRow(label, v1, v2, higherBetter) {
+          const n1 = parseFloat(v1);
+          const n2 = parseFloat(v2);
+          let p1Class = '';
+          let p2Class = '';
+          if (!isNaN(n1) && !isNaN(n2) && n1 !== n2) {
+            if (higherBetter) {
+              p1Class = n1 > n2 ? 'stat-better' : 'stat-worse';
+              p2Class = n2 > n1 ? 'stat-better' : 'stat-worse';
+            } else {
+              p1Class = n1 < n2 ? 'stat-better' : 'stat-worse';
+              p2Class = n2 < n1 ? 'stat-better' : 'stat-worse';
+            }
+          }
+          return '<tr>' +
+            '<td class="sc-val ' + p1Class + '">' + v1 + '</td>' +
+            '<td class="sc-label">' + label + '</td>' +
+            '<td class="sc-val ' + p2Class + '">' + v2 + '</td>' +
+          '</tr>';
+        }
+
+        let tableRows = '';
+        for (const [label, v1, v2, hb] of rows) {
+          tableRows += statRow(label, v1, v2, hb);
+        }
+
+        let flagRows = '';
+        if (hasFlags) {
+          if (p1Caps || p2Caps) flagRows += statRow('Captures', p1Caps || '\u2014', p2Caps || '\u2014', true);
+          if (p1Rets || p2Rets) flagRows += statRow('Returns', p1Rets || '\u2014', p2Rets || '\u2014', true);
+        }
+
+        seasonCompareContainer.innerHTML =
+          '<div class="sc-card">' +
+            '<div class="sc-title">Season Stats</div>' +
+            '<table class="sc-table">' +
+              '<thead><tr>' +
+                '<th class="sc-th-player h2h-p1-color">' + p1.name + '</th>' +
+                '<th class="sc-th-label"></th>' +
+                '<th class="sc-th-player h2h-p2-color">' + p2.name + '</th>' +
+              '</tr></thead>' +
+              '<tbody>' + tableRows + '</tbody>' +
+              (flagRows ? '<tbody class="sc-flag-section"><tr><td colspan="3" class="sc-section-label">Flag Stats</td></tr>' + flagRows + '</tbody>' : '') +
+            '</table>' +
+          '</div>';
+        seasonCompareContainer.classList.remove('hidden');
+      }
+
+      function updateRivalries(p1, p2) {
+        rivalriesContainer.classList.add('hidden');
+        rivalriesContainer.innerHTML = '';
+
+        if (!p1.steamId || !p2.steamId) return;
+
+        const p1Stats = seasonStatsData[p1.steamId];
+        const p2Stats = seasonStatsData[p2.steamId];
+
+        const p1Nem = p1Stats?.nemesis?.data || p1Stats?.nemesis;
+        const p2Nem = p2Stats?.nemesis?.data || p2Stats?.nemesis;
+        const p1Vic = p1Stats?.favoriteVictim?.data || p1Stats?.favoriteVictim;
+        const p2Vic = p2Stats?.favoriteVictim?.data || p2Stats?.favoriteVictim;
+
+        if (!p1Nem && !p2Nem && !p1Vic && !p2Vic) return;
+
+        function rivalryEntry(label, data) {
+          if (!data) return '<div class="rv-entry"><span class="rv-type">' + label + '</span><span class="rv-unknown">\u2014</span></div>';
+          const name = data.name || data.opponent_name || '???';
+          const kd = data.kd_ratio != null ? parseFloat(data.kd_ratio).toFixed(2) : null;
+          return '<div class="rv-entry">' +
+            '<span class="rv-type">' + label + '</span>' +
+            '<span class="rv-name">' + name + '</span>' +
+            (kd ? '<span class="rv-kd">' + kd + ' K/D</span>' : '') +
+          '</div>';
+        }
+
+        rivalriesContainer.innerHTML =
+          '<div class="rv-card">' +
+            '<div class="rv-title">Rivalries</div>' +
+            '<div class="rv-columns">' +
+              '<div class="rv-col rv-col-left">' +
+                '<div class="rv-player-name h2h-p1-color">' + p1.name + '</div>' +
+                rivalryEntry('Nemesis', p1Nem) +
+                rivalryEntry('Favorite Victim', p1Vic) +
+              '</div>' +
+              '<div class="rv-divider"></div>' +
+              '<div class="rv-col rv-col-right">' +
+                '<div class="rv-player-name h2h-p2-color">' + p2.name + '</div>' +
+                rivalryEntry('Nemesis', p2Nem) +
+                rivalryEntry('Favorite Victim', p2Vic) +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        rivalriesContainer.classList.remove('hidden');
       }
 
       function sectionHeader(title) {
@@ -833,6 +1030,8 @@ const schema = {
     border-radius: 2px;
   }
 
+  /* --- Head to Head --- */
+
   .h2h-container {
     display: flex;
     justify-content: center;
@@ -847,65 +1046,354 @@ const schema = {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
     border-radius: 8px;
-    padding: 1.25rem 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
   }
 
-  .h2h-card h3 {
+  .h2h-title {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent-primary, #ff6b35);
-    margin: 0 0 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
   }
 
-  .h2h-record {
+  .h2h-matchup {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
-  .h2h-player {
-    font-size: 0.9rem;
+  .h2h-side {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .h2h-left {
+    justify-content: flex-end;
+  }
+
+  .h2h-right {
+    justify-content: flex-start;
+  }
+
+  .h2h-name {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-primary, #e8e8f0);
-    min-width: 80px;
   }
 
-  .h2h-p1 { text-align: right; }
-  .h2h-p2 { text-align: left; }
-
-  .h2h-score {
-    font-size: 1.5rem;
-    font-weight: 700;
+  .h2h-kill-count {
+    font-size: 1.75rem;
+    font-weight: 800;
     font-family: monospace;
+    line-height: 1;
   }
 
-  .h2h-dash { color: var(--text-secondary, #9090a0); }
+  .h2h-vs {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
   .h2h-p1-color { color: #3b82f6; }
   .h2h-p2-color { color: #f97316; }
 
   .h2h-bar {
-    height: 6px;
-    border-radius: 3px;
-    background: #f97316;
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  .h2h-bar-fill {
+  .h2h-bar-p1 {
     height: 100%;
     background: #3b82f6;
-    border-radius: 3px 0 0 3px;
+    border-radius: 4px 0 0 4px;
+    transition: width 0.3s ease;
+  }
+
+  .h2h-bar-p2 {
+    height: 100%;
+    background: #f97316;
+    border-radius: 0 4px 4px 0;
+    transition: width 0.3s ease;
+  }
+
+  .h2h-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .h2h-winrate {
     font-size: 0.8rem;
     color: var(--text-secondary, #9090a0);
+  }
+
+  .h2h-games {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  /* --- Season Stats Comparison --- */
+
+  .season-compare-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .season-compare-container.hidden {
+    display: none;
+  }
+
+  .sc-card {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .sc-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .sc-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .sc-th-player {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0 0 0.75rem;
+    width: 38%;
+  }
+
+  .sc-th-player:first-child {
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+  .sc-th-player:last-child {
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .sc-th-label {
+    width: 24%;
+    padding: 0 0 0.75rem;
+  }
+
+  .sc-table tbody tr {
+    border-top: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .sc-label {
+    text-align: center;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .sc-val {
+    font-family: monospace;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .sc-val:first-child {
+    text-align: right;
+  }
+
+  .sc-val:last-child {
+    text-align: left;
+  }
+
+  .sc-val.stat-better {
+    color: #34d399;
+    font-weight: 600;
+  }
+
+  .sc-val.stat-worse {
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .sc-section-label {
+    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary, #9090a0);
+    padding: 0.75rem 0 0.25rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .sc-flag-section tr:first-child {
+    border-top: none;
+  }
+
+  /* --- Rivalries --- */
+
+  .rivalries-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .rivalries-container.hidden {
+    display: none;
+  }
+
+  .rv-card {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .rv-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .rv-columns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .rv-col {
+    flex: 1;
+  }
+
+  .rv-col-left {
+    text-align: right;
+  }
+
+  .rv-col-right {
+    text-align: left;
+  }
+
+  .rv-divider {
+    width: 1px;
+    background: var(--border-color, #2a2a35);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  .rv-player-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .rv-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .rv-col-left .rv-entry {
+    align-items: flex-end;
+  }
+
+  .rv-col-right .rv-entry {
+    align-items: flex-start;
+  }
+
+  .rv-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .rv-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .rv-kd {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .rv-unknown {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  /* --- Mobile responsive for new sections --- */
+
+  @media (max-width: 768px) {
+    .h2h-card,
+    .sc-card,
+    .rv-card {
+      padding: 1rem 1rem;
+    }
+
+    .h2h-matchup {
+      gap: 0.5rem;
+    }
+
+    .h2h-name {
+      font-size: 0.8rem;
+    }
+
+    .h2h-kill-count {
+      font-size: 1.25rem;
+    }
+
+    .h2h-meta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .rv-columns {
+      gap: 0.75rem;
+    }
+
+    .sc-val {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.5rem;
+    }
+
+    .sc-label {
+      font-size: 0.7rem;
+    }
   }
 
 </style>
