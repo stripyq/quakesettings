@@ -88,6 +88,8 @@ const schema = {
     </table>
   </div>
 
+  <div id="h2h-container" class="h2h-container hidden"></div>
+
   <div id="empty-state" class="empty-state">
     <p>Select two players above to compare their settings</p>
   </div>
@@ -101,6 +103,8 @@ const schema = {
       const compareBody = document.getElementById('compare-body');
       const p1Header = document.getElementById('p1-header');
       const p2Header = document.getElementById('p2-header');
+      const h2hContainer = document.getElementById('h2h-container');
+      const H2H_API = 'http://77.90.2.137:8004/api';
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -334,6 +338,7 @@ const schema = {
 
         if (!p1Id || !p2Id) {
           comparisonContainer.classList.add('hidden');
+          h2hContainer.classList.add('hidden');
           emptyState.classList.remove('hidden');
           return;
         }
@@ -449,6 +454,58 @@ const schema = {
         }
 
         compareBody.innerHTML = html;
+        updateH2H(p1, p2);
+      }
+
+      async function updateH2H(p1, p2) {
+        h2hContainer.classList.add('hidden');
+        h2hContainer.innerHTML = '';
+
+        if (!p1.steamId || !p2.steamId) return;
+
+        try {
+          const res = await fetch(`${H2H_API}/ctf/players/${p1.steamId}/head-to-head`);
+          if (!res.ok) return;
+
+          const data = await res.json();
+          if (!data || !Array.isArray(data)) return;
+
+          // Find p2 in the head-to-head list
+          const match = data.find(function(entry) {
+            return entry.steam_id === p2.steamId || entry.opponent_steam_id === p2.steamId;
+          });
+
+          if (!match) return;
+
+          const p1Kills = match.kills != null ? match.kills : match.wins;
+          const p2Kills = match.deaths != null ? match.deaths : match.losses;
+
+          if (p1Kills == null || p2Kills == null) return;
+
+          const total = p1Kills + p2Kills;
+          const winRate = total > 0 ? ((p1Kills / total) * 100).toFixed(1) : '0.0';
+
+          h2hContainer.innerHTML =
+            '<div class="h2h-card">' +
+              '<h3>Head to Head</h3>' +
+              '<div class="h2h-record">' +
+                '<span class="h2h-player h2h-p1">' + p1.name + '</span>' +
+                '<span class="h2h-score">' +
+                  '<span class="h2h-kills h2h-p1-color">' + p1Kills + '</span>' +
+                  '<span class="h2h-dash"> \u2013 </span>' +
+                  '<span class="h2h-kills h2h-p2-color">' + p2Kills + '</span>' +
+                '</span>' +
+                '<span class="h2h-player h2h-p2">' + p2.name + '</span>' +
+              '</div>' +
+              '<div class="h2h-bar">' +
+                '<div class="h2h-bar-fill h2h-p1-bg" style="width:' + (total > 0 ? (p1Kills / total) * 100 : 50) + '%"></div>' +
+              '</div>' +
+              '<span class="h2h-winrate">' + winRate + '% win rate for ' + p1.name + '</span>' +
+            '</div>';
+          h2hContainer.classList.remove('hidden');
+        } catch (e) {
+          // API unreachable — silently skip
+        }
       }
 
       function sectionHeader(title) {
@@ -761,6 +818,81 @@ const schema = {
     width: 10px;
     height: 10px;
     border-radius: 2px;
+  }
+
+  .h2h-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .h2h-container.hidden {
+    display: none;
+  }
+
+  .h2h-card {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .h2h-card h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary, #ff6b35);
+    margin: 0 0 1rem;
+  }
+
+  .h2h-record {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .h2h-player {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary, #e8e8f0);
+    min-width: 80px;
+  }
+
+  .h2h-p1 { text-align: right; }
+  .h2h-p2 { text-align: left; }
+
+  .h2h-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: monospace;
+  }
+
+  .h2h-dash { color: var(--text-secondary, #9090a0); }
+  .h2h-p1-color { color: #3b82f6; }
+  .h2h-p2-color { color: #f97316; }
+
+  .h2h-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: #f97316;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .h2h-bar-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .h2h-winrate {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
   }
 
 </style>
