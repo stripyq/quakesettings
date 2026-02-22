@@ -14,9 +14,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^4.16.0",
-    "js-yaml": "^4.1.0"
-  },
-  "devDependencies": {
-    "csv-parse": "^6.1.0"
+    "csv-parse": "^6.1.0",
+    "js-yaml": "^4.1.1"
   }
 }
