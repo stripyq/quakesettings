@@ -177,6 +177,49 @@ const avgAccuracy = { rl: 40.5, lg: 35.7, rg: 52.6 };
 // Season Stats (from HoQ 2026 S1 API)
 const seasonStats = p.steamId ? seasonStatsData[p.steamId] : null;
 
+// Calculate percentiles and averages across all players with season data
+const allSeasonPlayers = Object.values(seasonStatsData).filter((s: any) => s.career) as any[];
+
+function average(values: number[]): number {
+  if (values.length === 0) return 0;
+  return values.reduce((a, b) => a + b, 0) / values.length;
+}
+
+function getPercentile(value: number, allValues: number[], higherIsBetter = true): number {
+  if (allValues.length === 0) return 50;
+  const count = allValues.filter(v => higherIsBetter ? v < value : v > value).length;
+  return Math.round(100 - (count / allValues.length) * 100);
+}
+
+function formatAvg(n: number, decimals = 0): string {
+  return decimals > 0 ? n.toFixed(decimals) : Math.round(n).toString();
+}
+
+// Collect stat arrays for career stats
+const allGames = allSeasonPlayers.map(s => s.career.matches_played).filter((v: any) => v != null);
+const allWinRate = allSeasonPlayers.map(s => s.career.win_rate).filter((v: any) => v != null);
+const allKD = allSeasonPlayers.map(s => s.career.kd_ratio).filter((v: any) => v != null);
+const allKills = allSeasonPlayers.map(s => s.career.total_kills).filter((v: any) => v != null);
+const allDeaths = allSeasonPlayers.map(s => s.career.total_deaths).filter((v: any) => v != null);
+const allDPM = allSeasonPlayers.map(s => s.career.damage_per_minute).filter((v: any) => v != null);
+const allStreak = allSeasonPlayers.map(s => s.career.max_streak).filter((v: any) => v != null);
+
+// Collect stat arrays for flag stats
+const allFlagPlayers = allSeasonPlayers.filter(s => s.flagStats?.data);
+const allCaptures = allFlagPlayers.map(s => s.flagStats.data.captures).filter((v: any) => v != null);
+const allReturns = allFlagPlayers.map(s => s.flagStats.data.returns).filter((v: any) => v != null);
+const allPickups = allFlagPlayers.map(s => s.flagStats.data.pickups).filter((v: any) => v != null);
+const allDefends = allFlagPlayers.map(s => s.flagStats.data.defends).filter((v: any) => v != null);
+const allAssists = allFlagPlayers.map(s => s.flagStats.data.assists).filter((v: any) => v != null);
+
+// Percentile color class
+function pctClass(pct: number): string {
+  if (pct <= 10) return 'pct-elite';
+  if (pct <= 25) return 'pct-good';
+  if (pct <= 50) return 'pct-avg';
+  return 'pct-below';
+}
+
 // Helper to find a weapon entry from the weapons array
 function getWeapon(weapons: any[] | undefined, name: string) {
   return weapons?.find((w: any) => w.weapon === name);
@@ -588,28 +631,84 @@ const schema = {
         <div class="season-grid">
           {seasonStats.career && (
             <div class="season-career">
-              <table class="settings-table">
-                {seasonStats.career.matches_played != null && (
-                  <tr><td>Games</td><td>{seasonStats.career.matches_played}</td></tr>
-                )}
-                {seasonStats.career.win_rate != null && (
-                  <tr><td>Win Rate</td><td>{seasonStats.career.win_rate}%</td></tr>
-                )}
-                {seasonStats.career.kd_ratio != null && (
-                  <tr><td>K/D</td><td>{seasonStats.career.kd_ratio.toFixed(2)}</td></tr>
-                )}
-                {seasonStats.career.total_kills != null && (
-                  <tr><td>Kills</td><td>{seasonStats.career.total_kills}</td></tr>
-                )}
-                {seasonStats.career.total_deaths != null && (
-                  <tr><td>Deaths</td><td>{seasonStats.career.total_deaths}</td></tr>
-                )}
-                {seasonStats.career.damage_per_minute != null && (
-                  <tr><td>DPM</td><td>{Math.round(seasonStats.career.damage_per_minute)}</td></tr>
-                )}
-                {seasonStats.career.max_streak != null && (
-                  <tr><td>Best Streak</td><td>{seasonStats.career.max_streak}</td></tr>
-                )}
+              <table class="settings-table stats-with-pct">
+                {seasonStats.career.matches_played != null && (() => {
+                  const pct = getPercentile(seasonStats.career.matches_played, allGames);
+                  return (
+                    <tr>
+                      <td>Games</td>
+                      <td>{seasonStats.career.matches_played}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allGames))})</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.win_rate != null && (() => {
+                  const pct = getPercentile(seasonStats.career.win_rate, allWinRate);
+                  return (
+                    <tr>
+                      <td>Win Rate</td>
+                      <td>{seasonStats.career.win_rate}%</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allWinRate))}%)</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.kd_ratio != null && (() => {
+                  const pct = getPercentile(seasonStats.career.kd_ratio, allKD);
+                  return (
+                    <tr>
+                      <td>K/D</td>
+                      <td>{seasonStats.career.kd_ratio.toFixed(2)}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allKD), 2)})</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.total_kills != null && (() => {
+                  const pct = getPercentile(seasonStats.career.total_kills, allKills);
+                  return (
+                    <tr>
+                      <td>Kills</td>
+                      <td>{seasonStats.career.total_kills}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allKills))})</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.total_deaths != null && (() => {
+                  const pct = getPercentile(seasonStats.career.total_deaths, allDeaths, false);
+                  return (
+                    <tr>
+                      <td>Deaths</td>
+                      <td>{seasonStats.career.total_deaths}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allDeaths))})</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.damage_per_minute != null && (() => {
+                  const pct = getPercentile(seasonStats.career.damage_per_minute, allDPM);
+                  return (
+                    <tr>
+                      <td>DPM</td>
+                      <td>{Math.round(seasonStats.career.damage_per_minute)}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allDPM))})</td>
+                    </tr>
+                  );
+                })()}
+                {seasonStats.career.max_streak != null && (() => {
+                  const pct = getPercentile(seasonStats.career.max_streak, allStreak);
+                  return (
+                    <tr>
+                      <td>Best Streak</td>
+                      <td>{seasonStats.career.max_streak}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allStreak))})</td>
+                    </tr>
+                  );
+                })()}
               </table>
             </div>
           )}
@@ -673,22 +772,62 @@ const schema = {
           {flagData && (
             <div class="season-flags">
               <h3>Flag Stats (Season)</h3>
-              <table class="settings-table">
-                {flagData.captures != null && (
-                  <tr><td>&#127988; Captures</td><td>{flagData.captures}</td></tr>
-                )}
-                {flagData.returns != null && (
-                  <tr><td>&#128737; Returns</td><td>{flagData.returns}</td></tr>
-                )}
-                {flagData.pickups != null && (
-                  <tr><td>&#128230; Pickups</td><td>{flagData.pickups}</td></tr>
-                )}
-                {flagData.defends != null && (
-                  <tr><td>&#128737; Defends</td><td>{flagData.defends}</td></tr>
-                )}
-                {flagData.assists != null && (
-                  <tr><td>&#129309; Assists</td><td>{flagData.assists}</td></tr>
-                )}
+              <table class="settings-table stats-with-pct">
+                {flagData.captures != null && (() => {
+                  const pct = getPercentile(flagData.captures, allCaptures);
+                  return (
+                    <tr>
+                      <td>&#127988; Captures</td>
+                      <td>{flagData.captures}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allCaptures))})</td>
+                    </tr>
+                  );
+                })()}
+                {flagData.returns != null && (() => {
+                  const pct = getPercentile(flagData.returns, allReturns);
+                  return (
+                    <tr>
+                      <td>&#128737; Returns</td>
+                      <td>{flagData.returns}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allReturns))})</td>
+                    </tr>
+                  );
+                })()}
+                {flagData.pickups != null && (() => {
+                  const pct = getPercentile(flagData.pickups, allPickups);
+                  return (
+                    <tr>
+                      <td>&#128230; Pickups</td>
+                      <td>{flagData.pickups}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allPickups))})</td>
+                    </tr>
+                  );
+                })()}
+                {flagData.defends != null && (() => {
+                  const pct = getPercentile(flagData.defends, allDefends);
+                  return (
+                    <tr>
+                      <td>&#128737; Defends</td>
+                      <td>{flagData.defends}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allDefends))})</td>
+                    </tr>
+                  );
+                })()}
+                {flagData.assists != null && (() => {
+                  const pct = getPercentile(flagData.assists, allAssists);
+                  return (
+                    <tr>
+                      <td>&#129309; Assists</td>
+                      <td>{flagData.assists}</td>
+                      <td class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</td>
+                      <td class="stat-avg">(avg: {formatAvg(average(allAssists))})</td>
+                    </tr>
+                  );
+                })()}
               </table>
             </div>
           )}
@@ -1607,6 +1746,41 @@ const schema = {
   .season-career .settings-table td:first-child {
     width: auto;
     padding-right: 1.5rem;
+  }
+
+  .stats-with-pct td:nth-child(2) {
+    font-weight: 600;
+    font-family: monospace;
+    padding-right: 0.75rem;
+  }
+
+  .stat-pct {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .pct-elite {
+    color: #2ecc71;
+  }
+
+  .pct-good {
+    color: #7ed957;
+  }
+
+  .pct-avg {
+    color: #f1c40f;
+  }
+
+  .pct-below {
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .stat-avg {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6b7280);
+    white-space: nowrap;
   }
 
   .season-weapons h3 {
