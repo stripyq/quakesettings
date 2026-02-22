@@ -445,23 +445,26 @@ const schema = {
           {seasonStats.career && (
             <div class="season-career">
               <table class="settings-table">
-                {seasonStats.career.rating != null && (
-                  <tr><td>Season Rating</td><td>{typeof seasonStats.career.rating === 'number' ? seasonStats.career.rating.toFixed(2) : seasonStats.career.rating}</td></tr>
-                )}
-                {seasonStats.career.games != null && (
-                  <tr><td>Games</td><td>{seasonStats.career.games}</td></tr>
+                {seasonStats.career.matches_played != null && (
+                  <tr><td>Games</td><td>{seasonStats.career.matches_played}</td></tr>
                 )}
                 {seasonStats.career.win_rate != null && (
-                  <tr><td>Win Rate</td><td>{(seasonStats.career.win_rate * 100).toFixed(1)}%</td></tr>
+                  <tr><td>Win Rate</td><td>{seasonStats.career.win_rate}%</td></tr>
                 )}
-                {seasonStats.career.kd != null && (
-                  <tr><td>K/D</td><td>{seasonStats.career.kd.toFixed(2)}</td></tr>
+                {seasonStats.career.kd_ratio != null && (
+                  <tr><td>K/D</td><td>{seasonStats.career.kd_ratio.toFixed(2)}</td></tr>
                 )}
-                {seasonStats.career.dpm != null && (
-                  <tr><td>DPM</td><td>{Math.round(seasonStats.career.dpm)}</td></tr>
+                {seasonStats.career.total_kills != null && (
+                  <tr><td>Kills</td><td>{seasonStats.career.total_kills}</td></tr>
                 )}
-                {seasonStats.career.caps != null && (
-                  <tr><td>Caps</td><td>{seasonStats.career.caps}</td></tr>
+                {seasonStats.career.total_deaths != null && (
+                  <tr><td>Deaths</td><td>{seasonStats.career.total_deaths}</td></tr>
+                )}
+                {seasonStats.career.damage_per_minute != null && (
+                  <tr><td>DPM</td><td>{Math.round(seasonStats.career.damage_per_minute)}</td></tr>
+                )}
+                {seasonStats.career.max_streak != null && (
+                  <tr><td>Best Streak</td><td>{seasonStats.career.max_streak}</td></tr>
                 )}
               </table>
             </div>
