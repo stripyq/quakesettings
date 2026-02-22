@@ -167,6 +167,19 @@ const avgAccuracy = { rl: 40.5, lg: 35.7, rg: 52.6 };
 // Season Stats (from HoQ 2026 S1 API)
 const seasonStats = p.steamId ? seasonStatsData[p.steamId] : null;
 
+// Helper to find a weapon entry from the weapons array
+function getWeapon(weapons: any[] | undefined, name: string) {
+  return weapons?.find((w: any) => w.weapon === name);
+}
+
+const seasonRailgun = getWeapon(seasonStats?.weapons, 'RAILGUN');
+const seasonRocket = getWeapon(seasonStats?.weapons, 'ROCKET_LAUNCHER');
+const seasonLightning = getWeapon(seasonStats?.weapons, 'LIGHTNING_GUN');
+const seasonShotgun = getWeapon(seasonStats?.weapons, 'SHOTGUN');
+const seasonMachinegun = getWeapon(seasonStats?.weapons, 'MACHINEGUN');
+const seasonPlasma = getWeapon(seasonStats?.weapons, 'PLASMA_GUN');
+const seasonGrenade = getWeapon(seasonStats?.weapons, 'GRENADE_LAUNCHER');
+
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
@@ -434,7 +447,7 @@ const schema = {
     )}
 
     <!-- Season Stats (HoQ 2026 S1) -->
-    {seasonStats && (seasonStats.career || seasonStats.weapons) && (
+    {seasonStats && (seasonStats.career || seasonStats.weapons?.length > 0) && (
       <section class="season-section">
         <div class="season-header">
           <h2>Season Stats (2026 S1)</h2>
@@ -470,57 +483,57 @@ const schema = {
             </div>
           )}
 
-          {seasonStats.weapons && (
+          {seasonStats.weapons?.length > 0 && (
             <div class="season-weapons">
               <h3>Weapon Accuracy (Season)</h3>
               <table class="settings-table">
-                {seasonStats.weapons.railgun && (
+                {seasonRailgun && (
                   <tr>
                     <td>&#127919; Railgun</td>
-                    <td>{seasonStats.weapons.railgun.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.railgun.frags} frags</td>
+                    <td>{seasonRailgun.accuracy}%</td>
+                    <td class="text-muted">{seasonRailgun.kills} kills</td>
                   </tr>
                 )}
-                {seasonStats.weapons.lightning && (
-                  <tr>
-                    <td>&#9889; Lightning Gun</td>
-                    <td>{seasonStats.weapons.lightning.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.lightning.frags} frags</td>
-                  </tr>
-                )}
-                {seasonStats.weapons.rocket && (
+                {seasonRocket && (
                   <tr>
                     <td>&#128640; Rocket</td>
-                    <td>{seasonStats.weapons.rocket.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.rocket.frags} frags</td>
+                    <td>{seasonRocket.accuracy}%</td>
+                    <td class="text-muted">{seasonRocket.kills} kills</td>
                   </tr>
                 )}
-                {seasonStats.weapons.shotgun && (
+                {seasonLightning && (
+                  <tr>
+                    <td>&#9889; Lightning Gun</td>
+                    <td>{seasonLightning.accuracy}%</td>
+                    <td class="text-muted">{seasonLightning.kills} kills</td>
+                  </tr>
+                )}
+                {seasonShotgun && (
                   <tr>
                     <td>&#128299; Shotgun</td>
-                    <td>{seasonStats.weapons.shotgun.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.shotgun.frags} frags</td>
+                    <td>{seasonShotgun.accuracy}%</td>
+                    <td class="text-muted">{seasonShotgun.kills} kills</td>
                   </tr>
                 )}
-                {seasonStats.weapons.machinegun && (
+                {seasonMachinegun && (
                   <tr>
                     <td>&#9881; Machine Gun</td>
-                    <td>{seasonStats.weapons.machinegun.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.machinegun.frags} frags</td>
+                    <td>{seasonMachinegun.accuracy}%</td>
+                    <td class="text-muted">{seasonMachinegun.kills} kills</td>
                   </tr>
                 )}
-                {seasonStats.weapons.plasma && (
+                {seasonPlasma && (
                   <tr>
                     <td>&#128154; Plasma</td>
-                    <td>{seasonStats.weapons.plasma.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.plasma.frags} frags</td>
+                    <td>{seasonPlasma.accuracy}%</td>
+                    <td class="text-muted">{seasonPlasma.kills} kills</td>
                   </tr>
                 )}
-                {seasonStats.weapons.grenade && (
+                {seasonGrenade && (
                   <tr>
                     <td>&#128163; Grenade</td>
-                    <td>{seasonStats.weapons.grenade.accuracy}%</td>
-                    <td class="text-muted">{seasonStats.weapons.grenade.frags} frags</td>
+                    <td>{seasonGrenade.accuracy}%</td>
+                    <td class="text-muted">{seasonGrenade.kills} kills</td>
                   </tr>
                 )}
               </table>
