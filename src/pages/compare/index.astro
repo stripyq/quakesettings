@@ -13,6 +13,17 @@ try {
   // No season stats available yet
 }
 
+// Load player registry for name lookups (API returns current Steam names which may differ)
+let registryNameMap: Record<string, string> = {};
+try {
+  const registryPath = path.join(process.cwd(), 'src/data/player-registry.json');
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  const entries = registry.players || [];
+  registryNameMap = Object.fromEntries(entries.map((p: { steamId: string; name: string }) => [p.steamId, p.name]));
+} catch {
+  // Registry not available
+}
+
 // Get all data for client-side comparison (filter out unpublished)
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
@@ -107,7 +118,7 @@ const schema = {
     <p>Select two players above to compare their settings</p>
   </div>
 
-  <script define:vars={{ playersData, base, seasonStatsData }}>
+  <script define:vars={{ playersData, base, seasonStatsData, registryNameMap }}>
     document.addEventListener('DOMContentLoaded', function() {
       const player1Select = document.getElementById('player1');
       const player2Select = document.getElementById('player2');
@@ -689,7 +700,8 @@ const schema = {
 
         function rivalryEntry(label, data) {
           if (!data) return '<div class="rv-entry"><span class="rv-type">' + label + '</span><span class="rv-unknown">\u2014</span></div>';
-          const name = data.name || data.opponent_name || '???';
+          const opponentId = data.opponent_steam_id || data.steam_id;
+          const name = (opponentId && registryNameMap[opponentId]) || data.name || data.opponent_name || '???';
           const kd = data.kd_ratio != null ? parseFloat(data.kd_ratio).toFixed(2) : null;
           return '<div class="rv-entry">' +
             '<span class="rv-type">' + label + '</span>' +
