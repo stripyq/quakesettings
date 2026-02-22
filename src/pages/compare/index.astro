@@ -467,18 +467,25 @@ const schema = {
           const res = await fetch(`${H2H_API}/ctf/players/${p1.steamId}/head-to-head`);
           if (!res.ok) return;
 
-          const data = await res.json();
-          if (!data || !Array.isArray(data)) return;
+          const raw = await res.json();
+
+          // API may return { data: [...] } or a plain array
+          const data = Array.isArray(raw) ? raw : (Array.isArray(raw?.data) ? raw.data : null);
+          if (!data) return;
 
           // Find p2 in the head-to-head list
           const match = data.find(function(entry) {
-            return entry.steam_id === p2.steamId || entry.opponent_steam_id === p2.steamId;
+            return entry.steam_id === p2.steamId
+              || entry.opponent_steam_id === p2.steamId;
           });
 
           if (!match) return;
 
-          const p1Kills = match.kills != null ? match.kills : match.wins;
-          const p2Kills = match.deaths != null ? match.deaths : match.losses;
+          // Support both possible field name conventions
+          const p1Kills = match.kills_against != null ? match.kills_against
+            : (match.kills != null ? match.kills : match.wins);
+          const p2Kills = match.deaths_to != null ? match.deaths_to
+            : (match.deaths != null ? match.deaths : match.losses);
 
           if (p1Kills == null || p2Kills == null) return;
 
