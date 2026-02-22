@@ -1,6 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Load season stats (pre-fetched by scripts/fetch-season-stats.cjs)
+let seasonStatsData: Record<string, any> = {};
+try {
+  const seasonPath = path.join(process.cwd(), 'public/data/season-stats.json');
+  seasonStatsData = JSON.parse(fs.readFileSync(seasonPath, 'utf8'));
+} catch {
+  // No season stats available yet
+}
 
 // Get all data for client-side comparison (filter out unpublished)
 const allPlayers = await getCollection('players');
@@ -94,7 +105,7 @@ const schema = {
     <p>Select two players above to compare their settings</p>
   </div>
 
-  <script define:vars={{ playersData, base }}>
+  <script define:vars={{ playersData, base, seasonStatsData }}>
     document.addEventListener('DOMContentLoaded', function() {
       const player1Select = document.getElementById('player1');
       const player2Select = document.getElementById('player2');
@@ -104,7 +115,6 @@ const schema = {
       const p1Header = document.getElementById('p1-header');
       const p2Header = document.getElementById('p2-header');
       const h2hContainer = document.getElementById('h2h-container');
-      const H2H_API = 'http://77.90.2.137:8004/api';
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -457,62 +467,58 @@ const schema = {
         updateH2H(p1, p2);
       }
 
-      async function updateH2H(p1, p2) {
+      function updateH2H(p1, p2) {
         h2hContainer.classList.add('hidden');
         h2hContainer.innerHTML = '';
 
         if (!p1.steamId || !p2.steamId) return;
 
-        try {
-          const res = await fetch(`${H2H_API}/ctf/players/${p1.steamId}/head-to-head`);
-          if (!res.ok) return;
+        // Look up pre-fetched head-to-head data from season stats
+        const p1Stats = seasonStatsData[p1.steamId];
+        const raw = p1Stats?.headToHead;
+        if (!raw) return;
 
-          const raw = await res.json();
+        // Data may be { data: [...] } or a plain array
+        const data = Array.isArray(raw) ? raw : (Array.isArray(raw?.data) ? raw.data : null);
+        if (!data) return;
 
-          // API may return { data: [...] } or a plain array
-          const data = Array.isArray(raw) ? raw : (Array.isArray(raw?.data) ? raw.data : null);
-          if (!data) return;
+        // Find p2 in the head-to-head list
+        const match = data.find(function(entry) {
+          return entry.steam_id === p2.steamId
+            || entry.opponent_steam_id === p2.steamId;
+        });
 
-          // Find p2 in the head-to-head list
-          const match = data.find(function(entry) {
-            return entry.steam_id === p2.steamId
-              || entry.opponent_steam_id === p2.steamId;
-          });
+        if (!match) return;
 
-          if (!match) return;
+        // Support both possible field name conventions
+        const p1Kills = match.kills_against != null ? match.kills_against
+          : (match.kills != null ? match.kills : match.wins);
+        const p2Kills = match.deaths_to != null ? match.deaths_to
+          : (match.deaths != null ? match.deaths : match.losses);
 
-          // Support both possible field name conventions
-          const p1Kills = match.kills_against != null ? match.kills_against
-            : (match.kills != null ? match.kills : match.wins);
-          const p2Kills = match.deaths_to != null ? match.deaths_to
-            : (match.deaths != null ? match.deaths : match.losses);
+        if (p1Kills == null || p2Kills == null) return;
 
-          if (p1Kills == null || p2Kills == null) return;
+        const total = p1Kills + p2Kills;
+        const winRate = total > 0 ? ((p1Kills / total) * 100).toFixed(1) : '0.0';
 
-          const total = p1Kills + p2Kills;
-          const winRate = total > 0 ? ((p1Kills / total) * 100).toFixed(1) : '0.0';
-
-          h2hContainer.innerHTML =
-            '<div class="h2h-card">' +
-              '<h3>Head to Head</h3>' +
-              '<div class="h2h-record">' +
-                '<span class="h2h-player h2h-p1">' + p1.name + '</span>' +
-                '<span class="h2h-score">' +
-                  '<span class="h2h-kills h2h-p1-color">' + p1Kills + '</span>' +
-                  '<span class="h2h-dash"> \u2013 </span>' +
-                  '<span class="h2h-kills h2h-p2-color">' + p2Kills + '</span>' +
-                '</span>' +
-                '<span class="h2h-player h2h-p2">' + p2.name + '</span>' +
-              '</div>' +
-              '<div class="h2h-bar">' +
-                '<div class="h2h-bar-fill h2h-p1-bg" style="width:' + (total > 0 ? (p1Kills / total) * 100 : 50) + '%"></div>' +
-              '</div>' +
-              '<span class="h2h-winrate">' + winRate + '% win rate for ' + p1.name + '</span>' +
-            '</div>';
-          h2hContainer.classList.remove('hidden');
-        } catch (e) {
-          // API unreachable — silently skip
-        }
+        h2hContainer.innerHTML =
+          '<div class="h2h-card">' +
+            '<h3>Head to Head</h3>' +
+            '<div class="h2h-record">' +
+              '<span class="h2h-player h2h-p1">' + p1.name + '</span>' +
+              '<span class="h2h-score">' +
+                '<span class="h2h-kills h2h-p1-color">' + p1Kills + '</span>' +
+                '<span class="h2h-dash"> \u2013 </span>' +
+                '<span class="h2h-kills h2h-p2-color">' + p2Kills + '</span>' +
+              '</span>' +
+              '<span class="h2h-player h2h-p2">' + p2.name + '</span>' +
+            '</div>' +
+            '<div class="h2h-bar">' +
+              '<div class="h2h-bar-fill h2h-p1-bg" style="width:' + (total > 0 ? (p1Kills / total) * 100 : 50) + '%"></div>' +
+            '</div>' +
+            '<span class="h2h-winrate">' + winRate + '% win rate for ' + p1.name + '</span>' +
+          '</div>';
+        h2hContainer.classList.remove('hidden');
       }
 
       function sectionHeader(title) {

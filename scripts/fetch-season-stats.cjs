@@ -91,15 +91,16 @@ async function fetchJson(url) {
 
 async function fetchPlayerStats(steamId) {
   try {
-    const [career, weapons, flagStats, nemesis, favoriteVictim] = await Promise.all([
+    const [career, weapons, flagStats, nemesis, favoriteVictim, headToHead] = await Promise.all([
       fetchJson(`${API_BASE}/ctf/players/${steamId}`),
       fetchJson(`${API_BASE}/ctf/weapons/${steamId}`),
       fetchJson(`${API_BASE}/ctf/ctf/${steamId}`),
       fetchJson(`${API_BASE}/ctf/players/${steamId}/nemesis`),
       fetchJson(`${API_BASE}/ctf/players/${steamId}/favorite-victim`),
+      fetchJson(`${API_BASE}/ctf/players/${steamId}/head-to-head`),
     ]);
 
-    return { career, weapons, flagStats, nemesis, favoriteVictim };
+    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead };
   } catch (error) {
     console.error(`  Error: ${error.message}`);
     return null;
@@ -148,6 +149,7 @@ async function main() {
       if (stats.flagStats) entry.flagStats = stats.flagStats;
       if (stats.nemesis) entry.nemesis = stats.nemesis;
       if (stats.favoriteVictim) entry.favoriteVictim = stats.favoriteVictim;
+      if (stats.headToHead) entry.headToHead = stats.headToHead;
       results[steamId] = entry;
       fetchedCount++;
       console.log('OK');
