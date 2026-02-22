@@ -111,6 +111,7 @@ const schema = {
   </div>
 
   <div id="h2h-container" class="h2h-container hidden"></div>
+  <div id="matchup-history-container" class="matchup-history-container hidden"></div>
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
 
@@ -128,6 +129,7 @@ const schema = {
       const p1Header = document.getElementById('p1-header');
       const p2Header = document.getElementById('p2-header');
       const h2hContainer = document.getElementById('h2h-container');
+      const matchupHistoryContainer = document.getElementById('matchup-history-container');
       const seasonCompareContainer = document.getElementById('season-compare-container');
       const rivalriesContainer = document.getElementById('rivalries-container');
 
@@ -482,6 +484,7 @@ const schema = {
 
         compareBody.innerHTML = html;
         updateH2H(p1, p2);
+        updateMatchupHistory(p1, p2);
         updateSeasonCompare(p1, p2);
         updateRivalries(p1, p2);
       }
@@ -567,6 +570,92 @@ const schema = {
             '</div>' +
           '</div>';
         h2hContainer.classList.remove('hidden');
+      }
+
+      function updateMatchupHistory(p1, p2) {
+        matchupHistoryContainer.classList.add('hidden');
+        matchupHistoryContainer.innerHTML = '';
+
+        if (!p1.steamId || !p2.steamId) return;
+
+        // Look for pre-fetched matchup data
+        const p1Stats = seasonStatsData[p1.steamId];
+        const matchup = p1Stats?.headToHeadMatchups?.[p2.steamId];
+        if (!matchup?.overall) return;
+
+        const overall = matchup.overall;
+        const won = overall.matches_won || 0;
+        const lost = overall.matches_lost || 0;
+        const played = overall.matches_played || (won + lost);
+        if (played === 0) return;
+
+        const winPct = played > 0 ? ((won / played) * 100).toFixed(1) : '0.0';
+        const p1BarW = played > 0 ? (won / played) * 100 : 50;
+
+        // Build map rows
+        let mapRows = '';
+        const maps = Array.isArray(matchup.maps) ? matchup.maps : [];
+        if (maps.length > 0) {
+          // Sort by most played
+          const sorted = maps.slice().sort(function(a, b) {
+            return (b.matches_played || 0) - (a.matches_played || 0);
+          });
+          for (const m of sorted) {
+            const mWon = m.matches_won || 0;
+            const mLost = m.matches_lost || 0;
+            const mPlayed = m.matches_played || (mWon + mLost);
+            if (mPlayed === 0) continue;
+            const mPct = mPlayed > 0 ? (mWon / mPlayed) * 100 : 50;
+            const mapName = m.map || 'Unknown';
+            const displayName = mapName.replace(/^ctf_?/i, '').replace(/_/g, ' ');
+
+            mapRows +=
+              '<div class="mh-map-row">' +
+                '<span class="mh-map-name">' + displayName + '</span>' +
+                '<div class="mh-map-bar-wrap">' +
+                  '<div class="mh-map-bar">' +
+                    '<div class="mh-map-bar-p1" style="width:' + mPct + '%"></div>' +
+                    '<div class="mh-map-bar-p2" style="width:' + (100 - mPct) + '%"></div>' +
+                  '</div>' +
+                '</div>' +
+                '<span class="mh-map-score">' + mWon + '-' + mLost + '</span>' +
+              '</div>';
+          }
+        }
+
+        matchupHistoryContainer.innerHTML =
+          '<div class="mh-card">' +
+            '<div class="mh-title">Matchup History <span class="mh-season-tag">Season</span></div>' +
+            '<div class="mh-subtitle">When on opposite teams</div>' +
+            '<div class="mh-overall">' +
+              '<div class="mh-record">' +
+                '<span class="mh-record-side">' +
+                  '<span class="h2h-p1-color mh-player-label">' + p1.name + '</span>' +
+                  '<span class="mh-win-count">' + won + 'W</span>' +
+                '</span>' +
+                '<span class="mh-record-divider">\u2013</span>' +
+                '<span class="mh-record-side">' +
+                  '<span class="mh-win-count">' + lost + 'W</span>' +
+                  '<span class="h2h-p2-color mh-player-label">' + p2.name + '</span>' +
+                '</span>' +
+              '</div>' +
+              '<div class="mh-bar">' +
+                '<div class="mh-bar-p1" style="width:' + p1BarW + '%"></div>' +
+                '<div class="mh-bar-p2" style="width:' + (100 - p1BarW) + '%"></div>' +
+              '</div>' +
+              '<div class="mh-meta">' +
+                '<span>' + winPct + '% win rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
+                '<span>' + played + ' matches</span>' +
+              '</div>' +
+            '</div>' +
+            (mapRows ?
+              '<div class="mh-maps">' +
+                '<div class="mh-maps-label">Per-Map Breakdown</div>' +
+                mapRows +
+              '</div>'
+            : '') +
+          '</div>';
+        matchupHistoryContainer.classList.remove('hidden');
       }
 
       function updateSeasonCompare(p1, p2) {
@@ -1224,6 +1313,176 @@ const schema = {
     color: var(--text-secondary, #9090a0);
   }
 
+  /* --- Matchup History --- */
+
+  .matchup-history-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .matchup-history-container.hidden {
+    display: none;
+  }
+
+  .matchup-history-container :global(.mh-card) {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .matchup-history-container :global(.mh-title) {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .matchup-history-container :global(.mh-season-tag) {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .matchup-history-container :global(.mh-subtitle) {
+    font-size: 0.7rem;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 1.25rem;
+  }
+
+  .matchup-history-container :global(.mh-record) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .matchup-history-container :global(.mh-record-side) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .matchup-history-container :global(.mh-player-label) {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .matchup-history-container :global(.mh-win-count) {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: monospace;
+    color: var(--text-primary, #e8e8f0);
+    line-height: 1;
+  }
+
+  .matchup-history-container :global(.mh-record-divider) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  .matchup-history-container :global(.mh-bar) {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .matchup-history-container :global(.mh-bar-p1) {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 3px 0 0 3px;
+    transition: width 0.3s ease;
+  }
+
+  .matchup-history-container :global(.mh-bar-p2) {
+    height: 100%;
+    background: #f97316;
+    border-radius: 0 3px 3px 0;
+    transition: width 0.3s ease;
+  }
+
+  .matchup-history-container :global(.mh-meta) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 0.25rem;
+  }
+
+  .matchup-history-container :global(.mh-maps) {
+    border-top: 1px solid var(--border-color, #2a2a35);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+  }
+
+  .matchup-history-container :global(.mh-maps-label) {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 0.75rem;
+  }
+
+  .matchup-history-container :global(.mh-map-row) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .matchup-history-container :global(.mh-map-name) {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    width: 6rem;
+    text-align: right;
+    flex-shrink: 0;
+    text-transform: capitalize;
+  }
+
+  .matchup-history-container :global(.mh-map-bar-wrap) {
+    flex: 1;
+  }
+
+  .matchup-history-container :global(.mh-map-bar) {
+    display: flex;
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .matchup-history-container :global(.mh-map-bar-p1) {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .matchup-history-container :global(.mh-map-bar-p2) {
+    height: 100%;
+    background: #f97316;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .matchup-history-container :global(.mh-map-score) {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--text-primary, #e8e8f0);
+    width: 3rem;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
   /* --- Season Stats Comparison --- */
 
   .season-compare-container {
@@ -1476,6 +1735,29 @@ const schema = {
     .h2h-container :global(.h2h-meta) {
       flex-direction: column;
       align-items: center;
+    }
+
+    .matchup-history-container :global(.mh-card) {
+      padding: 1rem 1rem;
+    }
+
+    .matchup-history-container :global(.mh-win-count) {
+      font-size: 1.2rem;
+    }
+
+    .matchup-history-container :global(.mh-player-label) {
+      font-size: 0.75rem;
+    }
+
+    .matchup-history-container :global(.mh-map-name) {
+      width: 4.5rem;
+      font-size: 0.65rem;
+    }
+
+    .matchup-history-container :global(.mh-meta) {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
     }
 
     .rivalries-container :global(.rv-columns) {

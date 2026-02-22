@@ -192,6 +192,80 @@ async function main() {
     }
   }
 
+  // --- Phase 2: Fetch detailed head-to-head matchup data for profiled player pairs ---
+  // This gets match win/loss records and per-map breakdowns that aren't in the basic h2h list
+  const profiledIds = new Set(Object.keys(results));
+  const matchupPairs = []; // [steamId, opponentId] pairs to fetch
+
+  for (const steamId of profiledIds) {
+    const h2h = results[steamId]?.headToHead;
+    if (!Array.isArray(h2h)) continue;
+    for (const entry of h2h) {
+      const opId = entry.opponent_steam_id || entry.steam_id;
+      if (opId && profiledIds.has(opId) && steamId < opId) {
+        // Only fetch each pair once (steamId < opId avoids duplicates)
+        matchupPairs.push([steamId, opId]);
+      }
+    }
+  }
+
+  if (matchupPairs.length > 0) {
+    console.log(`\n--- Fetching detailed matchup data for ${matchupPairs.length} player pairs ---\n`);
+
+    for (let i = 0; i < matchupPairs.length; i += BATCH_SIZE) {
+      const batch = matchupPairs.slice(i, i + BATCH_SIZE);
+      const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+      const totalBatches = Math.ceil(matchupPairs.length / BATCH_SIZE);
+
+      const batchResults = await Promise.all(
+        batch.map(async ([sid, oid]) => {
+          const data = await fetchJson(`${API_BASE}/ctf/players/${sid}/head-to-head/${oid}`);
+          return { sid, oid, data };
+        })
+      );
+
+      for (const { sid, oid, data } of batchResults) {
+        const matchup = data?.data || data;
+        if (!matchup) {
+          console.log(`  [batch ${batchNum}/${totalBatches}] ${results[sid]?.name} vs ${results[oid]?.name}: no data`);
+          continue;
+        }
+
+        // Store under both players keyed by opponent
+        if (!results[sid].headToHeadMatchups) results[sid].headToHeadMatchups = {};
+        if (!results[oid].headToHeadMatchups) results[oid].headToHeadMatchups = {};
+
+        results[sid].headToHeadMatchups[oid] = matchup;
+
+        // Invert W/L for the other player's perspective
+        const inverted = {
+          overall: matchup.overall ? {
+            matches_won: matchup.overall.matches_lost,
+            matches_lost: matchup.overall.matches_won,
+            matches_played: matchup.overall.matches_played,
+          } : null,
+          maps: Array.isArray(matchup.maps) ? matchup.maps.map(m => ({
+            map: m.map,
+            matches_won: m.matches_lost,
+            matches_lost: m.matches_won,
+            matches_played: m.matches_played,
+          })) : null,
+        };
+        results[oid].headToHeadMatchups[sid] = inverted;
+
+        const name1 = results[sid]?.name || sid;
+        const name2 = results[oid]?.name || oid;
+        const w = matchup.overall?.matches_won ?? '?';
+        const l = matchup.overall?.matches_lost ?? '?';
+        console.log(`  [batch ${batchNum}/${totalBatches}] ${name1} vs ${name2}: ${w}W-${l}L`);
+      }
+
+      if (i + BATCH_SIZE < matchupPairs.length) {
+        await sleep(BATCH_DELAY_MS);
+      }
+    }
+  }
+
   // Write results
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(results, null, 2));
@@ -200,6 +274,7 @@ async function main() {
   console.log(`Fetched: ${fetchedCount} players with data`);
   console.log(`No data: ${noDataCount} players`);
   if (errorCount > 0) console.log(`Errors:  ${errorCount} players`);
+  if (matchupPairs.length > 0) console.log(`Matchup pairs: ${matchupPairs.length} fetched`);
   console.log(`Total in output: ${Object.keys(results).length} players`);
   console.log(`Saved to: ${OUTPUT_PATH}`);
 }
