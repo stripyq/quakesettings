@@ -1031,6 +1031,7 @@ const schema = {
   }
 
   /* --- Head to Head --- */
+  /* Dynamic content injected via innerHTML needs :global() for Astro scoping */
 
   .h2h-container {
     display: flex;
@@ -1042,7 +1043,7 @@ const schema = {
     display: none;
   }
 
-  .h2h-card {
+  .h2h-container :global(.h2h-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
     border-radius: 8px;
@@ -1052,7 +1053,7 @@ const schema = {
     width: 100%;
   }
 
-  .h2h-title {
+  .h2h-container :global(.h2h-title) {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1061,7 +1062,7 @@ const schema = {
     margin-bottom: 1.25rem;
   }
 
-  .h2h-matchup {
+  .h2h-container :global(.h2h-matchup) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1069,34 +1070,34 @@ const schema = {
     margin-bottom: 1rem;
   }
 
-  .h2h-side {
+  .h2h-container :global(.h2h-side) {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex: 1;
   }
 
-  .h2h-left {
+  .h2h-container :global(.h2h-left) {
     justify-content: flex-end;
   }
 
-  .h2h-right {
+  .h2h-container :global(.h2h-right) {
     justify-content: flex-start;
   }
 
-  .h2h-name {
+  .h2h-container :global(.h2h-name) {
     font-size: 0.95rem;
     font-weight: 600;
   }
 
-  .h2h-kill-count {
+  .h2h-container :global(.h2h-kill-count) {
     font-size: 1.75rem;
     font-weight: 800;
     font-family: monospace;
     line-height: 1;
   }
 
-  .h2h-vs {
+  .h2h-container :global(.h2h-vs) {
     color: var(--text-secondary, #9090a0);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1104,10 +1105,11 @@ const schema = {
     flex-shrink: 0;
   }
 
-  .h2h-p1-color { color: #3b82f6; }
-  .h2h-p2-color { color: #f97316; }
+  /* Shared color classes used across h2h, season-compare, and rivalries */
+  :global(.h2h-p1-color) { color: #3b82f6; }
+  :global(.h2h-p2-color) { color: #f97316; }
 
-  .h2h-bar {
+  .h2h-container :global(.h2h-bar) {
     display: flex;
     height: 8px;
     border-radius: 4px;
@@ -1115,21 +1117,21 @@ const schema = {
     margin-bottom: 0.75rem;
   }
 
-  .h2h-bar-p1 {
+  .h2h-container :global(.h2h-bar-p1) {
     height: 100%;
     background: #3b82f6;
     border-radius: 4px 0 0 4px;
     transition: width 0.3s ease;
   }
 
-  .h2h-bar-p2 {
+  .h2h-container :global(.h2h-bar-p2) {
     height: 100%;
     background: #f97316;
     border-radius: 0 4px 4px 0;
     transition: width 0.3s ease;
   }
 
-  .h2h-meta {
+  .h2h-container :global(.h2h-meta) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1137,12 +1139,12 @@ const schema = {
     gap: 0.5rem;
   }
 
-  .h2h-winrate {
+  .h2h-container :global(.h2h-winrate) {
     font-size: 0.8rem;
     color: var(--text-secondary, #9090a0);
   }
 
-  .h2h-games {
+  .h2h-container :global(.h2h-games) {
     font-size: 0.8rem;
     color: var(--text-secondary, #9090a0);
   }
@@ -1159,7 +1161,7 @@ const schema = {
     display: none;
   }
 
-  .sc-card {
+  .season-compare-container :global(.sc-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
     border-radius: 8px;
@@ -1168,7 +1170,7 @@ const schema = {
     width: 100%;
   }
 
-  .sc-title {
+  .season-compare-container :global(.sc-title) {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1178,38 +1180,38 @@ const schema = {
     text-align: center;
   }
 
-  .sc-table {
+  .season-compare-container :global(.sc-table) {
     width: 100%;
     border-collapse: collapse;
   }
 
-  .sc-th-player {
+  .season-compare-container :global(.sc-th-player) {
     font-size: 0.85rem;
     font-weight: 700;
     padding: 0 0 0.75rem;
     width: 38%;
   }
 
-  .sc-th-player:first-child {
+  .season-compare-container :global(.sc-th-player:first-child) {
     text-align: right;
     padding-right: 1rem;
   }
 
-  .sc-th-player:last-child {
+  .season-compare-container :global(.sc-th-player:last-child) {
     text-align: left;
     padding-left: 1rem;
   }
 
-  .sc-th-label {
+  .season-compare-container :global(.sc-th-label) {
     width: 24%;
     padding: 0 0 0.75rem;
   }
 
-  .sc-table tbody tr {
+  .season-compare-container :global(.sc-table tbody tr) {
     border-top: 1px solid var(--border-color, #2a2a35);
   }
 
-  .sc-label {
+  .season-compare-container :global(.sc-label) {
     text-align: center;
     color: var(--text-secondary, #9090a0);
     font-size: 0.8rem;
@@ -1217,31 +1219,31 @@ const schema = {
     white-space: nowrap;
   }
 
-  .sc-val {
+  .season-compare-container :global(.sc-val) {
     font-family: monospace;
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
     color: var(--text-primary, #e8e8f0);
   }
 
-  .sc-val:first-child {
+  .season-compare-container :global(.sc-val:first-child) {
     text-align: right;
   }
 
-  .sc-val:last-child {
+  .season-compare-container :global(.sc-val:last-child) {
     text-align: left;
   }
 
-  .sc-val.stat-better {
+  .season-compare-container :global(.sc-val.stat-better) {
     color: #34d399;
     font-weight: 600;
   }
 
-  .sc-val.stat-worse {
+  .season-compare-container :global(.sc-val.stat-worse) {
     color: var(--text-secondary, #9090a0);
   }
 
-  .sc-section-label {
+  .season-compare-container :global(.sc-section-label) {
     text-align: center;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1251,7 +1253,7 @@ const schema = {
     border-top: 1px solid var(--border-color, #2a2a35);
   }
 
-  .sc-flag-section tr:first-child {
+  .season-compare-container :global(.sc-flag-section tr:first-child) {
     border-top: none;
   }
 
@@ -1267,7 +1269,7 @@ const schema = {
     display: none;
   }
 
-  .rv-card {
+  .rivalries-container :global(.rv-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
     border-radius: 8px;
@@ -1276,7 +1278,7 @@ const schema = {
     width: 100%;
   }
 
-  .rv-title {
+  .rivalries-container :global(.rv-title) {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1286,72 +1288,72 @@ const schema = {
     text-align: center;
   }
 
-  .rv-columns {
+  .rivalries-container :global(.rv-columns) {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
   }
 
-  .rv-col {
+  .rivalries-container :global(.rv-col) {
     flex: 1;
   }
 
-  .rv-col-left {
+  .rivalries-container :global(.rv-col-left) {
     text-align: right;
   }
 
-  .rv-col-right {
+  .rivalries-container :global(.rv-col-right) {
     text-align: left;
   }
 
-  .rv-divider {
+  .rivalries-container :global(.rv-divider) {
     width: 1px;
     background: var(--border-color, #2a2a35);
     align-self: stretch;
     flex-shrink: 0;
   }
 
-  .rv-player-name {
+  .rivalries-container :global(.rv-player-name) {
     font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
   }
 
-  .rv-entry {
+  .rivalries-container :global(.rv-entry) {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
     margin-bottom: 0.75rem;
   }
 
-  .rv-col-left .rv-entry {
+  .rivalries-container :global(.rv-col-left .rv-entry) {
     align-items: flex-end;
   }
 
-  .rv-col-right .rv-entry {
+  .rivalries-container :global(.rv-col-right .rv-entry) {
     align-items: flex-start;
   }
 
-  .rv-type {
+  .rivalries-container :global(.rv-type) {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text-secondary, #9090a0);
   }
 
-  .rv-name {
+  .rivalries-container :global(.rv-name) {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-primary, #e8e8f0);
   }
 
-  .rv-kd {
+  .rivalries-container :global(.rv-kd) {
     font-size: 0.75rem;
     font-family: monospace;
     color: var(--text-secondary, #9090a0);
   }
 
-  .rv-unknown {
+  .rivalries-container :global(.rv-unknown) {
     font-size: 0.85rem;
     color: var(--text-secondary, #9090a0);
   }
@@ -1359,39 +1361,39 @@ const schema = {
   /* --- Mobile responsive for new sections --- */
 
   @media (max-width: 768px) {
-    .h2h-card,
-    .sc-card,
-    .rv-card {
+    .h2h-container :global(.h2h-card),
+    .season-compare-container :global(.sc-card),
+    .rivalries-container :global(.rv-card) {
       padding: 1rem 1rem;
     }
 
-    .h2h-matchup {
+    .h2h-container :global(.h2h-matchup) {
       gap: 0.5rem;
     }
 
-    .h2h-name {
+    .h2h-container :global(.h2h-name) {
       font-size: 0.8rem;
     }
 
-    .h2h-kill-count {
+    .h2h-container :global(.h2h-kill-count) {
       font-size: 1.25rem;
     }
 
-    .h2h-meta {
+    .h2h-container :global(.h2h-meta) {
       flex-direction: column;
       align-items: center;
     }
 
-    .rv-columns {
+    .rivalries-container :global(.rv-columns) {
       gap: 0.75rem;
     }
 
-    .sc-val {
+    .season-compare-container :global(.sc-val) {
       font-size: 0.8rem;
       padding: 0.4rem 0.5rem;
     }
 
-    .sc-label {
+    .season-compare-container :global(.sc-label) {
       font-size: 0.7rem;
     }
   }
