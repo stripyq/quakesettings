@@ -180,11 +180,11 @@ const seasonMachinegun = getWeapon(seasonStats?.weapons, 'MACHINEGUN');
 const seasonPlasma = getWeapon(seasonStats?.weapons, 'PLASMA_GUN');
 const seasonGrenade = getWeapon(seasonStats?.weapons, 'GRENADE_LAUNCHER');
 
-// Flag stats and rivalries
-const flagStats = seasonStats?.flagStats || null;
-const nemesis = seasonStats?.nemesis || null;
-const favoriteVictim = seasonStats?.favoriteVictim || null;
-const hasRivalries = !!(nemesis || favoriteVictim);
+// Flag stats and rivalries (API wraps these in a .data property)
+const flagData = seasonStats?.flagStats?.data || null;
+const nemesisData = seasonStats?.nemesis?.data || null;
+const victimData = seasonStats?.favoriteVictim?.data || null;
+const hasRivalries = !!(nemesisData || victimData);
 
 // Build steamId→slug lookup for rivalry links
 const steamIdToSlug = new Map<string, string>();
@@ -194,13 +194,13 @@ for (const pl of allPlayers) {
   }
 }
 
-function getRivalrySlug(rivalData: any): string | null {
-  if (!rivalData?.steam_id) return null;
-  return steamIdToSlug.get(rivalData.steam_id) || null;
+function getRivalrySlug(opponentSteamId: string | undefined): string | null {
+  if (!opponentSteamId) return null;
+  return steamIdToSlug.get(opponentSteamId) || null;
 }
 
-const nemesisSlug = getRivalrySlug(nemesis);
-const victimSlug = getRivalrySlug(favoriteVictim);
+const nemesisSlug = getRivalrySlug(nemesisData?.opponent_steam_id);
+const victimSlug = getRivalrySlug(victimData?.opponent_steam_id);
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -645,24 +645,24 @@ const schema = {
               </table>
             </div>
           )}
-          {flagStats && (
+          {flagData && (
             <div class="season-flags">
               <h3>Flag Stats (Season)</h3>
               <table class="settings-table">
-                {flagStats.flag_captures != null && (
-                  <tr><td>&#127988; Captures</td><td>{flagStats.flag_captures}</td></tr>
+                {flagData.captures != null && (
+                  <tr><td>&#127988; Captures</td><td>{flagData.captures}</td></tr>
                 )}
-                {flagStats.flag_returns != null && (
-                  <tr><td>&#128737; Returns</td><td>{flagStats.flag_returns}</td></tr>
+                {flagData.returns != null && (
+                  <tr><td>&#128737; Returns</td><td>{flagData.returns}</td></tr>
                 )}
-                {flagStats.avg_cap_time != null && (
-                  <tr><td>&#9201; Avg Cap Time</td><td>{flagStats.avg_cap_time}s</td></tr>
+                {flagData.pickups != null && (
+                  <tr><td>&#128230; Pickups</td><td>{flagData.pickups}</td></tr>
                 )}
-                {flagStats.flag_defends != null && (
-                  <tr><td>&#128737; Defends</td><td>{flagStats.flag_defends}</td></tr>
+                {flagData.defends != null && (
+                  <tr><td>&#128737; Defends</td><td>{flagData.defends}</td></tr>
                 )}
-                {flagStats.flag_assists != null && (
-                  <tr><td>&#129309; Assists</td><td>{flagStats.flag_assists}</td></tr>
+                {flagData.assists != null && (
+                  <tr><td>&#129309; Assists</td><td>{flagData.assists}</td></tr>
                 )}
               </table>
             </div>
@@ -672,34 +672,34 @@ const schema = {
             <div class="season-rivalries">
               <h3>Rivalries</h3>
               <div class="rivalry-cards">
-                {nemesis && (
+                {nemesisData && (
                   <div class="rivalry-card rivalry-nemesis">
                     <span class="rivalry-icon">&#128520;</span>
                     <div class="rivalry-info">
                       <span class="rivalry-label">Nemesis</span>
                       {nemesisSlug ? (
-                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesis.name}</a>
+                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesisData.opponent_name}</a>
                       ) : (
-                        <span class="rivalry-name">{nemesis.name}</span>
+                        <span class="rivalry-name">{nemesisData.opponent_name}</span>
                       )}
-                      {nemesis.kills != null && (
-                        <span class="rivalry-detail">killed you {nemesis.kills} times</span>
+                      {nemesisData.deaths_to != null && (
+                        <span class="rivalry-detail">killed you {nemesisData.deaths_to} times</span>
                       )}
                     </div>
                   </div>
                 )}
-                {favoriteVictim && (
+                {victimData && (
                   <div class="rivalry-card rivalry-victim">
                     <span class="rivalry-icon">&#128526;</span>
                     <div class="rivalry-info">
                       <span class="rivalry-label">Favorite Victim</span>
                       {victimSlug ? (
-                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{favoriteVictim.name}</a>
+                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{victimData.opponent_name}</a>
                       ) : (
-                        <span class="rivalry-name">{favoriteVictim.name}</span>
+                        <span class="rivalry-name">{victimData.opponent_name}</span>
                       )}
-                      {favoriteVictim.deaths != null && (
-                        <span class="rivalry-detail">you killed {favoriteVictim.deaths} times</span>
+                      {victimData.kills_against != null && (
+                        <span class="rivalry-detail">you killed {victimData.kills_against} times</span>
                       )}
                     </div>
                   </div>
