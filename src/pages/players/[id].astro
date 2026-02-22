@@ -1147,9 +1147,15 @@ const schema = {
                       ) : (
                         <span class="rivalry-name">{nemesisName}</span>
                       )}
-                      {nemesisData.deaths_to != null && (
-                        <span class="rivalry-detail">killed you {nemesisData.deaths_to} times</span>
-                      )}
+                      <span class="rivalry-detail">
+                        {nemesisData.kills_against != null && nemesisData.deaths_to != null
+                          ? `${nemesisData.kills_against}-${nemesisData.deaths_to}`
+                          : nemesisData.deaths_to != null
+                            ? `died ${nemesisData.deaths_to} times`
+                            : ''}
+                        {nemesisData.kd_ratio != null && ` (${nemesisData.kd_ratio.toFixed(2)} K/D)`}
+                        {nemesisData.matches_together != null && ` · ${nemesisData.matches_together} ${nemesisData.matches_together === 1 ? 'game' : 'games'}`}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -1163,9 +1169,15 @@ const schema = {
                       ) : (
                         <span class="rivalry-name">{victimName}</span>
                       )}
-                      {victimData.kills_against != null && (
-                        <span class="rivalry-detail">you killed {victimData.kills_against} times</span>
-                      )}
+                      <span class="rivalry-detail">
+                        {victimData.kills_against != null && victimData.deaths_to != null
+                          ? `${victimData.kills_against}-${victimData.deaths_to}`
+                          : victimData.kills_against != null
+                            ? `killed ${victimData.kills_against} times`
+                            : ''}
+                        {victimData.kd_ratio != null && ` (${victimData.kd_ratio.toFixed(2)} K/D)`}
+                        {victimData.matches_together != null && ` · ${victimData.matches_together} ${victimData.matches_together === 1 ? 'game' : 'games'}`}
+                      </span>
                     </div>
                   </div>
                 )}
