@@ -522,18 +522,39 @@ const schema = {
         const winRate = p1Pct.toFixed(1);
         const matchesTogether = match.matches_together || match.games || match.total_games || null;
 
+        // Damage data (if available)
+        const p1Dmg = match.damage_dealt || match.damage || null;
+        const p2Dmg = match.damage_received || match.damage_taken || null;
+
+        function fmtNum(n) {
+          if (n == null) return null;
+          return n.toLocaleString();
+        }
+
         h2hContainer.innerHTML =
           '<div class="h2h-card">' +
-            '<div class="h2h-title">Head to Head</div>' +
+            '<div class="h2h-title">Head to Head <span class="h2h-season-tag">Season</span></div>' +
             '<div class="h2h-matchup">' +
               '<div class="h2h-side h2h-left">' +
-                '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
-                '<span class="h2h-kill-count h2h-p1-color">' + p1Kills + '</span>' +
+                '<div class="h2h-player-info h2h-align-right">' +
+                  '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
+                '</div>' +
+                '<div class="h2h-stat-block h2h-align-right">' +
+                  '<span class="h2h-kill-count">' + p1Kills + '</span>' +
+                  '<span class="h2h-kill-label">kills</span>' +
+                  (p1Dmg ? '<span class="h2h-dmg">' + fmtNum(p1Dmg) + ' dmg</span>' : '') +
+                '</div>' +
               '</div>' +
               '<div class="h2h-vs">vs</div>' +
               '<div class="h2h-side h2h-right">' +
-                '<span class="h2h-kill-count h2h-p2-color">' + p2Kills + '</span>' +
-                '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
+                '<div class="h2h-stat-block h2h-align-left">' +
+                  '<span class="h2h-kill-count">' + p2Kills + '</span>' +
+                  '<span class="h2h-kill-label">kills</span>' +
+                  (p2Dmg ? '<span class="h2h-dmg">' + fmtNum(p2Dmg) + ' dmg</span>' : '') +
+                '</div>' +
+                '<div class="h2h-player-info h2h-align-left">' +
+                  '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
+                '</div>' +
               '</div>' +
             '</div>' +
             '<div class="h2h-bar">' +
@@ -542,7 +563,7 @@ const schema = {
             '</div>' +
             '<div class="h2h-meta">' +
               '<span class="h2h-winrate">' + winRate + '% kill rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
-              (matchesTogether ? '<span class="h2h-games">' + matchesTogether + ' games together</span>' : '') +
+              (matchesTogether ? '<span class="h2h-games">\u00b7 ' + matchesTogether + ' games together</span>' : '') +
             '</div>' +
           '</div>';
         h2hContainer.classList.remove('hidden');
@@ -668,7 +689,7 @@ const schema = {
 
         seasonCompareContainer.innerHTML =
           '<div class="sc-card">' +
-            '<div class="sc-title">Season Stats</div>' +
+            '<div class="sc-title">Season Stats <span class="sc-season-tag">2026 S1</span></div>' +
             '<table class="sc-table">' +
               '<thead><tr>' +
                 '<th class="sc-th-player h2h-p1-color">' + p1.name + '</th>' +
@@ -712,7 +733,7 @@ const schema = {
 
         rivalriesContainer.innerHTML =
           '<div class="rv-card">' +
-            '<div class="rv-title">Rivalries</div>' +
+            '<div class="rv-title">Rivalries <span class="rv-season-tag">Season</span></div>' +
             '<div class="rv-columns">' +
               '<div class="rv-col rv-col-left">' +
                 '<div class="rv-player-name h2h-p1-color">' + p1.name + '</div>' +
@@ -1102,11 +1123,46 @@ const schema = {
     font-weight: 600;
   }
 
+  .h2h-container :global(.h2h-player-info) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .h2h-container :global(.h2h-stat-block) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .h2h-container :global(.h2h-align-right) {
+    align-items: flex-end;
+  }
+
+  .h2h-container :global(.h2h-align-left) {
+    align-items: flex-start;
+  }
+
   .h2h-container :global(.h2h-kill-count) {
     font-size: 1.75rem;
     font-weight: 800;
     font-family: monospace;
     line-height: 1;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .h2h-container :global(.h2h-kill-label) {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .h2h-container :global(.h2h-dmg) {
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: var(--text-secondary, #9090a0);
+    margin-top: 0.15rem;
   }
 
   .h2h-container :global(.h2h-vs) {
@@ -1115,6 +1171,13 @@ const schema = {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     flex-shrink: 0;
+  }
+
+  .h2h-container :global(.h2h-season-tag) {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    letter-spacing: 0.05em;
   }
 
   /* Shared color classes used across h2h, season-compare, and rivalries */
@@ -1192,6 +1255,13 @@ const schema = {
     text-align: center;
   }
 
+  .season-compare-container :global(.sc-season-tag) {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
   .season-compare-container :global(.sc-table) {
     width: 100%;
     border-collapse: collapse;
@@ -1252,7 +1322,8 @@ const schema = {
   }
 
   .season-compare-container :global(.sc-val.stat-worse) {
-    color: var(--text-secondary, #9090a0);
+    color: var(--text-primary, #e8e8f0);
+    font-weight: 400;
   }
 
   .season-compare-container :global(.sc-section-label) {
@@ -1298,6 +1369,13 @@ const schema = {
     font-weight: 700;
     margin-bottom: 1.25rem;
     text-align: center;
+  }
+
+  .rivalries-container :global(.rv-season-tag) {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    letter-spacing: 0.05em;
   }
 
   .rivalries-container :global(.rv-columns) {
@@ -1389,6 +1467,10 @@ const schema = {
 
     .h2h-container :global(.h2h-kill-count) {
       font-size: 1.25rem;
+    }
+
+    .h2h-container :global(.h2h-dmg) {
+      font-size: 0.6rem;
     }
 
     .h2h-container :global(.h2h-meta) {
