@@ -148,16 +148,23 @@ function parseHoqPage(html) {
     }
   }
 
+  // Extract all table rows first to avoid cross-row regex matching
+  const allRows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+
   for (const { name, key } of weapons) {
-    // Find the table row containing this weapon
-    const rowPattern = new RegExp(
-      `<tr[^>]*>[\\s\\S]*?${name}[\\s\\S]*?<\\/tr>`,
-      'i'
-    );
-    const rowMatch = html.match(rowPattern);
-    if (rowMatch) {
-      // Extract all <td> cells from this row
-      const cells = [...rowMatch[0].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)]
+    // Find a data row (3+ cells) whose text contains this weapon name.
+    // The cell count check avoids matching favorites rows like
+    // <tr><td>Weapon</td><td>Rocket Launcher</td></tr>.
+    const weaponRow = allRows.find(m => {
+      const text = m[1].replace(/<[^>]*>/g, '');
+      if (!text.includes(name)) return false;
+      const cellCount = [...m[1].matchAll(/<td[^>]*>/gi)].length;
+      return cellCount >= 3;
+    });
+
+    if (weaponRow) {
+      // Extract all <td> cells from this single row
+      const cells = [...weaponRow[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)]
         .map(m => m[1].replace(/<[^>]*>/g, '').trim());
 
       let accuracy = NaN;
