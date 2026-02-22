@@ -74,10 +74,12 @@ function getPlayerNames() {
   for (const file of files) {
     const content = fs.readFileSync(path.join(PLAYERS_DIR, file), 'utf8');
     const nameMatch = content.match(/^name:\s*(.+)$/m);
+    const steamIdMatch = content.match(/^steamId:\s*["']?(\d{17})["']?\s*$/m);
     if (nameMatch) {
       players.push({
         file,
         name: nameMatch[1].trim().replace(/^["']|["']$/g, ''),
+        steamId: steamIdMatch ? steamIdMatch[1] : null,
         path: path.join(PLAYERS_DIR, file)
       });
     }
@@ -212,8 +214,10 @@ async function fetchCommunityRatings() {
 }
 
 // Update a player's YAML file with ratings
-function updatePlayerYaml(playerPath, updates) {
-  let content = fs.readFileSync(playerPath, 'utf8');
+// When clearStale is true, writes the file even if no new ratings (to clear old ones)
+function updatePlayerYaml(playerPath, updates, clearStale) {
+  const original = fs.readFileSync(playerPath, 'utf8');
+  let content = original;
   const today = new Date().toISOString().split('T')[0];
 
   // Remove existing rating fields
@@ -257,6 +261,12 @@ function updatePlayerYaml(playerPath, updates) {
 
     fs.writeFileSync(playerPath, content);
     return true;
+  }
+
+  // If clearing stale ratings and the file actually changed, write it
+  if (clearStale && content !== original) {
+    fs.writeFileSync(playerPath, content);
+    return 'cleared';
   }
 
   return false;
@@ -343,9 +353,16 @@ async function main() {
 
     // Update YAML if we have any ratings
     if (Object.keys(updates).length > 0) {
-      const success = updatePlayerYaml(player.path, updates);
+      const success = updatePlayerYaml(player.path, updates, false);
       if (success) {
         console.log(`✓ Updated ${player.name}: Duel=${updates.duelRating != null ? updates.duelRating : '-'}, CTF=${updates.ctfRating != null ? updates.ctfRating : '-'}, TDM=${updates.tdmRating != null ? updates.tdmRating : '-'}`);
+        updated++;
+      }
+    } else if (player.steamId) {
+      // Player has a steamId but no rating matches — clear stale ratings
+      const result = updatePlayerYaml(player.path, updates, true);
+      if (result === 'cleared') {
+        console.log(`✗ Cleared stale ratings for ${player.name} (no upstream match)`);
         updated++;
       }
     }
