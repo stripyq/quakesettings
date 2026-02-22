@@ -273,6 +273,114 @@ const victimSlug = getRivalrySlug(victimData?.opponent_steam_id);
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
+// ─── Setup Insights ───
+const publishedPlayers = allPlayers.filter(pl => pl.data.published !== false);
+const hasSettings = !!(p.dpi && p.sensitivity);
+
+// Sensitivity distribution
+const allCm360Values = publishedPlayers
+  .map(pl => calculateCm360(pl.data))
+  .filter(v => v > 0);
+const fasterThanPct = allCm360Values.length > 0 && currentCm360 > 0
+  ? Math.round(allCm360Values.filter(s => s > currentCm360).length / allCm360Values.length * 100)
+  : null;
+
+// Sensitivity category
+function getSensCategory(cm360: number): string {
+  if (cm360 < 20) return 'Very fast';
+  if (cm360 < 30) return 'Fast';
+  if (cm360 < 40) return 'Medium';
+  if (cm360 < 50) return 'Slow';
+  return 'Very slow';
+}
+
+// Build sensitivity distribution buckets for the bar chart
+const sensBuckets = [
+  { label: '<20', min: 0, max: 20 },
+  { label: '20-30', min: 20, max: 30 },
+  { label: '30-40', min: 30, max: 40 },
+  { label: '40-50', min: 40, max: 50 },
+  { label: '50+', min: 50, max: Infinity },
+];
+const sensBucketCounts = sensBuckets.map(b => ({
+  ...b,
+  count: allCm360Values.filter(v => v >= b.min && v < b.max).length,
+  isPlayer: currentCm360 >= b.min && currentCm360 < b.max,
+}));
+const maxBucketCount = Math.max(...sensBucketCounts.map(b => b.count), 1);
+
+// Similar sensitivity players for insights (reuse existing but need full list for display)
+const similarSensInsight = otherPlayers
+  .filter(pl => pl.data.published !== false)
+  .map(pl => ({ player: pl, cm360: calculateCm360(pl.data) }))
+  .filter(({ cm360 }) => cm360 > 0 && currentCm360 > 0 && Math.abs(cm360 - currentCm360) / currentCm360 <= 0.15)
+  .sort((a, b) => Math.abs(a.cm360 - currentCm360) - Math.abs(b.cm360 - currentCm360))
+  .slice(0, 5);
+
+// Mouse popularity
+const mouseCounts: Record<string, { count: number; name: string; players: typeof allPlayers }> = {};
+for (const pl of publishedPlayers) {
+  const m = pl.data.mouse;
+  if (!m) continue;
+  if (!mouseCounts[m]) {
+    const mData = miceMap.get(m);
+    mouseCounts[m] = { count: 0, name: mData?.name || m, players: [] };
+  }
+  mouseCounts[m].count++;
+  mouseCounts[m].players.push(pl);
+}
+const mouseRanking = Object.entries(mouseCounts)
+  .sort((a, b) => b[1].count - a[1].count);
+const playerMouseEntry = p.mouse ? mouseCounts[p.mouse] : null;
+const mouseRank = p.mouse ? mouseRanking.findIndex(([key]) => key === p.mouse) + 1 : 0;
+const mouseUsersOther = playerMouseEntry
+  ? playerMouseEntry.players.filter(pl => pl.id !== player.id).slice(0, 8)
+  : [];
+
+// FOV context
+const allFovValues = publishedPlayers.map(pl => pl.data.fov).filter((v): v is number => v != null && v > 0);
+function getFovCategory(fov: number): string {
+  if (fov < 100) return 'Narrow';
+  if (fov <= 110) return 'Average range';
+  return 'Wide';
+}
+const fovPercentile = p.fov && allFovValues.length > 0
+  ? Math.round(allFovValues.filter(v => v < p.fov!).length / allFovValues.length * 100)
+  : null;
+
+// Resolution context (from monitor data)
+const allResolutions: Record<string, number> = {};
+for (const pl of publishedPlayers) {
+  const mon = pl.data.monitor ? monitorsMap.get(pl.data.monitor) : null;
+  if (mon?.resolution) {
+    allResolutions[mon.resolution] = (allResolutions[mon.resolution] || 0) + 1;
+  }
+}
+const playerResolution = monitorData?.resolution || null;
+const resolutionRank = playerResolution
+  ? Object.entries(allResolutions).sort((a, b) => b[1] - a[1]).findIndex(([r]) => r === playerResolution) + 1
+  : 0;
+
+// Refresh rate context (from monitor data)
+const allRefreshRates: Record<string, number> = {};
+for (const pl of publishedPlayers) {
+  const mon = pl.data.monitor ? monitorsMap.get(pl.data.monitor) : null;
+  if (mon?.refreshRate) {
+    allRefreshRates[mon.refreshRate] = (allRefreshRates[mon.refreshRate] || 0) + 1;
+  }
+}
+const playerRefresh = monitorData?.refreshRate || null;
+function getRefreshCategory(rr: string): string {
+  const n = parseInt(rr);
+  if (isNaN(n)) return '';
+  if (n <= 144) return 'Standard';
+  if (n <= 240) return 'High';
+  return 'Elite';
+}
+
+// Setup insights visibility: show if player has at least sensitivity data
+const hasInsights = hasSettings && currentCm360 > 0;
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -455,6 +563,123 @@ const schema = {
         )}
       </div>
     </section>
+
+    <!-- Setup Insights -->
+    {hasInsights && (
+      <section class="insights-section">
+        <h2>Setup Insights</h2>
+
+        <div class="insights-grid">
+          {/* Sensitivity Context */}
+          <div class="insight-card">
+            <h3>Sensitivity Context</h3>
+            <div class="insight-sens-value">
+              <span class="insight-big-num">{formatNum(currentCm360)}</span>
+              <span class="insight-unit">cm/360</span>
+              <span class="insight-category">{getSensCategory(currentCm360)}</span>
+            </div>
+            {fasterThanPct !== null && (
+              <p class="insight-percentile">Faster than <strong>{fasterThanPct}%</strong> of players</p>
+            )}
+            <div class="sens-distribution">
+              {sensBucketCounts.map(b => (
+                <div class="sens-bucket">
+                  <div class="sens-bar-container">
+                    <div
+                      class={`sens-bar ${b.isPlayer ? 'sens-bar-active' : ''}`}
+                      style={`height: ${Math.max((b.count / maxBucketCount) * 100, 4)}%`}
+                    >
+                      {b.count > 0 && <span class="sens-bar-count">{b.count}</span>}
+                    </div>
+                  </div>
+                  <span class={`sens-bucket-label ${b.isPlayer ? 'sens-bucket-active' : ''}`}>{b.label}</span>
+                </div>
+              ))}
+            </div>
+            {similarSensInsight.length > 0 && (
+              <div class="insight-similar">
+                <span class="insight-similar-label">Similar sensitivity:</span>
+                {similarSensInsight.map((s, i) => (
+                  <Fragment>
+                    {i > 0 && <span class="insight-sep">&middot;</span>}
+                    <a href={`${base}players/${s.player.id}/`} class="insight-player-link">
+                      {s.player.data.name} <span class="insight-player-stat">({formatNum(s.cm360)})</span>
+                    </a>
+                  </Fragment>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Mouse Popularity */}
+          {playerMouseEntry && mouseData && (
+            <div class="insight-card">
+              <h3>Mouse Popularity</h3>
+              <p class="insight-mouse-name">{mouseData.name}</p>
+              <p class="insight-mouse-count">
+                Used by <strong>{playerMouseEntry.count}</strong> {playerMouseEntry.count === 1 ? 'player' : 'players'}
+                {mouseRank > 0 && (
+                  <span class="insight-mouse-rank">
+                    &mdash; #{mouseRank} most popular
+                  </span>
+                )}
+              </p>
+              {mouseUsersOther.length > 0 && (
+                <div class="insight-similar">
+                  <span class="insight-similar-label">Also used by:</span>
+                  {mouseUsersOther.map((pl, i) => (
+                    <Fragment>
+                      {i > 0 && <span class="insight-sep">&middot;</span>}
+                      <a href={`${base}players/${pl.id}/`} class="insight-player-link">{pl.data.name}</a>
+                    </Fragment>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Setup Profile */}
+          <div class="insight-card insight-profile">
+            <h3>Setup Profile</h3>
+            <table class="insight-profile-table">
+              <tr>
+                <td>Sensitivity</td>
+                <td class="insight-profile-val">{formatNum(currentCm360)} cm/360</td>
+                <td class="insight-profile-ctx">{getSensCategory(currentCm360)}</td>
+              </tr>
+              {p.fov && (
+                <tr>
+                  <td>FOV</td>
+                  <td class="insight-profile-val">{p.fov}</td>
+                  <td class="insight-profile-ctx">{getFovCategory(p.fov)}{fovPercentile !== null && ` (top ${100 - fovPercentile}%)`}</td>
+                </tr>
+              )}
+              {playerResolution && (
+                <tr>
+                  <td>Resolution</td>
+                  <td class="insight-profile-val">{playerResolution}</td>
+                  <td class="insight-profile-ctx">{resolutionRank === 1 ? 'Most common' : resolutionRank > 0 ? `#${resolutionRank} most common` : ''}</td>
+                </tr>
+              )}
+              {playerRefresh && (
+                <tr>
+                  <td>Refresh Rate</td>
+                  <td class="insight-profile-val">{playerRefresh}</td>
+                  <td class="insight-profile-ctx">{getRefreshCategory(playerRefresh)}</td>
+                </tr>
+              )}
+              {p.dpi && (
+                <tr>
+                  <td>DPI</td>
+                  <td class="insight-profile-val">{p.dpi}</td>
+                  <td class="insight-profile-ctx"></td>
+                </tr>
+              )}
+            </table>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- Key Bindings -->
     <section class="keybinds-section">
@@ -1280,6 +1505,230 @@ const schema = {
   .buy-link:hover {
     background: #ff8c5a;
     transform: translateY(-1px);
+  }
+
+  /* --- Setup Insights --- */
+  .insights-section {
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #2a2a35);
+    margin-bottom: 2rem;
+  }
+
+  .insights-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .insight-card {
+    background: var(--bg-secondary, #12121a);
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+
+  .insight-card h3 {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .insight-sens-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .insight-big-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: monospace;
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .insight-unit {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .insight-category {
+    font-size: 0.75rem;
+    color: var(--accent-secondary, #4ecdc4);
+    background: rgba(78, 205, 196, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-left: 0.25rem;
+  }
+
+  .insight-percentile {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 0.75rem;
+  }
+
+  .insight-percentile strong {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .sens-distribution {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 70px;
+    margin-bottom: 0.75rem;
+    padding-top: 0.25rem;
+  }
+
+  .sens-bucket {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .sens-bar-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .sens-bar {
+    width: 100%;
+    background: var(--border-color, #2a2a35);
+    border-radius: 2px 2px 0 0;
+    min-height: 3px;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .sens-bar-active {
+    background: var(--accent-secondary, #4ecdc4);
+  }
+
+  .sens-bar-count {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .sens-bucket-label {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #6b7280);
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+
+  .sens-bucket-active {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .insight-similar {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    line-height: 1.6;
+  }
+
+  .insight-similar-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .insight-player-link {
+    color: var(--accent-secondary, #4ecdc4);
+    text-decoration: none;
+  }
+
+  .insight-player-link:hover {
+    text-decoration: underline;
+  }
+
+  .insight-player-stat {
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.75rem;
+  }
+
+  .insight-sep {
+    margin: 0 0.35rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .insight-mouse-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #e8e8f0);
+    margin-bottom: 0.35rem;
+  }
+
+  .insight-mouse-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 0.75rem;
+  }
+
+  .insight-mouse-count strong {
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .insight-mouse-rank {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  .insight-profile-table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .insight-profile-table td {
+    padding: 0.3rem 0;
+  }
+
+  .insight-profile-table td:first-child {
+    color: var(--text-secondary, #9090a0);
+    width: 35%;
+  }
+
+  .insight-profile-val {
+    font-weight: 600;
+    font-family: monospace;
+    color: var(--text-primary, #e8e8f0);
+    width: 30%;
+  }
+
+  .insight-profile-ctx {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6b7280);
+  }
+
+  @media (max-width: 600px) {
+    .insights-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .config-section {
