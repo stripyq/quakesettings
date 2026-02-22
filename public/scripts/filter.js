@@ -23,13 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
     playerCards.forEach(card => {
       const name = card.dataset.name || '';
       const cardCategory = card.dataset.category || '';
-      const edpi = parseInt(card.dataset.edpi) || 0;
+      const edpi = parseFloat(card.dataset.edpi);
 
       const matchesSearch = name.includes(searchTerm);
       const matchesCategory = category === 'all' || cardCategory === category;
 
       let matchesSens = true;
-      if (sensRange === 'low') matchesSens = edpi < 800;
+      if (sensRange !== 'all' && isNaN(edpi)) matchesSens = false;
+      else if (sensRange === 'low') matchesSens = edpi < 800;
       else if (sensRange === 'medium') matchesSens = edpi >= 800 && edpi <= 1500;
       else if (sensRange === 'high') matchesSens = edpi > 1500;
 
@@ -42,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     visibleCards.sort((a, b) => {
       switch(sortValue) {
         case 'rating':
-          return (parseInt(b.dataset.rating) || 0) - (parseInt(a.dataset.rating) || 0);
+          return (parseFloat(b.dataset.rating) || 0) - (parseFloat(a.dataset.rating) || 0);
         case 'edpi-asc':
-          return (parseInt(a.dataset.edpi) || 0) - (parseInt(b.dataset.edpi) || 0);
+          return (parseFloat(a.dataset.edpi) || Infinity) - (parseFloat(b.dataset.edpi) || Infinity);
         case 'edpi-desc':
-          return (parseInt(b.dataset.edpi) || 0) - (parseInt(a.dataset.edpi) || 0);
+          return (parseFloat(b.dataset.edpi) || 0) - (parseFloat(a.dataset.edpi) || 0);
         case 'name':
           return (a.dataset.name || '').localeCompare(b.dataset.name || '');
         default:

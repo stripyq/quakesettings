@@ -64,7 +64,12 @@ for (const file of yamlFiles) {
     if (field in playerStats) {
       const value = playerStats[field];
       if (typeof value === 'string') {
-        newFields.push(`${field}: ${value}`);
+        // Quote strings that contain YAML-significant characters
+        if (/[:#{}[\],&*?|>!%@`'"]/.test(value) || value.includes('\n')) {
+          newFields.push(`${field}: "${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`);
+        } else {
+          newFields.push(`${field}: ${value}`);
+        }
       } else {
         newFields.push(`${field}: ${value}`);
       }

@@ -8,6 +8,7 @@
     "prebuild": "node scripts/generate-form-data.js",
     "build": "astro build",
     "preview": "astro preview",
+    "fetch:season": "node scripts/fetch-season-stats.cjs",
     "astro": "astro"
   },
   "dependencies": {

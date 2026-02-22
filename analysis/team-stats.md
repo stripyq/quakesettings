@@ -1,6 +1,6 @@
 # CSQL Team Statistics Report
 
-*Generated: 2026-02-20*
+*Generated: 2026-02-22*
 
 **Total teams:** 8  
 **Total rostered players:** 44  
@@ -236,108 +236,108 @@
 
 | Player | Profile | Steam ID | 2024 Team |
 |--------|---------|----------|----------|
-| abso | — | 76561198045866800 | The expendables |
-| ani | Yes | 76561197993861010 | unreliable dogs |
-| apex | — | 76561198077156900 | Bad But Happy |
-| APH3X | — | 76561198346024930 | unreliable dogs |
+| abso | — | 76561198045866799 | The expendables |
+| ani | Yes | 76561197993861011 | unreliable dogs |
+| apex | — | 76561198077156894 | Bad But Happy |
+| APH3X | — | 76561198346024921 | unreliable dogs |
 | ash | Yes | 76561198034120620 | — |
-| b1ohazzard | Yes | 76561198132543410 | — |
-| BeukeR | Yes | 76561197971635360 | unreliable dogs |
-| Bolland | Yes | 76561198354200910 | — |
-| chakoala | — | 76561198109579700 | — |
-| cham | Yes | 76561198109579700 | 4friends |
-| clawz | — | 76561198393765490 | The expendables |
-| coffin | Yes | 76561199020037970 | — |
-| cT | — | 76561197997252300 | AHU |
+| b1ohazzard | Yes | 76561198132543406 | — |
+| BeukeR | Yes | 76561197971635353 | unreliable dogs |
+| Bolland | Yes | 76561198354200908 | — |
+| chakoala | — | 76561198109579696 | — |
+| cham | Yes | 76561198109579696 | 4friends |
+| clawz | — | 76561198393765487 | The expendables |
+| coffin | Yes | 76561199020037962 | — |
+| cT | — | 76561197997252303 | AHU |
 | Cypher | Yes | — | — |
-| cYpReSss | — | 76561199496005150 | 4friends |
-| damn3d | Yes | 76561198162507970 | CTF4 |
-| dehumanizeR | Yes | 76561197964623500 | CTF4 |
-| deisma | Yes | 76561198257310620 | — |
-| Denzoa | — | 76561198007682540 | AHU |
-| diabz | Yes | 76561197985202260 | — |
-| DimebaG | Yes | 76561198380825300 | — |
-| dimon | Yes | 76561198257799100 | — |
-| Drayan | Yes | 76561198196618510 | — |
-| drki | Yes | 76561197965308770 | — |
-| estoty Klyb | — | 76561198199452080 | — |
-| Eteto | Yes | 76561198257679170 | — |
-| exodus | — | 76561197965938370 | The expendables |
-| fearz | Yes | 76561198090058820 | — |
-| fetzer | Yes | 76561197968556110 | — |
+| cYpReSss | — | 76561199496005153 | 4friends |
+| damn3d | Yes | 76561198162507961 | CTF4 |
+| dehumanizeR | Yes | 76561197964623506 | CTF4 |
+| deisma | Yes | 76561198257310626 | — |
+| Denzoa | — | 76561198007682548 | AHU |
+| diabz | Yes | 76561197985202252 | — |
+| DimebaG | Yes | 76561198380825290 | — |
+| dimon | Yes | 76561198257799111 | — |
+| Drayan | Yes | 76561198196618515 | — |
+| drki | Yes | 76561197965308771 | — |
+| estoty Klyb | — | 76561198199452077 | — |
+| Eteto | Yes | 76561198257679175 | — |
+| exodus | — | 76561197965938361 | The expendables |
+| fearz | Yes | 76561198090058821 | — |
+| fetzer | Yes | 76561197968556118 | — |
 | FF^Sty | — | — | — |
 | FizzY | Yes | 76561198129795100 | — |
 | funiva | Yes | — | — |
-| Furtzilla | Yes | 76561198053186400 | — |
-| gaz | — | 76561197991370780 | — |
-| gog | Yes | 76561198047715410 | — |
-| Grandbolus | Yes | 76561198255736450 | — |
-| imprez | Yes | 76561198256071180 | CTF4 |
-| invi | — | 76561198064199870 | unreliable dogs |
-| jackass | Yes | 76561198034572580 | — |
-| jmpuLz | Yes | 76561198041347060 | — |
+| Furtzilla | Yes | 76561198053186404 | — |
+| gaz | — | 76561197991370790 | — |
+| gog | Yes | 76561198047715408 | — |
+| Grandbolus | Yes | 76561198255736445 | — |
+| imprez | Yes | 76561198256071177 | CTF4 |
+| invi | — | 76561198064199875 | unreliable dogs |
+| jackass | Yes | 76561198034572568 | — |
+| jmpuLz | Yes | 76561198041347061 | — |
 | Jonas | — | — | AHU |
-| Juven1le | — | 76561198089070420 | unreliable dogs |
-| k1llsen | Yes | 76561197982199360 | — |
-| KISA | Yes | 76561198286173230 | — |
-| KRL | Yes | 76561198254687680 | Whatever name IDC |
-| krysa | Yes | 76561198044065390 | — |
-| Kung | Yes | 76561198068070190 | — |
-| lithz | Yes | 76561198033171300 | unreliable dogs |
-| loka | Yes | 76561198030933170 | — |
-| matr1x | — | 76561197985659230 | Bad But Happy |
-| mezz | Yes | 76561197961473360 | Bad But Happy |
-| Morda | Yes | 76561198004545170 | — |
-| mousestar | — | 76561198191100030 | Flappy Flags |
-| ne_raketa | Yes | 76561198284683840 | — |
-| Nex | Yes | 76561198043070740 | — |
-| NyxGirlPower TheQueen♥ | Yes | 76561198256080240 | — |
-| oddi | — | 76561197972946530 | — |
-| Okay. | Yes | 76561198257018690 | — |
-| ortac | Yes | 76561198144940770 | — |
-| p5ych0 | Yes | 76561197995121700 | — |
-| pavel | Yes | 76561198054844270 | — |
-| Pettern | Yes | 76561197970764060 | Flappy Flags |
-| ph0en|X | Yes | 76561198228590620 | The expendables |
-| phaze | — | 76561198414877420 | — |
-| prestij | — | 76561198256203870 | — |
-| proZaC | Yes | 76561197993233920 | — |
+| Juven1le | — | 76561198089070422 | unreliable dogs |
+| k1llsen | Yes | 76561197982199355 | — |
+| KISA | Yes | 76561198286173236 | — |
+| KRL | Yes | 76561198254687687 | Whatever name IDC |
+| krysa | Yes | 76561198044065399 | — |
+| Kung | Yes | 76561198068070185 | — |
+| lithz | Yes | 76561198033171295 | unreliable dogs |
+| loka | Yes | 76561198030933162 | — |
+| matr1x | — | 76561197985659232 | Bad But Happy |
+| mezz | Yes | 76561197961473367 | Bad But Happy |
+| Morda | Yes | 76561198004545167 | — |
+| mousestar | — | 76561198191100033 | Flappy Flags |
+| ne_raketa | Yes | 76561198284683846 | — |
+| Nex | Yes | 76561198043070738 | — |
+| NyxGirlPower TheQueen♥ | Yes | 76561198256080242 | — |
+| oddi | — | 76561197972946521 | — |
+| Okay. | Yes | 76561198257018686 | — |
+| ortac | Yes | 76561198144940773 | — |
+| p5ych0 | Yes | 76561197995121689 | — |
+| pavel | Yes | 76561198054844275 | — |
+| Pettern | Yes | 76561197970764070 | Flappy Flags |
+| ph0en|X | Yes | 76561198228590616 | The expendables |
+| phaze | — | 76561198414877431 | — |
+| prestij | — | 76561198256203867 | — |
+| proZaC | Yes | 76561197993233912 | — |
 | r3cke | Yes | 76561198279892880 | — |
-| RAISY | — | 76561197989948660 | — |
-| randall | Yes | 76561198106787710 | — |
+| RAISY | — | 76561197989948663 | — |
+| randall | Yes | 76561198106787712 | — |
 | Rapha | Yes | — | — |
 | rasharn | Yes | 76561198049631090 | — |
-| Ratman | — | 76561197993423660 | — |
-| rehepapp | Yes | 76561198002515340 | — |
-| rindo | — | 76561198152936340 | — |
-| RiriWoo | Yes | 76561198257496200 | — |
-| Roxor | — | 76561198043802400 | AHU |
-| Serious | Yes | 76561198136963520 | Aimdead Brainers |
-| shib | — | 76561198200942500 | 4friends |
-| Silencep | Yes | 76561198010942020 | The expendables |
-| sno | Yes | 76561198031267120 | Flappy Flags |
-| sophia | Yes | 76561198155662980 | — |
-| Spenzer | — | 76561198088011440 | AHU |
-| spooky | Yes | 76561198041115900 | — |
+| Ratman | — | 76561197993423662 | — |
+| rehepapp | Yes | 76561198002515349 | — |
+| rindo | — | 76561198152936342 | — |
+| RiriWoo | Yes | 76561198257496197 | — |
+| Roxor | — | 76561198043802405 | AHU |
+| Serious | Yes | 76561198136963513 | Aimdead Brainers |
+| shib | — | 76561198200942503 | 4friends |
+| Silencep | Yes | 76561198010942011 | The expendables |
+| sno | Yes | 76561198031267126 | Flappy Flags |
+| sophia | Yes | 76561198155662969 | — |
+| Spenzer | — | 76561198088011443 | AHU |
+| spooky | Yes | 76561198041115896 | — |
 | St3f4N | Yes | 76561199756237860 | — |
-| Steve Jobs | Yes | 76561198067064940 | — |
+| Steve Jobs | Yes | 76561198067064946 | — |
 | storm | — | — | Flappy Flags |
-| t000 | — | 76561198246535020 | — |
-| TK | Yes | 76561197977412350 | — |
-| tough maf | Yes | 76561198257330240 | — |
+| t000 | — | 76561198246535026 | — |
+| TK | Yes | 76561197977412349 | — |
+| tough maf | Yes | 76561198257330241 | — |
 | tr1x0 | Yes | 76561198257316780 | 4friends |
-| vendigo | Yes | 76561198258932160 | — |
-| VergiL | Yes | 76561198140092770 | Whatever name IDC |
-| vulTure | — | 76561198257391550 | Bad But Happy |
-| Wallsnag | Yes | 76561198098777140 | — |
-| Wood | Yes | 76561198257437660 | — |
-| Xiu | Yes | 76561198010106930 | — |
-| Xron | — | 76561198017320690 | — |
-| XXXL | Yes | 76561198081117100 | — |
-| yarr | — | 76561197985620720 | — |
-| YNAM | — | 76561198054868930 | Whatever name IDC |
-| zanes | Yes | 76561198026248900 | — |
-| Zyb | — | 76561198202091250 | Flappy Flags |
+| vendigo | Yes | 76561198258932158 | — |
+| VergiL | Yes | 76561198140092774 | Whatever name IDC |
+| vulTure | — | 76561198257391553 | Bad But Happy |
+| Wallsnag | Yes | 76561198098777141 | — |
+| Wood | Yes | 76561198257437671 | — |
+| Xiu | Yes | 76561198010106923 | — |
+| Xron | — | 76561198017320685 | — |
+| XXXL | Yes | 76561198081117111 | — |
+| yarr | — | 76561197985620716 | — |
+| YNAM | — | 76561198054868921 | Whatever name IDC |
+| zanes | Yes | 76561198026248899 | — |
+| Zyb | — | 76561198202091255 | Flappy Flags |
 
 ## Data Quality Notes
 

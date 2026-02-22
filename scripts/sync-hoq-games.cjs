@@ -11,27 +11,21 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parse } = require('csv-parse/sync');
 
 const DATA_DIR = path.join(__dirname, '..', 'public', 'data');
 const PLAYERS_DIR = path.join(__dirname, '..', 'src', 'content', 'players');
 
 const GAME_FIELDS = ['ctfGames', 'tdmGames'];
 
-// Parse a simple CSV file, returning rows as objects keyed by header names
+// Parse a CSV file using csv-parse, handling quoted fields and BOM
 function parseCsv(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
-  const lines = content.trim().split('\n');
-  const headers = lines[0].split(',');
-  const rows = [];
-  for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(',');
-    const row = {};
-    for (let j = 0; j < headers.length; j++) {
-      row[headers[j].trim()] = (values[j] || '').trim();
-    }
-    rows.push(row);
+  let content = fs.readFileSync(filePath, 'utf8');
+  // Strip BOM if present
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
   }
-  return rows;
+  return parse(content, { columns: true, skip_empty_lines: true, trim: true });
 }
 
 // Build a Map of steamId -> { ctfGames, tdmGames } from HoQ CSVs

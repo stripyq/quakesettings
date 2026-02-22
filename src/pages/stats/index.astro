@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
+import { calculateRealAccel } from '../../utils/accel';
 
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
@@ -45,7 +46,9 @@ const avgCm360 = cm360Values.length > 0
   ? Math.round((cm360Values.reduce((a, b) => a + b, 0) / cm360Values.length) * 100) / 100
   : 0;
 const medianCm360 = cm360Values.length > 0
-  ? cm360Values[Math.floor(cm360Values.length / 2)]
+  ? (cm360Values.length % 2 === 1
+      ? cm360Values[Math.floor(cm360Values.length / 2)]
+      : (cm360Values[cm360Values.length / 2 - 1] + cm360Values[cm360Values.length / 2]) / 2)
   : 0;
 const minCm360 = cm360Values.length > 0 ? Math.min(...cm360Values) : 0;
 const maxCm360 = cm360Values.length > 0 ? Math.max(...cm360Values) : 0;
@@ -63,7 +66,9 @@ const avgEdpi = edpiValues.length > 0
   ? Math.round(edpiValues.reduce((a, b) => a + b, 0) / edpiValues.length)
   : 0;
 const medianEdpi = edpiValues.length > 0
-  ? Math.round(edpiValues[Math.floor(edpiValues.length / 2)])
+  ? Math.round(edpiValues.length % 2 === 1
+      ? edpiValues[Math.floor(edpiValues.length / 2)]
+      : (edpiValues[edpiValues.length / 2 - 1] + edpiValues[edpiValues.length / 2]) / 2)
   : 0;
 
 // cm/360 distribution buckets with accel player breakdown
@@ -443,7 +448,7 @@ function getMonitorHeatColor(count: number, max: number): string {
 
 // FOV distribution
 const fovValues = players.map(p => p.data.fov).filter(v => v);
-const avgFov = Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length);
+const avgFov = fovValues.length > 0 ? Math.round(fovValues.reduce((a, b) => a + b, 0) / fovValues.length) : null;
 const fovDistribution = new Map<number, number>();
 fovValues.forEach(fov => {
   fovDistribution.set(fov, (fovDistribution.get(fov) || 0) + 1);
@@ -457,19 +462,7 @@ const maxFovCount = topFovValues.length > 0 ? topFovValues[0][1] : 1;
 const accelUsers = players.filter(p => p.data.acceleration).length;
 const accelPercentage = Math.round((accelUsers / players.length) * 100);
 
-// Real Accel leaderboard
-// Formula (style 0): ((dpi × windowsSens / 2.54)² × m_yaw × accelValue) / 1000
-// Source: https://funender.com/quake/mouse/index.html
-function calculateRealAccel(d: any): number | null {
-  if (!d.acceleration || !d.accelValue || d.accelValue <= 0) return null;
-  if (!d.dpi) return null;
-  if (d.accelStyle === 1) return null;
-  const yaw = d.m_yaw || 0.022;
-  const windowsSens = d.rawInput ? 1 : (d.windowsSensitivity || 1);
-  const dpiTerm = (d.dpi * windowsSens) / 2.54;
-  return Math.round((Math.pow(dpiTerm, 2) * yaw * d.accelValue) / 1000 * 100) / 100;
-}
-
+// Real Accel leaderboard (using imported calculateRealAccel from utils/accel.ts)
 const realAccelPlayers = players
   .map(p => ({ id: p.id, name: p.data.name, realAccel: calculateRealAccel(p.data), accelValue: p.data.accelValue, dpi: p.data.dpi }))
   .filter((p): p is typeof p & { realAccel: number } => p.realAccel !== null)
@@ -652,12 +645,14 @@ const playersWithValidCm360 = players.filter(p => {
   const cm = calculateCm360(p.data);
   return isFinite(cm) && cm > 0;
 });
-const lowestSensPlayer = playersWithValidCm360.reduce((prev, curr) =>
-  calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev
-);
-const highestSensPlayer = playersWithValidCm360.reduce((prev, curr) =>
-  calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev
-);
+const lowestSensPlayer = playersWithValidCm360.length > 0
+  ? playersWithValidCm360.reduce((prev, curr) =>
+      calculateCm360(curr.data) > calculateCm360(prev.data) ? curr : prev)
+  : null;
+const highestSensPlayer = playersWithValidCm360.length > 0
+  ? playersWithValidCm360.reduce((prev, curr) =>
+      calculateCm360(curr.data) < calculateCm360(prev.data) ? curr : prev)
+  : null;
 
 // Highest and lowest FOV
 const playersWithFov = players.filter(p => p.data.fov);
@@ -723,7 +718,7 @@ const schema = {
         <span class="s-summary-label">Accel Users</span>
       </div>
       <div class="s-summary-card">
-        <span class="s-summary-value">{avgFov}&deg;</span>
+        <span class="s-summary-value">{avgFov != null ? `${avgFov}\u00B0` : '\u2014'}</span>
         <span class="s-summary-label">Avg FOV</span>
       </div>
       <div class="s-summary-card">
@@ -1286,16 +1281,20 @@ const schema = {
       <div class="s-card">
         <h2 class="s-card-title">Interesting Facts</h2>
         <div class="s-facts-grid">
-          <div class="s-fact-card">
-            <span class="s-fact-label">Highest Sensitivity</span>
-            <a href={`${base}players/${highestSensPlayer.id}/`} class="s-fact-value">{highestSensPlayer.data.name}</a>
-            <span class="s-fact-detail">{formatCm360(calculateCm360(highestSensPlayer.data))} cm/360</span>
-          </div>
-          <div class="s-fact-card">
-            <span class="s-fact-label">Lowest Sensitivity</span>
-            <a href={`${base}players/${lowestSensPlayer.id}/`} class="s-fact-value">{lowestSensPlayer.data.name}</a>
-            <span class="s-fact-detail">{formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360</span>
-          </div>
+          {highestSensPlayer && (
+            <div class="s-fact-card">
+              <span class="s-fact-label">Highest Sensitivity</span>
+              <a href={`${base}players/${highestSensPlayer.id}/`} class="s-fact-value">{highestSensPlayer.data.name}</a>
+              <span class="s-fact-detail">{formatCm360(calculateCm360(highestSensPlayer.data))} cm/360</span>
+            </div>
+          )}
+          {lowestSensPlayer && (
+            <div class="s-fact-card">
+              <span class="s-fact-label">Lowest Sensitivity</span>
+              <a href={`${base}players/${lowestSensPlayer.id}/`} class="s-fact-value">{lowestSensPlayer.data.name}</a>
+              <span class="s-fact-detail">{formatCm360(calculateCm360(lowestSensPlayer.data))} cm/360</span>
+            </div>
+          )}
           {highestFovPlayer && (
             <div class="s-fact-card">
               <span class="s-fact-label">Highest FOV</span>

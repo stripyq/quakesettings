@@ -1,51 +1,15 @@
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
 const PLAYERS_DIR = path.join(__dirname, '..', 'src', 'content', 'players');
-
-// Simple YAML parser for flat YAML with arrays
-function parseYaml(content) {
-  const data = {};
-  let currentArrayKey = null;
-  const lines = content.split('\n');
-  for (const line of lines) {
-    if (line.startsWith('  - ') && currentArrayKey) {
-      if (!data[currentArrayKey]) data[currentArrayKey] = [];
-      let val = line.slice(4).trim();
-      if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
-      data[currentArrayKey].push(val);
-      continue;
-    }
-    currentArrayKey = null;
-
-    const match = line.match(/^(\w[\w\d_]*)\s*:\s*(.*)$/);
-    if (!match) continue;
-    const [, key, rawVal] = match;
-    let val = rawVal.trim();
-
-    if (val === '' || val === '[]') {
-      if (val === '[]') data[key] = [];
-      else currentArrayKey = key;
-      continue;
-    }
-
-    if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
-    if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
-
-    if (val === 'true') { data[key] = true; continue; }
-    if (val === 'false') { data[key] = false; continue; }
-    if (/^-?\d+(\.\d+)?$/.test(val)) { data[key] = parseFloat(val); continue; }
-
-    data[key] = val;
-  }
-  return data;
-}
 
 // Read all players
 const files = fs.readdirSync(PLAYERS_DIR).filter(f => f.endsWith('.yaml'));
 const players = files.map(f => {
   const content = fs.readFileSync(path.join(PLAYERS_DIR, f), 'utf8');
-  return { slug: f.replace('.yaml', ''), ...parseYaml(content) };
+  const data = yaml.load(content) || {};
+  return { slug: f.replace('.yaml', ''), ...data };
 });
 
 // Calculate cm/360 from settings if not directly available
@@ -141,13 +105,13 @@ for (const ts of teamStats) {
     const profile = hasProfile(p) ? 'Yes' : '—';
     md += `| ${p.name || p.slug}`;
     md += ` | ${profile}`;
-    md += ` | ${p.duelRating || '—'}`;
-    md += ` | ${p.ctfRating ? fmt(p.ctfRating) : '—'}`;
-    md += ` | ${p.tdmRating ? fmt(p.tdmRating) : '—'}`;
+    md += ` | ${p.duelRating != null ? p.duelRating : '—'}`;
+    md += ` | ${p.ctfRating != null ? fmt(p.ctfRating) : '—'}`;
+    md += ` | ${p.tdmRating != null ? fmt(p.tdmRating) : '—'}`;
     md += ` | ${p.accuracy_rg != null ? p.accuracy_rg + '%' : '—'}`;
     md += ` | ${p.accuracy_lg != null ? p.accuracy_lg + '%' : '—'}`;
     md += ` | ${p.accuracy_rl != null ? p.accuracy_rl + '%' : '—'}`;
-    md += ` | ${cm ? fmt(cm) : '—'} |\n`;
+    md += ` | ${cm != null ? fmt(cm) : '—'} |\n`;
   }
   // Team averages row
   const cm = ts.cm;
