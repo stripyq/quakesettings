@@ -101,7 +101,11 @@ async function fetchPlayerStats(steamId) {
       fetchJson(`${API_BASE}/ctf/players/${steamId}/maps`),
     ]);
 
-    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead, mapStats };
+    // head-to-head returns { data: [...], total, mode } — extract the array
+    const h2hArray = Array.isArray(headToHead) ? headToHead
+      : (Array.isArray(headToHead?.data) ? headToHead.data : null);
+
+    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead: h2hArray, mapStats };
   } catch (error) {
     console.error(`  Error: ${error.message}`);
     return null;
@@ -142,15 +146,20 @@ async function main() {
 
     const stats = await fetchPlayerStats(steamId);
 
-    const hasData = stats && (stats.career || stats.weapons || stats.flagStats);
+    // flagStats/nemesis/favoriteVictim return { data: ... } wrappers — check .data for content
+    const hasFlagData = stats && stats.flagStats && stats.flagStats.data;
+    const hasNemesis = stats && stats.nemesis && stats.nemesis.data;
+    const hasVictim = stats && stats.favoriteVictim && stats.favoriteVictim.data;
+    const hasH2H = stats && stats.headToHead && stats.headToHead.length > 0;
+    const hasData = stats && (stats.career || stats.weapons || hasFlagData);
     if (hasData) {
       const entry = { name, fetchedAt: new Date().toISOString() };
       if (stats.career) entry.career = stats.career;
       if (stats.weapons) entry.weapons = stats.weapons;
-      if (stats.flagStats) entry.flagStats = stats.flagStats;
-      if (stats.nemesis) entry.nemesis = stats.nemesis;
-      if (stats.favoriteVictim) entry.favoriteVictim = stats.favoriteVictim;
-      if (stats.headToHead) entry.headToHead = stats.headToHead;
+      if (hasFlagData) entry.flagStats = stats.flagStats;
+      if (hasNemesis) entry.nemesis = stats.nemesis;
+      if (hasVictim) entry.favoriteVictim = stats.favoriteVictim;
+      if (hasH2H) entry.headToHead = stats.headToHead;
       if (stats.mapStats) entry.mapStats = stats.mapStats;
       results[steamId] = entry;
       fetchedCount++;
