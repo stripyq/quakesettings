@@ -3,6 +3,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
 import { calculateRealAccel } from '../../utils/accel';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Load season stats for nemesis/victim leaderboards
+let seasonStatsData: Record<string, any> = {};
+try {
+  const seasonPath = path.join(process.cwd(), 'public/data/season-stats.json');
+  seasonStatsData = JSON.parse(fs.readFileSync(seasonPath, 'utf8'));
+} catch {
+  // No season stats available yet
+}
+
+// Load player registry for name lookups
+let registryNameMap: Record<string, { name: string; hasProfile: boolean; slug: string | null }> = {};
+try {
+  const registryPath = path.join(process.cwd(), 'src/data/player-registry.json');
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  const entries = registry.players || [];
+  registryNameMap = Object.fromEntries(entries.map((p: any) => [p.steamId, { name: p.name, hasProfile: p.hasProfile, slug: p.slug }]));
+} catch {
+  // Registry not available
+}
 
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
@@ -638,6 +660,45 @@ const topRlAccuracy = rankWithTies(accuracyEligible
   .map(p => ({ id: p.id, name: p.data.name, value: p.data.accuracy_rl! })));
 
 // ===========================================
+// NEMESIS / VICTIM LEADERBOARDS
+// ===========================================
+
+// Count how many times each player appears as someone's nemesis or favorite victim
+const nemesisCounts: Record<string, number> = {};
+const victimCounts: Record<string, number> = {};
+
+Object.values(seasonStatsData).forEach((player: any) => {
+  const nemesisSteamId = player.nemesis?.data?.opponent_steam_id;
+  if (nemesisSteamId) {
+    nemesisCounts[nemesisSteamId] = (nemesisCounts[nemesisSteamId] || 0) + 1;
+  }
+
+  const victimSteamId = player.favoriteVictim?.data?.opponent_steam_id;
+  if (victimSteamId) {
+    victimCounts[victimSteamId] = (victimCounts[victimSteamId] || 0) + 1;
+  }
+});
+
+// Build sorted leaderboards with player info
+function buildNemesisLeaderboard(counts: Record<string, number>, limit = 10) {
+  return Object.entries(counts)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, limit)
+    .map(([steamId, count], i) => {
+      const reg = registryNameMap[steamId];
+      const seasonEntry = seasonStatsData[steamId];
+      const name = reg?.name || seasonEntry?.name || steamId;
+      // Find player profile slug if they have one
+      const profilePlayer = players.find(p => p.data.steamId === steamId);
+      const profileId = profilePlayer?.id || null;
+      return { rank: i + 1, steamId, name, count, profileId };
+    });
+}
+
+const mostFeared = buildNemesisLeaderboard(nemesisCounts);
+const mostTargeted = buildNemesisLeaderboard(victimCounts);
+
+// ===========================================
 // INTERESTING FACTS
 // ===========================================
 
@@ -1208,6 +1269,55 @@ const schema = {
         </div>
       </div>
     </div>
+
+    <!-- ========== SECTION: RIVALRIES ========== -->
+    {(mostFeared.length > 0 || mostTargeted.length > 0) && (
+    <div class="s-section-header" style="--section-color: #d29922">
+      <div class="s-section-icon" style="background: #d29922">&#9876;&#65039;</div>
+      <span class="s-section-title" style="color: #d29922">RIVALRIES</span>
+      <span class="s-section-attr">Based on season nemesis &amp; favorite victim data</span>
+    </div>
+
+    <div class="s-two-col">
+      {mostFeared.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Feared Players</h2>
+        <p class="s-card-sub" title="Players who appear as someone's nemesis most often. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
+        <div class="s-leaderboard">
+          {mostFeared.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              {p.profileId
+                ? <a href={`${base}players/${p.profileId}/`} class="s-lb-name">{p.name}</a>
+                : <span class="s-lb-name s-lb-name-plain">{p.name}</span>
+              }
+              <span class="s-lb-value s-lb-value-subtle">nemesis of {p.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+
+      {mostTargeted.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Targeted Players</h2>
+        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
+        <div class="s-leaderboard">
+          {mostTargeted.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              {p.profileId
+                ? <a href={`${base}players/${p.profileId}/`} class="s-lb-name">{p.name}</a>
+                : <span class="s-lb-name s-lb-name-plain">{p.name}</span>
+              }
+              <span class="s-lb-value s-lb-value-subtle">victim of {p.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+    )}
 
     <!-- ========== SECTION 4: CONTROLS ========== -->
     <div class="s-section-header" style="--section-color: #da3633">
@@ -1971,6 +2081,24 @@ const schema = {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     min-width: 36px;
     text-align: right;
+  }
+
+  .s-lb-value-subtle {
+    font-weight: 400;
+    color: #8b949e;
+    font-family: inherit;
+    font-size: 0.75rem;
+    min-width: unset;
+    white-space: nowrap;
+  }
+
+  .s-lb-name-plain {
+    color: #f0f6fc;
+    cursor: default;
+  }
+
+  .s-lb-name-plain:hover {
+    text-decoration: none;
   }
 
   /* --- Recently Updated --- */

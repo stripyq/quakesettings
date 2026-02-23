@@ -953,7 +953,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {seasonStats.career.damage_per_minute != null && (() => {
+                {seasonStats.career.damage_per_minute != null && (seasonStats.career.damage_per_minute > 0 || average(allDPM) > 0) && (() => {
                   const pct = getPercentile(seasonStats.career.damage_per_minute, allDPM);
                   return (
                     <div class="stat-row">
@@ -969,7 +969,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {seasonStats.career.max_streak != null && (() => {
+                {seasonStats.career.max_streak != null && (seasonStats.career.max_streak > 0 || average(allStreak) > 0) && (() => {
                   const pct = getPercentile(seasonStats.career.max_streak, allStreak);
                   return (
                     <div class="stat-row">
@@ -1049,7 +1049,7 @@ const schema = {
             <div class="season-flags">
               <h3>Flag Stats (Season)</h3>
               <div class="stat-rows">
-                {flagData.captures != null && (() => {
+                {flagData.captures != null && (flagData.captures > 0 || average(allCaptures) > 0) && (() => {
                   const pct = getPercentile(flagData.captures, allCaptures);
                   return (
                     <div class="stat-row">
@@ -1065,7 +1065,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {flagData.returns != null && (() => {
+                {flagData.returns != null && (flagData.returns > 0 || average(allReturns) > 0) && (() => {
                   const pct = getPercentile(flagData.returns, allReturns);
                   return (
                     <div class="stat-row">
@@ -1081,7 +1081,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {flagData.pickups != null && (() => {
+                {flagData.pickups != null && (flagData.pickups > 0 || average(allPickups) > 0) && (() => {
                   const pct = getPercentile(flagData.pickups, allPickups);
                   return (
                     <div class="stat-row">
@@ -1097,7 +1097,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {flagData.defends != null && (() => {
+                {flagData.defends != null && (flagData.defends > 0 || average(allDefends) > 0) && (() => {
                   const pct = getPercentile(flagData.defends, allDefends);
                   return (
                     <div class="stat-row">
@@ -1113,7 +1113,7 @@ const schema = {
                     </div>
                   );
                 })()}
-                {flagData.assists != null && (() => {
+                {flagData.assists != null && (flagData.assists > 0 || average(allAssists) > 0) && (() => {
                   const pct = getPercentile(flagData.assists, allAssists);
                   return (
                     <div class="stat-row">
@@ -2547,12 +2547,31 @@ const schema = {
     }
 
     .stat-row {
-      grid-template-columns: 5rem 3.5rem 1fr auto auto;
-      gap: 0.4rem;
+      grid-template-columns: 1fr auto auto;
+      gap: 0.3rem 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .stat-value {
+      font-size: 0.8rem;
+      text-align: left;
     }
 
     .stat-bar-wrap {
-      min-width: 40px;
+      display: none;
+    }
+
+    .stat-pct {
+      font-size: 0.7rem;
+      min-width: unset;
+    }
+
+    .stat-avg {
+      font-size: 0.65rem;
+      min-width: unset;
     }
   }
 </style>
