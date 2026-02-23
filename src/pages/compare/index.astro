@@ -334,7 +334,7 @@ const schema = {
         }
 
         const p1Color = '#3b82f6';
-        const p2Color = '#f97316';
+        const p2Color = '#a855f7';
 
         const svgContent = gridSvg + axesSvg + tickSvg +
           playerPoly(p1, p1Color, false) +
@@ -555,6 +555,33 @@ const schema = {
             if (mPlayed > 0) {
               var mPct = ((mWon / mPlayed) * 100).toFixed(1);
               var mBarW = (mWon / mPlayed) * 100;
+
+              // Best/worst map from detailed matchup data
+              var bestWorstHtml = '';
+              var mMaps = Array.isArray(matchupDetail.maps) ? matchupDetail.maps : [];
+              if (mMaps.length > 0) {
+                var mapWithRates = mMaps.filter(function(m) {
+                  return ((m.matches_won || 0) + (m.matches_lost || 0)) > 0;
+                }).map(function(m) {
+                  var mw = m.matches_won || 0;
+                  var ml = m.matches_lost || 0;
+                  var mp = m.matches_played || (mw + ml);
+                  var name = (m.map || '').replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
+                  return { name: name, won: mw, lost: ml, played: mp, rate: mp > 0 ? mw / mp : 0 };
+                }).sort(function(a, b) { return b.rate - a.rate; });
+
+                if (mapWithRates.length > 0) {
+                  var best = mapWithRates[0];
+                  var worst = mapWithRates[mapWithRates.length - 1];
+                  bestWorstHtml = '<div class="h2h-match-record-maps">';
+                  bestWorstHtml += '<span class="h2h-map-best">Best map: ' + best.name + ' (' + best.won + '-' + best.lost + ')</span>';
+                  if (worst !== best) {
+                    bestWorstHtml += '<span class="h2h-map-worst">Worst map: ' + worst.name + ' (' + worst.won + '-' + worst.lost + ')</span>';
+                  }
+                  bestWorstHtml += '</div>';
+                }
+              }
+
               matchRecordHtml =
                 '<div class="h2h-match-record">' +
                   '<div class="h2h-match-record-label">Match record (when on opposite teams)</div>' +
@@ -567,6 +594,7 @@ const schema = {
                     '<span class="h2h-match-record-side h2h-p2-color">' + mLost + 'W</span>' +
                   '</div>' +
                   '<div class="h2h-match-record-meta">' + mPct + '% match win rate \u00b7 ' + mPlayed + ' matches</div>' +
+                  bestWorstHtml +
                 '</div>';
             }
           }
@@ -1411,7 +1439,7 @@ const schema = {
 
   /* Shared color classes used across h2h, season-compare, and rivalries */
   :global(.h2h-p1-color) { color: #3b82f6; }
-  :global(.h2h-p2-color) { color: #f97316; }
+  :global(.h2h-p2-color) { color: #a855f7; }
 
   .h2h-container :global(.h2h-bar) {
     display: flex;
@@ -1430,7 +1458,7 @@ const schema = {
 
   .h2h-container :global(.h2h-bar-p2) {
     height: 100%;
-    background: #f97316;
+    background: #a855f7;
     border-radius: 0 4px 4px 0;
     transition: width 0.3s ease;
   }
@@ -1503,6 +1531,22 @@ const schema = {
     color: var(--text-secondary, #9090a0);
     text-align: center;
     margin-top: 0.3rem;
+  }
+
+  .h2h-container :global(.h2h-match-record-maps) {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .h2h-container :global(.h2h-map-best) {
+    color: #34d399;
+  }
+
+  .h2h-container :global(.h2h-map-worst) {
+    color: #f87171;
   }
 
   /* --- Matchup History --- */
@@ -1601,7 +1645,7 @@ const schema = {
 
   .matchup-history-container :global(.mh-bar-p2) {
     height: 100%;
-    background: #f97316;
+    background: #a855f7;
     border-radius: 0 3px 3px 0;
     transition: width 0.3s ease;
   }
@@ -1664,7 +1708,7 @@ const schema = {
 
   .matchup-history-container :global(.mh-map-bar-p2) {
     height: 100%;
-    background: #f97316;
+    background: #a855f7;
     border-radius: 0 2px 2px 0;
   }
 
@@ -1870,7 +1914,19 @@ const schema = {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
-    margin-bottom: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .rivalries-container :global(.rv-entry:last-child) {
+    border-bottom: none;
+  }
+
+  .rivalries-container :global(.rv-entry:nth-child(odd)) {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .rivalries-container :global(.rv-col-left .rv-entry) {
