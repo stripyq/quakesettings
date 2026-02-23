@@ -1,7 +1,8 @@
 name: Dell Alienware AW2723DF
 brand: Dell
 size: "27\""
-resolution: "1920x1080"
+resolution: "2560x1440"
 refreshRate: "240Hz"
-panelType: "TN"
+panelType: "Fast IPS"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

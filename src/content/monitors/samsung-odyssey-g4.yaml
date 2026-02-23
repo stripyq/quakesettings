@@ -3,5 +3,6 @@ brand: Samsung
 size: "27\""
 resolution: "1920x1080"
 refreshRate: "240Hz"
-panelType: "TN"
+panelType: "IPS"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

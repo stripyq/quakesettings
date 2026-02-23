@@ -3,5 +3,6 @@ brand: Iiyama
 size: "24\""
 resolution: "1920x1080"
 refreshRate: "165Hz"
-panelType: "TN"
-responseTime: "1ms"
+panelType: "Fast IPS"
+responseTime: "0.8ms"
+adaptiveSync: "FreeSync Premium"

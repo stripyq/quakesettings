@@ -1,7 +1,8 @@
 name: Gigabyte M28U
 brand: Gigabyte
 size: "28\""
-resolution: "1920x1080"
+resolution: "3840x2160"
 refreshRate: "144Hz"
-panelType: "TN"
+panelType: "IPS"
 responseTime: "1ms"
+adaptiveSync: "FreeSync Premium Pro"

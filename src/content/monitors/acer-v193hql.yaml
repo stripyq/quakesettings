@@ -1,7 +1,7 @@
 name: Acer V193HQL
 brand: Acer
 size: "18.5\""
-resolution: "1920x1080"
+resolution: "1366x768"
 refreshRate: "60Hz"
 panelType: "TN"
-responseTime: "1ms"
+responseTime: "5ms"

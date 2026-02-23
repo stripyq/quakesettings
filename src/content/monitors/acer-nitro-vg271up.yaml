@@ -1,7 +1,8 @@
 name: Acer Nitro VG271UP
 brand: Acer
 size: "27\""
-resolution: "1920x1080"
-refreshRate: "120Hz"
-panelType: "TN"
+resolution: "2560x1440"
+refreshRate: "144Hz"
+panelType: "IPS"
 responseTime: "1ms"
+adaptiveSync: "FreeSync"

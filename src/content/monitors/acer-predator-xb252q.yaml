@@ -1,7 +1,8 @@
 name: Acer Predator XB252Q
 brand: Acer
-size: "25\""
+size: "24.5\""
 resolution: "1920x1080"
 refreshRate: "240Hz"
 panelType: "TN"
 responseTime: "1ms"
+adaptiveSync: "G-Sync"

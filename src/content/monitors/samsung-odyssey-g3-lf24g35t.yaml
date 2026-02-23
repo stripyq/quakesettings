@@ -2,6 +2,7 @@ name: Samsung Odyssey G3 LF24G35T
 brand: Samsung
 size: "24\""
 resolution: "1920x1080"
-refreshRate: "165Hz"
-panelType: "TN"
+refreshRate: "144Hz"
+panelType: "VA"
 responseTime: "1ms"
+adaptiveSync: "FreeSync"
