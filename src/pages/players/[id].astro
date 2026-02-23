@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { calculateRealAccel } from '../../utils/accel';
+import { calculateCm360 } from '../../utils/sensitivity';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -67,23 +68,6 @@ const teammates = p.team2026
       .filter(pl => pl.id !== player.id && pl.data.team2026 === p.team2026)
       .sort((a, b) => a.data.name.localeCompare(b.data.name))
   : [];
-
-// cm/360 calculation - two modes:
-// 1. Standard (m_cpi = 0): cm/360 = (360 / (m_yaw × dpi × sens)) × 2.54
-// 2. With m_cpi > 0: cm/360 = (360 / sens) × (m_cpi / dpi)
-// Sources:
-//   https://funender.com/quake/mouse/index.html
-//   https://www.esreality.com/post/2256180/re-mouse-sensitivity/
-function calculateCm360(playerData: any): number {
-  if (playerData.dpi && playerData.sensitivity) {
-    if (playerData.m_cpi && playerData.m_cpi > 0) {
-      return Math.round(((360 / playerData.sensitivity) * (playerData.m_cpi / playerData.dpi)) * 100) / 100;
-    }
-    const yaw = playerData.m_yaw || 0.022;
-    return Math.round(((360 / (yaw * playerData.dpi * playerData.sensitivity)) * 2.54) * 100) / 100;
-  }
-  return playerData.cm360 || 0;
-}
 
 const currentCm360 = calculateCm360(p);
 const realAccel = calculateRealAccel(p);
@@ -196,8 +180,8 @@ function average(values: number[]): number {
 
 function getPercentile(value: number, allValues: number[], higherIsBetter = true): number {
   if (allValues.length === 0) return 50;
-  const count = allValues.filter(v => higherIsBetter ? v < value : v > value).length;
-  return Math.round(100 - (count / allValues.length) * 100);
+  const betterCount = allValues.filter(v => higherIsBetter ? v > value : v < value).length;
+  return Math.round((betterCount / allValues.length) * 100);
 }
 
 function formatAvg(n: number, decimals = 0): string {
