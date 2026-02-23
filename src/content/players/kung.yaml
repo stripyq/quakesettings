@@ -2,7 +2,7 @@ name: Kung
 steamId: "76561198068070185"
 country: Unknown
 category: ctf
-lastUpdated: "2026-02"
+lastUpdated: 2026-02
 dataSource: player
 ctfRating: 15.58
 ctfGames: 1069
@@ -12,7 +12,7 @@ tdmGames: 245
 tdmRatingUpdated: "2026-02-04"
 mouse: logitech-g305-lightspeed
 mousepad: ""
-mousepadOther: "Amazon basics"
+mousepadOther: Amazon basics
 keyboard: wooting-60he
 monitor: lg-ultragear-27gx790a
 headset: hyperx-cloud-ii
@@ -41,3 +41,4 @@ favorite_weapon: Railgun
 accuracy_rl: 35
 accuracy_lg: 32
 accuracy_rg: 49
+qlrace: null

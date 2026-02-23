@@ -4,7 +4,7 @@ aliases: []
 team2026: Czesnecka
 team2026Shortname: CZE
 country: Unknown
-team: "Czesnecka"
+team: Czesnecka
 category: ctf
 lastUpdated: 2025-01
 duelRating: 1356
@@ -50,3 +50,4 @@ favorite_weapon: Railgun
 accuracy_rl: 40
 accuracy_lg: 31
 accuracy_rg: 51
+qlrace: null

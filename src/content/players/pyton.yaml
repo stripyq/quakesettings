@@ -1,6 +1,6 @@
 name: PYTON
 country: PL
-team: "Old Sexy Quakers"
+team: Old Sexy Quakers
 steamId: "76561198105088252"
 aliases:
   - OsQPYTON
@@ -9,10 +9,8 @@ team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: true
 category: ctf
-lastUpdated: "2026-02"
+lastUpdated: 2026-02
 dataSource: player
-
-# Ratings
 ctfRating: 25.44
 ctfGames: 832
 qllrCtfRating: 20.9
@@ -20,16 +18,12 @@ qllrCtfGames: 16
 duelRating: 1395
 duelRatingSource: qlstats
 duelGames: 64
-
-# Hardware
 mouse: razer-deathadder-v2
 mousepad: razer-goliathus-control
-keyboard: "Fury Hornet NFU-0865"
+keyboard: Fury Hornet NFU-0865
 monitor: asus-vg248qe
 headset: hyperx-cloud-iii
 skates: Stock
-
-# Mouse Settings
 dpi: 800
 sensitivity: 11.064
 m_cpi: 800
@@ -41,15 +35,11 @@ rawInput: true
 windowsSensitivity: 6
 invertedMouse: false
 grip: Fingertip
-
-# Game Settings
 fov: 101
 enemyModel: Keel
 crosshair: "2"
 crosshairColor: Yellow
 crosshairSize: "18"
-
-# Binds
 forward: w
 back: s
 left: a
@@ -58,8 +48,6 @@ jump: mouse2
 crouch: space
 attack: mouse1
 zoom: mouse3
-
-# System
 gpuBrand: NVIDIA
 cpuBrand: Intel
 favorite_map: japanesecastles
@@ -68,3 +56,45 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 41
 accuracy_lg: 35
 accuracy_rg: 49
+qlrace:
+  mode: 2
+  records: 6
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 32.4
+  best_record:
+    map: actf01
+    rank: 15
+    total: 79
+    time: 18496
+    rank_pct: 19
+  top_maps:
+    - map: actf01
+      rank: 15
+      total: 79
+      time: 18496
+    - map: df_lickgirls
+      rank: 19
+      total: 98
+      time: 10616
+    - map: df_lickgoogle
+      rank: 30
+      total: 103
+      time: 9192
+    - map: df_minions_run5
+      rank: 24
+      total: 82
+      time: 20345
+    - map: inder_a1ex
+      rank: 18
+      total: 59
+      time: 36718
+    - map: df_pornstarslopin
+      rank: 152
+      total: 226
+      time: 31521
+  fetched_at: "2026-02-23"

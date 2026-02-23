@@ -3,8 +3,8 @@ country: RU
 steamId: "76561198075079469"
 aliases:
   - d1zulya
-team2026: "GdeFlag?"
-team2026Shortname: "GF?"
+team2026: GdeFlag?
+team2026Shortname: GF?
 tdmRating: 25.25
 tdmRatingUpdated: "2026-02-04"
 ctfRating: 22.34
@@ -48,3 +48,29 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_lg: 36
 accuracy_rg: 50
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 34.5
+  best_record:
+    map: cities_of_gold
+    rank: 11
+    total: 66
+    time: 41381
+    rank_pct: 16.7
+  top_maps:
+    - map: cities_of_gold
+      rank: 11
+      total: 66
+      time: 41381
+    - map: moko_slick
+      rank: 11
+      total: 21
+      time: 7336
+  fetched_at: "2026-02-23"

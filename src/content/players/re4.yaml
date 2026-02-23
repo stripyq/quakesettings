@@ -5,7 +5,7 @@ aliases:
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 country: PL
-team: "Old Sexy Quakers"
+team: Old Sexy Quakers
 category: ctf
 lastUpdated: 2025-01
 tdmRating: 21.78
@@ -52,3 +52,61 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 35
 accuracy_lg: 32
 accuracy_rg: 48
+qlrace:
+  mode: 2
+  records: 81
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 1
+  speed_top: 0
+  average_rank_pct: 42.3
+  best_record:
+    map: vanilla_03
+    rank: 10
+    total: 65
+    time: 2617
+    rank_pct: 15.4
+  top_maps:
+    - map: vanilla_03
+      rank: 10
+      total: 65
+      time: 2617
+    - map: crashcourse
+      rank: 20
+      total: 129
+      time: 22024
+    - map: df_lickgirls
+      rank: 16
+      total: 98
+      time: 10496
+    - map: df_dinirun4
+      rank: 11
+      total: 62
+      time: 22018
+    - map: aa_shorty2
+      rank: 5
+      total: 28
+      time: 1876
+    - map: r7_romo
+      rank: 11
+      total: 56
+      time: 35820
+    - map: snazwank
+      rank: 3
+      total: 14
+      time: 35840
+    - map: inder_a1ex
+      rank: 13
+      total: 59
+      time: 35247
+    - map: daanstrafe06
+      rank: 6
+      total: 27
+      time: 20963
+    - map: getupthere
+      rank: 4
+      total: 17
+      time: 11967
+  fetched_at: "2026-02-23"

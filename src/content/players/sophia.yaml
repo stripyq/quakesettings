@@ -52,3 +52,33 @@ favorite_weapon: Shotgun
 accuracy_rl: 35
 accuracy_lg: 33
 accuracy_rg: 50
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 43.3
+  best_record:
+    map: spacectf
+    rank: 73
+    total: 284
+    time: 4872
+    rank_pct: 25.7
+  top_maps:
+    - map: spacectf
+      rank: 73
+      total: 284
+      time: 4872
+    - map: rebound
+      rank: 62
+      total: 157
+      time: 8815
+    - map: r7_barkskin
+      rank: 22
+      total: 34
+      time: 21448
+  fetched_at: "2026-02-23"

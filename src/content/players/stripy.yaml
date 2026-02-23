@@ -9,7 +9,7 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 country: HR
-team: "wAnnaBees"
+team: wAnnaBees
 category: ctf
 lastUpdated: 2025-01
 duelRating: 1086
@@ -65,3 +65,37 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 35
 accuracy_lg: 33
 accuracy_rg: 52
+qlrace:
+  mode: 3
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1040
+  average_rank_pct: 84.5
+  best_record:
+    map: strafe_ok
+    rank: 50
+    total: 67
+    time: 15432
+    rank_pct: 74.6
+  top_maps:
+    - map: strafe_ok
+      rank: 50
+      total: 67
+      time: 15432
+    - map: 180turn
+      rank: 31
+      total: 40
+      time: 66216
+    - map: shitstrafe2
+      rank: 61
+      total: 71
+      time: 35680
+    - map: df-nuke_inverted
+      rank: 15
+      total: 15
+      time: 111416
+  fetched_at: "2026-02-23"

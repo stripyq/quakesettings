@@ -4,3 +4,61 @@ aliases:
   - Ratman
 category: ctf
 published: false
+qlrace:
+  mode: 2
+  records: 20
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 42.8
+  best_record:
+    map: df_inferno
+    rank: 10
+    total: 80
+    time: 55201
+    rank_pct: 12.5
+  top_maps:
+    - map: df_inferno
+      rank: 10
+      total: 80
+      time: 55201
+    - map: overkill_race
+      rank: 4
+      total: 32
+      time: 31341
+    - map: schody
+      rank: 9
+      total: 57
+      time: 9209
+    - map: aa_slope
+      rank: 13
+      total: 73
+      time: 31642
+    - map: charon
+      rank: 35
+      total: 194
+      time: 27253
+    - map: tatmt_s2
+      rank: 18
+      total: 64
+      time: 20958
+    - map: inder_a1ex
+      rank: 17
+      total: 59
+      time: 36673
+    - map: 18percent
+      rank: 18
+      total: 61
+      time: 42105
+    - map: q3wcp24
+      rank: 11
+      total: 37
+      time: 18684
+    - map: mega_ramp
+      rank: 82
+      total: 227
+      time: 27554
+  fetched_at: "2026-02-23"

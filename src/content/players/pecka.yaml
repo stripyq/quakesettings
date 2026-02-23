@@ -1,54 +1,49 @@
-name: "pecka"
-country: "RU"
+name: pecka
+country: RU
 steamId: "76561198025225261"
 aliases: []
-team2026: "GdeFlag?"
-team2026Shortname: "GF?"
-category: "tdm"
-lastUpdated: "2026-02"
-dataSource: "player"
-
+team2026: GdeFlag?
+team2026Shortname: GF?
+category: tdm
+lastUpdated: 2026-02
+dataSource: player
 duelRating: 1041
 ctfGames: 221
 tdmGames: 2367
 duelGames: 794
 ctfRating: 17.16
 tdmRating: 27.69
-
 dpi: 1600
 sensitivity: 1.7
 edpi: 2720
 rawInput: true
-grip: "Fingertip"
-
+grip: Fingertip
 fov: 95
 crosshair: "2"
-crosshairColor: "Red"
+crosshairColor: Red
 crosshairSize: "16"
-enemyModel: "Keel"
-
-forward: "e"
-back: "d"
-left: "s"
-right: "f"
-jump: "space"
-crouch: "alt"
-attack: "mouse1"
-
-mouse: "logitech-g-pro-x-superlight-ii"
-mousepad: "lethal-gaming-gear-saturn-pro"
-mousepadBase: "Soft"
-mousepadSize: "XL"
-keyboard: "aula-win68-he-max"
-monitor: "lg-27gx790a-b"
-headset: "logitech-g335"
-skates: "Stock"
-
-gpuBrand: "NVIDIA"
-cpuBrand: "Intel"
+enemyModel: Keel
+forward: e
+back: d
+left: s
+right: f
+jump: space
+crouch: alt
+attack: mouse1
+mouse: logitech-g-pro-x-superlight-ii
+mousepad: lethal-gaming-gear-saturn-pro
+mousepadBase: Soft
+mousepadSize: XL
+keyboard: aula-win68-he-max
+monitor: lg-27gx790a-b
+headset: logitech-g335
+skates: Stock
+gpuBrand: NVIDIA
+cpuBrand: Intel
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 44
 accuracy_lg: 36
 accuracy_rg: 48
+qlrace: null

@@ -1,6 +1,6 @@
 name: Dloobiq
 country: CZ
-team: "Czesnecka"
+team: Czesnecka
 steamId: "76561198107461408"
 aliases:
   - Dloobiq
@@ -19,3 +19,4 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 37
 accuracy_lg: 30
 accuracy_rg: 46
+qlrace: null

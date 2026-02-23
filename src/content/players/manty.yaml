@@ -6,7 +6,7 @@ team2024: AHU
 team2026: Czesnecka
 team2026Shortname: CZE
 country: Unknown
-team: "Czesnecka"
+team: Czesnecka
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 22.85
@@ -46,3 +46,29 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_lg: 30
 accuracy_rg: 49
+qlrace:
+  mode: 3
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 837
+  average_rank_pct: 31.9
+  best_record:
+    map: qzpractice2
+    rank: 84
+    total: 327
+    time: 23368
+    rank_pct: 25.7
+  top_maps:
+    - map: qzpractice2
+      rank: 84
+      total: 327
+      time: 23368
+    - map: japanesecastles
+      rank: 76
+      total: 199
+      time: 11848
+  fetched_at: "2026-02-23"

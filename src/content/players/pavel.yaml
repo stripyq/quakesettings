@@ -13,7 +13,7 @@ tdm2v2Rating: 39.47
 tdm2v2Games: 261
 dpi: 800
 sensitivity: 0.74
-m_yaw: 0.030
+m_yaw: 0.03
 edpi: 592
 cm360: 51.49
 acceleration: false
@@ -42,3 +42,4 @@ favorite_weapon: Lightning Gun
 accuracy_rl: 41
 accuracy_lg: 33
 accuracy_rg: 49
+qlrace: null

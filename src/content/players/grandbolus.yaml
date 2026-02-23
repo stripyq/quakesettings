@@ -25,7 +25,7 @@ jump: Space
 attack: Mouse1
 mouse: logitech-g302
 mousepad: steelseries-qck
-mousepadSize: "Large"
+mousepadSize: Large
 keyboard: ducky-one-2
 monitor: iiyama-g-master-gb2470hsu-b1
 headset: sony-wh-1000xm4
@@ -42,3 +42,4 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 46
 accuracy_lg: 34
 accuracy_rg: 51
+qlrace: null

@@ -46,3 +46,41 @@ favorite_weapon: Shotgun
 accuracy_rl: 33
 accuracy_lg: 33
 accuracy_rg: 47
+qlrace:
+  mode: 2
+  records: 5
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1185
+  average_rank_pct: 16.1
+  best_record:
+    map: ironworks
+    rank: 6
+    total: 95
+    time: 6336
+    rank_pct: 6.3
+  top_maps:
+    - map: ironworks
+      rank: 6
+      total: 95
+      time: 6336
+    - map: troubledwaters
+      rank: 7
+      total: 74
+      time: 8648
+    - map: df_lickgirls
+      rank: 18
+      total: 98
+      time: 10568
+    - map: japanesecastles
+      rank: 46
+      total: 242
+      time: 11320
+    - map: spidercrossings
+      rank: 34
+      total: 124
+      time: 12544
+  fetched_at: "2026-02-23"

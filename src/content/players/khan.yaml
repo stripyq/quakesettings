@@ -1,6 +1,6 @@
 name: KHAN
 country: IS
-team: "Astral Starlight"
+team: Astral Starlight
 steamId: "76561197973893045"
 aliases: []
 team2026: Astral Starlight
@@ -15,3 +15,37 @@ favorite_weapon: Railgun
 accuracy_rl: 39
 accuracy_lg: 34
 accuracy_rg: 52
+qlrace:
+  mode: 3
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1283
+  average_rank_pct: 60.1
+  best_record:
+    map: base1
+    rank: 13
+    total: 32
+    time: 7480
+    rank_pct: 40.6
+  top_maps:
+    - map: base1
+      rank: 13
+      total: 32
+      time: 7480
+    - map: kool_fastwho2
+      rank: 22
+      total: 47
+      time: 39616
+    - map: hangtime-df
+      rank: 37
+      total: 61
+      time: 1009600
+    - map: kool_m2
+      rank: 24
+      total: 26
+      time: 42576
+  fetched_at: "2026-02-23"

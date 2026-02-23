@@ -6,7 +6,7 @@ team2024: SHREKTALIKA
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
 country: FR
-team: "SHREKTALIKA"
+team: SHREKTALIKA
 published: false
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
@@ -14,3 +14,4 @@ favorite_weapon: Railgun
 accuracy_rl: 31
 accuracy_lg: 36
 accuracy_rg: 52
+qlrace: null

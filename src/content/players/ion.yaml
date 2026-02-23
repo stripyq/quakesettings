@@ -3,8 +3,8 @@ steamId: "76561197983318796"
 aliases:
   - FX
 team2024: Whatever name IDC
-team2026: "GdeFlag?"
-team2026Shortname: "GF?"
+team2026: GdeFlag?
+team2026Shortname: GF?
 country: NL
 category: ctf
 lastUpdated: 2025-01
@@ -50,3 +50,4 @@ favorite_weapon: Railgun
 accuracy_rl: 35
 accuracy_lg: 39
 accuracy_rg: 51
+qlrace: null

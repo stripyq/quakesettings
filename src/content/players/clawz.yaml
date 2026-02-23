@@ -5,3 +5,25 @@ aliases:
 category: ctf
 published: false
 team2024: The expendables
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 871
+  average_rank_pct: 50
+  best_record:
+    map: zdorov-fakir-re
+    rank: 18
+    total: 36
+    time: 45432
+    rank_pct: 50
+  top_maps:
+    - map: zdorov-fakir-re
+      rank: 18
+      total: 36
+      time: 45432
+  fetched_at: "2026-02-23"

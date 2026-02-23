@@ -5,21 +5,15 @@ published: true
 category: duel
 lastUpdated: "2026-02-14"
 dataSource: collected
-
-# Ratings
 duelRating: 2426
 duelRatingSource: qlstats
 duelGames: 2102
-
-# Hardware
 mouse: logitech-g-pro-x2-superstrike
 mousepad: logitech-g640
 keyboard: logitech-g-pro-x-tkl-rapid
 monitor: benq-zowie-xl2540
 headset: logitech-g-pro-x-wireless-headset
 skates: Stock
-
-# Mouse Settings
 dpi: 400
 sensitivity: 2.35
 edpi: 940
@@ -31,14 +25,10 @@ rawInput: true
 windowsSensitivity: 6
 invertedMouse: false
 grip: Hybrid
-
-# Game Settings
 fov: 100
 enemyModel: Keel
 crosshairColor: Yellow
 crosshairSize: "20"
-
-# Binds
 forward: w
 back: s
 left: a
@@ -47,8 +37,6 @@ jump: mouse2
 crouch: shift
 attack: mouse1
 zoom: mouse4
-
-# System
 gpuBrand: NVIDIA
 cpuBrand: Intel
 favorite_map: campgrounds
@@ -57,3 +45,61 @@ favorite_weapon: Railgun
 accuracy_rl: 46
 accuracy_lg: 45
 accuracy_rg: 58
+qlrace:
+  mode: 2
+  records: 22
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 1
+  speed_top: 0
+  average_rank_pct: 25.5
+  best_record:
+    map: qzpractice2
+    rank: 9
+    total: 591
+    time: 18705
+    rank_pct: 1.5
+  top_maps:
+    - map: qzpractice2
+      rank: 9
+      total: 591
+      time: 18705
+    - map: cruton2
+      rank: 8
+      total: 131
+      time: 44280
+    - map: df_aztec
+      rank: 6
+      total: 72
+      time: 54020
+    - map: df_dinirun5
+      rank: 9
+      total: 83
+      time: 25290
+    - map: koz25
+      rank: 4
+      total: 36
+      time: 1511248
+    - map: df_coldrun
+      rank: 24
+      total: 172
+      time: 16415
+    - map: mega_ramp
+      rank: 34
+      total: 227
+      time: 22294
+    - map: df_lickgoogle
+      rank: 16
+      total: 103
+      time: 6239
+    - map: df_24run
+      rank: 10
+      total: 55
+      time: 12081
+    - map: crem_brew_lay
+      rank: 18
+      total: 95
+      time: 32077
+  fetched_at: "2026-02-23"

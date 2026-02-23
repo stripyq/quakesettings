@@ -1,7 +1,29 @@
 name: mousestar
 steamId: "76561198191100033"
 aliases:
-  - "FF^mouse*"
+  - FF^mouse*
 category: ctf
 published: false
 team2024: Flappy Flags
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 55.1
+  best_record:
+    map: dfwc2017_6
+    rank: 43
+    total: 78
+    time: 172088
+    rank_pct: 55.1
+  top_maps:
+    - map: dfwc2017_6
+      rank: 43
+      total: 78
+      time: 172088
+  fetched_at: "2026-02-23"

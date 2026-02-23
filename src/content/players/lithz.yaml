@@ -46,3 +46,61 @@ favorite_weapon: Lightning Gun
 accuracy_rl: 45
 accuracy_lg: 37
 accuracy_rg: 55
+qlrace:
+  mode: 2
+  records: 29
+  wrs: 4
+  medals:
+    gold: 4
+    silver: 2
+    bronze: 2
+  speed_top: 3971
+  average_rank_pct: 23
+  best_record:
+    map: campgrounds
+    rank: 5
+    total: 387
+    time: 19236
+    rank_pct: 1.3
+  top_maps:
+    - map: campgrounds
+      rank: 5
+      total: 387
+      time: 19236
+    - map: lick_girls
+      rank: 1
+      total: 40
+      time: 8360
+    - map: spidercrossings
+      rank: 4
+      total: 124
+      time: 8584
+    - map: dividedcrossings
+      rank: 4
+      total: 123
+      time: 3776
+    - map: ironworks
+      rank: 4
+      total: 95
+      time: 5746
+    - map: inder_rocketrun
+      rank: 1
+      total: 18
+      time: 11616
+    - map: bardok_breach
+      rank: 2
+      total: 30
+      time: 18288
+    - map: pornstar_bhenchod
+      rank: 1
+      total: 14
+      time: 20584
+    - map: courtyard
+      rank: 12
+      total: 166
+      time: 10536
+    - map: smallassmap-rl-quad
+      rank: 5
+      total: 65
+      time: 10608
+  fetched_at: "2026-02-23"

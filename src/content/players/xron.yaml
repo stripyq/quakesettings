@@ -4,3 +4,25 @@ aliases:
   - xron
 category: ctf
 published: false
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 61.5
+  best_record:
+    map: p5run
+    rank: 8
+    total: 13
+    time: 9968
+    rank_pct: 61.5
+  top_maps:
+    - map: p5run
+      rank: 8
+      total: 13
+      time: 9968
+  fetched_at: "2026-02-23"

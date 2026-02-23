@@ -1,6 +1,6 @@
 name: zoza
 country: HU
-team: "wAnnaBees"
+team: wAnnaBees
 steamId: "76561198154954843"
 aliases:
   - zozo
@@ -17,3 +17,25 @@ favorite_weapon: Railgun
 accuracy_rl: 54
 accuracy_lg: 34
 accuracy_rg: 45
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 70.6
+  best_record:
+    map: qzpractice2
+    rank: 231
+    total: 327
+    time: 28568
+    rank_pct: 70.6
+  top_maps:
+    - map: qzpractice2
+      rank: 231
+      total: 327
+      time: 28568
+  fetched_at: "2026-02-23"

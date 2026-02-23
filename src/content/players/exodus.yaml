@@ -5,3 +5,29 @@ aliases:
 category: ctf
 published: false
 team2024: The expendables
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 27.7
+  best_record:
+    map: japanesecastles
+    rank: 60
+    total: 242
+    time: 11637
+    rank_pct: 24.8
+  top_maps:
+    - map: japanesecastles
+      rank: 60
+      total: 242
+      time: 11637
+    - map: oilrig
+      rank: 11
+      total: 36
+      time: 10934
+  fetched_at: "2026-02-23"

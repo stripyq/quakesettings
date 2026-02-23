@@ -1,6 +1,6 @@
 name: kirson
 country: Poland
-team: "wAnnaBees"
+team: wAnnaBees
 steamId: "76561198114832578"
 aliases:
   - wB kirson
@@ -37,3 +37,4 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_lg: 36
 accuracy_rg: 64
+qlrace: null

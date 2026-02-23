@@ -1,6 +1,6 @@
 name: ioRek
 country: FR
-team: "Le Cubanitos"
+team: Le Cubanitos
 steamId: "76561197960736529"
 aliases:
   - ioio_
@@ -52,3 +52,4 @@ favorite_weapon: Shotgun
 accuracy_rl: 42
 accuracy_lg: 36
 accuracy_rg: 59
+qlrace: null

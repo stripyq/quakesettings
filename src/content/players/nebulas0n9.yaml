@@ -1,6 +1,6 @@
 name: nebulas0n9
 country: UA
-team: "Astral Starlight"
+team: Astral Starlight
 steamId: "76561198141993917"
 aliases:
   - nebula
@@ -17,3 +17,25 @@ favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_lg: 39
 accuracy_rg: 54
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 2042
+  average_rank_pct: 27.3
+  best_record:
+    map: r7-funky
+    rank: 6
+    total: 22
+    time: 26008
+    rank_pct: 27.3
+  top_maps:
+    - map: r7-funky
+      rank: 6
+      total: 22
+      time: 26008
+  fetched_at: "2026-02-23"

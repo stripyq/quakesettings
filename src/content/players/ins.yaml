@@ -7,7 +7,7 @@ team2024: Aimdead Brainers
 team2026: Aimdead Brainers
 team2026Shortname: cock
 country: PT
-team: "Aimdead brainers"
+team: Aimdead brainers
 category: ctf
 lastUpdated: 2025-01
 tdmRating: 29.47
@@ -53,3 +53,61 @@ favorite_weapon: Railgun
 accuracy_rl: 49
 accuracy_lg: 42
 accuracy_rg: 63
+qlrace:
+  mode: 2
+  records: 26
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1528
+  average_rank_pct: 51.5
+  best_record:
+    map: rebound
+    rank: 22
+    total: 157
+    time: 7200
+    rank_pct: 14
+  top_maps:
+    - map: rebound
+      rank: 22
+      total: 157
+      time: 7200
+    - map: q3wcp19
+      rank: 10
+      total: 71
+      time: 13744
+    - map: df_coldrun
+      rank: 25
+      total: 172
+      time: 16430
+    - map: r7_sanity
+      rank: 5
+      total: 27
+      time: 72386
+    - map: tatmt_s4
+      rank: 11
+      total: 55
+      time: 17627
+    - map: cruton6
+      rank: 23
+      total: 84
+      time: 101982
+    - map: df_pornstarslopin
+      rank: 69
+      total: 226
+      time: 28888
+    - map: duotest
+      rank: 19
+      total: 57
+      time: 6927
+    - map: sarcasmjump
+      rank: 19
+      total: 56
+      time: 428165
+    - map: pillbox
+      rank: 20
+      total: 57
+      time: 10230
+  fetched_at: "2026-02-23"

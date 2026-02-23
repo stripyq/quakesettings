@@ -2,7 +2,7 @@ name: jmpuLz
 steamId: "76561198041347061"
 country: Unknown
 category: ctf
-lastUpdated: "2026-02"
+lastUpdated: 2026-02
 ctfRating: 6.15
 ctfRatingUpdated: "2026-02-03"
 dataSource: player
@@ -18,12 +18,12 @@ left: a
 right: d
 jump: space
 attack: mouse1
-mouse: "logitech-g-pro-x-superlight"
-mousepad: "xtrfy-gp5"
-mousepadSize: "XL"
+mouse: logitech-g-pro-x-superlight
+mousepad: xtrfy-gp5
+mousepadSize: XL
 keyboard: ""
-monitor: "benq-zowie-xl2546k"
-headset: "hyperx-cloud-ii"
+monitor: benq-zowie-xl2546k
+headset: hyperx-cloud-ii
 enemyModel: Tank Jr.
 grip: Hybrid
 skates: Aftermarket
@@ -36,3 +36,4 @@ favorite_weapon: Railgun
 accuracy_rl: 37
 accuracy_lg: 30
 accuracy_rg: 49
+qlrace: null

@@ -4,3 +4,61 @@ aliases: []
 category: ctf
 published: false
 team2024: unreliable dogs
+qlrace:
+  mode: 2
+  records: 11
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1049
+  average_rank_pct: 51.3
+  best_record:
+    map: japanesecastles
+    rank: 21
+    total: 242
+    time: 9816
+    rank_pct: 8.7
+  top_maps:
+    - map: japanesecastles
+      rank: 21
+      total: 242
+      time: 9816
+    - map: skate1
+      rank: 14
+      total: 51
+      time: 32408
+    - map: campgrounds
+      rank: 135
+      total: 387
+      time: 26464
+    - map: henhouse
+      rank: 25
+      total: 60
+      time: 38536
+    - map: actf01
+      rank: 34
+      total: 79
+      time: 22904
+    - map: effect_gavno
+      rank: 8
+      total: 16
+      time: 27600
+    - map: pornvannestar2
+      rank: 14
+      total: 27
+      time: 50168
+    - map: inder_medroxyprogesterone
+      rank: 13
+      total: 19
+      time: 19560
+    - map: inder_speed1
+      rank: 18
+      total: 25
+      time: 15744
+    - map: woftct
+      rank: 31
+      total: 42
+      time: 161866
+  fetched_at: "2026-02-23"

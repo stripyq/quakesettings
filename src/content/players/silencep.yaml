@@ -46,3 +46,25 @@ favorite_weapon: Railgun
 accuracy_rl: 34
 accuracy_lg: 46
 accuracy_rg: 59
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 11.2
+  best_record:
+    map: japanesecastles
+    rank: 27
+    total: 242
+    time: 10423
+    rank_pct: 11.2
+  top_maps:
+    - map: japanesecastles
+      rank: 27
+      total: 242
+      time: 10423
+  fetched_at: "2026-02-23"

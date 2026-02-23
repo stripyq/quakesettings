@@ -42,3 +42,25 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_lg: 37
 accuracy_rg: 55
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1368
+  average_rank_pct: 45.1
+  best_record:
+    map: regrelue04
+    rank: 23
+    total: 51
+    time: 47432
+    rank_pct: 45.1
+  top_maps:
+    - map: regrelue04
+      rank: 23
+      total: 51
+      time: 47432
+  fetched_at: "2026-02-23"

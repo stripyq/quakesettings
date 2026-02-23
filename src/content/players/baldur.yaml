@@ -6,7 +6,7 @@ team2024: Old Sexy Quakers
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 country: ES
-team: "Old Sexy Quakers"
+team: Old Sexy Quakers
 category: ctf
 lastUpdated: 2025-01
 duelRating: 1242
@@ -51,3 +51,4 @@ favorite_weapon: Railgun
 accuracy_rl: 39
 accuracy_lg: 36
 accuracy_rg: 58
+qlrace: null

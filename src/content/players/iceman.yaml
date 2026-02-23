@@ -5,7 +5,7 @@ aliases:
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
 country: SE
-team: "SHREKTALIKA"
+team: SHREKTALIKA
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 38.89
@@ -48,3 +48,25 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 43
 accuracy_lg: 34
 accuracy_rg: 54
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1202
+  average_rank_pct: 71
+  best_record:
+    map: kool_bricks1
+    rank: 22
+    total: 31
+    time: 63256
+    rank_pct: 71
+  top_maps:
+    - map: kool_bricks1
+      rank: 22
+      total: 31
+      time: 63256
+  fetched_at: "2026-02-23"

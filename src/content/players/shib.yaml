@@ -4,3 +4,29 @@ aliases: []
 category: ctf
 published: false
 team2024: 4friends
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1508
+  average_rank_pct: 86.8
+  best_record:
+    map: crem_brew_lay
+    rank: 80
+    total: 95
+    time: 66760
+    rank_pct: 84.2
+  top_maps:
+    - map: crem_brew_lay
+      rank: 80
+      total: 95
+      time: 66760
+    - map: biotrix-blast
+      rank: 17
+      total: 19
+      time: 26400
+  fetched_at: "2026-02-23"

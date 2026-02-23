@@ -45,3 +45,61 @@ favorite_weapon: Railgun
 accuracy_rl: 40
 accuracy_lg: 30
 accuracy_rg: 51
+qlrace:
+  mode: 2
+  records: 88
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 3585
+  average_rank_pct: 52.2
+  best_record:
+    map: aa_rmg2
+    rank: 6
+    total: 37
+    time: 25258
+    rank_pct: 16.2
+  top_maps:
+    - map: aa_rmg2
+      rank: 6
+      total: 37
+      time: 25258
+    - map: actf14
+      rank: 6
+      total: 37
+      time: 9161
+    - map: tatmt_s2
+      rank: 12
+      total: 64
+      time: 20328
+    - map: qw_race3
+      rank: 8
+      total: 39
+      time: 18416
+    - map: df_licksewage
+      rank: 7
+      total: 34
+      time: 18240
+    - map: tatmt_s8
+      rank: 31
+      total: 149
+      time: 22699
+    - map: pornstar_sandnigga
+      rank: 7
+      total: 30
+      time: 26760
+    - map: p3nt4_ralco
+      rank: 16
+      total: 68
+      time: 41960
+    - map: pornstar_quickie2
+      rank: 9
+      total: 37
+      time: 18352
+    - map: zeel_ponpon
+      rank: 9
+      total: 37
+      time: 23016
+  fetched_at: "2026-02-23"

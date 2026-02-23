@@ -42,3 +42,33 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 37
 accuracy_lg: 28
 accuracy_rg: 43
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1331
+  average_rank_pct: 34.3
+  best_record:
+    map: japanesecastles
+    rank: 7
+    total: 242
+    time: 8176
+    rank_pct: 2.9
+  top_maps:
+    - map: japanesecastles
+      rank: 7
+      total: 242
+      time: 8176
+    - map: campgrounds
+      rank: 155
+      total: 387
+      time: 27208
+    - map: spr_toofoo
+      rank: 24
+      total: 40
+      time: 34472
+  fetched_at: "2026-02-23"

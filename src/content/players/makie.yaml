@@ -6,7 +6,7 @@ team2024: SHREKTALIKA
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
 country: HR
-team: "SHREKTALIKA"
+team: SHREKTALIKA
 category: ctf
 lastUpdated: 2025-01
 tdmRating: 23.43
@@ -53,3 +53,4 @@ favorite_weapon: Railgun
 accuracy_rl: 49
 accuracy_lg: 40
 accuracy_rg: 52
+qlrace: null

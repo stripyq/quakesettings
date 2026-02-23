@@ -43,3 +43,29 @@ favorite_weapon: Shotgun
 accuracy_rl: 36
 accuracy_lg: 32
 accuracy_rg: 44
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 26.2
+  best_record:
+    map: tenuous
+    rank: 16
+    total: 98
+    time: 61538
+    rank_pct: 16.3
+  top_maps:
+    - map: tenuous
+      rank: 16
+      total: 98
+      time: 61538
+    - map: df_lickhuar
+      rank: 9
+      total: 25
+      time: 47591
+  fetched_at: "2026-02-23"

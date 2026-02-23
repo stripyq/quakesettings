@@ -1,16 +1,15 @@
-name: "SPART1E"
-country: "SE"
-team: "SHREKTALIKA"
+name: SPART1E
+country: SE
+team: SHREKTALIKA
 steamId: "76561198239142044"
 aliases:
   - SPART1E
 team2024: SHREKTALIKA
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
-category: "ctf"
-lastUpdated: "2026-02"
-dataSource: "player"
-
+category: ctf
+lastUpdated: 2026-02
+dataSource: player
 duelRating: 2070
 duelGames: 2866
 ctfRating: 33.6
@@ -19,37 +18,33 @@ tdmRating: 34.6
 tdmGames: 344
 qllrCtfRating: 35.78
 qllrCtfGames: 61
-
 dpi: 1600
 sensitivity: 1
 edpi: 1600
 rawInput: true
-grip: "Palm"
-
+grip: Palm
 fov: 99.3
 crosshair: "2"
-crosshairColor: "White"
-enemyModel: "Sarge"
-
-forward: "w"
-back: "s"
-left: "a"
-right: "d"
-jump: "space"
-crouch: "ctrl"
-attack: "mouse1"
-zoom: "mouse2"
-
-mouse: "zowie-ec2-b"
-keyboard: "spc-gear"
-monitor: "asus-pg259qn"
-skates: "Aftermarket"
-
-gpuBrand: "NVIDIA"
-cpuBrand: "Intel"
+crosshairColor: White
+enemyModel: Sarge
+forward: w
+back: s
+left: a
+right: d
+jump: space
+crouch: ctrl
+attack: mouse1
+zoom: mouse2
+mouse: zowie-ec2-b
+keyboard: spc-gear
+monitor: asus-pg259qn
+skates: Aftermarket
+gpuBrand: NVIDIA
+cpuBrand: Intel
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 46
 accuracy_lg: 40
 accuracy_rg: 58
+qlrace: null

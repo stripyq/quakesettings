@@ -1,6 +1,6 @@
 name: Lumi
 country: DE
-team: "Le Cubanitos"
+team: Le Cubanitos
 steamId: "76561198088925347"
 aliases:
   - CUBAlumi
@@ -18,3 +18,33 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_lg: 38
 accuracy_rg: 56
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 1
+  medals:
+    gold: 1
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 16.9
+  best_record:
+    map: df_cityrocket
+    rank: 1
+    total: 39
+    time: 32487
+    rank_pct: 2.6
+  top_maps:
+    - map: df_cityrocket
+      rank: 1
+      total: 39
+      time: 32487
+    - map: df_lickmax
+      rank: 18
+      total: 87
+      time: 6532
+    - map: spacectf
+      rank: 78
+      total: 284
+      time: 4925
+  fetched_at: "2026-02-23"

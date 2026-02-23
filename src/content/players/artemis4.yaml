@@ -6,7 +6,7 @@ team2024: CTF4
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 country: SI
-team: "Le Cubanitos"
+team: Le Cubanitos
 category: ctf
 lastUpdated: 2025-01
 tdmRating: 14.38
@@ -52,3 +52,61 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 40
 accuracy_lg: 30
 accuracy_rg: 51
+qlrace:
+  mode: 2
+  records: 19
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 1
+  speed_top: 0
+  average_rank_pct: 26.6
+  best_record:
+    map: r7_hedges
+    rank: 3
+    total: 34
+    time: 15024
+    rank_pct: 8.8
+  top_maps:
+    - map: r7_hedges
+      rank: 3
+      total: 34
+      time: 15024
+    - map: beyondreality
+      rank: 12
+      total: 127
+      time: 3751
+    - map: brimstoneabbey
+      rank: 6
+      total: 61
+      time: 14765
+    - map: r2v2
+      rank: 5
+      total: 42
+      time: 33744
+    - map: 13plant
+      rank: 7
+      total: 48
+      time: 6504
+    - map: vortexportal
+      rank: 6
+      total: 38
+      time: 12680
+    - map: r7_whimsy
+      rank: 8
+      total: 39
+      time: 64016
+    - map: 6percent
+      rank: 5
+      total: 24
+      time: 26104
+    - map: blastradius
+      rank: 6
+      total: 28
+      time: 13818
+    - map: dividedcrossings
+      rank: 30
+      total: 123
+      time: 5427
+  fetched_at: "2026-02-23"

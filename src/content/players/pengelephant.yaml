@@ -1,6 +1,6 @@
 name: pengelephant
 country: GB
-team: "Aimdead brainers"
+team: Aimdead brainers
 steamId: "76561198062139103"
 aliases:
   - cockpengelephant
@@ -12,7 +12,7 @@ dpi: 3200
 sensitivity: 0.28864
 m_yaw: 0.022
 edpi: 923.65
-cm360: 45.0
+cm360: 45
 acceleration: false
 rawInput: true
 fov: 95
@@ -34,3 +34,4 @@ favorite_weapon: Railgun
 accuracy_rl: 44
 accuracy_lg: 42
 accuracy_rg: 61
+qlrace: null

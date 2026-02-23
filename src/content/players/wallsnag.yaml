@@ -45,3 +45,25 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 34
 accuracy_lg: 33
 accuracy_rg: 51
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 2.9
+  best_record:
+    map: qzpractice2
+    rank: 17
+    total: 591
+    time: 20007
+    rank_pct: 2.9
+  top_maps:
+    - map: qzpractice2
+      rank: 17
+      total: 591
+      time: 20007
+  fetched_at: "2026-02-23"

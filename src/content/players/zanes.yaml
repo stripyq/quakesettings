@@ -44,3 +44,33 @@ favorite_weapon: Lightning Gun
 accuracy_rl: 45
 accuracy_lg: 34
 accuracy_rg: 53
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 64.4
+  best_record:
+    map: 4pornstar
+    rank: 7
+    total: 19
+    time: 45400
+    rank_pct: 36.8
+  top_maps:
+    - map: 4pornstar
+      rank: 7
+      total: 19
+      time: 45400
+    - map: l1th_heavy
+      rank: 6
+      total: 10
+      time: 30360
+    - map: df_pornstarslopin
+      rank: 218
+      total: 226
+      time: 37006
+  fetched_at: "2026-02-23"

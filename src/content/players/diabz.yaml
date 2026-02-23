@@ -2,7 +2,7 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
-lastUpdated: "2026-02"
+lastUpdated: 2026-02
 ctfRating: 30.9
 ctfRatingUpdated: "2026-02-03"
 tdmRating: 26.94
@@ -43,3 +43,33 @@ favorite_weapon: Railgun
 accuracy_rl: 40
 accuracy_lg: 41
 accuracy_rg: 61
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1123
+  average_rank_pct: 12.3
+  best_record:
+    map: shiningforces
+    rank: 10
+    total: 147
+    time: 9952
+    rank_pct: 6.8
+  top_maps:
+    - map: shiningforces
+      rank: 10
+      total: 147
+      time: 9952
+    - map: spidercrossings
+      rank: 11
+      total: 124
+      time: 10712
+    - map: campercrossings
+      rank: 25
+      total: 118
+      time: 9616
+  fetched_at: "2026-02-23"

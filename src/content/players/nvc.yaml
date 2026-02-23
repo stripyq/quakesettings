@@ -1,6 +1,6 @@
 name: Nvc
 country: GB
-team: "Czesnecka"
+team: Czesnecka
 steamId: "76561198000088567"
 aliases:
   - nvc
@@ -18,3 +18,37 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_lg: 42
 accuracy_rg: 54
+qlrace:
+  mode: 3
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1163
+  average_rank_pct: 49.8
+  best_record:
+    map: lovet-mikendo
+    rank: 33
+    total: 110
+    time: 20360
+    rank_pct: 30
+  top_maps:
+    - map: lovet-mikendo
+      rank: 33
+      total: 110
+      time: 20360
+    - map: kool_aqua
+      rank: 47
+      total: 100
+      time: 35152
+    - map: qlwc21_round2
+      rank: 48
+      total: 99
+      time: 50976
+    - map: bricks2
+      rank: 48
+      total: 65
+      time: 59312
+  fetched_at: "2026-02-23"

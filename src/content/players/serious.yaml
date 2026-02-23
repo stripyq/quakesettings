@@ -6,7 +6,7 @@ aliases:
 team2024: Aimdead Brainers
 country: Russia
 category: tdm
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 duelRating: 1834
 ctfGames: 1
 tdmGames: 32
@@ -35,10 +35,10 @@ jump: Space
 crouch: Ctrl
 attack: Mouse1
 zoom: Mouse2
-mouse: "g-pro-wireless"
-mousepad: "logitech-g640"
-keyboard: "wooting-60he"
-monitor: "asus-pg259qn"
+mouse: g-pro-wireless
+mousepad: logitech-g640
+keyboard: wooting-60he
+monitor: asus-pg259qn
 rating: 2650
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
@@ -46,3 +46,41 @@ favorite_weapon: Railgun
 accuracy_rl: 53
 accuracy_lg: 52
 accuracy_rg: 65
+qlrace:
+  mode: 2
+  records: 5
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 1
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 36
+  best_record:
+    map: df_jjm2
+    rank: 11
+    total: 55
+    time: 27632
+    rank_pct: 20
+  top_maps:
+    - map: df_jjm2
+      rank: 11
+      total: 55
+      time: 27632
+    - map: tatmt_s10
+      rank: 30
+      total: 123
+      time: 31600
+    - map: jumpathon
+      rank: 2
+      total: 6
+      time: 97040
+    - map: snazwank
+      rank: 6
+      total: 14
+      time: 38680
+    - map: df_0ups
+      rank: 28
+      total: 47
+      time: 43256
+  fetched_at: "2026-02-23"

@@ -2,7 +2,7 @@ name: RAISY
 steamId: "76561197989948663"
 country: BY
 category: duel
-lastUpdated: "2025-01"
+lastUpdated: 2025-01
 published: false
 dataSource: collected
 mouse: logitech-g-pro-wireless
@@ -11,3 +11,49 @@ keyboard: logitech-g-pro
 headset: logitech-g-pro-headset
 gpu: NVIDIA
 cpu: AMD
+qlrace:
+  mode: 3
+  records: 7
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 1
+  speed_top: 1546
+  average_rank_pct: 53.6
+  best_record:
+    map: r7-prodigy3
+    rank: 3
+    total: 15
+    time: 37432
+    rank_pct: 20
+  top_maps:
+    - map: r7-prodigy3
+      rank: 3
+      total: 15
+      time: 37432
+    - map: inder_siwd
+      rank: 17
+      total: 34
+      time: 20000
+    - map: inder_speed2
+      rank: 13
+      total: 26
+      time: 10984
+    - map: kool_speed1
+      rank: 42
+      total: 70
+      time: 37896
+    - map: kool_mini7
+      rank: 33
+      total: 53
+      time: 35936
+    - map: hangtime-df
+      rank: 39
+      total: 61
+      time: 1145664
+    - map: dfwc2017-6
+      rank: 162
+      total: 235
+      time: 195384
+  fetched_at: "2026-02-23"

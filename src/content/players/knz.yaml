@@ -1,6 +1,6 @@
 name: knz
 country: HR
-team: "Le Cubanitos"
+team: Le Cubanitos
 steamId: "76561198039145005"
 aliases:
   - CUBAknz
@@ -17,3 +17,4 @@ favorite_weapon: Railgun
 accuracy_rl: 34
 accuracy_lg: 34
 accuracy_rg: 59
+qlrace: null

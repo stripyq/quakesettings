@@ -10,3 +10,33 @@ favorite_weapon: Railgun
 accuracy_rl: 32
 accuracy_lg: 36
 accuracy_rg: 44
+qlrace:
+  mode: 3
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 826
+  average_rank_pct: 37.1
+  best_record:
+    map: qzpractice2
+    rank: 87
+    total: 327
+    time: 23392
+    rank_pct: 26.6
+  top_maps:
+    - map: qzpractice2
+      rank: 87
+      total: 327
+      time: 23392
+    - map: nood-quickie1-4
+      rank: 7
+      total: 17
+      time: 10160
+    - map: nood-quickie1-1
+      rank: 17
+      total: 39
+      time: 7728
+  fetched_at: "2026-02-23"

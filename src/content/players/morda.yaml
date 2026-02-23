@@ -45,3 +45,61 @@ favorite_weapon: Railgun
 accuracy_rl: 28
 accuracy_lg: 32
 accuracy_rg: 49
+qlrace:
+  mode: 2
+  records: 24
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 73.2
+  best_record:
+    map: nood_charon
+    rank: 9
+    total: 37
+    time: 31840
+    rank_pct: 24.3
+  top_maps:
+    - map: nood_charon
+      rank: 9
+      total: 37
+      time: 31840
+    - map: ameisen_comp2
+      rank: 22
+      total: 50
+      time: 63307
+    - map: tatmt_s12
+      rank: 41
+      total: 75
+      time: 77699
+    - map: df_dinirun3
+      rank: 18
+      total: 32
+      time: 170650
+    - map: df_minions_run5
+      rank: 47
+      total: 82
+      time: 26099
+    - map: qzpractice2
+      rank: 351
+      total: 591
+      time: 35158
+    - map: vanilla_06
+      rank: 33
+      total: 50
+      time: 5772
+    - map: mu_nood
+      rank: 20
+      total: 30
+      time: 35465
+    - map: st1
+      rank: 72
+      total: 108
+      time: 8830
+    - map: actf38
+      rank: 32
+      total: 47
+      time: 12396
+  fetched_at: "2026-02-23"

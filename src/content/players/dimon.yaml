@@ -2,7 +2,7 @@ name: dimon
 steamId: "76561198257799111"
 country: Unknown
 category: duel
-lastUpdated: "2026-02"
+lastUpdated: 2026-02
 tdmRating: 22.16
 tdmRatingUpdated: "2026-02-03"
 duelRating: 1486
@@ -23,10 +23,10 @@ right: d
 jump: mouse2
 attack: mouse1
 mouse: ""
-mousepad: "razer-goliathus-control"
+mousepad: razer-goliathus-control
 keyboard: ""
 monitor: ""
-headset: "sony-wh-1000xm4"
+headset: sony-wh-1000xm4
 enemyModel: Tank Jr.
 grip: Palm
 skates: Stock
@@ -38,3 +38,4 @@ favorite_weapon: Lightning Gun
 accuracy_rl: 43
 accuracy_lg: 32
 accuracy_rg: 49
+qlrace: null

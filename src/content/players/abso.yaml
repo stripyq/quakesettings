@@ -5,3 +5,25 @@ aliases:
 category: ctf
 published: false
 team2024: The expendables
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 100
+  best_record:
+    map: p5run
+    rank: 13
+    total: 13
+    time: 31872
+    rank_pct: 100
+  top_maps:
+    - map: p5run
+      rank: 13
+      total: 13
+      time: 31872
+  fetched_at: "2026-02-23"

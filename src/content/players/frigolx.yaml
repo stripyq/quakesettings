@@ -4,7 +4,7 @@ aliases: []
 team2024: Whatever name IDC
 team2026: Astral Starlight
 country: Unknown
-team: "Astral Starlight"
+team: Astral Starlight
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 35.67
@@ -49,3 +49,61 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 41
 accuracy_lg: 35
 accuracy_rg: 53
+qlrace:
+  mode: 2
+  records: 12
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 3205
+  average_rank_pct: 58.4
+  best_record:
+    map: spacectf
+    rank: 29
+    total: 284
+    time: 4328
+    rank_pct: 10.2
+  top_maps:
+    - map: spacectf
+      rank: 29
+      total: 284
+      time: 4328
+    - map: rmg01_09
+      rank: 4
+      total: 22
+      time: 48248
+    - map: campgrounds
+      rank: 104
+      total: 387
+      time: 25648
+    - map: qzpractice2
+      rank: 259
+      total: 591
+      time: 27912
+    - map: zzz_rocket1
+      rank: 41
+      total: 93
+      time: 11776
+    - map: kool_quickgrass1
+      rank: 20
+      total: 35
+      time: 20168
+    - map: r7-funky
+      rank: 15
+      total: 22
+      time: 31728
+    - map: daan_fuckfest
+      rank: 26
+      total: 35
+      time: 43648
+    - map: maze_gen_06
+      rank: 15
+      total: 20
+      time: 40176
+    - map: torp_nubt_fix
+      rank: 10
+      total: 12
+      time: 20448
+  fetched_at: "2026-02-23"

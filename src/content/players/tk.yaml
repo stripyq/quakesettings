@@ -51,3 +51,37 @@ favorite_weapon: Railgun
 accuracy_rl: 47
 accuracy_lg: 43
 accuracy_rg: 58
+qlrace:
+  mode: 2
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 49.5
+  best_record:
+    map: df_coldrun
+    rank: 28
+    total: 172
+    time: 16835
+    rank_pct: 16.3
+  top_maps:
+    - map: df_coldrun
+      rank: 28
+      total: 172
+      time: 16835
+    - map: voltex
+      rank: 15
+      total: 28
+      time: 74027
+    - map: trinity
+      rank: 60
+      total: 103
+      time: 28781
+    - map: dinirun2
+      rank: 7
+      total: 10
+      time: 61392
+  fetched_at: "2026-02-23"

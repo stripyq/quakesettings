@@ -29,8 +29,8 @@ jump: Mouse2
 attack: Mouse1
 mouse: logitech-g-pro-wireless
 mousepad: steelseries-qck
-mousepadBase: "Heavy"
-mousepadSize: "XXL"
+mousepadBase: Heavy
+mousepadSize: XXL
 keyboard: logitech-g910-orion-spectrum
 monitor: asus-rog-strix-oled-xg27aqdmg
 headset: sennheiser-hd-660s
@@ -47,3 +47,37 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_lg: 47
 accuracy_rg: 62
+qlrace:
+  mode: 2
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 4000
+  average_rank_pct: 39
+  best_record:
+    map: zzz_rocket1
+    rank: 8
+    total: 93
+    time: 9432
+    rank_pct: 8.6
+  top_maps:
+    - map: zzz_rocket1
+      rank: 8
+      total: 93
+      time: 9432
+    - map: xyligan-ghost
+      rank: 6
+      total: 19
+      time: 8104
+    - map: lovet-fourth
+      rank: 8
+      total: 16
+      time: 17856
+    - map: pornstar-slopin
+      rank: 29
+      total: 44
+      time: 27544
+  fetched_at: "2026-02-23"

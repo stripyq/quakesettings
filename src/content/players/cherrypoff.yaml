@@ -3,8 +3,8 @@ steamId: "76561198149540641"
 aliases:
   - chr
 team2024: Bad But Happy
-team2026: "GdeFlag?"
-team2026Shortname: "GF?"
+team2026: GdeFlag?
+team2026Shortname: GF?
 country: RU
 category: tdm
 lastUpdated: 2025-01
@@ -47,3 +47,33 @@ favorite_weapon: Railgun
 accuracy_rl: 37
 accuracy_lg: 37
 accuracy_rg: 50
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 88.2
+  best_record:
+    map: vanilla_09
+    rank: 35
+    total: 44
+    time: 13851
+    rank_pct: 79.5
+  top_maps:
+    - map: vanilla_09
+      rank: 35
+      total: 44
+      time: 13851
+    - map: wsm
+      rank: 10
+      total: 11
+      time: 547653
+    - map: actf02
+      rank: 33
+      total: 35
+      time: 40731
+  fetched_at: "2026-02-23"

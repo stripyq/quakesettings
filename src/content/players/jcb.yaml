@@ -6,7 +6,7 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 country: DK
-team: "wAnnaBees"
+team: wAnnaBees
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 38.33
@@ -52,3 +52,61 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 43
 accuracy_lg: 35
 accuracy_rg: 50
+qlrace:
+  mode: 2
+  records: 23
+  wrs: 1
+  medals:
+    gold: 1
+    silver: 3
+    bronze: 3
+  speed_top: 2018
+  average_rank_pct: 42.4
+  best_record:
+    map: japanesecastles
+    rank: 3
+    total: 242
+    time: 7584
+    rank_pct: 1.2
+  top_maps:
+    - map: japanesecastles
+      rank: 3
+      total: 242
+      time: 7584
+    - map: chile21
+      rank: 1
+      total: 23
+      time: 4
+    - map: ghost-luckr
+      rank: 2
+      total: 26
+      time: 29056
+    - map: lick_again
+      rank: 4
+      total: 32
+      time: 2312
+    - map: ironwood
+      rank: 3
+      total: 20
+      time: 4032
+    - map: hangtime2-df
+      rank: 3
+      total: 15
+      time: 633784
+    - map: ghost-kiddy
+      rank: 2
+      total: 9
+      time: 29160
+    - map: lick_shit
+      rank: 7
+      total: 29
+      time: 12600
+    - map: torp_concept07
+      rank: 4
+      total: 15
+      time: 5040
+    - map: lick_more2
+      rank: 2
+      total: 7
+      time: 2568
+  fetched_at: "2026-02-23"

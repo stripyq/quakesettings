@@ -7,11 +7,11 @@ aliases:
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 country: DE
-team: "Le Cubanitos"
+team: Le Cubanitos
 category: duel
 duelRating: 1406
 ctfRating: 29.16
-tdmRating: 39.70
+tdmRating: 39.7
 dataSource: player
 lastUpdated: 2025-02
 dpi: 1600
@@ -45,3 +45,25 @@ favorite_weapon: Railgun
 accuracy_rl: 52
 accuracy_lg: 39
 accuracy_rg: 62
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 18.4
+  best_record:
+    map: df_lickmax
+    rank: 16
+    total: 87
+    time: 6388
+    rank_pct: 18.4
+  top_maps:
+    - map: df_lickmax
+      rank: 16
+      total: 87
+      time: 6388
+  fetched_at: "2026-02-23"

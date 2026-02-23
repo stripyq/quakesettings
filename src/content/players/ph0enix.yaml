@@ -1,49 +1,44 @@
-name: "ph0en|X"
-country: "SE"
+name: ph0en|X
+country: SE
 steamId: "76561198228590616"
 aliases:
-  - "ph0en|X"
+  - ph0en|X
 team2024: The expendables
-category: "ctf"
-lastUpdated: "2026-02"
-dataSource: "player"
-
+category: ctf
+lastUpdated: 2026-02
+dataSource: player
 duelRating: 1485
 ctfGames: 1066
 tdmGames: 1
 duelGames: 2
 ctfRating: 32.3
-
 dpi: 400
 sensitivity: 7
 edpi: 2800
 rawInput: true
-grip: "Hybrid"
-
+grip: Hybrid
 fov: 85
 crosshair: "6"
-crosshairColor: "White"
-enemyModel: "Keel"
-
-forward: "uparrow"
-back: "downarrow"
-left: "leftarrow"
-right: "rightarrow"
-jump: "ctrl"
-crouch: "shift"
-attack: "mouse1"
-
-mouse: "logitech-g402-hyperion-fury"
-mousepad: "steelseries-qck"
-monitor: "nokia-multigraph-449e"
-headset: "sennheiser-game-zero"
-skates: "Stock"
-
-gpuBrand: "NVIDIA"
-cpuBrand: "Intel"
+crosshairColor: White
+enemyModel: Keel
+forward: uparrow
+back: downarrow
+left: leftarrow
+right: rightarrow
+jump: ctrl
+crouch: shift
+attack: mouse1
+mouse: logitech-g402-hyperion-fury
+mousepad: steelseries-qck
+monitor: nokia-multigraph-449e
+headset: sennheiser-game-zero
+skates: Stock
+gpuBrand: NVIDIA
+cpuBrand: Intel
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 36
 accuracy_lg: 37
 accuracy_rg: 51
+qlrace: null

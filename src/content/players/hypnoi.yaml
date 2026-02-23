@@ -1,6 +1,6 @@
 name: hypnoi
 country: LV
-team: "Old Sexy Quakers"
+team: Old Sexy Quakers
 steamId: "76561198141767332"
 aliases:
   - OsQhypnoi
@@ -18,3 +18,61 @@ favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_lg: 34
 accuracy_rg: 53
+qlrace:
+  mode: 2
+  records: 190
+  wrs: 30
+  medals:
+    gold: 30
+    silver: 43
+    bronze: 31
+  speed_top: 1822
+  average_rank_pct: 14.3
+  best_record:
+    map: df_inferno
+    rank: 1
+    total: 80
+    time: 44922
+    rank_pct: 1.3
+  top_maps:
+    - map: df_inferno
+      rank: 1
+      total: 80
+      time: 44922
+    - map: df_lickgoogle
+      rank: 2
+      total: 103
+      time: 2820
+    - map: lick_max
+      rank: 1
+      total: 44
+      time: 5808
+    - map: campgrounds
+      rank: 9
+      total: 387
+      time: 19648
+    - map: tele_world
+      rank: 1
+      total: 42
+      time: 39335
+    - map: chile25
+      rank: 1
+      total: 39
+      time: 1120
+    - map: df_ghost_minions_fix
+      rank: 1
+      total: 39
+      time: 25966
+    - map: charon
+      rank: 5
+      total: 194
+      time: 20779
+    - map: spr_gpl
+      rank: 3
+      total: 105
+      time: 34068
+    - map: pornstar_lamba
+      rank: 1
+      total: 34
+      time: 27064
+  fetched_at: "2026-02-23"

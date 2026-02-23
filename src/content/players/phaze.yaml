@@ -4,3 +4,33 @@ aliases:
   - phaze
 category: ctf
 published: false
+qlrace:
+  mode: 3
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1495
+  average_rank_pct: 15.3
+  best_record:
+    map: lovet-mikendo
+    rank: 8
+    total: 110
+    time: 19448
+    rank_pct: 7.3
+  top_maps:
+    - map: lovet-mikendo
+      rank: 8
+      total: 110
+      time: 19448
+    - map: cavesvq3
+      rank: 5
+      total: 55
+      time: 80168
+    - map: hangtime-df
+      rank: 18
+      total: 61
+      time: 422200
+  fetched_at: "2026-02-23"

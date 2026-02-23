@@ -8,7 +8,7 @@ team2024: Whatever name IDC
 team2026: wAnnaBees
 team2026Shortname: wB
 country: PL
-team: "wAnnaBees"
+team: wAnnaBees
 category: ctf
 lastUpdated: 2025-01
 ctfRating: 33.68
@@ -57,3 +57,4 @@ favorite_weapon: Railgun
 accuracy_rl: 35
 accuracy_lg: 34
 accuracy_rg: 56
+qlrace: null

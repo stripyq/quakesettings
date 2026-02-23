@@ -52,3 +52,29 @@ favorite_weapon: Shotgun
 accuracy_rl: 43
 accuracy_lg: 34
 accuracy_rg: 53
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 51.1
+  best_record:
+    map: cubicle
+    rank: 18
+    total: 61
+    time: 13221
+    rank_pct: 29.5
+  top_maps:
+    - map: cubicle
+      rank: 18
+      total: 61
+      time: 13221
+    - map: bloxrox
+      rank: 16
+      total: 22
+      time: 73151
+  fetched_at: "2026-02-23"

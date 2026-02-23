@@ -1,18 +1,18 @@
 name: NyxGirlPower TheQueen♥
 steamId: "76561198256080242"
 country: SI
-team: ''
+team: ""
 category: ctf
 lastUpdated: 2025-01
 duelRating: null
-duelRatingUpdated: ''
+duelRatingUpdated: ""
 tdmRating: 17.62
-tdmRatingUpdated: 2026-01-31
+tdmRatingUpdated: 2026-01-31T00:00:00.000Z
 ctfRating: 17.62
-ctfRatingUpdated: 2026-01-31
+ctfRatingUpdated: 2026-01-31T00:00:00.000Z
 dataSource: player
-source: ''
-sourceUrl: ''
+source: ""
+sourceUrl: ""
 dpi: 1800
 m_cpi: null
 sensitivity: 3
@@ -22,22 +22,22 @@ acceleration: false
 accelValue: null
 rawInput: true
 fov: 100
-crosshair: '2'
-crosshairSize: ''
+crosshair: "2"
+crosshairSize: ""
 invertedMouse: false
 forward: w
 back: s
 left: a
 right: d
 jump: Space
-crouch: ''
+crouch: ""
 attack: Mouse1
-zoom: ''
-weaponNext: ''
-weaponPrev: ''
+zoom: ""
+weaponNext: ""
+weaponPrev: ""
 mouse: razer-hello-kitty-viper-mini
 mousepad: razer-goliathus-chroma
-mousepadSize: "Extended"
+mousepadSize: Extended
 keyboard: razer-blackwidow-v4-pro
 monitor: asus-tuf-vg259qm
 headset: razer-kraken-kitty
@@ -53,3 +53,25 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 38
 accuracy_lg: 35
 accuracy_rg: 55
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 41.2
+  best_record:
+    map: cruton2
+    rank: 54
+    total: 131
+    time: 64387
+    rank_pct: 41.2
+  top_maps:
+    - map: cruton2
+      rank: 54
+      total: 131
+      time: 64387
+  fetched_at: "2026-02-23"

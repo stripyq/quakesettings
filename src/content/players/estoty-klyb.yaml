@@ -4,3 +4,25 @@ aliases:
   - estoty Klyb
 category: ctf
 published: false
+qlrace:
+  mode: 2
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 15.6
+  best_record:
+    map: cruton4
+    rank: 14
+    total: 90
+    time: 107734
+    rank_pct: 15.6
+  top_maps:
+    - map: cruton4
+      rank: 14
+      total: 90
+      time: 107734
+  fetched_at: "2026-02-23"

@@ -43,3 +43,41 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_lg: 40
 accuracy_rg: 55
+qlrace:
+  mode: 2
+  records: 5
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 1
+  speed_top: 0
+  average_rank_pct: 33.6
+  best_record:
+    map: duotest
+    rank: 14
+    total: 57
+    time: 6621
+    rank_pct: 24.6
+  top_maps:
+    - map: duotest
+      rank: 14
+      total: 57
+      time: 6621
+    - map: spacectf
+      rank: 84
+      total: 284
+      time: 5024
+    - map: r7_cpmhome1
+      rank: 3
+      total: 10
+      time: 1648
+    - map: chile9
+      rank: 43
+      total: 143
+      time: 9888
+    - map: inder_failrun4
+      rank: 36
+      total: 67
+      time: 33327
+  fetched_at: "2026-02-23"

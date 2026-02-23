@@ -23,7 +23,7 @@ jump: CAPSLOCK
 attack: Mouse1
 mouse: pulsar-xlite-wireless
 mousepad: steelseries-qck
-mousepadSize: "Large"
+mousepadSize: Large
 keyboard: cooler-master-mk730
 monitor: acer-gn246hl
 headset: hyperx-cloud-ii
@@ -39,3 +39,25 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_lg: 41
 accuracy_rg: 44
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 0
+  average_rank_pct: 32.6
+  best_record:
+    map: df_lickdecease
+    rank: 43
+    total: 132
+    time: 11346
+    rank_pct: 32.6
+  top_maps:
+    - map: df_lickdecease
+      rank: 43
+      total: 132
+      time: 11346
+  fetched_at: "2026-02-23"
