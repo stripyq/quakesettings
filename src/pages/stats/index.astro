@@ -713,9 +713,33 @@ const tdmMostTargeted = buildNemesisLeaderboard(tdmRivalries.victimCounts);
 // RACE LEADERBOARDS (qlrace.com)
 // ===========================================
 
+const topRaceRecords = rankWithTies(
+  players
+    .filter(p => p.data.qlrace && p.data.qlrace.records > 0)
+    .sort((a, b) => b.data.qlrace!.records - a.data.qlrace!.records)
+    .slice(0, 10)
+    .map(p => ({
+      id: p.id,
+      name: p.data.name,
+      value: p.data.qlrace!.records,
+    }))
+);
+
+const topRaceWRs = rankWithTies(
+  players
+    .filter(p => p.data.qlrace && p.data.qlrace.wrs > 0)
+    .sort((a, b) => b.data.qlrace!.wrs - a.data.qlrace!.wrs)
+    .slice(0, 10)
+    .map(p => ({
+      id: p.id,
+      name: p.data.name,
+      value: p.data.qlrace!.wrs,
+    }))
+);
+
 const topRaceSpeed = rankWithTies(
   players
-    .filter(p => p.data.qlrace && p.data.qlrace.records >= 1 && p.data.qlrace.speed_top != null)
+    .filter(p => p.data.qlrace && p.data.qlrace.records >= 1 && p.data.qlrace.speed_top != null && p.data.qlrace.speed_top > 0)
     .sort((a, b) => b.data.qlrace!.speed_top! - a.data.qlrace!.speed_top!)
     .slice(0, 10)
     .map(p => ({
@@ -1407,7 +1431,7 @@ const schema = {
     )}
 
     <!-- ========== SECTION: RACE / MOVEMENT ========== -->
-    {(topRaceSpeed.length > 0 || topRaceRankPct.length > 0) && (
+    {(topRaceRecords.length > 0 || topRaceSpeed.length > 0 || topRaceRankPct.length > 0) && (
     <div class="s-section-header" style="--section-color: #58a6ff">
       <div class="s-section-icon" style="background: #58a6ff">&#127939;</div>
       <span class="s-section-title" style="color: #58a6ff">MOVEMENT / RACE</span>
@@ -1415,9 +1439,43 @@ const schema = {
     </div>
 
     <div class="s-two-col">
+      {topRaceRecords.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Race Records (VQL)</h2>
+        <p class="s-card-sub">Total records set across all race maps</p>
+        <div class="s-leaderboard">
+          {topRaceRecords.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+
+      {topRaceWRs.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most World Records (VQL)</h2>
+        <p class="s-card-sub">Current #1 ranks across all race maps</p>
+        <div class="s-leaderboard">
+          {topRaceWRs.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+
+    <div class="s-two-col">
       {topRaceSpeed.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Highest Top Speed</h2>
+        <h2 class="s-card-title">Highest Top Speed (VQL)</h2>
         <p class="s-card-sub">Fastest recorded speed across all race maps</p>
         <div class="s-leaderboard">
           {topRaceSpeed.map((p) => (
