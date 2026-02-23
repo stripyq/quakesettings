@@ -238,6 +238,35 @@ const playersCollection = defineCollection({
     accuracy_rg: z.number().nullable().optional(),
     accuracy_lg: z.number().nullable().optional(),
 
+    // QLRace.com race data (fetched by scripts/fetch-qlrace.js)
+    qlrace: z.object({
+      mode: z.number(), // 2 = VQL Weapons, 3 = VQL Strafe
+      records: z.number(),
+      wrs: z.number(),
+      medals: z.object({
+        gold: z.number(),
+        silver: z.number(),
+        bronze: z.number(),
+      }),
+      speed_top: z.number().optional(),
+      average_rank_pct: z.number().optional(),
+      best_record: z.object({
+        map: z.string(),
+        rank: z.number(),
+        total: z.number(),
+        time: z.number(),
+        rank_pct: z.number(),
+      }).optional(),
+      top_maps: z.array(z.object({
+        map: z.string(),
+        rank: z.number(),
+        total: z.number(),
+        time: z.number(),
+        rank_pct: z.number().optional(),
+      })).optional(),
+      fetched_at: z.string().optional(),
+    }).nullable().optional(),
+
     // Config file path
     configFile: z.string().optional(),
   }),

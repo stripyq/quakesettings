@@ -710,6 +710,36 @@ const tdmMostFeared = buildNemesisLeaderboard(tdmRivalries.nemesisCounts);
 const tdmMostTargeted = buildNemesisLeaderboard(tdmRivalries.victimCounts);
 
 // ===========================================
+// RACE LEADERBOARDS (qlrace.com)
+// ===========================================
+
+const topRaceSpeed = rankWithTies(
+  players
+    .filter(p => p.data.qlrace && p.data.qlrace.records >= 1 && p.data.qlrace.speed_top != null)
+    .sort((a, b) => b.data.qlrace!.speed_top! - a.data.qlrace!.speed_top!)
+    .slice(0, 10)
+    .map(p => ({
+      id: p.id,
+      name: p.data.name,
+      value: Math.round(p.data.qlrace!.speed_top!),
+      mode: p.data.qlrace!.mode,
+    }))
+);
+
+const topRaceRankPct = rankWithTies(
+  players
+    .filter(p => p.data.qlrace && p.data.qlrace.records >= 5 && p.data.qlrace.average_rank_pct != null)
+    .sort((a, b) => a.data.qlrace!.average_rank_pct! - b.data.qlrace!.average_rank_pct!)
+    .slice(0, 10)
+    .map(p => ({
+      id: p.id,
+      name: p.data.name,
+      value: p.data.qlrace!.average_rank_pct!,
+      mode: p.data.qlrace!.mode,
+    }))
+);
+
+// ===========================================
 // INTERESTING FACTS
 // ===========================================
 
@@ -1295,8 +1325,8 @@ const schema = {
     <div class="s-two-col">
       {ctfMostFeared.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Most Feared Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's nemesis most often in CTF. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
+        <h2 class="s-card-title">Most Feared Players <span class="s-info-icon" title="Nemesis = the opponent you have the worst K/D ratio against. This leaderboard shows players who appear as someone's nemesis most often. Being 'Most Feared' means many players struggle against you.">?</span></h2>
+        <p class="s-card-sub">Dominates opponents in kill trades</p>
         <div class="s-leaderboard">
           {ctfMostFeared.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
@@ -1314,8 +1344,8 @@ const schema = {
 
       {ctfMostTargeted.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Most Targeted Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often in CTF. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
+        <h2 class="s-card-title">Most Targeted Players <span class="s-info-icon" title="Favorite Victim = the opponent you've killed the most times total. This leaderboard shows players who appear as someone's favorite victim most often. Being 'Most Targeted' means many players have you as their top kill target.">?</span></h2>
+        <p class="s-card-sub">Frequently someone's top kill target</p>
         <div class="s-leaderboard">
           {ctfMostTargeted.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
@@ -1338,8 +1368,8 @@ const schema = {
     <div class="s-two-col">
       {tdmMostFeared.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Most Feared Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's nemesis most often in TDM. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
+        <h2 class="s-card-title">Most Feared Players <span class="s-info-icon" title="Nemesis = the opponent you have the worst K/D ratio against. This leaderboard shows players who appear as someone's nemesis most often. Being 'Most Feared' means many players struggle against you.">?</span></h2>
+        <p class="s-card-sub">Dominates opponents in kill trades</p>
         <div class="s-leaderboard">
           {tdmMostFeared.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
@@ -1357,8 +1387,8 @@ const schema = {
 
       {tdmMostTargeted.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Most Targeted Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often in TDM. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
+        <h2 class="s-card-title">Most Targeted Players <span class="s-info-icon" title="Favorite Victim = the opponent you've killed the most times total. This leaderboard shows players who appear as someone's favorite victim most often. Being 'Most Targeted' means many players have you as their top kill target.">?</span></h2>
+        <p class="s-card-sub">Frequently someone's top kill target</p>
         <div class="s-leaderboard">
           {tdmMostTargeted.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
@@ -1368,6 +1398,49 @@ const schema = {
                 : <span class="s-lb-name s-lb-name-plain">{p.name}</span>
               }
               <span class="s-lb-value s-lb-value-subtle">victim of {p.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+    )}
+
+    <!-- ========== SECTION: RACE / MOVEMENT ========== -->
+    {(topRaceSpeed.length > 0 || topRaceRankPct.length > 0) && (
+    <div class="s-section-header" style="--section-color: #58a6ff">
+      <div class="s-section-icon" style="background: #58a6ff">&#127939;</div>
+      <span class="s-section-title" style="color: #58a6ff">MOVEMENT / RACE</span>
+      <span class="s-section-attr">Data from <a href="https://qlrace.com" target="_blank" rel="noopener" style="color: #58a6ff">qlrace.com</a></span>
+    </div>
+
+    <div class="s-two-col">
+      {topRaceSpeed.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Highest Top Speed</h2>
+        <p class="s-card-sub">Fastest recorded speed across all race maps</p>
+        <div class="s-leaderboard">
+          {topRaceSpeed.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value} <span class="s-lb-unit">ups</span></span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+
+      {topRaceRankPct.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Best Average Rank %</h2>
+        <p class="s-card-sub">Lower is better. Minimum 5 records.</p>
+        <div class="s-leaderboard">
+          {topRaceRankPct.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}%</span>
             </div>
           ))}
         </div>
@@ -1634,6 +1707,27 @@ const schema = {
     color: #8b949e;
     margin-top: -0.5rem;
     margin-bottom: 0.75rem;
+  }
+
+  .s-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #30363d;
+    color: #8b949e;
+    font-size: 0.6rem;
+    font-weight: 700;
+    cursor: help;
+    vertical-align: middle;
+    margin-left: 0.25rem;
+  }
+
+  .s-info-icon:hover {
+    background: #484f58;
+    color: #f0f6fc;
   }
 
   .s-subsection-title {
@@ -2147,6 +2241,12 @@ const schema = {
     font-size: 0.75rem;
     min-width: unset;
     white-space: nowrap;
+  }
+
+  .s-lb-unit {
+    font-size: 0.65rem;
+    color: #8b949e;
+    font-weight: 400;
   }
 
   .s-lb-name-plain {

@@ -114,6 +114,7 @@ const schema = {
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
+  <div id="race-compare-container" class="race-compare-container hidden"></div>
 
   <div id="empty-state" class="empty-state">
     <p>Select two players above to compare their settings</p>
@@ -132,6 +133,7 @@ const schema = {
       const matchupHistoryContainer = document.getElementById('matchup-history-container');
       const seasonCompareContainer = document.getElementById('season-compare-container');
       const rivalriesContainer = document.getElementById('rivalries-container');
+      const raceCompareContainer = document.getElementById('race-compare-container');
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -368,6 +370,7 @@ const schema = {
           h2hContainer.classList.add('hidden');
           seasonCompareContainer.classList.add('hidden');
           rivalriesContainer.classList.add('hidden');
+          raceCompareContainer.classList.add('hidden');
           emptyState.classList.remove('hidden');
           return;
         }
@@ -487,6 +490,7 @@ const schema = {
         updateMatchupHistory(p1, p2);
         updateSeasonCompare(p1, p2);
         updateRivalries(p1, p2);
+        updateRaceCompare(p1, p2);
       }
 
       // Helper: get mode-specific stats for a player (supports both nested and legacy flat format)
@@ -870,6 +874,81 @@ const schema = {
         if (!cards) return;
         rivalriesContainer.innerHTML = cards;
         rivalriesContainer.classList.remove('hidden');
+      }
+
+      function updateRaceCompare(p1, p2) {
+        raceCompareContainer.classList.add('hidden');
+        raceCompareContainer.innerHTML = '';
+
+        var r1 = p1.qlrace;
+        var r2 = p2.qlrace;
+
+        if (!r1 || !r2 || !r1.top_maps || !r2.top_maps) return;
+        if (r1.mode !== r2.mode) return; // Only compare same mode
+
+        // Find shared maps
+        var r2MapIndex = {};
+        for (var i = 0; i < r2.top_maps.length; i++) {
+          r2MapIndex[r2.top_maps[i].map] = r2.top_maps[i];
+        }
+
+        var sharedMaps = [];
+        for (var j = 0; j < r1.top_maps.length; j++) {
+          var m1 = r1.top_maps[j];
+          var m2 = r2MapIndex[m1.map];
+          if (m2) {
+            sharedMaps.push({ map: m1.map, p1: m1, p2: m2 });
+          }
+        }
+
+        if (sharedMaps.length === 0) return;
+
+        function fmtTime(ms) {
+          var totalSec = ms / 1000;
+          var min = Math.floor(totalSec / 60);
+          var sec = totalSec % 60;
+          return min + ':' + (sec < 10 ? '0' : '') + sec.toFixed(3);
+        }
+
+        function fmtDelta(ms) {
+          var sec = Math.abs(ms) / 1000;
+          return (ms > 0 ? '+' : '-') + sec.toFixed(3) + 's';
+        }
+
+        var modeLabel = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+        var html = '<div class="race-h2h-card">' +
+          '<div class="race-h2h-title">Race Head to Head <span class="race-h2h-mode">' + modeLabel + '</span></div>' +
+          '<table class="race-h2h-table">' +
+          '<thead><tr>' +
+            '<th>Map</th>' +
+            '<th class="h2h-p1-color">' + p1.name + '</th>' +
+            '<th class="h2h-p2-color">' + p2.name + '</th>' +
+            '<th>Delta</th>' +
+          '</tr></thead><tbody>';
+
+        for (var k = 0; k < sharedMaps.length; k++) {
+          var sm = sharedMaps[k];
+          var delta = sm.p1.time - sm.p2.time;
+          var p1Faster = delta < 0;
+          var p2Faster = delta > 0;
+
+          html += '<tr>' +
+            '<td class="race-h2h-map">' + sm.map + '</td>' +
+            '<td class="' + (p1Faster ? 'race-faster' : '') + '">' +
+              '<span class="race-h2h-time">' + fmtTime(sm.p1.time) + '</span>' +
+              '<span class="race-h2h-rank">' + sm.p1.rank + '/' + sm.p1.total + '</span>' +
+            '</td>' +
+            '<td class="' + (p2Faster ? 'race-faster' : '') + '">' +
+              '<span class="race-h2h-time">' + fmtTime(sm.p2.time) + '</span>' +
+              '<span class="race-h2h-rank">' + sm.p2.rank + '/' + sm.p2.total + '</span>' +
+            '</td>' +
+            '<td class="race-h2h-delta">' + (delta === 0 ? 'Tied' : fmtDelta(delta)) + '</td>' +
+          '</tr>';
+        }
+
+        html += '</tbody></table></div>';
+        raceCompareContainer.innerHTML = html;
+        raceCompareContainer.classList.remove('hidden');
       }
 
       function sectionHeader(title) {
@@ -1812,6 +1891,100 @@ const schema = {
     .season-compare-container :global(.sc-label) {
       font-size: 0.7rem;
     }
+  }
+
+  /* --- Race Head-to-Head --- */
+  .race-compare-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .race-compare-container.hidden {
+    display: none;
+  }
+
+  .race-compare-container :global(.race-h2h-card) {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .race-compare-container :global(.race-h2h-title) {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .race-compare-container :global(.race-h2h-mode) {
+    font-size: 0.6rem;
+    color: var(--text-secondary, #9090a0);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .race-compare-container :global(.race-h2h-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+
+  .race-compare-container :global(.race-h2h-table th) {
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-weight: 600;
+  }
+
+  .race-compare-container :global(.race-h2h-table td) {
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: top;
+  }
+
+  .race-compare-container :global(.race-h2h-map) {
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .race-compare-container :global(.race-h2h-time) {
+    display: block;
+    font-family: monospace;
+    color: #f0f6fc;
+  }
+
+  .race-compare-container :global(.race-h2h-rank) {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .race-compare-container :global(.race-faster) {
+    background: rgba(46, 160, 67, 0.08);
+  }
+
+  .race-compare-container :global(.race-faster .race-h2h-time) {
+    color: #3fb950;
+  }
+
+  .race-compare-container :global(.race-h2h-delta) {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    white-space: nowrap;
   }
 
 </style>
