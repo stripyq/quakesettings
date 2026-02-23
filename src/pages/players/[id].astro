@@ -175,10 +175,19 @@ const hasHoqStats = !!(p.favorite_map || p.favorite_gametype || p.favorite_weapo
 const avgAccuracy = { rl: 40.5, lg: 35.7, rg: 52.6 };
 
 // Season Stats (from HoQ 2026 S1 API)
-const seasonStats = p.steamId ? seasonStatsData[p.steamId] : null;
+const seasonStatsEntry = p.steamId ? seasonStatsData[p.steamId] : null;
 
-// Calculate percentiles and averages across all players with season data
-const allSeasonPlayers = Object.values(seasonStatsData).filter((s: any) => s.career) as any[];
+// Support both new nested format (ctf/tdm keys) and legacy flat format
+const ctfStats = seasonStatsEntry?.ctf || (seasonStatsEntry?.career ? seasonStatsEntry : null);
+const tdmStats = seasonStatsEntry?.tdm || null;
+
+// Calculate percentiles and averages across all players with season data (per mode)
+function collectModePlayers(mode: string) {
+  return Object.values(seasonStatsData).map((s: any) => {
+    // Support both nested and legacy flat format
+    return s[mode] || (mode === 'ctf' && s.career ? s : null);
+  }).filter((s: any) => s?.career) as any[];
+}
 
 function average(values: number[]): number {
   if (values.length === 0) return 0;
@@ -195,22 +204,31 @@ function formatAvg(n: number, decimals = 0): string {
   return decimals > 0 ? n.toFixed(decimals) : Math.round(n).toString();
 }
 
-// Collect stat arrays for career stats
-const allGames = allSeasonPlayers.map(s => s.career.matches_played).filter((v: any) => v != null);
-const allWinRate = allSeasonPlayers.map(s => s.career.win_rate).filter((v: any) => v != null);
-const allKD = allSeasonPlayers.map(s => s.career.kd_ratio).filter((v: any) => v != null);
-const allKills = allSeasonPlayers.map(s => s.career.total_kills).filter((v: any) => v != null);
-const allDeaths = allSeasonPlayers.map(s => s.career.total_deaths).filter((v: any) => v != null);
-const allDPM = allSeasonPlayers.map(s => s.career.damage_per_minute).filter((v: any) => v != null);
-const allStreak = allSeasonPlayers.map(s => s.career.max_streak).filter((v: any) => v != null);
+// Build stat arrays for a given mode (for percentile calculations)
+function buildModeArrays(mode: string) {
+  const modePlayers = collectModePlayers(mode);
 
-// Collect stat arrays for flag stats
-const allFlagPlayers = allSeasonPlayers.filter(s => s.flagStats?.data);
-const allCaptures = allFlagPlayers.map(s => s.flagStats.data.captures).filter((v: any) => v != null);
-const allReturns = allFlagPlayers.map(s => s.flagStats.data.returns).filter((v: any) => v != null);
-const allPickups = allFlagPlayers.map(s => s.flagStats.data.pickups).filter((v: any) => v != null);
-const allDefends = allFlagPlayers.map(s => s.flagStats.data.defends).filter((v: any) => v != null);
-const allAssists = allFlagPlayers.map(s => s.flagStats.data.assists).filter((v: any) => v != null);
+  const games = modePlayers.map(s => s.career.matches_played).filter((v: any) => v != null);
+  const winRate = modePlayers.map(s => s.career.win_rate).filter((v: any) => v != null);
+  const kd = modePlayers.map(s => s.career.kd_ratio).filter((v: any) => v != null);
+  const kills = modePlayers.map(s => s.career.total_kills).filter((v: any) => v != null);
+  const deaths = modePlayers.map(s => s.career.total_deaths).filter((v: any) => v != null);
+  const dpm = modePlayers.map(s => s.career.damage_per_minute).filter((v: any) => v != null);
+  const streak = modePlayers.map(s => s.career.max_streak).filter((v: any) => v != null);
+
+  // Flag stats (CTF only)
+  const flagPlayers = modePlayers.filter(s => s.flagStats?.data);
+  const captures = flagPlayers.map(s => s.flagStats.data.captures).filter((v: any) => v != null);
+  const returns = flagPlayers.map(s => s.flagStats.data.returns).filter((v: any) => v != null);
+  const pickups = flagPlayers.map(s => s.flagStats.data.pickups).filter((v: any) => v != null);
+  const defends = flagPlayers.map(s => s.flagStats.data.defends).filter((v: any) => v != null);
+  const assists = flagPlayers.map(s => s.flagStats.data.assists).filter((v: any) => v != null);
+
+  return { games, winRate, kd, kills, deaths, dpm, streak, captures, returns, pickups, defends, assists };
+}
+
+const ctfArrays = buildModeArrays('ctf');
+const tdmArrays = buildModeArrays('tdm');
 
 // Percentile color class
 function pctClass(pct: number): string {
@@ -225,34 +243,22 @@ function getWeapon(weapons: any[] | undefined, name: string) {
   return weapons?.find((w: any) => w.weapon === name);
 }
 
-const seasonRailgun = getWeapon(seasonStats?.weapons, 'RAILGUN');
-const seasonRocket = getWeapon(seasonStats?.weapons, 'ROCKET_LAUNCHER');
-const seasonLightning = getWeapon(seasonStats?.weapons, 'LIGHTNING_GUN');
-const seasonShotgun = getWeapon(seasonStats?.weapons, 'SHOTGUN');
-const seasonMachinegun = getWeapon(seasonStats?.weapons, 'MACHINEGUN');
-const seasonPlasma = getWeapon(seasonStats?.weapons, 'PLASMA_GUN');
-const seasonGrenade = getWeapon(seasonStats?.weapons, 'GRENADE_LAUNCHER');
-
-// Map stats (API may wrap in .value or return a plain array)
-const mapStatsRaw = seasonStats?.mapStats;
-const mapStatsArray: any[] = Array.isArray(mapStatsRaw) ? mapStatsRaw
-  : Array.isArray(mapStatsRaw?.value) ? mapStatsRaw.value
-  : [];
-
-// Flag stats and rivalries (API wraps these in a .data property)
-const flagData = seasonStats?.flagStats?.data || null;
-const nemesisData = seasonStats?.nemesis?.data || null;
-const victimData = seasonStats?.favoriteVictim?.data || null;
-const hasRivalries = !!(nemesisData || victimData);
-
-// Resolve rivalry names: prefer player registry name over API name (API returns current Steam name which may differ)
-function getRegistryName(steamId: string | undefined): string | null {
-  if (!steamId) return null;
-  const entry = playerRegistry.find(p => p.steamId === steamId);
-  return entry?.name || null;
+// Extract per-mode display data
+function extractModeDisplay(modeStats: any) {
+  if (!modeStats) return null;
+  const weapons = modeStats.weapons;
+  const mapStatsRaw = modeStats.mapStats;
+  const mapStatsArray: any[] = Array.isArray(mapStatsRaw) ? mapStatsRaw
+    : Array.isArray(mapStatsRaw?.value) ? mapStatsRaw.value
+    : [];
+  const flagData = modeStats.flagStats?.data || null;
+  const nemesisData = modeStats.nemesis?.data || null;
+  const victimData = modeStats.favoriteVictim?.data || null;
+  return { career: modeStats.career, weapons, mapStatsArray, flagData, nemesisData, victimData };
 }
-const nemesisName = getRegistryName(nemesisData?.opponent_steam_id) || nemesisData?.opponent_name;
-const victimName = getRegistryName(victimData?.opponent_steam_id) || victimData?.opponent_name;
+
+const ctfDisplay = extractModeDisplay(ctfStats);
+const tdmDisplay = extractModeDisplay(tdmStats);
 
 // Build steamId→slug lookup for rivalry links
 const steamIdToSlug = new Map<string, string>();
@@ -267,8 +273,12 @@ function getRivalrySlug(opponentSteamId: string | undefined): string | null {
   return steamIdToSlug.get(opponentSteamId) || null;
 }
 
-const nemesisSlug = getRivalrySlug(nemesisData?.opponent_steam_id);
-const victimSlug = getRivalrySlug(victimData?.opponent_steam_id);
+// Resolve rivalry names: prefer player registry name over API name
+function getRegistryName(steamId: string | undefined): string | null {
+  if (!steamId) return null;
+  const entry = playerRegistry.find(p => p.steamId === steamId);
+  return entry?.name || null;
+}
 
 // Ensure base URL has trailing slash for path concatenation
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -861,127 +871,142 @@ const schema = {
       </section>
     )}
 
-    <!-- Season Stats (HoQ 2026 S1) -->
-    {seasonStats && (seasonStats.career || seasonStats.weapons?.length > 0) && (
+    <!-- Season Stats (HoQ 2026 S1) - per mode -->
+    {[
+      { mode: 'CTF', display: ctfDisplay, arrays: ctfArrays, showFlags: true },
+      { mode: 'TDM', display: tdmDisplay, arrays: tdmArrays, showFlags: false },
+    ].map(({ mode, display, arrays, showFlags }) => display && (display.career || display.weapons?.length > 0) && (() => {
+      const c = display.career;
+      const w = display.weapons;
+      const fd = display.flagData;
+      const nd = display.nemesisData;
+      const vd = display.victimData;
+      const maps = display.mapStatsArray;
+      const hasRiv = !!(nd || vd);
+      const nName = getRegistryName(nd?.opponent_steam_id) || nd?.opponent_name;
+      const vName = getRegistryName(vd?.opponent_steam_id) || vd?.opponent_name;
+      const nSlug = getRivalrySlug(nd?.opponent_steam_id);
+      const vSlug = getRivalrySlug(vd?.opponent_steam_id);
+      return (
       <section class="season-section">
         <div class="season-header">
-          <h2>Season Stats (2026 S1)</h2>
+          <h2>{mode} Season Stats (2026 S1)</h2>
           <span class="season-attr">Data via <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></span>
         </div>
 
         <div class="season-grid">
-          {seasonStats.career && (
+          {c && (
             <div class="season-career">
               <div class="stat-rows">
-                {seasonStats.career.matches_played != null && (() => {
-                  const pct = getPercentile(seasonStats.career.matches_played, allGames);
+                {c.matches_played != null && (() => {
+                  const pct = getPercentile(c.matches_played, arrays.games);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">Games</span>
-                      <span class="stat-value">{seasonStats.career.matches_played}</span>
+                      <span class="stat-value">{c.matches_played}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allGames))}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.games))}</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.win_rate != null && (() => {
-                  const pct = getPercentile(seasonStats.career.win_rate, allWinRate);
+                {c.win_rate != null && (() => {
+                  const pct = getPercentile(c.win_rate, arrays.winRate);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">Win Rate</span>
-                      <span class="stat-value">{seasonStats.career.win_rate}%</span>
+                      <span class="stat-value">{c.win_rate}%</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allWinRate))}%</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.winRate))}%</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.kd_ratio != null && (() => {
-                  const pct = getPercentile(seasonStats.career.kd_ratio, allKD);
+                {c.kd_ratio != null && (() => {
+                  const pct = getPercentile(c.kd_ratio, arrays.kd);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">K/D</span>
-                      <span class="stat-value">{seasonStats.career.kd_ratio.toFixed(2)}</span>
+                      <span class="stat-value">{c.kd_ratio.toFixed(2)}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allKD), 2)}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.kd), 2)}</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.total_kills != null && (() => {
-                  const pct = getPercentile(seasonStats.career.total_kills, allKills);
+                {c.total_kills != null && (() => {
+                  const pct = getPercentile(c.total_kills, arrays.kills);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">Kills</span>
-                      <span class="stat-value">{seasonStats.career.total_kills}</span>
+                      <span class="stat-value">{c.total_kills}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allKills))}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.kills))}</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.total_deaths != null && (() => {
-                  const pct = getPercentile(seasonStats.career.total_deaths, allDeaths, false);
+                {c.total_deaths != null && (() => {
+                  const pct = getPercentile(c.total_deaths, arrays.deaths, false);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">Deaths</span>
-                      <span class="stat-value">{seasonStats.career.total_deaths}</span>
+                      <span class="stat-value">{c.total_deaths}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allDeaths))}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.deaths))}</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.damage_per_minute != null && (seasonStats.career.damage_per_minute > 0 || average(allDPM) > 0) && (() => {
-                  const pct = getPercentile(seasonStats.career.damage_per_minute, allDPM);
+                {c.damage_per_minute != null && (c.damage_per_minute > 0 || average(arrays.dpm) > 0) && (() => {
+                  const pct = getPercentile(c.damage_per_minute, arrays.dpm);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">DPM</span>
-                      <span class="stat-value">{Math.round(seasonStats.career.damage_per_minute)}</span>
+                      <span class="stat-value">{Math.round(c.damage_per_minute)}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allDPM))}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.dpm))}</span>
                     </div>
                   );
                 })()}
-                {seasonStats.career.max_streak != null && (seasonStats.career.max_streak > 0 || average(allStreak) > 0) && (() => {
-                  const pct = getPercentile(seasonStats.career.max_streak, allStreak);
+                {c.max_streak != null && (c.max_streak > 0 || average(arrays.streak) > 0) && (() => {
+                  const pct = getPercentile(c.max_streak, arrays.streak);
                   return (
                     <div class="stat-row">
                       <span class="stat-label">Best Streak</span>
-                      <span class="stat-value">{seasonStats.career.max_streak}</span>
+                      <span class="stat-value">{c.max_streak}</span>
                       <div class="stat-bar-wrap">
                         <div class="stat-bar-track">
                           <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
                         </div>
                       </div>
                       <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allStreak))}</span>
+                      <span class="stat-avg">avg: {formatAvg(average(arrays.streak))}</span>
                     </div>
                   );
                 })()}
@@ -989,194 +1014,102 @@ const schema = {
             </div>
           )}
 
-          {seasonStats.weapons?.length > 0 && (
+          {w?.length > 0 && (() => {
+            const rg = getWeapon(w, 'RAILGUN');
+            const rl = getWeapon(w, 'ROCKET_LAUNCHER');
+            const lg = getWeapon(w, 'LIGHTNING_GUN');
+            const sg = getWeapon(w, 'SHOTGUN');
+            const mg = getWeapon(w, 'MACHINEGUN');
+            const pg = getWeapon(w, 'PLASMA_GUN');
+            const gl = getWeapon(w, 'GRENADE_LAUNCHER');
+            return (
             <div class="season-weapons">
-              <h3>Weapon Accuracy (Season)</h3>
+              <h3>Weapon Accuracy</h3>
               <table class="settings-table">
-                {seasonRailgun && (
-                  <tr>
-                    <td>&#127919; Railgun</td>
-                    <td>{seasonRailgun.accuracy}%</td>
-                    <td class="text-muted">{seasonRailgun.kills} kills</td>
-                  </tr>
-                )}
-                {seasonRocket && (
-                  <tr>
-                    <td>&#128640; Rocket</td>
-                    <td>{seasonRocket.accuracy}%</td>
-                    <td class="text-muted">{seasonRocket.kills} kills</td>
-                  </tr>
-                )}
-                {seasonLightning && (
-                  <tr>
-                    <td>&#9889; Lightning Gun</td>
-                    <td>{seasonLightning.accuracy}%</td>
-                    <td class="text-muted">{seasonLightning.kills} kills</td>
-                  </tr>
-                )}
-                {seasonShotgun && (
-                  <tr>
-                    <td>&#128299; Shotgun</td>
-                    <td>{seasonShotgun.accuracy}%</td>
-                    <td class="text-muted">{seasonShotgun.kills} kills</td>
-                  </tr>
-                )}
-                {seasonMachinegun && (
-                  <tr>
-                    <td>&#9881; Machine Gun</td>
-                    <td>{seasonMachinegun.accuracy}%</td>
-                    <td class="text-muted">{seasonMachinegun.kills} kills</td>
-                  </tr>
-                )}
-                {seasonPlasma && (
-                  <tr>
-                    <td>&#128154; Plasma</td>
-                    <td>{seasonPlasma.accuracy}%</td>
-                    <td class="text-muted">{seasonPlasma.kills} kills</td>
-                  </tr>
-                )}
-                {seasonGrenade && (
-                  <tr>
-                    <td>&#128163; Grenade</td>
-                    <td>{seasonGrenade.accuracy}%</td>
-                    <td class="text-muted">{seasonGrenade.kills} kills</td>
-                  </tr>
-                )}
+                {rg && (<tr><td>&#127919; Railgun</td><td>{rg.accuracy}%</td><td class="text-muted">{rg.kills} kills</td></tr>)}
+                {rl && (<tr><td>&#128640; Rocket</td><td>{rl.accuracy}%</td><td class="text-muted">{rl.kills} kills</td></tr>)}
+                {lg && (<tr><td>&#9889; Lightning Gun</td><td>{lg.accuracy}%</td><td class="text-muted">{lg.kills} kills</td></tr>)}
+                {sg && (<tr><td>&#128299; Shotgun</td><td>{sg.accuracy}%</td><td class="text-muted">{sg.kills} kills</td></tr>)}
+                {mg && (<tr><td>&#9881; Machine Gun</td><td>{mg.accuracy}%</td><td class="text-muted">{mg.kills} kills</td></tr>)}
+                {pg && (<tr><td>&#128154; Plasma</td><td>{pg.accuracy}%</td><td class="text-muted">{pg.kills} kills</td></tr>)}
+                {gl && (<tr><td>&#128163; Grenade</td><td>{gl.accuracy}%</td><td class="text-muted">{gl.kills} kills</td></tr>)}
               </table>
             </div>
-          )}
-          {flagData && (
+            );
+          })()}
+
+          {showFlags && fd && (
             <div class="season-flags">
-              <h3>Flag Stats (Season)</h3>
+              <h3>Flag Stats</h3>
               <div class="stat-rows">
-                {flagData.captures != null && (flagData.captures > 0 || average(allCaptures) > 0) && (() => {
-                  const pct = getPercentile(flagData.captures, allCaptures);
-                  return (
-                    <div class="stat-row">
-                      <span class="stat-label">Captures</span>
-                      <span class="stat-value">{flagData.captures}</span>
-                      <div class="stat-bar-wrap">
-                        <div class="stat-bar-track">
-                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
-                        </div>
-                      </div>
-                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allCaptures))}</span>
-                    </div>
-                  );
+                {fd.captures != null && (fd.captures > 0 || average(arrays.captures) > 0) && (() => {
+                  const pct = getPercentile(fd.captures, arrays.captures);
+                  return (<div class="stat-row"><span class="stat-label">Captures</span><span class="stat-value">{fd.captures}</span><div class="stat-bar-wrap"><div class="stat-bar-track"><div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div></div></div><span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span><span class="stat-avg">avg: {formatAvg(average(arrays.captures))}</span></div>);
                 })()}
-                {flagData.returns != null && (flagData.returns > 0 || average(allReturns) > 0) && (() => {
-                  const pct = getPercentile(flagData.returns, allReturns);
-                  return (
-                    <div class="stat-row">
-                      <span class="stat-label">Returns</span>
-                      <span class="stat-value">{flagData.returns}</span>
-                      <div class="stat-bar-wrap">
-                        <div class="stat-bar-track">
-                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
-                        </div>
-                      </div>
-                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allReturns))}</span>
-                    </div>
-                  );
+                {fd.returns != null && (fd.returns > 0 || average(arrays.returns) > 0) && (() => {
+                  const pct = getPercentile(fd.returns, arrays.returns);
+                  return (<div class="stat-row"><span class="stat-label">Returns</span><span class="stat-value">{fd.returns}</span><div class="stat-bar-wrap"><div class="stat-bar-track"><div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div></div></div><span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span><span class="stat-avg">avg: {formatAvg(average(arrays.returns))}</span></div>);
                 })()}
-                {flagData.pickups != null && (flagData.pickups > 0 || average(allPickups) > 0) && (() => {
-                  const pct = getPercentile(flagData.pickups, allPickups);
-                  return (
-                    <div class="stat-row">
-                      <span class="stat-label">Pickups</span>
-                      <span class="stat-value">{flagData.pickups}</span>
-                      <div class="stat-bar-wrap">
-                        <div class="stat-bar-track">
-                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
-                        </div>
-                      </div>
-                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allPickups))}</span>
-                    </div>
-                  );
+                {fd.pickups != null && (fd.pickups > 0 || average(arrays.pickups) > 0) && (() => {
+                  const pct = getPercentile(fd.pickups, arrays.pickups);
+                  return (<div class="stat-row"><span class="stat-label">Pickups</span><span class="stat-value">{fd.pickups}</span><div class="stat-bar-wrap"><div class="stat-bar-track"><div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div></div></div><span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span><span class="stat-avg">avg: {formatAvg(average(arrays.pickups))}</span></div>);
                 })()}
-                {flagData.defends != null && (flagData.defends > 0 || average(allDefends) > 0) && (() => {
-                  const pct = getPercentile(flagData.defends, allDefends);
-                  return (
-                    <div class="stat-row">
-                      <span class="stat-label">Defends</span>
-                      <span class="stat-value">{flagData.defends}</span>
-                      <div class="stat-bar-wrap">
-                        <div class="stat-bar-track">
-                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
-                        </div>
-                      </div>
-                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allDefends))}</span>
-                    </div>
-                  );
+                {fd.defends != null && (fd.defends > 0 || average(arrays.defends) > 0) && (() => {
+                  const pct = getPercentile(fd.defends, arrays.defends);
+                  return (<div class="stat-row"><span class="stat-label">Defends</span><span class="stat-value">{fd.defends}</span><div class="stat-bar-wrap"><div class="stat-bar-track"><div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div></div></div><span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span><span class="stat-avg">avg: {formatAvg(average(arrays.defends))}</span></div>);
                 })()}
-                {flagData.assists != null && (flagData.assists > 0 || average(allAssists) > 0) && (() => {
-                  const pct = getPercentile(flagData.assists, allAssists);
-                  return (
-                    <div class="stat-row">
-                      <span class="stat-label">Assists</span>
-                      <span class="stat-value">{flagData.assists}</span>
-                      <div class="stat-bar-wrap">
-                        <div class="stat-bar-track">
-                          <div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div>
-                        </div>
-                      </div>
-                      <span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span>
-                      <span class="stat-avg">avg: {formatAvg(average(allAssists))}</span>
-                    </div>
-                  );
+                {fd.assists != null && (fd.assists > 0 || average(arrays.assists) > 0) && (() => {
+                  const pct = getPercentile(fd.assists, arrays.assists);
+                  return (<div class="stat-row"><span class="stat-label">Assists</span><span class="stat-value">{fd.assists}</span><div class="stat-bar-wrap"><div class="stat-bar-track"><div class={`stat-bar-fill ${pctClass(pct)}-bg`} style={`width: ${100 - pct}%`}></div></div></div><span class={`stat-pct ${pctClass(pct)}`}>Top {pct}%</span><span class="stat-avg">avg: {formatAvg(average(arrays.assists))}</span></div>);
                 })()}
               </div>
             </div>
           )}
 
-          {hasRivalries && (
+          {hasRiv && (
             <div class="season-rivalries">
               <h3>Rivalries</h3>
               <div class="rivalry-cards">
-                {nemesisData && (
+                {nd && (
                   <div class="rivalry-card rivalry-nemesis">
                     <span class="rivalry-icon">&#128520;</span>
                     <div class="rivalry-info">
                       <span class="rivalry-label">Nemesis</span>
-                      {nemesisSlug ? (
-                        <a href={`${base}players/${nemesisSlug}/`} class="rivalry-name">{nemesisName}</a>
+                      {nSlug ? (
+                        <a href={`${base}players/${nSlug}/`} class="rivalry-name">{nName}</a>
                       ) : (
-                        <span class="rivalry-name">{nemesisName}</span>
+                        <span class="rivalry-name">{nName}</span>
                       )}
                       <span class="rivalry-detail">
-                        {nemesisData.kills_against != null && nemesisData.deaths_to != null
-                          ? `${nemesisData.kills_against}-${nemesisData.deaths_to}`
-                          : nemesisData.deaths_to != null
-                            ? `died ${nemesisData.deaths_to} times`
+                        {nd.kills_against != null && nd.deaths_to != null
+                          ? `${nd.kills_against}-${nd.deaths_to}`
+                          : nd.deaths_to != null
+                            ? `died ${nd.deaths_to} times`
                             : ''}
-                        {nemesisData.kd_ratio != null && ` (${nemesisData.kd_ratio.toFixed(2)} K/D)`}
-                        {nemesisData.matches_together != null && ` · ${nemesisData.matches_together} ${nemesisData.matches_together === 1 ? 'game' : 'games'}`}
+                        {nd.kd_ratio != null && ` (${nd.kd_ratio.toFixed(2)} K/D)`}
+                        {nd.matches_together != null && ` · ${nd.matches_together} ${nd.matches_together === 1 ? 'game' : 'games'}`}
                       </span>
                     </div>
                   </div>
                 )}
-                {victimData && (
+                {vd && (
                   <div class="rivalry-card rivalry-victim">
                     <span class="rivalry-icon">&#128526;</span>
                     <div class="rivalry-info">
                       <span class="rivalry-label">Favorite Victim</span>
-                      {victimSlug ? (
-                        <a href={`${base}players/${victimSlug}/`} class="rivalry-name">{victimName}</a>
+                      {vSlug ? (
+                        <a href={`${base}players/${vSlug}/`} class="rivalry-name">{vName}</a>
                       ) : (
-                        <span class="rivalry-name">{victimName}</span>
+                        <span class="rivalry-name">{vName}</span>
                       )}
                       <span class="rivalry-detail">
-                        {victimData.kills_against != null && victimData.deaths_to != null
-                          ? `${victimData.kills_against}-${victimData.deaths_to}`
-                          : victimData.kills_against != null
-                            ? `killed ${victimData.kills_against} times`
+                        {vd.kills_against != null && vd.deaths_to != null
+                          ? `${vd.kills_against}-${vd.deaths_to}`
+                          : vd.kills_against != null
+                            ? `killed ${vd.kills_against} times`
                             : ''}
-                        {victimData.kd_ratio != null && ` (${victimData.kd_ratio.toFixed(2)} K/D)`}
-                        {victimData.matches_together != null && ` · ${victimData.matches_together} ${victimData.matches_together === 1 ? 'game' : 'games'}`}
+                        {vd.kd_ratio != null && ` (${vd.kd_ratio.toFixed(2)} K/D)`}
+                        {vd.matches_together != null && ` · ${vd.matches_together} ${vd.matches_together === 1 ? 'game' : 'games'}`}
                       </span>
                     </div>
                   </div>
@@ -1185,9 +1118,9 @@ const schema = {
             </div>
           )}
 
-          {mapStatsArray.length > 0 && (
+          {maps.length > 0 && (
             <div class="season-maps">
-              <h3>Map Performance (Season)</h3>
+              <h3>Map Performance</h3>
               <table class="settings-table map-stats-table">
                 <thead>
                   <tr>
@@ -1199,7 +1132,7 @@ const schema = {
                   </tr>
                 </thead>
                 <tbody>
-                  {mapStatsArray.map(m => (
+                  {maps.map(m => (
                     <tr>
                       <td>{m.map}</td>
                       <td>{m.matches}</td>
@@ -1214,7 +1147,8 @@ const schema = {
           )}
         </div>
       </section>
-    )}
+      );
+    })())}
 
     <!-- Config Download -->
     {p.configFile && (
@@ -1227,13 +1161,13 @@ const schema = {
     )}
 
     <!-- Data Source -->
-    {(p.source || p.lastUpdated || seasonStats) && (
+    {(p.source || p.lastUpdated || ctfStats || tdmStats) && (
       <section class="source-section">
         <h2>Data Source</h2>
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
           {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
-          {seasonStats && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
+          {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
         </div>
       </section>
     )}

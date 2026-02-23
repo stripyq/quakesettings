@@ -663,21 +663,29 @@ const topRlAccuracy = rankWithTies(accuracyEligible
 // NEMESIS / VICTIM LEADERBOARDS
 // ===========================================
 
-// Count how many times each player appears as someone's nemesis or favorite victim
-const nemesisCounts: Record<string, number> = {};
-const victimCounts: Record<string, number> = {};
+// Count how many times each player appears as someone's nemesis or favorite victim (per mode)
+function countRivalries(mode: string) {
+  const nemesisCounts: Record<string, number> = {};
+  const victimCounts: Record<string, number> = {};
 
-Object.values(seasonStatsData).forEach((player: any) => {
-  const nemesisSteamId = player.nemesis?.data?.opponent_steam_id;
-  if (nemesisSteamId) {
-    nemesisCounts[nemesisSteamId] = (nemesisCounts[nemesisSteamId] || 0) + 1;
-  }
+  Object.values(seasonStatsData).forEach((player: any) => {
+    // Support both nested (player.ctf/tdm) and legacy flat format
+    const modeData = player[mode] || (mode === 'ctf' && player.career ? player : null);
+    if (!modeData) return;
 
-  const victimSteamId = player.favoriteVictim?.data?.opponent_steam_id;
-  if (victimSteamId) {
-    victimCounts[victimSteamId] = (victimCounts[victimSteamId] || 0) + 1;
-  }
-});
+    const nemesisSteamId = modeData.nemesis?.data?.opponent_steam_id;
+    if (nemesisSteamId) {
+      nemesisCounts[nemesisSteamId] = (nemesisCounts[nemesisSteamId] || 0) + 1;
+    }
+
+    const victimSteamId = modeData.favoriteVictim?.data?.opponent_steam_id;
+    if (victimSteamId) {
+      victimCounts[victimSteamId] = (victimCounts[victimSteamId] || 0) + 1;
+    }
+  });
+
+  return { nemesisCounts, victimCounts };
+}
 
 // Build sorted leaderboards with player info
 function buildNemesisLeaderboard(counts: Record<string, number>, limit = 10) {
@@ -688,15 +696,18 @@ function buildNemesisLeaderboard(counts: Record<string, number>, limit = 10) {
       const reg = registryNameMap[steamId];
       const seasonEntry = seasonStatsData[steamId];
       const name = reg?.name || seasonEntry?.name || steamId;
-      // Find player profile slug if they have one
       const profilePlayer = players.find(p => p.data.steamId === steamId);
       const profileId = profilePlayer?.id || null;
       return { rank: i + 1, steamId, name, count, profileId };
     });
 }
 
-const mostFeared = buildNemesisLeaderboard(nemesisCounts);
-const mostTargeted = buildNemesisLeaderboard(victimCounts);
+const ctfRivalries = countRivalries('ctf');
+const tdmRivalries = countRivalries('tdm');
+const ctfMostFeared = buildNemesisLeaderboard(ctfRivalries.nemesisCounts);
+const ctfMostTargeted = buildNemesisLeaderboard(ctfRivalries.victimCounts);
+const tdmMostFeared = buildNemesisLeaderboard(tdmRivalries.nemesisCounts);
+const tdmMostTargeted = buildNemesisLeaderboard(tdmRivalries.victimCounts);
 
 // ===========================================
 // INTERESTING FACTS
@@ -1271,20 +1282,23 @@ const schema = {
     </div>
 
     <!-- ========== SECTION: RIVALRIES ========== -->
-    {(mostFeared.length > 0 || mostTargeted.length > 0) && (
+    {(ctfMostFeared.length > 0 || ctfMostTargeted.length > 0 || tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
     <div class="s-section-header" style="--section-color: #d29922">
       <div class="s-section-icon" style="background: #d29922">&#9876;&#65039;</div>
       <span class="s-section-title" style="color: #d29922">RIVALRIES</span>
       <span class="s-section-attr">Based on season nemesis &amp; favorite victim data</span>
     </div>
+    )}
 
+    {(ctfMostFeared.length > 0 || ctfMostTargeted.length > 0) && (
+    <h3 class="s-mode-label">CTF</h3>
     <div class="s-two-col">
-      {mostFeared.length > 0 && (
+      {ctfMostFeared.length > 0 && (
       <div class="s-card">
         <h2 class="s-card-title">Most Feared Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's nemesis most often. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
+        <p class="s-card-sub" title="Players who appear as someone's nemesis most often in CTF. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
         <div class="s-leaderboard">
-          {mostFeared.map((p) => (
+          {ctfMostFeared.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
               <span class="s-lb-rank">{p.rank}.</span>
               {p.profileId
@@ -1298,12 +1312,55 @@ const schema = {
       </div>
       )}
 
-      {mostTargeted.length > 0 && (
+      {ctfMostTargeted.length > 0 && (
       <div class="s-card">
         <h2 class="s-card-title">Most Targeted Players</h2>
-        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
+        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often in CTF. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
         <div class="s-leaderboard">
-          {mostTargeted.map((p) => (
+          {ctfMostTargeted.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              {p.profileId
+                ? <a href={`${base}players/${p.profileId}/`} class="s-lb-name">{p.name}</a>
+                : <span class="s-lb-name s-lb-name-plain">{p.name}</span>
+              }
+              <span class="s-lb-value s-lb-value-subtle">victim of {p.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+    )}
+
+    {(tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
+    <h3 class="s-mode-label">TDM</h3>
+    <div class="s-two-col">
+      {tdmMostFeared.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Feared Players</h2>
+        <p class="s-card-sub" title="Players who appear as someone's nemesis most often in TDM. Nemesis = opponent with worst K/D against you.">Appears as nemesis of the most players</p>
+        <div class="s-leaderboard">
+          {tdmMostFeared.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              {p.profileId
+                ? <a href={`${base}players/${p.profileId}/`} class="s-lb-name">{p.name}</a>
+                : <span class="s-lb-name s-lb-name-plain">{p.name}</span>
+              }
+              <span class="s-lb-value s-lb-value-subtle">nemesis of {p.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+
+      {tdmMostTargeted.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Targeted Players</h2>
+        <p class="s-card-sub" title="Players who appear as someone's favorite victim most often in TDM. Favorite victim = opponent you have the best K/D against.">Appears as favorite victim of the most players</p>
+        <div class="s-leaderboard">
+          {tdmMostTargeted.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
               <span class="s-lb-rank">{p.rank}.</span>
               {p.profileId
@@ -2099,6 +2156,16 @@ const schema = {
 
   .s-lb-name-plain:hover {
     text-decoration: none;
+  }
+
+  .s-mode-label {
+    color: #8b949e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0.75rem 0 0.25rem;
+    padding-left: 0.25rem;
   }
 
   /* --- Recently Updated --- */
