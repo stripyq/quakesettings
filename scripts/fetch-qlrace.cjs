@@ -67,24 +67,33 @@ async function fetchPlayerRaceData(steamId) {
 
 /**
  * Build the qlrace YAML block from API response.
+ *
+ * API response shape (from QLRace source: db/functions/player_scores_v02.sql):
+ *   {
+ *     name: string, id: number, average: number,
+ *     medals: [gold, silver, bronze],
+ *     records: [{ id, map, mode, time, checkpoints, speed_start, speed_end,
+ *                 speed_top, speed_average, date, rank, total_records }]
+ *   }
  */
 function buildQlraceBlock(apiData, mode) {
   const records = apiData.records || [];
-  const wrs = records.filter(r => r.rank === 1).length;
 
-  // Count medals
-  const gold = records.filter(r => r.rank === 1).length;
-  const silver = records.filter(r => r.rank === 2).length;
-  const bronze = records.filter(r => r.rank === 3).length;
+  // Use API-provided medals array: [gold, silver, bronze]
+  const apiMedals = Array.isArray(apiData.medals) ? apiData.medals : [0, 0, 0];
+  const gold = apiMedals[0] || 0;
+  const silver = apiMedals[1] || 0;
+  const bronze = apiMedals[2] || 0;
+  const wrs = gold; // WRs = rank 1 = gold medals
 
-  // Find top speed across all records
-  const speeds = records.map(r => r.speed).filter(s => s != null && s > 0);
+  // Find top speed across all records (field: speed_top)
+  const speeds = records.map(r => r.speed_top).filter(s => s != null && s > 0);
   const speedTop = speeds.length > 0 ? Math.max(...speeds) : null;
 
-  // Calculate average rank percentage
+  // Calculate average rank percentage: mean of (rank / total_records * 100)
   const rankPcts = records.map(r => {
-    if (r.rank && r.total && r.total > 0) {
-      return (r.rank / r.total) * 100;
+    if (r.rank && r.total_records && r.total_records > 0) {
+      return (r.rank / r.total_records) * 100;
     }
     return null;
   }).filter(v => v != null);
@@ -94,13 +103,13 @@ function buildQlraceBlock(apiData, mode) {
 
   // Sort records by rank percentage to find best and top maps
   const sorted = records
-    .filter(r => r.rank && r.total && r.total > 0)
+    .filter(r => r.rank && r.total_records && r.total_records > 0)
     .map(r => ({
       map: r.map,
       rank: r.rank,
-      total: r.total,
+      total: r.total_records,
       time: r.time,
-      rank_pct: Math.round((r.rank / r.total) * 1000) / 10,
+      rank_pct: Math.round((r.rank / r.total_records) * 1000) / 10,
     }))
     .sort((a, b) => a.rank_pct - b.rank_pct);
 
@@ -212,7 +221,17 @@ async function main() {
         const modeLabel = result.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
         console.log(`  [${batchNum}/${totalBatches}] ${name}: ${block.records} records (${modeLabel}), best: ${block.best_record?.map || 'N/A'}`);
 
-        if (!DRY_RUN) {
+        if (DRY_RUN) {
+          // Show the full YAML block that would be written
+          const qlraceYaml = yaml.dump({ qlrace: block }, {
+            flowLevel: 3,
+            lineWidth: 120,
+            noRefs: true,
+          }).trimEnd();
+          console.log('\n--- Would write to ' + file + ' ---');
+          console.log(qlraceYaml);
+          console.log('---\n');
+        } else {
           updateYamlFile(filePath, block);
         }
         fetched++;
