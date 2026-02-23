@@ -750,15 +750,31 @@ const topRaceSpeed = rankWithTies(
     }))
 );
 
+// Popularity-weighted rank %: sum(rank) / sum(total) * 100 from top_maps
+// Maps with more runners count more heavily
+function computeWeightedRankPct(topMaps: Array<{rank: number; total: number}> | undefined): number | null {
+  if (!topMaps || topMaps.length === 0) return null;
+  let sumRank = 0;
+  let sumTotal = 0;
+  for (const m of topMaps) {
+    if (m.rank > 0 && m.total > 0) {
+      sumRank += m.rank;
+      sumTotal += m.total;
+    }
+  }
+  if (sumTotal === 0) return null;
+  return Math.round((sumRank / sumTotal) * 1000) / 10;
+}
+
 const topRaceRankPct = rankWithTies(
   players
-    .filter(p => p.data.qlrace && p.data.qlrace.records >= 5 && p.data.qlrace.average_rank_pct != null)
-    .sort((a, b) => a.data.qlrace!.average_rank_pct! - b.data.qlrace!.average_rank_pct!)
+    .filter(p => p.data.qlrace && p.data.qlrace.records >= 5 && p.data.qlrace.top_maps && computeWeightedRankPct(p.data.qlrace.top_maps) != null)
+    .sort((a, b) => computeWeightedRankPct(a.data.qlrace!.top_maps!)! - computeWeightedRankPct(b.data.qlrace!.top_maps!)!)
     .slice(0, 10)
     .map(p => ({
       id: p.id,
       name: p.data.name,
-      value: p.data.qlrace!.average_rank_pct!,
+      value: computeWeightedRankPct(p.data.qlrace!.top_maps!)!,
       mode: p.data.qlrace!.mode,
     }))
 );
@@ -1491,7 +1507,7 @@ const schema = {
 
       {topRaceRankPct.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Best Average Rank %</h2>
+        <h2 class="s-card-title">Best Average Rank % <span class="s-info-icon" title="Popularity-weighted average: sum(your rank) ÷ sum(total runners) across all top maps. Maps with more runners count more — a top rank on a popular map matters more than a WR on a 5-person map. Lower = consistently near the top of the field.">?</span></h2>
         <p class="s-card-sub">Lower is better. Minimum 5 records.</p>
         <div class="s-leaderboard">
           {topRaceRankPct.map((p) => (

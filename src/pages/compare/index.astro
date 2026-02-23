@@ -973,8 +973,23 @@ const schema = {
         var r1 = p1.qlrace;
         var r2 = p2.qlrace;
 
+        console.log('[Race H2H] p1.qlrace:', r1 ? ('mode=' + r1.mode + ' top_maps=' + (r1.top_maps ? r1.top_maps.length : 'none')) : 'null');
+        console.log('[Race H2H] p2.qlrace:', r2 ? ('mode=' + r2.mode + ' top_maps=' + (r2.top_maps ? r2.top_maps.length : 'none')) : 'null');
+
+        // Need both players to have qlrace data with top_maps
         if (!r1 || !r2 || !r1.top_maps || !r2.top_maps) return;
-        if (r1.mode !== r2.mode) return; // Only compare same mode
+
+        // Different modes: show a message
+        if (r1.mode !== r2.mode) {
+          var m1Label = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+          var m2Label = r2.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+          raceCompareContainer.innerHTML = '<div class="race-h2h-card">' +
+            '<div class="race-h2h-title">Race Head to Head</div>' +
+            '<p class="race-h2h-empty">Cannot compare — ' + p1.name + ' plays ' + m1Label + ' while ' + p2.name + ' plays ' + m2Label + '.</p>' +
+            '</div>';
+          raceCompareContainer.classList.remove('hidden');
+          return;
+        }
 
         // Find shared maps
         var r2MapIndex = {};
@@ -991,7 +1006,15 @@ const schema = {
           }
         }
 
-        if (sharedMaps.length === 0) return;
+        if (sharedMaps.length === 0) {
+          var modeLabel0 = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+          raceCompareContainer.innerHTML = '<div class="race-h2h-card">' +
+            '<div class="race-h2h-title">Race Head to Head <span class="race-h2h-mode">' + modeLabel0 + '</span></div>' +
+            '<p class="race-h2h-empty">No shared race maps between ' + p1.name + ' (' + r1.top_maps.length + ' maps) and ' + p2.name + ' (' + r2.top_maps.length + ' maps).</p>' +
+            '</div>';
+          raceCompareContainer.classList.remove('hidden');
+          return;
+        }
 
         function fmtTime(ms) {
           var totalSec = ms / 1000;
@@ -2193,6 +2216,14 @@ const schema = {
     font-size: 0.75rem;
     color: var(--text-secondary, #9090a0);
     white-space: nowrap;
+  }
+
+  .race-compare-container :global(.race-h2h-empty) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-style: italic;
   }
 
 </style>
