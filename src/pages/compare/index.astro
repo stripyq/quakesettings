@@ -582,22 +582,31 @@ const schema = {
                 }
               }
 
+              // Winning side gets player color; losing side stays neutral
+              var mWonClass = mWon > mLost ? ' h2h-p1-color' : '';
+              var mLostClass = mLost > mWon ? ' h2h-p2-color' : '';
+
               matchRecordHtml =
                 '<div class="h2h-match-record">' +
                   '<div class="h2h-match-record-label">Match record (when on opposite teams)</div>' +
                   '<div class="h2h-match-record-row">' +
-                    '<span class="h2h-match-record-side h2h-p1-color">' + mWon + 'W</span>' +
+                    '<span class="h2h-match-record-side' + mWonClass + '">' + mWon + 'W</span>' +
                     '<div class="h2h-match-record-bar">' +
                       '<div class="h2h-bar-p1" style="width:' + mBarW + '%"></div>' +
                       '<div class="h2h-bar-p2" style="width:' + (100 - mBarW) + '%"></div>' +
                     '</div>' +
-                    '<span class="h2h-match-record-side h2h-p2-color">' + mLost + 'W</span>' +
+                    '<span class="h2h-match-record-side' + mLostClass + '">' + mLost + 'W</span>' +
                   '</div>' +
                   '<div class="h2h-match-record-meta">' + mPct + '% match win rate \u00b7 ' + mPlayed + ' matches</div>' +
                   bestWorstHtml +
                 '</div>';
             }
           }
+
+          // Winning player gets their color on kill count; losing stays neutral
+          var p1KillClass = p1Kills >= p2Kills ? ' h2h-p1-color' : '';
+          var p2KillClass = p2Kills >= p1Kills ? ' h2h-p2-color' : '';
+          if (p1Kills === p2Kills) { p1KillClass = ''; p2KillClass = ''; }
 
           cards +=
             '<div class="h2h-card">' +
@@ -608,7 +617,7 @@ const schema = {
                     '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
                   '</div>' +
                   '<div class="h2h-stat-block h2h-align-right">' +
-                    '<span class="h2h-kill-count">' + p1Kills + '</span>' +
+                    '<span class="h2h-kill-count' + p1KillClass + '">' + p1Kills + '</span>' +
                     '<span class="h2h-kill-label">kills</span>' +
                     (p1Dmg ? '<span class="h2h-dmg">' + fmtNum(p1Dmg) + ' dmg</span>' : '') +
                   '</div>' +
@@ -616,7 +625,7 @@ const schema = {
                 '<div class="h2h-vs">vs</div>' +
                 '<div class="h2h-side h2h-right">' +
                   '<div class="h2h-stat-block h2h-align-left">' +
-                    '<span class="h2h-kill-count">' + p2Kills + '</span>' +
+                    '<span class="h2h-kill-count' + p2KillClass + '">' + p2Kills + '</span>' +
                     '<span class="h2h-kill-label">kills</span>' +
                     (p2Dmg ? '<span class="h2h-dmg">' + fmtNum(p2Dmg) + ' dmg</span>' : '') +
                   '</div>' +
@@ -664,51 +673,77 @@ const schema = {
           if (played === 0) continue;
 
           var winPct = played > 0 ? ((won / played) * 100).toFixed(1) : '0.0';
+          var winPctNum = parseFloat(winPct);
           var p1BarW = played > 0 ? (won / played) * 100 : 50;
 
-          var mapRows = '';
+          // Per-map table
+          var mapTableHtml = '';
           var maps = Array.isArray(matchup.maps) ? matchup.maps : [];
           if (maps.length > 0) {
             var sorted = maps.slice().sort(function(a, b) {
               return (b.matches_played || 0) - (a.matches_played || 0);
             });
+            var tableRows = '';
             for (var j = 0; j < sorted.length; j++) {
               var m = sorted[j];
               var mWon = m.matches_won || 0;
               var mLost = m.matches_lost || 0;
               var mPlayed = m.matches_played || (mWon + mLost);
               if (mPlayed === 0) continue;
-              var mPct = mPlayed > 0 ? (mWon / mPlayed) * 100 : 50;
+              var mWinPct = mPlayed > 0 ? Math.round((mWon / mPlayed) * 100) : 0;
               var mapName = m.map || 'Unknown';
               var displayName = mapName.replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
 
-              mapRows +=
-                '<div class="mh-map-row">' +
-                  '<span class="mh-map-name">' + displayName + '</span>' +
-                  '<div class="mh-map-bar-wrap">' +
-                    '<div class="mh-map-bar">' +
-                      '<div class="mh-map-bar-p1" style="width:' + mPct + '%"></div>' +
-                      '<div class="mh-map-bar-p2" style="width:' + (100 - mPct) + '%"></div>' +
-                    '</div>' +
-                  '</div>' +
-                  '<span class="mh-map-score">' + mWon + '-' + mLost + '</span>' +
+              tableRows +=
+                '<tr>' +
+                  '<td class="mh-td-map">' + displayName + '</td>' +
+                  '<td class="mh-td-num">' + mWon + '</td>' +
+                  '<td class="mh-td-num">' + mLost + '</td>' +
+                  '<td class="mh-td-num mh-td-pct">' + mWinPct + '%</td>' +
+                '</tr>';
+            }
+            if (tableRows) {
+              mapTableHtml =
+                '<div class="mh-maps">' +
+                  '<div class="mh-maps-label">Per-Map Breakdown</div>' +
+                  '<table class="mh-table">' +
+                    '<thead><tr>' +
+                      '<th class="mh-th-map">Map</th>' +
+                      '<th class="mh-th-num h2h-p1-color">' + p1.name + '</th>' +
+                      '<th class="mh-th-num h2h-p2-color">' + p2.name + '</th>' +
+                      '<th class="mh-th-num">Win%</th>' +
+                    '</tr></thead>' +
+                    '<tbody>' + tableRows + '</tbody>' +
+                  '</table>' +
                 '</div>';
+            }
+          }
+
+          // Insight text based on win rate
+          var insightHtml = '';
+          if (played >= 3) {
+            if (winPctNum < 40) {
+              insightHtml = '<div class="mh-insight"><span class="h2h-p2-color">' + p2.name + '</span> dominates <span class="h2h-p1-color">' + p1.name + '</span> when they\u2019re on opposite teams!</div>';
+            } else if (winPctNum > 60) {
+              insightHtml = '<div class="mh-insight"><span class="h2h-p1-color">' + p1.name + '</span> dominates <span class="h2h-p2-color">' + p2.name + '</span> when they\u2019re on opposite teams!</div>';
+            } else {
+              insightHtml = '<div class="mh-insight">Evenly matched when on opposite teams</div>';
             }
           }
 
           cards +=
             '<div class="mh-card">' +
-              '<div class="mh-title">Matchup History \u2013 ' + modeLabel + ' <span class="mh-season-tag">Season</span></div>' +
+              '<div class="mh-title">Match Record \u2013 ' + modeLabel + ' <span class="mh-season-tag">Season</span></div>' +
               '<div class="mh-subtitle">When on opposite teams</div>' +
               '<div class="mh-overall">' +
                 '<div class="mh-record">' +
                   '<span class="mh-record-side">' +
                     '<span class="h2h-p1-color mh-player-label">' + p1.name + '</span>' +
-                    '<span class="mh-win-count">' + won + 'W</span>' +
+                    '<span class="mh-win-count' + (won > lost ? ' h2h-p1-color' : '') + '">' + won + 'W</span>' +
                   '</span>' +
                   '<span class="mh-record-divider">\u2013</span>' +
                   '<span class="mh-record-side">' +
-                    '<span class="mh-win-count">' + lost + 'W</span>' +
+                    '<span class="mh-win-count' + (lost > won ? ' h2h-p2-color' : '') + '">' + lost + 'W</span>' +
                     '<span class="h2h-p2-color mh-player-label">' + p2.name + '</span>' +
                   '</span>' +
                 '</div>' +
@@ -721,12 +756,8 @@ const schema = {
                   '<span>' + played + ' matches</span>' +
                 '</div>' +
               '</div>' +
-              (mapRows ?
-                '<div class="mh-maps">' +
-                  '<div class="mh-maps-label">Per-Map Breakdown</div>' +
-                  mapRows +
-                '</div>'
-              : '') +
+              mapTableHtml +
+              insightHtml +
             '</div>';
         }
 
@@ -910,16 +941,20 @@ const schema = {
           cards +=
             '<div class="rv-card">' +
               '<div class="rv-title">' + modeLabel + ' Rivalries <span class="rv-season-tag">Season</span></div>' +
+              '<div class="rv-col-headers">' +
+                '<span class="h2h-p1-color rv-col-header">' + p1.name + '</span>' +
+                '<span class="h2h-p2-color rv-col-header">' + p2.name + '</span>' +
+              '</div>' +
               '<div class="rv-columns">' +
                 '<div class="rv-col rv-col-left">' +
-                  '<div class="rv-player-name h2h-p1-color">' + p1.name + '</div>' +
                   rivalryEntry('Nemesis', p1Nem) +
+                  '<div class="rv-separator"></div>' +
                   rivalryEntry('Favorite Victim', p1Vic) +
                 '</div>' +
                 '<div class="rv-divider"></div>' +
                 '<div class="rv-col rv-col-right">' +
-                  '<div class="rv-player-name h2h-p2-color">' + p2.name + '</div>' +
                   rivalryEntry('Nemesis', p2Nem) +
+                  '<div class="rv-separator"></div>' +
                   rivalryEntry('Favorite Victim', p2Vic) +
                 '</div>' +
               '</div>' +
@@ -1673,51 +1708,68 @@ const schema = {
     margin-bottom: 0.75rem;
   }
 
-  .matchup-history-container :global(.mh-map-row) {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.4rem;
+  .matchup-history-container :global(.mh-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
   }
 
-  .matchup-history-container :global(.mh-map-name) {
-    font-size: 0.75rem;
+  .matchup-history-container :global(.mh-table th) {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--text-secondary, #9090a0);
-    width: 6rem;
-    text-align: right;
-    flex-shrink: 0;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+    font-weight: 600;
+  }
+
+  .matchup-history-container :global(.mh-th-map) {
+    text-align: left;
+  }
+
+  .matchup-history-container :global(.mh-th-num) {
+    text-align: center;
+    min-width: 3rem;
+  }
+
+  .matchup-history-container :global(.mh-table td) {
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .matchup-history-container :global(.mh-table tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .matchup-history-container :global(.mh-table tbody tr:nth-child(odd)) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .matchup-history-container :global(.mh-td-map) {
     text-transform: capitalize;
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 500;
   }
 
-  .matchup-history-container :global(.mh-map-bar-wrap) {
-    flex: 1;
-  }
-
-  .matchup-history-container :global(.mh-map-bar) {
-    display: flex;
-    height: 4px;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .matchup-history-container :global(.mh-map-bar-p1) {
-    height: 100%;
-    background: #3b82f6;
-    border-radius: 2px 0 0 2px;
-  }
-
-  .matchup-history-container :global(.mh-map-bar-p2) {
-    height: 100%;
-    background: #a855f7;
-    border-radius: 0 2px 2px 0;
-  }
-
-  .matchup-history-container :global(.mh-map-score) {
-    font-size: 0.75rem;
+  .matchup-history-container :global(.mh-td-num) {
+    text-align: center;
     font-family: monospace;
     color: var(--text-primary, #e8e8f0);
-    width: 3rem;
-    text-align: left;
+  }
+
+  .matchup-history-container :global(.mh-td-pct) {
+    color: var(--text-secondary, #9090a0);
+  }
+
+  .matchup-history-container :global(.mh-insight) {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-secondary, #9090a0);
     flex-shrink: 0;
   }
 
@@ -1879,10 +1931,26 @@ const schema = {
     letter-spacing: 0.05em;
   }
 
+  .rivalries-container :global(.rv-col-headers) {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.75rem;
+  }
+
+  .rivalries-container :global(.rv-col-header) {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
   .rivalries-container :global(.rv-columns) {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
+  }
+
+  .rivalries-container :global(.rv-separator) {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin: 0.25rem 0;
   }
 
   .rivalries-container :global(.rv-col) {
@@ -1908,6 +1976,7 @@ const schema = {
     font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
+    display: none;
   }
 
   .rivalries-container :global(.rv-entry) {
@@ -2003,9 +2072,13 @@ const schema = {
       font-size: 0.75rem;
     }
 
-    .matchup-history-container :global(.mh-map-name) {
-      width: 4.5rem;
-      font-size: 0.65rem;
+    .matchup-history-container :global(.mh-table) {
+      font-size: 0.7rem;
+    }
+
+    .matchup-history-container :global(.mh-th-num) {
+      min-width: 2rem;
+      font-size: 0.6rem;
     }
 
     .matchup-history-container :global(.mh-meta) {
