@@ -1189,7 +1189,7 @@ const schema = {
             {r.best_record && (
               <div class="race-stat-row">
                 <span class="race-label">Best Record</span>
-                <span class="race-value">Rank {r.best_record.rank}/{r.best_record.total} on <span class="race-map">{r.best_record.map}</span> <span class="race-pct">(top {r.best_record.rank_pct}%)</span></span>
+                <span class="race-value">Rank {r.best_record.rank}/{r.best_record.total} on <span class="race-map">{r.best_record.map}</span> <span class="race-pct">(top {r.best_record.rank_pct}%)</span>{r.best_record.map === p.favorite_map && <span class="race-fav-match"> — also their favorite map!</span>}</span>
               </div>
             )}
 
@@ -2685,6 +2685,13 @@ const schema = {
     font-size: 0.7rem;
     color: var(--text-secondary, #9090a0);
     font-family: inherit;
+  }
+
+  .race-fav-match {
+    font-size: 0.75rem;
+    color: #f1c40f;
+    font-family: inherit;
+    font-style: italic;
   }
 
   .race-top-maps h3 {
