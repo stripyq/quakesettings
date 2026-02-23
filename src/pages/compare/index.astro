@@ -393,12 +393,6 @@ const schema = {
         const p1Flag = countryCodeToFlag(p1Country);
         const p2Flag = countryCodeToFlag(p2Country);
 
-        // Debug: log flag conversion (remove after debugging)
-        console.log('Flag debug:', {
-          p1: { country: p1.country, filtered: p1Country, flag: p1Flag, flagLength: p1Flag.length },
-          p2: { country: p2.country, filtered: p2Country, flag: p2Flag, flagLength: p2Flag.length }
-        });
-
         p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Flag ? `<span class="header-country">${p1Flag}</span>` : ''}`;
         p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Flag ? `<span class="header-country">${p2Flag}</span>` : ''}`;
 
@@ -848,8 +842,8 @@ const schema = {
         function calcKD(career) {
           if (!career) return null;
           var k = getVal(career, ['kills', 'total_kills']) || 0;
-          var d = getVal(career, ['deaths', 'total_deaths']) || 1;
-          return d > 0 ? (k / d).toFixed(2) : null;
+          var d = getVal(career, ['deaths', 'total_deaths']) || 0;
+          return d === 0 ? (k > 0 ? 'Perfect' : null) : (k / d).toFixed(2);
         }
 
         function calcDPM(career) {

@@ -148,13 +148,15 @@ function readHoqCsvs() {
       }
 
       const player = hoqPlayers.get(steamId);
-      player.ratings[mode] = rating;
-      player.gamesPlayed[mode] = games;
 
       // Update name if this mode has more games (more authoritative)
+      // Must compare BEFORE setting gamesPlayed, otherwise we compare games to itself
       if (games && (!player.gamesPlayed[mode] || games > player.gamesPlayed[mode])) {
         player.name = name;
       }
+
+      player.ratings[mode] = rating;
+      player.gamesPlayed[mode] = games;
     }
   }
 
@@ -178,8 +180,8 @@ function generateCollectedPlayers() {
     steamId: String(p.steamId || ''), // Ensure string
     country: p.country || '',
     // Mouse settings
-    dpi: p.dpi || '',
-    sensitivity: p.sensitivity || '',
+    dpi: p.dpi ?? '',
+    sensitivity: p.sensitivity ?? '',
     acceleration: p.acceleration || false,
     accelValue: p.accelValue || '',
     rawInput: p.rawInput !== false,

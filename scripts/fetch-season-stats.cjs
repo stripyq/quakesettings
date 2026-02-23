@@ -14,6 +14,8 @@
 const fs = require('fs');
 const path = require('path');
 
+// HoQ Season Stats API — hosted by mynx (77.90.2.137)
+// Change this if the API server moves or a domain name is set up
 const API_BASE = 'http://77.90.2.137:8004/api';
 const REGISTRY_PATH = path.join(__dirname, '../src/data/player-registry.json');
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
@@ -84,9 +86,14 @@ function getAllPlayers() {
 async function fetchJson(url) {
   try {
     const res = await fetch(url);
-    return res.ok ? await res.json() : null;
-  } catch {
-    return null;
+    if (!res.ok) {
+      console.warn(`  API error ${res.status} for ${url}`);
+      return { __error: true, status: res.status };
+    }
+    return await res.json();
+  } catch (err) {
+    console.warn(`  Fetch failed for ${url}: ${err.message}`);
+    return { __error: true };
   }
 }
 
@@ -119,7 +126,7 @@ async function fetchModeStats(mode, steamId) {
       endpoints.push(fetchJson(`${API_BASE}/${mode}/ctf/${steamId}`));
     }
 
-    const results = await Promise.all(endpoints);
+    const results = (await Promise.all(endpoints)).map(r => r?.__error ? null : r);
 
     const [career, weapons, nemesis, favoriteVictim, headToHead, mapStats] = results;
     const flagStats = mode === 'ctf' ? results[6] : null;
@@ -195,13 +202,15 @@ async function main() {
     return entry;
   }
 
-  // Process results for a single player
+  // Process results for a single player, merging with existing data
   function processResult(steamId, name, stats) {
     const ctfEntry = buildModeEntry(stats?.ctf);
     const tdmEntry = buildModeEntry(stats?.tdm);
 
     if (ctfEntry || tdmEntry) {
-      const entry = { name, fetchedAt: new Date().toISOString() };
+      // Merge with existing data so a partial fetch doesn't destroy previous data
+      const existing = results[steamId] || {};
+      const entry = { ...existing, name, fetchedAt: new Date().toISOString() };
       if (ctfEntry) entry.ctf = ctfEntry;
       if (tdmEntry) entry.tdm = tdmEntry;
       results[steamId] = entry;
@@ -286,6 +295,10 @@ async function main() {
       );
 
       for (const { sid, oid, data } of batchResults) {
+        if (data?.__error) {
+          console.log(`  [batch ${batchNum}/${totalBatches}] ${results[sid]?.name || sid} vs ${results[oid]?.name || oid}: API error`);
+          continue;
+        }
         const matchup = data?.data || data;
         if (!matchup) {
           console.log(`  [batch ${batchNum}/${totalBatches}] ${results[sid]?.name || sid} vs ${results[oid]?.name || oid}: no data`);

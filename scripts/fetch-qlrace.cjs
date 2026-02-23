@@ -17,6 +17,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
+// qlrace.com public API for Quake Live race/defrag records
 const API_BASE = 'https://qlrace.com/api';
 const BATCH_SIZE = 3;
 const BATCH_DELAY_MS = 1000; // Be polite to qlrace.com
