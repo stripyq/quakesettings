@@ -547,6 +547,23 @@ const schema = {
 
           // Check for detailed matchup data (match W/L when on opposite teams)
           var matchupDetail = p1ModeStats?.headToHeadMatchups?.[p2.steamId];
+          // Try reverse lookup if not found
+          if (!matchupDetail) {
+            var p2ModeStatsH2H = getModeStats(p2.steamId, mode);
+            var reverseH2H = p2ModeStatsH2H?.headToHeadMatchups?.[p1.steamId];
+            if (reverseH2H?.overall) {
+              matchupDetail = {
+                overall: {
+                  matches_won: reverseH2H.overall.matches_lost || 0,
+                  matches_lost: reverseH2H.overall.matches_won || 0,
+                  matches_played: reverseH2H.overall.matches_played || 0,
+                },
+                maps: Array.isArray(reverseH2H.maps) ? reverseH2H.maps.map(function(rm) {
+                  return { map: rm.map, matches_won: rm.matches_lost || 0, matches_lost: rm.matches_won || 0, matches_played: rm.matches_played || 0 };
+                }) : null,
+              };
+            }
+          }
           var matchRecordHtml = '';
           if (matchupDetail?.overall) {
             var mWon = matchupDetail.overall.matches_won || 0;
@@ -655,7 +672,10 @@ const schema = {
         matchupHistoryContainer.classList.add('hidden');
         matchupHistoryContainer.innerHTML = '';
 
-        if (!p1.steamId || !p2.steamId) return;
+        if (!p1.steamId || !p2.steamId) {
+          console.log('[MatchRecord] No steamIds:', p1.steamId, p2.steamId);
+          return;
+        }
 
         var cards = '';
         var modes = ['ctf', 'tdm'];
@@ -663,8 +683,45 @@ const schema = {
           var mode = modes[mi];
           var modeLabel = mode.toUpperCase();
           var p1ModeStats = getModeStats(p1.steamId, mode);
+
+          console.log('[MatchRecord ' + mode + '] p1SteamId=' + p1.steamId + ' p2SteamId=' + p2.steamId);
+          console.log('[MatchRecord ' + mode + '] p1ModeStats keys:', p1ModeStats ? Object.keys(p1ModeStats) : 'null');
+          if (p1ModeStats?.headToHeadMatchups) {
+            console.log('[MatchRecord ' + mode + '] headToHeadMatchups keys (first 5):', Object.keys(p1ModeStats.headToHeadMatchups).slice(0, 5));
+          }
+
+          // Try both directions: p1's matchups for p2, and p2's matchups for p1
           var matchup = p1ModeStats?.headToHeadMatchups?.[p2.steamId];
-          if (!matchup?.overall) continue;
+          if (!matchup) {
+            // Try reverse lookup: maybe the data is stored under p2's entry
+            var p2ModeStats = getModeStats(p2.steamId, mode);
+            var reverseMatchup = p2ModeStats?.headToHeadMatchups?.[p1.steamId];
+            if (reverseMatchup?.overall) {
+              console.log('[MatchRecord ' + mode + '] Found via REVERSE lookup (p2 has matchup for p1)');
+              // Invert W/L for p1's perspective
+              matchup = {
+                overall: {
+                  matches_won: reverseMatchup.overall.matches_lost || 0,
+                  matches_lost: reverseMatchup.overall.matches_won || 0,
+                  matches_played: reverseMatchup.overall.matches_played || 0,
+                },
+                maps: Array.isArray(reverseMatchup.maps) ? reverseMatchup.maps.map(function(m) {
+                  return {
+                    map: m.map,
+                    matches_won: m.matches_lost || 0,
+                    matches_lost: m.matches_won || 0,
+                    matches_played: m.matches_played || 0,
+                  };
+                }) : null,
+              };
+            }
+          }
+
+          if (!matchup?.overall) {
+            console.log('[MatchRecord ' + mode + '] No matchup data found');
+            continue;
+          }
+          console.log('[MatchRecord ' + mode + '] Found matchup:', JSON.stringify(matchup.overall));
 
           var overall = matchup.overall;
           var won = overall.matches_won || 0;
