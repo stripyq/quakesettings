@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fetch HoQ 2026 Season 1 stats from the CTF API and save to public/data/season-stats.json
+ * Fetch HoQ 2026 Season 1 stats from the CTF and TDM APIs and save to public/data/season-stats.json
  *
  * Data sources (in priority order):
  *   1. player-registry.json — 2000+ players with Steam IDs from HoQ CSVs
@@ -90,31 +90,62 @@ async function fetchJson(url) {
   }
 }
 
-async function fetchPlayerStats(steamId) {
+/**
+ * Normalize h2h response: may be { data: [...] } or a plain array
+ */
+function extractH2HArray(raw) {
+  if (Array.isArray(raw)) return raw;
+  if (Array.isArray(raw?.data)) return raw.data;
+  return null;
+}
+
+/**
+ * Fetch stats for a single mode (ctf or tdm) for a player.
+ * CTF has an extra flag stats endpoint; TDM does not.
+ */
+async function fetchModeStats(mode, steamId) {
   try {
-    const [career, weapons, flagStats, nemesis, favoriteVictim, headToHead, mapStats] = await Promise.all([
-      fetchJson(`${API_BASE}/ctf/players/${steamId}`),
-      fetchJson(`${API_BASE}/ctf/weapons/${steamId}`),
-      fetchJson(`${API_BASE}/ctf/ctf/${steamId}`),
-      fetchJson(`${API_BASE}/ctf/players/${steamId}/nemesis`),
-      fetchJson(`${API_BASE}/ctf/players/${steamId}/favorite-victim`),
-      fetchJson(`${API_BASE}/ctf/players/${steamId}/head-to-head`),
-      fetchJson(`${API_BASE}/ctf/players/${steamId}/maps`),
-    ]);
+    const endpoints = [
+      fetchJson(`${API_BASE}/${mode}/players/${steamId}`),
+      fetchJson(`${API_BASE}/${mode}/weapons/${steamId}`),
+      fetchJson(`${API_BASE}/${mode}/players/${steamId}/nemesis`),
+      fetchJson(`${API_BASE}/${mode}/players/${steamId}/favorite-victim`),
+      fetchJson(`${API_BASE}/${mode}/players/${steamId}/head-to-head`),
+      fetchJson(`${API_BASE}/${mode}/players/${steamId}/maps`),
+    ];
 
-    // head-to-head returns { data: [...], total, mode } — extract the array
-    const h2hArray = Array.isArray(headToHead) ? headToHead
-      : (Array.isArray(headToHead?.data) ? headToHead.data : null);
+    // CTF has flag stats
+    if (mode === 'ctf') {
+      endpoints.push(fetchJson(`${API_BASE}/${mode}/ctf/${steamId}`));
+    }
 
-    return { career, weapons, flagStats, nemesis, favoriteVictim, headToHead: h2hArray, mapStats };
+    const results = await Promise.all(endpoints);
+
+    const [career, weapons, nemesis, favoriteVictim, headToHead, mapStats] = results;
+    const flagStats = mode === 'ctf' ? results[6] : null;
+
+    const h2hArray = extractH2HArray(headToHead);
+
+    return { career, weapons, nemesis, favoriteVictim, headToHead: h2hArray, mapStats, flagStats };
   } catch (error) {
-    console.error(`  Error: ${error.message}`);
+    console.error(`  Error fetching ${mode} for ${steamId}: ${error.message}`);
     return null;
   }
 }
 
+/**
+ * Fetch all stats for a player (both CTF and TDM in parallel).
+ */
+async function fetchPlayerStats(steamId) {
+  const [ctf, tdm] = await Promise.all([
+    fetchModeStats('ctf', steamId),
+    fetchModeStats('tdm', steamId),
+  ]);
+  return { ctf, tdm };
+}
+
 async function main() {
-  console.log('=== Fetching HoQ 2026 Season Stats ===\n');
+  console.log('=== Fetching HoQ 2026 Season Stats (CTF + TDM) ===\n');
   if (PROFILES_ONLY) console.log('(--profiles-only: only fetching players with YAML profiles)\n');
 
   const players = getAllPlayers();
@@ -139,26 +170,43 @@ async function main() {
   let noDataCount = 0;
   let errorCount = 0;
 
+  /**
+   * Build a mode entry from fetched stats, returning null if no useful data.
+   */
+  function buildModeEntry(stats) {
+    if (!stats) return null;
+
+    const hasFlagData = stats.flagStats && stats.flagStats.data;
+    const hasNemesis = stats.nemesis && stats.nemesis.data;
+    const hasVictim = stats.favoriteVictim && stats.favoriteVictim.data;
+    const hasH2H = stats.headToHead && stats.headToHead.length > 0;
+    const hasData = stats.career || stats.weapons || hasFlagData;
+
+    if (!hasData) return null;
+
+    const entry = {};
+    if (stats.career) entry.career = stats.career;
+    if (stats.weapons) entry.weapons = stats.weapons;
+    if (hasFlagData) entry.flagStats = stats.flagStats;
+    if (hasNemesis) entry.nemesis = stats.nemesis;
+    if (hasVictim) entry.favoriteVictim = stats.favoriteVictim;
+    if (hasH2H) entry.headToHead = stats.headToHead;
+    if (stats.mapStats) entry.mapStats = stats.mapStats;
+    return entry;
+  }
+
   // Process results for a single player
   function processResult(steamId, name, stats) {
-    // flagStats/nemesis/favoriteVictim return { data: ... } wrappers — check .data for content
-    const hasFlagData = stats && stats.flagStats && stats.flagStats.data;
-    const hasNemesis = stats && stats.nemesis && stats.nemesis.data;
-    const hasVictim = stats && stats.favoriteVictim && stats.favoriteVictim.data;
-    const hasH2H = stats && stats.headToHead && stats.headToHead.length > 0;
-    const hasData = stats && (stats.career || stats.weapons || hasFlagData);
-    if (hasData) {
+    const ctfEntry = buildModeEntry(stats?.ctf);
+    const tdmEntry = buildModeEntry(stats?.tdm);
+
+    if (ctfEntry || tdmEntry) {
       const entry = { name, fetchedAt: new Date().toISOString() };
-      if (stats.career) entry.career = stats.career;
-      if (stats.weapons) entry.weapons = stats.weapons;
-      if (hasFlagData) entry.flagStats = stats.flagStats;
-      if (hasNemesis) entry.nemesis = stats.nemesis;
-      if (hasVictim) entry.favoriteVictim = stats.favoriteVictim;
-      if (hasH2H) entry.headToHead = stats.headToHead;
-      if (stats.mapStats) entry.mapStats = stats.mapStats;
+      if (ctfEntry) entry.ctf = ctfEntry;
+      if (tdmEntry) entry.tdm = tdmEntry;
       results[steamId] = entry;
       fetchedCount++;
-      return 'OK';
+      return 'OK' + (ctfEntry && tdmEntry ? ' (CTF+TDM)' : ctfEntry ? ' (CTF)' : ' (TDM)');
     } else if (stats) {
       noDataCount++;
       return 'no data';
@@ -195,22 +243,25 @@ async function main() {
   // --- Phase 2: Fetch detailed head-to-head matchup data for profiled player pairs ---
   // This gets match win/loss records and per-map breakdowns that aren't in the basic h2h list
   const profiledIds = new Set(Object.keys(results));
-  const matchupPairs = []; // [steamId, opponentId] pairs to fetch
 
-  for (const steamId of profiledIds) {
-    const h2h = results[steamId]?.headToHead;
-    if (!Array.isArray(h2h)) continue;
-    for (const entry of h2h) {
-      const opId = entry.opponent_steam_id || entry.steam_id;
-      if (opId && profiledIds.has(opId) && steamId < opId) {
-        // Only fetch each pair once (steamId < opId avoids duplicates)
-        matchupPairs.push([steamId, opId]);
+  for (const mode of ['ctf', 'tdm']) {
+    const matchupPairs = []; // [steamId, opponentId] pairs to fetch
+
+    for (const steamId of profiledIds) {
+      const h2h = results[steamId]?.[mode]?.headToHead;
+      if (!Array.isArray(h2h)) continue;
+      for (const entry of h2h) {
+        const opId = entry.opponent_steam_id || entry.steam_id;
+        if (opId && profiledIds.has(opId) && steamId < opId) {
+          // Only fetch each pair once (steamId < opId avoids duplicates)
+          matchupPairs.push([steamId, opId]);
+        }
       }
     }
-  }
 
-  if (matchupPairs.length > 0) {
-    console.log(`\n--- Fetching detailed matchup data for ${matchupPairs.length} player pairs ---\n`);
+    if (matchupPairs.length === 0) continue;
+
+    console.log(`\n--- Fetching detailed ${mode.toUpperCase()} matchup data for ${matchupPairs.length} player pairs ---\n`);
 
     for (let i = 0; i < matchupPairs.length; i += BATCH_SIZE) {
       const batch = matchupPairs.slice(i, i + BATCH_SIZE);
@@ -219,7 +270,7 @@ async function main() {
 
       const batchResults = await Promise.all(
         batch.map(async ([sid, oid]) => {
-          const data = await fetchJson(`${API_BASE}/ctf/players/${sid}/head-to-head/${oid}`);
+          const data = await fetchJson(`${API_BASE}/${mode}/players/${sid}/head-to-head/${oid}`);
           return { sid, oid, data };
         })
       );
@@ -231,11 +282,13 @@ async function main() {
           continue;
         }
 
-        // Store under both players keyed by opponent
-        if (!results[sid].headToHeadMatchups) results[sid].headToHeadMatchups = {};
-        if (!results[oid].headToHeadMatchups) results[oid].headToHeadMatchups = {};
+        // Store under both players keyed by opponent within the mode
+        const sidMode = results[sid][mode] || (results[sid][mode] = {});
+        const oidMode = results[oid][mode] || (results[oid][mode] = {});
+        if (!sidMode.headToHeadMatchups) sidMode.headToHeadMatchups = {};
+        if (!oidMode.headToHeadMatchups) oidMode.headToHeadMatchups = {};
 
-        results[sid].headToHeadMatchups[oid] = matchup;
+        sidMode.headToHeadMatchups[oid] = matchup;
 
         // Invert W/L for the other player's perspective
         const inverted = {
@@ -251,7 +304,7 @@ async function main() {
             matches_played: m.matches_played,
           })) : null,
         };
-        results[oid].headToHeadMatchups[sid] = inverted;
+        oidMode.headToHeadMatchups[sid] = inverted;
 
         const name1 = results[sid]?.name || sid;
         const name2 = results[oid]?.name || oid;
@@ -274,7 +327,6 @@ async function main() {
   console.log(`Fetched: ${fetchedCount} players with data`);
   console.log(`No data: ${noDataCount} players`);
   if (errorCount > 0) console.log(`Errors:  ${errorCount} players`);
-  if (matchupPairs.length > 0) console.log(`Matchup pairs: ${matchupPairs.length} fetched`);
   console.log(`Total in output: ${Object.keys(results).length} players`);
   console.log(`Saved to: ${OUTPUT_PATH}`);
 }
