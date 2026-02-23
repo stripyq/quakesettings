@@ -240,22 +240,32 @@ async function main() {
     }
   }
 
-  // --- Phase 2: Fetch detailed head-to-head matchup data for profiled player pairs ---
-  // This gets match win/loss records and per-map breakdowns that aren't in the basic h2h list
-  const profiledIds = new Set(Object.keys(results));
-
+  // --- Phase 2: Fetch detailed head-to-head matchup data ---
+  // For each player with h2h data, fetch detailed matchups for their top 10 opponents
+  // (by games together). This gets match W/L records and per-map breakdowns.
   for (const mode of ['ctf', 'tdm']) {
-    const matchupPairs = []; // [steamId, opponentId] pairs to fetch
+    const seenPairs = new Set();
+    const matchupPairs = []; // [fetcherId, opponentId] pairs to fetch
 
-    for (const steamId of profiledIds) {
+    for (const steamId of Object.keys(results)) {
       const h2h = results[steamId]?.[mode]?.headToHead;
       if (!Array.isArray(h2h)) continue;
-      for (const entry of h2h) {
+
+      // Top 10 opponents by games together
+      const topOpponents = h2h.slice()
+        .sort((a, b) => (b.matches_together || 0) - (a.matches_together || 0))
+        .slice(0, 10);
+
+      for (const entry of topOpponents) {
         const opId = entry.opponent_steam_id || entry.steam_id;
-        if (opId && profiledIds.has(opId) && steamId < opId) {
-          // Only fetch each pair once (steamId < opId avoids duplicates)
-          matchupPairs.push([steamId, opId]);
-        }
+        if (!opId) continue;
+
+        // Dedup: canonical pair key (sorted IDs)
+        const key = [steamId, opId].sort().join(':');
+        if (seenPairs.has(key)) continue;
+        seenPairs.add(key);
+
+        matchupPairs.push([steamId, opId]);
       }
     }
 
@@ -278,33 +288,36 @@ async function main() {
       for (const { sid, oid, data } of batchResults) {
         const matchup = data?.data || data;
         if (!matchup) {
-          console.log(`  [batch ${batchNum}/${totalBatches}] ${results[sid]?.name} vs ${results[oid]?.name}: no data`);
+          console.log(`  [batch ${batchNum}/${totalBatches}] ${results[sid]?.name || sid} vs ${results[oid]?.name || oid}: no data`);
           continue;
         }
 
-        // Store under both players keyed by opponent within the mode
-        const sidMode = results[sid][mode] || (results[sid][mode] = {});
-        const oidMode = results[oid][mode] || (results[oid][mode] = {});
-        if (!sidMode.headToHeadMatchups) sidMode.headToHeadMatchups = {};
-        if (!oidMode.headToHeadMatchups) oidMode.headToHeadMatchups = {};
+        // Store under the fetching player's headToHeadMatchups
+        const sidMode = results[sid]?.[mode];
+        if (sidMode) {
+          if (!sidMode.headToHeadMatchups) sidMode.headToHeadMatchups = {};
+          sidMode.headToHeadMatchups[oid] = matchup;
+        }
 
-        sidMode.headToHeadMatchups[oid] = matchup;
-
-        // Invert W/L for the other player's perspective
-        const inverted = {
-          overall: matchup.overall ? {
-            matches_won: matchup.overall.matches_lost,
-            matches_lost: matchup.overall.matches_won,
-            matches_played: matchup.overall.matches_played,
-          } : null,
-          maps: Array.isArray(matchup.maps) ? matchup.maps.map(m => ({
-            map: m.map,
-            matches_won: m.matches_lost,
-            matches_lost: m.matches_won,
-            matches_played: m.matches_played,
-          })) : null,
-        };
-        oidMode.headToHeadMatchups[sid] = inverted;
+        // If opponent is also in results, store inverted W/L for their perspective
+        if (results[oid]?.[mode]) {
+          const oidMode = results[oid][mode];
+          if (!oidMode.headToHeadMatchups) oidMode.headToHeadMatchups = {};
+          const inverted = {
+            overall: matchup.overall ? {
+              matches_won: matchup.overall.matches_lost,
+              matches_lost: matchup.overall.matches_won,
+              matches_played: matchup.overall.matches_played,
+            } : null,
+            maps: Array.isArray(matchup.maps) ? matchup.maps.map(m => ({
+              map: m.map,
+              matches_won: m.matches_lost,
+              matches_lost: m.matches_won,
+              matches_played: m.matches_played,
+            })) : null,
+          };
+          oidMode.headToHeadMatchups[sid] = inverted;
+        }
 
         const name1 = results[sid]?.name || sid;
         const name2 = results[oid]?.name || oid;
