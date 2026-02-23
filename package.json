@@ -9,6 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "fetch:season": "node scripts/fetch-season-stats.cjs",
+    "fetch:qlrace": "node scripts/fetch-qlrace.cjs",
+    "fetch:qlrace:force": "node scripts/fetch-qlrace.cjs --force",
     "astro": "astro"
   },
   "dependencies": {

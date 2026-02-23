@@ -1150,6 +1150,99 @@ const schema = {
       );
     })())}
 
+    <!-- Race Stats (qlrace.com) -->
+    {p.qlrace && p.qlrace.records > 0 && (() => {
+      const r = p.qlrace;
+      const modeLabel = r.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+      const totalMedals = r.medals.gold + r.medals.silver + r.medals.bronze;
+      function fmtRaceTime(ms: number) {
+        const totalSec = ms / 1000;
+        const min = Math.floor(totalSec / 60);
+        const sec = totalSec % 60;
+        return min + ':' + (sec < 10 ? '0' : '') + sec.toFixed(3);
+      }
+      return (
+      <section class="season-section race-section">
+        <div class="season-header">
+          <h2>Race ({modeLabel})</h2>
+          <span class="season-attr">Data via <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a></span>
+        </div>
+
+        <div class="race-grid">
+          <div class="race-stats">
+            <div class="race-stat-row">
+              <span class="race-label">Records</span>
+              <span class="race-value">{r.records} records{r.wrs > 0 ? `, ${r.wrs} WR${r.wrs > 1 ? 's' : ''}` : ''}</span>
+            </div>
+
+            {totalMedals > 0 && (
+              <div class="race-stat-row">
+                <span class="race-label">Medals</span>
+                <span class="race-value race-medals">
+                  {r.medals.gold > 0 && <span class="race-medal race-gold">{r.medals.gold}</span>}
+                  {r.medals.silver > 0 && <span class="race-medal race-silver">{r.medals.silver}</span>}
+                  {r.medals.bronze > 0 && <span class="race-medal race-bronze">{r.medals.bronze}</span>}
+                </span>
+              </div>
+            )}
+
+            {r.best_record && (
+              <div class="race-stat-row">
+                <span class="race-label">Best Record</span>
+                <span class="race-value">Rank {r.best_record.rank}/{r.best_record.total} on <span class="race-map">{r.best_record.map}</span> <span class="race-pct">(top {r.best_record.rank_pct}%)</span></span>
+              </div>
+            )}
+
+            {r.best_record?.time && (
+              <div class="race-stat-row">
+                <span class="race-label">Best Time</span>
+                <span class="race-value race-time">{fmtRaceTime(r.best_record.time)}</span>
+              </div>
+            )}
+
+            {r.speed_top != null && (
+              <div class="race-stat-row">
+                <span class="race-label">Top Speed</span>
+                <span class="race-value">{Math.round(r.speed_top)} ups</span>
+              </div>
+            )}
+
+            {r.average_rank_pct != null && (
+              <div class="race-stat-row">
+                <span class="race-label">Avg Rank %</span>
+                <span class="race-value">{r.average_rank_pct}% <span class="race-hint">(lower = better)</span></span>
+              </div>
+            )}
+          </div>
+
+          {r.top_maps && r.top_maps.length > 0 && (
+            <div class="race-top-maps">
+              <h3>Top Maps</h3>
+              <table class="race-maps-table">
+                <thead>
+                  <tr>
+                    <th>Map</th>
+                    <th>Rank</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {r.top_maps.map(m => (
+                    <tr>
+                      <td class="race-map">{m.map}</td>
+                      <td>{m.rank}/{m.total}</td>
+                      <td class="race-time">{fmtRaceTime(m.time)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </section>
+      );
+    })()}
+
     <!-- Config Download -->
     {p.configFile && (
       <section class="config-section">
@@ -1161,13 +1254,14 @@ const schema = {
     )}
 
     <!-- Data Source -->
-    {(p.source || p.lastUpdated || ctfStats || tdmStats) && (
+    {(p.source || p.lastUpdated || ctfStats || tdmStats || p.qlrace) && (
       <section class="source-section">
         <h2>Data Source</h2>
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
           {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
           {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
+          {p.qlrace && <p><strong>Race Data:</strong> From <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a>{p.qlrace.fetched_at ? ` (${p.qlrace.fetched_at})` : ''}</p>}
         </div>
       </section>
     )}
@@ -2507,5 +2601,118 @@ const schema = {
       font-size: 0.65rem;
       min-width: unset;
     }
+
+    .race-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- Race Stats (qlrace.com) --- */
+  .race-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .race-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .race-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .race-stat-row:last-child {
+    border-bottom: none;
+  }
+
+  .race-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9090a0);
+    min-width: 5.5rem;
+  }
+
+  .race-value {
+    font-size: 0.85rem;
+    color: var(--text-primary, #e8e8f0);
+    font-family: monospace;
+  }
+
+  .race-medals {
+    display: flex;
+    gap: 0.5rem;
+    font-family: inherit;
+  }
+
+  .race-medal {
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .race-medal::before {
+    margin-right: 0.15rem;
+  }
+
+  .race-gold { color: #ffd700; }
+  .race-gold::before { content: '\1F947'; }
+  .race-silver { color: #c0c0c0; }
+  .race-silver::before { content: '\1F948'; }
+  .race-bronze { color: #cd7f32; }
+  .race-bronze::before { content: '\1F949'; }
+
+  .race-map {
+    color: var(--accent-secondary, #4ecdc4);
+  }
+
+  .race-pct {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.75rem;
+  }
+
+  .race-time {
+    font-family: monospace;
+    color: #f0f6fc;
+  }
+
+  .race-hint {
+    font-size: 0.7rem;
+    color: var(--text-secondary, #9090a0);
+    font-family: inherit;
+  }
+
+  .race-top-maps h3 {
+    font-size: 0.85rem;
+    color: var(--accent-primary, #ff6b35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem;
+  }
+
+  .race-maps-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+
+  .race-maps-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .race-maps-table td {
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   }
 </style>
