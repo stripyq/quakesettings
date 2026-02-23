@@ -545,6 +545,32 @@ const schema = {
           var p1Dmg = match.damage_dealt || match.damage || null;
           var p2Dmg = match.damage_received || match.damage_taken || null;
 
+          // Check for detailed matchup data (match W/L when on opposite teams)
+          var matchupDetail = p1ModeStats?.headToHeadMatchups?.[p2.steamId];
+          var matchRecordHtml = '';
+          if (matchupDetail?.overall) {
+            var mWon = matchupDetail.overall.matches_won || 0;
+            var mLost = matchupDetail.overall.matches_lost || 0;
+            var mPlayed = matchupDetail.overall.matches_played || (mWon + mLost);
+            if (mPlayed > 0) {
+              var mPct = ((mWon / mPlayed) * 100).toFixed(1);
+              var mBarW = (mWon / mPlayed) * 100;
+              matchRecordHtml =
+                '<div class="h2h-match-record">' +
+                  '<div class="h2h-match-record-label">Match record (when on opposite teams)</div>' +
+                  '<div class="h2h-match-record-row">' +
+                    '<span class="h2h-match-record-side h2h-p1-color">' + mWon + 'W</span>' +
+                    '<div class="h2h-match-record-bar">' +
+                      '<div class="h2h-bar-p1" style="width:' + mBarW + '%"></div>' +
+                      '<div class="h2h-bar-p2" style="width:' + (100 - mBarW) + '%"></div>' +
+                    '</div>' +
+                    '<span class="h2h-match-record-side h2h-p2-color">' + mLost + 'W</span>' +
+                  '</div>' +
+                  '<div class="h2h-match-record-meta">' + mPct + '% match win rate \u00b7 ' + mPlayed + ' matches</div>' +
+                '</div>';
+            }
+          }
+
           cards +=
             '<div class="h2h-card">' +
               '<div class="h2h-title">Head to Head \u2013 ' + modeLabel + ' <span class="h2h-season-tag">Season</span></div>' +
@@ -577,8 +603,9 @@ const schema = {
               '</div>' +
               '<div class="h2h-meta">' +
                 '<span class="h2h-winrate">' + winRate + '% kill rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
-                (matchesTogether ? '<span class="h2h-games">\u00b7 ' + matchesTogether + ' games together</span>' : '') +
+                (matchesTogether ? '<span class="h2h-games">' + matchesTogether + ' games together</span>' : '') +
               '</div>' +
+              matchRecordHtml +
             '</div>';
         }
 
@@ -1424,6 +1451,58 @@ const schema = {
   .h2h-container :global(.h2h-games) {
     font-size: 0.8rem;
     color: var(--text-secondary, #9090a0);
+  }
+
+  .h2h-container :global(.h2h-match-record) {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .h2h-container :global(.h2h-match-record-label) {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary, #9090a0);
+    margin-bottom: 0.4rem;
+    text-align: center;
+  }
+
+  .h2h-container :global(.h2h-match-record-row) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .h2h-container :global(.h2h-match-record-side) {
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  .h2h-container :global(.h2h-match-record-bar) {
+    flex: 1;
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #21262d;
+  }
+
+  .h2h-container :global(.h2h-match-record-bar .h2h-bar-p1) {
+    border-radius: 3px 0 0 3px;
+  }
+
+  .h2h-container :global(.h2h-match-record-bar .h2h-bar-p2) {
+    border-radius: 0 3px 3px 0;
+  }
+
+  .h2h-container :global(.h2h-match-record-meta) {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #9090a0);
+    text-align: center;
+    margin-top: 0.3rem;
   }
 
   /* --- Matchup History --- */
