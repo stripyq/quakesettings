@@ -2,6 +2,7 @@ name: Xiaomi G27i
 brand: Xiaomi
 size: "27\""
 resolution: "1920x1080"
-refreshRate: "144Hz"
-panelType: "TN"
+refreshRate: "165Hz"
+panelType: "Fast IPS"
 responseTime: "1ms"
+adaptiveSync: "FreeSync Premium"

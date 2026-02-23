@@ -1,7 +1,8 @@
 name: GIGABYTE AORUS FI27Q-X
 brand: GIGABYTE
 size: "27\""
-resolution: "1920x1080"
+resolution: "2560x1440"
 refreshRate: "240Hz"
-panelType: "TN"
+panelType: "IPS"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

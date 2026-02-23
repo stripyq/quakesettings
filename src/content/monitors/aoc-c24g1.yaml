@@ -3,5 +3,6 @@ brand: AOC
 size: "24\""
 resolution: "1920x1080"
 refreshRate: "144Hz"
-panelType: "TN"
+panelType: "VA"
 responseTime: "1ms"
+adaptiveSync: "FreeSync"

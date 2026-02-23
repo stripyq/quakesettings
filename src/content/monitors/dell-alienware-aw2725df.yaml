@@ -1,7 +1,8 @@
 name: Dell Alienware AW2725DF
 brand: Dell
 size: "27\""
-resolution: "1920x1080"
+resolution: "2560x1440"
 refreshRate: "360Hz"
-panelType: "TN"
-responseTime: "1ms"
+panelType: "QD-OLED"
+responseTime: "0.03ms"
+adaptiveSync: "G-Sync Compatible"

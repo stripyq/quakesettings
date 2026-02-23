@@ -1,7 +1,8 @@
 name: ASUS ROG Swift PG32UQX
 brand: ASUS
 size: "32\""
-resolution: "1920x1080"
+resolution: "3840x2160"
 refreshRate: "144Hz"
-panelType: "TN"
-responseTime: "1ms"
+panelType: "IPS"
+responseTime: "4ms"
+adaptiveSync: "G-Sync Ultimate"

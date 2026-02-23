@@ -1,7 +1,8 @@
 name: Samsung Odyssey G7 C32G75T
 brand: Samsung
 size: "32\""
-resolution: "1920x1080"
+resolution: "2560x1440"
 refreshRate: "240Hz"
-panelType: "TN"
+panelType: "VA"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

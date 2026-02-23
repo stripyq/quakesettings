@@ -3,5 +3,6 @@ brand: ASUS
 size: "27\""
 resolution: "1920x1080"
 refreshRate: "280Hz"
-panelType: "TN"
+panelType: "Fast IPS"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

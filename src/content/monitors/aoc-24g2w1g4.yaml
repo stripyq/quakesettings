@@ -3,5 +3,6 @@ brand: AOC
 size: "23.8\""
 resolution: "1920x1080"
 refreshRate: "144Hz"
-panelType: "TN"
+panelType: "IPS"
 responseTime: "1ms"
+adaptiveSync: "G-Sync Compatible"

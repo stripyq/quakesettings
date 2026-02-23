@@ -1,7 +1,8 @@
 name: GIGABYTE G27QC
 brand: GIGABYTE
 size: "27\""
-resolution: "1920x1080"
+resolution: "2560x1440"
 refreshRate: "165Hz"
-panelType: "TN"
+panelType: "VA"
 responseTime: "1ms"
+adaptiveSync: "FreeSync Premium"
