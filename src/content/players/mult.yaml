@@ -14,6 +14,8 @@ dataSource: player
 ctfRating: 30.33
 qllrCtfRating: 20.9
 qllrCtfGames: 16
+hoqCtfRating: 31
+hoqCtfGames: 821
 mouse: logitech-mx518
 mousepad: virtus-pro
 keyboard: lingbao-k98

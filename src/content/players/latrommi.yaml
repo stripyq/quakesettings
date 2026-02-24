@@ -2,6 +2,10 @@ name: Latrommi
 steamId: "76561198048532604"
 aliases: []
 category: ctf
+hoqCtfRating: 23.18
+hoqCtfGames: 4
+hoqTdmRating: 42.58
+hoqTdmGames: 225
 published: false
 team2026: GdeFlag?
 team2026Shortname: GF?

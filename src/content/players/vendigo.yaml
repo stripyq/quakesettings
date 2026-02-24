@@ -36,6 +36,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1
 tdmGames: 1797
+hoqCtfRating: 11.44
+hoqCtfGames: 1
+hoqTdmRating: 26.76
+hoqTdmGames: 1797
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

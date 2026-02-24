@@ -12,6 +12,10 @@ ctfRatingUpdated: "2026-01-31"
 duelRating: 1062
 ctfGames: 1029
 tdmGames: 119
+hoqCtfRating: 24.81
+hoqCtfGames: 1029
+hoqTdmRating: 24.12
+hoqTdmGames: 119
 duelGames: 326
 duelRatingUpdated: "2026-02-04"
 dataSource: player

@@ -23,6 +23,10 @@ ctfRating: 24.16
 ctfRatingUpdated: 2026-01-31T00:00:00.000Z
 qllrCtfRating: 27.82
 qllrCtfGames: 48
+hoqCtfRating: 23.12
+hoqCtfGames: 2587
+hoqTdmRating: 27.04
+hoqTdmGames: 307
 dataSource: player
 source: ""
 sourceUrl: ""

@@ -16,6 +16,10 @@ ctfRating: 32.7
 ctfRatingUpdated: "2026-01-31"
 qllrCtfRating: 25.29
 qllrCtfGames: 13
+hoqCtfRating: 32.7
+hoqCtfGames: 1230
+hoqTdmRating: 27.72
+hoqTdmGames: 31
 dataSource: player
 dpi: 3200
 sensitivity: 0.4

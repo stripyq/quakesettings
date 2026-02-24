@@ -36,6 +36,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 2880
 tdmGames: 1066
+hoqCtfRating: 18.21
+hoqCtfGames: 2880
+hoqTdmRating: 21.03
+hoqTdmGames: 1066
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

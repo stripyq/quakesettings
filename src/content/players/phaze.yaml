@@ -3,6 +3,10 @@ steamId: "76561198414877431"
 aliases:
   - phaze
 category: ctf
+hoqCtfRating: 25.97
+hoqCtfGames: 131
+hoqTdmRating: 29.07
+hoqTdmGames: 245
 published: false
 qlrace:
   mode: 3

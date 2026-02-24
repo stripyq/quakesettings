@@ -14,6 +14,10 @@ ctfRating: 24.06
 ctfGames: 1077
 tdmRating: 31.11
 tdmGames: 118
+hoqCtfRating: 24.06
+hoqCtfGames: 1077
+hoqTdmRating: 31.11
+hoqTdmGames: 118
 dataSource: player
 source: ""
 sourceUrl: ""

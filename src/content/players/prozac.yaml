@@ -38,6 +38,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 22
 tdmGames: 311
+hoqCtfRating: 20.29
+hoqCtfGames: 22
+hoqTdmRating: 30.72
+hoqTdmGames: 311
 favorite_map: deepinside
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

@@ -35,6 +35,10 @@ gpuBrand: INTEL
 cpuBrand: Intel
 ctfGames: 2138
 tdmGames: 3094
+hoqCtfRating: 16.24
+hoqCtfGames: 2138
+hoqTdmRating: 21.69
+hoqTdmGames: 3094
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher
