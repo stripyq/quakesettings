@@ -35,6 +35,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 17
 tdmGames: 2233
+hoqCtfRating: 9.79
+hoqCtfGames: 17
+hoqTdmRating: 7.77
+hoqTdmGames: 2233
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

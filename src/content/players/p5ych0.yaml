@@ -35,6 +35,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 386
 tdmGames: 113
+hoqCtfRating: 12.7
+hoqCtfGames: 386
+hoqTdmRating: 13.71
+hoqTdmGames: 113
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

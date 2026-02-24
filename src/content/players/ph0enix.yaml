@@ -10,6 +10,10 @@ dataSource: player
 duelRating: 1485
 ctfGames: 1066
 tdmGames: 1
+hoqCtfRating: 38.54
+hoqCtfGames: 1066
+hoqTdmRating: 29.56
+hoqTdmGames: 1
 duelGames: 2
 ctfRating: 32.3
 dpi: 400

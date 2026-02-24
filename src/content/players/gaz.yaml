@@ -2,5 +2,9 @@ name: gaz
 steamId: "76561197991370790"
 aliases: []
 category: ctf
+hoqCtfRating: 17.89
+hoqCtfGames: 1563
+hoqTdmRating: 28.25
+hoqTdmGames: 329
 published: false
 qlrace: null

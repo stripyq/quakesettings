@@ -40,6 +40,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 146
 tdmGames: 67
+hoqCtfRating: 9.72
+hoqCtfGames: 146
+hoqTdmRating: 14.33
+hoqTdmGames: 67
 favorite_map: trinity
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

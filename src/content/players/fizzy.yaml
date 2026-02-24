@@ -10,6 +10,8 @@ duelGames: 26
 ctfRating: 3.87
 qllrCtfRating: 21.08
 qllrCtfGames: 9
+hoqCtfRating: 3.9
+hoqCtfGames: 1853
 dataSource: player
 dpi: 800
 sensitivity: 3

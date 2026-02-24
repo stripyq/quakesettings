@@ -20,6 +20,10 @@ ctfRating: 46.88
 ctfRatingUpdated: 2026-02-04T00:00:00.000Z
 qllrCtfRating: 31
 qllrCtfGames: 56
+hoqCtfRating: 44.57
+hoqCtfGames: 1034
+hoqTdmRating: 32.67
+hoqTdmGames: 40
 dataSource: player
 source: ""
 sourceUrl: https://qlstats.net/player/10922#duel

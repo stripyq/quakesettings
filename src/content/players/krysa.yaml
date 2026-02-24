@@ -36,6 +36,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 20
 tdmGames: 31
+hoqCtfRating: 30.89
+hoqCtfGames: 20
+hoqTdmRating: 36.27
+hoqTdmGames: 31
 favorite_map: limbus
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher

@@ -50,6 +50,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 293
 tdmGames: 43
+hoqCtfRating: 28.16
+hoqCtfGames: 293
+hoqTdmRating: 24.13
+hoqTdmGames: 43
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

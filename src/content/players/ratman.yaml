@@ -3,6 +3,10 @@ steamId: "76561197993423662"
 aliases:
   - Ratman
 category: ctf
+hoqCtfRating: 17.44
+hoqCtfGames: 930
+hoqTdmRating: 21.4
+hoqTdmGames: 318
 published: false
 qlrace:
   mode: 2

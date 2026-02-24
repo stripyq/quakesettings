@@ -39,6 +39,10 @@ skates: Stock
 enemyModel: Keel
 ctfGames: 397
 tdmGames: 128
+hoqCtfRating: 29.16
+hoqCtfGames: 397
+hoqTdmRating: 39.7
+hoqTdmGames: 128
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

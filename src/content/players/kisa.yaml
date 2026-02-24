@@ -30,6 +30,10 @@ monitor: samsung-crg5
 headset: audio-technica-ath-m50x
 ctfGames: 845
 tdmGames: 491
+hoqCtfRating: 8.24
+hoqCtfGames: 845
+hoqTdmRating: 20.74
+hoqTdmGames: 491
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

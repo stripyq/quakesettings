@@ -35,6 +35,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 11
 tdmGames: 2147
+hoqCtfRating: 3.26
+hoqCtfGames: 11
+hoqTdmRating: 21.37
+hoqTdmGames: 2147
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher
