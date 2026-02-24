@@ -12,9 +12,9 @@ lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.37
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 43.86
-ctfRatingUpdated: "2026-01-31"
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 46.28
+ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 33.84
 qllrCtfGames: 49
 hoqCtfRating: 46.28
@@ -50,7 +50,7 @@ enemyModel: Keel
 crosshairColor: Green, White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2586
+ctfGames: 2699
 tdmGames: 197
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

@@ -8,10 +8,10 @@ country: SE
 team: SHREKTALIKA
 category: ctf
 lastUpdated: 2025-01
-ctfRating: 38.89
-ctfRatingUpdated: "2026-02-04"
+ctfRating: 37.62
+ctfRatingUpdated: "2026-02-24"
 tdmRating: 30.94
-tdmRatingUpdated: "2026-01-31"
+tdmRatingUpdated: "2026-02-24"
 duelRating: 1400
 dataSource: player
 dpi: 1600
@@ -40,7 +40,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 939
+ctfGames: 976
 tdmGames: 193
 hoqCtfRating: 37.62
 hoqCtfGames: 976

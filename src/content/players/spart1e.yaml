@@ -12,10 +12,12 @@ lastUpdated: 2026-02
 dataSource: player
 duelRating: 2070
 duelGames: 2866
-ctfRating: 33.6
-ctfGames: 719
-tdmRating: 34.6
-tdmGames: 344
+ctfRating: 34.7
+ctfRatingUpdated: "2026-02-24"
+ctfGames: 836
+tdmRating: 34.83
+tdmRatingUpdated: "2026-02-24"
+tdmGames: 345
 qllrCtfRating: 35.78
 qllrCtfGames: 61
 hoqCtfRating: 34.7

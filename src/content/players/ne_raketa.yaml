@@ -3,10 +3,10 @@ steamId: "76561198284683846"
 country: Unknown
 category: tdm
 lastUpdated: 2025-01
-tdmRating: 20.71
-tdmRatingUpdated: "2026-01-31"
+tdmRating: 20.04
+tdmRatingUpdated: "2026-02-24"
 ctfRating: 10.39
-ctfRatingUpdated: "2026-01-31"
+ctfRatingUpdated: "2026-02-24"
 dataSource: player
 dpi: 400
 sensitivity: 2.7
@@ -35,7 +35,7 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-tdmGames: 4427
+tdmGames: 4432
 hoqCtfRating: 10.39
 hoqCtfGames: 15
 hoqTdmRating: 20.04

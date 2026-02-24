@@ -5,6 +5,8 @@ aliases:
   - ph0en|X
 team2024: The expendables
 category: ctf
+tdmRating: 29.56
+tdmRatingUpdated: "2026-02-24"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1485
@@ -15,7 +17,8 @@ hoqCtfGames: 1066
 hoqTdmRating: 29.56
 hoqTdmGames: 1
 duelGames: 2
-ctfRating: 32.3
+ctfRating: 38.54
+ctfRatingUpdated: "2026-02-24"
 dpi: 400
 sensitivity: 7
 edpi: 2800

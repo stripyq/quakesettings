@@ -7,8 +7,10 @@ team2024: Whatever name IDC
 category: duel
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 24.17
+ctfRating: 24.05
+ctfRatingUpdated: "2026-02-24"
 tdmRating: 16.36
+tdmRatingUpdated: "2026-02-24"
 dpi: 400
 sensitivity: 1.7
 edpi: 680

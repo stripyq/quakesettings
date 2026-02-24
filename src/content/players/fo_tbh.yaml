@@ -9,8 +9,8 @@ country: GB-SCT
 team: wAnnaBees
 category: ctf
 lastUpdated: 2025-01
-ctfRating: 34.83
-ctfRatingUpdated: "2026-02-04"
+ctfRating: 35.34
+ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 34.07
 qllrCtfGames: 62
 hoqCtfRating: 35.34
@@ -41,7 +41,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 2186
+ctfGames: 2208
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

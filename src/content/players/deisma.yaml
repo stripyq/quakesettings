@@ -4,13 +4,15 @@ country: RU
 category: ctf
 lastUpdated: 2025-01
 tdmRating: 21.4
-tdmRatingUpdated: "2026-02-02"
+tdmGames: 199
+tdmRatingUpdated: "2026-02-24"
 hoqCtfRating: 10.07
 hoqCtfGames: 1656
+ctfGames: 1656
 hoqTdmRating: 21.4
 hoqTdmGames: 199
 ctfRating: 10.07
-ctfRatingUpdated: "2026-02-02"
+ctfRatingUpdated: "2026-02-24"
 dataSource: player
 dpi: 3200
 sensitivity: 0.9

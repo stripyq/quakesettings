@@ -2,6 +2,9 @@ name: cT
 steamId: "76561197997252303"
 aliases: []
 category: ctf
+ctfRating: 19.7
+ctfRatingUpdated: "2026-02-24"
+ctfGames: 6
 hoqCtfRating: 19.7
 hoqCtfGames: 6
 published: false

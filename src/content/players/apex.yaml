@@ -2,6 +2,12 @@ name: apex
 steamId: "76561198077156894"
 aliases: []
 category: ctf
+tdmRating: 20.34
+tdmGames: 1
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 29.58
+ctfRatingUpdated: "2026-02-24"
+ctfGames: 2097
 hoqCtfRating: 29.58
 hoqCtfGames: 2097
 hoqTdmRating: 20.34
