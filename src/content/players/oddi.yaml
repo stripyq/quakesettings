@@ -3,6 +3,8 @@ country: DE
 steamId: "76561197972946521"
 published: false
 category: duel
+ctfRating: 21.42
+ctfRatingUpdated: "2026-02-24"
 dataSource: collected
 lastUpdated: 2026-02
 duelRating: 1566
@@ -14,6 +16,7 @@ hoqTdmRating: 32.44
 hoqTdmGames: 391
 duelGames: 869
 tdmRating: 32.44
+tdmRatingUpdated: "2026-02-24"
 tdm2v2Rating: 34.16
 tdm2v2Games: 322
 sensitivity: 2.3

@@ -12,9 +12,9 @@ lastUpdated: 2025-01
 duelRating: 1425
 duelRatingUpdated: "2026-01-31"
 tdmRating: 32.52
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 39.7
-ctfRatingUpdated: "2026-01-31"
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 39.44
+ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 30.04
 qllrCtfGames: 59
 hoqCtfRating: 39.44
@@ -47,7 +47,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 1648
+ctfGames: 1690
 tdmGames: 202
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

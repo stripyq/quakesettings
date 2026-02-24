@@ -6,9 +6,9 @@ lastUpdated: 2025-01
 duelRating: 1498
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
 tdmRating: 28.11
-tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 27.96
-ctfRatingUpdated: 2026-01-31T00:00:00.000Z
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 27.63
+ctfRatingUpdated: "2026-02-24"
 dataSource: verified
 source: ""
 sourceUrl: ""
@@ -44,7 +44,7 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 5605
+ctfGames: 5779
 tdmGames: 1445
 hoqCtfRating: 27.63
 hoqCtfGames: 5779

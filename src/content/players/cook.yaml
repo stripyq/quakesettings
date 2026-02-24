@@ -3,6 +3,9 @@ steamId: "76561197995232645"
 aliases:
   - cook
 category: ctf
+ctfRating: 0
+ctfRatingUpdated: "2026-02-24"
+ctfGames: 0
 hoqCtfRating: 0
 hoqCtfGames: 0
 published: false

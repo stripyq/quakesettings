@@ -12,8 +12,10 @@ hoqCtfGames: 2369
 hoqTdmRating: 18.57
 hoqTdmGames: 336
 duelGames: 75
-ctfRating: 21.81
+ctfRating: 22.08
+ctfRatingUpdated: "2026-02-24"
 tdmRating: 18.57
+tdmRatingUpdated: "2026-02-24"
 dpi: 400
 sensitivity: 3
 m_yaw: 0.022

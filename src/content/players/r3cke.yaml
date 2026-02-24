@@ -4,8 +4,10 @@ steamId: "76561198279892880"
 category: duel
 dataSource: player
 lastUpdated: 2025-02
-ctfRating: 17.02
+ctfRating: 16.63
+ctfRatingUpdated: "2026-02-24"
 tdmRating: 17.26
+tdmRatingUpdated: "2026-02-24"
 dpi: 400
 sensitivity: 2
 m_yaw: 0.0185642

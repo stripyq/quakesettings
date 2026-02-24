@@ -2,6 +2,8 @@ name: pavel
 country: RU
 steamId: "76561198054844275"
 category: duel
+ctfRating: 20.89
+ctfRatingUpdated: "2026-02-24"
 dataSource: collected
 lastUpdated: "2026-02-13"
 duelRating: 2108
@@ -13,6 +15,7 @@ hoqTdmRating: 37.28
 hoqTdmGames: 329
 duelGames: 4566
 tdmRating: 37.28
+tdmRatingUpdated: "2026-02-24"
 tdm2v2Rating: 39.47
 tdm2v2Games: 261
 dpi: 800

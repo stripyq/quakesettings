@@ -15,9 +15,9 @@ lastUpdated: 2025-01
 duelRating: 1783
 duelRatingUpdated: 2026-02-05T00:00:00.000Z
 tdmRating: 32.67
-tdmRatingUpdated: 2026-02-04T00:00:00.000Z
-ctfRating: 46.88
-ctfRatingUpdated: 2026-02-04T00:00:00.000Z
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 44.57
+ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 31
 qllrCtfGames: 56
 hoqCtfRating: 44.57
@@ -61,7 +61,7 @@ enemyModel: Keel
 crosshairColor: White
 grip: Hybrid
 duelGames: 439
-ctfGames: 943
+ctfGames: 1034
 tdmGames: 40
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
