@@ -16,6 +16,8 @@ hoqCtfRating: 26.01
 hoqCtfGames: 506
 hoqTdmRating: 34.1
 hoqTdmGames: 390
+duelRating: 1785
+duelRatingSource: qlstats
 dataSource: player
 dpi: 1600
 sensitivity: 1.68
