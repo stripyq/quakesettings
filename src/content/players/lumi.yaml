@@ -16,6 +16,31 @@ hoqCtfRating: 26.72
 hoqCtfGames: 506
 hoqTdmRating: 34.1
 hoqTdmGames: 390
+dataSource: player
+dpi: 1600
+sensitivity: 1.68
+m_yaw: 0.022
+edpi: 2688
+cm360: 15.46
+acceleration: false
+rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
+grip: Palm
+fov: 90
+enemyModel: Keel
+forward: w
+back: s
+left: a
+right: d
+mouse: "HITSCAN - HYPERLIGHT"
+mousepad: artisan-key-83
+mousepadBase: Soft
+mousepadSize: XL
+keyboard: ducky-one-2-mini
+monitor: alienware-aw2524hf
+headset: logitech-g-pro-headset
+skates: Aftermarket
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

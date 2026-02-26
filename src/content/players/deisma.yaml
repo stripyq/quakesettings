@@ -16,12 +16,14 @@ ctfRatingUpdated: "2026-02-24"
 dataSource: player
 dpi: 3200
 sensitivity: 0.9
+m_yaw: 0.018
 edpi: 2880
-cm360: 14.43
+cm360: 17.64
 acceleration: false
 rawInput: true
+windowsSensitivity: 6
 fov: 90
-crosshair: 2, 3, 10, 13, 18
+crosshair: "2, 3, 10, 13, 18"
 invertedMouse: false
 forward: w
 back: s
