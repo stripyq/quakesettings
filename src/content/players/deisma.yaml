@@ -13,6 +13,9 @@ hoqTdmRating: 21.4
 hoqTdmGames: 199
 ctfRating: 10.07
 ctfRatingUpdated: "2026-02-24"
+duelRating: 1394
+duelRatingSource: qlstats
+duelGames: 5
 dataSource: player
 dpi: 3200
 sensitivity: 0.9
