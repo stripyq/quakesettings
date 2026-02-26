@@ -1,0 +1,8 @@
+name: "Apple EarPods (3.5mm)"
+brand: "Apple"
+type: "In-ear"
+driverSize: "N/A"
+frequencyResponse: "5Hz - 21kHz"
+impedance: "32 Ohms"
+connection: "Wired"
+microphone: true
