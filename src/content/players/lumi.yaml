@@ -20,6 +20,7 @@ qllrCtfRating: 19.82
 qllrCtfGames: 61
 duelRating: 1785
 duelRatingSource: qlstats
+duelGames: 260
 dataSource: player
 dpi: 1600
 sensitivity: 1.68
