@@ -33,7 +33,7 @@ forward: w
 back: s
 left: a
 right: d
-mouse: "HITSCAN - HYPERLIGHT"
+mouse: hitscan-hyperlight
 mousepad: artisan-key-83
 mousepadBase: Soft
 mousepadSize: XL
