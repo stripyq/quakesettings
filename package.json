@@ -11,6 +11,8 @@
     "fetch:season": "node scripts/fetch-season-stats.cjs",
     "fetch:qlrace": "node scripts/fetch-qlrace.cjs",
     "fetch:qlrace:force": "node scripts/fetch-qlrace.cjs --force",
+    "fetch:map-ratings": "node scripts/fetch-map-ratings.cjs",
+    "fetch:map-ratings:force": "node scripts/fetch-map-ratings.cjs --force",
     "astro": "astro"
   },
   "dependencies": {
