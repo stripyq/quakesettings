@@ -90,6 +90,23 @@ function aggregateByWeek(matches) {
     .map(([week, games]) => ({ week, games }));
 }
 
+/**
+ * Fill missing weeks between the earliest and latest entry with games: 0.
+ */
+function fillWeekGaps(activity) {
+  if (activity.length < 2) return activity;
+  const WEEK_MS = 7 * 24 * 3600 * 1000;
+  const existing = new Map(activity.map(a => [a.week, a.games]));
+  const start = new Date(activity[0].week).getTime();
+  const end = new Date(activity[activity.length - 1].week).getTime();
+  const filled = [];
+  for (let t = start; t <= end; t += WEEK_MS) {
+    const key = new Date(t).toISOString().slice(0, 10);
+    filled.push({ week: key, games: existing.get(key) || 0 });
+  }
+  return filled;
+}
+
 async function main() {
   console.log('=== Fetch CTF Activity Data ===\n');
 
@@ -104,17 +121,19 @@ async function main() {
   console.log('\nSample match object:');
   console.log(JSON.stringify(matches[0], null, 2));
 
-  const activity = aggregateByWeek(matches);
+  const sparse = aggregateByWeek(matches);
 
-  if (activity.length === 0) {
+  if (sparse.length === 0) {
     console.error('No timestamp data found in matches. Check field names.');
     console.log('Available fields:', Object.keys(matches[0]).join(', '));
     process.exit(1);
   }
 
-  console.log(`\nWeekly breakdown (${activity.length} weeks):`);
+  const activity = fillWeekGaps(sparse);
+
+  console.log(`\nWeekly breakdown (${activity.length} weeks, ${sparse.length} with games):`);
   for (const { week, games } of activity) {
-    console.log(`  ${week}: ${games} games`);
+    if (games > 0) console.log(`  ${week}: ${games} games`);
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });

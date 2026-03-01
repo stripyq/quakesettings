@@ -205,6 +205,23 @@ function mergeBuckets(a, b) {
   return merged;
 }
 
+/**
+ * Fill missing weeks between the earliest and latest entry with games: 0.
+ */
+function fillWeekGaps(activity) {
+  if (activity.length < 2) return activity;
+  const WEEK_MS = 7 * 24 * 3600 * 1000;
+  const existing = new Map(activity.map(a => [a.week, a.games]));
+  const start = new Date(activity[0].week).getTime();
+  const end = new Date(activity[activity.length - 1].week).getTime();
+  const filled = [];
+  for (let t = start; t <= end; t += WEEK_MS) {
+    const key = new Date(t).toISOString().slice(0, 10);
+    filled.push({ week: key, games: existing.get(key) || 0 });
+  }
+  return filled;
+}
+
 async function main() {
   console.log('=== Fetch HoQ Activity Data (QLLR Scraper) ===\n');
 
@@ -221,14 +238,16 @@ async function main() {
 
   // Filter out any legacy monthly keys (YYYY-MM format, 7 chars) — only keep
   // weekly keys (YYYY-MM-DD format, 10 chars) so the output is clean.
-  const activity = Object.entries(merged)
+  const sparse = Object.entries(merged)
     .filter(([key]) => key.length === 10)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([week, games]) => ({ week, games }));
 
-  console.log(`\nWeekly breakdown (${activity.length} weeks):`);
+  const activity = fillWeekGaps(sparse);
+
+  console.log(`\nWeekly breakdown (${activity.length} weeks, ${sparse.length} with games):`);
   for (const { week, games } of activity) {
-    console.log(`  ${week}: ${games} games`);
+    if (games > 0) console.log(`  ${week}: ${games} games`);
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
