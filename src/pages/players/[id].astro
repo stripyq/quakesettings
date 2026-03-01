@@ -1493,12 +1493,13 @@ const schema = {
           }
 
           // Activity bars (CTF only — drawn behind the rating line)
+          const WEEK_MS = 7 * 24 * 3600 * 1000;
           if (mode === 'ctf' && activityBuckets.length > 0) {
-            // Filter to months that overlap the visible time range
+            // Filter to weeks that overlap the visible time range
             const visible = activityBuckets.filter(b => {
-              const [y, m] = b.month.split('-').map(Number);
-              const start = new Date(y, m - 1, 1).getTime();
-              const end = new Date(y, m, 0, 23, 59, 59).getTime();
+              const key = b.week || b.month;
+              const start = new Date(key).getTime();
+              const end = start + WEEK_MS;
               return end >= minT && start <= maxT;
             });
 
@@ -1507,9 +1508,10 @@ const schema = {
 
               ctx.fillStyle = 'rgba(255,255,255,0.08)';
               for (const bucket of visible) {
-                const [y, m] = bucket.month.split('-').map(Number);
-                const bStart = Math.max(new Date(y, m - 1, 1).getTime(), minT);
-                const bEnd = Math.min(new Date(y, m, 0, 23, 59, 59).getTime(), maxT);
+                const key = bucket.week || bucket.month;
+                const weekStart = new Date(key).getTime();
+                const bStart = Math.max(weekStart, minT);
+                const bEnd = Math.min(weekStart + WEEK_MS, maxT);
 
                 const x1 = pad.left + ((bStart - minT) / tRange) * cw;
                 const x2 = pad.left + ((bEnd - minT) / tRange) * cw;
@@ -1518,7 +1520,7 @@ const schema = {
                 ctx.fillRect(x1, pad.top + ch - barH, x2 - x1, barH);
               }
 
-              // Right Y-axis: games-per-month scale
+              // Right Y-axis: games-per-week scale
               ctx.fillStyle = '#666';
               ctx.font = '11px monospace';
               ctx.textAlign = 'left';

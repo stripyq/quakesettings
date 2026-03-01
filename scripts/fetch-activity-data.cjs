@@ -60,7 +60,17 @@ async function fetchAllMatches() {
   return allMatches;
 }
 
-function aggregateByMonth(matches) {
+/**
+ * Get the Monday of the ISO week containing a given date, as YYYY-MM-DD.
+ */
+function getWeekMonday(d) {
+  const day = d.getUTCDay();
+  const diff = (day === 0 ? -6 : 1) - day;
+  const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + diff));
+  return monday.toISOString().slice(0, 10);
+}
+
+function aggregateByWeek(matches) {
   const buckets = {};
 
   for (const match of matches) {
@@ -70,14 +80,14 @@ function aggregateByMonth(matches) {
     // Handle Unix timestamp (seconds) or milliseconds
     const ms = ts > 1e12 ? ts : ts * 1000;
     const d = new Date(ms);
-    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const key = getWeekMonday(d);
 
     buckets[key] = (buckets[key] || 0) + 1;
   }
 
   return Object.entries(buckets)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, games]) => ({ month, games }));
+    .map(([week, games]) => ({ week, games }));
 }
 
 async function main() {
@@ -94,7 +104,7 @@ async function main() {
   console.log('\nSample match object:');
   console.log(JSON.stringify(matches[0], null, 2));
 
-  const activity = aggregateByMonth(matches);
+  const activity = aggregateByWeek(matches);
 
   if (activity.length === 0) {
     console.error('No timestamp data found in matches. Check field names.');
@@ -102,9 +112,9 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\nMonthly breakdown (${activity.length} months):`);
-  for (const { month, games } of activity) {
-    console.log(`  ${month}: ${games} games`);
+  console.log(`\nWeekly breakdown (${activity.length} weeks):`);
+  for (const { week, games } of activity) {
+    console.log(`  ${week}: ${games} games`);
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });

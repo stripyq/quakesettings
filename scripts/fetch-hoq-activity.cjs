@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 /**
  * Scrape CTF match history from the HoQ all-time tracker (QLLR) at
- * http://88.214.20.58/matches/ctf/ and aggregate into monthly buckets.
+ * http://88.214.20.58/matches/ctf/ and aggregate into weekly buckets.
  *
  * Pages: /matches/ctf/ (page 0), /matches/ctf/1/, /matches/ctf/2/, ...
  * Each page has a table with <span class="abstime" data-timestamp="..."> on date cells.
  *
  * Merges with existing public/data/activity-ctf.json (from the season tracker API)
- * so both data sources are combined. Deduplicates by month key.
+ * so both data sources are combined. Deduplicates by week key.
  *
  * Output: public/data/activity-ctf.json
- *   [ { "month": "2024-05", "games": 47 }, ... ]
+ *   [ { "week": "2024-05-06", "games": 12 }, ... ]
+ *   (keys are the Monday of each ISO week, YYYY-MM-DD)
  *
  * Usage:
  *   node scripts/fetch-hoq-activity.cjs
@@ -151,14 +152,24 @@ async function fetchAllEpochs() {
 }
 
 /**
- * Aggregate epoch timestamps into monthly buckets.
+ * Get the Monday of the ISO week containing a given date, as YYYY-MM-DD.
  */
-function aggregateByMonth(epochs) {
+function getWeekMonday(d) {
+  const day = d.getUTCDay();
+  const diff = (day === 0 ? -6 : 1) - day; // Monday = 1, Sunday shifts back 6
+  const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + diff));
+  return monday.toISOString().slice(0, 10);
+}
+
+/**
+ * Aggregate epoch timestamps into weekly buckets (keyed by Monday date).
+ */
+function aggregateByWeek(epochs) {
   const buckets = {};
 
   for (const epoch of epochs) {
     const d = new Date(epoch * 1000);
-    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const key = getWeekMonday(d);
     buckets[key] = (buckets[key] || 0) + 1;
   }
 
@@ -166,14 +177,15 @@ function aggregateByMonth(epochs) {
 }
 
 /**
- * Load existing activity data and return as a month→games map.
+ * Load existing activity data and return as a week→games map.
  */
 function loadExisting() {
   const buckets = {};
   try {
     const data = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
-    for (const { month, games } of data) {
-      buckets[month] = games;
+    for (const entry of data) {
+      const key = entry.week || entry.month; // support legacy monthly format
+      if (key) buckets[key] = entry.games;
     }
   } catch {
     // No existing file or invalid
@@ -182,13 +194,13 @@ function loadExisting() {
 }
 
 /**
- * Merge two month→games maps. For overlapping months, take the larger value
- * (since both sources may have partial data for a given month).
+ * Merge two week→games maps. For overlapping weeks, take the larger value
+ * (since both sources may have partial data for a given week).
  */
 function mergeBuckets(a, b) {
   const merged = { ...a };
-  for (const [month, games] of Object.entries(b)) {
-    merged[month] = Math.max(merged[month] || 0, games);
+  for (const [week, games] of Object.entries(b)) {
+    merged[week] = Math.max(merged[week] || 0, games);
   }
   return merged;
 }
@@ -203,17 +215,20 @@ async function main() {
     process.exit(1);
   }
 
-  const scrapedBuckets = aggregateByMonth(epochs);
+  const scrapedBuckets = aggregateByWeek(epochs);
   const existingBuckets = loadExisting();
   const merged = mergeBuckets(existingBuckets, scrapedBuckets);
 
+  // Filter out any legacy monthly keys (YYYY-MM format, 7 chars) — only keep
+  // weekly keys (YYYY-MM-DD format, 10 chars) so the output is clean.
   const activity = Object.entries(merged)
+    .filter(([key]) => key.length === 10)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, games]) => ({ month, games }));
+    .map(([week, games]) => ({ week, games }));
 
-  console.log(`\nMonthly breakdown (${activity.length} months):`);
-  for (const { month, games } of activity) {
-    console.log(`  ${month}: ${games} games`);
+  console.log(`\nWeekly breakdown (${activity.length} weeks):`);
+  for (const { week, games } of activity) {
+    console.log(`  ${week}: ${games} games`);
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
