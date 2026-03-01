@@ -42,12 +42,6 @@ crosshairColor: Pink
 gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 1519
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_lg: 30
-accuracy_rg: 49
 qlrace:
   mode: 3
   records: 2
@@ -74,3 +68,9 @@ qlrace:
       total: 199
       time: 11848
   fetched_at: "2026-02-23"
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_rg: 49
+accuracy_lg: 30

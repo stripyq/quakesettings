@@ -44,12 +44,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1296
 tdmGames: 1
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Shotgun
-accuracy_rl: 33
-accuracy_lg: 33
-accuracy_rg: 47
 qlrace:
   mode: 2
   records: 5
@@ -88,3 +82,9 @@ qlrace:
       total: 124
       time: 12544
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Shotgun
+accuracy_rl: 33
+accuracy_rg: 47
+accuracy_lg: 33

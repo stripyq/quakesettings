@@ -13,12 +13,6 @@ ctfRating: 17.8
 ctfGames: 19
 hoqCtfRating: 28.67
 hoqCtfGames: 19
-favorite_map: asylum
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 54
-accuracy_lg: 34
-accuracy_rg: 45
 qlrace:
   mode: 3
   records: 1
@@ -41,3 +35,9 @@ qlrace:
       total: 327
       time: 28568
   fetched_at: "2026-02-23"
+favorite_map: asylum
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 54
+accuracy_rg: 45
+accuracy_lg: 34

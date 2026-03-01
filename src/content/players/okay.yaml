@@ -36,12 +36,6 @@ cpuBrand: Intel
 ctfGames: 29
 hoqCtfRating: 15.75
 hoqCtfGames: 29
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Lightning Gun
-accuracy_rl: 33
-accuracy_lg: 32
-accuracy_rg: 52
 qlrace:
   mode: 2
   records: 2
@@ -68,3 +62,9 @@ qlrace:
       total: 10
       time: 21600
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Lightning Gun
+accuracy_rl: 33
+accuracy_rg: 52
+accuracy_lg: 32

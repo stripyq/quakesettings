@@ -45,10 +45,10 @@ headset: steelseries-arctis-7-wireless
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
 accuracy_rl: 43
-accuracy_lg: 38
 accuracy_rg: 62
-qlrace: null
+accuracy_lg: 38

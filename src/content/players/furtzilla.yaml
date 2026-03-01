@@ -38,10 +38,10 @@ hoqCtfRating: 22.55
 hoqCtfGames: 176
 hoqTdmRating: 26.07
 hoqTdmGames: 2090
+qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 42
-accuracy_lg: 35
 accuracy_rg: 51
-qlrace: null
+accuracy_lg: 35

@@ -42,10 +42,10 @@ headset: sennheiser-game-zero
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 36
-accuracy_lg: 37
 accuracy_rg: 51
-qlrace: null
+accuracy_lg: 37

@@ -42,10 +42,10 @@ headset: hyperx-cloud-ii
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 39
-accuracy_lg: 38
 accuracy_rg: 52
-qlrace: null
+accuracy_lg: 38

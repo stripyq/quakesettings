@@ -50,12 +50,6 @@ hoqCtfRating: 27.63
 hoqCtfGames: 5779
 hoqTdmRating: 28.11
 hoqTdmGames: 1445
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 46
-accuracy_lg: 36
-accuracy_rg: 52
 qlrace:
   mode: 3
   records: 1
@@ -78,3 +72,9 @@ qlrace:
       total: 32
       time: 8224
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 46
+accuracy_rg: 52
+accuracy_lg: 36

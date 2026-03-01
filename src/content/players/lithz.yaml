@@ -44,12 +44,6 @@ hoqCtfRating: 30.26
 hoqCtfGames: 367
 hoqTdmRating: 34.98
 hoqTdmGames: 45
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Lightning Gun
-accuracy_rl: 45
-accuracy_lg: 37
-accuracy_rg: 55
 qlrace:
   mode: 2
   records: 29
@@ -108,3 +102,9 @@ qlrace:
       total: 65
       time: 10608
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Lightning Gun
+accuracy_rl: 45
+accuracy_rg: 55
+accuracy_lg: 37

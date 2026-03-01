@@ -13,12 +13,6 @@ hoqCtfRating: 16.77
 hoqCtfGames: 998
 hoqTdmRating: 22.98
 hoqTdmGames: 175
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 39
-accuracy_lg: 34
-accuracy_rg: 52
 qlrace:
   mode: 3
   records: 4
@@ -53,3 +47,9 @@ qlrace:
       total: 26
       time: 42576
   fetched_at: "2026-02-23"
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 39
+accuracy_rg: 52
+accuracy_lg: 34

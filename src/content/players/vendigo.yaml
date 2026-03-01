@@ -40,10 +40,10 @@ hoqCtfRating: 11.44
 hoqCtfGames: 1
 hoqTdmRating: 26.76
 hoqTdmGames: 1797
+qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 40
-accuracy_lg: 33
 accuracy_rg: 49
-qlrace: null
+accuracy_lg: 33

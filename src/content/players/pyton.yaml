@@ -52,12 +52,6 @@ attack: mouse1
 zoom: mouse3
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Rocket Launcher
-accuracy_rl: 41
-accuracy_lg: 35
-accuracy_rg: 49
 qlrace:
   mode: 2
   records: 6
@@ -100,3 +94,9 @@ qlrace:
       total: 226
       time: 31521
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 41
+accuracy_rg: 49
+accuracy_lg: 35

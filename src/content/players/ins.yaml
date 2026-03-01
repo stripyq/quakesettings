@@ -51,12 +51,6 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 49
-accuracy_lg: 42
-accuracy_rg: 63
 qlrace:
   mode: 2
   records: 26
@@ -115,3 +109,9 @@ qlrace:
       total: 57
       time: 10230
   fetched_at: "2026-02-23"
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 49
+accuracy_rg: 63
+accuracy_lg: 42

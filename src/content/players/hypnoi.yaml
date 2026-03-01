@@ -16,12 +16,6 @@ hoqCtfRating: 26.14
 hoqCtfGames: 230
 hoqTdmRating: 23.47
 hoqTdmGames: 532
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 41
-accuracy_lg: 34
-accuracy_rg: 53
 qlrace:
   mode: 2
   records: 190
@@ -80,3 +74,9 @@ qlrace:
       total: 34
       time: 27064
   fetched_at: "2026-02-23"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 41
+accuracy_rg: 53
+accuracy_lg: 34

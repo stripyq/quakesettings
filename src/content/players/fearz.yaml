@@ -39,12 +39,6 @@ cpuBrand: Intel
 tdmGames: 698
 hoqTdmRating: 28.99
 hoqTdmGames: 698
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Shotgun
-accuracy_rl: 36
-accuracy_lg: 32
-accuracy_rg: 44
 qlrace:
   mode: 2
   records: 2
@@ -71,3 +65,9 @@ qlrace:
       total: 25
       time: 47591
   fetched_at: "2026-02-23"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 36
+accuracy_rg: 44
+accuracy_lg: 32

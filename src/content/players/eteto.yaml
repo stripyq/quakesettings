@@ -47,12 +47,6 @@ attack: mouse1
 zoom: pageup
 gpuBrand: AMD
 cpuBrand: AMD
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Rocket Launcher
-accuracy_rl: 38
-accuracy_lg: 29
-accuracy_rg: 42
 qlrace:
   mode: 2
   records: 3
@@ -83,3 +77,9 @@ qlrace:
       total: 25
       time: 21864
   fetched_at: "2026-02-23"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Rocket Launcher
+accuracy_rl: 38
+accuracy_rg: 42
+accuracy_lg: 29

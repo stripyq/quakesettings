@@ -38,12 +38,6 @@ cpuBrand: AMD
 tdmGames: 367
 hoqTdmRating: 34.71
 hoqTdmGames: 367
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 43
-accuracy_lg: 37
-accuracy_rg: 55
 qlrace:
   mode: 3
   records: 1
@@ -66,3 +60,9 @@ qlrace:
       total: 51
       time: 47432
   fetched_at: "2026-02-23"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_rg: 55
+accuracy_lg: 37

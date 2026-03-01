@@ -39,12 +39,6 @@ attack: MOUSE1
 zoom: space
 gpuBrand: AMD
 cpuBrand: AMD
-favorite_map: hiddenfortress
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 45
-accuracy_lg: 41
-accuracy_rg: 53
 qlrace:
   mode: 2
   records: 2
@@ -71,3 +65,9 @@ qlrace:
       total: 32
       time: 194944
   fetched_at: "2026-02-23"
+favorite_map: hiddenfortress
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 45
+accuracy_rg: 53
+accuracy_lg: 41

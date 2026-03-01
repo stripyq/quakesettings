@@ -69,17 +69,13 @@ function parseHoqPage(html, playerName) {
   const result = {};
 
   // ---- FAVORITES ----
-  // Look for the Favorites section and extract Arena, Gametype, Weapon
-  // Common HoQ page patterns:
+  // QLLR (the HoQ rating engine) renders favorites as a <ul> list:
   //   <h3>Favorites</h3>
-  //   <table>
-  //     <tr><td>Arena</td><td>Campgrounds</td></tr>
-  //     <tr><td>Gametype</td><td>CTF</td></tr>
-  //     <tr><td>Weapon</td><td>Rocket Launcher</td></tr>
-  //   </table>
-  //
-  // Or list/definition format:
-  //   <dt>Arena</dt><dd>Campgrounds</dd>
+  //   <ul>
+  //     <li>Arena: japanesecastles</li>
+  //     <li>Gametype: Capture the Flag</li>
+  //     <li>Weapon: Railgun</li>
+  //   </ul>
 
   const favoriteFields = [
     { field: 'favorite_map', label: 'Arena' },
@@ -88,6 +84,11 @@ function parseHoqPage(html, playerName) {
   ];
 
   for (const { field, label } of favoriteFields) {
+    // Try <li> inline value: <li>Arena: Campgrounds</li>  (QLLR format)
+    const liPattern = new RegExp(
+      `<li[^>]*>\\s*${label}\\s*:\\s*([^<]+)`,
+      'i'
+    );
     // Try table cell pattern: <td>Label</td><td>Value</td>
     const tdPattern = new RegExp(
       `<td[^>]*>\\s*${label}\\s*<\\/td>\\s*<td[^>]*>\\s*([^<]+)`,
@@ -98,22 +99,17 @@ function parseHoqPage(html, playerName) {
       `<dt[^>]*>\\s*${label}\\s*<\\/dt>\\s*<dd[^>]*>\\s*([^<]+)`,
       'i'
     );
-    // Try label/span pair: <span class="label">Arena</span><span class="value">Campgrounds</span>
-    const spanPattern = new RegExp(
-      `${label}[^<]*<\\/[^>]+>\\s*<[^>]+>\\s*([^<]+)`,
-      'i'
-    );
     // Try generic key-value: Arena: Campgrounds or Arena = Campgrounds
     const kvPattern = new RegExp(
       `${label}\\s*[:=]\\s*([^\\n<]+)`,
       'i'
     );
 
-    for (const pattern of [tdPattern, dlPattern, spanPattern, kvPattern]) {
+    for (const pattern of [liPattern, tdPattern, dlPattern, kvPattern]) {
       const match = html.match(pattern);
       if (match) {
         const value = match[1].trim();
-        if (value && value !== '-' && value !== 'N/A' && value.length < 100) {
+        if (value && value !== '-' && value !== 'N/A' && value !== 'None' && value.length < 100) {
           result[field] = value;
           break;
         }
@@ -122,10 +118,16 @@ function parseHoqPage(html, playerName) {
   }
 
   // ---- WEAPON ACCURACIES ----
-  // Look for a weapons table with accuracy column
-  // Typical format:
-  //   <tr><td>Rocket Launcher</td><td>1234</td><td>567</td><td>42%</td>...</tr>
-  //   <tr><td>Railgun</td><td>...</td><td>38%</td>...</tr>
+  // QLLR weapons table structure:
+  //   <table id="weapon-stats-table">
+  //     <thead><tr><th>Weapon</th><th>Frags</th><th>Accuracy</th></tr></thead>
+  //     <tbody>
+  //       <tr><td>Rocket Launcher</td><td>1234</td><td>39</td></tr>
+  //       <tr><td>Railgun</td><td>890</td><td>58</td></tr>
+  //     </tbody>
+  //   </table>
+  // Note: The page has MULTIPLE <thead> elements (matches table + weapons table).
+  // We must search all of them to find the one with an "Accuracy" column.
 
   const weapons = [
     { name: 'Rocket Launcher', key: 'accuracy_rl' },
@@ -133,12 +135,11 @@ function parseHoqPage(html, playerName) {
     { name: 'Lightning Gun', key: 'accuracy_lg' },
   ];
 
-  // First, try to find the weapons table and detect the accuracy column by header
+  // Search ALL <thead> elements to find the one with an Accuracy column
   let accuracyColIndex = -1;
-  const headerRowMatch = html.match(/<thead[^>]*>[\s\S]*?<\/thead>/i)
-    || html.match(/<tr[^>]*>[\s\S]*?<th[\s\S]*?<\/tr>/i);
-  if (headerRowMatch) {
-    const thCells = [...headerRowMatch[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)];
+  const allTheads = [...html.matchAll(/<thead[^>]*>[\s\S]*?<\/thead>/gi)];
+  for (const theadMatch of allTheads) {
+    const thCells = [...theadMatch[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)];
     for (let i = 0; i < thCells.length; i++) {
       const text = thCells[i][1].replace(/<[^>]*>/g, '').trim().toLowerCase();
       if (text === 'accuracy' || text === 'acc' || text === 'acc%') {
@@ -146,6 +147,7 @@ function parseHoqPage(html, playerName) {
         break;
       }
     }
+    if (accuracyColIndex >= 0) break;
   }
 
   // Extract all table rows first to avoid cross-row regex matching
@@ -205,8 +207,11 @@ async function fetchPlayerStats(steamId, playerName) {
 
   const html = await response.text();
 
-  // Check if it's actually a player page (not an error page)
-  if (html.includes('Player not found') || html.includes('No data') || html.length < 500) {
+  // Check if it's actually a player page (not an error page).
+  // QLLR returns 404 for unknown players (handled above), so a 200 response
+  // with reasonable size is a valid page.  Avoid matching broad substrings
+  // like "No data" which appear in normal pages.
+  if (html.length < 500) {
     return { html, stats: null };
   }
 
