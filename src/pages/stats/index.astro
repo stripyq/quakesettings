@@ -808,11 +808,20 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 // Build per-map leaderboards from pre-fetched HoQ data (CTF + TDM)
 const hoqDataDir = path.join(process.cwd(), 'public/data/hoq');
 type MapEntry = { name: string; slug: string; games: number; win_pct: number; rating: number; percentile: number };
-const MAP_MIN_GAMES = 50;
 const CTF_EXCLUDED_MAPS = new Set(['campercrossings', 'stonekeep', 'siberia']);
 
-function buildMapLeaderboards(gametype: string, excludedMaps: Set<string> = new Set()) {
-  const leaderboards: Record<string, MapEntry[]> = {};
+// Per-map minimum games thresholds for CTF
+const CTF_MAP_MIN_GAMES: Record<string, number> = {
+  courtyard: 40,
+  shiningforces: 30,
+  thedukesgarden: 20,
+};
+const CTF_DEFAULT_MIN_GAMES = 50;
+const TDM_DEFAULT_MIN_GAMES = 50;
+
+function buildMapLeaderboards(gametype: string, getMinGames: (map: string) => number, excludedMaps: Set<string> = new Set()) {
+  const allEntries: Record<string, MapEntry[]> = {};
+  // First pass: collect all entries per map (no threshold yet — we need the map name first)
   for (const p of allPlayers) {
     if (!p.data.steamId) continue;
     const mapRatingsPath = path.join(hoqDataDir, p.data.steamId, 'map_ratings.json');
@@ -821,24 +830,27 @@ function buildMapLeaderboards(gametype: string, excludedMaps: Set<string> = new 
     if (!Array.isArray(raw)) continue;
     const slug = p.data.published !== false ? p.id : '';
     for (const r of raw) {
-      if (r.gametype_short !== gametype || r.games < MAP_MIN_GAMES) continue;
+      if (r.gametype_short !== gametype) continue;
       if (excludedMaps.has(r.map_name)) continue;
-      if (!leaderboards[r.map_name]) leaderboards[r.map_name] = [];
-      leaderboards[r.map_name].push({ name: p.data.name, slug, games: r.games, win_pct: r.win_pct, rating: r.rating, percentile: r.percentile });
+      if (r.games < getMinGames(r.map_name)) continue;
+      if (!allEntries[r.map_name]) allEntries[r.map_name] = [];
+      allEntries[r.map_name].push({ name: p.data.name, slug, games: r.games, win_pct: r.win_pct, rating: r.rating, percentile: r.percentile });
     }
   }
   const playerCounts: Record<string, number> = {};
-  for (const map of Object.keys(leaderboards)) {
-    playerCounts[map] = leaderboards[map].length;
-    leaderboards[map].sort((a, b) => b.rating - a.rating);
-    leaderboards[map] = leaderboards[map].slice(0, 10);
+  const mapThresholds: Record<string, number> = {};
+  for (const map of Object.keys(allEntries)) {
+    playerCounts[map] = allEntries[map].length;
+    mapThresholds[map] = getMinGames(map);
+    allEntries[map].sort((a, b) => b.rating - a.rating);
+    allEntries[map] = allEntries[map].slice(0, 10);
   }
-  const sortedMaps = Object.keys(leaderboards).sort((a, b) => playerCounts[b] - playerCounts[a]);
-  return { leaderboards, playerCounts, sortedMaps };
+  const sortedMaps = Object.keys(allEntries).sort((a, b) => playerCounts[b] - playerCounts[a]);
+  return { leaderboards: allEntries, playerCounts, sortedMaps, mapThresholds };
 }
 
-const ctfMaps = buildMapLeaderboards('ctf', CTF_EXCLUDED_MAPS);
-const tdmMaps = buildMapLeaderboards('tdm');
+const ctfMaps = buildMapLeaderboards('ctf', (map) => CTF_MAP_MIN_GAMES[map] ?? CTF_DEFAULT_MIN_GAMES, CTF_EXCLUDED_MAPS);
+const tdmMaps = buildMapLeaderboards('tdm', () => TDM_DEFAULT_MIN_GAMES);
 // Only show TDM maps with at least 3 qualifying players
 const tdmFilteredMaps = tdmMaps.sortedMaps.filter(m => tdmMaps.playerCounts[m] >= 3);
 
@@ -1665,7 +1677,7 @@ const schema = {
         {ctfMaps.sortedMaps.map(mapName => (
           <div class="s-map-lb-card">
             <h2 class="s-card-title">{mapName}</h2>
-            <p class="s-card-sub">{ctfMaps.playerCounts[mapName]} players with {MAP_MIN_GAMES}+ games</p>
+            <p class="s-card-sub">{ctfMaps.playerCounts[mapName]} players with {ctfMaps.mapThresholds[mapName]}+ games</p>
             <table class="s-map-lb-table">
               <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>Games</th><th>Win%</th></tr></thead>
               <tbody>
@@ -1706,7 +1718,7 @@ const schema = {
         {tdmFilteredMaps.map(mapName => (
           <div class="s-map-lb-card">
             <h2 class="s-card-title">{mapName}</h2>
-            <p class="s-card-sub">{tdmMaps.playerCounts[mapName]} players with {MAP_MIN_GAMES}+ games</p>
+            <p class="s-card-sub">{tdmMaps.playerCounts[mapName]} players with {tdmMaps.mapThresholds[mapName]}+ games</p>
             <table class="s-map-lb-table">
               <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>Games</th><th>Win%</th></tr></thead>
               <tbody>
