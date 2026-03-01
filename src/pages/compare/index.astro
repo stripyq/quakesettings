@@ -13,6 +13,15 @@ try {
   // No season stats available yet
 }
 
+// Load CTF activity data (monthly match counts)
+let activityCtfData: Array<{ month: string; games: number }> = [];
+try {
+  const activityPath = path.join(process.cwd(), 'public/data/activity-ctf.json');
+  activityCtfData = JSON.parse(fs.readFileSync(activityPath, 'utf8'));
+} catch {
+  // No activity data available yet
+}
+
 // Load player registry for name lookups (API returns current Steam names which may differ)
 let registryNameMap: Record<string, string> = {};
 try {
@@ -114,7 +123,7 @@ const schema = {
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="h2h-container" class="h2h-container hidden"></div>
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
-  <div id="hoq-history-container" class="hoq-history-container hidden"></div>
+  <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)}></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
   <div id="race-compare-container" class="race-compare-container hidden"></div>
 
@@ -1245,6 +1254,10 @@ const schema = {
             return;
           }
 
+          // Parse CTF activity data from container attribute
+          var activityBuckets = [];
+          try { activityBuckets = JSON.parse(hoqHistoryContainer.getAttribute('data-activity') || '[]'); } catch(e) {}
+
           loading.style.display = 'none';
           canvas.style.display = 'block';
 
@@ -1301,7 +1314,8 @@ const schema = {
             var maxT = Math.max.apply(null, allTimes);
             var tRange = maxT - minT || 1;
 
-            var pad = { top: 30, right: 20, bottom: 40, left: 50 };
+            var hasActivity = mode === 'ctf' && activityBuckets.length > 0;
+            var pad = { top: 30, right: hasActivity ? 50 : 20, bottom: 40, left: 50 };
             var cw = W - pad.left - pad.right;
             var ch = H - pad.top - pad.bottom;
 
@@ -1347,6 +1361,49 @@ const schema = {
               var t = minT + (tRange / (xLabels - 1)) * i;
               var d = new Date(t);
               ctx.fillText((d.getMonth() + 1) + '/' + d.getDate(), pad.left + (cw / (xLabels - 1)) * i, H - pad.bottom + 16);
+            }
+
+            // Activity bars (CTF only — drawn behind the rating lines)
+            if (hasActivity) {
+              var visible = activityBuckets.filter(function(b) {
+                var parts = b.month.split('-');
+                var yr = parseInt(parts[0], 10), mo = parseInt(parts[1], 10);
+                var bStart = new Date(yr, mo - 1, 1).getTime();
+                var bEnd = new Date(yr, mo, 0, 23, 59, 59).getTime();
+                return bEnd >= minT && bStart <= maxT;
+              });
+
+              if (visible.length > 0) {
+                var maxGames = Math.max.apply(null, visible.map(function(b) { return b.games; }));
+
+                ctx.fillStyle = 'rgba(255,255,255,0.08)';
+                for (var vi = 0; vi < visible.length; vi++) {
+                  var parts = visible[vi].month.split('-');
+                  var yr = parseInt(parts[0], 10), mo = parseInt(parts[1], 10);
+                  var bStart = Math.max(new Date(yr, mo - 1, 1).getTime(), minT);
+                  var bEnd = Math.min(new Date(yr, mo, 0, 23, 59, 59).getTime(), maxT);
+
+                  var x1 = pad.left + ((bStart - minT) / tRange) * cw;
+                  var x2 = pad.left + ((bEnd - minT) / tRange) * cw;
+                  var barH = (visible[vi].games / maxGames) * ch;
+
+                  ctx.fillRect(x1, pad.top + ch - barH, x2 - x1, barH);
+                }
+
+                // Right Y-axis: games-per-month scale
+                ctx.fillStyle = '#666';
+                ctx.font = '11px monospace';
+                ctx.textAlign = 'left';
+                var rightX = pad.left + cw + 6;
+                var axisSteps = Math.min(gridSteps, maxGames);
+                for (var ai = 0; ai <= axisSteps; ai++) {
+                  var val = Math.round((maxGames / axisSteps) * (axisSteps - ai));
+                  var y = pad.top + (ch / axisSteps) * ai;
+                  ctx.fillText(String(val), rightX, y + 4);
+                }
+                ctx.font = '9px monospace';
+                ctx.fillText('games', rightX, pad.top - 6);
+              }
             }
 
             function drawLine(series, color) {

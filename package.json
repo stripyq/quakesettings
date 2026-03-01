@@ -14,6 +14,7 @@
     "fetch:hoq": "node scripts/fetch-hoq-maps.cjs",
     "fetch:activity": "node scripts/fetch-activity-data.cjs",
     "fetch:hoq-activity": "node scripts/fetch-hoq-activity.cjs",
+    "fetch:player-activity": "node scripts/fetch-player-activity.cjs",
     "astro": "astro"
   },
   "dependencies": {
