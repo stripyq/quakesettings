@@ -1303,7 +1303,7 @@ const schema = {
 
     {/* HoQ Rating History & Map Performance (client-side, requires steamId) */}
     {p.steamId && (
-      <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId}>
+      <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId} data-base={base}>
         <h2>HoQ Rating History</h2>
         <div class="hoq-chart-controls" id="hoq-chart-controls" style="display:none">
           <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
@@ -1343,7 +1343,8 @@ const schema = {
   const section = document.getElementById('hoq-live');
   if (section) {
     const steamId = section.dataset.steamId;
-    const API = 'http://88.214.20.58';
+    const siteBase = section.dataset.base || '/';
+    const HOQ_LOCAL = `${siteBase}data/hoq/${steamId}`;
 
     // ── Rating History Chart ──
     (async () => {
@@ -1354,7 +1355,7 @@ const schema = {
       const tdmBtn = document.getElementById('hoq-tdm-btn')!;
 
       try {
-        const res = await fetch(`${API}/player/${steamId}/history.json`);
+        const res = await fetch(`${HOQ_LOCAL}/history.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const raw: Array<{ gametype_short: string; rating: number; timestamp: string }> = await res.json();
 
@@ -1515,7 +1516,7 @@ const schema = {
       const tbody = document.getElementById('hoq-map-tbody')!;
 
       try {
-        const res = await fetch(`${API}/player/${steamId}/map_ratings.json`);
+        const res = await fetch(`${HOQ_LOCAL}/map_ratings.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const raw: Array<{ gametype_short: string; map: string; games: number; win_pct: number; rating: number; percentile: number }> = await res.json();
 
