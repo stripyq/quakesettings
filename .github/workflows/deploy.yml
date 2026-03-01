@@ -30,6 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fetch HoQ map data
+        run: npm run fetch:hoq
+        continue-on-error: true
+
       - name: Build with Astro
         run: npm run build
 

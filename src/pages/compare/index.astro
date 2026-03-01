@@ -1122,7 +1122,7 @@ const schema = {
       }
 
       // ── HoQ Live Sections ──
-      const HOQ_API = 'http://88.214.20.58';
+      var HOQ_LOCAL = base + 'data/hoq/';
       let hoqAbort = null;
 
       function updateHoqSections() {
@@ -1180,8 +1180,8 @@ const schema = {
 
         // Fetch history for both players
         Promise.all([
-          sid1 ? fetch(HOQ_API + '/player/' + sid1 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
-          sid2 ? fetch(HOQ_API + '/player/' + sid2 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid1 ? fetch(HOQ_LOCAL + sid1 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid2 ? fetch(HOQ_LOCAL + sid2 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
         ]).then(function(results) {
           if (ctrl.signal.aborted) return;
           var raw1 = results[0], raw2 = results[1];
@@ -1344,8 +1344,8 @@ const schema = {
 
         // Fetch map ratings for both players
         Promise.all([
-          sid1 ? fetch(HOQ_API + '/player/' + sid1 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
-          sid2 ? fetch(HOQ_API + '/player/' + sid2 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid1 ? fetch(HOQ_LOCAL + sid1 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid2 ? fetch(HOQ_LOCAL + sid2 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
         ]).then(function(results) {
           if (ctrl.signal.aborted) return;
           var raw1 = results[0], raw2 = results[1];
