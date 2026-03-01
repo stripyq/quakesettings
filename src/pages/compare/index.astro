@@ -115,6 +115,8 @@ const schema = {
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
   <div id="race-compare-container" class="race-compare-container hidden"></div>
+  <div id="hoq-history-container" class="hoq-history-container hidden"></div>
+  <div id="hoq-mapcompare-container" class="hoq-mapcompare-container hidden"></div>
 
   <div id="empty-state" class="empty-state">
     <p>Select two players above to compare their settings</p>
@@ -134,6 +136,8 @@ const schema = {
       const seasonCompareContainer = document.getElementById('season-compare-container');
       const rivalriesContainer = document.getElementById('rivalries-container');
       const raceCompareContainer = document.getElementById('race-compare-container');
+      const hoqHistoryContainer = document.getElementById('hoq-history-container');
+      const hoqMapCompareContainer = document.getElementById('hoq-mapcompare-container');
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -371,6 +375,8 @@ const schema = {
           seasonCompareContainer.classList.add('hidden');
           rivalriesContainer.classList.add('hidden');
           raceCompareContainer.classList.add('hidden');
+          hoqHistoryContainer.classList.add('hidden');
+          hoqMapCompareContainer.classList.add('hidden');
           emptyState.classList.remove('hidden');
           return;
         }
@@ -1115,6 +1121,309 @@ const schema = {
         raceCompareContainer.classList.remove('hidden');
       }
 
+      // ── HoQ Live Sections ──
+      const HOQ_API = 'http://88.214.20.58';
+      let hoqAbort = null;
+
+      function updateHoqSections() {
+        const p1Id = player1Select.value;
+        const p2Id = player2Select.value;
+        if (!p1Id || !p2Id || !playersData[p1Id] || !playersData[p2Id]) {
+          hoqHistoryContainer.classList.add('hidden');
+          hoqMapCompareContainer.classList.add('hidden');
+          return;
+        }
+        const p1 = playersData[p1Id];
+        const p2 = playersData[p2Id];
+        const sid1 = p1.steamId;
+        const sid2 = p2.steamId;
+
+        if (!sid1 && !sid2) {
+          hoqHistoryContainer.classList.add('hidden');
+          hoqMapCompareContainer.classList.add('hidden');
+          return;
+        }
+
+        if (hoqAbort) hoqAbort.abort();
+        const ctrl = new AbortController();
+        hoqAbort = ctrl;
+
+        // ── Rating History Chart ──
+        hoqHistoryContainer.classList.remove('hidden');
+        hoqHistoryContainer.innerHTML =
+          '<h2 class="hoq-cmp-heading">Rating History</h2>' +
+          '<div class="hoq-cmp-controls" id="hoq-cmp-controls">' +
+            '<button class="hoq-cmp-mode-btn active" data-mode="ctf">CTF</button>' +
+            '<button class="hoq-cmp-mode-btn" data-mode="tdm">TDM</button>' +
+          '</div>' +
+          '<div class="hoq-cmp-chart-wrap">' +
+            '<div class="hoq-cmp-loading" id="hoq-cmp-loading">Loading rating history\u2026</div>' +
+            '<canvas id="hoq-cmp-canvas" width="800" height="320" style="display:none"></canvas>' +
+            '<div class="hoq-cmp-note" id="hoq-cmp-note" style="display:none"></div>' +
+            '<div class="hoq-cmp-error" id="hoq-cmp-error" style="display:none"></div>' +
+          '</div>';
+
+        // ── Map Comparison Table ──
+        hoqMapCompareContainer.classList.remove('hidden');
+        hoqMapCompareContainer.innerHTML =
+          '<h2 class="hoq-cmp-heading">Per-Map Rating Comparison</h2>' +
+          '<div class="hoq-cmp-loading" id="hoq-map-cmp-loading">Loading map ratings\u2026</div>' +
+          '<table class="hoq-map-cmp-table" id="hoq-map-cmp-table" style="display:none">' +
+            '<thead><tr>' +
+              '<th>Map</th>' +
+              '<th>' + p1.name + ' Win%</th>' +
+              '<th>' + p2.name + ' Win%</th>' +
+            '</tr></thead>' +
+            '<tbody id="hoq-map-cmp-tbody"></tbody>' +
+          '</table>' +
+          '<div class="hoq-cmp-error" id="hoq-map-cmp-error" style="display:none"></div>';
+
+        // Fetch history for both players
+        Promise.all([
+          sid1 ? fetch(HOQ_API + '/player/' + sid1 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid2 ? fetch(HOQ_API + '/player/' + sid2 + '/history.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+        ]).then(function(results) {
+          if (ctrl.signal.aborted) return;
+          var raw1 = results[0], raw2 = results[1];
+          var loading = document.getElementById('hoq-cmp-loading');
+          var canvas = document.getElementById('hoq-cmp-canvas');
+          var noteEl = document.getElementById('hoq-cmp-note');
+          var errorEl = document.getElementById('hoq-cmp-error');
+          var controls = document.getElementById('hoq-cmp-controls');
+
+          function parseByMode(raw) {
+            var byMode = {};
+            var arr = Array.isArray(raw) ? raw : [];
+            for (var i = 0; i < arr.length; i++) {
+              var e = arr[i];
+              var m = e.gametype_short;
+              if (!byMode[m]) byMode[m] = [];
+              byMode[m].push({ rating: e.rating, date: new Date(e.timestamp) });
+            }
+            for (var k in byMode) byMode[k].sort(function(a, b) { return a.date - b.date; });
+            return byMode;
+          }
+
+          var data1 = parseByMode(raw1);
+          var data2 = parseByMode(raw2);
+          var hasCtf = (data1['ctf'] && data1['ctf'].length > 0) || (data2['ctf'] && data2['ctf'].length > 0);
+          var hasTdm = (data1['tdm'] && data1['tdm'].length > 0) || (data2['tdm'] && data2['tdm'].length > 0);
+
+          if (!hasCtf && !hasTdm) {
+            loading.style.display = 'none';
+            errorEl.textContent = 'No rating history available for either player.';
+            errorEl.style.display = 'block';
+            return;
+          }
+
+          loading.style.display = 'none';
+          canvas.style.display = 'block';
+
+          var ctx = canvas.getContext('2d');
+          var dpr = window.devicePixelRatio || 1;
+          var rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.scale(dpr, dpr);
+          var W = rect.width;
+          var H = rect.height;
+
+          var P1_COLOR = '#3b82f6';
+          var P2_COLOR = '#a855f7';
+          var activeMode = hasCtf ? 'ctf' : 'tdm';
+
+          function drawChart(mode) {
+            var series1 = data1[mode] || [];
+            var series2 = data2[mode] || [];
+
+            if (series1.length === 0 && series2.length === 0) {
+              ctx.clearRect(0, 0, W, H);
+              ctx.fillStyle = '#8b949e';
+              ctx.font = '13px sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText('No ' + mode.toUpperCase() + ' history for either player.', W / 2, H / 2);
+              noteEl.style.display = 'none';
+              return;
+            }
+
+            var note = '';
+            if (!sid1 || series1.length === 0) note = p1.name + ' has no ' + mode.toUpperCase() + ' history.';
+            else if (!sid2 || series2.length === 0) note = p2.name + ' has no ' + mode.toUpperCase() + ' history.';
+            if (note) { noteEl.textContent = note; noteEl.style.display = 'block'; }
+            else { noteEl.style.display = 'none'; }
+
+            var all = series1.concat(series2);
+            var allRatings = all.map(function(d) { return d.rating; });
+            var minR = Math.min.apply(null, allRatings);
+            var maxR = Math.max.apply(null, allRatings);
+            var rRange = maxR - minR || 1;
+            minR -= rRange * 0.05;
+            maxR += rRange * 0.05;
+            var allTimes = all.map(function(d) { return d.date.getTime(); });
+            var minT = Math.min.apply(null, allTimes);
+            var maxT = Math.max.apply(null, allTimes);
+            var tRange = maxT - minT || 1;
+
+            var pad = { top: 30, right: 20, bottom: 40, left: 50 };
+            var cw = W - pad.left - pad.right;
+            var ch = H - pad.top - pad.bottom;
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Legend
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillStyle = P1_COLOR;
+            ctx.fillRect(pad.left, 6, 14, 10);
+            ctx.fillText(p1.name, pad.left + 20, 15);
+            var p1w = ctx.measureText(p1.name).width;
+            ctx.fillStyle = P2_COLOR;
+            ctx.fillRect(pad.left + 30 + p1w, 6, 14, 10);
+            ctx.fillText(p2.name, pad.left + 50 + p1w, 15);
+
+            // Grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+            ctx.lineWidth = 1;
+            var gridSteps = 5;
+            for (var i = 0; i <= gridSteps; i++) {
+              var y = pad.top + (ch / gridSteps) * i;
+              ctx.beginPath();
+              ctx.moveTo(pad.left, y);
+              ctx.lineTo(pad.left + cw, y);
+              ctx.stroke();
+            }
+
+            // Y-axis labels
+            ctx.fillStyle = '#8b949e';
+            ctx.font = '11px monospace';
+            ctx.textAlign = 'right';
+            for (var i = 0; i <= gridSteps; i++) {
+              var val = maxR - ((maxR - minR) / gridSteps) * i;
+              var y = pad.top + (ch / gridSteps) * i;
+              ctx.fillText(val.toFixed(1), pad.left - 6, y + 4);
+            }
+
+            // X-axis labels
+            ctx.textAlign = 'center';
+            var xLabels = 6;
+            for (var i = 0; i < xLabels; i++) {
+              var t = minT + (tRange / (xLabels - 1)) * i;
+              var d = new Date(t);
+              ctx.fillText((d.getMonth() + 1) + '/' + d.getDate(), pad.left + (cw / (xLabels - 1)) * i, H - pad.bottom + 16);
+            }
+
+            function drawLine(series, color) {
+              if (series.length === 0) return;
+              ctx.strokeStyle = color;
+              ctx.lineWidth = 2;
+              ctx.lineJoin = 'round';
+              ctx.beginPath();
+              for (var j = 0; j < series.length; j++) {
+                var x = pad.left + ((series[j].date.getTime() - minT) / tRange) * cw;
+                var y = pad.top + ch - ((series[j].rating - minR) / (maxR - minR)) * ch;
+                if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+              }
+              ctx.stroke();
+            }
+
+            drawLine(series1, P1_COLOR);
+            drawLine(series2, P2_COLOR);
+          }
+
+          drawChart(activeMode);
+
+          controls.addEventListener('click', function(e) {
+            var btn = e.target.closest('.hoq-cmp-mode-btn');
+            if (!btn || !btn.dataset.mode) return;
+            activeMode = btn.dataset.mode;
+            controls.querySelectorAll('.hoq-cmp-mode-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            drawChart(activeMode);
+          });
+        });
+
+        // Fetch map ratings for both players
+        Promise.all([
+          sid1 ? fetch(HOQ_API + '/player/' + sid1 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+          sid2 ? fetch(HOQ_API + '/player/' + sid2 + '/map_ratings.json', { signal: ctrl.signal }).then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }) : Promise.resolve([]),
+        ]).then(function(results) {
+          if (ctrl.signal.aborted) return;
+          var raw1 = results[0], raw2 = results[1];
+          var loading = document.getElementById('hoq-map-cmp-loading');
+          var table = document.getElementById('hoq-map-cmp-table');
+          var tbody = document.getElementById('hoq-map-cmp-tbody');
+          var errorEl = document.getElementById('hoq-map-cmp-error');
+
+          function toCtfMap(raw) {
+            var map = {};
+            var arr = Array.isArray(raw) ? raw : [];
+            for (var i = 0; i < arr.length; i++) {
+              var r = arr[i];
+              if (r.gametype_short === 'ctf' && r.games >= 10) map[r.map] = r;
+            }
+            return map;
+          }
+
+          var maps1 = toCtfMap(raw1);
+          var maps2 = toCtfMap(raw2);
+          var seen = {};
+          var allMapNames = [];
+          var keys1 = Object.keys(maps1);
+          var keys2 = Object.keys(maps2);
+          for (var i = 0; i < keys1.length; i++) { if (!seen[keys1[i]]) { seen[keys1[i]] = true; allMapNames.push(keys1[i]); } }
+          for (var i = 0; i < keys2.length; i++) { if (!seen[keys2[i]]) { seen[keys2[i]] = true; allMapNames.push(keys2[i]); } }
+
+          var rows = allMapNames.map(function(name) {
+            return {
+              map: name,
+              p1: maps1[name] || null,
+              p2: maps2[name] || null,
+              totalGames: (maps1[name] ? maps1[name].games : 0) + (maps2[name] ? maps2[name].games : 0),
+            };
+          }).sort(function(a, b) { return b.totalGames - a.totalGames; });
+
+          if (rows.length === 0) {
+            loading.style.display = 'none';
+            errorEl.textContent = 'No CTF map data available for either player.';
+            errorEl.style.display = 'block';
+            return;
+          }
+
+          loading.style.display = 'none';
+          table.style.display = 'table';
+
+          function winCls(v) {
+            if (v == null) return '';
+            if (v > 50) return 'hoq-win-green';
+            if (v < 50) return 'hoq-win-red';
+            return 'hoq-win-amber';
+          }
+
+          for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            var w1 = r.p1 ? r.p1.win_pct : null;
+            var w2 = r.p2 ? r.p2.win_pct : null;
+            var w1Str = w1 != null ? w1.toFixed(1) + '%' : '\u2014';
+            var w2Str = w2 != null ? w2.toFixed(1) + '%' : '\u2014';
+            var cls1 = '';
+            var cls2 = '';
+            if (w1 != null && w2 != null) {
+              if (w1 > w2) cls1 = 'hoq-map-higher';
+              else if (w2 > w1) cls2 = 'hoq-map-higher';
+            }
+            var tr = document.createElement('tr');
+            tr.innerHTML =
+              '<td>' + r.map + '</td>' +
+              '<td class="' + winCls(w1) + ' ' + cls1 + '">' + w1Str + '</td>' +
+              '<td class="' + winCls(w2) + ' ' + cls2 + '">' + w2Str + '</td>';
+            tbody.appendChild(tr);
+          }
+        });
+      }
+
+      player1Select.addEventListener('change', updateHoqSections);
+      player2Select.addEventListener('change', updateHoqSections);
+
       function sectionHeader(title) {
         return `<tr class="section-row"><td colspan="3">${title}</td></tr>`;
       }
@@ -1165,6 +1474,7 @@ const schema = {
       // Initial update if params provided
       if (p1Param || p2Param) {
         updateComparison();
+        updateHoqSections();
       }
     });
   </script>
@@ -2275,6 +2585,153 @@ const schema = {
     padding: 0.75rem 1rem;
     text-align: center;
     font-style: italic;
+  }
+
+  /* ── HoQ Live Sections ── */
+  .hoq-history-container,
+  .hoq-mapcompare-container {
+    margin-top: 2rem;
+  }
+
+  .hoq-history-container.hidden,
+  .hoq-mapcompare-container.hidden {
+    display: none;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-heading),
+  .hoq-mapcompare-container :global(.hoq-cmp-heading) {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-controls) {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-mode-btn) {
+    padding: 0.3rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary, #9090a0);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-mode-btn:hover) {
+    border-color: var(--accent-primary, #ff6b35);
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .hoq-history-container :global(.hoq-cmp-mode-btn.active) {
+    background: var(--accent-primary, #ff6b35);
+    border-color: var(--accent-primary, #ff6b35);
+    color: #fff;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-chart-wrap) {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  .hoq-history-container :global(#hoq-cmp-canvas) {
+    width: 100%;
+    height: 320px;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-loading),
+  .hoq-mapcompare-container :global(.hoq-cmp-loading) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-error),
+  .hoq-mapcompare-container :global(.hoq-cmp-error) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-note) {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.8rem;
+    font-style: italic;
+    padding: 0.5rem 0 0;
+    text-align: center;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-map-cmp-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-map-cmp-table th) {
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-mapcompare-container :global(.hoq-map-cmp-table td) {
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .hoq-mapcompare-container :global(.hoq-map-cmp-table td:first-child) {
+    font-weight: 500;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-win-green) {
+    color: #4ade80 !important;
+    font-weight: 600;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-win-amber) {
+    color: #fbbf24 !important;
+    font-weight: 600;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-win-red) {
+    color: #f87171 !important;
+    font-weight: 600;
+  }
+
+  .hoq-mapcompare-container :global(.hoq-map-higher) {
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .hoq-history-container :global(#hoq-cmp-canvas) {
+      height: 220px;
+    }
+
+    .hoq-mapcompare-container :global(.hoq-map-cmp-table) {
+      font-size: 0.75rem;
+    }
+
+    .hoq-mapcompare-container :global(.hoq-map-cmp-table th),
+    .hoq-mapcompare-container :global(.hoq-map-cmp-table td) {
+      padding: 0.35rem 0.5rem;
+    }
   }
 
 </style>
