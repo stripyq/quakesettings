@@ -805,6 +805,17 @@ function formatBindString(bind: string): string {
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
+// Build steamId→player lookup for client-side map leaderboards
+const steamPlayerMap: Record<string, { name: string; slug: string }> = {};
+for (const p of allPlayers) {
+  if (p.data.steamId) {
+    steamPlayerMap[p.data.steamId] = {
+      name: p.data.name,
+      slug: p.data.published !== false ? p.id : '',
+    };
+  }
+}
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Dataset",
@@ -1611,6 +1622,16 @@ const schema = {
       </div>
     </div>
 
+    <!-- ========== SECTION: MAP WIN RATE LEADERBOARDS ========== -->
+    <div class="s-section-header" style="--section-color: #39d353">
+      <div class="s-section-icon" style="background: #39d353">&#127758;</div>
+      <span class="s-section-title" style="color: #39d353">MAP WIN RATE LEADERBOARDS</span>
+      <span class="s-section-attr">Live from <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a> &middot; CTF &middot; 10+ games</span>
+    </div>
+    <div id="map-lb-loading" class="s-map-lb-loading">Loading map win rates for all players&hellip;</div>
+    <div id="map-lb-error" class="s-map-lb-error" style="display:none"></div>
+    <div id="map-lb-grid" class="s-map-lb-grid"></div>
+
     <div class="s-disclaimer">
       <p><strong>cm/360&deg;</strong> = how many centimeters it takes for you to complete a 360 degree turn. This is also called your real sensitivity.</p>
       <p><strong>eDPI</strong> = mouse DPI &times; ingame sens</p>
@@ -1622,6 +1643,141 @@ const schema = {
     </footer>
   </div>
 </BaseLayout>
+
+<script define:vars={{ steamPlayerMap, base }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    var loadingEl = document.getElementById('map-lb-loading');
+    var errorEl = document.getElementById('map-lb-error');
+    var gridEl = document.getElementById('map-lb-grid');
+    if (!loadingEl || !gridEl) return;
+
+    var HOQ = 'http://88.214.20.58';
+    var steamIds = Object.keys(steamPlayerMap);
+    if (steamIds.length === 0) {
+      loadingEl.style.display = 'none';
+      return;
+    }
+
+    // Progress counter
+    var completed = 0;
+    var total = steamIds.length;
+
+    function updateProgress() {
+      completed++;
+      loadingEl.textContent = 'Loading map win rates\u2026 ' + completed + '/' + total + ' players';
+    }
+
+    // Fetch all players in parallel with concurrency limit
+    var BATCH = 20;
+    var allEntries = []; // { steamId, map, games, win_pct, rating, percentile }
+
+    function fetchBatch(ids) {
+      return Promise.all(ids.map(function(sid) {
+        return fetch(HOQ + '/player/' + sid + '/map_ratings.json')
+          .then(function(r) { return r.ok ? r.json() : []; })
+          .catch(function() { return []; })
+          .then(function(raw) {
+            updateProgress();
+            var arr = Array.isArray(raw) ? raw : [];
+            for (var i = 0; i < arr.length; i++) {
+              var r = arr[i];
+              if (r.gametype_short === 'ctf' && r.games >= 10) {
+                allEntries.push({
+                  steamId: sid,
+                  map: r.map,
+                  games: r.games,
+                  win_pct: r.win_pct,
+                  rating: r.rating,
+                  percentile: r.percentile,
+                });
+              }
+            }
+          });
+      }));
+    }
+
+    // Process in batches
+    var batches = [];
+    for (var i = 0; i < steamIds.length; i += BATCH) {
+      batches.push(steamIds.slice(i, i + BATCH));
+    }
+
+    var chain = Promise.resolve();
+    for (var b = 0; b < batches.length; b++) {
+      (function(batch) {
+        chain = chain.then(function() { return fetchBatch(batch); });
+      })(batches[b]);
+    }
+
+    chain.then(function() {
+      loadingEl.style.display = 'none';
+
+      if (allEntries.length === 0) {
+        errorEl.textContent = 'No CTF map data available.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Group by map
+      var byMap = {};
+      for (var i = 0; i < allEntries.length; i++) {
+        var e = allEntries[i];
+        if (!byMap[e.map]) byMap[e.map] = [];
+        byMap[e.map].push(e);
+      }
+
+      // Sort maps by total players descending (most popular first)
+      var mapNames = Object.keys(byMap).sort(function(a, b) {
+        return byMap[b].length - byMap[a].length;
+      });
+
+      var html = '';
+      for (var m = 0; m < mapNames.length; m++) {
+        var mapName = mapNames[m];
+        var entries = byMap[mapName];
+        // Sort by win_pct descending, take top 10
+        entries.sort(function(a, b) { return b.win_pct - a.win_pct; });
+        var top10 = entries.slice(0, 10);
+
+        html += '<div class="s-card s-map-lb-card">';
+        html += '<h2 class="s-card-title">' + mapName + '</h2>';
+        html += '<p class="s-card-sub">' + entries.length + ' players with 10+ games</p>';
+        html += '<table class="s-map-lb-table"><thead><tr>';
+        html += '<th>#</th><th>Player</th><th>Games</th><th>Win%</th><th>Rating</th><th>Pctl</th>';
+        html += '</tr></thead><tbody>';
+
+        for (var j = 0; j < top10.length; j++) {
+          var p = top10[j];
+          var info = steamPlayerMap[p.steamId];
+          var name = info ? info.name : p.steamId;
+          var slug = info ? info.slug : '';
+          var nameHtml = slug
+            ? '<a href="' + base + 'players/' + slug + '/" class="s-map-lb-link">' + name + '</a>'
+            : '<span>' + name + '</span>';
+          var winCls = p.win_pct > 50 ? 'hoq-win-green' : (p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber');
+          var rankCls = j < 3 ? ' s-lb-top' + (j + 1) : '';
+
+          html += '<tr>';
+          html += '<td class="s-map-lb-rank' + rankCls + '">' + (j + 1) + '</td>';
+          html += '<td class="s-map-lb-name">' + nameHtml + '</td>';
+          html += '<td class="s-map-lb-num">' + p.games + '</td>';
+          html += '<td class="s-map-lb-num ' + winCls + '">' + p.win_pct.toFixed(1) + '%</td>';
+          html += '<td class="s-map-lb-num">' + p.rating.toFixed(1) + '</td>';
+          html += '<td class="s-map-lb-num">' + Math.round(p.percentile) + '</td>';
+          html += '</tr>';
+        }
+
+        html += '</tbody></table></div>';
+      }
+
+      gridEl.innerHTML = html;
+    }).catch(function() {
+      loadingEl.style.display = 'none';
+      errorEl.textContent = 'Failed to load map win rate data.';
+      errorEl.style.display = 'block';
+    });
+  });
+</script>
 
 <style>
   /* ===========================================
@@ -2625,6 +2781,132 @@ const schema = {
 
     .s-pad-rowlabel-name {
       font-size: 0.6rem;
+    }
+  }
+
+  /* ── Map Win Rate Leaderboards ── */
+  .s-map-lb-loading {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.9rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .s-map-lb-error {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.9rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .s-map-lb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-card) {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+  }
+
+  .s-map-lb-grid :global(.s-card-title) {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin: 0 0 0.2rem;
+  }
+
+  .s-map-lb-grid :global(.s-card-sub) {
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin: 0 0 0.75rem;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-table th) {
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #8b949e;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid #30363d;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-table td) {
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.4);
+    color: #c9d1d9;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-rank) {
+    font-weight: 600;
+    color: #8b949e;
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  .s-map-lb-grid :global(.s-lb-top1) {
+    color: #f1c40f !important;
+  }
+
+  .s-map-lb-grid :global(.s-lb-top2) {
+    color: #c0c0c0 !important;
+  }
+
+  .s-map-lb-grid :global(.s-lb-top3) {
+    color: #cd7f32 !important;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-name) {
+    font-weight: 500;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-link) {
+    color: #4ecdc4;
+    text-decoration: none;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-link:hover) {
+    text-decoration: underline;
+  }
+
+  .s-map-lb-grid :global(.s-map-lb-num) {
+    font-family: monospace;
+    text-align: right;
+  }
+
+  .s-map-lb-grid :global(.hoq-win-green) {
+    color: #4ade80 !important;
+    font-weight: 600;
+  }
+
+  .s-map-lb-grid :global(.hoq-win-amber) {
+    color: #fbbf24 !important;
+    font-weight: 600;
+  }
+
+  .s-map-lb-grid :global(.hoq-win-red) {
+    color: #f87171 !important;
+    font-weight: 600;
+  }
+
+  @media (max-width: 500px) {
+    .s-map-lb-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .s-map-lb-grid :global(.s-map-lb-table) {
+      font-size: 0.75rem;
     }
   }
 </style>
