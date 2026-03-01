@@ -1439,7 +1439,8 @@ const schema = {
             return;
           }
 
-          const pad = { top: 20, right: 20, bottom: 40, left: 50 };
+          const hasActivity = mode === 'ctf' && activityBuckets.length > 0;
+          const pad = { top: 20, right: hasActivity ? 50 : 20, bottom: 40, left: 50 };
           const cw = W - pad.left - pad.right;
           const ch = H - pad.top - pad.bottom;
 
@@ -1514,6 +1515,21 @@ const schema = {
 
                 ctx.fillRect(x1, pad.top + ch - barH, x2 - x1, barH);
               }
+
+              // Right Y-axis: games-per-month scale
+              ctx.fillStyle = '#666';
+              ctx.font = '11px monospace';
+              ctx.textAlign = 'left';
+              const rightX = pad.left + cw + 6;
+              const axisSteps = Math.min(gridSteps, maxGames);
+              for (let i = 0; i <= axisSteps; i++) {
+                const val = Math.round((maxGames / axisSteps) * (axisSteps - i));
+                const y = pad.top + (ch / axisSteps) * i;
+                ctx.fillText(String(val), rightX, y + 4);
+              }
+              // "games" label at the top
+              ctx.font = '9px monospace';
+              ctx.fillText('games', rightX, pad.top - 6);
             }
           }
 
