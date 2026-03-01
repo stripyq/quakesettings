@@ -1153,8 +1153,16 @@ const schema = {
         hoqHistoryContainer.innerHTML =
           '<h2 class="hoq-cmp-heading">Rating History</h2>' +
           '<div class="hoq-cmp-controls" id="hoq-cmp-controls">' +
-            '<button class="hoq-cmp-mode-btn active" data-mode="ctf">CTF</button>' +
-            '<button class="hoq-cmp-mode-btn" data-mode="tdm">TDM</button>' +
+            '<div class="hoq-cmp-btn-group">' +
+              '<button class="hoq-cmp-mode-btn active" data-mode="ctf">CTF</button>' +
+              '<button class="hoq-cmp-mode-btn" data-mode="tdm">TDM</button>' +
+            '</div>' +
+            '<div class="hoq-cmp-btn-group" id="hoq-cmp-range-controls">' +
+              '<button class="hoq-cmp-mode-btn active" data-range="all">All Time</button>' +
+              '<button class="hoq-cmp-mode-btn" data-range="year">1 Year</button>' +
+              '<button class="hoq-cmp-mode-btn" data-range="month">1 Month</button>' +
+              '<button class="hoq-cmp-mode-btn" data-range="week">1 Week</button>' +
+            '</div>' +
           '</div>' +
           '<div class="hoq-cmp-chart-wrap">' +
             '<div class="hoq-cmp-loading" id="hoq-cmp-loading">Loading rating history\u2026</div>' +
@@ -1231,10 +1239,18 @@ const schema = {
           var P1_COLOR = '#3b82f6';
           var P2_COLOR = '#a855f7';
           var activeMode = hasCtf ? 'ctf' : 'tdm';
+          var activeRange = 'all';
+
+          var rangeMsMap = { week: 7*86400000, month: 30*86400000, year: 365*86400000 };
+          function filterByRange(arr, range) {
+            if (range === 'all' || arr.length === 0) return arr;
+            var cutoff = Date.now() - (rangeMsMap[range] || 0);
+            return arr.filter(function(d) { return d.date.getTime() >= cutoff; });
+          }
 
           function drawChart(mode) {
-            var series1 = data1[mode] || [];
-            var series2 = data2[mode] || [];
+            var series1 = filterByRange(data1[mode] || [], activeRange);
+            var series2 = filterByRange(data2[mode] || [], activeRange);
 
             if (series1.length === 0 && series2.length === 0) {
               ctx.clearRect(0, 0, W, H);
@@ -1334,11 +1350,18 @@ const schema = {
 
           controls.addEventListener('click', function(e) {
             var btn = e.target.closest('.hoq-cmp-mode-btn');
-            if (!btn || !btn.dataset.mode) return;
-            activeMode = btn.dataset.mode;
-            controls.querySelectorAll('.hoq-cmp-mode-btn').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            drawChart(activeMode);
+            if (!btn) return;
+            if (btn.dataset.mode) {
+              activeMode = btn.dataset.mode;
+              btn.closest('.hoq-cmp-btn-group').querySelectorAll('.hoq-cmp-mode-btn').forEach(function(b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              drawChart(activeMode);
+            } else if (btn.dataset.range) {
+              activeRange = btn.dataset.range;
+              btn.closest('.hoq-cmp-btn-group').querySelectorAll('.hoq-cmp-mode-btn').forEach(function(b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              drawChart(activeMode);
+            }
           });
         });
 
@@ -2608,6 +2631,13 @@ const schema = {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-btn-group) {
+    display: flex;
+    gap: 0.5rem;
   }
 
   .hoq-history-container :global(.hoq-cmp-mode-btn) {

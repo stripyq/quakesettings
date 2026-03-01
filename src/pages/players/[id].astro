@@ -1306,8 +1306,16 @@ const schema = {
       <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId} data-base={base}>
         <h2>HoQ Rating History</h2>
         <div class="hoq-chart-controls" id="hoq-chart-controls" style="display:none">
-          <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
-          <button class="hoq-mode-btn" data-mode="tdm" id="hoq-tdm-btn" style="display:none">TDM</button>
+          <div class="hoq-btn-group">
+            <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
+            <button class="hoq-mode-btn" data-mode="tdm" id="hoq-tdm-btn" style="display:none">TDM</button>
+          </div>
+          <div class="hoq-btn-group" id="hoq-range-controls">
+            <button class="hoq-mode-btn active" data-range="all">All Time</button>
+            <button class="hoq-mode-btn" data-range="year">1 Year</button>
+            <button class="hoq-mode-btn" data-range="month">1 Month</button>
+            <button class="hoq-mode-btn" data-range="week">1 Week</button>
+          </div>
         </div>
         <div class="hoq-chart-wrap" id="hoq-chart-wrap">
           <div class="hoq-loading" id="hoq-chart-loading">Loading rating history&hellip;</div>
@@ -1394,10 +1402,27 @@ const schema = {
         const H = rect.height;
 
         let activeMode = ctfData.length > 0 ? 'ctf' : 'tdm';
+        let activeRange = 'all';
+
+        function filterByRange(data: Array<{ rating: number; date: Date }>, range: string) {
+          if (range === 'all' || data.length === 0) return data;
+          const now = Date.now();
+          const ms: Record<string, number> = { week: 7*86400000, month: 30*86400000, year: 365*86400000 };
+          const cutoff = now - (ms[range] || 0);
+          return data.filter(d => d.date.getTime() >= cutoff);
+        }
 
         function drawChart(mode: string) {
-          const data = byMode[mode] || [];
-          if (data.length === 0) return;
+          const raw = byMode[mode] || [];
+          const data = filterByRange(raw, activeRange);
+          if (data.length === 0) {
+            ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = '#8b949e';
+            ctx.font = '13px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('No data for this time range.', W / 2, H / 2);
+            return;
+          }
 
           const pad = { top: 20, right: 20, bottom: 40, left: 50 };
           const cw = W - pad.left - pad.right;
@@ -1495,11 +1520,18 @@ const schema = {
         // Mode toggle
         controls.addEventListener('click', (e) => {
           const btn = (e.target as HTMLElement).closest('.hoq-mode-btn') as HTMLElement | null;
-          if (!btn || !btn.dataset.mode) return;
-          activeMode = btn.dataset.mode;
-          controls.querySelectorAll('.hoq-mode-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          drawChart(activeMode);
+          if (!btn) return;
+          if (btn.dataset.mode) {
+            activeMode = btn.dataset.mode;
+            btn.closest('.hoq-btn-group')!.querySelectorAll('.hoq-mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            drawChart(activeMode);
+          } else if (btn.dataset.range) {
+            activeRange = btn.dataset.range;
+            btn.closest('.hoq-btn-group')!.querySelectorAll('.hoq-mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            drawChart(activeMode);
+          }
         });
       } catch (err) {
         loading.style.display = 'none';
@@ -2969,6 +3001,13 @@ const schema = {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hoq-btn-group {
+    display: flex;
+    gap: 0.5rem;
   }
 
   .hoq-mode-btn {
