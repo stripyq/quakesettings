@@ -51,12 +51,12 @@ headset: beyerdynamic-dt-770-pro
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 37
-accuracy_lg: 37
-accuracy_rg: 52
+
+
+
+
+
+
 qlrace:
   mode: 2
   records: 1
@@ -79,3 +79,6 @@ qlrace:
       total: 591
       time: 25384
   fetched_at: "2026-02-23"
+favorite_map: q3wcp9
+favorite_gametype: "Weapon: Railgun"
+favorite_weapon: Railgun

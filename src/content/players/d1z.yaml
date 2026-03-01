@@ -6,16 +6,12 @@ aliases:
 team2026: GdeFlag?
 team2026Shortname: GF?
 tdmRating: 25.25
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 22.5
-ctfRatingUpdated: "2026-02-24"
+tdmRatingUpdated: "2026-02-04"
+ctfRating: 22.34
+ctfRatingUpdated: "2026-02-04"
 duelRating: 1554
 ctfGames: 173
 tdmGames: 362
-hoqCtfRating: 22.5
-hoqCtfGames: 173
-hoqTdmRating: 25.25
-hoqTdmGames: 362
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii
@@ -46,6 +42,12 @@ attack: MOUSE1
 zoom: shift
 gpuBrand: NVIDIA
 cpuBrand: Intel
+
+
+
+
+
+
 qlrace:
   mode: 2
   records: 2
@@ -73,8 +75,5 @@ qlrace:
       time: 7336
   fetched_at: "2026-02-23"
 favorite_map: hiddenfortress
-favorite_gametype: Team Deathmatch
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_rg: 50
-accuracy_lg: 36

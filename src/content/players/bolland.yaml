@@ -34,12 +34,13 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 2457
-hoqTdmRating: 15.6
-hoqTdmGames: 2457
+
+
+
+
+
+
 qlrace: null
 favorite_map: purgatory
-favorite_gametype: Team Deathmatch
+favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
-accuracy_rl: 44
-accuracy_rg: 52
-accuracy_lg: 30

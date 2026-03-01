@@ -11,16 +11,12 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1242
 duelRatingUpdated: "2026-01-31"
-ctfRating: 32.17
-ctfRatingUpdated: "2026-02-24"
+ctfRating: 31.48
+ctfRatingUpdated: "2026-02-04"
 qllrCtfRating: 20.03
 qllrCtfGames: 19
-hoqCtfRating: 32.17
-hoqCtfGames: 1697
-hoqTdmRating: 21.14
-hoqTdmGames: 1
 tdmRating: 21.14
-tdmRatingUpdated: "2026-02-24"
+tdmRatingUpdated: "2026-01-31"
 dataSource: player
 dpi: 800
 sensitivity: 1.7
@@ -47,12 +43,14 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: AMD
 cpuBrand: AMD
-ctfGames: 1697
+ctfGames: 1671
 tdmGames: 1
+
+
+
+
+
+
 qlrace: null
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
-accuracy_rl: 39
-accuracy_rg: 58
-accuracy_lg: 36

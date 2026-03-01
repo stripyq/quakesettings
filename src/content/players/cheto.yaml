@@ -11,10 +11,8 @@ team2026Shortname: OSQ
 category: duel
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 15.14
-ctfRatingUpdated: "2026-02-24"
-tdmRating: 14.59
-tdmRatingUpdated: "2026-02-24"
+ctfRating: 15.4
+tdmRating: 14.37
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022
@@ -44,14 +42,12 @@ headset: logitech-g-pro-headset
 skates: None
 ctfGames: 3925
 tdmGames: 155
-hoqCtfRating: 15.14
-hoqCtfGames: 3925
-hoqTdmRating: 14.59
-hoqTdmGames: 155
+
+
+
+
+
+
 qlrace: null
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
+favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
-accuracy_rl: 39
-accuracy_rg: 46
-accuracy_lg: 30

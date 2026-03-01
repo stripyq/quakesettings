@@ -45,12 +45,12 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 37
-accuracy_lg: 37
-accuracy_rg: 50
+
+
+
+
+
+
 qlrace:
   mode: 2
   records: 3
@@ -81,3 +81,5 @@ qlrace:
       total: 35
       time: 40731
   fetched_at: "2026-02-23"
+favorite_gametype: "Weapon: Railgun"
+favorite_weapon: Railgun

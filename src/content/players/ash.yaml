@@ -5,8 +5,8 @@ category: tdm
 lastUpdated: 2025-01
 duelRating: 1756
 duelRatingUpdated: "2026-01-31"
-tdmRating: 34.71
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 36.2
+tdmRatingUpdated: "2026-01-31"
 ctfRating: 29.8
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -36,8 +36,12 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
 tdmGames: 367
-hoqTdmRating: 34.71
-hoqTdmGames: 367
+
+
+
+
+
+
 qlrace:
   mode: 3
   records: 1
@@ -61,8 +65,5 @@ qlrace:
       time: 47432
   fetched_at: "2026-02-23"
 favorite_map: purgatory
-favorite_gametype: Team Deathmatch
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
-accuracy_rl: 43
-accuracy_rg: 55
-accuracy_lg: 37

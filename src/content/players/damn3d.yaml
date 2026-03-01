@@ -12,10 +12,6 @@ ctfRating: 27.26
 ctfRatingUpdated: "2026-01-31"
 qllrCtfRating: 19.56
 qllrCtfGames: 13
-hoqCtfRating: 27.26
-hoqCtfGames: 846
-hoqTdmRating: 26.77
-hoqTdmGames: 73
 duelRating: 1227
 ctfGames: 846
 tdmGames: 73
@@ -47,10 +43,12 @@ enemyModel: Keel
 crosshairColor: Blue, Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
+
+
+
+
+
+
 qlrace: null
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
-accuracy_rl: 33
-accuracy_rg: 53
-accuracy_lg: 35

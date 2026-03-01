@@ -2,21 +2,14 @@ name: DimebaG
 country: OTHER
 steamId: "76561198380825290"
 category: tdm
-ctfRating: 24.84
-ctfRatingUpdated: "2026-02-24"
 dataSource: collected
 lastUpdated: 2026-02
-tdmRating: 23.64
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 23.99
 tdm2v2Rating: 21.38
 tdm2v2Games: 91
 duelRating: 1215
 ctfGames: 2
-tdmGames: 3946
-hoqCtfRating: 24.84
-hoqCtfGames: 2
-hoqTdmRating: 23.64
-hoqTdmGames: 3946
+tdmGames: 3939
 duelGames: 380
 dpi: 2400
 sensitivity: 0.92
@@ -48,10 +41,13 @@ headset: cooler-master-mh752
 skates: Aftermarket
 gpuBrand: AMD
 cpuBrand: AMD
+
+
+
+
+
+
 qlrace: null
 favorite_map: purgatory
-favorite_gametype: Team Deathmatch
+favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
-accuracy_rl: 40
-accuracy_rg: 53
-accuracy_lg: 34
