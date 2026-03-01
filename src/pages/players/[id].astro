@@ -1301,9 +1301,252 @@ const schema = {
       </section>
     )}
 
+    {/* HoQ Rating History & Map Performance (client-side, requires steamId) */}
+    {p.steamId && (
+      <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId}>
+        <h2>HoQ Rating History</h2>
+        <div class="hoq-chart-controls" id="hoq-chart-controls" style="display:none">
+          <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
+          <button class="hoq-mode-btn" data-mode="tdm" id="hoq-tdm-btn" style="display:none">TDM</button>
+        </div>
+        <div class="hoq-chart-wrap" id="hoq-chart-wrap">
+          <div class="hoq-loading" id="hoq-chart-loading">Loading rating history&hellip;</div>
+          <canvas id="hoq-chart" width="800" height="300" style="display:none"></canvas>
+          <div class="hoq-error" id="hoq-chart-error" style="display:none"></div>
+        </div>
+
+        <h2 class="hoq-map-heading">Map Performance</h2>
+        <div class="hoq-map-wrap" id="hoq-map-wrap">
+          <div class="hoq-loading" id="hoq-map-loading">Loading map stats&hellip;</div>
+          <table class="hoq-map-table" id="hoq-map-table" style="display:none">
+            <thead>
+              <tr>
+                <th>Map</th>
+                <th>Games</th>
+                <th>Win%</th>
+                <th>Rating</th>
+                <th>Percentile</th>
+              </tr>
+            </thead>
+            <tbody id="hoq-map-tbody"></tbody>
+          </table>
+          <div class="hoq-error" id="hoq-map-error" style="display:none"></div>
+        </div>
+      </section>
+    )}
+
     <a href={base} class="back-link">← Back to all players</a>
   </div>
 </BaseLayout>
+
+<script>
+  const section = document.getElementById('hoq-live');
+  if (section) {
+    const steamId = section.dataset.steamId;
+    const API = 'http://88.214.20.58';
+
+    // ── Rating History Chart ──
+    (async () => {
+      const loading = document.getElementById('hoq-chart-loading')!;
+      const errorEl = document.getElementById('hoq-chart-error')!;
+      const canvas = document.getElementById('hoq-chart') as HTMLCanvasElement;
+      const controls = document.getElementById('hoq-chart-controls')!;
+      const tdmBtn = document.getElementById('hoq-tdm-btn')!;
+
+      try {
+        const res = await fetch(`${API}/player/${steamId}/history.json`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const raw: Array<{ gametype_short: string; rating: number; timestamp: string }> = await res.json();
+
+        const byMode: Record<string, Array<{ rating: number; date: Date }>> = {};
+        for (const entry of raw) {
+          const mode = entry.gametype_short;
+          if (!byMode[mode]) byMode[mode] = [];
+          byMode[mode].push({ rating: entry.rating, date: new Date(entry.timestamp) });
+        }
+        for (const mode of Object.keys(byMode)) {
+          byMode[mode].sort((a, b) => a.date.getTime() - b.date.getTime());
+        }
+
+        const ctfData = byMode['ctf'] || [];
+        const tdmData = byMode['tdm'] || [];
+
+        if (ctfData.length === 0 && tdmData.length === 0) {
+          loading.style.display = 'none';
+          errorEl.textContent = 'No rating history available.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        loading.style.display = 'none';
+        canvas.style.display = 'block';
+        controls.style.display = 'flex';
+        if (tdmData.length > 0) tdmBtn.style.display = '';
+
+        const ctx = canvas.getContext('2d')!;
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        const W = rect.width;
+        const H = rect.height;
+
+        let activeMode = ctfData.length > 0 ? 'ctf' : 'tdm';
+
+        function drawChart(mode: string) {
+          const data = byMode[mode] || [];
+          if (data.length === 0) return;
+
+          const pad = { top: 20, right: 20, bottom: 40, left: 50 };
+          const cw = W - pad.left - pad.right;
+          const ch = H - pad.top - pad.bottom;
+
+          const ratings = data.map(d => d.rating);
+          let minR = Math.min(...ratings);
+          let maxR = Math.max(...ratings);
+          const rRange = maxR - minR || 1;
+          minR -= rRange * 0.05;
+          maxR += rRange * 0.05;
+
+          const minT = data[0].date.getTime();
+          const maxT = data[data.length - 1].date.getTime();
+          const tRange = maxT - minT || 1;
+
+          ctx.clearRect(0, 0, W, H);
+
+          // Grid lines
+          ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+          ctx.lineWidth = 1;
+          const gridSteps = 5;
+          for (let i = 0; i <= gridSteps; i++) {
+            const y = pad.top + (ch / gridSteps) * i;
+            ctx.beginPath();
+            ctx.moveTo(pad.left, y);
+            ctx.lineTo(pad.left + cw, y);
+            ctx.stroke();
+          }
+
+          // Y-axis labels
+          ctx.fillStyle = '#8b949e';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'right';
+          for (let i = 0; i <= gridSteps; i++) {
+            const val = maxR - ((maxR - minR) / gridSteps) * i;
+            const y = pad.top + (ch / gridSteps) * i;
+            ctx.fillText(val.toFixed(1), pad.left - 6, y + 4);
+          }
+
+          // X-axis labels
+          ctx.textAlign = 'center';
+          const xLabels = Math.min(6, data.length);
+          for (let i = 0; i < xLabels; i++) {
+            const idx = Math.round((i / (xLabels - 1)) * (data.length - 1));
+            const d = data[idx].date;
+            const label = `${d.getMonth() + 1}/${d.getDate()}`;
+            const x = pad.left + ((d.getTime() - minT) / tRange) * cw;
+            ctx.fillText(label, x, H - pad.bottom + 16);
+          }
+
+          // Line
+          const color = mode === 'ctf' ? '#58a6ff' : '#f0883e';
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
+          ctx.lineJoin = 'round';
+          ctx.beginPath();
+          for (let i = 0; i < data.length; i++) {
+            const x = pad.left + ((data[i].date.getTime() - minT) / tRange) * cw;
+            const y = pad.top + ch - ((data[i].rating - minR) / (maxR - minR)) * ch;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          // Gradient fill
+          const rgb = mode === 'ctf' ? '88,166,255' : '240,136,62';
+          const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + ch);
+          grad.addColorStop(0, `rgba(${rgb},0.15)`);
+          grad.addColorStop(1, `rgba(${rgb},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          for (let i = 0; i < data.length; i++) {
+            const x = pad.left + ((data[i].date.getTime() - minT) / tRange) * cw;
+            const y = pad.top + ch - ((data[i].rating - minR) / (maxR - minR)) * ch;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.lineTo(pad.left + cw, pad.top + ch);
+          ctx.lineTo(pad.left, pad.top + ch);
+          ctx.closePath();
+          ctx.fill();
+
+          // Dots at start and end
+          for (const i of [0, data.length - 1]) {
+            const x = pad.left + ((data[i].date.getTime() - minT) / tRange) * cw;
+            const y = pad.top + ch - ((data[i].rating - minR) / (maxR - minR)) * ch;
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, 3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        drawChart(activeMode);
+
+        // Mode toggle
+        controls.addEventListener('click', (e) => {
+          const btn = (e.target as HTMLElement).closest('.hoq-mode-btn') as HTMLElement | null;
+          if (!btn || !btn.dataset.mode) return;
+          activeMode = btn.dataset.mode;
+          controls.querySelectorAll('.hoq-mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          drawChart(activeMode);
+        });
+      } catch (err) {
+        loading.style.display = 'none';
+        errorEl.textContent = 'Failed to load rating history.';
+        errorEl.style.display = 'block';
+      }
+    })();
+
+    // ── Map Performance Table ──
+    (async () => {
+      const loading = document.getElementById('hoq-map-loading')!;
+      const errorEl = document.getElementById('hoq-map-error')!;
+      const table = document.getElementById('hoq-map-table')!;
+      const tbody = document.getElementById('hoq-map-tbody')!;
+
+      try {
+        const res = await fetch(`${API}/player/${steamId}/map_ratings.json`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const raw: Array<{ gametype_short: string; map: string; games: number; win_pct: number; rating: number; percentile: number }> = await res.json();
+
+        const ctfMaps = raw
+          .filter(r => r.gametype_short === 'ctf' && r.games >= 10)
+          .sort((a, b) => b.games - a.games);
+
+        if (ctfMaps.length === 0) {
+          loading.style.display = 'none';
+          errorEl.textContent = 'No map performance data available.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        loading.style.display = 'none';
+        table.style.display = 'table';
+
+        for (const m of ctfMaps) {
+          const tr = document.createElement('tr');
+          const winClass = m.win_pct > 50 ? 'hoq-win-green' : m.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber';
+          tr.innerHTML = `<td>${m.map}</td><td>${m.games}</td><td class="${winClass}">${m.win_pct.toFixed(1)}%</td><td>${m.rating.toFixed(1)}</td><td>${Math.round(m.percentile)}</td>`;
+          tbody.appendChild(tr);
+        }
+      } catch (err) {
+        loading.style.display = 'none';
+        errorEl.textContent = 'Failed to load map performance data.';
+        errorEl.style.display = 'block';
+      }
+    })();
+  }
+</script>
 
 <style>
   .player-page {
@@ -2705,5 +2948,139 @@ const schema = {
   .race-maps-table td {
     padding: 0.35rem 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  /* ── HoQ Live Sections ── */
+  .hoq-live-section {
+    margin-top: 2rem;
+  }
+
+  .hoq-live-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hoq-map-heading {
+    margin-top: 2rem !important;
+  }
+
+  .hoq-chart-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hoq-mode-btn {
+    padding: 0.3rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary, #9090a0);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .hoq-mode-btn:hover {
+    border-color: var(--accent-primary, #ff6b35);
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .hoq-mode-btn.active {
+    background: var(--accent-primary, #ff6b35);
+    border-color: var(--accent-primary, #ff6b35);
+    color: #fff;
+  }
+
+  .hoq-chart-wrap {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  #hoq-chart {
+    width: 100%;
+    height: 300px;
+  }
+
+  .hoq-loading {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .hoq-error {
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .hoq-map-wrap {
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid var(--border-color, #2a2a35);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .hoq-map-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .hoq-map-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #9090a0);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-map-table td {
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-primary, #e8e8f0);
+  }
+
+  .hoq-map-table td:first-child {
+    font-weight: 500;
+  }
+
+  :global(.hoq-win-green) {
+    color: #4ade80 !important;
+    font-weight: 600;
+  }
+
+  :global(.hoq-win-amber) {
+    color: #fbbf24 !important;
+    font-weight: 600;
+  }
+
+  :global(.hoq-win-red) {
+    color: #f87171 !important;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    #hoq-chart {
+      height: 220px;
+    }
+
+    .hoq-map-table {
+      font-size: 0.75rem;
+    }
+
+    .hoq-map-table th,
+    .hoq-map-table td {
+      padding: 0.35rem 0.5rem;
+    }
   }
 </style>
