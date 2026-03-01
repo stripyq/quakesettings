@@ -1134,6 +1134,112 @@ const schema = {
       );
     })())}
 
+    {/* HoQ Rating History & Map Performance (client-side, requires steamId) */}
+    {p.steamId && (
+      <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId} data-base={base}>
+        <h2>HoQ Rating History</h2>
+        <div class="hoq-chart-controls" id="hoq-chart-controls" style="display:none">
+          <div class="hoq-btn-group">
+            <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
+            <button class="hoq-mode-btn" data-mode="tdm" id="hoq-tdm-btn" style="display:none">TDM</button>
+          </div>
+          <div class="hoq-btn-group" id="hoq-range-controls">
+            <button class="hoq-mode-btn active" data-range="all">All Time</button>
+            <button class="hoq-mode-btn" data-range="year">1 Year</button>
+            <button class="hoq-mode-btn" data-range="month">1 Month</button>
+            <button class="hoq-mode-btn" data-range="week">1 Week</button>
+          </div>
+        </div>
+        <div class="hoq-chart-wrap" id="hoq-chart-wrap">
+          <div class="hoq-loading" id="hoq-chart-loading">Loading rating history&hellip;</div>
+          <canvas id="hoq-chart" width="800" height="300" style="display:none"></canvas>
+          <div class="hoq-error" id="hoq-chart-error" style="display:none"></div>
+        </div>
+
+        <h2 class="hoq-map-heading">Map Performance</h2>
+        <div class="hoq-map-wrap" id="hoq-map-wrap">
+          <div class="hoq-loading" id="hoq-map-loading">Loading map stats&hellip;</div>
+          <table class="hoq-map-table" id="hoq-map-table" style="display:none">
+            <thead>
+              <tr>
+                <th>Map</th>
+                <th>Games</th>
+                <th>Win%</th>
+                <th>Rating</th>
+                <th>Percentile</th>
+              </tr>
+            </thead>
+            <tbody id="hoq-map-tbody"></tbody>
+          </table>
+          <div class="hoq-error" id="hoq-map-error" style="display:none"></div>
+        </div>
+      </section>
+    )}
+
+    <!-- Team History -->
+    {(p.team2024 || p.team2026 || teammates.length > 0) && (
+      <section class="team-section">
+        <h2>Team History</h2>
+        <div class="team-content">
+          {(p.team2024 || p.team2026) && (
+            <div class="team-history-rows">
+              {p.team2024 && p.team2026 && p.team2024 === p.team2026 ? (
+                <div class="team-row">
+                  <span class="team-years">2024–2026</span>
+                  <span class="team-name">{p.team2026}</span>
+                </div>
+              ) : (
+                <>
+                  {p.team2026 && (
+                    <div class="team-row">
+                      <span class="team-years">2026</span>
+                      <span class="team-name">{p.team2026}</span>
+                    </div>
+                  )}
+                  {p.team2024 && (
+                    <div class="team-row">
+                      <span class="team-years">2024</span>
+                      <span class="team-name">{p.team2024}</span>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          )}
+          {p.team2026 && teammates.length > 0 && (
+            <div class="team-mates">
+              <span class="team-mates-label">Teammates:</span>
+              <span class="team-mates-list">
+                {teammates.map((tm, i) => (
+                  <>
+                    {i > 0 && <span class="team-sep"> · </span>}
+                    {tm.data.published !== false ? (
+                      <a href={`${base}players/${tm.id}/`} class="teammate-inline">{tm.data.name}</a>
+                    ) : (
+                      <span class="teammate-inline no-profile">{tm.data.name}</span>
+                    )}
+                  </>
+                ))}
+              </span>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Data Source -->
+    {(p.source || p.lastUpdated || ctfStats || tdmStats || p.qlrace) && (
+      <section class="source-section">
+        <h2>Data Source</h2>
+        <div class="source-info">
+          {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
+          {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
+          {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
+          {p.qlrace && <p><strong>Race Data:</strong> From <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a>{p.qlrace.fetched_at ? ` (${p.qlrace.fetched_at})` : ''}</p>}
+        </div>
+      </section>
+    )}
+
     <!-- Race Stats (qlrace.com) -->
     {p.qlrace && p.qlrace.records > 0 && (() => {
       const r = p.qlrace;
@@ -1234,112 +1340,6 @@ const schema = {
         <a href={`${base}${p.configFile.replace(/^\//, '')}`} download class="download-btn">
           Download {p.name}'s Config
         </a>
-      </section>
-    )}
-
-    <!-- Data Source -->
-    {(p.source || p.lastUpdated || ctfStats || tdmStats || p.qlrace) && (
-      <section class="source-section">
-        <h2>Data Source</h2>
-        <div class="source-info">
-          {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
-          {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
-          {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
-          {p.qlrace && <p><strong>Race Data:</strong> From <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a>{p.qlrace.fetched_at ? ` (${p.qlrace.fetched_at})` : ''}</p>}
-        </div>
-      </section>
-    )}
-
-    <!-- Team History -->
-    {(p.team2024 || p.team2026 || teammates.length > 0) && (
-      <section class="team-section">
-        <h2>Team History</h2>
-        <div class="team-content">
-          {(p.team2024 || p.team2026) && (
-            <div class="team-history-rows">
-              {p.team2024 && p.team2026 && p.team2024 === p.team2026 ? (
-                <div class="team-row">
-                  <span class="team-years">2024–2026</span>
-                  <span class="team-name">{p.team2026}</span>
-                </div>
-              ) : (
-                <>
-                  {p.team2026 && (
-                    <div class="team-row">
-                      <span class="team-years">2026</span>
-                      <span class="team-name">{p.team2026}</span>
-                    </div>
-                  )}
-                  {p.team2024 && (
-                    <div class="team-row">
-                      <span class="team-years">2024</span>
-                      <span class="team-name">{p.team2024}</span>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          )}
-          {p.team2026 && teammates.length > 0 && (
-            <div class="team-mates">
-              <span class="team-mates-label">Teammates:</span>
-              <span class="team-mates-list">
-                {teammates.map((tm, i) => (
-                  <>
-                    {i > 0 && <span class="team-sep"> · </span>}
-                    {tm.data.published !== false ? (
-                      <a href={`${base}players/${tm.id}/`} class="teammate-inline">{tm.data.name}</a>
-                    ) : (
-                      <span class="teammate-inline no-profile">{tm.data.name}</span>
-                    )}
-                  </>
-                ))}
-              </span>
-            </div>
-          )}
-        </div>
-      </section>
-    )}
-
-    {/* HoQ Rating History & Map Performance (client-side, requires steamId) */}
-    {p.steamId && (
-      <section class="hoq-live-section" id="hoq-live" data-steam-id={p.steamId} data-base={base}>
-        <h2>HoQ Rating History</h2>
-        <div class="hoq-chart-controls" id="hoq-chart-controls" style="display:none">
-          <div class="hoq-btn-group">
-            <button class="hoq-mode-btn active" data-mode="ctf">CTF</button>
-            <button class="hoq-mode-btn" data-mode="tdm" id="hoq-tdm-btn" style="display:none">TDM</button>
-          </div>
-          <div class="hoq-btn-group" id="hoq-range-controls">
-            <button class="hoq-mode-btn active" data-range="all">All Time</button>
-            <button class="hoq-mode-btn" data-range="year">1 Year</button>
-            <button class="hoq-mode-btn" data-range="month">1 Month</button>
-            <button class="hoq-mode-btn" data-range="week">1 Week</button>
-          </div>
-        </div>
-        <div class="hoq-chart-wrap" id="hoq-chart-wrap">
-          <div class="hoq-loading" id="hoq-chart-loading">Loading rating history&hellip;</div>
-          <canvas id="hoq-chart" width="800" height="300" style="display:none"></canvas>
-          <div class="hoq-error" id="hoq-chart-error" style="display:none"></div>
-        </div>
-
-        <h2 class="hoq-map-heading">Map Performance</h2>
-        <div class="hoq-map-wrap" id="hoq-map-wrap">
-          <div class="hoq-loading" id="hoq-map-loading">Loading map stats&hellip;</div>
-          <table class="hoq-map-table" id="hoq-map-table" style="display:none">
-            <thead>
-              <tr>
-                <th>Map</th>
-                <th>Games</th>
-                <th>Win%</th>
-                <th>Rating</th>
-                <th>Percentile</th>
-              </tr>
-            </thead>
-            <tbody id="hoq-map-tbody"></tbody>
-          </table>
-          <div class="hoq-error" id="hoq-map-error" style="display:none"></div>
-        </div>
       </section>
     )}
 
