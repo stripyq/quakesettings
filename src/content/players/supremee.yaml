@@ -12,10 +12,10 @@ ctfRating: 25.18
 ctfGames: 6
 hoqCtfRating: 25.18
 hoqCtfGames: 6
+qlrace: null
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun
 accuracy_rl: 37
-accuracy_lg: 49
 accuracy_rg: 56
-qlrace: null
+accuracy_lg: 49

@@ -49,12 +49,6 @@ skates: Stock
 ctfGames: 2529
 hoqCtfRating: 18.01
 hoqCtfGames: 2529
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Rocket Launcher
-accuracy_rl: 38
-accuracy_lg: 35
-accuracy_rg: 55
 qlrace:
   mode: 2
   records: 1
@@ -77,3 +71,9 @@ qlrace:
       total: 131
       time: 64387
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 38
+accuracy_rg: 55
+accuracy_lg: 35

@@ -49,12 +49,6 @@ headset: beyerdynamic-mmx-300
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: asylum
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 47
-accuracy_lg: 43
-accuracy_rg: 58
 qlrace:
   mode: 2
   records: 4
@@ -89,3 +83,9 @@ qlrace:
       total: 10
       time: 61392
   fetched_at: "2026-02-23"
+favorite_map: asylum
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 47
+accuracy_rg: 58
+accuracy_lg: 43

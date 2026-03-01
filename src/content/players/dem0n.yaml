@@ -63,12 +63,6 @@ grip: Hybrid
 duelGames: 439
 ctfGames: 1034
 tdmGames: 40
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Lightning Gun
-accuracy_rl: 43
-accuracy_lg: 37
-accuracy_rg: 54
 qlrace:
   mode: 2
   records: 1
@@ -91,3 +85,9 @@ qlrace:
       total: 73
       time: 16617
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Lightning Gun
+accuracy_rl: 43
+accuracy_rg: 54
+accuracy_lg: 37

@@ -46,12 +46,6 @@ attack: MOUSE1
 zoom: shift
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: hiddenfortress
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_lg: 36
-accuracy_rg: 50
 qlrace:
   mode: 2
   records: 2
@@ -78,3 +72,9 @@ qlrace:
       total: 21
       time: 7336
   fetched_at: "2026-02-23"
+favorite_map: hiddenfortress
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_rg: 50
+accuracy_lg: 36

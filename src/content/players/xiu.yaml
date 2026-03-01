@@ -35,12 +35,6 @@ cpuBrand: Intel
 ctfGames: 15
 hoqCtfRating: 23.8
 hoqCtfGames: 15
-favorite_map: overkill
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 43
-accuracy_lg: 41
-accuracy_rg: 44
 qlrace:
   mode: 3
   records: 1
@@ -63,3 +57,9 @@ qlrace:
       total: 132
       time: 11346
   fetched_at: "2026-02-23"
+favorite_map: overkill
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_rg: 44
+accuracy_lg: 41

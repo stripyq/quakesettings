@@ -47,12 +47,6 @@ keyboard: ducky-one-2-mini
 monitor: alienware-aw2524hf
 headset: logitech-g-pro-headset
 skates: Aftermarket
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_lg: 38
-accuracy_rg: 56
 qlrace:
   mode: 2
   records: 3
@@ -83,3 +77,9 @@ qlrace:
       total: 284
       time: 4925
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_rg: 56
+accuracy_lg: 38

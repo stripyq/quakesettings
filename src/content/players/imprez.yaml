@@ -44,12 +44,6 @@ hoqCtfRating: 9.72
 hoqCtfGames: 146
 hoqTdmRating: 14.33
 hoqTdmGames: 67
-favorite_map: trinity
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 30
-accuracy_lg: 39
-accuracy_rg: 43
 qlrace:
   mode: 2
   records: 6
@@ -92,3 +86,9 @@ qlrace:
       total: 5
       time: 32608
   fetched_at: "2026-02-23"
+favorite_map: trinity
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 30
+accuracy_rg: 43
+accuracy_lg: 39

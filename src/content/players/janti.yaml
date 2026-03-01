@@ -52,12 +52,6 @@ headset: turtle-beach-atlas-air
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Rocket Launcher
-accuracy_rl: 36
-accuracy_lg: 29
-accuracy_rg: 46
 qlrace:
   mode: 2
   records: 17
@@ -116,3 +110,9 @@ qlrace:
       total: 35
       time: 21280
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 36
+accuracy_rg: 46
+accuracy_lg: 29

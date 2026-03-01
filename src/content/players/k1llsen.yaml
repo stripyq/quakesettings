@@ -39,12 +39,6 @@ attack: mouse1
 zoom: mouse4
 gpuBrand: NVIDIA
 cpuBrand: Intel
-favorite_map: campgrounds
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 46
-accuracy_lg: 45
-accuracy_rg: 58
 qlrace:
   mode: 2
   records: 22
@@ -103,3 +97,9 @@ qlrace:
       total: 95
       time: 32077
   fetched_at: "2026-02-23"
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 46
+accuracy_rg: 58
+accuracy_lg: 45

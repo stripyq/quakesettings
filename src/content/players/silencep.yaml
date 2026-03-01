@@ -44,12 +44,6 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 7
 tdmGames: 4
-favorite_map: campgrounds
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 34
-accuracy_lg: 46
-accuracy_rg: 59
 qlrace:
   mode: 2
   records: 1
@@ -72,3 +66,9 @@ qlrace:
       total: 242
       time: 10423
   fetched_at: "2026-02-23"
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 34
+accuracy_rg: 59
+accuracy_lg: 46

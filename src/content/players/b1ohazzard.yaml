@@ -39,10 +39,10 @@ hoqCtfRating: 3.26
 hoqCtfGames: 11
 hoqTdmRating: 21.37
 hoqTdmGames: 2147
+qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher
 accuracy_rl: 44
-accuracy_lg: 29
 accuracy_rg: 41
-qlrace: null
+accuracy_lg: 29

@@ -42,10 +42,10 @@ hoqCtfRating: 20.29
 hoqCtfGames: 22
 hoqTdmRating: 30.72
 hoqTdmGames: 311
+qlrace: null
 favorite_map: deepinside
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 41
-accuracy_lg: 35
 accuracy_rg: 57
-qlrace: null
+accuracy_lg: 35

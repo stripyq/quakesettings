@@ -50,12 +50,6 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Rocket Launcher
-accuracy_rl: 40
-accuracy_lg: 30
-accuracy_rg: 51
 qlrace:
   mode: 2
   records: 19
@@ -114,3 +108,9 @@ qlrace:
       total: 123
       time: 5427
   fetched_at: "2026-02-23"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 40
+accuracy_rg: 51
+accuracy_lg: 30

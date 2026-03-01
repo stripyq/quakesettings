@@ -40,10 +40,10 @@ hoqCtfRating: 18.21
 hoqCtfGames: 2880
 hoqTdmRating: 21.03
 hoqTdmGames: 1066
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
 accuracy_rl: 46
-accuracy_lg: 34
 accuracy_rg: 51
-qlrace: null
+accuracy_lg: 34

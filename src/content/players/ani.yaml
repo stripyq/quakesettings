@@ -54,10 +54,10 @@ hoqCtfRating: 28.16
 hoqCtfGames: 293
 hoqTdmRating: 24.13
 hoqTdmGames: 43
+qlrace: null
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun
 accuracy_rl: 47
-accuracy_lg: 36
 accuracy_rg: 54
-qlrace: null
+accuracy_lg: 36

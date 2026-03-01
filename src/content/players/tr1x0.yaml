@@ -45,10 +45,10 @@ enemyModel: Tank Jr.
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 40
-accuracy_lg: 34
 accuracy_rg: 53
-qlrace: null
+accuracy_lg: 34

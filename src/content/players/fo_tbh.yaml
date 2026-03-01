@@ -42,10 +42,10 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 2208
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 42
-accuracy_lg: 37
 accuracy_rg: 55
-qlrace: null
+accuracy_lg: 37

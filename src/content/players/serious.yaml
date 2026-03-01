@@ -44,12 +44,6 @@ mousepad: logitech-g640
 keyboard: wooting-60he
 monitor: asus-pg259qn
 rating: 2650
-favorite_map: campgrounds
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 53
-accuracy_lg: 52
-accuracy_rg: 65
 qlrace:
   mode: 2
   records: 5
@@ -88,3 +82,9 @@ qlrace:
       total: 47
       time: 43256
   fetched_at: "2026-02-23"
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 53
+accuracy_rg: 65
+accuracy_lg: 52

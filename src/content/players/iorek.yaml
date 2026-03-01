@@ -49,10 +49,10 @@ mousepadSize: XL
 keyboard: nuphy-air60-he
 monitor: benq-zowie-xl2546k
 headset: sennheiser-pc-350
+qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun
 accuracy_rl: 42
-accuracy_lg: 36
 accuracy_rg: 59
-qlrace: null
+accuracy_lg: 36

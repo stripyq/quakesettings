@@ -49,10 +49,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 1690
 tdmGames: 202
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 50
-accuracy_lg: 43
 accuracy_rg: 60
-qlrace: null
+accuracy_lg: 43

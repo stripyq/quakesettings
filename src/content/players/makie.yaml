@@ -51,10 +51,10 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: INTEL
 cpuBrand: Intel
+qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 49
-accuracy_lg: 40
 accuracy_rg: 52
-qlrace: null
+accuracy_lg: 40
