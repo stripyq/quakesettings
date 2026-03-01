@@ -24,18 +24,23 @@ function sleep(ms) {
 async function fetchAllMatches() {
   const allMatches = [];
   let offset = 0;
+  let total = Infinity;
 
   console.log('Fetching CTF matches from API...');
 
-  while (true) {
-    const url = `${API_BASE}/matches?mode=ctf&limit=${PAGE_SIZE}&offset=${offset}`;
+  while (offset < total) {
+    const url = `${API_BASE}/matches?mode=ctf&limit=${PAGE_SIZE}&skip=${offset}`;
     try {
       const res = await fetch(url);
       if (!res.ok) {
-        console.warn(`API returned ${res.status} at offset=${offset}, stopping.`);
+        console.warn(`API returned ${res.status} at skip=${offset}, stopping.`);
         break;
       }
       const data = await res.json();
+
+      // Use data.total to know when we've fetched everything
+      if (data.total != null) total = data.total;
+
       const matches = Array.isArray(data) ? data : (data.matches || data.data || []);
 
       if (matches.length === 0) break;
@@ -43,12 +48,10 @@ async function fetchAllMatches() {
       allMatches.push(...matches);
       offset += matches.length;
 
-      process.stdout.write(`  Fetched ${allMatches.length} matches so far...\r`);
-
-      if (matches.length < PAGE_SIZE) break;
+      process.stdout.write(`  Fetched ${allMatches.length}/${total === Infinity ? '?' : total} matches...\r`);
       await sleep(100);
     } catch (err) {
-      console.warn(`\nFetch error at offset=${offset}: ${err.message}`);
+      console.warn(`\nFetch error at skip=${offset}: ${err.message}`);
       break;
     }
   }
