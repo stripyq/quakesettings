@@ -833,8 +833,11 @@ function buildMapLeaderboards(gametype: string, getMinGames: (map: string) => nu
       if (r.gametype_short !== gametype) continue;
       if (excludedMaps.has(r.map_name)) continue;
       if (r.games < getMinGames(r.map_name)) continue;
+      const rating = parseFloat(r.rating);
+      const win_pct = parseFloat(r.win_pct);
+      if (isNaN(rating) || isNaN(win_pct)) continue;
       if (!allEntries[r.map_name]) allEntries[r.map_name] = [];
-      allEntries[r.map_name].push({ name: p.data.name, slug, games: r.games, win_pct: r.win_pct, rating: r.rating, percentile: r.percentile });
+      allEntries[r.map_name].push({ name: p.data.name, slug, games: r.games, win_pct, rating, percentile: r.percentile });
     }
   }
   const playerCounts: Record<string, number> = {};
@@ -1666,7 +1669,7 @@ const schema = {
       <span class="s-section-title" style="color: #39d353">CTF MAP RATING LEADERBOARDS</span>
       <span class="s-tooltip-wrap">
         <span class="s-info-icon" style="color: #39d353">&#9432;</span>
-        <span class="s-tooltip">Rankings based on HoQ map rating. Only players with 50+ games on that map are included. Map rating reflects overall performance relative to other players on that specific map.</span>
+        <span class="s-tooltip">Rankings based on HoQ map rating. Minimum games threshold varies by map (20–50 games depending on map popularity). Map rating reflects overall performance relative to other players on that specific map.</span>
       </span>
       <span class="s-section-attr">Stats via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a></span>
     </div>
@@ -1689,9 +1692,9 @@ const schema = {
                     <td class="s-map-lb-name">
                       {p.slug ? <a href={`${base}players/${p.slug}/`} class="s-map-lb-link">{p.name}</a> : <span>{p.name}</span>}
                     </td>
-                    <td class="s-map-lb-num s-map-lb-rating">{p.rating.toFixed(1)}</td>
+                    <td class="s-map-lb-num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
                     <td class="s-map-lb-num">{p.games}</td>
-                    <td class={`s-map-lb-num ${p.win_pct > 50 ? 'hoq-win-green' : p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct.toFixed(1)}%</td>
+                    <td class={`s-map-lb-num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1707,7 +1710,7 @@ const schema = {
       <span class="s-section-title" style="color: #f0883e">TDM MAP RATING LEADERBOARDS</span>
       <span class="s-tooltip-wrap">
         <span class="s-info-icon" style="color: #f0883e">&#9432;</span>
-        <span class="s-tooltip">Rankings based on HoQ map rating. Only players with 50+ games on that map are included. Map rating reflects overall performance relative to other players on that specific map.</span>
+        <span class="s-tooltip">Rankings based on HoQ map rating. Only players with 50+ games on that map are included (50 game minimum). Map rating reflects overall performance relative to other players on that specific map.</span>
       </span>
       <span class="s-section-attr">Stats via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a></span>
     </div>
@@ -1730,9 +1733,9 @@ const schema = {
                     <td class="s-map-lb-name">
                       {p.slug ? <a href={`${base}players/${p.slug}/`} class="s-map-lb-link">{p.name}</a> : <span>{p.name}</span>}
                     </td>
-                    <td class="s-map-lb-num s-map-lb-rating">{p.rating.toFixed(1)}</td>
+                    <td class="s-map-lb-num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
                     <td class="s-map-lb-num">{p.games}</td>
-                    <td class={`s-map-lb-num ${p.win_pct > 50 ? 'hoq-win-green' : p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct.toFixed(1)}%</td>
+                    <td class={`s-map-lb-num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
                   </tr>
                 ))}
               </tbody>
