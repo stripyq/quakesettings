@@ -110,13 +110,13 @@ const schema = {
     </table>
   </div>
 
+  <div id="hoq-overall-container" class="hoq-overall-container hidden"></div>
+  <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="h2h-container" class="h2h-container hidden"></div>
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
-  <div id="season-compare-container" class="season-compare-container hidden"></div>
+  <div id="hoq-history-container" class="hoq-history-container hidden"></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
   <div id="race-compare-container" class="race-compare-container hidden"></div>
-  <div id="hoq-history-container" class="hoq-history-container hidden"></div>
-  <div id="hoq-mapcompare-container" class="hoq-mapcompare-container hidden"></div>
 
   <div id="empty-state" class="empty-state">
     <p>Select two players above to compare their settings</p>
@@ -131,13 +131,13 @@ const schema = {
       const compareBody = document.getElementById('compare-body');
       const p1Header = document.getElementById('p1-header');
       const p2Header = document.getElementById('p2-header');
+      const hoqOverallContainer = document.getElementById('hoq-overall-container');
       const h2hContainer = document.getElementById('h2h-container');
       const matchupHistoryContainer = document.getElementById('matchup-history-container');
       const seasonCompareContainer = document.getElementById('season-compare-container');
       const rivalriesContainer = document.getElementById('rivalries-container');
       const raceCompareContainer = document.getElementById('race-compare-container');
       const hoqHistoryContainer = document.getElementById('hoq-history-container');
-      const hoqMapCompareContainer = document.getElementById('hoq-mapcompare-container');
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -371,12 +371,12 @@ const schema = {
 
         if (!p1Id || !p2Id) {
           comparisonContainer.classList.add('hidden');
+          hoqOverallContainer.classList.add('hidden');
           h2hContainer.classList.add('hidden');
           seasonCompareContainer.classList.add('hidden');
           rivalriesContainer.classList.add('hidden');
           raceCompareContainer.classList.add('hidden');
           hoqHistoryContainer.classList.add('hidden');
-          hoqMapCompareContainer.classList.add('hidden');
           emptyState.classList.remove('hidden');
           return;
         }
@@ -475,17 +475,8 @@ const schema = {
           }
         }
 
-        // Section: HoQ Stats (only show if at least one player has data)
-        const hasHoq = p1.favorite_map || p2.favorite_map || p1.accuracy_rg || p2.accuracy_rg;
-        if (hasHoq) {
-          html += sectionHeader('HoQ Stats');
-          html += compareRow('Favorite Map', p1.favorite_map || '\u2014', p2.favorite_map || '\u2014');
-          html += compareRow('Favorite Gametype', p1.favorite_gametype || '\u2014', p2.favorite_gametype || '\u2014');
-          html += compareRow('Favorite Weapon', p1.favorite_weapon || '\u2014', p2.favorite_weapon || '\u2014');
-          html += radarChartRow(p1, p2);
-        }
-
         compareBody.innerHTML = html;
+        updateHoqOverall(p1, p2);
         updateH2H(p1, p2);
         updateMatchupHistory(p1, p2);
         updateSeasonCompare(p1, p2);
@@ -507,6 +498,24 @@ const schema = {
       function fmtNum(n) {
         if (n == null) return null;
         return n.toLocaleString();
+      }
+
+      function updateHoqOverall(p1, p2) {
+        hoqOverallContainer.classList.add('hidden');
+        hoqOverallContainer.innerHTML = '';
+
+        const hasHoq = p1.favorite_map || p2.favorite_map || p1.accuracy_rg || p2.accuracy_rg;
+        if (!hasHoq) return;
+
+        let hoqHtml = '<div class="cmp-section-heading">HoQ Stats</div>';
+        hoqHtml += '<table class="compare-table hoq-overall-table"><tbody>';
+        hoqHtml += compareRow('Favorite Map', p1.favorite_map || '\u2014', p2.favorite_map || '\u2014');
+        hoqHtml += compareRow('Favorite Gametype', p1.favorite_gametype || '\u2014', p2.favorite_gametype || '\u2014');
+        hoqHtml += compareRow('Favorite Weapon', p1.favorite_weapon || '\u2014', p2.favorite_weapon || '\u2014');
+        hoqHtml += radarChartRow(p1, p2);
+        hoqHtml += '</tbody></table>';
+        hoqOverallContainer.innerHTML = hoqHtml;
+        hoqOverallContainer.classList.remove('hidden');
       }
 
       function updateH2H(p1, p2) {
@@ -664,7 +673,7 @@ const schema = {
         }
 
         if (!cards) return;
-        h2hContainer.innerHTML = cards;
+        h2hContainer.innerHTML = '<div class="cmp-section-heading">Head to Head</div>' + cards;
         h2hContainer.classList.remove('hidden');
       }
 
@@ -827,7 +836,7 @@ const schema = {
         seasonCompareContainer.classList.add('hidden');
         seasonCompareContainer.innerHTML = '';
 
-        if (!p1.steamId || !p2.steamId) return;
+        if (!p1.steamId && !p2.steamId) return;
 
         function getVal(obj, keys) {
           if (!obj) return null;
@@ -957,8 +966,7 @@ const schema = {
             '</div>';
         }
 
-        if (!cards) return;
-        seasonCompareContainer.innerHTML = cards;
+        seasonCompareContainer.innerHTML = '<div class="cmp-section-heading">HoQ Season Stats</div>' + cards;
         seasonCompareContainer.classList.remove('hidden');
       }
 
@@ -1019,7 +1027,7 @@ const schema = {
         }
 
         if (!cards) return;
-        rivalriesContainer.innerHTML = cards;
+        rivalriesContainer.innerHTML = '<div class="cmp-section-heading">Rivalries</div>' + cards;
         rivalriesContainer.classList.remove('hidden');
       }
 
@@ -1040,8 +1048,8 @@ const schema = {
         if (r1.mode !== r2.mode) {
           var m1Label = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
           var m2Label = r2.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
-          raceCompareContainer.innerHTML = '<div class="race-h2h-card">' +
-            '<div class="race-h2h-title">Race Head to Head</div>' +
+          raceCompareContainer.innerHTML = '<div class="cmp-section-heading">Race Head to Head</div>' +
+            '<div class="race-h2h-card">' +
             '<p class="race-h2h-empty">Cannot compare — ' + p1.name + ' plays ' + m1Label + ' while ' + p2.name + ' plays ' + m2Label + '.</p>' +
             '</div>';
           raceCompareContainer.classList.remove('hidden');
@@ -1065,8 +1073,8 @@ const schema = {
 
         if (sharedMaps.length === 0) {
           var modeLabel0 = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
-          raceCompareContainer.innerHTML = '<div class="race-h2h-card">' +
-            '<div class="race-h2h-title">Race Head to Head <span class="race-h2h-mode">' + modeLabel0 + '</span></div>' +
+          raceCompareContainer.innerHTML = '<div class="cmp-section-heading">Race Head to Head</div>' +
+            '<div class="race-h2h-card">' +
             '<p class="race-h2h-empty">No shared race maps between ' + p1.name + ' (' + r1.top_maps.length + ' maps) and ' + p2.name + ' (' + r2.top_maps.length + ' maps).</p>' +
             '</div>';
           raceCompareContainer.classList.remove('hidden');
@@ -1086,8 +1094,9 @@ const schema = {
         }
 
         var modeLabel = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
-        var html = '<div class="race-h2h-card">' +
-          '<div class="race-h2h-title">Race Head to Head <span class="race-h2h-mode">' + modeLabel + '</span></div>' +
+        var html = '<div class="cmp-section-heading">Race Head to Head</div>' +
+          '<div class="race-h2h-card">' +
+          '<span class="race-h2h-mode">' + modeLabel + '</span>' +
           '<table class="race-h2h-table">' +
           '<thead><tr>' +
             '<th>Map</th>' +
@@ -1130,7 +1139,6 @@ const schema = {
         const p2Id = player2Select.value;
         if (!p1Id || !p2Id || !playersData[p1Id] || !playersData[p2Id]) {
           hoqHistoryContainer.classList.add('hidden');
-          hoqMapCompareContainer.classList.add('hidden');
           return;
         }
         const p1 = playersData[p1Id];
@@ -1140,7 +1148,6 @@ const schema = {
 
         if (!sid1 && !sid2) {
           hoqHistoryContainer.classList.add('hidden');
-          hoqMapCompareContainer.classList.add('hidden');
           return;
         }
 
@@ -1151,7 +1158,7 @@ const schema = {
         // ── Rating History Chart ──
         hoqHistoryContainer.classList.remove('hidden');
         hoqHistoryContainer.innerHTML =
-          '<h2 class="hoq-cmp-heading">Rating History</h2>' +
+          '<div class="cmp-section-heading">Rating History</div>' +
           '<div class="hoq-cmp-controls" id="hoq-cmp-controls">' +
             '<div class="hoq-cmp-btn-group">' +
               '<button class="hoq-cmp-mode-btn active" data-mode="ctf">CTF</button>' +
@@ -1171,10 +1178,19 @@ const schema = {
             '<div class="hoq-cmp-error" id="hoq-cmp-error" style="display:none"></div>' +
           '</div>';
 
-        // ── Map Comparison Table ──
-        hoqMapCompareContainer.classList.remove('hidden');
-        hoqMapCompareContainer.innerHTML =
-          '<h2 class="hoq-cmp-heading">Per-Map Rating Comparison</h2>' +
+        // ── Per-Map Win% (appended into season-compare-container) ──
+        // Remove any existing map compare slot
+        var existingSlot = document.getElementById('hoq-map-cmp-slot');
+        if (existingSlot) existingSlot.remove();
+        // Ensure the season container is visible with heading
+        if (seasonCompareContainer.classList.contains('hidden')) {
+          seasonCompareContainer.innerHTML = '<div class="cmp-section-heading">HoQ Season Stats</div>';
+          seasonCompareContainer.classList.remove('hidden');
+        }
+        // Create a slot div to hold the per-map table
+        var mapSlot = document.createElement('div');
+        mapSlot.id = 'hoq-map-cmp-slot';
+        mapSlot.innerHTML =
           '<div class="hoq-cmp-loading" id="hoq-map-cmp-loading">Loading map ratings\u2026</div>' +
           '<table class="hoq-map-cmp-table" id="hoq-map-cmp-table" style="display:none">' +
             '<thead><tr>' +
@@ -1185,6 +1201,7 @@ const schema = {
             '<tbody id="hoq-map-cmp-tbody"></tbody>' +
           '</table>' +
           '<div class="hoq-cmp-error" id="hoq-map-cmp-error" style="display:none"></div>';
+        seasonCompareContainer.appendChild(mapSlot);
 
         // Fetch history for both players
         Promise.all([
@@ -1611,6 +1628,20 @@ const schema = {
   }
 
   /* Dynamic content styles need :global() */
+  :global(.cmp-section-heading) {
+    padding: 0.75rem 1rem;
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    border-left: 4px solid #f97316;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
   .compare-table :global(.section-row td) {
     padding: 0.75rem 1rem;
     background: rgba(249, 115, 22, 0.15);
@@ -2190,6 +2221,14 @@ const schema = {
     margin-top: 1rem;
   }
 
+  .hoq-overall-container.hidden {
+    display: none;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table) {
+    margin-top: 0;
+  }
+
   .season-compare-container.hidden {
     display: none;
   }
@@ -2612,19 +2651,8 @@ const schema = {
 
   /* ── HoQ Live Sections ── */
   .hoq-history-container,
-  .hoq-mapcompare-container {
-    margin-top: 2rem;
-  }
-
-  .hoq-history-container.hidden,
-  .hoq-mapcompare-container.hidden {
+  .hoq-history-container.hidden {
     display: none;
-  }
-
-  .hoq-history-container :global(.hoq-cmp-heading),
-  .hoq-mapcompare-container :global(.hoq-cmp-heading) {
-    font-size: 1.1rem;
-    margin: 0 0 0.75rem;
   }
 
   .hoq-history-container :global(.hoq-cmp-controls) {
@@ -2677,7 +2705,7 @@ const schema = {
   }
 
   .hoq-history-container :global(.hoq-cmp-loading),
-  .hoq-mapcompare-container :global(.hoq-cmp-loading) {
+  .season-compare-container :global(.hoq-cmp-loading) {
     color: var(--text-secondary, #9090a0);
     font-size: 0.85rem;
     padding: 2rem 0;
@@ -2685,7 +2713,7 @@ const schema = {
   }
 
   .hoq-history-container :global(.hoq-cmp-error),
-  .hoq-mapcompare-container :global(.hoq-cmp-error) {
+  .season-compare-container :global(.hoq-cmp-error) {
     color: var(--text-secondary, #9090a0);
     font-size: 0.85rem;
     padding: 1rem 0;
@@ -2700,7 +2728,11 @@ const schema = {
     text-align: center;
   }
 
-  .hoq-mapcompare-container :global(.hoq-map-cmp-table) {
+  .season-compare-container :global(#hoq-map-cmp-slot) {
+    margin-top: 1rem;
+  }
+
+  .season-compare-container :global(.hoq-map-cmp-table) {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
@@ -2710,7 +2742,7 @@ const schema = {
     overflow: hidden;
   }
 
-  .hoq-mapcompare-container :global(.hoq-map-cmp-table th) {
+  .season-compare-container :global(.hoq-map-cmp-table th) {
     text-align: left;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -2720,32 +2752,32 @@ const schema = {
     border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
-  .hoq-mapcompare-container :global(.hoq-map-cmp-table td) {
+  .season-compare-container :global(.hoq-map-cmp-table td) {
     padding: 0.45rem 0.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     color: var(--text-primary, #e8e8f0);
   }
 
-  .hoq-mapcompare-container :global(.hoq-map-cmp-table td:first-child) {
+  .season-compare-container :global(.hoq-map-cmp-table td:first-child) {
     font-weight: 500;
   }
 
-  .hoq-mapcompare-container :global(.hoq-win-green) {
+  .season-compare-container :global(.hoq-win-green) {
     color: #4ade80 !important;
     font-weight: 600;
   }
 
-  .hoq-mapcompare-container :global(.hoq-win-amber) {
+  .season-compare-container :global(.hoq-win-amber) {
     color: #fbbf24 !important;
     font-weight: 600;
   }
 
-  .hoq-mapcompare-container :global(.hoq-win-red) {
+  .season-compare-container :global(.hoq-win-red) {
     color: #f87171 !important;
     font-weight: 600;
   }
 
-  .hoq-mapcompare-container :global(.hoq-map-higher) {
+  .season-compare-container :global(.hoq-map-higher) {
     font-weight: 700;
   }
 
@@ -2754,12 +2786,12 @@ const schema = {
       height: 220px;
     }
 
-    .hoq-mapcompare-container :global(.hoq-map-cmp-table) {
+    .season-compare-container :global(.hoq-map-cmp-table) {
       font-size: 0.75rem;
     }
 
-    .hoq-mapcompare-container :global(.hoq-map-cmp-table th),
-    .hoq-mapcompare-container :global(.hoq-map-cmp-table td) {
+    .season-compare-container :global(.hoq-map-cmp-table th),
+    .season-compare-container :global(.hoq-map-cmp-table td) {
       padding: 0.35rem 0.5rem;
     }
   }
