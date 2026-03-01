@@ -1206,7 +1206,7 @@ const schema = {
               var e = arr[i];
               var m = e.gametype_short;
               if (!byMode[m]) byMode[m] = [];
-              byMode[m].push({ rating: e.rating, date: new Date(e.timestamp) });
+              byMode[m].push({ rating: e.rating, date: new Date(e.timestamp * 1000) });
             }
             for (var k in byMode) byMode[k].sort(function(a, b) { return a.date - b.date; });
             return byMode;

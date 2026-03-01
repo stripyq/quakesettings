@@ -1365,13 +1365,13 @@ const schema = {
       try {
         const res = await fetch(`${HOQ_LOCAL}/history.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw: Array<{ gametype_short: string; rating: number; timestamp: string }> = await res.json();
+        const raw: Array<{ gametype_short: string; rating: number; timestamp: number }> = await res.json();
 
         const byMode: Record<string, Array<{ rating: number; date: Date }>> = {};
         for (const entry of raw) {
           const mode = entry.gametype_short;
           if (!byMode[mode]) byMode[mode] = [];
-          byMode[mode].push({ rating: entry.rating, date: new Date(entry.timestamp) });
+          byMode[mode].push({ rating: entry.rating, date: new Date(entry.timestamp * 1000) });
         }
         for (const mode of Object.keys(byMode)) {
           byMode[mode].sort((a, b) => a.date.getTime() - b.date.getTime());
