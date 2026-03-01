@@ -1359,7 +1359,7 @@ const schema = {
             var arr = Array.isArray(raw) ? raw : [];
             for (var i = 0; i < arr.length; i++) {
               var r = arr[i];
-              if (r.gametype_short === 'ctf' && r.games >= 10) map[r.map] = r;
+              if (r.gametype_short === 'ctf' && r.games >= 10) map[r.map_name] = r;
             }
             return map;
           }
@@ -1375,7 +1375,7 @@ const schema = {
 
           var rows = allMapNames.map(function(name) {
             return {
-              map: name,
+              map_name: name,
               p1: maps1[name] || null,
               p2: maps2[name] || null,
               totalGames: (maps1[name] ? maps1[name].games : 0) + (maps2[name] ? maps2[name].games : 0),
@@ -1413,7 +1413,7 @@ const schema = {
             }
             var tr = document.createElement('tr');
             tr.innerHTML =
-              '<td>' + r.map + '</td>' +
+              '<td>' + r.map_name + '</td>' +
               '<td class="' + winCls(w1) + ' ' + cls1 + '">' + w1Str + '</td>' +
               '<td class="' + winCls(w2) + ' ' + cls2 + '">' + w2Str + '</td>';
             tbody.appendChild(tr);

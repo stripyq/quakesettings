@@ -1518,7 +1518,7 @@ const schema = {
       try {
         const res = await fetch(`${HOQ_LOCAL}/map_ratings.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw: Array<{ gametype_short: string; map: string; games: number; win_pct: number; rating: number; percentile: number }> = await res.json();
+        const raw: Array<{ gametype_short: string; map_name: string; games: number; win_pct: number; rating: number; percentile: number }> = await res.json();
 
         const ctfMaps = raw
           .filter(r => r.gametype_short === 'ctf' && r.games >= 10)
@@ -1537,7 +1537,7 @@ const schema = {
         for (const m of ctfMaps) {
           const tr = document.createElement('tr');
           const winClass = m.win_pct > 50 ? 'hoq-win-green' : m.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber';
-          tr.innerHTML = `<td>${m.map}</td><td>${m.games}</td><td class="${winClass}">${m.win_pct.toFixed(1)}%</td><td>${m.rating.toFixed(1)}</td><td>${Math.round(m.percentile)}</td>`;
+          tr.innerHTML = `<td>${m.map_name}</td><td>${m.games}</td><td class="${winClass}">${m.win_pct.toFixed(1)}%</td><td>${m.rating.toFixed(1)}</td><td>${Math.round(m.percentile)}</td>`;
           tbody.appendChild(tr);
         }
       } catch (err) {
