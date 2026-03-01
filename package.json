@@ -12,6 +12,7 @@
     "fetch:qlrace": "node scripts/fetch-qlrace.cjs",
     "fetch:qlrace:force": "node scripts/fetch-qlrace.cjs --force",
     "fetch:hoq": "node scripts/fetch-hoq-maps.cjs",
+    "fetch:activity": "node scripts/fetch-activity-data.cjs",
     "astro": "astro"
   },
   "dependencies": {
