@@ -7,7 +7,7 @@
  * Response: { data: [...], total: N } — each match has a started_at Unix timestamp.
  *
  * Output: public/data/player-activity/{steamId}.json
- *   [ { "month": "2025-12", "games": 5 }, ... ]
+ *   [ { "week": "2025-12-01", "games": 5 }, ... ]
  *
  * Usage:
  *   node scripts/fetch-player-activity.cjs
@@ -86,21 +86,31 @@ async function fetchPlayerMatches(steamId) {
 }
 
 /**
- * Aggregate Unix timestamps into monthly buckets.
+ * Get the Monday of the ISO week containing a given date, as YYYY-MM-DD.
  */
-function aggregateByMonth(timestamps) {
+function getWeekMonday(d) {
+  const day = d.getUTCDay();
+  const diff = (day === 0 ? -6 : 1) - day;
+  const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + diff));
+  return monday.toISOString().slice(0, 10);
+}
+
+/**
+ * Aggregate Unix timestamps into weekly buckets (keyed by Monday date).
+ */
+function aggregateByWeek(timestamps) {
   const buckets = {};
 
   for (const ts of timestamps) {
     const ms = ts > 1e12 ? ts : ts * 1000;
     const d = new Date(ms);
-    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const key = getWeekMonday(d);
     buckets[key] = (buckets[key] || 0) + 1;
   }
 
   return Object.entries(buckets)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([month, games]) => ({ month, games }));
+    .map(([week, games]) => ({ week, games }));
 }
 
 async function main() {
@@ -151,7 +161,7 @@ async function main() {
         continue;
       }
 
-      const activity = aggregateByMonth(timestamps);
+      const activity = aggregateByWeek(timestamps);
       const outPath = path.join(OUTPUT_DIR, `${steamId}.json`);
       fs.writeFileSync(outPath, JSON.stringify(activity, null, 2));
       withData++;

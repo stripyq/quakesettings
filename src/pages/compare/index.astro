@@ -1364,12 +1364,12 @@ const schema = {
             }
 
             // Activity bars (CTF only — drawn behind the rating lines)
+            var WEEK_MS = 7 * 24 * 3600 * 1000;
             if (hasActivity) {
               var visible = activityBuckets.filter(function(b) {
-                var parts = b.month.split('-');
-                var yr = parseInt(parts[0], 10), mo = parseInt(parts[1], 10);
-                var bStart = new Date(yr, mo - 1, 1).getTime();
-                var bEnd = new Date(yr, mo, 0, 23, 59, 59).getTime();
+                var key = b.week || b.month;
+                var bStart = new Date(key).getTime();
+                var bEnd = bStart + WEEK_MS;
                 return bEnd >= minT && bStart <= maxT;
               });
 
@@ -1378,10 +1378,10 @@ const schema = {
 
                 ctx.fillStyle = 'rgba(255,255,255,0.08)';
                 for (var vi = 0; vi < visible.length; vi++) {
-                  var parts = visible[vi].month.split('-');
-                  var yr = parseInt(parts[0], 10), mo = parseInt(parts[1], 10);
-                  var bStart = Math.max(new Date(yr, mo - 1, 1).getTime(), minT);
-                  var bEnd = Math.min(new Date(yr, mo, 0, 23, 59, 59).getTime(), maxT);
+                  var key = visible[vi].week || visible[vi].month;
+                  var weekStart = new Date(key).getTime();
+                  var bStart = Math.max(weekStart, minT);
+                  var bEnd = Math.min(weekStart + WEEK_MS, maxT);
 
                   var x1 = pad.left + ((bStart - minT) / tRange) * cw;
                   var x2 = pad.left + ((bEnd - minT) / tRange) * cw;
@@ -1390,7 +1390,7 @@ const schema = {
                   ctx.fillRect(x1, pad.top + ch - barH, x2 - x1, barH);
                 }
 
-                // Right Y-axis: games-per-month scale
+                // Right Y-axis: games-per-week scale
                 ctx.fillStyle = '#666';
                 ctx.font = '11px monospace';
                 ctx.textAlign = 'left';
