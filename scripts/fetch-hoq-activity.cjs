@@ -4,7 +4,7 @@
  * http://88.214.20.58/matches/ctf/ and aggregate into monthly buckets.
  *
  * Pages: /matches/ctf/ (page 0), /matches/ctf/1/, /matches/ctf/2/, ...
- * Each page has a table with <span class="abstime" data-epoch="..."> on date cells.
+ * Each page has a table with <span class="abstime" data-timestamp="..."> on date cells.
  *
  * Merges with existing public/data/activity-ctf.json (from the season tracker API)
  * so both data sources are combined. Deduplicates by month key.
@@ -64,12 +64,12 @@ function fetchPage(url) {
 }
 
 /**
- * Extract all data-epoch values from an HTML page.
- * Matches: <span class="abstime" data-epoch="1234567890">
+ * Extract all data-timestamp values from an HTML page.
+ * Matches: <span class="abstime" data-timestamp="1234567890">
  */
 function extractEpochs(html) {
   const epochs = [];
-  const re = /data-epoch="(\d+)"/g;
+  const re = /data-timestamp="(\d+)"/g;
   let m;
   while ((m = re.exec(html)) !== null) {
     epochs.push(parseInt(m[1], 10));
@@ -225,3 +225,4 @@ main().catch(err => {
   console.error('Fatal error:', err);
   process.exit(1);
 });
+
