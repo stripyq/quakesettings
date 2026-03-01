@@ -819,8 +819,8 @@ for (const p of allPlayers) {
   const slug = p.data.published !== false ? p.id : '';
   for (const r of raw) {
     if (r.gametype_short !== 'ctf' || r.games < 10) continue;
-    if (!mapLeaderboards[r.map]) mapLeaderboards[r.map] = [];
-    mapLeaderboards[r.map].push({ name: p.data.name, slug, games: r.games, win_pct: r.win_pct, rating: r.rating, percentile: r.percentile });
+    if (!mapLeaderboards[r.map_name]) mapLeaderboards[r.map_name] = [];
+    mapLeaderboards[r.map_name].push({ name: p.data.name, slug, games: r.games, win_pct: r.win_pct, rating: r.rating, percentile: r.percentile });
   }
 }
 
