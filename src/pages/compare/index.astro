@@ -508,7 +508,11 @@ const schema = {
         if (!hasHoq) return;
 
         let hoqHtml = '<div class="cmp-section-heading">HoQ Stats</div>';
-        hoqHtml += '<table class="compare-table hoq-overall-table"><tbody>';
+        hoqHtml += '<table class="compare-table hoq-overall-table"><thead><tr>';
+        hoqHtml += '<th class="label-header">Stat</th>';
+        hoqHtml += '<th class="player-header"><span class="header-name">' + p1.name + '</span></th>';
+        hoqHtml += '<th class="player-header"><span class="header-name">' + p2.name + '</span></th>';
+        hoqHtml += '</tr></thead><tbody>';
         hoqHtml += compareRow('Favorite Map', p1.favorite_map || '\u2014', p2.favorite_map || '\u2014');
         hoqHtml += compareRow('Favorite Gametype', p1.favorite_gametype || '\u2014', p2.favorite_gametype || '\u2014');
         hoqHtml += compareRow('Favorite Weapon', p1.favorite_weapon || '\u2014', p2.favorite_weapon || '\u2014');
@@ -2221,12 +2225,140 @@ const schema = {
     margin-top: 1rem;
   }
 
+  .hoq-overall-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
   .hoq-overall-container.hidden {
     display: none;
   }
 
   .hoq-overall-container :global(.hoq-overall-table) {
     margin-top: 0;
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card, #1a1a24);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #2a2a35);
+    max-width: 700px;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table thead) {
+    background: var(--bg-secondary, #12121a);
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table th) {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .player-header) {
+    width: 30%;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .label-header) {
+    width: 40%;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .header-name) {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--accent-secondary, #4ecdc4);
+    font-weight: 600;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .data-row td) {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .data-row:last-child td) {
+    border-bottom: none;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .label-cell) {
+    text-align: left;
+    color: var(--text-secondary, #9090a0);
+    font-size: 0.85rem;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .value-cell) {
+    font-size: 0.9rem;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .value-cell:nth-child(2)) {
+    text-align: right;
+    padding-right: 1.5rem;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .value-cell:nth-child(3)) {
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .value-cell.same-highlight) {
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--accent-primary, #ff6b35);
+    font-weight: 500;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .value-cell.numeric) {
+    font-family: monospace;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .diff-arrow) {
+    font-size: 0.7rem;
+    margin-left: 0.35rem;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .diff-arrow.higher) {
+    color: #27ae60;
+  }
+
+  .hoq-overall-container :global(.hoq-overall-table .diff-arrow.lower) {
+    color: #e74c3c;
+  }
+
+  .hoq-overall-container :global(.radar-cell) {
+    padding: 0 !important;
+    border-bottom: 1px solid var(--border-color, #2a2a35);
+  }
+
+  .hoq-overall-container :global(.radar-chart-wrapper) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    background: rgba(18, 18, 26, 0.5);
+  }
+
+  .hoq-overall-container :global(.radar-legend) {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+    color: #d1d5db;
+  }
+
+  .hoq-overall-container :global(.radar-legend-item) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hoq-overall-container :global(.radar-swatch) {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
   }
 
   .season-compare-container.hidden {
@@ -2650,7 +2782,17 @@ const schema = {
   }
 
   /* ── HoQ Live Sections ── */
-  .hoq-history-container,
+  .hoq-history-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hoq-history-container.hidden {
     display: none;
   }
