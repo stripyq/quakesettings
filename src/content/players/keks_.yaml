@@ -9,9 +9,12 @@ hoqTdmRating: 20.87
 hoqTdmGames: 82
 duelRating: 1224
 duelGames: 125
+duelRatingUpdated: "2026-03-02"
 ctfRating: 13.07
+ctfRatingUpdated: "2026-03-02"
 ctfGames: 462
 tdmRating: 20.87
+tdmRatingUpdated: "2026-03-02"
 tdmGames: 82
 dataSource: player
 dpi: 800
