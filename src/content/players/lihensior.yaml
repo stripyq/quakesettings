@@ -10,7 +10,7 @@ team2026Shortname: wB
 country: PL
 team: wAnnaBees
 category: ctf
-lastUpdated: 2025-01
+lastUpdated: 2026-03
 ctfRating: 34.35
 ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 20.69
@@ -36,6 +36,8 @@ edpi: 896
 cm360: 46.38
 acceleration: false
 rawInput: true
+windowsSensitivity: 6
+grip: Palm
 fov: 112
 crosshair: "6"
 invertedMouse: false
@@ -45,8 +47,8 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: logitech-g-pro-x-superlight
-mousepad: razer-gigantus
+mouse: hitscan-hyperlight
+mousepad: artisan-type-99
 keyboard: keychron-k8
 monitor: asus-tuf-gaming-vg279qm
 headset: hyperx-cloud-ii
