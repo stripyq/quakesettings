@@ -16471,8 +16471,8 @@
     {
       "steamId": "76561197972822622",
       "name": "keks_",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "keks_",
+      "hasProfile": true,
       "ratings": {
         "ctf": 12.834807395935059,
         "tdm": 21.070592880249023,
