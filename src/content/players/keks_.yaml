@@ -15,16 +15,6 @@ ctfRatingUpdated: "2026-03-02"
 ctfGames: 462
 tdmRating: 20.87
 tdmRatingUpdated: "2026-03-02"
-=======
-
-duelGames: 125
-
-
-
-ctfGames: 462
-
-
->>>>>>> Stashed changes
 tdmGames: 82
 dataSource: player
 dpi: 800
@@ -61,4 +51,3 @@ headset: sennheiser-hd-560s
 skates: Stock
 gpuBrand: AMD
 cpuBrand: AMD
-
