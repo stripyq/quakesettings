@@ -20,10 +20,17 @@
 
 const fs = require('fs');
 const path = require('path');
+const { safeWriteYaml } = require('./yaml-safe-write.cjs');
 
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
 const RATINGS_JSON = path.join(__dirname, 'ratings-data.json');
 const USE_JSON = process.argv.includes('--from-json');
+
+const RATING_FIELDS = [
+  'duelRating', 'duelRatingUpdated',
+  'ctfRating', 'ctfRatingUpdated',
+  'tdmRating', 'tdmRatingUpdated',
+];
 
 // Load ratings from JSON file
 function loadRatingsFromJson() {
@@ -259,13 +266,13 @@ function updatePlayerYaml(playerPath, updates, clearStale) {
       content = content.trim() + '\n' + newLines.join('\n') + '\n';
     }
 
-    fs.writeFileSync(playerPath, content);
+    safeWriteYaml(playerPath, content, RATING_FIELDS);
     return true;
   }
 
   // If clearing stale ratings and the file actually changed, write it
   if (clearStale && content !== original) {
-    fs.writeFileSync(playerPath, content);
+    safeWriteYaml(playerPath, content, RATING_FIELDS);
     return 'cleared';
   }
 
