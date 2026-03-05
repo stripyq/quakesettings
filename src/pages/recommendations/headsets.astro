@@ -68,13 +68,6 @@ function getPlayersForHeadset(name: string): typeof players {
   return result;
 }
 
-function priceBadgeClass(price: string): string {
-  if (price === '$$$$') return 'price-badge price-legendary';
-  if (price === '$$$') return 'price-badge price-premium';
-  if (price === '$$') return 'price-badge price-mid';
-  return 'price-badge price-budget';
-}
-
 const wirelessGaming = [
   { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, asr: false, mle: false },
   { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, asr: false, mle: false },
@@ -129,18 +122,18 @@ const schema = {
   </div>
 
   <div class="reviewer-legend">
-    <span class="legend-item"><span class="badge gt">GT</span> GadgetryTech</span>
-    <span class="legend-item"><span class="badge bs">BS</span> BadSeed Tech</span>
-    <span class="legend-item"><span class="badge jv">JV</span> Joshua Valour</span>
-    <span class="legend-item"><span class="badge asr">ASR</span> Audio Science Review</span>
-    <span class="legend-item"><span class="badge mle">MLE</span> Mad Lust Envy (Head-Fi Gaming Guide)</span>
+    <span class="legend-item"><strong>GT</strong> GadgetryTech</span>
+    <span class="legend-item"><strong>BS</strong> BadSeed Tech</span>
+    <span class="legend-item"><strong>JV</strong> Joshua Valour</span>
+    <span class="legend-item"><strong>ASR</strong> Audio Science Review</span>
+    <span class="legend-item"><strong>MLE</strong> Mad Lust Envy (Head-Fi Gaming Guide)</span>
   </div>
 
   <div class="price-legend">
-    <span><span class="price-badge price-budget">$</span> Budget (&lt;$80)</span>
-    <span><span class="price-badge price-mid">$$</span> Mid ($80-200)</span>
-    <span><span class="price-badge price-premium">$$$</span> Premium ($200-400)</span>
-    <span><span class="price-badge price-legendary">$$$$</span> Flagship ($400+)</span>
+    <span>$ = Budget (&lt;$80)</span>
+    <span>$$ = Mid ($80-200)</span>
+    <span>$$$ = Premium ($200-400)</span>
+    <span>$$$$ = Flagship ($400+)</span>
   </div>
 
   <h2 class="section-title">Wireless Gaming</h2>
@@ -166,7 +159,7 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
+              <td class="price">{h.price}</td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
@@ -214,7 +207,7 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
+              <td class="price">{h.price}</td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
@@ -262,7 +255,7 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
+              <td class="price">{h.price}</td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
@@ -306,7 +299,7 @@ const schema = {
             <tr>
               <td class="headset-name">{s.name}</td>
               <td>{s.category}</td>
-              <td><span class={priceBadgeClass(s.price)}>{s.price}</span></td>
+              <td class="price">{s.price}</td>
               <td class="notes">{s.notes}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -346,7 +339,7 @@ const schema = {
             <tr>
               <td class="headset-name">{s.name}</td>
               <td>{s.category}</td>
-              <td><span class={priceBadgeClass(s.price)}>{s.price}</span></td>
+              <td class="price">{s.price}</td>
               <td class="notes">{s.notes}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -503,20 +496,6 @@ const schema = {
     font-size: 0.875rem;
   }
 
-  .badge {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.75rem;
-  }
-
-  .badge.gt { background: #4a9eff; color: #fff; }
-  .badge.bs { background: #ff6b6b; color: #fff; }
-  .badge.jv { background: #6bcb77; color: #000; }
-  .badge.asr { background: #facc15; color: #000; }
-  .badge.mle { background: #c084fc; color: #fff; }
-
   .price-legend {
     display: flex;
     gap: 1.5rem;
@@ -524,22 +503,7 @@ const schema = {
     margin-bottom: 1.5rem;
     font-size: 0.875rem;
     color: var(--text-secondary, #888);
-    align-items: center;
   }
-
-  .price-badge {
-    display: inline-block;
-    padding: 0.125rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.75rem;
-    font-family: monospace;
-  }
-
-  .price-budget { background: #22c55e; color: #000; }
-  .price-mid { background: #3b82f6; color: #fff; }
-  .price-premium { background: #f97316; color: #fff; }
-  .price-legendary { background: #ef4444; color: #fff; }
 
   .section-title {
     margin-top: 2rem;
