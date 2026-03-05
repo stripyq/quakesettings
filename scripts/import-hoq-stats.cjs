@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { safeWriteYaml } = require('./yaml-safe-write.cjs');
 
 const STATS_FILE = path.join(__dirname, 'hoq-stats-data.json');
 const PLAYERS_DIR = path.join(__dirname, '..', 'src', 'content', 'players');
@@ -46,11 +47,14 @@ for (const file of yamlFiles) {
     continue;
   }
 
-  // Remove existing HoQ fields (for idempotency)
+  // Only remove fields that the incoming data has a replacement for.
+  // This prevents stripping fields (e.g. accuracy_rg) when the JSON
+  // simply doesn't contain them for this player.
+  const incomingFields = HOQ_FIELDS.filter(f => f in playerStats);
   let lines = content.split('\n');
   lines = lines.filter(line => {
     const trimmed = line.replace(/^\s+/, '');
-    return !HOQ_FIELDS.some(field => trimmed.startsWith(field + ':'));
+    return !incomingFields.some(field => trimmed.startsWith(field + ':'));
   });
 
   // Remove trailing blank lines, then ensure file ends with newline
@@ -79,7 +83,7 @@ for (const file of yamlFiles) {
   lines.push(...newFields);
   lines.push(''); // trailing newline
 
-  fs.writeFileSync(filePath, lines.join('\n'));
+  safeWriteYaml(filePath, lines.join('\n'), HOQ_FIELDS);
   updated++;
   console.log(`Updated: ${file} (${steamId})`);
 }

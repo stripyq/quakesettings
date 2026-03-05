@@ -10,10 +10,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const { safeWriteYaml } = require('./yaml-safe-write.cjs');
 
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
 const CTF_CSV = path.join(__dirname, '../public/data/hoq_ctf.csv');
 const TDM_CSV = path.join(__dirname, '../public/data/hoq_tdm.csv');
+
+const HOQ_RATING_FIELDS = ['hoqCtfRating', 'hoqCtfGames', 'hoqTdmRating', 'hoqTdmGames'];
 
 // Parse command-line args
 const args = process.argv.slice(2);
@@ -195,7 +198,7 @@ for (const file of files) {
 
   // Write if changed
   if (updated !== content) {
-    fs.writeFileSync(filePath, updated);
+    safeWriteYaml(filePath, updated, HOQ_RATING_FIELDS);
     updatedCount++;
 
     const playerName = (content.match(/^name:\s*(.+)$/m) || [, file])[1].trim();
