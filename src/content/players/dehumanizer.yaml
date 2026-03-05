@@ -81,3 +81,6 @@ qlrace:
 favorite_map: hiddenfortress
 favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
+accuracy_rl: 43
+accuracy_rg: 53
+accuracy_lg: 34

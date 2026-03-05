@@ -112,3 +112,6 @@ qlrace:
   fetched_at: "2026-02-23"
 favorite_gametype: "Weapon: Rocket Launcher"
 favorite_weapon: Rocket Launcher
+accuracy_rl: 40
+accuracy_rg: 51
+accuracy_lg: 30

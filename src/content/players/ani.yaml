@@ -59,3 +59,6 @@ tdmGames: 43
 qlrace: null
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
+accuracy_rl: 47
+accuracy_rg: 54
+accuracy_lg: 36

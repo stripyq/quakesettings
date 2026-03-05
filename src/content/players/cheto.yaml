@@ -51,3 +51,6 @@ tdmGames: 155
 qlrace: null
 favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
+accuracy_rl: 39
+accuracy_rg: 46
+accuracy_lg: 30

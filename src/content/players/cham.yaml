@@ -51,3 +51,6 @@ cpuBrand: Intel
 qlrace: null
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
+accuracy_rl: 39
+accuracy_rg: 53
+accuracy_lg: 39

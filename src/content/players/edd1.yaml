@@ -69,3 +69,6 @@ qlrace:
   fetched_at: "2026-02-23"
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
+accuracy_rl: 52
+accuracy_rg: 62
+accuracy_lg: 39

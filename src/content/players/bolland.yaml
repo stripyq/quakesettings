@@ -44,3 +44,6 @@ qlrace: null
 favorite_map: purgatory
 favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun
+accuracy_rl: 44
+accuracy_rg: 52
+accuracy_lg: 30

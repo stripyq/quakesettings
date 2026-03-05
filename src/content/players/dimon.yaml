@@ -42,3 +42,6 @@ qlrace: null
 favorite_map: campgrounds
 favorite_gametype: "Weapon: Lightning Gun"
 favorite_weapon: Lightning Gun
+accuracy_rl: 43
+accuracy_rg: 49
+accuracy_lg: 32
