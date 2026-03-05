@@ -1,0 +1,64 @@
+name: keks_
+steamId: "76561197972822622"
+country: DE
+category: ctf
+lastUpdated: 2026-03
+hoqCtfRating: 13.07
+hoqCtfGames: 462
+hoqTdmRating: 20.87
+hoqTdmGames: 82
+<<<<<<< Updated upstream
+duelRating: 1224
+duelGames: 125
+duelRatingUpdated: "2026-03-02"
+ctfRating: 13.07
+ctfRatingUpdated: "2026-03-02"
+ctfGames: 462
+tdmRating: 20.87
+tdmRatingUpdated: "2026-03-02"
+=======
+
+duelGames: 125
+
+
+
+ctfGames: 462
+
+
+>>>>>>> Stashed changes
+tdmGames: 82
+dataSource: player
+dpi: 800
+sensitivity: 8.4
+m_cpi: 800
+m_yaw: 0.022
+edpi: 6720
+cm360: 42.86
+acceleration: true
+rawInput: true
+windowsSensitivity: 6
+grip: Palm
+fov: 93
+crosshair: "15"
+crosshairColor: Black
+crosshairSize: "30"
+invertedMouse: false
+enemyModel: Tank Jr.
+forward: e
+back: d
+left: s
+right: f
+jump: mouse2
+crouch: alt
+attack: mouse1
+zoom: space
+mouse: lamzu-maya-x
+mousepad: lethal-gaming-gear-jupiter-pro-v2
+mousepadBase: Soft
+mousepadSize: XL
+keyboard: meletrix-zoom65v2
+monitor: xiaomi-g27i
+headset: sennheiser-hd-560s
+skates: Stock
+gpuBrand: AMD
+cpuBrand: AMD
