@@ -16,5 +16,8 @@ published: false
 team2024: Bad But Happy
 qlrace: null
 favorite_map: japanesecastles
-favorite_gametype: "Weapon: Railgun"
+favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
+accuracy_rl: 45
+accuracy_rg: 51
+accuracy_lg: 29

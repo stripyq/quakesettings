@@ -21,5 +21,8 @@ tdmGames: 671
 
 qlrace: null
 favorite_map: japanesecastles
-favorite_gametype: "Weapon: Rocket Launcher"
+favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
+accuracy_rl: 37
+accuracy_rg: 46
+accuracy_lg: 30

@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-03-01",
+  "generatedAt": "2026-03-05",
   "totalPlayers": 2289,
-  "playersWithProfiles": 139,
+  "playersWithProfiles": 140,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -16471,8 +16471,8 @@
     {
       "steamId": "76561197972822622",
       "name": "keks_",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "keks_",
+      "hasProfile": true,
       "ratings": {
         "ctf": 12.834807395935059,
         "tdm": 21.070592880249023,

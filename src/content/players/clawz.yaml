@@ -32,5 +32,9 @@ qlrace:
       total: 36
       time: 45432
   fetched_at: "2026-02-23"
-favorite_gametype: "Weapon: Lightning Gun"
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
 favorite_weapon: Lightning Gun
+accuracy_rl: 33
+accuracy_rg: 59
+accuracy_lg: 51

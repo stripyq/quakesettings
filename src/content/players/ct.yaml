@@ -10,5 +10,9 @@ hoqCtfGames: 6
 published: false
 team2024: AHU
 qlrace: null
-favorite_gametype: "Weapon: Lightning Gun"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun
+accuracy_rl: 43
+accuracy_rg: 48
+accuracy_lg: 26

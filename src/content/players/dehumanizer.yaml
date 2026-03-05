@@ -79,5 +79,8 @@ qlrace:
       time: 73151
   fetched_at: "2026-02-23"
 favorite_map: hiddenfortress
-favorite_gametype: "Weapon: Shotgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
+accuracy_rl: 42
+accuracy_rg: 53
+accuracy_lg: 34

@@ -49,5 +49,8 @@ cpuBrand: AMD
 
 qlrace: null
 favorite_map: purgatory
-favorite_gametype: "Weapon: Shotgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
+accuracy_rl: 40
+accuracy_rg: 53
+accuracy_lg: 34

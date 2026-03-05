@@ -42,5 +42,8 @@ tdmGames: 2457
 
 qlrace: null
 favorite_map: purgatory
-favorite_gametype: "Weapon: Shotgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
+accuracy_rl: 44
+accuracy_rg: 52
+accuracy_lg: 30

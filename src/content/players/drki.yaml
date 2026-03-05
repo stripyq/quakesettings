@@ -42,5 +42,9 @@ tdmGames: 3094
 
 
 qlrace: null
-favorite_gametype: "Weapon: Rocket Launcher"
+favorite_map: hiddenfortress
+favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher
+accuracy_rl: 44
+accuracy_rg: 49
+accuracy_lg: 29

@@ -11,5 +11,9 @@ hoqCtfGames: 143
 published: false
 team2024: 4friends
 qlrace: null
-favorite_gametype: "Weapon: Lightning Gun"
+favorite_map: overkill
+favorite_gametype: Clan Arena
 favorite_weapon: Lightning Gun
+accuracy_rl: 49
+accuracy_rg: 44
+accuracy_lg: 33

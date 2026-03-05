@@ -87,5 +87,9 @@ qlrace:
       total: 73
       time: 16617
   fetched_at: "2026-02-23"
-favorite_gametype: "Weapon: Lightning Gun"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun
+accuracy_rl: 43
+accuracy_rg: 54
+accuracy_lg: 37

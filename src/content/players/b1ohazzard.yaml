@@ -43,5 +43,8 @@ tdmGames: 2147
 
 qlrace: null
 favorite_map: purgatory
-favorite_gametype: "Weapon: Rocket Launcher"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher
+accuracy_rl: 44
+accuracy_rg: 41
+accuracy_lg: 29

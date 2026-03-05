@@ -8,13 +8,19 @@ team2026Shortname: CZE
 country: CZ
 team: Czesnecka
 published: false
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 41
-accuracy_lg: 33
-accuracy_rg: 51
+
+
+
+
+
+
 qlrace: null
 hoqCtfRating: 26.87
 hoqCtfGames: 3579
 ctfGames: 3579
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 41
+accuracy_rg: 51
+accuracy_lg: 33

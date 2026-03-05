@@ -75,5 +75,8 @@ qlrace:
       time: 7336
   fetched_at: "2026-02-23"
 favorite_map: hiddenfortress
-favorite_gametype: "Weapon: Railgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_rg: 50
+accuracy_lg: 36
