@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-03-10",
+  "generatedAt": "2026-03-05",
   "totalPlayers": 2289,
-  "playersWithProfiles": 141,
+  "playersWithProfiles": 140,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -16474,13 +16474,13 @@
       "slug": "keks_",
       "hasProfile": true,
       "ratings": {
-        "ctf": 13.07,
-        "tdm": 20.87,
+        "ctf": 12.834807395935059,
+        "tdm": 21.070592880249023,
         "2v2": null
       },
       "gamesPlayed": {
-        "ctf": 462,
-        "tdm": 82,
+        "ctf": 380,
+        "tdm": 81,
         "2v2": null
       }
     },
@@ -26727,8 +26727,8 @@
     {
       "steamId": "76561198018576230",
       "name": "Rohm",
-      "slug": "rohm",
-      "hasProfile": true,
+      "slug": null,
+      "hasProfile": false,
       "ratings": {
         "ctf": 0.13669456541538239,
         "tdm": null,
@@ -35669,26 +35669,10 @@
       }
     },
     {
-      "steamId": "76561198881954793",
+      "steamId": "76561198154954843",
       "name": "zoza",
       "slug": "zoza",
       "hasProfile": true,
-      "ratings": {
-        "ctf": 29.47418212890625,
-        "tdm": 29.445486068725586,
-        "2v2": 24.22974967956543
-      },
-      "gamesPlayed": {
-        "ctf": 2316,
-        "tdm": 1227,
-        "2v2": 50
-      }
-    },
-    {
-      "steamId": "76561198154954843",
-      "name": "zoza",
-      "slug": null,
-      "hasProfile": false,
       "ratings": {
         "ctf": 17.803691864013672,
         "tdm": null,
@@ -35698,6 +35682,22 @@
         "ctf": 19,
         "tdm": null,
         "2v2": null
+      }
+    },
+    {
+      "steamId": "76561198881954793",
+      "name": "zozo",
+      "slug": null,
+      "hasProfile": false,
+      "ratings": {
+        "ctf": 29.47418212890625,
+        "tdm": 29.445486068725586,
+        "2v2": 24.22974967956543
+      },
+      "gamesPlayed": {
+        "ctf": 2316,
+        "tdm": 1227,
+        "2v2": 50
       }
     },
     {
