@@ -40,6 +40,9 @@ const headsetSlugMap: Record<string, string[]> = {
   "Fosi K7": ["fosi-k7"],
   "Sennheiser HD560S": ["sennheiser-hd560s"],
   "Audio-Technica AD700X": ["audio-technica-ad700x"],
+  "AKG K702": ["akg-k702"],
+  "Beyerdynamic DT880": ["beyerdynamic-dt880"],
+  "Sennheiser HD598/HD599": ["sennheiser-hd598", "sennheiser-hd599"],
 };
 
 function getPlayerCount(name: string): number {
@@ -73,26 +76,29 @@ function priceBadgeClass(price: string): string {
 }
 
 const wirelessGaming = [
-  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, mle: false },
-  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, mle: false },
-  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false, mle: false },
-  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, mle: false },
-  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false, mle: false },
-  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, asr: false, mle: false },
+  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, asr: false, mle: false },
+  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
+  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
+  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
+  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
 ];
 
 const budgetOptions = [
-  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false, mle: false },
-  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false, mle: false },
-  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false, mle: false },
+  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
+  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
+  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
 ];
 
 const audiophile = [
-  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, mle: true },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, mle: false },
-  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, mle: false },
-  { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, mle: false },
-  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, mle: true },
+  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, asr: true, mle: true },
+  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, asr: true, mle: false },
+  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, asr: false, mle: false },
+  { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
+  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: true, mle: true },
+  { name: "AKG K702", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
+  { name: "Beyerdynamic DT880", type: "Wired Semi-Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
+  { name: "Sennheiser HD598/HD599", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: false, mle: true },
 ];
 
 const dacAmp = [
@@ -103,8 +109,8 @@ const specialty = [
   { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
 ];
 
-function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; mle?: boolean }) {
-  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.mle ? 1 : 0);
+function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; asr?: boolean; mle?: boolean }) {
+  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.asr ? 1 : 0) + (h.mle ? 1 : 0);
 }
 
 const schema = {
@@ -126,6 +132,7 @@ const schema = {
     <span class="legend-item"><span class="badge gt">GT</span> GadgetryTech</span>
     <span class="legend-item"><span class="badge bs">BS</span> BadSeed Tech</span>
     <span class="legend-item"><span class="badge jv">JV</span> Joshua Valour</span>
+    <span class="legend-item"><span class="badge asr">ASR</span> Audio Science Review</span>
     <span class="legend-item"><span class="badge mle">MLE</span> Mad Lust Envy (Head-Fi Gaming Guide)</span>
   </div>
 
@@ -144,10 +151,11 @@ const schema = {
           <th>Headset</th>
           <th>Type</th>
           <th>Price</th>
-          <th>GT</th>
-          <th>BS</th>
-          <th>JV</th>
-          <th>MLE</th>
+          <th title="GadgetryTech">GT</th>
+          <th title="BadSeed Tech">BS</th>
+          <th title="Joshua Valour">JV</th>
+          <th title="Audio Science Review">ASR</th>
+          <th title="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -162,6 +170,7 @@ const schema = {
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.asr ? '✓' : ''}</td>
               <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -190,10 +199,11 @@ const schema = {
           <th>Headset</th>
           <th>Type</th>
           <th>Price</th>
-          <th>GT</th>
-          <th>BS</th>
-          <th>JV</th>
-          <th>MLE</th>
+          <th title="GadgetryTech">GT</th>
+          <th title="BadSeed Tech">BS</th>
+          <th title="Joshua Valour">JV</th>
+          <th title="Audio Science Review">ASR</th>
+          <th title="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -208,6 +218,7 @@ const schema = {
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.asr ? '✓' : ''}</td>
               <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -236,10 +247,11 @@ const schema = {
           <th>Headset</th>
           <th>Type</th>
           <th>Price</th>
-          <th>GT</th>
-          <th>BS</th>
-          <th>JV</th>
-          <th>MLE</th>
+          <th title="GadgetryTech">GT</th>
+          <th title="BadSeed Tech">BS</th>
+          <th title="Joshua Valour">JV</th>
+          <th title="Audio Science Review">ASR</th>
+          <th title="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -254,6 +266,7 @@ const schema = {
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.asr ? '✓' : ''}</td>
               <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -501,6 +514,7 @@ const schema = {
   .badge.gt { background: #4a9eff; color: #fff; }
   .badge.bs { background: #ff6b6b; color: #fff; }
   .badge.jv { background: #6bcb77; color: #000; }
+  .badge.asr { background: #facc15; color: #000; }
   .badge.mle { background: #c084fc; color: #fff; }
 
   .price-legend {
@@ -559,6 +573,13 @@ const schema = {
     color: var(--text-secondary, #888);
     text-transform: uppercase;
     font-size: 0.75rem;
+  }
+
+  .rec-table th[title] {
+    cursor: help;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
   }
 
   .rec-table tbody tr:hover {
