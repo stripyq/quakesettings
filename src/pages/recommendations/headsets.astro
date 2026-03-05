@@ -38,7 +38,8 @@ const headsetSlugMap: Record<string, string[]> = {
   "Turtle Beach Atlas Air": ["turtle-beach-atlas-air"],
   "Astro A50X": ["astro-a50x"],
   "Fosi K7": ["fosi-k7"],
-  "Sennheiser HD560S": ["sennheiser-hd-560s"],
+  "Sennheiser HD560S": ["sennheiser-hd560s"],
+  "Audio-Technica AD700X": ["audio-technica-ad700x"],
 };
 
 function getPlayerCount(name: string): number {
@@ -64,34 +65,46 @@ function getPlayersForHeadset(name: string): typeof players {
   return result;
 }
 
+function priceBadgeClass(price: string): string {
+  if (price === '$$$$') return 'price-badge price-legendary';
+  if (price === '$$$') return 'price-badge price-premium';
+  if (price === '$$') return 'price-badge price-mid';
+  return 'price-badge price-budget';
+}
+
 const wirelessGaming = [
-  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true },
-  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false },
-  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false },
-  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false },
-  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false },
-  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false },
+  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, mle: false },
+  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, mle: false },
+  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, mle: false },
 ];
 
 const budgetOptions = [
-  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false },
-  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false },
-  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false },
+  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false, mle: false },
+  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false, mle: false },
 ];
 
 const audiophile = [
-  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true },
-  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true },
+  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, mle: true },
+  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, mle: false },
+  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, mle: false },
+  { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, mle: false },
+  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, mle: true },
+];
+
+const dacAmp = [
+  { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Recommended for DT880, DT900 Pro X, and other high-impedance headphones that benefit from amplification" },
 ];
 
 const specialty = [
   { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
-  { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Best audio upgrade for any headphone" },
 ];
 
-function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean }) {
-  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0);
+function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; mle?: boolean }) {
+  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.mle ? 1 : 0);
 }
 
 const schema = {
@@ -113,13 +126,14 @@ const schema = {
     <span class="legend-item"><span class="badge gt">GT</span> GadgetryTech</span>
     <span class="legend-item"><span class="badge bs">BS</span> BadSeed Tech</span>
     <span class="legend-item"><span class="badge jv">JV</span> Joshua Valour</span>
+    <span class="legend-item"><span class="badge mle">MLE</span> Mad Lust Envy (Head-Fi Gaming Guide)</span>
   </div>
 
   <div class="price-legend">
-    <span>$ = Budget (&lt;$80)</span>
-    <span>$$ = Mid ($80-200)</span>
-    <span>$$$ = Premium ($200-400)</span>
-    <span>$$$$ = Flagship ($400+)</span>
+    <span><span class="price-badge price-budget">$</span> Budget (&lt;$80)</span>
+    <span><span class="price-badge price-mid">$$</span> Mid ($80-200)</span>
+    <span><span class="price-badge price-premium">$$$</span> Premium ($200-400)</span>
+    <span><span class="price-badge price-legendary">$$$$</span> Flagship ($400+)</span>
   </div>
 
   <h2 class="section-title">Wireless Gaming</h2>
@@ -133,6 +147,7 @@ const schema = {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
+          <th>MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -143,10 +158,11 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td class="price">{h.price}</td>
+              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -177,6 +193,7 @@ const schema = {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
+          <th>MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -187,10 +204,11 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td class="price">{h.price}</td>
+              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -221,6 +239,7 @@ const schema = {
           <th>GT</th>
           <th>BS</th>
           <th>JV</th>
+          <th>MLE</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -231,16 +250,57 @@ const schema = {
             <tr>
               <td class="headset-name">{h.name}</td>
               <td>{h.type}</td>
-              <td class="price">{h.price}</td>
+              <td><span class={priceBadgeClass(h.price)}>{h.price}</span></td>
               <td class="center">{h.gt ? '✓' : ''}</td>
               <td class="center">{h.bs ? '✓' : ''}</td>
               <td class="center">{h.jv ? '✓' : ''}</td>
+              <td class="center">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
                     <div class="player-dropdown">
                       {getPlayersForHeadset(h.name).map(p => (
+                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                      ))}
+                    </div>
+                  </div>
+                ) : '—'}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">DAC / AMP</h2>
+  <div class="table-container">
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Notes</th>
+          <th>Players</th>
+        </tr>
+      </thead>
+      <tbody>
+        {dacAmp.map(s => {
+          const playerCount = getPlayerCount(s.name);
+          return (
+            <tr>
+              <td class="headset-name">{s.name}</td>
+              <td>{s.category}</td>
+              <td><span class={priceBadgeClass(s.price)}>{s.price}</span></td>
+              <td class="notes">{s.notes}</td>
+              <td class="center players">
+                {playerCount > 0 ? (
+                  <div class="usage-wrapper">
+                    <span class="usage-count">{playerCount}</span>
+                    <div class="player-dropdown">
+                      {getPlayersForHeadset(s.name).map(p => (
                         <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
                       ))}
                     </div>
@@ -273,7 +333,7 @@ const schema = {
             <tr>
               <td class="headset-name">{s.name}</td>
               <td>{s.category}</td>
-              <td class="price">{s.price}</td>
+              <td><span class={priceBadgeClass(s.price)}>{s.price}</span></td>
               <td class="notes">{s.notes}</td>
               <td class="center players">
                 {playerCount > 0 ? (
@@ -292,6 +352,119 @@ const schema = {
         })}
       </tbody>
     </table>
+  </div>
+
+  <div class="info-sections">
+    <h2 class="section-title">Arena Shooter Audio Principles</h2>
+    <p>Arena shooters like Quake Live, Diabotical, and Reflex Arena rely on precise stereo imaging rather than cinematic sound design. The key audio priorities are:</p>
+    <div class="table-container">
+      <table class="rec-table info-table">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Importance</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="headset-name">Imaging</td><td>Critical</td><td class="notes">Accurate left/right/front directional awareness</td></tr>
+          <tr><td class="headset-name">Frequency balance</td><td>High</td><td class="notes">Excess bass masks footsteps and item sounds</td></tr>
+          <tr><td class="headset-name">Soundstage</td><td>Secondary</td><td class="notes">Helpful but less important than directional precision</td></tr>
+          <tr><td class="headset-name">Comfort</td><td>High</td><td class="notes">Long sessions require lightweight headphones</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Open-back headphones are generally preferred — they provide clearer spatial cues and less bass masking than closed-back designs.</p>
+
+    <h2 class="section-title">How Arena Shooter Audio Works</h2>
+    <p>Arena shooters use clean stereo positional audio with no cinematic mixing. This means:</p>
+    <ul>
+      <li>Stereo audio works best</li>
+      <li>Virtual surround processing is rarely helpful and can reduce directional accuracy</li>
+      <li>Neutral tuning improves clarity of movement cues</li>
+    </ul>
+
+    <h2 class="section-title">Microphone Options</h2>
+    <p>Many recommended headphones here are not headsets and require a separate microphone. Common solutions:</p>
+    <ul>
+      <li>Antlion ModMic (attaches to any headphone)</li>
+      <li>V-MODA BoomPro (works with headphones that have a 3.5mm input)</li>
+      <li>USB desk microphone (e.g. Blue Yeti, HyperX QuadCast)</li>
+    </ul>
+
+    <h2 class="section-title">EQ Guidance (Optional)</h2>
+    <p>EQ is optional but can improve competitive clarity. Apply carefully:</p>
+    <div class="table-container">
+      <table class="rec-table info-table">
+        <thead>
+          <tr>
+            <th>Frequency</th>
+            <th>Adjustment</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="headset-name">60–150 Hz</td><td>Slight cut</td><td class="notes">Reduces bass masking of footsteps</td></tr>
+          <tr><td class="headset-name">2–4 kHz</td><td>Slight boost</td><td class="notes">Improves footstep clarity</td></tr>
+          <tr><td class="headset-name">6–8 kHz</td><td>Small boost</td><td class="notes">Sharpens positional cues</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Use Equalizer APO (Windows) with Peace GUI, or ReaEQ. Oratory1990's presets on Reddit are a good starting point for many headphones.</p>
+
+    <h2 class="section-title">Community Reference — Mad Lust Envy Gaming Guide</h2>
+    <blockquote>
+      The long-running Mad Lust Envy Headphone Gaming Guide (Head-Fi) is one of the most widely referenced community resources for gaming audio. Several headphones on this page also appear in that guide. Note that guide covers general gaming broadly; this page focuses specifically on arena shooters.
+    </blockquote>
+    <div class="table-container">
+      <table class="rec-table info-table">
+        <thead>
+          <tr>
+            <th>Headphone</th>
+            <th>MLE's reason for inclusion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="headset-name">Audio-Technica AD700X</td><td class="notes">Long-standing budget competitive king for positional imaging</td></tr>
+          <tr><td class="headset-name">AKG K702</td><td class="notes">Very wide soundstage, strong positional accuracy</td></tr>
+          <tr><td class="headset-name">Sennheiser PC38X</td><td class="notes">Called "audiophile level" — top headset pick</td></tr>
+          <tr><td class="headset-name">Beyerdynamic DT880/DT990</td><td class="notes">B-tier staples for competitive FPS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Common Mistakes</h2>
+    <div class="table-container">
+      <table class="rec-table info-table">
+        <thead>
+          <tr>
+            <th>Mistake</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="headset-name">Choosing bass-heavy gaming headsets</td><td class="notes">Footsteps become harder to hear</td></tr>
+          <tr><td class="headset-name">Enabling virtual surround processing</td><td class="notes">Can reduce directional accuracy in arena shooters</td></tr>
+          <tr><td class="headset-name">Using high-impedance headphones without an amp</td><td class="notes">Weak output, reduced clarity</td></tr>
+          <tr><td class="headset-name">Buying a headset with a built-in mic when a better open-back option exists</td><td class="notes">Worse imaging for no real benefit</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Quick Decision Guide</h2>
+    <div class="decision-guide">
+      <p><strong>Need isolation (LAN/office)?</strong></p>
+      <p>→ Yes: Closed-back — Beyerdynamic DT770 or Audeze Maxwell</p>
+      <p>→ No: Open-back — start here</p>
+
+      <p><strong>Want plug-and-play with no amp?</strong></p>
+      <p>→ Yes: Sennheiser HD560S</p>
+      <p>→ No: Beyerdynamic DT880 with a DAC/AMP like the Fosi K7</p>
+
+      <p><strong>Need a built-in mic?</strong></p>
+      <p>→ Yes: Drop EPOS PC38X</p>
+      <p>→ No: Any open-back headphone + Antlion ModMic</p>
+    </div>
   </div>
 
   <div class="back-link">
@@ -328,6 +501,7 @@ const schema = {
   .badge.gt { background: #4a9eff; color: #fff; }
   .badge.bs { background: #ff6b6b; color: #fff; }
   .badge.jv { background: #6bcb77; color: #000; }
+  .badge.mle { background: #c084fc; color: #fff; }
 
   .price-legend {
     display: flex;
@@ -336,7 +510,22 @@ const schema = {
     margin-bottom: 1.5rem;
     font-size: 0.875rem;
     color: var(--text-secondary, #888);
+    align-items: center;
   }
+
+  .price-badge {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    font-family: monospace;
+  }
+
+  .price-budget { background: #22c55e; color: #000; }
+  .price-mid { background: #3b82f6; color: #fff; }
+  .price-premium { background: #f97316; color: #fff; }
+  .price-legendary { background: #ef4444; color: #fff; }
 
   .section-title {
     margin-top: 2rem;
@@ -450,6 +639,46 @@ const schema = {
   .notes {
     color: var(--text-secondary, #888);
     font-size: 0.875rem;
+  }
+
+  .info-sections {
+    margin-top: 3rem;
+    border-top: 2px solid var(--border-color, #2a2a3a);
+    padding-top: 1rem;
+  }
+
+  .info-sections p,
+  .info-sections li {
+    color: var(--text-secondary, #888);
+    line-height: 1.6;
+  }
+
+  .info-sections ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .info-sections blockquote {
+    border-left: 3px solid var(--accent-primary, #ff6b35);
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary, #888);
+    background: var(--bg-secondary, #12121a);
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+  }
+
+  .decision-guide p {
+    margin: 0.25rem 0;
+  }
+
+  .decision-guide p strong {
+    color: var(--text-primary, #fff);
+  }
+
+  .decision-guide p + p:has(+ p strong),
+  .decision-guide p:last-child {
+    margin-bottom: 1rem;
   }
 
   .back-link {
