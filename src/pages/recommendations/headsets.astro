@@ -142,14 +142,14 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-type">Type</th>
+          <th class="col-price">Price</th>
+          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
+          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
+          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
+          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
+          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
+          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
         </tr>
       </thead>
       <tbody>
@@ -190,14 +190,14 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-type">Type</th>
+          <th class="col-price">Price</th>
+          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
+          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
+          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
+          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
+          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
+          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
         </tr>
       </thead>
       <tbody>
@@ -238,14 +238,14 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-type">Type</th>
+          <th class="col-price">Price</th>
+          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
+          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
+          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
+          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
+          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
+          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
         </tr>
       </thead>
       <tbody>
@@ -501,13 +501,54 @@ const schema = {
   .rec-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
 
   .rec-table th,
   .rec-table td {
-    padding: 0.75rem;
+    padding: 0.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Compact reviewer + players columns */
+  .rec-table th.col-reviewer,
+  .rec-table td.center {
+    width: 2.5rem;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    word-break: normal;
+  }
+
+  .rec-table th.col-players,
+  .rec-table td.center.players {
+    width: 3.5rem;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+  }
+
+  .rec-table th.col-price,
+  .rec-table td.price {
+    width: 3.5rem;
+  }
+
+  .rec-table th.col-type {
+    width: 20%;
+  }
+
+  /* Let headset name and type wrap */
+  .rec-table .headset-name,
+  .rec-table td:nth-child(2) {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* Info tables don't need fixed layout */
+  .rec-table.info-table {
+    table-layout: auto;
   }
 
   .rec-table th {
@@ -536,7 +577,9 @@ const schema = {
     color: #fff;
     padding: 6px 10px;
     border-radius: 4px;
-    white-space: nowrap;
+    white-space: normal;
+    width: max-content;
+    max-width: 300px;
     font-size: 0.75rem;
     font-weight: normal;
     text-transform: none;
