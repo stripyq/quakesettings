@@ -10,18 +10,6 @@
  *   node scripts/fetch-hoq-stats.cjs --fetch-only     # Fetch from HoQ, save JSON, don't update YAMLs
  *   node scripts/fetch-hoq-stats.cjs --dry-run        # Show what would be updated without writing
  *   node scripts/fetch-hoq-stats.cjs --save-html      # Save raw HTML pages to scripts/hoq-html/ for debugging
- *
- * To create hoq-stats-data.json manually, format it as:
- * {
- *   "76561198077163281": {
- *     "favorite_map": "Campgrounds",
- *     "favorite_gametype": "CTF",
- *     "favorite_weapon": "Rocket Launcher",
- *     "accuracy_rl": 42,
- *     "accuracy_rg": 38,
- *     "accuracy_lg": 45
- *   }
- * }
  */
 
 const fs = require('fs');
@@ -35,13 +23,13 @@ const FETCH_ONLY = process.argv.includes('--fetch-only');
 const DRY_RUN = process.argv.includes('--dry-run');
 const SAVE_HTML = process.argv.includes('--save-html');
 const HOQ_BASE = 'http://88.214.20.58/player';
-const DELAY_MS = 1500; // Delay between requests to be respectful
+const BATCH_SIZE = 5;
+const BATCH_DELAY_MS = 200;
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Get all players with steam IDs from YAML files
 function getPlayersWithSteamIds() {
   const files = fs.readdirSync(PLAYERS_DIR).filter(f => f.endsWith('.yaml'));
   const players = [];
@@ -64,18 +52,8 @@ function getPlayersWithSteamIds() {
   return players;
 }
 
-// Parse HoQ player page HTML to extract favorites and weapon accuracies
 function parseHoqPage(html, playerName) {
   const result = {};
-
-  // ---- FAVORITES ----
-  // QLLR (the HoQ rating engine) renders favorites as a <ul> list:
-  //   <h3>Favorites</h3>
-  //   <ul>
-  //     <li>Arena: japanesecastles</li>
-  //     <li>Gametype: Capture the Flag</li>
-  //     <li>Weapon: Railgun</li>
-  //   </ul>
 
   const favoriteFields = [
     { field: 'favorite_map', label: 'Arena' },
@@ -84,26 +62,10 @@ function parseHoqPage(html, playerName) {
   ];
 
   for (const { field, label } of favoriteFields) {
-    // Try <li> inline value: <li>Arena: Campgrounds</li>  (QLLR format)
-    const liPattern = new RegExp(
-      `<li[^>]*>\\s*${label}\\s*:\\s*([^<]+)`,
-      'i'
-    );
-    // Try table cell pattern: <td>Label</td><td>Value</td>
-    const tdPattern = new RegExp(
-      `<td[^>]*>\\s*${label}\\s*<\\/td>\\s*<td[^>]*>\\s*([^<]+)`,
-      'i'
-    );
-    // Try definition list: <dt>Label</dt><dd>Value</dd>
-    const dlPattern = new RegExp(
-      `<dt[^>]*>\\s*${label}\\s*<\\/dt>\\s*<dd[^>]*>\\s*([^<]+)`,
-      'i'
-    );
-    // Try generic key-value: Arena: Campgrounds or Arena = Campgrounds
-    const kvPattern = new RegExp(
-      `${label}\\s*[:=]\\s*([^\\n<]+)`,
-      'i'
-    );
+    const liPattern = new RegExp(`<li[^>]*>\\s*${label}\\s*:\\s*([^<]+)`, 'i');
+    const tdPattern = new RegExp(`<td[^>]*>\\s*${label}\\s*<\\/td>\\s*<td[^>]*>\\s*([^<]+)`, 'i');
+    const dlPattern = new RegExp(`<dt[^>]*>\\s*${label}\\s*<\\/dt>\\s*<dd[^>]*>\\s*([^<]+)`, 'i');
+    const kvPattern = new RegExp(`${label}\\s*[:=]\\s*([^\\n<]+)`, 'i');
 
     for (const pattern of [liPattern, tdPattern, dlPattern, kvPattern]) {
       const match = html.match(pattern);
@@ -117,25 +79,12 @@ function parseHoqPage(html, playerName) {
     }
   }
 
-  // ---- WEAPON ACCURACIES ----
-  // QLLR weapons table structure:
-  //   <table id="weapon-stats-table">
-  //     <thead><tr><th>Weapon</th><th>Frags</th><th>Accuracy</th></tr></thead>
-  //     <tbody>
-  //       <tr><td>Rocket Launcher</td><td>1234</td><td>39</td></tr>
-  //       <tr><td>Railgun</td><td>890</td><td>58</td></tr>
-  //     </tbody>
-  //   </table>
-  // Note: The page has MULTIPLE <thead> elements (matches table + weapons table).
-  // We must search all of them to find the one with an "Accuracy" column.
-
   const weapons = [
     { name: 'Rocket Launcher', key: 'accuracy_rl' },
     { name: 'Railgun', key: 'accuracy_rg' },
     { name: 'Lightning Gun', key: 'accuracy_lg' },
   ];
 
-  // Search ALL <thead> elements to find the one with an Accuracy column
   let accuracyColIndex = -1;
   const allTheads = [...html.matchAll(/<thead[^>]*>[\s\S]*?<\/thead>/gi)];
   for (const theadMatch of allTheads) {
@@ -150,13 +99,9 @@ function parseHoqPage(html, playerName) {
     if (accuracyColIndex >= 0) break;
   }
 
-  // Extract all table rows first to avoid cross-row regex matching
   const allRows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
 
   for (const { name, key } of weapons) {
-    // Find a data row (3+ cells) whose text contains this weapon name.
-    // The cell count check avoids matching favorites rows like
-    // <tr><td>Weapon</td><td>Rocket Launcher</td></tr>.
     const weaponRow = allRows.find(m => {
       const text = m[1].replace(/<[^>]*>/g, '');
       if (!text.includes(name)) return false;
@@ -165,11 +110,9 @@ function parseHoqPage(html, playerName) {
     });
 
     if (weaponRow) {
-      // Extract all <td> cells from this single row
       const cells = [...weaponRow[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)]
         .map(m => m[1].replace(/<[^>]*>/g, '').trim());
 
-      // Only use accuracy if we identified the column by header
       if (accuracyColIndex >= 0 && accuracyColIndex < cells.length) {
         const accuracy = parseFloat(cells[accuracyColIndex].replace('%', ''));
         if (!isNaN(accuracy) && accuracy >= 0 && accuracy <= 100) {
@@ -178,16 +121,12 @@ function parseHoqPage(html, playerName) {
       } else {
         console.warn(`  Warning: no accuracy column header found for ${name} (player: ${playerName || 'unknown'}) — skipping`);
       }
-      continue;
     }
-
-    // No data row found for this weapon — skip silently
   }
 
   return result;
 }
 
-// Fetch a single player's HoQ page
 async function fetchPlayerStats(steamId, playerName) {
   const url = `${HOQ_BASE}/${steamId}`;
 
@@ -207,10 +146,6 @@ async function fetchPlayerStats(steamId, playerName) {
 
   const html = await response.text();
 
-  // Check if it's actually a player page (not an error page).
-  // QLLR returns 404 for unknown players (handled above), so a 200 response
-  // with reasonable size is a valid page.  Avoid matching broad substrings
-  // like "No data" which appear in normal pages.
   if (html.length < 500) {
     return { html, stats: null };
   }
@@ -218,22 +153,9 @@ async function fetchPlayerStats(steamId, playerName) {
   return { html, stats: parseHoqPage(html, playerName) };
 }
 
-// Load pre-fetched stats from JSON file
 function loadStatsFromJson() {
   if (!fs.existsSync(STATS_JSON)) {
     console.error(`Error: ${STATS_JSON} not found`);
-    console.log('\nCreate this file with format:');
-    console.log(JSON.stringify({
-      '76561198077163281': {
-        favorite_map: 'Campgrounds',
-        favorite_gametype: 'CTF',
-        favorite_weapon: 'Rocket Launcher',
-        accuracy_rl: 42,
-        accuracy_rg: 38,
-        accuracy_lg: 45,
-      }
-    }, null, 2));
-    console.log('\nOr run without --from-json to fetch live data.');
     process.exit(1);
   }
 
@@ -242,7 +164,6 @@ function loadStatsFromJson() {
   return data;
 }
 
-// Update a player's YAML file with HoQ stats
 function updatePlayerYaml(playerPath, stats) {
   let content = fs.readFileSync(playerPath, 'utf8');
 
@@ -251,14 +172,11 @@ function updatePlayerYaml(playerPath, stats) {
     'accuracy_rl', 'accuracy_rg', 'accuracy_lg',
   ];
 
-  // Remove existing HoQ fields
   for (const field of fields) {
     content = content.replace(new RegExp(`^${field}:.*\\n?`, 'gm'), '');
   }
 
-  // Build new lines
   const newLines = [];
-
   if (stats.favorite_map) newLines.push(`favorite_map: ${yamlValue(stats.favorite_map)}`);
   if (stats.favorite_gametype) newLines.push(`favorite_gametype: ${yamlValue(stats.favorite_gametype)}`);
   if (stats.favorite_weapon) newLines.push(`favorite_weapon: ${yamlValue(stats.favorite_weapon)}`);
@@ -268,7 +186,6 @@ function updatePlayerYaml(playerPath, stats) {
 
   if (newLines.length === 0) return false;
 
-  // Append at the end of file (before trailing newline)
   content = content.trimEnd() + '\n' + newLines.join('\n') + '\n';
 
   if (!DRY_RUN) {
@@ -277,7 +194,6 @@ function updatePlayerYaml(playerPath, stats) {
   return true;
 }
 
-// Format a YAML string value (quote if needed)
 function yamlValue(str) {
   if (/[:#{}[\],&*?|>!%@`'"]/.test(str) || str.includes('\n')) {
     return `"${str.replace(/"/g, '\\"')}"`;
@@ -285,7 +201,6 @@ function yamlValue(str) {
   return str;
 }
 
-// Main function
 async function main() {
   console.log('=== Fetching HoQ Player Stats ===\n');
   if (DRY_RUN) console.log('(DRY RUN - no files will be modified)\n');
@@ -310,71 +225,55 @@ async function main() {
   let errors = 0;
   let notFound = 0;
 
-  for (const player of players) {
-    let stats;
+  for (let i = 0; i < players.length; i += BATCH_SIZE) {
+    const batch = players.slice(i, i + BATCH_SIZE);
 
-    if (USE_JSON) {
-      stats = statsMap[player.steamId];
-      if (!stats) {
-        skipped++;
-        continue;
+    await Promise.all(batch.map(async (player) => {
+      let stats;
+
+      if (USE_JSON) {
+        stats = statsMap[player.steamId];
+        if (!stats) { skipped++; return; }
+      } else {
+        try {
+          process.stdout.write(`  Fetching ${player.name} (${player.steamId})...`);
+          const result = await fetchPlayerStats(player.steamId, player.name);
+
+          if (SAVE_HTML && result.html) {
+            fs.writeFileSync(path.join(HTML_DIR, `${player.steamId}.html`), result.html);
+          }
+
+          if (!result.stats) { console.log(' not found'); notFound++; return; }
+          stats = result.stats;
+          if (Object.keys(stats).length === 0) { console.log(' no data'); skipped++; return; }
+          console.log(' OK');
+          statsMap[player.steamId] = stats;
+        } catch (err) {
+          console.log(` error: ${err.message}`);
+          errors++;
+          return;
+        }
       }
-    } else {
-      try {
-        process.stdout.write(`  Fetching ${player.name} (${player.steamId})...`);
-        const result = await fetchPlayerStats(player.steamId, player.name);
 
-        if (SAVE_HTML && result.html) {
-          fs.writeFileSync(
-            path.join(HTML_DIR, `${player.steamId}.html`),
-            result.html
-          );
-        }
+      if (FETCH_ONLY) return;
 
-        if (!result.stats) {
-          console.log(' not found');
-          notFound++;
-          await sleep(DELAY_MS);
-          continue;
-        }
-
-        stats = result.stats;
-
-        if (Object.keys(stats).length === 0) {
-          console.log(' no data');
-          skipped++;
-          await sleep(DELAY_MS);
-          continue;
-        }
-
-        console.log(' OK');
-        statsMap[player.steamId] = stats;
-        await sleep(DELAY_MS);
-      } catch (err) {
-        console.log(` error: ${err.message}`);
-        errors++;
-        await sleep(DELAY_MS);
-        continue;
+      const success = updatePlayerYaml(player.path, stats);
+      if (success) {
+        const parts = [];
+        if (stats.favorite_map) parts.push(`Map=${stats.favorite_map}`);
+        if (stats.favorite_gametype) parts.push(`GT=${stats.favorite_gametype}`);
+        if (stats.favorite_weapon) parts.push(`Wep=${stats.favorite_weapon}`);
+        if (stats.accuracy_rl != null) parts.push(`RL=${stats.accuracy_rl}%`);
+        if (stats.accuracy_rg != null) parts.push(`RG=${stats.accuracy_rg}%`);
+        if (stats.accuracy_lg != null) parts.push(`LG=${stats.accuracy_lg}%`);
+        console.log(`  ${DRY_RUN ? '[DRY]' : '✓'} ${player.name}: ${parts.join(', ')}`);
+        updated++;
       }
-    }
+    }));
 
-    if (FETCH_ONLY) continue;
-
-    const success = updatePlayerYaml(player.path, stats);
-    if (success) {
-      const parts = [];
-      if (stats.favorite_map) parts.push(`Map=${stats.favorite_map}`);
-      if (stats.favorite_gametype) parts.push(`GT=${stats.favorite_gametype}`);
-      if (stats.favorite_weapon) parts.push(`Wep=${stats.favorite_weapon}`);
-      if (stats.accuracy_rl != null) parts.push(`RL=${stats.accuracy_rl}%`);
-      if (stats.accuracy_rg != null) parts.push(`RG=${stats.accuracy_rg}%`);
-      if (stats.accuracy_lg != null) parts.push(`LG=${stats.accuracy_lg}%`);
-      console.log(`  ${DRY_RUN ? '[DRY]' : '✓'} ${player.name}: ${parts.join(', ')}`);
-      updated++;
-    }
+    await sleep(BATCH_DELAY_MS);
   }
 
-  // Save fetched data as JSON for future --from-json use
   if (!USE_JSON && Object.keys(statsMap).length > 0) {
     fs.writeFileSync(STATS_JSON, JSON.stringify(statsMap, null, 2));
     console.log(`\nSaved fetched data to ${path.relative(process.cwd(), STATS_JSON)}`);
