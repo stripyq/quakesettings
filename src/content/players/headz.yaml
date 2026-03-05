@@ -8,15 +8,24 @@ team2026Shortname: SHREK
 country: FR
 team: SHREKTALIKA
 published: false
+
+
+
+
+
+
+qlrace: null
+
+
+ctfGames: 3689
+hoqCtfRating: 24.74
+hoqCtfGames: 3689
+hoqTdmRating: 19.69
+hoqTdmGames: 676
+
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 31
-accuracy_lg: 36
 accuracy_rg: 52
-qlrace: null
-hoqCtfRating: 24.58
-hoqCtfGames: 3689
-ctfGames: 3689
-hoqTdmRating: 19.69
-hoqTdmGames: 676
+accuracy_lg: 36

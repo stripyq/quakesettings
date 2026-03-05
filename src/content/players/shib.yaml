@@ -40,3 +40,9 @@ qlrace:
       total: 19
       time: 26400
   fetched_at: "2026-02-23"
+favorite_map: asylum
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 54
+accuracy_rg: 55
+accuracy_lg: 37

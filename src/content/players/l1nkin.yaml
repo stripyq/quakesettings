@@ -17,8 +17,10 @@ ctfRatingUpdated: "2026-02-24"
 ctfGames: 84
 qllrCtfRating: 26.49
 qllrCtfGames: 13
-hoqCtfRating: 34.67
-hoqCtfGames: 84
+hoqCtfRating: 34.86
+hoqCtfGames: 51
+
+
 dpi: 1000
 sensitivity: 1.9
 m_yaw: 0.016
@@ -55,5 +57,5 @@ favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 44
-accuracy_rg: 63
-accuracy_lg: 42
+accuracy_rg: 64
+accuracy_lg: 41

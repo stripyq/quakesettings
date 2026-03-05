@@ -5,14 +5,24 @@ aliases:
 category: ctf
 tdmRating: 25.54
 tdmGames: 996
+hoqCtfRating: 14.43
+hoqCtfGames: 2001
+hoqTdmRating: 25.54
+hoqTdmGames: 996
 tdmRatingUpdated: "2026-02-24"
 ctfRating: 16.3
 ctfRatingUpdated: "2026-02-24"
 ctfGames: 2074
-hoqCtfRating: 16.3
-hoqCtfGames: 2074
-hoqTdmRating: 25.54
-hoqTdmGames: 996
+
+
+
+
 published: false
 team2024: Bad But Happy
 qlrace: null
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Shotgun
+accuracy_rl: 35
+accuracy_rg: 53
+accuracy_lg: 33

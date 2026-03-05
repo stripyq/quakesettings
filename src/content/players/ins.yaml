@@ -16,10 +16,14 @@ ctfRating: 31.29
 ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 29.88
 qllrCtfGames: 25
-hoqCtfRating: 31.29
-hoqCtfGames: 1702
+hoqCtfRating: 30.66
+hoqCtfGames: 1631
 hoqTdmRating: 29.47
 hoqTdmGames: 258
+
+
+
+
 duelRating: 1688
 ctfGames: 1702
 tdmGames: 258
@@ -114,4 +118,4 @@ favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 49
 accuracy_rg: 63
-accuracy_lg: 42
+accuracy_lg: 43

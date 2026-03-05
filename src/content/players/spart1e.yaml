@@ -20,10 +20,14 @@ tdmRatingUpdated: "2026-02-24"
 tdmGames: 345
 qllrCtfRating: 35.78
 qllrCtfGames: 61
-hoqCtfRating: 34.8
-hoqCtfGames: 836
-hoqTdmRating: 34.83
-hoqTdmGames: 345
+hoqCtfRating: 33.65
+hoqCtfGames: 719
+hoqTdmRating: 34.59
+hoqTdmGames: 344
+
+
+
+
 dpi: 1600
 sensitivity: 1
 edpi: 1600

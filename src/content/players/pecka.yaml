@@ -12,8 +12,12 @@ ctfGames: 221
 tdmGames: 2369
 hoqCtfRating: 16.79
 hoqCtfGames: 221
-hoqTdmRating: 27.69
-hoqTdmGames: 2369
+hoqTdmRating: 27.72
+hoqTdmGames: 2367
+
+
+
+
 duelGames: 794
 ctfRating: 16.79
 ctfRatingUpdated: "2026-02-24"
@@ -52,4 +56,4 @@ favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 44
 accuracy_rg: 48
-accuracy_lg: 36
+accuracy_lg: 35

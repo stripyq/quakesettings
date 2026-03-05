@@ -30,10 +30,14 @@ ctfGames: 572
 tdmRating: 16.9
 tdmRatingUpdated: "2026-02-24"
 tdmGames: 12
-hoqCtfRating: 30.66
-hoqCtfGames: 572
+hoqCtfRating: 30.31
+hoqCtfGames: 556
 hoqTdmRating: 16.9
 hoqTdmGames: 12
+
+
+
+
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

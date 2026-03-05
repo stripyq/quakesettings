@@ -35669,26 +35669,10 @@
       }
     },
     {
-      "steamId": "76561198154954843",
+      "steamId": "76561198881954793",
       "name": "zoza",
       "slug": "zoza",
       "hasProfile": true,
-      "ratings": {
-        "ctf": 17.803691864013672,
-        "tdm": null,
-        "2v2": null
-      },
-      "gamesPlayed": {
-        "ctf": 19,
-        "tdm": null,
-        "2v2": null
-      }
-    },
-    {
-      "steamId": "76561198881954793",
-      "name": "zozo",
-      "slug": null,
-      "hasProfile": false,
       "ratings": {
         "ctf": 29.47418212890625,
         "tdm": 29.445486068725586,
@@ -35698,6 +35682,22 @@
         "ctf": 2316,
         "tdm": 1227,
         "2v2": 50
+      }
+    },
+    {
+      "steamId": "76561198154954843",
+      "name": "zoza",
+      "slug": null,
+      "hasProfile": false,
+      "ratings": {
+        "ctf": 17.803691864013672,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": 19,
+        "tdm": null,
+        "2v2": null
       }
     },
     {

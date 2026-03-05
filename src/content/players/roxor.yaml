@@ -36,3 +36,9 @@ qlrace:
       total: 29
       time: 37768
   fetched_at: "2026-02-23"
+favorite_map: campgrounds
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 38
+accuracy_rg: 52
+accuracy_lg: 38

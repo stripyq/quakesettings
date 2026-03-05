@@ -15,3 +15,9 @@ hoqTdmRating: 6.9
 hoqTdmGames: 18
 published: false
 qlrace: null
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Shotgun
+accuracy_rl: 32
+accuracy_rg: 41
+accuracy_lg: 26

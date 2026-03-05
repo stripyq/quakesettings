@@ -38,10 +38,14 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 5214
 tdmGames: 1
-hoqCtfRating: 13.05
-hoqCtfGames: 5214
+hoqCtfRating: 13.03
+hoqCtfGames: 5135
 hoqTdmRating: 20.95
 hoqTdmGames: 1
+
+
+
+
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

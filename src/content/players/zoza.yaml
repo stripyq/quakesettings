@@ -1,7 +1,7 @@
 name: zoza
 country: HU
 team: wAnnaBees
-steamId: "76561198154954843"
+steamId: "76561198881954793"
 aliases:
   - zozo
   - wB zoza
@@ -11,8 +11,13 @@ team2026Shortname: wB
 published: false
 ctfRating: 17.8
 ctfGames: 19
-hoqCtfRating: 28.67
-hoqCtfGames: 19
+hoqCtfRating: 29.47
+hoqCtfGames: 2316
+hoqTdmRating: 29.45
+hoqTdmGames: 1227
+
+
+
 qlrace:
   mode: 3
   records: 1
@@ -41,3 +46,4 @@ favorite_weapon: Railgun
 accuracy_rl: 54
 accuracy_rg: 45
 accuracy_lg: 34
+

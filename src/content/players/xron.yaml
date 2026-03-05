@@ -36,3 +36,9 @@ qlrace:
       total: 13
       time: 9968
   fetched_at: "2026-02-23"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 49
+accuracy_rg: 61
+accuracy_lg: 44

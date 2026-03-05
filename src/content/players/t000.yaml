@@ -9,3 +9,9 @@ hoqCtfRating: 5.89
 hoqCtfGames: 2811
 published: false
 qlrace: null
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Shotgun
+accuracy_rl: 42
+accuracy_rg: 45
+accuracy_lg: 27

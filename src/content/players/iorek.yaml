@@ -19,8 +19,10 @@ ctfGames: 1703
 duelGames: 30
 qllrCtfRating: 28.61
 qllrCtfGames: 54
-hoqCtfRating: 29.6
+hoqCtfRating: 30.68
 hoqCtfGames: 1703
+
+
 dpi: 800
 sensitivity: 1.8
 edpi: 1440
@@ -55,4 +57,4 @@ favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun
 accuracy_rl: 42
 accuracy_rg: 59
-accuracy_lg: 36
+accuracy_lg: 37

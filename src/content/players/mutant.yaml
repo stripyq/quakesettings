@@ -51,12 +51,12 @@ headset: philips-fidelio-x2
 gpuBrand: NVIDIA
 cpuBrand: Intel
 enemyModel: Tank Jr.
-favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_lg: 44
-accuracy_rg: 66
-accuracy_rl: 46
+
+
+
+
+
+
 qlrace:
   mode: 2
   records: 1
@@ -79,3 +79,9 @@ qlrace:
       total: 47
       time: 38759
   fetched_at: "2026-02-23"
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 46
+accuracy_rg: 66
+accuracy_lg: 44

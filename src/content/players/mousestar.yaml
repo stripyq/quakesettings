@@ -37,3 +37,9 @@ qlrace:
       total: 78
       time: 172088
   fetched_at: "2026-02-23"
+favorite_map: campgrounds
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 38
+accuracy_rg: 44
+accuracy_lg: 27
