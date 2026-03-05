@@ -35,7 +35,8 @@ const FETCH_ONLY = process.argv.includes('--fetch-only');
 const DRY_RUN = process.argv.includes('--dry-run');
 const SAVE_HTML = process.argv.includes('--save-html');
 const HOQ_BASE = 'http://88.214.20.58/player';
-const DELAY_MS = 1500; // Delay between requests to be respectful
+const BATCH_SIZE = 5; // Parallel fetches per batch
+const BATCH_DELAY_MS = 200; // Delay between batches
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -310,18 +311,19 @@ async function main() {
   let errors = 0;
   let notFound = 0;
 
-  for (const player of players) {
+  // Process a single player's fetched result (or JSON lookup).
+  // Returns the stats object or null.
+  async function processPlayer(player) {
     let stats;
 
     if (USE_JSON) {
       stats = statsMap[player.steamId];
       if (!stats) {
         skipped++;
-        continue;
+        return null;
       }
     } else {
       try {
-        process.stdout.write(`  Fetching ${player.name} (${player.steamId})...`);
         const result = await fetchPlayerStats(player.steamId, player.name);
 
         if (SAVE_HTML && result.html) {
@@ -332,45 +334,66 @@ async function main() {
         }
 
         if (!result.stats) {
-          console.log(' not found');
+          console.log(`  ${player.name}: not found`);
           notFound++;
-          await sleep(DELAY_MS);
-          continue;
+          return null;
         }
 
         stats = result.stats;
 
         if (Object.keys(stats).length === 0) {
-          console.log(' no data');
+          console.log(`  ${player.name}: no data`);
           skipped++;
-          await sleep(DELAY_MS);
-          continue;
+          return null;
         }
 
-        console.log(' OK');
+        console.log(`  ${player.name}: OK`);
         statsMap[player.steamId] = stats;
-        await sleep(DELAY_MS);
       } catch (err) {
-        console.log(` error: ${err.message}`);
+        console.log(`  ${player.name}: error: ${err.message}`);
         errors++;
-        await sleep(DELAY_MS);
-        continue;
+        return null;
       }
     }
 
-    if (FETCH_ONLY) continue;
+    return { player, stats };
+  }
 
-    const success = updatePlayerYaml(player.path, stats);
-    if (success) {
-      const parts = [];
-      if (stats.favorite_map) parts.push(`Map=${stats.favorite_map}`);
-      if (stats.favorite_gametype) parts.push(`GT=${stats.favorite_gametype}`);
-      if (stats.favorite_weapon) parts.push(`Wep=${stats.favorite_weapon}`);
-      if (stats.accuracy_rl != null) parts.push(`RL=${stats.accuracy_rl}%`);
-      if (stats.accuracy_rg != null) parts.push(`RG=${stats.accuracy_rg}%`);
-      if (stats.accuracy_lg != null) parts.push(`LG=${stats.accuracy_lg}%`);
-      console.log(`  ${DRY_RUN ? '[DRY]' : '✓'} ${player.name}: ${parts.join(', ')}`);
-      updated++;
+  // Fetch in parallel batches
+  for (let i = 0; i < players.length; i += BATCH_SIZE) {
+    const batch = players.slice(i, i + BATCH_SIZE);
+    const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(players.length / BATCH_SIZE);
+
+    if (!USE_JSON) {
+      console.log(`\n  [batch ${batchNum}/${totalBatches}] Fetching ${batch.map(p => p.name).join(', ')}...`);
+    }
+
+    const batchResults = await Promise.all(batch.map(p => processPlayer(p)));
+
+    for (const result of batchResults) {
+      if (!result) continue;
+
+      if (FETCH_ONLY) continue;
+
+      const { player, stats } = result;
+      const success = updatePlayerYaml(player.path, stats);
+      if (success) {
+        const parts = [];
+        if (stats.favorite_map) parts.push(`Map=${stats.favorite_map}`);
+        if (stats.favorite_gametype) parts.push(`GT=${stats.favorite_gametype}`);
+        if (stats.favorite_weapon) parts.push(`Wep=${stats.favorite_weapon}`);
+        if (stats.accuracy_rl != null) parts.push(`RL=${stats.accuracy_rl}%`);
+        if (stats.accuracy_rg != null) parts.push(`RG=${stats.accuracy_rg}%`);
+        if (stats.accuracy_lg != null) parts.push(`LG=${stats.accuracy_lg}%`);
+        console.log(`  ${DRY_RUN ? '[DRY]' : '✓'} ${player.name}: ${parts.join(', ')}`);
+        updated++;
+      }
+    }
+
+    // Delay between batches (not between individual players)
+    if (!USE_JSON && i + BATCH_SIZE < players.length) {
+      await sleep(BATCH_DELAY_MS);
     }
   }
 
