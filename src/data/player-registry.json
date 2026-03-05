@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-03-01",
+  "generatedAt": "2026-03-05",
   "totalPlayers": 2289,
-  "playersWithProfiles": 139,
+  "playersWithProfiles": 140,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -16474,13 +16474,13 @@
       "slug": "keks_",
       "hasProfile": true,
       "ratings": {
-        "ctf": 13.07,
-        "tdm": 20.87,
+        "ctf": 12.834807395935059,
+        "tdm": 21.070592880249023,
         "2v2": null
       },
       "gamesPlayed": {
-        "ctf": 462,
-        "tdm": 82,
+        "ctf": 380,
+        "tdm": 81,
         "2v2": null
       }
     },
