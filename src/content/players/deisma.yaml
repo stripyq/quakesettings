@@ -44,11 +44,9 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
+accuracy_rg: 58
+accuracy_lg: 41
+accuracy_rl: 39
 
 qlrace: null
 favorite_gametype: "Weapon: Railgun"
