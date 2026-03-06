@@ -1,0 +1,41 @@
+name: Rohm
+# steamId not provided in submission
+country: DE
+aliases: []
+category: ctf
+published: false
+dataSource: player
+dpi: 1800
+sensitivity: 2.3
+m_cpi: 0
+m_yaw: 0.022
+edpi: 4140
+cm360: 10.04
+acceleration: false
+rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
+grip: Hybrid
+fov: 96
+crosshair: "2"
+crosshairColor: White
+crosshairSize: "32"
+enemyModel: Keel
+forward: num 8
+back: num 5
+left: num 4
+right: num 6
+jump: downarrow
+crouch: ctrl
+attack: mouse1
+zoom: mouse2
+mouse: Razer Abyssus 1800
+mousepad: steelseries-qck
+mousepadBase: Standard
+mousepadSize: Large
+keyboard: Razer Deathstalker
+monitor: asus-tuf-gaming-vg279qm
+headset: hyperx-cloud-iii
+skates: Stock
+gpuBrand: NVIDIA
+cpuBrand: Intel

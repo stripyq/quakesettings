@@ -19,15 +19,20 @@ hoqCtfGames: 2186
 
 dataSource: player
 dpi: 800
-sensitivity: 1.05
-edpi: 840
-cm360: 49.48051948051948
+sensitivity: 1.1
+m_cpi: 0
+m_yaw: 0.022
+edpi: 880
+cm360: 47.23
 acceleration: true
-accelValue: 0.05
+accelValue: 0.02
 rawInput: true
+windowsSensitivity: 6
+invertedMouse: false
 fov: 100
 crosshair: 2, 7
-invertedMouse: false
+crosshairColor: Yellow
+enemyModel: Keel
 forward: w
 back: s
 left: a
@@ -39,8 +44,6 @@ mousepad: esptiger-eba
 monitor: msi-mpg-271qrx-qd-oled
 headset: drop-sennheiser-pc37x
 skates: Stock
-enemyModel: Keel
-crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 2208
