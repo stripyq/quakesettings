@@ -4,9 +4,8 @@ country: DE
 aliases: []
 category: ctf
 published: false
-ctfRating: -0.13
-ctfRatingUpdated: "2026-03-06"
-ctfGames: 207
+hoqCtfRating: -0.13
+hoqCtfGames: 207
 dataSource: player
 dpi: 1800
 sensitivity: 2.3
