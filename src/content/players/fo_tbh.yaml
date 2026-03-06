@@ -9,7 +9,7 @@ country: GB-SCT
 team: wAnnaBees
 category: ctf
 lastUpdated: 2025-01
-ctfRating: 35.34
+ctfRating: 34.67
 ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 34.07
 qllrCtfGames: 62
@@ -46,7 +46,7 @@ headset: drop-sennheiser-pc37x
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 2208
+ctfGames: 2186
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

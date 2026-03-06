@@ -11,8 +11,10 @@ team2026Shortname: OSQ
 category: duel
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 15.4
-tdmRating: 14.37
+ctfRating: 15.14
+ctfRatingUpdated: "2026-02-24"
+tdmRating: 14.59
+tdmRatingUpdated: "2026-02-24"
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022

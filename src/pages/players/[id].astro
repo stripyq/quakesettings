@@ -124,15 +124,15 @@ const sameMousepad = p.mousepad
 
 // Format rating based on type
 function formatRating(rating: number | undefined, type: 'duel' | 'ctf' | 'tdm'): string {
-  if (!rating) return '—';
+  if (rating == null) return '—';
   if (type === 'duel') return Math.round(rating).toString(); // Glicko: integer
   return rating.toFixed(1); // TrueSkill: one decimal
 }
 
 // Get team rating (higher of CTF or TDM)
 function getTeamRating(): { rating: number | null; type: 'ctf' | 'tdm' | null } {
-  const ctf = p.ctfRating || 0;
-  const tdm = p.tdmRating || 0;
+  const ctf = p.ctfRating ?? 0;
+  const tdm = p.tdmRating ?? 0;
   if (ctf === 0 && tdm === 0) return { rating: null, type: null };
   if (ctf >= tdm) return { rating: p.ctfRating!, type: 'ctf' };
   return { rating: p.tdmRating!, type: 'tdm' };
