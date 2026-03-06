@@ -2,7 +2,7 @@
   "version": "2.0",
   "generatedAt": "2026-03-06",
   "totalPlayers": 2289,
-  "playersWithProfiles": 140,
+  "playersWithProfiles": 141,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -26727,8 +26727,8 @@
     {
       "steamId": "76561198018576230",
       "name": "Rohm",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "rohm",
+      "hasProfile": true,
       "ratings": {
         "ctf": 0.13669456541538239,
         "tdm": null,
