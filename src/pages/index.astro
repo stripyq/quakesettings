@@ -27,9 +27,9 @@ function formatNum(n: number): string {
 function getTeamRating(player: any): { rating: number | null; type: 'ctf' | 'tdm' | null } {
   const ctf = player.ctfRating;
   const tdm = player.tdmRating;
-  if (!ctf && !tdm) return { rating: null, type: null };
-  if (!ctf) return { rating: tdm, type: 'tdm' };
-  if (!tdm) return { rating: ctf, type: 'ctf' };
+  if (ctf == null && tdm == null) return { rating: null, type: null };
+  if (ctf == null) return { rating: tdm, type: 'tdm' };
+  if (tdm == null) return { rating: ctf, type: 'ctf' };
   return ctf >= tdm ? { rating: ctf, type: 'ctf' } : { rating: tdm, type: 'tdm' };
 }
 

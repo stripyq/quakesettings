@@ -264,12 +264,12 @@ const schema = {
         }
 
         function getRating(player) {
-          return player.ctfRating || player.tdmRating || null;
+          return player.ctfRating ?? player.tdmRating ?? null;
         }
 
         function getTotalGames(player) {
-          const ctf = player.ctfGames || 0;
-          const tdm = player.tdmGames || 0;
+          const ctf = player.ctfGames ?? 0;
+          const tdm = player.tdmGames ?? 0;
           return ctf + tdm;
         }
 
@@ -470,16 +470,16 @@ const schema = {
         html += compareHardwareRow('Headset', p1.headsetData, p2.headsetData);
 
         // Section: Ratings (only show if at least one player has data)
-        const hasRatings = p1.duelRating || p2.duelRating || p1.tdmRating || p2.tdmRating || p1.ctfRating || p2.ctfRating;
+        const hasRatings = p1.duelRating != null || p2.duelRating != null || p1.tdmRating != null || p2.tdmRating != null || p1.ctfRating != null || p2.ctfRating != null;
         if (hasRatings) {
           html += sectionHeader('Ratings');
-          if (p1.duelRating || p2.duelRating) {
+          if (p1.duelRating != null || p2.duelRating != null) {
             html += compareRow('Duel', formatRating(p1.duelRating), formatRating(p2.duelRating), true);
           }
-          if (p1.tdmRating || p2.tdmRating) {
+          if (p1.tdmRating != null || p2.tdmRating != null) {
             html += compareRow('TDM', formatRating(p1.tdmRating), formatRating(p2.tdmRating), true);
           }
-          if (p1.ctfRating || p2.ctfRating) {
+          if (p1.ctfRating != null || p2.ctfRating != null) {
             html += compareRow('CTF', formatRating(p1.ctfRating), formatRating(p2.ctfRating), true);
           }
         }

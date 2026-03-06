@@ -13,7 +13,7 @@ duelRating: 1345
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.37
 tdmRatingUpdated: "2026-02-24"
-ctfRating: 46.28
+ctfRating: 43.59
 ctfRatingUpdated: "2026-02-24"
 qllrCtfRating: 33.84
 qllrCtfGames: 49
@@ -54,7 +54,7 @@ enemyModel: Keel
 crosshairColor: Green, White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2699
+ctfGames: 2586
 tdmGames: 197
 qlrace: null
 favorite_map: q3wcp9

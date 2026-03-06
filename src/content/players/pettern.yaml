@@ -7,7 +7,7 @@ category: ctf
 lastUpdated: 2025-01
 tdmRating: 20.95
 tdmRatingUpdated: "2026-02-24"
-ctfRating: 13.05
+ctfRating: 13.03
 ctfRatingUpdated: "2026-02-24"
 dataSource: player
 dpi: 1600
@@ -36,7 +36,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 5214
+ctfGames: 5135
 tdmGames: 1
 hoqCtfRating: 13.03
 hoqCtfGames: 5135

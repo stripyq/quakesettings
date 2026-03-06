@@ -609,8 +609,8 @@ const recentPlayers = players
 // Filter: must have >= 100 team mode games (CTF + TDM)
 // Game counts come from YAML only (synced from HoQ via scripts/sync-hoq-games.cjs)
 function getCompetitiveGames(d: any): number {
-  const ctf = d.ctfGames || 0;
-  const tdm = d.tdmGames || 0;
+  const ctf = d.ctfGames ?? 0;
+  const tdm = d.tdmGames ?? 0;
   return ctf + tdm;
 }
 const accuracyEligible = players.filter(p => getCompetitiveGames(p.data) >= 100);
