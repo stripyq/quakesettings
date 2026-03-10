@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node scripts/generate-form-data.js",
+    "prebuild": "node scripts/generate-form-data.js && node scripts/sync-hoq-to-display.cjs",
     "build": "astro build",
     "preview": "astro preview",
     "fetch:season": "node scripts/fetch-season-stats.cjs",
