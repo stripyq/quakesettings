@@ -352,23 +352,23 @@ const schema = {
     <p class="section-subtitle">Important: Understanding these mechanics</p>
 
     <div class="info-box">
-      <p>Quake Live servers run at <strong>40 Hz</strong> (40 updates per second). The client buffers snapshots to smooth movement.</p>
+      <p>Quake Live servers run at <strong>~40 Hz</strong> (40 snapshots per second). The client normally buffers <strong>two</strong> server snapshots for interpolation. At ~40 Hz that means roughly <strong>50 ms</strong> of interpolation delay before enemy positions are rendered.</p>
     </div>
 
-    <p><code>cl_timenudge</code> controls how far behind real time the client renders.</p>
+    <p><code>cl_timenudge</code> offsets the client render time, reducing (or increasing) that interpolation buffer.</p>
 
     <h3>Key points:</h3>
     <ul class="feature-list">
-      <li><strong>Lower (more negative) timenudge</strong> = less buffering</li>
-      <li><strong>Less buffering</strong> = more responsive feel</li>
-      <li><strong>But less buffering</strong> = less tolerance for jitter</li>
+      <li><strong><code>cl_timenudge -20</code></strong> reduces the interpolation delay by ~20 ms — enemy positions are rendered earlier compared to <code>cl_timenudge 0</code></li>
+      <li><strong>Lower (more negative) values</strong> = less buffering = more responsive feel</li>
+      <li><strong>Less buffering</strong> = less tolerance for jitter or packet loss</li>
     </ul>
 
-    <p>This is why:</p>
-    <ul class="consequence-list">
-      <li><code>cl_timenudge -20</code> can feel "snappier"</li>
-      <li>But causes more visible warping on unstable connections</li>
-    </ul>
+    <p><code>cl_timenudge -20</code> is the recommended default and is commonly used by competitive players. The trade-off is that on unstable connections, reduced buffering can cause visible enemy warping or jitter.</p>
+
+    <div class="info-box">
+      <p><strong>Fallback:</strong> If your connection or opponents frequently have packet loss or jitter, <code>cl_timenudge 0</code> may produce smoother interpolation at the cost of slightly higher visual latency.</p>
+    </div>
 
     <h3>Lag Compensation (Backwards Reconciliation)</h3>
     <p>Quake Live uses <strong>server-side backward reconciliation</strong> for hitscan weapons:</p>
@@ -578,48 +578,44 @@ Ping stays "low" but gameplay breaks.</pre>
       </div>
       <pre><code>rate 25000
 com_idleSleep 0
-cl_packetdup 0
-cl_timenudge 0</code></pre>
+cl_packetdup 2
+cl_timenudge -20</code></pre>
     </div>
 
-    <h3>When to Change cl_packetdup</h3>
-    <p>Use <code>1–2</code> only if:</p>
+    <h3>About cl_packetdup</h3>
+    <p>Packet duplication sends multiple copies of each input packet. If one copy is lost in transit, the duplicate can still arrive — reducing visible artifacts like player warping or teleporting caused by packet loss.</p>
+    <p><code>cl_packetdup 2</code> is the recommended general default. Duplicate packets add small upstream overhead, but on modern connections this is usually negligible.</p>
     <ul class="feature-list">
-      <li>You see red packet loss bars</li>
-      <li>Others say you warp</li>
-      <li>You cannot avoid Wi-Fi</li>
+      <li><code>cl_packetdup 0–1</code> — stable connections with no packet loss</li>
+      <li><code>cl_packetdup 2</code> — recommended general default</li>
+      <li><code>cl_packetdup 3–5</code> — lossy or unstable connections</li>
     </ul>
-    <p class="setting-note">Trade-off: higher upload usage.</p>
 
-    <h3>When to Change cl_timenudge</h3>
-    <p>Use <code>-10</code> to <code>-20</code> only as last resort:</p>
-    <ul class="feature-list">
-      <li>Persistent yellow triangles</li>
-      <li>Underlying network cannot be fixed</li>
-    </ul>
-    <p class="setting-note">Trade-off: adds artificial local delay to reduce warping.</p>
+    <h3>About cl_timenudge</h3>
+    <p><code>cl_timenudge -20</code> is the recommended default — it reduces interpolation delay by ~20 ms, making enemy movement feel more responsive. Most competitive players use this value.</p>
+    <p class="setting-note">Trade-off: less buffering means less tolerance for jitter. If you experience visible warping, try <code>cl_timenudge 0</code> for smoother interpolation at the cost of slightly higher visual latency.</p>
 
     <h3>Recommended Profiles</h3>
     <div class="profile-cards">
       <div class="profile-card stable">
-        <h4>Stable connection</h4>
+        <h4>Recommended default</h4>
         <div class="code-block small">
-          <pre><code>cl_packetdup 0
-cl_timenudge 0</code></pre>
+          <pre><code>cl_packetdup 2
+cl_timenudge -20</code></pre>
         </div>
       </div>
       <div class="profile-card unstable">
-        <h4>Unstable</h4>
+        <h4>Unstable / high jitter</h4>
         <div class="code-block small">
-          <pre><code>cl_packetdup 2
+          <pre><code>cl_packetdup 3
 cl_timenudge 0</code></pre>
         </div>
       </div>
       <div class="profile-card lastresort">
-        <h4>Last resort</h4>
+        <h4>Very lossy connection</h4>
         <div class="code-block small">
-          <pre><code>cl_packetdup 2
-cl_timenudge -15</code></pre>
+          <pre><code>cl_packetdup 5
+cl_timenudge 0</code></pre>
         </div>
       </div>
     </div>
@@ -756,7 +752,7 @@ cl_timenudge -15</code></pre>
       <li><span class="check-icon">☐</span> <code>rate 25000</code> + <code>com_idleSleep 0</code></li>
       <li><span class="check-icon">☐</span> Test real QL servers</li>
       <li><span class="check-icon">☐</span> Watch lagometer</li>
-      <li><span class="check-icon">☐</span> Adjust packetdup only if needed</li>
+      <li><span class="check-icon">☐</span> <code>cl_packetdup 2</code> + <code>cl_timenudge -20</code></li>
     </ul>
   </section>
 
