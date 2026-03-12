@@ -65,14 +65,19 @@ async function loadRatings() {
   if (!SKIP_API) {
     try {
       console.log('Fetching CTF ratings from API...');
-      const ctf = await fetchJson(CTF_URL);
+      const ctfRaw = await fetchJson(CTF_URL);
+      // API returns { ok: true, response: [...] }, not a raw array
+      const ctf = Array.isArray(ctfRaw) ? ctfRaw : ctfRaw.response;
+      if (!Array.isArray(ctf)) throw new Error('CTF response has no array in .response');
       console.log(`  Got ${ctf.length} CTF entries`);
 
       console.log('Fetching TDM ratings from API...');
-      const tdm = await fetchJson(TDM_URL);
+      const tdmRaw = await fetchJson(TDM_URL);
+      const tdm = Array.isArray(tdmRaw) ? tdmRaw : tdmRaw.response;
+      if (!Array.isArray(tdm)) throw new Error('TDM response has no array in .response');
       console.log(`  Got ${tdm.length} TDM entries`);
 
-      // Cache to repo root
+      // Cache the arrays (not the wrapper) to repo root
       fs.writeFileSync(CTF_JSON_PATH, JSON.stringify(ctf, null, 2));
       fs.writeFileSync(TDM_JSON_PATH, JSON.stringify(tdm, null, 2));
       console.log('  Saved ctf.json and tdm.json to repo root\n');
