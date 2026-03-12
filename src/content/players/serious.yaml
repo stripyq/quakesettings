@@ -6,6 +6,10 @@ aliases:
 team2024: Aimdead Brainers
 country: Russia
 category: tdm
+hoqCtfRating: 18.568729400634766
+hoqCtfGames: 1
+hoqTdmRating: 35.457237243652344
+hoqTdmGames: 32
 lastUpdated: 2025-01
 duelRating: 1834
 ctfGames: 1
@@ -16,10 +20,10 @@ hoqTdmRating: 35.46
 hoqTdmGames: 32
 duelGames: 1890
 duelRatingUpdated: "2026-02-04"
-tdmRating: 35.46
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 18.57
-ctfRatingUpdated: "2026-01-31"
+tdmRating: 35.457237243652344
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 18.568729400634766
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 800
 sensitivity: 1.5

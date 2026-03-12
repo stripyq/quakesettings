@@ -8,7 +8,7 @@ team2024: Aimdead Brainers
 team2026: Aimdead Brainers
 team2026Shortname: cock
 published: false
-ctfRating: 25.18
+ctfRating: 25.175155639648438
 ctfGames: 6
 hoqCtfRating: 25.18
 hoqCtfGames: 6
@@ -18,4 +18,7 @@ favorite_gametype: Clan Arena
 favorite_weapon: Railgun
 accuracy_rl: 37
 accuracy_rg: 56
-accuracy_lg: 49
+qlrace: null
+hoqCtfRating: 25.175155639648438
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 6

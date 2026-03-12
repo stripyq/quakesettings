@@ -2,11 +2,13 @@ name: fearz
 steamId: "76561198090058821"
 country: RU
 category: tdm
+hoqTdmRating: 28.98751449584961
+hoqTdmGames: 698
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
-tdmRating: 28.99
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 28.98751449584961
+tdmRatingUpdated: "2026-03-12"
 ctfRating: 34.1
 ctfRatingUpdated: "2026-01-31"
 dataSource: player

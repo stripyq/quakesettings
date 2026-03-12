@@ -5,13 +5,17 @@ aliases:
 team2024: unreliable dogs
 country: Unknown
 category: ctf
+hoqCtfRating: 30.26048469543457
+hoqCtfGames: 367
+hoqTdmRating: 34.976234436035156
+hoqTdmGames: 45
 lastUpdated: 2025-01
 duelRating: 1476
 duelRatingUpdated: "2026-01-31"
-tdmRating: 34.98
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 30.26
-ctfRatingUpdated: "2026-02-24"
+tdmRating: 34.976234436035156
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 30.26048469543457
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 800
 sensitivity: 2.3

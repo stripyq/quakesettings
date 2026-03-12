@@ -3,16 +3,16 @@ steamId: "76561198017320685"
 aliases:
   - xron
 category: ctf
-tdmRating: 28.07
-tdmGames: 37
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 14.4
-ctfRatingUpdated: "2026-02-24"
-ctfGames: 1
-hoqCtfRating: 14.4
+hoqCtfRating: 14.395367622375488
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 14.395367622375488
 hoqCtfGames: 1
-hoqTdmRating: 28.07
+ctfGames: 1
+hoqTdmRating: 28.073211669921875
+tdmRatingUpdated: "2026-03-12"
+tdmRating: 28.073211669921875
 hoqTdmGames: 37
+tdmGames: 37
 published: false
 qlrace:
   mode: 2

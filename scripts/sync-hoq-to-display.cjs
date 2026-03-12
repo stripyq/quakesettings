@@ -1,153 +1,96 @@
 #!/usr/bin/env node
 /**
- * Sync hoqCtfRating/hoqTdmRating values into the display fields
- * (ctfRating, tdmRating, ctfGames, tdmGames, ctfRatingUpdated, tdmRatingUpdated)
+ * Sync HoQ rating/game fields to display fields in player YAML files.
+ *
+ * Copies:
+ *   hoqCtfRating  → ctfRating   (+ ctfRatingUpdated timestamp)
+ *   hoqCtfGames   → ctfGames
+ *   hoqTdmRating  → tdmRating   (+ tdmRatingUpdated timestamp)
+ *   hoqTdmGames   → tdmGames
+ *
+ * Only writes files where display values actually changed.
+ * Does NOT touch accuracy fields (accuracy_rl, accuracy_rg, accuracy_lg).
+ *
+ * Usage: node scripts/sync-hoq-to-display.cjs
  */
+
 const fs = require('fs');
 const path = require('path');
 
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
-const TODAY = '2026-02-24';
-const files = fs.readdirSync(PLAYERS_DIR).filter(f => f.endsWith('.yaml'));
+const TODAY = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
 
-let updated = 0;
-const changes = [];
+// Map of hoq source field → { display field, updated field }
+const FIELD_MAP = [
+  { src: 'hoqCtfRating', dst: 'ctfRating', updated: 'ctfRatingUpdated' },
+  { src: 'hoqCtfGames',  dst: 'ctfGames',  updated: null },
+  { src: 'hoqTdmRating', dst: 'tdmRating', updated: 'tdmRatingUpdated' },
+  { src: 'hoqTdmGames',  dst: 'tdmGames',  updated: null },
+];
 
-for (const file of files) {
-  const filePath = path.join(PLAYERS_DIR, file);
-  let content = fs.readFileSync(filePath, 'utf8');
-
-  const hoqCtfR = content.match(/^hoqCtfRating:\s*(.+)$/m);
-  const hoqCtfG = content.match(/^hoqCtfGames:\s*(.+)$/m);
-  const hoqTdmR = content.match(/^hoqTdmRating:\s*(.+)$/m);
-  const hoqTdmG = content.match(/^hoqTdmGames:\s*(.+)$/m);
-
-  if (!hoqCtfR && !hoqTdmR) continue;
-
-  const newCtfR = hoqCtfR ? parseFloat(hoqCtfR[1]) : null;
-  const newCtfG = hoqCtfG ? parseInt(hoqCtfG[1], 10) : null;
-  const newTdmR = hoqTdmR ? parseFloat(hoqTdmR[1]) : null;
-  const newTdmG = hoqTdmG ? parseInt(hoqTdmG[1], 10) : null;
-
-  const curCtfR = content.match(/^ctfRating:\s*(.+)$/m);
-  const curCtfG = content.match(/^ctfGames:\s*(.+)$/m);
-  const curTdmR = content.match(/^tdmRating:\s*(.+)$/m);
-  const curTdmG = content.match(/^tdmGames:\s*(.+)$/m);
-
-  let changed = false;
-  const playerName = (content.match(/^name:\s*(.+)$/m) || [, file])[1].trim();
-  const diffs = [];
-
-  // Update CTF rating
-  if (newCtfR !== null) {
-    const oldVal = curCtfR ? parseFloat(curCtfR[1]) : null;
-    if (oldVal !== newCtfR) {
-      if (curCtfR) {
-        content = content.replace(/^ctfRating:.*$/m, 'ctfRating: ' + newCtfR);
-      } else {
-        // Insert after a suitable anchor line
-        const anchor = content.match(/^(ctfRatingUpdated|duelRatingUpdated|duelRating|category):.*$/m);
-        if (anchor) {
-          const pos = anchor.index + anchor[0].length;
-          content = content.slice(0, pos) + '\nctfRating: ' + newCtfR + content.slice(pos);
-        }
-      }
-      diffs.push('ctfR: ' + (oldVal || '-') + ' → ' + newCtfR);
-      changed = true;
-    }
-  }
-
-  // Update/insert ctfRatingUpdated
-  if (newCtfR !== null) {
-    const curCtfU = content.match(/^ctfRatingUpdated:.*$/m);
-    if (curCtfU) {
-      content = content.replace(/^ctfRatingUpdated:.*$/m, 'ctfRatingUpdated: "' + TODAY + '"');
-    } else {
-      const ctfLine = content.match(/^ctfRating:.*$/m);
-      if (ctfLine) {
-        const pos = ctfLine.index + ctfLine[0].length;
-        content = content.slice(0, pos) + '\nctfRatingUpdated: "' + TODAY + '"' + content.slice(pos);
-      }
-    }
-  }
-
-  // Update CTF games
-  if (newCtfG !== null) {
-    const oldVal = curCtfG ? parseInt(curCtfG[1], 10) : null;
-    if (oldVal !== newCtfG) {
-      if (curCtfG) {
-        content = content.replace(/^ctfGames:.*$/m, 'ctfGames: ' + newCtfG);
-      } else {
-        // Insert after ctfRatingUpdated or hoqTdmGames
-        const anchor = content.match(/^(ctfRatingUpdated|hoqTdmGames|hoqCtfGames):.*$/m);
-        if (anchor) {
-          const pos = anchor.index + anchor[0].length;
-          content = content.slice(0, pos) + '\nctfGames: ' + newCtfG + content.slice(pos);
-        }
-      }
-      diffs.push('ctfG: ' + (oldVal || '-') + ' → ' + newCtfG);
-      changed = true;
-    }
-  }
-
-  // Update TDM rating
-  if (newTdmR !== null) {
-    const oldVal = curTdmR ? parseFloat(curTdmR[1]) : null;
-    if (oldVal !== newTdmR) {
-      if (curTdmR) {
-        content = content.replace(/^tdmRating:.*$/m, 'tdmRating: ' + newTdmR);
-      } else {
-        // Insert after tdmRatingUpdated or ctfRatingUpdated
-        const anchor = content.match(/^(tdmRatingUpdated|ctfRatingUpdated|ctfRating|duelRatingUpdated|category):.*$/m);
-        if (anchor) {
-          const pos = anchor.index + anchor[0].length;
-          content = content.slice(0, pos) + '\ntdmRating: ' + newTdmR + content.slice(pos);
-        }
-      }
-      diffs.push('tdmR: ' + (oldVal || '-') + ' → ' + newTdmR);
-      changed = true;
-    }
-  }
-
-  // Update/insert tdmRatingUpdated
-  if (newTdmR !== null) {
-    const curTdmU = content.match(/^tdmRatingUpdated:.*$/m);
-    if (curTdmU) {
-      content = content.replace(/^tdmRatingUpdated:.*$/m, 'tdmRatingUpdated: "' + TODAY + '"');
-    } else {
-      const tdmLine = content.match(/^tdmRating:.*$/m);
-      if (tdmLine) {
-        const pos = tdmLine.index + tdmLine[0].length;
-        content = content.slice(0, pos) + '\ntdmRatingUpdated: "' + TODAY + '"' + content.slice(pos);
-      }
-    }
-  }
-
-  // Update TDM games
-  if (newTdmG !== null) {
-    const oldVal = curTdmG ? parseInt(curTdmG[1], 10) : null;
-    if (oldVal !== newTdmG) {
-      if (curTdmG) {
-        content = content.replace(/^tdmGames:.*$/m, 'tdmGames: ' + newTdmG);
-      } else {
-        const anchor = content.match(/^(tdmRatingUpdated|tdmRating):.*$/m);
-        if (anchor) {
-          const pos = anchor.index + anchor[0].length;
-          content = content.slice(0, pos) + '\ntdmGames: ' + newTdmG + content.slice(pos);
-        }
-      }
-      diffs.push('tdmG: ' + (oldVal || '-') + ' → ' + newTdmG);
-      changed = true;
-    }
-  }
-
-  if (changed) {
-    fs.writeFileSync(filePath, content);
-    updated++;
-    changes.push(playerName + ': ' + diffs.join(', '));
-  }
+function extractField(content, field) {
+  const re = new RegExp(`^${field}:\\s*["']?(.+?)["']?\\s*$`, 'm');
+  const m = content.match(re);
+  return m ? m[1] : null;
 }
 
-console.log('Updated ' + updated + ' players');
-console.log('');
-changes.forEach(c => console.log('  ' + c));
+function setField(content, field, value) {
+  const re = new RegExp(`^${field}:.*$`, 'm');
+  const line = `${field}: ${value}`;
+  if (re.test(content)) {
+    return content.replace(re, line);
+  }
+  // Insert after the corresponding hoq field, or after dataSource/category
+  const hoqField = FIELD_MAP.find(f => f.dst === field || f.updated === field);
+  const anchorField = hoqField ? hoqField.src : null;
+  const anchorRe = anchorField
+    ? new RegExp(`^${anchorField}:.*$`, 'm')
+    : /^(dataSource:.*|category:.*)$/m;
+  const anchorMatch = content.match(anchorRe);
+  if (anchorMatch) {
+    const pos = anchorMatch.index + anchorMatch[0].length;
+    return content.slice(0, pos) + '\n' + line + content.slice(pos);
+  }
+  return content.trimEnd() + '\n' + line + '\n';
+}
+
+function main() {
+  console.log('=== Sync HoQ → Display Fields ===\n');
+
+  const files = fs.readdirSync(PLAYERS_DIR).filter(f => f.endsWith('.yaml'));
+  let updatedCount = 0;
+
+  for (const file of files) {
+    const filePath = path.join(PLAYERS_DIR, file);
+    let content = fs.readFileSync(filePath, 'utf8');
+    const changes = [];
+
+    for (const { src, dst, updated } of FIELD_MAP) {
+      const srcVal = extractField(content, src);
+      if (srcVal == null) continue;
+
+      const dstVal = extractField(content, dst);
+      if (dstVal === srcVal) continue;
+
+      content = setField(content, dst, srcVal);
+      changes.push(`${dst}: ${dstVal || '-'} → ${srcVal}`);
+
+      if (updated) {
+        content = setField(content, updated, `"${TODAY}"`);
+      }
+    }
+
+    if (changes.length > 0) {
+      fs.writeFileSync(filePath, content);
+      updatedCount++;
+      const name = extractField(content, 'name') || file.replace('.yaml', '');
+      console.log(`  ${name}: ${changes.join(', ')}`);
+    }
+  }
+
+  console.log(`\n--- Display Sync Summary ---`);
+  console.log(`Updated: ${updatedCount} players`);
+  console.log(`Scanned: ${files.length} files`);
+}
+
+main();

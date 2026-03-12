@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "fetch:season": "node scripts/fetch-season-stats.cjs",
+    "fetch:hoq-ratings": "node scripts/update-hoq-ratings.cjs",
     "fetch:qlrace": "node scripts/fetch-qlrace.cjs",
     "fetch:qlrace:force": "node scripts/fetch-qlrace.cjs --force",
     "fetch:hoq": "node scripts/fetch-hoq-maps.cjs",

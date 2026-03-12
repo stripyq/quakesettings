@@ -3,16 +3,16 @@ steamId: "76561198414877431"
 aliases:
   - phaze
 category: ctf
-tdmRating: 29.07
-tdmGames: 245
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 25.97
-ctfRatingUpdated: "2026-02-24"
-ctfGames: 131
-hoqCtfRating: 25.97
+hoqCtfRating: 25.973901748657227
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 25.973901748657227
 hoqCtfGames: 131
-hoqTdmRating: 29.07
+ctfGames: 131
+hoqTdmRating: 29.06947135925293
+tdmRatingUpdated: "2026-03-12"
+tdmRating: 29.06947135925293
 hoqTdmGames: 245
+tdmGames: 245
 published: false
 qlrace:
   mode: 3

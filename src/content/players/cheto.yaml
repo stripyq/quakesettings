@@ -9,12 +9,16 @@ team2024: 4friends
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 category: duel
+hoqCtfRating: 15.137974739074707
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 3925
+hoqTdmRating: 14.586236953735352
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 155
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 15.14
-ctfRatingUpdated: "2026-02-24"
-tdmRating: 14.59
-tdmRatingUpdated: "2026-02-24"
+ctfRating: 15.137974739074707
+tdmRating: 14.586236953735352
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022

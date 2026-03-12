@@ -6,16 +6,20 @@ team2026: Astral Starlight
 country: DE
 team: Astral Starlight
 category: ctf
+hoqCtfRating: 15.103325843811035
+hoqCtfGames: 9099
+hoqTdmRating: 15.033355712890625
+hoqTdmGames: 64
 lastUpdated: "2026-02-15T14:00:00"
 dataSource: player
 duelRating: 2050
 duelRatingUpdated: "2026-01-31"
 duelGames: 67
-tdmRating: 15.03
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 15.033355712890625
+tdmRatingUpdated: "2026-03-12"
 tdmGames: 64
-ctfRating: 15.1
-ctfRatingUpdated: "2026-02-24"
+ctfRating: 15.103325843811035
+ctfRatingUpdated: "2026-03-12"
 ctfGames: 9099
 qllrCtfRating: 28.08
 qllrCtfGames: 10

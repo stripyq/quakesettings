@@ -3,16 +3,16 @@ steamId: "76561198256203867"
 aliases:
   - prestij
 category: ctf
-tdmRating: 29.32
-tdmGames: 408
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 23.17
-ctfRatingUpdated: "2026-02-24"
-ctfGames: 773
-hoqCtfRating: 23.17
+hoqCtfRating: 23.167261123657227
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 23.167261123657227
 hoqCtfGames: 773
-hoqTdmRating: 29.32
+ctfGames: 773
+hoqTdmRating: 29.317298889160156
+tdmRatingUpdated: "2026-03-12"
+tdmRating: 29.317298889160156
 hoqTdmGames: 408
+tdmGames: 408
 published: false
 qlrace: null
 favorite_map: japanesecastles

@@ -8,9 +8,9 @@ team2024: Old Sexy Quakers
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: false
-ctfRating: 26.14
+ctfRating: 26.140064239501953
 ctfGames: 230
-tdmRating: 23.47
+tdmRating: 23.471546173095703
 tdmGames: 532
 hoqCtfRating: 26.14
 hoqCtfGames: 230
@@ -74,9 +74,9 @@ qlrace:
       total: 34
       time: 27064
   fetched_at: "2026-02-23"
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 41
-accuracy_rg: 53
-accuracy_lg: 34
+hoqCtfRating: 26.140064239501953
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 230
+hoqTdmRating: 23.471546173095703
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 532

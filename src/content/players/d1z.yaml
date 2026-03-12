@@ -5,10 +5,10 @@ aliases:
   - d1zulya
 team2026: GdeFlag?
 team2026Shortname: GF?
-tdmRating: 25.25
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 22.5
-ctfRatingUpdated: "2026-02-24"
+tdmRating: 25.246929168701172
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 22.503299713134766
+ctfRatingUpdated: "2026-03-12"
 duelRating: 1554
 ctfGames: 173
 tdmGames: 362
@@ -78,9 +78,7 @@ qlrace:
       total: 21
       time: 7336
   fetched_at: "2026-02-23"
-favorite_map: hiddenfortress
-favorite_gametype: Team Deathmatch
-favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_rg: 50
-accuracy_lg: 36
+hoqCtfRating: 22.503299713134766
+hoqCtfGames: 173
+hoqTdmRating: 25.246929168701172
+hoqTdmGames: 362

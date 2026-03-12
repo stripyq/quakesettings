@@ -4,8 +4,8 @@ steamId: "76561198144940773"
 caRating: 25.56
 caGames: 904
 caRatingUpdated: "2026-02-04"
-tdmRating: 20.02
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 20.015560150146484
+tdmRatingUpdated: "2026-03-12"
 duelRating: 1200
 tdmGames: 237
 hoqTdmRating: 20.02
@@ -65,9 +65,5 @@ qlrace:
       total: 32
       time: 194944
   fetched_at: "2026-02-23"
-favorite_map: hiddenfortress
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 45
-accuracy_rg: 53
-accuracy_lg: 41
+hoqTdmRating: 20.015560150146484
+hoqTdmGames: 237

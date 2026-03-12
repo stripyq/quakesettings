@@ -7,11 +7,10 @@ aliases:
   - lumi
 team2026: Le Cubanitos
 team2026Shortname: CUBA
-lastUpdated: "2026-02-26"
-published: true
-ctfRating: 26.72
+published: false
+ctfRating: 26.716209411621094
 ctfGames: 506
-tdmRating: 34.1
+tdmRating: 34.097869873046875
 tdmGames: 390
 
 
@@ -81,9 +80,9 @@ qlrace:
       total: 284
       time: 4925
   fetched_at: "2026-02-23"
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 42
-accuracy_rg: 56
-accuracy_lg: 39
+hoqCtfRating: 26.716209411621094
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 506
+hoqTdmRating: 34.097869873046875
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 390

@@ -4,13 +4,17 @@ aliases: []
 team2024: Whatever name IDC
 country: HR
 category: ctf
+hoqCtfRating: 28.431108474731445
+hoqCtfGames: 1296
+hoqTdmRating: 18.795486450195312
+hoqTdmGames: 1
 lastUpdated: 2025-01
 duelRating: 1455
 duelRatingUpdated: "2026-01-31"
-tdmRating: 18.8
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 28.43
-ctfRatingUpdated: "2026-01-31"
+tdmRating: 18.795486450195312
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 28.431108474731445
+ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 22.91
 qllrCtfGames: 10
 hoqCtfRating: 28.43

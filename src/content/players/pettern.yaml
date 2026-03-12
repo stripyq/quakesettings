@@ -4,11 +4,15 @@ aliases: []
 team2024: Flappy Flags
 country: Unknown
 category: ctf
+hoqCtfRating: 13.028509140014648
+hoqCtfGames: 5135
+hoqTdmRating: 20.951059341430664
+hoqTdmGames: 1
 lastUpdated: 2025-01
-tdmRating: 20.95
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 13.03
-ctfRatingUpdated: "2026-02-24"
+tdmRating: 20.951059341430664
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 13.028509140014648
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 1600
 sensitivity: 1.15
