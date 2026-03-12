@@ -1,53 +1,115 @@
 #!/usr/bin/env node
 /**
- * Read HoQ ratings from local CSV files and update hoq* fields in player YAML files,
- * then run sync-hoq-to-display.cjs to populate display fields.
+ * Fetch HoQ ratings from JSON API (or local JSON files), update hoq* fields
+ * in player YAML files, sync CSVs in public/data/, then run sync-hoq-to-display.cjs.
  *
- * Data sources (CSV with columns: _id, name, rating, n):
- *   - public/data/hoq_ctf.csv
- *   - public/data/hoq_tdm.csv
+ * Primary data sources (JSON arrays with { _id, name, rating, n }):
+ *   - http://88.214.20.58/export_rating/ctf.json  → saved to ctf.json
+ *   - http://88.214.20.58/export_rating/tdm.json  → saved to tdm.json
  *
- * Matches players by steamId (YAML) against _id (CSV), compared as strings.
+ * Falls back to repo-root ctf.json / tdm.json if API is unreachable.
+ * After loading, also writes public/data/hoq_ctf.csv and hoq_tdm.csv
+ * so other scripts that depend on the CSVs stay in sync.
+ *
  * Updates: hoqCtfRating, hoqCtfGames, hoqTdmRating, hoqTdmGames
  * Does NOT touch accuracy fields (accuracy_rl, accuracy_rg, accuracy_lg).
  *
  * Usage:
- *   node scripts/update-hoq-ratings.cjs
+ *   node scripts/update-hoq-ratings.cjs              # Fetch from API (fallback to local JSON)
+ *   node scripts/update-hoq-ratings.cjs --from-json  # Skip API, read local ctf.json / tdm.json
  */
 
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const { execSync } = require('child_process');
 
-const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
-const CTF_CSV = path.join(__dirname, '../public/data/hoq_ctf.csv');
-const TDM_CSV = path.join(__dirname, '../public/data/hoq_tdm.csv');
+const ROOT_DIR = path.join(__dirname, '..');
+const PLAYERS_DIR = path.join(ROOT_DIR, 'src/content/players');
+const CTF_URL = 'http://88.214.20.58/export_rating/ctf.json';
+const TDM_URL = 'http://88.214.20.58/export_rating/tdm.json';
+const CTF_JSON_PATH = path.join(ROOT_DIR, 'ctf.json');
+const TDM_JSON_PATH = path.join(ROOT_DIR, 'tdm.json');
+const CTF_CSV_PATH = path.join(ROOT_DIR, 'public/data/hoq_ctf.csv');
+const TDM_CSV_PATH = path.join(ROOT_DIR, 'public/data/hoq_tdm.csv');
+const SKIP_API = process.argv.includes('--from-json');
+
+function fetchJson(url) {
+  return new Promise((resolve, reject) => {
+    const req = http.get(url, { timeout: 15000 }, (res) => {
+      if (res.statusCode !== 200) {
+        reject(new Error(`HTTP ${res.statusCode} for ${url}`));
+        res.resume();
+        return;
+      }
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(Buffer.concat(chunks).toString('utf8')));
+        } catch (e) {
+          reject(new Error(`Invalid JSON from ${url}: ${e.message}`));
+        }
+      });
+    });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error(`Timeout fetching ${url}`)); });
+  });
+}
 
 /**
- * Parse a simple CSV file (columns: _id, name, rating, n) into an array of objects.
- * Handles BOM and empty trailing fields.
+ * Load rating data: try API first, fall back to local JSON files.
+ * Saves fetched JSON to repo root for future --from-json runs.
  */
-function parseCsv(filePath) {
-  let content = fs.readFileSync(filePath, 'utf8');
-  // Strip BOM
-  if (content.charCodeAt(0) === 0xFEFF) content = content.slice(1);
+async function loadRatings() {
+  if (!SKIP_API) {
+    try {
+      console.log('Fetching CTF ratings from API...');
+      const ctf = await fetchJson(CTF_URL);
+      console.log(`  Got ${ctf.length} CTF entries`);
 
-  const lines = content.split('\n').map(l => l.trim()).filter(Boolean);
-  if (lines.length < 2) return [];
+      console.log('Fetching TDM ratings from API...');
+      const tdm = await fetchJson(TDM_URL);
+      console.log(`  Got ${tdm.length} TDM entries`);
 
-  const headers = lines[0].split(',').map(h => h.trim());
-  const rows = [];
+      // Cache to repo root
+      fs.writeFileSync(CTF_JSON_PATH, JSON.stringify(ctf, null, 2));
+      fs.writeFileSync(TDM_JSON_PATH, JSON.stringify(tdm, null, 2));
+      console.log('  Saved ctf.json and tdm.json to repo root\n');
 
-  for (let i = 1; i < lines.length; i++) {
-    const cols = lines[i].split(',').map(c => c.trim());
-    const row = {};
-    for (let j = 0; j < headers.length; j++) {
-      row[headers[j]] = cols[j] || '';
+      return { ctf, tdm, source: 'api' };
+    } catch (err) {
+      console.log(`  API unavailable (${err.message}), falling back to local JSON...\n`);
     }
-    rows.push(row);
   }
 
-  return rows;
+  // Fall back to local JSON files
+  if (!fs.existsSync(CTF_JSON_PATH) || !fs.existsSync(TDM_JSON_PATH)) {
+    console.error(`Local JSON files not found: ${CTF_JSON_PATH} / ${TDM_JSON_PATH}`);
+    console.error('Run without --from-json when the API is reachable to create them.');
+    process.exit(1);
+  }
+
+  const ctf = JSON.parse(fs.readFileSync(CTF_JSON_PATH, 'utf8'));
+  const tdm = JSON.parse(fs.readFileSync(TDM_JSON_PATH, 'utf8'));
+  console.log(`Loaded ${ctf.length} CTF + ${tdm.length} TDM entries from local JSON\n`);
+
+  return { ctf, tdm, source: 'json' };
+}
+
+/**
+ * Write JSON rating data to CSV (matching existing hoq_ctf.csv / hoq_tdm.csv format).
+ */
+function writeCsv(rows, csvPath) {
+  const lines = ['_id,name,rating,n'];
+  for (const row of rows) {
+    const id = String(row._id || '');
+    const name = String(row.name || '').replace(/,/g, '');
+    const rating = row.rating != null ? row.rating : '';
+    const n = row.n != null ? row.n : '';
+    lines.push(`${id},${name},${rating},${n}`);
+  }
+  fs.writeFileSync(csvPath, lines.join('\n') + '\n');
 }
 
 function getPlayerFiles() {
@@ -77,16 +139,15 @@ function updateYaml(player, ctfData, tdmData) {
   let content = player.content;
   const changes = [];
 
-  // Extract current values
   const curCtfRating = content.match(/^hoqCtfRating:\s*(.+)$/m);
   const curCtfGames = content.match(/^hoqCtfGames:\s*(.+)$/m);
   const curTdmRating = content.match(/^hoqTdmRating:\s*(.+)$/m);
   const curTdmGames = content.match(/^hoqTdmGames:\s*(.+)$/m);
 
-  const newCtfRating = ctfData ? ctfData.rating || null : null;
-  const newCtfGames = ctfData ? ctfData.n || null : null;
-  const newTdmRating = tdmData ? tdmData.rating || null : null;
-  const newTdmGames = tdmData ? tdmData.n || null : null;
+  const newCtfRating = ctfData ? ctfData.rating : null;
+  const newCtfGames = ctfData && ctfData.n != null ? ctfData.n : null;
+  const newTdmRating = tdmData ? tdmData.rating : null;
+  const newTdmGames = tdmData && tdmData.n != null ? tdmData.n : null;
 
   function valStr(v) { return v != null && v !== '' ? String(v) : null; }
   function curVal(m) { return m ? m[1].trim().replace(/^["']|["']$/g, '') : null; }
@@ -97,7 +158,7 @@ function updateYaml(player, ctfData, tdmData) {
   const tdmGamesChanged = valStr(newTdmGames) != null && valStr(newTdmGames) !== curVal(curTdmGames);
 
   if (!ctfRatingChanged && !ctfGamesChanged && !tdmRatingChanged && !tdmGamesChanged) {
-    return null; // Nothing changed
+    return null;
   }
 
   // Remove existing hoq rating/games fields
@@ -108,25 +169,24 @@ function updateYaml(player, ctfData, tdmData) {
 
   // Build new lines
   const newLines = [];
-  if (valStr(newCtfRating)) {
+  if (valStr(newCtfRating) != null) {
     newLines.push(`hoqCtfRating: ${newCtfRating}`);
     if (ctfRatingChanged) changes.push(`hoqCtfRating: ${curVal(curCtfRating) || '-'} → ${newCtfRating}`);
   }
-  if (valStr(newCtfGames)) {
+  if (valStr(newCtfGames) != null) {
     newLines.push(`hoqCtfGames: ${newCtfGames}`);
     if (ctfGamesChanged) changes.push(`hoqCtfGames: ${curVal(curCtfGames) || '-'} → ${newCtfGames}`);
   }
-  if (valStr(newTdmRating)) {
+  if (valStr(newTdmRating) != null) {
     newLines.push(`hoqTdmRating: ${newTdmRating}`);
     if (tdmRatingChanged) changes.push(`hoqTdmRating: ${curVal(curTdmRating) || '-'} → ${newTdmRating}`);
   }
-  if (valStr(newTdmGames)) {
+  if (valStr(newTdmGames) != null) {
     newLines.push(`hoqTdmGames: ${newTdmGames}`);
     if (tdmGamesChanged) changes.push(`hoqTdmGames: ${curVal(curTdmGames) || '-'} → ${newTdmGames}`);
   }
 
   if (newLines.length > 0) {
-    // Insert after dataSource line, or after category line, or append
     const insertAfter = /^(dataSource:.*|category:.*)$/m;
     const match = content.match(insertAfter);
 
@@ -141,41 +201,31 @@ function updateYaml(player, ctfData, tdmData) {
   return { content, changes };
 }
 
-function main() {
+async function main() {
   console.log('=== Update HoQ Ratings ===\n');
 
-  // --- Phase 1: Load ratings from CSV files ---
-  if (!fs.existsSync(CTF_CSV)) {
-    console.error(`CTF CSV not found: ${CTF_CSV}`);
-    process.exit(1);
-  }
-  if (!fs.existsSync(TDM_CSV)) {
-    console.error(`TDM CSV not found: ${TDM_CSV}`);
-    process.exit(1);
-  }
+  // --- Phase 1: Load ratings from API or local JSON ---
+  const { ctf: ctfJson, tdm: tdmJson } = await loadRatings();
 
-  const ctfRows = parseCsv(CTF_CSV);
-  console.log(`Loaded ${ctfRows.length} CTF entries from hoq_ctf.csv`);
-
-  const tdmRows = parseCsv(TDM_CSV);
-  console.log(`Loaded ${tdmRows.length} TDM entries from hoq_tdm.csv`);
+  // --- Phase 1b: Update CSVs in public/data/ to stay in sync ---
+  writeCsv(ctfJson, CTF_CSV_PATH);
+  writeCsv(tdmJson, TDM_CSV_PATH);
+  console.log(`Wrote ${ctfJson.length} CTF + ${tdmJson.length} TDM entries to public/data/ CSVs\n`);
 
   // Build lookup maps by Steam ID (string comparison)
   const ctfBySteamId = new Map();
-  for (const row of ctfRows) {
-    const id = String(row._id || '').trim();
-    if (id) ctfBySteamId.set(id, row);
+  for (const entry of ctfJson) {
+    if (entry._id) ctfBySteamId.set(String(entry._id), entry);
   }
 
   const tdmBySteamId = new Map();
-  for (const row of tdmRows) {
-    const id = String(row._id || '').trim();
-    if (id) tdmBySteamId.set(id, row);
+  for (const entry of tdmJson) {
+    if (entry._id) tdmBySteamId.set(String(entry._id), entry);
   }
 
   // --- Phase 2: Update hoq fields in player YAMLs ---
   const players = getPlayerFiles();
-  console.log(`\nFound ${players.length} players with steamId\n`);
+  console.log(`Found ${players.length} players with steamId\n`);
 
   let updatedCount = 0;
   let matchedCount = 0;
@@ -210,4 +260,7 @@ function main() {
   }
 }
 
-main();
+main().catch((err) => {
+  console.error('Fatal error:', err.message);
+  process.exit(1);
+});
