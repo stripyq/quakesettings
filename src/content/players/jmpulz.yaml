@@ -2,9 +2,11 @@ name: jmpuLz
 steamId: "76561198041347061"
 country: Unknown
 category: ctf
+hoqCtfRating: 6.147995948791504
+hoqCtfGames: 49
 lastUpdated: 2026-02
-ctfRating: 6.15
-ctfRatingUpdated: "2026-02-03"
+ctfRating: 6.147995948791504
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 800
 sensitivity: 1

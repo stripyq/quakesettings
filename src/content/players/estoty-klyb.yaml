@@ -3,6 +3,16 @@ steamId: "76561198199452077"
 aliases:
   - estoty Klyb
 category: ctf
+hoqCtfRating: 22.02436637878418
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 22.02436637878418
+hoqCtfGames: 45
+ctfGames: 45
+hoqTdmRating: 25.238502502441406
+tdmRatingUpdated: "2026-03-12"
+tdmRating: 25.238502502441406
+hoqTdmGames: 19
+tdmGames: 19
 published: false
 qlrace:
   mode: 2

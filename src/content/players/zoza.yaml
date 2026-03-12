@@ -9,7 +9,7 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 published: false
-ctfRating: 17.8
+ctfRating: 17.803691864013672
 ctfGames: 19
 favorite_map: asylum
 favorite_gametype: Clan Arena
@@ -39,3 +39,6 @@ qlrace:
       total: 327
       time: 28568
   fetched_at: "2026-02-23"
+hoqCtfRating: 17.803691864013672
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 19

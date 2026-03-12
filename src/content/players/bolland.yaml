@@ -2,11 +2,13 @@ name: Bolland
 steamId: "76561198354200908"
 country: Unknown
 category: tdm
+hoqTdmRating: 15.59877872467041
+hoqTdmGames: 2457
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
-tdmRating: 15.6
-tdmRatingUpdated: "2026-01-31"
+tdmRating: 15.59877872467041
+tdmRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 850
 sensitivity: 6.5

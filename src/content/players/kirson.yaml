@@ -7,9 +7,9 @@ aliases:
 team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
-ctfRating: 33.13
+ctfRating: 33.13262939453125
 ctfGames: 1097
-tdmRating: 29.16
+tdmRating: 29.156415939331055
 tdmGames: 212
 mouse: logitech-g-pro-x-superlight-ii
 mousepad: logitech-g640
@@ -31,6 +31,12 @@ back: s
 left: a
 right: d
 dataSource: player
+hoqCtfRating: 33.13262939453125
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 1097
+hoqTdmRating: 29.156415939331055
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 212
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

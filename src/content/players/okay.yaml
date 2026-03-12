@@ -2,10 +2,12 @@ name: Okay.
 steamId: "76561198257018686"
 country: Unknown
 category: ctf
+hoqCtfRating: 15.751227378845215
+hoqCtfGames: 29
 duelRating: 1332
 duelRatingUpdated: "2026-01-31"
-ctfRating: 20.9
-ctfRatingUpdated: "2026-01-31"
+ctfRating: 15.751227378845215
+ctfRatingUpdated: "2026-03-12"
 tdmRating: 19.8
 tdmRatingUpdated: "2026-01-31"
 dataSource: player

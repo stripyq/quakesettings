@@ -8,13 +8,17 @@ team2026Shortname: cock
 country: DK
 team: Aimdead brainers
 category: ctf
+hoqCtfRating: 39.68418502807617
+hoqCtfGames: 1648
+hoqTdmRating: 32.520301818847656
+hoqTdmGames: 202
 lastUpdated: 2025-01
 duelRating: 1425
 duelRatingUpdated: "2026-01-31"
-tdmRating: 32.52
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 39.7
-ctfRatingUpdated: "2026-01-31"
+tdmRating: 32.520301818847656
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 39.68418502807617
+ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 30.04
 qllrCtfGames: 59
 dataSource: player

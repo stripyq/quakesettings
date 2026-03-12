@@ -9,9 +9,12 @@ team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: true
 category: ctf
+hoqCtfRating: 31.004608154296875
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 821
 lastUpdated: "2026-02-13"
 dataSource: player
-ctfRating: 30.33
+ctfRating: 31.004608154296875
 qllrCtfRating: 20.9
 qllrCtfGames: 16
 mouse: logitech-mx518

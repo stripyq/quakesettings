@@ -2,9 +2,11 @@ name: Xiu
 steamId: "76561198010106923"
 country: Unknown
 category: ctf
+hoqCtfRating: 23.803884506225586
+hoqCtfGames: 15
 lastUpdated: 2025-01
-ctfRating: 23.8
-ctfRatingUpdated: "2026-01-31"
+ctfRating: 23.803884506225586
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 1600
 sensitivity: 1.25

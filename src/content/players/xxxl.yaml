@@ -2,9 +2,11 @@ name: XXXL
 steamId: "76561198081117111"
 country: Unknown
 category: ctf
+hoqCtfRating: 6.497949600219727
+hoqCtfGames: 453
 lastUpdated: 2025-01
-ctfRating: 6.5
-ctfRatingUpdated: "2026-02-02"
+ctfRating: 6.497949600219727
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 600
 sensitivity: 1.66

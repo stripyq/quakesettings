@@ -4,11 +4,15 @@ aliases:
   - rash arn ghoul
 country: SE
 category: ctf
+hoqCtfRating: 28.769681930541992
+hoqCtfGames: 3451
+hoqTdmRating: 20.73134994506836
+hoqTdmGames: 44
 lastUpdated: 2025-01
-tdmRating: 20.73
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 28.74
-ctfRatingUpdated: "2026-01-31"
+tdmRating: 20.73134994506836
+tdmRatingUpdated: "2026-03-12"
+ctfRating: 28.769681930541992
+ctfRatingUpdated: "2026-03-12"
 duelRating: 1207
 ctfGames: 3451
 tdmGames: 44

@@ -2,5 +2,10 @@ name: t000
 steamId: "76561198246535026"
 aliases: []
 category: ctf
+hoqCtfRating: 5.886887073516846
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 5.886887073516846
+hoqCtfGames: 2811
+ctfGames: 2811
 published: false
 qlrace: null

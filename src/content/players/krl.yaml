@@ -5,10 +5,16 @@ aliases:
   - KRL
 team2024: Whatever name IDC
 category: duel
+hoqCtfRating: 24.052600860595703
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 1234
+hoqTdmRating: 16.3620662689209
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 8
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 24.17
-tdmRating: 16.36
+ctfRating: 24.052600860595703
+tdmRating: 16.3620662689209
 dpi: 400
 sensitivity: 1.7
 edpi: 680

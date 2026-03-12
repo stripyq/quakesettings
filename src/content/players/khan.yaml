@@ -5,9 +5,9 @@ steamId: "76561197973893045"
 aliases: []
 team2026: Astral Starlight
 published: false
-ctfRating: 16.77
+ctfRating: 16.771644592285156
 ctfGames: 998
-tdmRating: 22.98
+tdmRating: 22.979217529296875
 tdmGames: 175
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
@@ -49,3 +49,9 @@ qlrace:
       total: 26
       time: 42576
   fetched_at: "2026-02-23"
+hoqCtfRating: 16.771644592285156
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 998
+hoqTdmRating: 22.979217529296875
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 175

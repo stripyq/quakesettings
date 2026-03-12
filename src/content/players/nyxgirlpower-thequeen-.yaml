@@ -3,13 +3,15 @@ steamId: "76561198256080242"
 country: SI
 team: ""
 category: ctf
+hoqCtfRating: 18.01070785522461
+hoqCtfGames: 2529
 lastUpdated: 2025-01
 duelRating: null
 duelRatingUpdated: ""
 tdmRating: 17.62
 tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 17.62
-ctfRatingUpdated: 2026-01-31T00:00:00.000Z
+ctfRating: 18.01070785522461
+ctfRatingUpdated: "2026-03-12"
 dataSource: player
 source: ""
 sourceUrl: ""

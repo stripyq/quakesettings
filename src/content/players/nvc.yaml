@@ -8,9 +8,9 @@ aliases:
 team2026: Czesnecka
 team2026Shortname: CZE
 published: false
-ctfRating: 20.71
+ctfRating: 20.70969581604004
 ctfGames: 1077
-tdmRating: 24.33
+tdmRating: 24.328203201293945
 tdmGames: 19
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
@@ -52,3 +52,9 @@ qlrace:
       total: 65
       time: 59312
   fetched_at: "2026-02-23"
+hoqCtfRating: 20.70969581604004
+ctfRatingUpdated: "2026-03-12"
+hoqCtfGames: 1077
+hoqTdmRating: 24.328203201293945
+tdmRatingUpdated: "2026-03-12"
+hoqTdmGames: 19
