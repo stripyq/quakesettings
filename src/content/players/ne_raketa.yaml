@@ -4,10 +4,14 @@ country: Unknown
 category: tdm
 hoqCtfRating: 10.390388488769531
 hoqCtfGames: 15
-hoqTdmRating: 20.70770263671875
-hoqTdmGames: 4427
+hoqTdmRating: 19.361141204833984
+hoqTdmGames: 4437
+
+
+
+
 lastUpdated: 2025-01
-tdmRating: 20.70770263671875
+tdmRating: 19.361141204833984
 tdmRatingUpdated: "2026-03-12"
 ctfRating: 10.390388488769531
 ctfRatingUpdated: "2026-03-12"
@@ -39,11 +43,11 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-tdmGames: 4427
-hoqCtfRating: 10.39
-hoqCtfGames: 15
-hoqTdmRating: 20.71
-hoqTdmGames: 4427
+tdmGames: 4437
+
+
+
+
 
 
 

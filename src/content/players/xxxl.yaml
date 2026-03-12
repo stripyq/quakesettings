@@ -2,10 +2,12 @@ name: XXXL
 steamId: "76561198081117111"
 country: Unknown
 category: ctf
-hoqCtfRating: 6.497949600219727
-hoqCtfGames: 453
+hoqCtfRating: 6.206946849822998
+hoqCtfGames: 467
+
+
 lastUpdated: 2025-01
-ctfRating: 6.497949600219727
+ctfRating: 6.206946849822998
 ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 600
@@ -33,9 +35,9 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 453
-hoqCtfRating: 6.5
-hoqCtfGames: 453
+ctfGames: 467
+
+
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

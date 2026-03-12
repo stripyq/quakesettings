@@ -2,16 +2,20 @@ name: Drayan
 steamId: "76561198196618515"
 country: GB
 category: ctf
-hoqCtfRating: 27.76291275024414
-hoqCtfGames: 5605
-hoqTdmRating: 28.11254119873047
-hoqTdmGames: 1445
+hoqCtfRating: 29.70187759399414
+hoqCtfGames: 5907
+hoqTdmRating: 28.55860710144043
+hoqTdmGames: 1447
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1498
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
-tdmRating: 28.11254119873047
+tdmRating: 28.55860710144043
 tdmRatingUpdated: "2026-03-12"
-ctfRating: 27.76291275024414
+ctfRating: 29.70187759399414
 ctfRatingUpdated: "2026-03-12"
 dataSource: verified
 source: ""
@@ -48,12 +52,12 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 5605
-tdmGames: 1445
-hoqCtfRating: 27.76
-hoqCtfGames: 5605
-hoqTdmRating: 28.11
-hoqTdmGames: 1445
+ctfGames: 5907
+tdmGames: 1447
+
+
+
+
 
 
 

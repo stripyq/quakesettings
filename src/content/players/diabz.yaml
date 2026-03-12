@@ -2,12 +2,16 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
-hoqCtfRating: 30.895998001098633
-hoqCtfGames: 295
+hoqCtfRating: 30.44696807861328
+hoqCtfGames: 301
 hoqTdmRating: 26.94189453125
 hoqTdmGames: 18
+
+
+
+
 lastUpdated: 2026-02
-ctfRating: 30.895998001098633
+ctfRating: 30.44696807861328
 ctfRatingUpdated: "2026-03-12"
 tdmRating: 26.94189453125
 tdmRatingUpdated: "2026-03-12"
@@ -39,12 +43,12 @@ jump: MOUSE2
 attack: MOUSE1
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 295
+ctfGames: 301
 tdmGames: 18
-hoqCtfRating: 30.9
-hoqCtfGames: 295
-hoqTdmRating: 26.94
-hoqTdmGames: 18
+
+
+
+
 
 
 

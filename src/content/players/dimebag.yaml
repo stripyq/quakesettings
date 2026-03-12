@@ -3,24 +3,28 @@ country: OTHER
 steamId: "76561198380825290"
 category: tdm
 hoqCtfRating: 24.844650268554688
+hoqCtfGames: 2
+hoqTdmRating: 23.193897247314453
+hoqTdmGames: 3954
+
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 24.844650268554688
-hoqCtfGames: 2
-hoqTdmRating: 23.36810302734375
+
+
 tdmRatingUpdated: "2026-03-12"
-hoqTdmGames: 3939
+
 dataSource: collected
 lastUpdated: 2026-02
-tdmRating: 23.36810302734375
+tdmRating: 23.193897247314453
 tdm2v2Rating: 21.38
 tdm2v2Games: 91
 duelRating: 1215
 ctfGames: 2
-tdmGames: 3939
-hoqCtfRating: 24.84
-hoqCtfGames: 2
-hoqTdmRating: 23.37
-hoqTdmGames: 3939
+tdmGames: 3954
+
+
+
+
 duelGames: 380
 dpi: 2400
 sensitivity: 0.92

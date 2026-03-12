@@ -10,12 +10,12 @@ team2026Shortname: OSQ
 published: false
 ctfRating: 26.140064239501953
 ctfGames: 230
-tdmRating: 23.471546173095703
-tdmGames: 532
-hoqCtfRating: 26.14
-hoqCtfGames: 230
-hoqTdmRating: 23.47
-hoqTdmGames: 532
+tdmRating: 22.760435104370117
+tdmGames: 539
+
+
+
+
 qlrace:
   mode: 2
   records: 190
@@ -74,9 +74,12 @@ qlrace:
       total: 34
       time: 27064
   fetched_at: "2026-02-23"
-hoqCtfRating: 26.140064239501953
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 230
-hoqTdmRating: 23.471546173095703
+
+
 tdmRatingUpdated: "2026-03-12"
-hoqTdmGames: 532
+hoqCtfRating: 26.140064239501953
+hoqCtfGames: 230
+hoqTdmRating: 22.760435104370117
+hoqTdmGames: 539

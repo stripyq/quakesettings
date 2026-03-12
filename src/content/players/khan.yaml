@@ -5,14 +5,14 @@ steamId: "76561197973893045"
 aliases: []
 team2026: Astral Starlight
 published: false
-ctfRating: 16.771644592285156
-ctfGames: 998
-tdmRating: 22.979217529296875
-tdmGames: 175
-hoqCtfRating: 16.77
-hoqCtfGames: 998
-hoqTdmRating: 22.98
-hoqTdmGames: 175
+ctfRating: 17.013174057006836
+ctfGames: 1056
+tdmRating: 22.543384552001953
+tdmGames: 177
+
+
+
+
 qlrace:
   mode: 3
   records: 4
@@ -47,9 +47,12 @@ qlrace:
       total: 26
       time: 42576
   fetched_at: "2026-02-23"
-hoqCtfRating: 16.771644592285156
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 998
-hoqTdmRating: 22.979217529296875
+
+
 tdmRatingUpdated: "2026-03-12"
-hoqTdmGames: 175
+hoqCtfRating: 17.013174057006836
+hoqCtfGames: 1056
+hoqTdmRating: 22.543384552001953
+hoqTdmGames: 177

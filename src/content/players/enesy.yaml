@@ -8,23 +8,27 @@ team2026Shortname: cock
 country: DK
 team: Aimdead brainers
 category: ctf
-hoqCtfRating: 39.68418502807617
-hoqCtfGames: 1648
+hoqCtfRating: 38.62395095825195
+hoqCtfGames: 1759
 hoqTdmRating: 32.520301818847656
 hoqTdmGames: 202
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1425
 duelRatingUpdated: "2026-01-31"
 tdmRating: 32.520301818847656
 tdmRatingUpdated: "2026-03-12"
-ctfRating: 39.68418502807617
+ctfRating: 38.62395095825195
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 30.04
 qllrCtfGames: 59
-hoqCtfRating: 39.68
-hoqCtfGames: 1648
-hoqTdmRating: 32.52
-hoqTdmGames: 202
+
+
+
+
 dataSource: player
 dpi: 800
 sensitivity: 1.275
@@ -51,7 +55,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 1648
+ctfGames: 1759
 tdmGames: 202
 
 

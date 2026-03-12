@@ -9,16 +9,18 @@ team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: true
 category: ctf
-hoqCtfRating: 31.004608154296875
+hoqCtfRating: 25.518451690673828
+hoqCtfGames: 911
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 821
+
 lastUpdated: "2026-02-13"
 dataSource: player
-ctfRating: 31.004608154296875
+ctfRating: 25.518451690673828
 qllrCtfRating: 20.9
 qllrCtfGames: 16
-hoqCtfRating: 31
-hoqCtfGames: 821
+
+
 mouse: logitech-mx518
 mousepad: virtus-pro
 keyboard: lingbao-k98
@@ -51,7 +53,7 @@ attack: mouse1
 zoom: space
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 821
+ctfGames: 911
 qlrace: null
 favorite_map: overkill
 favorite_gametype: Clan Arena

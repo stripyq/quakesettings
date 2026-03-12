@@ -7,14 +7,14 @@ aliases:
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: false
-ctfRating: 25.517709732055664
-ctfGames: 2255
+ctfRating: 26.449668884277344
+ctfGames: 2355
 tdmRating: 18.470056533813477
 tdmGames: 15
-hoqCtfRating: 25.52
-hoqCtfGames: 2255
-hoqTdmRating: 18.47
-hoqTdmGames: 15
+
+
+
+
 
 
 
@@ -26,9 +26,12 @@ favorite_weapon: Railgun
 accuracy_rl: 34
 accuracy_rg: 59
 qlrace: null
-hoqCtfRating: 25.517709732055664
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 2255
-hoqTdmRating: 18.470056533813477
+
+
 tdmRatingUpdated: "2026-03-12"
+hoqCtfRating: 26.449668884277344
+hoqCtfGames: 2355
+hoqTdmRating: 18.470056533813477
 hoqTdmGames: 15

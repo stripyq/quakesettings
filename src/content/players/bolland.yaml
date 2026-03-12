@@ -2,12 +2,14 @@ name: Bolland
 steamId: "76561198354200908"
 country: Unknown
 category: tdm
-hoqTdmRating: 15.59877872467041
-hoqTdmGames: 2457
+hoqTdmRating: 16.04018783569336
+hoqTdmGames: 2465
+
+
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
-tdmRating: 15.59877872467041
+tdmRating: 16.04018783569336
 tdmRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 850
@@ -35,9 +37,9 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 2457
-hoqTdmRating: 15.6
-hoqTdmGames: 2457
+tdmGames: 2465
+
+
 
 
 

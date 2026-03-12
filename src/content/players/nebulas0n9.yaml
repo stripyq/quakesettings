@@ -11,10 +11,10 @@ ctfRating: 12.668198585510254
 ctfGames: 167
 tdmRating: 17.05631446838379
 tdmGames: 6
-hoqCtfRating: 12.67
-hoqCtfGames: 167
-hoqTdmRating: 17.06
-hoqTdmGames: 6
+
+
+
+
 qlrace:
   mode: 2
   records: 1
@@ -37,9 +37,12 @@ qlrace:
       total: 22
       time: 26008
   fetched_at: "2026-02-23"
-hoqCtfRating: 12.668198585510254
+
 ctfRatingUpdated: "2026-03-12"
+
+
+tdmRatingUpdated: "2026-03-12"
+hoqCtfRating: 12.668198585510254
 hoqCtfGames: 167
 hoqTdmRating: 17.05631446838379
-tdmRatingUpdated: "2026-03-12"
 hoqTdmGames: 6

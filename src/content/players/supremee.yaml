@@ -10,8 +10,8 @@ team2026Shortname: cock
 published: false
 ctfRating: 25.175155639648438
 ctfGames: 6
-hoqCtfRating: 25.18
-hoqCtfGames: 6
+
+
 qlrace: null
 favorite_map: overkill
 favorite_gametype: Clan Arena
@@ -19,6 +19,7 @@ favorite_weapon: Railgun
 accuracy_rl: 37
 accuracy_rg: 56
 qlrace: null
-hoqCtfRating: 25.175155639648438
+
 ctfRatingUpdated: "2026-03-12"
+hoqCtfRating: 25.175155639648438
 hoqCtfGames: 6

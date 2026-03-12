@@ -9,16 +9,20 @@ team2024: 4friends
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 category: duel
-hoqCtfRating: 15.137974739074707
+hoqCtfRating: 15.400238990783691
+hoqCtfGames: 4041
+hoqTdmRating: 14.369336128234863
+hoqTdmGames: 156
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 3925
-hoqTdmRating: 14.586236953735352
+
+
 tdmRatingUpdated: "2026-03-12"
-hoqTdmGames: 155
+
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 15.137974739074707
-tdmRating: 14.586236953735352
+ctfRating: 15.400238990783691
+tdmRating: 14.369336128234863
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022
@@ -46,12 +50,12 @@ keyboard: ozone-keyboard
 monitor: hp-omen
 headset: logitech-g-pro-headset
 skates: None
-ctfGames: 3925
-tdmGames: 155
-hoqCtfRating: 15.14
-hoqCtfGames: 3925
-hoqTdmRating: 14.59
-hoqTdmGames: 155
+ctfGames: 4041
+tdmGames: 156
+
+
+
+
 
 
 

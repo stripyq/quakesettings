@@ -2,15 +2,19 @@ name: apex
 steamId: "76561198077156894"
 aliases: []
 category: ctf
-hoqCtfRating: 29.58192253112793
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 29.58192253112793
-hoqCtfGames: 2097
-ctfGames: 2097
+hoqCtfRating: 29.64785385131836
+hoqCtfGames: 2105
 hoqTdmRating: 20.342716217041016
+hoqTdmGames: 1
+
+ctfRatingUpdated: "2026-03-12"
+ctfRating: 29.64785385131836
+
+ctfGames: 2105
+
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 20.342716217041016
-hoqTdmGames: 1
+
 tdmGames: 1
 published: false
 team2024: Bad But Happy

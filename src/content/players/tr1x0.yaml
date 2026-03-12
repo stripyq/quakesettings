@@ -4,22 +4,26 @@ aliases: []
 team2024: 4friends
 country: Unknown
 category: ctf
-hoqCtfRating: 24.810020446777344
-hoqCtfGames: 1029
+hoqCtfRating: 24.565635681152344
+hoqCtfGames: 1030
 hoqTdmRating: 24.119909286499023
 hoqTdmGames: 119
+
+
+
+
 lastUpdated: 2025-01
 tdmRating: 24.119909286499023
 tdmRatingUpdated: "2026-03-12"
-ctfRating: 24.810020446777344
+ctfRating: 24.565635681152344
 ctfRatingUpdated: "2026-03-12"
 duelRating: 1062
-ctfGames: 1029
+ctfGames: 1030
 tdmGames: 119
-hoqCtfRating: 24.81
-hoqCtfGames: 1029
-hoqTdmRating: 24.12
-hoqTdmGames: 119
+
+
+
+
 duelGames: 326
 duelRatingUpdated: "2026-02-04"
 dataSource: player

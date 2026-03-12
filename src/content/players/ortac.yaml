@@ -4,12 +4,12 @@ steamId: "76561198144940773"
 caRating: 25.56
 caGames: 904
 caRatingUpdated: "2026-02-04"
-tdmRating: 20.015560150146484
+tdmRating: 20.161855697631836
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1200
-tdmGames: 237
-hoqTdmRating: 20.02
-hoqTdmGames: 237
+tdmGames: 246
+
+
 duelGames: 1227
 duelRatingUpdated: "2026-02-04"
 mouse: zaopin-z11-pro
@@ -65,5 +65,5 @@ qlrace:
       total: 32
       time: 194944
   fetched_at: "2026-02-23"
-hoqTdmRating: 20.015560150146484
-hoqTdmGames: 237
+hoqTdmRating: 20.161855697631836
+hoqTdmGames: 246

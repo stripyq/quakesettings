@@ -2,16 +2,20 @@ name: deisma
 steamId: "76561198257310626"
 country: RU
 category: ctf
-hoqCtfRating: 10.07424545288086
-hoqCtfGames: 1656
-ctfGames: 1656
+hoqCtfRating: 9.010111808776855
+hoqCtfGames: 1754
 hoqTdmRating: 21.39876937866211
 hoqTdmGames: 199
+
+
+ctfGames: 1754
+
+
 tdmGames: 199
 lastUpdated: 2025-01
 tdmRating: 21.39876937866211
 tdmRatingUpdated: "2026-03-12"
-ctfRating: 10.07424545288086
+ctfRating: 9.010111808776855
 ctfRatingUpdated: "2026-03-12"
 dataSource: player
 dpi: 3200

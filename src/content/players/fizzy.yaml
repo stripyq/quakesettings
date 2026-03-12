@@ -3,18 +3,20 @@ steamId: "76561198129795100"
 aliases: []
 country: PL
 category: ctf
-hoqCtfRating: 3.8971006870269775
+hoqCtfRating: 3.334306001663208
+hoqCtfGames: 1964
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 1853
+
 lastUpdated: "2026-02-13"
 duelRating: 725
-ctfGames: 1853
+ctfGames: 1964
 duelGames: 26
-ctfRating: 3.8971006870269775
+ctfRating: 3.334306001663208
 qllrCtfRating: 21.08
 qllrCtfGames: 9
-hoqCtfRating: 3.9
-hoqCtfGames: 1853
+
+
 dataSource: player
 dpi: 800
 sensitivity: 3
