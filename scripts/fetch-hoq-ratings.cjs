@@ -145,19 +145,26 @@ async function main() {
 
   let ctfJson, tdmJson;
 
+  // API returns { ok: true, response: [...] } — unwrap the array
+  function unwrapResponse(data) {
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.response)) return data.response;
+    throw new Error('Expected an array or { response: [...] }');
+  }
+
   if (USE_JSON) {
     console.log('Loading from local JSON files...');
-    ctfJson = JSON.parse(fs.readFileSync(CTF_JSON_PATH, 'utf8'));
+    ctfJson = unwrapResponse(JSON.parse(fs.readFileSync(CTF_JSON_PATH, 'utf8')));
     console.log(`  Loaded ${ctfJson.length} CTF entries from ${CTF_JSON_PATH}`);
-    tdmJson = JSON.parse(fs.readFileSync(TDM_JSON_PATH, 'utf8'));
+    tdmJson = unwrapResponse(JSON.parse(fs.readFileSync(TDM_JSON_PATH, 'utf8')));
     console.log(`  Loaded ${tdmJson.length} TDM entries from ${TDM_JSON_PATH}`);
   } else {
     console.log('Fetching CTF ratings...');
-    ctfJson = await fetchJson(CTF_URL);
+    ctfJson = unwrapResponse(await fetchJson(CTF_URL));
     console.log(`  Got ${ctfJson.length} CTF entries`);
 
     console.log('Fetching TDM ratings...');
-    tdmJson = await fetchJson(TDM_URL);
+    tdmJson = unwrapResponse(await fetchJson(TDM_URL));
     console.log(`  Got ${tdmJson.length} TDM entries`);
   }
 

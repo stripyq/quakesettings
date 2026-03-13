@@ -7,9 +7,6 @@ hoqCtfGames: 5907
 hoqTdmRating: 28.55860710144043
 hoqTdmGames: 1447
 
-
-
-
 lastUpdated: 2025-01
 duelRating: 1498
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
@@ -54,15 +51,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 5907
 tdmGames: 1447
-
-
-
-
-
-
-
-
-
 
 qlrace:
   mode: 3

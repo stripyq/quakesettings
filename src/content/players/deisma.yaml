@@ -7,9 +7,7 @@ hoqCtfGames: 1754
 hoqTdmRating: 21.39876937866211
 hoqTdmGames: 199
 
-
 ctfGames: 1754
-
 
 tdmGames: 199
 lastUpdated: 2025-01
@@ -45,11 +43,6 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
 
 qlrace: null
 favorite_map: q3wcp9

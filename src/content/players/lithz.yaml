@@ -44,10 +44,6 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 367
 tdmGames: 45
-hoqCtfRating: 30.26
-hoqCtfGames: 367
-hoqTdmRating: 34.98
-hoqTdmGames: 45
 qlrace:
   mode: 2
   records: 29

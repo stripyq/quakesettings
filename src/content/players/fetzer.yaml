@@ -42,10 +42,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1
 tdmGames: 1
-hoqCtfRating: 12.54
-hoqCtfGames: 1
-hoqTdmRating: 11.51
-hoqTdmGames: 1
 qlrace: null
 favorite_map: campgrounds
 favorite_gametype: Clan Arena

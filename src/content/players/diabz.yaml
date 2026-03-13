@@ -7,9 +7,6 @@ hoqCtfGames: 301
 hoqTdmRating: 26.94189453125
 hoqTdmGames: 18
 
-
-
-
 lastUpdated: 2026-02
 ctfRating: 30.44696807861328
 ctfRatingUpdated: "2026-03-12"
@@ -45,15 +42,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 301
 tdmGames: 18
-
-
-
-
-
-
-
-
-
 
 qlrace:
   mode: 2

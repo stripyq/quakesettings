@@ -12,9 +12,6 @@ hoqCtfGames: 949
 hoqTdmRating: 39.01982879638672
 hoqTdmGames: 1010
 
-
-
-
 lastUpdated: 2025-01
 tdmRating: 39.01982879638672
 tdmRatingUpdated: "2026-03-12"
@@ -23,9 +20,6 @@ ctfRatingUpdated: "2026-03-12"
 duelRating: 2140
 ctfGames: 949
 tdmGames: 1010
-
-
-
 
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
@@ -53,11 +47,6 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
 
 qlrace:
   mode: 2

@@ -13,9 +13,6 @@ hoqCtfGames: 2733
 hoqTdmRating: 35.36933517456055
 hoqTdmGames: 197
 
-
-
-
 lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
@@ -25,13 +22,6 @@ ctfRating: 46.532386779785156
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 33.84
 qllrCtfGames: 49
-
-
-
-
-
-
-
 
 dataSource: player
 dpi: 800

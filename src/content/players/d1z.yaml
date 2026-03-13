@@ -13,9 +13,6 @@ duelRating: 1554
 ctfGames: 187
 tdmGames: 362
 
-
-
-
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii
@@ -46,11 +43,6 @@ attack: MOUSE1
 zoom: shift
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
 
 qlrace:
   mode: 2

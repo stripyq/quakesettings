@@ -10,9 +10,6 @@ hoqCtfGames: 6486
 hoqTdmRating: 16.324039459228516
 hoqTdmGames: 802
 
-
-
-
 lastUpdated: 2025-01
 duelRatingUpdated: ""
 tdmRating: 16.324039459228516
@@ -54,9 +51,6 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 6486
 tdmGames: 802
-
-
-
 
 qlrace:
   mode: 2

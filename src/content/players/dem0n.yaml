@@ -16,9 +16,6 @@ hoqCtfGames: 1068
 hoqTdmRating: 32.66770553588867
 hoqTdmGames: 40
 
-
-
-
 lastUpdated: 2025-01
 duelRating: 1783
 duelRatingUpdated: 2026-02-05T00:00:00.000Z
@@ -28,9 +25,6 @@ ctfRating: 44.14175033569336
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 31
 qllrCtfGames: 56
-
-
-
 
 dataSource: player
 source: ""
@@ -71,11 +65,6 @@ grip: Hybrid
 duelGames: 439
 ctfGames: 1068
 tdmGames: 40
-
-
-
-
-
 
 qlrace:
   mode: 2

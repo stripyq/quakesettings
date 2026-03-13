@@ -13,9 +13,6 @@ hoqCtfGames: 1551
 hoqTdmRating: 14.384278297424316
 hoqTdmGames: 25
 
-
-
-
 lastUpdated: 2025-01
 tdmRating: 14.384278297424316
 tdmRatingUpdated: "2026-03-12"
@@ -23,10 +20,6 @@ ctfRating: 27.556621551513672
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 26.34
 qllrCtfGames: 67
-
-
-
-
 
 ctfGames: 1551
 tdmGames: 25
@@ -58,11 +51,6 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
-
-
-
-
-
 
 qlrace:
   mode: 2

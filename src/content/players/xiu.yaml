@@ -35,8 +35,6 @@ crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-hoqCtfRating: 23.8
-hoqCtfGames: 15
 qlrace:
   mode: 3
   records: 1

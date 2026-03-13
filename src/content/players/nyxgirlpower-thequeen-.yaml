@@ -6,7 +6,6 @@ category: ctf
 hoqCtfRating: 18.882715225219727
 hoqCtfGames: 2565
 
-
 lastUpdated: 2025-01
 duelRating: null
 duelRatingUpdated: ""
@@ -51,7 +50,6 @@ crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
 ctfGames: 2565
-
 
 qlrace:
   mode: 2

@@ -11,16 +11,12 @@ hoqTdmGames: 1130
 
 ctfRatingUpdated: "2026-03-12"
 
-
 tdmRatingUpdated: "2026-03-12"
 
 lastUpdated: 2026-02
 duelRating: 1361
 ctfGames: 506
 tdmGames: 1130
-
-
-
 
 duelGames: 432
 tdmRating: 30.232011795043945
@@ -60,11 +56,6 @@ headset: beyerdynamic-dt-990-pro
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-
-
-
-
-
 
 qlrace:
   mode: 2

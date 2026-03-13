@@ -13,14 +13,8 @@ ctfGames: 586
 tdmRating: 34.097869873046875
 tdmGames: 390
 
-
-
-
 qllrCtfRating: 19.82
 qllrCtfGames: 61
-
-
-
 
 duelRating: 1785
 duelRatingSource: qlstats
@@ -88,6 +82,4 @@ qlrace:
 
 ctfRatingUpdated: "2026-03-12"
 
-
 tdmRatingUpdated: "2026-03-12"
-

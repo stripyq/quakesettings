@@ -9,27 +9,18 @@ country: CZ
 team: Czesnecka
 published: false
 
-
-
-
-
-
 qlrace: null
 
-
 ctfGames: 1479
-
 
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
-qlrace: null
 
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 26.883695602416992
 
-ctfGames: 1404
 hoqCtfRating: 26.883695602416992
 hoqCtfGames: 1479

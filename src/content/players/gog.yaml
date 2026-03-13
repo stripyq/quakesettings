@@ -36,10 +36,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 2544
 tdmGames: 566
-hoqCtfRating: 18.84
-hoqCtfGames: 2544
-hoqTdmRating: 22.91
-hoqTdmGames: 566
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

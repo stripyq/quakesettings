@@ -10,7 +10,6 @@ hoqTdmGames: 3954
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 24.844650268554688
 
-
 tdmRatingUpdated: "2026-03-12"
 
 dataSource: collected
@@ -21,9 +20,6 @@ tdm2v2Games: 91
 duelRating: 1215
 ctfGames: 2
 tdmGames: 3954
-
-
-
 
 duelGames: 380
 dpi: 2400
@@ -56,11 +52,6 @@ headset: cooler-master-mh752
 skates: Aftermarket
 gpuBrand: AMD
 cpuBrand: AMD
-
-
-
-
-
 
 qlrace: null
 favorite_map: purgatory

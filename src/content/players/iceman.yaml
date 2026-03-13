@@ -12,9 +12,6 @@ hoqCtfGames: 1018
 hoqTdmRating: 30.94354820251465
 hoqTdmGames: 193
 
-
-
-
 lastUpdated: 2025-01
 ctfRating: 37.582908630371094
 ctfRatingUpdated: "2026-03-12"
@@ -50,13 +47,6 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 1018
 tdmGames: 193
-
-
-
-
-
-
-
 
 qlrace:
   mode: 3

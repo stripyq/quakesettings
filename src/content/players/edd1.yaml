@@ -16,7 +16,6 @@ hoqTdmGames: 128
 
 ctfRatingUpdated: "2026-03-12"
 
-
 tdmRatingUpdated: "2026-03-12"
 
 duelRating: 1406
@@ -49,15 +48,6 @@ skates: Stock
 enemyModel: Keel
 ctfGames: 507
 tdmGames: 128
-
-
-
-
-
-
-
-
-
 
 qlrace:
   mode: 2

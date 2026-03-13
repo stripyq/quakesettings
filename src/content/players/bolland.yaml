@@ -5,7 +5,6 @@ category: tdm
 hoqTdmRating: 16.04018783569336
 hoqTdmGames: 2465
 
-
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
@@ -38,13 +37,6 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 2465
-
-
-
-
-
-
-
 
 qlrace: null
 favorite_map: purgatory

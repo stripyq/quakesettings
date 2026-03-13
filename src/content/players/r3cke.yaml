@@ -9,7 +9,6 @@ hoqTdmGames: 67
 
 ctfRatingUpdated: "2026-03-12"
 
-
 tdmRatingUpdated: "2026-03-12"
 
 dataSource: player
@@ -52,9 +51,6 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 4779
 tdmGames: 67
-
-
-
 
 qlrace: null
 favorite_map: japanesecastles
