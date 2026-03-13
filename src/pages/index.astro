@@ -196,7 +196,7 @@ const schema = {
                   <span class="hardware-model">{headsetDisplay.model}</span>
                 </div>
               </td>
-              <td class="date-cell">{player.data.lastUpdated || '—'}</td>
+              <td class="date-cell">{player.data.lastUpdated ? String(player.data.lastUpdated).slice(0, 7) : '—'}</td>
             </tr>
           );
         })}
