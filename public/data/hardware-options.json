@@ -3673,6 +3673,11 @@
       "brand": "Meletrix"
     },
     {
+      "slug": "meletrix-zoom65v2",
+      "name": "Meletrix Zoom65V2",
+      "brand": "Meletrix"
+    },
+    {
       "slug": "meletrix-zoom65v3-module",
       "name": "Meletrix Zoom65V3 Module",
       "brand": "Meletrix"
@@ -4994,6 +4999,11 @@
     {
       "slug": "sennheiser-hd-280-pro",
       "name": "Sennheiser HD 280 Pro",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-hd-560s",
+      "name": "Sennheiser HD 560S",
       "brand": "Sennheiser"
     },
     {

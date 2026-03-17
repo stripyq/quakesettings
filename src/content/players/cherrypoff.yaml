@@ -7,20 +7,18 @@ team2026: GdeFlag?
 team2026Shortname: GF?
 country: RU
 category: tdm
-hoqCtfRating: 34.63602828979492
-hoqCtfGames: 949
-hoqTdmRating: 39.01982879638672
-hoqTdmGames: 1010
-
 lastUpdated: 2025-01
-tdmRating: 39.01982879638672
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 34.63602828979492
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 39.02
+tdmRatingUpdated: "2026-02-24"
+ctfRating: 36.34
+ctfRatingUpdated: "2026-02-24"
 duelRating: 2140
-ctfGames: 949
+ctfGames: 924
 tdmGames: 1010
-
+hoqCtfRating: 36.34
+hoqCtfGames: 924
+hoqTdmRating: 39.02
+hoqTdmGames: 1010
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -47,6 +45,11 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
+
+
+
+
+
 
 qlrace:
   mode: 2
@@ -78,9 +81,8 @@ qlrace:
       total: 35
       time: 40731
   fetched_at: "2026-02-23"
-favorite_map: purgatory
-favorite_gametype: Team Deathmatch
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 37
-accuracy_rg: 50
 accuracy_lg: 37
+accuracy_rg: 50

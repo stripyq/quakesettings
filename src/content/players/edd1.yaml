@@ -9,18 +9,9 @@ team2026Shortname: CUBA
 country: DE
 team: Le Cubanitos
 category: duel
-hoqCtfRating: 30.914722442626953
-hoqCtfGames: 507
-hoqTdmRating: 39.69597625732422
-hoqTdmGames: 128
-
-ctfRatingUpdated: "2026-03-12"
-
-tdmRatingUpdated: "2026-03-12"
-
 duelRating: 1406
-ctfRating: 30.914722442626953
-tdmRating: 39.69597625732422
+ctfRating: 29.16
+tdmRating: 39.7
 dataSource: player
 lastUpdated: 2025-02
 dpi: 1600
@@ -46,8 +37,13 @@ monitor: aoc-24g15n
 headset: razer-blackshark-v2
 skates: Stock
 enemyModel: Keel
-ctfGames: 507
+ctfGames: 397
 tdmGames: 128
+
+
+
+
+
 
 qlrace:
   mode: 2
@@ -71,9 +67,8 @@ qlrace:
       total: 87
       time: 6388
   fetched_at: "2026-02-23"
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
+favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 52
-accuracy_rg: 63
+accuracy_rg: 62
 accuracy_lg: 39

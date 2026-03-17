@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const { parse } = require('csv-parse/sync');
+const { safeWriteYaml } = require('./yaml-safe-write.cjs');
 
 const DATA_DIR = path.join(__dirname, '..', 'public', 'data');
 const PLAYERS_DIR = path.join(__dirname, '..', 'src', 'content', 'players');
@@ -142,7 +143,7 @@ for (const file of yamlFiles) {
   lines.splice(insertIndex, 0, ...newFields);
   lines.push(''); // trailing newline
 
-  fs.writeFileSync(filePath, lines.join('\n'));
+  safeWriteYaml(filePath, lines.join('\n'), GAME_FIELDS);
   updated++;
 
   const parts = [];
