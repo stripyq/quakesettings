@@ -43,7 +43,8 @@ const headsetSlugMap: Record<string, string[]> = {
   "Hifiman HE400se": ["hifiman-he400se"],
   "AKG K702": ["akg-k702"],
   "Beyerdynamic DT880": ["beyerdynamic-dt880"],
-  "Sennheiser HD598/HD599": ["sennheiser-hd598", "sennheiser-hd599"],
+  "Sennheiser HD599": ["sennheiser-hd598", "sennheiser-hd599"],
+  "Audio-Technica R70x": ["audio-technica-r70x"],
 };
 
 function getPlayerCount(name: string): number {
@@ -85,15 +86,16 @@ const budgetOptions = [
 ];
 
 const audiophile = [
-  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, asr: true, mle: true },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, asr: true, mle: false },
+  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, asr: false, mle: false },
+  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, asr: false, mle: false },
   { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, asr: false, mle: false },
   { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: true, mle: true },
+  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: false, mle: true },
+  { name: "AKG K702", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
+  { name: "Beyerdynamic DT880", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
+  { name: "Sennheiser HD599", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
   { name: "Hifiman HE400se", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "AKG K702", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "Beyerdynamic DT880", type: "Wired Semi-Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "Sennheiser HD598/HD599", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: false, mle: true },
+  { name: "Audio-Technica R70x", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: false, asr: true, mle: false },
 ];
 
 const dacAmp = [
@@ -124,11 +126,11 @@ const schema = {
   </div>
 
   <div class="reviewer-legend">
-    <span class="legend-item"><strong data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</strong> GadgetryTech</span>
-    <span class="legend-item"><strong data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</strong> BadSeed Tech</span>
-    <span class="legend-item"><strong data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</strong> Joshua Valour</span>
-    <span class="legend-item"><strong data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations based on community discussion threads on gaming headphone use">ASR</strong> Audio Science Review</span>
-    <span class="legend-item"><strong data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</strong> Mad Lust Envy (Head-Fi Gaming Guide)</span>
+    <span class="legend-item"><strong>GT</strong> GadgetryTech</span>
+    <span class="legend-item"><strong>BS</strong> BadSeed Tech</span>
+    <span class="legend-item"><strong>JV</strong> Joshua Valour</span>
+    <span class="legend-item"><strong>ASR</strong> Audio Science Review</span>
+    <span class="legend-item"><strong>MLE</strong> Mad Lust Envy (Head-Fi Gaming Guide)</span>
   </div>
 
   <div class="price-legend">
@@ -146,12 +148,12 @@ const schema = {
           <th>Headset</th>
           <th class="col-type">Type</th>
           <th class="col-price">Price</th>
-          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -194,12 +196,12 @@ const schema = {
           <th>Headset</th>
           <th class="col-type">Type</th>
           <th class="col-price">Price</th>
-          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -242,12 +244,12 @@ const schema = {
           <th>Headset</th>
           <th class="col-type">Type</th>
           <th class="col-price">Price</th>
-          <th class="col-reviewer"><span data-tooltip="GadgetryTech — YouTube reviewer specializing in gaming headsets and audio peripherals">GT</span></th>
-          <th class="col-reviewer"><span data-tooltip="BadSeed Tech — YouTube reviewer focused on gaming audio and headsets">BS</span></th>
-          <th class="col-reviewer"><span data-tooltip="Joshua Valour — YouTube audiophile reviewer covering headphones and gaming audio">JV</span></th>
-          <th class="col-reviewer"><span data-tooltip="Audio Science Review — Measurement-based audio forum; recommendations reflect community discussion on gaming headphone use">ASR</span></th>
-          <th class="col-reviewer"><span data-tooltip="Mad Lust Envy — Author of the long-running Headphone Gaming Guide on Head-Fi, one of the most referenced community resources for gaming audio">MLE</span></th>
-          <th class="col-players"><span data-tooltip="Number of tracked Quake Live players known to use this headset">Players</span></th>
+          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -489,7 +491,7 @@ const schema = {
   .rec-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto;
   }
 
   .rec-table th,
@@ -497,33 +499,20 @@ const schema = {
     padding: 0.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   /* Compact reviewer + players columns */
   .rec-table th.col-reviewer,
   .rec-table td.center {
-    width: 2.5rem;
     padding: 0.5rem 0.25rem;
     text-align: center;
-    word-break: normal;
+    white-space: nowrap;
   }
 
   .rec-table th.col-players,
   .rec-table td.center.players {
-    width: 3.5rem;
     padding: 0.5rem 0.25rem;
     text-align: center;
-  }
-
-  .rec-table th.col-price,
-  .rec-table td.price {
-    width: 3.5rem;
-  }
-
-  .rec-table th.col-type {
-    width: 20%;
   }
 
   /* Let headset name and type wrap */
@@ -532,11 +521,6 @@ const schema = {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-  }
-
-  /* Info tables don't need fixed layout */
-  .rec-table.info-table {
-    table-layout: auto;
   }
 
   .rec-table th {
