@@ -484,34 +484,57 @@ const schema = {
   }
 
   .table-container {
-    overflow-x: auto;
+    overflow-x: visible;
     margin-bottom: 1rem;
   }
 
   .rec-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
+    table-layout: fixed;
   }
 
   .rec-table th,
   .rec-table td {
-    padding: 0.5rem;
+    padding: 0.5rem 0.25rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Column widths */
+  .rec-table th:first-child,
+  .rec-table td:first-child {
+    width: 32%;
+  }
+
+  .rec-table th.col-type {
+    width: 15%;
+  }
+
+  .rec-table th.col-price {
+    width: 8%;
+  }
+
+  .rec-table th.col-reviewer {
+    width: 6%;
+    text-align: center;
+  }
+
+  .rec-table th.col-players {
+    width: 8%;
+    text-align: center;
   }
 
   /* Compact reviewer + players columns */
-  .rec-table th.col-reviewer,
   .rec-table td.center {
     padding: 0.5rem 0.25rem;
     text-align: center;
     white-space: nowrap;
   }
 
-  .rec-table th.col-players,
   .rec-table td.center.players {
-    padding: 0.5rem 0.25rem;
     text-align: center;
   }
 
