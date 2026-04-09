@@ -24,6 +24,19 @@ const schema = {
     <p class="subtitle">Driver, in-game, and Windows settings for competitive play (240 Hz+ monitors)</p>
   </div>
 
+  <!-- SECTION: Hardware Checklist -->
+  <section class="settings-section" id="hardware-checklist">
+    <h2>Hardware Checklist (Before Tweaking Anything)</h2>
+
+    <p>Before adjusting any driver or in-game settings, make sure your hardware isn't holding you back. These take minutes to check and can have a bigger impact than any software tweak.</p>
+
+    <p><strong>RAM in correct slots:</strong> If you're using two sticks, they must be in the correct slots for dual-channel mode. This is usually slots 2 and 4 — check your motherboard manual. Wrong slots can halve your memory bandwidth.</p>
+
+    <p><strong>Temperatures under control:</strong> If you can't hold a stable 250 FPS during fights, check your CPU and GPU temperatures under load. Modern hardware reduces clock speeds as temperature rises — even before hitting official throttle points. Free tools like HWiNFO or HWMonitor will show this. Improving cooling, replacing thermal paste, or improving case airflow can recover lost performance.</p>
+
+    <p><strong>Disable integrated graphics:</strong> If you're using a dedicated GPU, disable the integrated graphics in your BIOS. This can improve stability on some systems, especially if you experience random crashes.</p>
+  </section>
+
   <!-- SECTION 1: Quick Chooser -->
   <section class="preset-chooser">
     <h2>Which Preset Is Right For You?</h2>
@@ -532,6 +545,48 @@ vid_restart</code></pre>
     </div>
   </section>
 
+  <!-- SECTION: CPU Core Affinity -->
+  <section class="settings-section" id="cpu-core-affinity">
+    <h2>CPU Core Affinity — Move Quake Off Core 0</h2>
+
+    <p>Windows and many background drivers default to scheduling tasks on your CPU's first physical core (Core 0). When your game also runs there, those higher-priority system tasks can briefly interrupt it, causing micro-stutters and drops in 1% low FPS. At 250 FPS each frame is only 4ms — even a tiny interruption means a missed frame.</p>
+
+    <p>In testing, this tweak improved average FPS by up to ~8% and 1% low FPS by up to ~20% in competitive shooters.</p>
+
+    <h3>Test it first (Task Manager — no install needed)</h3>
+    <ol>
+      <li>Launch Quake Live and join a server</li>
+      <li>Open Task Manager (Ctrl+Shift+Esc)</li>
+      <li>Go to the <strong>Details</strong> tab</li>
+      <li>Find <code>quakelive_steam.exe</code>, right-click → <strong>Set affinity</strong></li>
+      <li>Uncheck <strong>CPU 0</strong> and <strong>CPU 1</strong></li>
+      <li>Click OK and play — use <code>cl_drawfps 1</code> to check if FPS is more consistent</li>
+    </ol>
+
+    <p>This resets every time the game closes. If it helps, make it permanent:</p>
+
+    <h3>Make it permanent with Process Lasso (free version works)</h3>
+    <ol>
+      <li>Download and install Process Lasso from <a href="https://bitsum.com" target="_blank" rel="noopener noreferrer">bitsum.com</a></li>
+      <li>Launch Quake Live so the process appears in Process Lasso</li>
+      <li>In the main window, find <code>quakelive_steam.exe</code> in the active processes list</li>
+      <li>Right-click → <strong>CPU Affinity</strong> → <strong>Always</strong> → <strong>Select CPU Affinity...</strong></li>
+      <li>Uncheck <strong>CPU 0</strong> and <strong>CPU 1</strong>, click OK</li>
+      <li>The rule is now saved and applies automatically every launch</li>
+    </ol>
+
+    <p><strong>Alternative — apply the rule to Steam instead:</strong> If the affinity won't stick on the game process directly, apply the same rule to <code>steam.exe</code> in Process Lasso. Games launched through Steam inherit the parent process affinity, so Quake Live will automatically avoid Core 0.</p>
+
+    <div class="warning-box">
+      <strong>Important:</strong>
+      <ul>
+        <li>Disable <strong>both</strong> logical cores 0 and 1 — disabling only one can make things worse</li>
+        <li>CPU 0 and CPU 1 are correct on most systems</li>
+        <li>The game still uses all your other cores normally</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- SECTION 9: Experimental / Optional -->
   <section class="settings-section collapsible" id="experimental">
     <h2>Experimental / Optional (Test on Your System)</h2>
@@ -585,6 +640,25 @@ vid_restart</code></pre>
     <div class="info-box">
       <strong>Note:</strong> This only resets server browser filter preferences. Config, binds, and settings are unaffected.
     </div>
+  </section>
+
+  <!-- SECTION: What Doesn't Work -->
+  <section class="settings-section" id="what-doesnt-work">
+    <h2>What Doesn't Work (Save Your Time)</h2>
+
+    <p>The following commonly recommended "optimizations" have been tested with hardware-level measurement tools and showed no measurable change in real gameplay performance or latency in controlled testing. If a tweak doesn't change your FPS, it doesn't change your latency.</p>
+
+    <p><strong>Registry tweaks</strong> — Win32PrioritySeparation, hidden power plan settings, GPU/CPU power-saving registry keys — none produced a measurable difference during actual gameplay.</p>
+
+    <p><strong>Interrupt affinity tuning</strong> — manually assigning your mouse or GPU to specific CPU cores for interrupt handling. Changes are visible in interrupt analysis tools but do not translate to any real-world FPS or latency difference.</p>
+
+    <p><strong>ISR / DPC optimization</strong> — manually tuning interrupt service routines and deferred procedure calls. Measurable at the kernel level, invisible in gameplay.</p>
+
+    <p><strong>Custom Windows ISOs</strong> — pre-tweaked Windows images from unknown sources. High security risk for negligible gains compared to manually removing bloatware through Task Manager and Services.</p>
+
+    <p><strong>Dedicated USB cards for mouse</strong> — PCIe XHCI controller cards for isolating mouse polling. Theoretically sound, but no measurable difference was found between CPU-connected USB, motherboard USB, or a dedicated PCIe USB card.</p>
+
+    <p><strong>The principle:</strong> Unless you can see your FPS change, your latency has not changed. Focus your time on the things in this guide that produce visible, testable results.</p>
   </section>
 
   <div class="back-link">
