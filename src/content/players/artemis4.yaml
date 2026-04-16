@@ -25,7 +25,6 @@ dpi: 1450
 sensitivity: 2.38
 edpi: 3451
 cm360: 12.04
-m_yaw: -0.978 # WARNING: unusual value, expected 0.022 — verify with player
 acceleration: false
 rawInput: true
 fov: 110
