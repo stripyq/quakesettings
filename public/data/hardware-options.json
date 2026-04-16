@@ -1496,6 +1496,11 @@
       "brand": "WLMouse"
     },
     {
+      "slug": "wlmouse-ying",
+      "name": "WLMouse YING",
+      "brand": "WLMouse"
+    },
+    {
       "slug": "wlmouse-huan",
       "name": "WLMOUSE Huan",
       "brand": "WLMOUSE"
@@ -3940,6 +3945,11 @@
     {
       "slug": "razer-huntsman-v3-tkl",
       "name": "Razer Huntsman V3 TKL",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-ornata-v3-tenkeyless",
+      "name": "Razer Ornata V3 Tenkeyless",
       "brand": "Razer"
     },
     {
