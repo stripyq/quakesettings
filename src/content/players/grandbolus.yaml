@@ -1,6 +1,6 @@
 name: Grandbolus
 steamId: "76561198255736445"
-country: Unknown
+country: NL
 category: ctf
 hoqCtfRating: 19.076061248779297
 hoqCtfGames: 2976
@@ -28,9 +28,10 @@ left: a
 right: d
 jump: Space
 attack: Mouse1
-mouse: logitech-g302
-mousepad: steelseries-qck
-mousepadSize: Large
+mouse: logitech-g-pro-x-superlight
+mousepad: artisan-hien
+mousepadBase: Mid
+mousepadSize: XL
 keyboard: ducky-one-2
 monitor: iiyama-g-master-gb2470hsu-b1
 headset: sony-wh-1000xm4
