@@ -30,3 +30,6 @@ scripts/hoq-html/
 analysis/
 ctf.json
 tdm.json
+
+# Cowork skill-eval artifacts (local review only)
+.claude-eval/
