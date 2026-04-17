@@ -3,16 +3,20 @@ steamId: "76561198414877431"
 aliases:
   - phaze
 category: ctf
-hoqCtfRating: 25.973901748657227
+
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 25.973901748657227
-hoqCtfGames: 131
+
 ctfGames: 131
-hoqTdmRating: 29.06947135925293
+
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 29.06947135925293
-hoqTdmGames: 245
+
 tdmGames: 245
+hoqCtfRating: 25.97
+hoqCtfGames: 131
+hoqTdmRating: 29.07
+hoqTdmGames: 245
 published: false
 qlrace:
   mode: 3
@@ -22,6 +26,20 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 1495
+  average_rank_pct: 14.9
+  best_record:
+    map: lovet-mikendo
+    rank: 9
+    total: 117
+    time: 19448
+    rank_pct: 7.7
+  top_maps:
+    - {map: lovet-mikendo, rank: 9, total: 117, time: 19448, rank_pct: 7.7}
+    - {map: cavesvq3, rank: 5, total: 55, time: 80168, rank_pct: 9.1}
+    - {map: hangtime-df, rank: 19, total: 68, time: 422200, rank_pct: 27.9}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 1495
   average_rank_pct: 15.3
   best_record:

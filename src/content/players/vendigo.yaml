@@ -2,10 +2,10 @@ name: vendigo
 steamId: "76561198258932158"
 country: Unknown
 category: tdm
-hoqCtfRating: 11.436339378356934
-hoqCtfGames: 1
-hoqTdmRating: 26.761837005615234
-hoqTdmGames: 1797
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1465
 duelRatingUpdated: "2026-01-31"
@@ -40,6 +40,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1
 tdmGames: 1797
+hoqCtfRating: 11.44
+hoqCtfGames: 1
+hoqTdmRating: 26.76
+hoqTdmGames: 1797
 qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

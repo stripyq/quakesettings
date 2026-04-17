@@ -20,9 +20,15 @@ accuracy_rl: 34
 accuracy_rg: 59
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 29.57
+qllrCtfGames: 114
+hoqCtfRating: 26.45
+hoqCtfGames: 2355
+hoqTdmRating: 18.47
+hoqTdmGames: 15
 
 tdmRatingUpdated: "2026-03-12"
-hoqCtfRating: 26.449668884277344
-hoqCtfGames: 2355
-hoqTdmRating: 18.470056533813477
-hoqTdmGames: 15
+
+
+
+

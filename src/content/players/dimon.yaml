@@ -2,14 +2,16 @@ name: dimon
 steamId: "76561198257799111"
 country: Unknown
 category: duel
-hoqTdmRating: 21.07310676574707
-hoqTdmGames: 25
+
+
 
 lastUpdated: 2026-02
 tdmRating: 21.07310676574707
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1486
 tdmGames: 25
+hoqTdmRating: 21.07
+hoqTdmGames: 25
 
 duelGames: 1428
 duelRatingUpdated: "2026-02-04"

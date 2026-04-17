@@ -11,6 +11,12 @@ tdmGames: 1130
 duelGames: 432
 tdmRating: 30.23
 ctfRating: 25.01
+qllrCtfRating: 22.24
+qllrCtfGames: 28
+hoqCtfRating: 25.53
+hoqCtfGames: 506
+hoqTdmRating: 30.23
+hoqTdmGames: 1130
 dataSource: collected
 dpi: 400
 sensitivity: 1.2
@@ -60,6 +66,18 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 51.1
+  best_record:
+    map: cubicle
+    rank: 18
+    total: 61
+    time: 13221
+    rank_pct: 29.5
+  top_maps:
+    - {map: cubicle, rank: 18, total: 61, time: 13221, rank_pct: 29.5}
+    - {map: bloxrox, rank: 16, total: 22, time: 73151, rank_pct: 72.7}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 51.1
   best_record:

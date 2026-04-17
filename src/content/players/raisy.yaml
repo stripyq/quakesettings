@@ -20,6 +20,22 @@ qlrace:
     silver: 0
     bronze: 1
   speed_top: 1546
+  average_rank_pct: 53.4
+  best_record:
+    map: r7-prodigy3
+    rank: 3
+    total: 16
+    time: 37432
+    rank_pct: 18.8
+  top_maps:
+    - {map: r7-prodigy3, rank: 3, total: 16, time: 37432, rank_pct: 18.8}
+    - {map: inder_siwd, rank: 17, total: 34, time: 20000, rank_pct: 50}
+    - {map: inder_speed2, rank: 13, total: 26, time: 10984, rank_pct: 50}
+    - {map: kool_speed1, rank: 42, total: 70, time: 37896, rank_pct: 60}
+    - {map: kool_mini7, rank: 33, total: 53, time: 35936, rank_pct: 62.3}
+  fetched_at: '2026-04-17'
+ze: 1
+  speed_top: 1546
   average_rank_pct: 53.6
   best_record:
     map: r7-prodigy3

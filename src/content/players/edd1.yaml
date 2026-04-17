@@ -11,6 +11,12 @@ team: Le Cubanitos
 category: duel
 duelRating: 1406
 ctfRating: 29.16
+qllrCtfRating: 28.24
+qllrCtfGames: 121
+hoqCtfRating: 30.91
+hoqCtfGames: 507
+hoqTdmRating: 39.7
+hoqTdmGames: 128
 tdmRating: 39.7
 dataSource: player
 lastUpdated: 2025-02
@@ -56,6 +62,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 18.4
+  best_record:
+    map: df_lickmax
+    rank: 16
+    total: 87
+    time: 6388
+    rank_pct: 18.4
+  top_maps:
+    - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 18.4
   best_record:

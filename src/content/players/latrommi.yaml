@@ -2,12 +2,18 @@ name: Latrommi
 steamId: "76561198048532604"
 aliases: []
 category: ctf
-hoqCtfRating: 23.178543090820312
-hoqCtfGames: 4
-hoqTdmRating: 42.584503173828125
-hoqTdmGames: 225
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 23.23
+qllrCtfGames: 16
+hoqCtfRating: 23.18
+hoqCtfGames: 4
+hoqTdmRating: 42.58
+hoqTdmGames: 225
 ctfRating: 23.178543090820312
 
 ctfGames: 4

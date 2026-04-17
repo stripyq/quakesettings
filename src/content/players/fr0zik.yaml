@@ -9,8 +9,25 @@ country: CZ
 team: Czesnecka
 published: false
 
-qlrace: null
-
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 721
+  average_rank_pct: 75.5
+  best_record:
+    map: japanesecastles
+    rank: 160
+    total: 212
+    time: 13936
+    rank_pct: 75.5
+  top_maps:
+    - {map: japanesecastles, rank: 160, total: 212, time: 13936, rank_pct: 75.5}
+  fetched_at: '2026-04-17'
 ctfGames: 1479
 
 favorite_map: japanesecastles
@@ -20,7 +37,11 @@ accuracy_rl: 41
 accuracy_rg: 51
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 15.9
+qllrCtfGames: 21
+hoqCtfRating: 26.88
+hoqCtfGames: 1479
 ctfRating: 26.883695602416992
 
-hoqCtfRating: 26.883695602416992
-hoqCtfGames: 1479
+
+

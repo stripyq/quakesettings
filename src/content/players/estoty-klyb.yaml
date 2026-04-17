@@ -3,16 +3,20 @@ steamId: "76561198199452077"
 aliases:
   - estoty Klyb
 category: ctf
-hoqCtfRating: 22.02436637878418
+
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 22.02436637878418
-hoqCtfGames: 45
+
 ctfGames: 45
-hoqTdmRating: 25.238502502441406
+
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 25.238502502441406
-hoqTdmGames: 19
+
 tdmGames: 19
+hoqCtfRating: 22.02
+hoqCtfGames: 45
+hoqTdmRating: 25.24
+hoqTdmGames: 19
 published: false
 qlrace:
   mode: 2
@@ -22,6 +26,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 15.6
+  best_record:
+    map: cruton4
+    rank: 14
+    total: 90
+    time: 107734
+    rank_pct: 15.6
+  top_maps:
+    - {map: cruton4, rank: 14, total: 90, time: 107734, rank_pct: 15.6}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 15.6
   best_record:

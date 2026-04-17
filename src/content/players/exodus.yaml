@@ -3,16 +3,20 @@ steamId: "76561197965938361"
 aliases:
   - ᴴᴬᴴᴬ XDS
 category: ctf
-hoqCtfRating: 32.83300018310547
+
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 32.83300018310547
-hoqCtfGames: 54
+
 ctfGames: 54
-hoqTdmRating: 27.55658721923828
+
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 27.55658721923828
-hoqTdmGames: 11
+
 tdmGames: 11
+hoqCtfRating: 32.83
+hoqCtfGames: 54
+hoqTdmRating: 27.56
+hoqTdmGames: 11
 published: false
 team2024: The expendables
 qlrace:
@@ -23,6 +27,18 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 27.8
+  best_record:
+    map: japanesecastles
+    rank: 61
+    total: 243
+    time: 11637
+    rank_pct: 25.1
+  top_maps:
+    - {map: japanesecastles, rank: 61, total: 243, time: 11637, rank_pct: 25.1}
+    - {map: oilrig, rank: 11, total: 36, time: 10934, rank_pct: 30.6}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 27.7
   best_record:

@@ -19,12 +19,26 @@ accuracy_lg: 34
 accuracy_rg: 45
 qlrace:
   mode: 3
-  records: 1
+  records: 3
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 1294
+  average_rank_pct: 62.6
+  best_record:
+    map: campgrounds
+    rank: 231
+    total: 384
+    time: 30552
+    rank_pct: 60.2
+  top_maps:
+    - {map: campgrounds, rank: 231, total: 384, time: 30552, rank_pct: 60.2}
+    - {map: kopo_fe, rank: 28, total: 46, time: 68240, rank_pct: 60.9}
+    - {map: elbmoop, rank: 26, total: 39, time: 96136, rank_pct: 66.7}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 70.6
   best_record:
@@ -41,10 +55,16 @@ qlrace:
   fetched_at: "2026-02-23"
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 35.5
+qllrCtfGames: 39
+hoqCtfRating: 28.25
+hoqCtfGames: 2381
+hoqTdmRating: 28.67
+hoqTdmGames: 1238
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 28.665769577026367
 tdmGames: 1238
-hoqCtfRating: 28.248437881469727
-hoqCtfGames: 2381
-hoqTdmRating: 28.665769577026367
-hoqTdmGames: 1238
+
+
+
+

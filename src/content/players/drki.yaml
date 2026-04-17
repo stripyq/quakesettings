@@ -2,10 +2,10 @@ name: drki
 steamId: "76561197965308771"
 country: HR
 category: tdm
-hoqCtfRating: 16.2432861328125
-hoqCtfGames: 2138
-hoqTdmRating: 21.691139221191406
-hoqTdmGames: 3094
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1412
 duelRatingUpdated: "2026-01-31"
@@ -39,6 +39,10 @@ gpuBrand: INTEL
 cpuBrand: Intel
 ctfGames: 2138
 tdmGames: 3094
+hoqCtfRating: 16.24
+hoqCtfGames: 2138
+hoqTdmRating: 21.69
+hoqTdmGames: 3094
 
 qlrace: null
 favorite_map: hiddenfortress

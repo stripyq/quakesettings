@@ -2,8 +2,8 @@ name: Xiu
 steamId: "76561198010106923"
 country: Unknown
 category: ctf
-hoqCtfRating: 23.803884506225586
-hoqCtfGames: 15
+
+
 lastUpdated: 2025-01
 ctfRating: 23.803884506225586
 ctfRatingUpdated: "2026-03-12"
@@ -35,6 +35,8 @@ crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
+hoqCtfRating: 23.8
+hoqCtfGames: 15
 qlrace:
   mode: 3
   records: 1
@@ -43,6 +45,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 32.6
+  best_record:
+    map: df_lickdecease
+    rank: 43
+    total: 132
+    time: 11346
+    rank_pct: 32.6
+  top_maps:
+    - {map: df_lickdecease, rank: 43, total: 132, time: 11346, rank_pct: 32.6}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 32.6
   best_record:

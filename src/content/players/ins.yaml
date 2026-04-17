@@ -9,18 +9,24 @@ team2026Shortname: cock
 country: PT
 team: Aimdead brainers
 category: ctf
-hoqCtfRating: 30.95530128479004
-hoqCtfGames: 1774
-hoqTdmRating: 29.474117279052734
-hoqTdmGames: 258
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 29.474117279052734
 tdmRatingUpdated: "2026-03-12"
 ctfRating: 30.95530128479004
 ctfRatingUpdated: "2026-03-12"
-qllrCtfRating: 29.88
-qllrCtfGames: 25
+qllrCtfRating: 31.28
+qllrCtfGames: 70
+hoqCtfRating: 30.96
+hoqCtfGames: 1774
+hoqTdmRating: 29.47
+hoqTdmGames: 258
+
+
 
 duelRating: 1688
 ctfGames: 1774
@@ -61,6 +67,22 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 1528
+  average_rank_pct: 51.5
+  best_record:
+    map: rebound
+    rank: 22
+    total: 157
+    time: 7200
+    rank_pct: 14
+  top_maps:
+    - {map: rebound, rank: 22, total: 157, time: 7200, rank_pct: 14}
+    - {map: q3wcp19, rank: 10, total: 71, time: 13744, rank_pct: 14.1}
+    - {map: df_coldrun, rank: 25, total: 172, time: 16430, rank_pct: 14.5}
+    - {map: r7_sanity, rank: 5, total: 27, time: 72386, rank_pct: 18.5}
+    - {map: tatmt_s4, rank: 11, total: 55, time: 17627, rank_pct: 20}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 1528
   average_rank_pct: 51.5
   best_record:

@@ -13,8 +13,14 @@ tdmRating: 14.38
 tdmRatingUpdated: "2026-02-02"
 ctfRating: 25.94
 ctfRatingUpdated: "2026-01-31"
-qllrCtfRating: 26.34
-qllrCtfGames: 67
+qllrCtfRating: 25.15
+qllrCtfGames: 106
+hoqCtfRating: 27.56
+hoqCtfGames: 1551
+hoqTdmRating: 14.38
+hoqTdmGames: 25
+
+
 duelRating: 1559
 ctfGames: 1497
 tdmGames: 25
@@ -65,6 +71,21 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 1
+  average_rank_pct: 26.6
+  best_record:
+    map: r7_hedges
+    rank: 3
+    total: 34
+    time: 15024
+    rank_pct: 8.8
+  top_maps:
+    - {map: r7_hedges, rank: 3, total: 34, time: 15024, rank_pct: 8.8}
+    - {map: beyondreality, rank: 12, total: 128, time: 3751, rank_pct: 9.4}
+    - {map: brimstoneabbey, rank: 6, total: 61, time: 14765, rank_pct: 9.8}
+    - {map: r2v2, rank: 5, total: 42, time: 33744, rank_pct: 11.9}
+    - {map: 13plant, rank: 7, total: 48, time: 6504, rank_pct: 14.6}
+  fetched_at: '2026-04-17'
+ze: 1
   speed_top: 0
   average_rank_pct: 26.6
   best_record:

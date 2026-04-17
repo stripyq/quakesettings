@@ -2,8 +2,8 @@ name: Okay.
 steamId: "76561198257018686"
 country: Unknown
 category: ctf
-hoqCtfRating: 15.751227378845215
-hoqCtfGames: 29
+
+
 duelRating: 1332
 duelRatingUpdated: "2026-01-31"
 ctfRating: 15.751227378845215
@@ -36,6 +36,8 @@ crosshairColor: White
 gpuBrand: INTEL
 cpuBrand: Intel
 ctfGames: 29
+hoqCtfRating: 15.75
+hoqCtfGames: 29
 qlrace:
   mode: 2
   records: 2
@@ -44,6 +46,19 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 2260
+  average_rank_pct: 61.4
+  best_record:
+    map: sk8
+    rank: 6
+    total: 14
+    time: 26920
+    rank_pct: 42.9
+  top_maps:
+    - {map: sk8, rank: 6, total: 14, time: 26920, rank_pct: 42.9}
+    - {map: tatmt-s4, rank: 8, total: 10, time: 21600, rank_pct: 80}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 2260
   average_rank_pct: 61.4
   best_record:

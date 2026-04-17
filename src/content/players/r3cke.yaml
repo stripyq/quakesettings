@@ -2,10 +2,10 @@ name: r3cke
 country: Unknown
 steamId: "76561198279892880"
 category: duel
-hoqCtfRating: 16.011199951171875
-hoqCtfGames: 4779
-hoqTdmRating: 17.25713539123535
-hoqTdmGames: 67
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
 
@@ -51,6 +51,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 4779
 tdmGames: 67
+hoqCtfRating: 16.01
+hoqCtfGames: 4779
+hoqTdmRating: 17.26
+hoqTdmGames: 67
 
 qlrace: null
 favorite_map: japanesecastles

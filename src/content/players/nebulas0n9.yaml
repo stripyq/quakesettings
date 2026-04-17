@@ -29,6 +29,18 @@ qlrace:
     time: 26008
     rank_pct: 27.3
   top_maps:
+    - {map: r7-funky, rank: 6, total: 22, time: 26008, rank_pct: 27.3}
+  fetched_at: '2026-04-17'
+ze: 0
+  speed_top: 2042
+  average_rank_pct: 27.3
+  best_record:
+    map: r7-funky
+    rank: 6
+    total: 22
+    time: 26008
+    rank_pct: 27.3
+  top_maps:
     - map: r7-funky
       rank: 6
       total: 22
@@ -36,9 +48,15 @@ qlrace:
   fetched_at: "2026-02-23"
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 18.22
+qllrCtfGames: 29
+hoqCtfRating: 12.67
+hoqCtfGames: 167
+hoqTdmRating: 17.06
+hoqTdmGames: 6
 
 tdmRatingUpdated: "2026-03-12"
-hoqCtfRating: 12.668198585510254
-hoqCtfGames: 167
-hoqTdmRating: 17.05631446838379
-hoqTdmGames: 6
+
+
+
+

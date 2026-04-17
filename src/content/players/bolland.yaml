@@ -2,8 +2,8 @@ name: Bolland
 steamId: "76561198354200908"
 country: Unknown
 category: tdm
-hoqTdmRating: 16.04018783569336
-hoqTdmGames: 2465
+
+
 
 lastUpdated: 2025-01
 duelRating: 1521
@@ -37,6 +37,8 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 2465
+hoqTdmRating: 16.04
+hoqTdmGames: 2465
 
 qlrace: null
 favorite_map: purgatory

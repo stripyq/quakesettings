@@ -2,10 +2,10 @@ name: jackass
 steamId: "76561198034572568"
 country: Unknown
 category: tdm
-hoqCtfRating: 15.369264602661133
-hoqCtfGames: 9
-hoqTdmRating: 20.39056396484375
-hoqTdmGames: 1136
+
+
+
+
 lastUpdated: 2026-02
 ctfRating: 15.369264602661133
 ctfRatingUpdated: "2026-03-12"
@@ -38,6 +38,10 @@ gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 9
 tdmGames: 1136
+hoqCtfRating: 15.37
+hoqCtfGames: 9
+hoqTdmRating: 20.39
+hoqTdmGames: 1136
 qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

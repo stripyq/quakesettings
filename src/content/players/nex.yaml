@@ -2,10 +2,10 @@ name: Nex
 steamId: "76561198043070738"
 country: SI
 category: ctf
-hoqCtfRating: 25.072500228881836
-hoqCtfGames: 1513
-hoqTdmRating: 35.260414123535156
-hoqTdmGames: 1161
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1278
 duelRatingUpdated: "2026-01-31"
@@ -41,6 +41,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1513
 tdmGames: 1161
+hoqCtfRating: 25.07
+hoqCtfGames: 1513
+hoqTdmRating: 35.26
+hoqTdmGames: 1161
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

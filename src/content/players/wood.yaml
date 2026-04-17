@@ -4,10 +4,10 @@ steamId: "76561198257437671"
 country: HU
 team: ""
 category: tdm
-hoqCtfRating: 18.22330093383789
-hoqCtfGames: 2
-hoqTdmRating: 32.32355880737305
-hoqTdmGames: 2492
+
+
+
+
 
 lastUpdated: 2025-01
 duelRating: 1589
@@ -55,6 +55,10 @@ gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 2
 tdmGames: 2492
+hoqCtfRating: 18.22
+hoqCtfGames: 2
+hoqTdmRating: 32.32
+hoqTdmGames: 2492
 
 qlrace: null
 favorite_map: purgatory

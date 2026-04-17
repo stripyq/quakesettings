@@ -2,10 +2,10 @@ name: Grandbolus
 steamId: "76561198255736445"
 country: NL
 category: ctf
-hoqCtfRating: 19.076061248779297
-hoqCtfGames: 2976
-hoqTdmRating: 20.62987518310547
-hoqTdmGames: 1068
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 20.62987518310547
@@ -42,6 +42,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 2976
 tdmGames: 1068
+hoqCtfRating: 19.08
+hoqCtfGames: 2976
+hoqTdmRating: 20.63
+hoqTdmGames: 1068
 
 qlrace: null
 favorite_map: japanesecastles

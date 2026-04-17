@@ -8,10 +8,10 @@ team2026Shortname: SHREK
 country: "NO"
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 46.532386779785156
-hoqCtfGames: 2733
-hoqTdmRating: 35.36933517456055
-hoqTdmGames: 197
+
+
+
+
 
 lastUpdated: 2025-01
 duelRating: 1345
@@ -20,8 +20,14 @@ tdmRating: 35.36933517456055
 tdmRatingUpdated: "2026-03-12"
 ctfRating: 46.532386779785156
 ctfRatingUpdated: "2026-03-12"
-qllrCtfRating: 33.84
-qllrCtfGames: 49
+qllrCtfRating: 36.01
+qllrCtfGames: 69
+hoqCtfRating: 46.53
+hoqCtfGames: 2733
+hoqTdmRating: 35.37
+hoqTdmGames: 197
+
+
 
 dataSource: player
 dpi: 800
@@ -54,7 +60,25 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 2733
 tdmGames: 197
-qlrace: null
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1385
+  average_rank_pct: 84.6
+  best_record:
+    map: awumpus-slick
+    rank: 11
+    total: 13
+    time: 73392
+    rank_pct: 84.6
+  top_maps:
+    - {map: awumpus-slick, rank: 11, total: 13, time: 73392, rank_pct: 84.6}
+  fetched_at: '2026-04-17'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

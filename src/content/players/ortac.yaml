@@ -8,6 +8,8 @@ tdmRating: 20.161855697631836
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1200
 tdmGames: 246
+hoqTdmRating: 20.16
+hoqTdmGames: 246
 
 duelGames: 1227
 duelRatingUpdated: "2026-02-04"
@@ -46,6 +48,18 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 64.5
+  best_record:
+    map: spacectf
+    rank: 171
+    total: 284
+    time: 7258
+    rank_pct: 60.2
+  top_maps:
+    - {map: spacectf, rank: 171, total: 284, time: 7258, rank_pct: 60.2}
+    - {map: df_dinirun3, rank: 22, total: 32, time: 194944, rank_pct: 68.8}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 64.5
   best_record:
@@ -64,5 +78,5 @@ qlrace:
       total: 32
       time: 194944
   fetched_at: "2026-02-23"
-hoqTdmRating: 20.161855697631836
-hoqTdmGames: 246
+
+

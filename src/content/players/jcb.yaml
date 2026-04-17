@@ -8,16 +8,22 @@ team2026Shortname: wB
 country: DK
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 38.95551300048828
-hoqCtfGames: 2056
-hoqTdmRating: 29.552019119262695
-hoqTdmGames: 9
+
+
+
+
 
 lastUpdated: 2025-01
 ctfRating: 38.95551300048828
 ctfRatingUpdated: "2026-03-12"
-qllrCtfRating: 31.52
-qllrCtfGames: 57
+qllrCtfRating: 33.59
+qllrCtfGames: 86
+hoqCtfRating: 38.96
+hoqCtfGames: 2056
+hoqTdmRating: 29.55
+hoqTdmGames: 9
+
+
 tdmRating: 29.552019119262695
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1142
@@ -59,6 +65,22 @@ qlrace:
     gold: 1
     silver: 3
     bronze: 3
+  speed_top: 2018
+  average_rank_pct: 42.4
+  best_record:
+    map: japanesecastles
+    rank: 3
+    total: 243
+    time: 7584
+    rank_pct: 1.2
+  top_maps:
+    - {map: japanesecastles, rank: 3, total: 243, time: 7584, rank_pct: 1.2}
+    - {map: chile21, rank: 1, total: 23, time: 4, rank_pct: 4.3}
+    - {map: ghost-luckr, rank: 2, total: 27, time: 29056, rank_pct: 7.4}
+    - {map: lick_again, rank: 4, total: 32, time: 2312, rank_pct: 12.5}
+    - {map: ironwood, rank: 3, total: 20, time: 4032, rank_pct: 15}
+  fetched_at: '2026-04-17'
+ze: 3
   speed_top: 2018
   average_rank_pct: 42.4
   best_record:

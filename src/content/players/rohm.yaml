@@ -3,12 +3,14 @@ steamId: "76561198018576230"
 country: DE
 aliases: []
 category: ctf
-hoqCtfRating: 0.009290201589465141
-hoqCtfGames: 214
+
+
 
 ctfRating: 0.009290201589465141
 ctfRatingUpdated: "2026-03-12"
 ctfGames: 214
+hoqCtfRating: 0.01
+hoqCtfGames: 214
 published: true
 
 dataSource: player

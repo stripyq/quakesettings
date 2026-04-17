@@ -7,14 +7,20 @@ team2026Shortname: SHREK
 country: SE
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 37.582908630371094
-hoqCtfGames: 1018
-hoqTdmRating: 30.94354820251465
-hoqTdmGames: 193
+
+
+
+
 
 lastUpdated: 2025-01
 ctfRating: 37.582908630371094
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 30.4
+qllrCtfGames: 23
+hoqCtfRating: 37.58
+hoqCtfGames: 1018
+hoqTdmRating: 30.94
+hoqTdmGames: 193
 tdmRating: 30.94354820251465
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1400
@@ -49,13 +55,25 @@ ctfGames: 1018
 tdmGames: 193
 
 qlrace:
-  mode: 3
+  mode: 2
   records: 1
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 1157
+  average_rank_pct: 77.4
+  best_record:
+    map: coldrun
+    rank: 24
+    total: 31
+    time: 20512
+    rank_pct: 77.4
+  top_maps:
+    - {map: coldrun, rank: 24, total: 31, time: 20512, rank_pct: 77.4}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 1202
   average_rank_pct: 71
   best_record:

@@ -7,8 +7,8 @@ team2026Shortname: OSQ
 country: PL
 team: Old Sexy Quakers
 category: ctf
-hoqCtfRating: 20.767757415771484
-hoqCtfGames: 2739
+
+
 
 lastUpdated: 2025-01
 tdmRating: 21.78
@@ -17,6 +17,8 @@ ctfRating: 20.767757415771484
 ctfRatingUpdated: "2026-03-12"
 duelRating: 1310
 ctfGames: 2739
+hoqCtfRating: 20.77
+hoqCtfGames: 2739
 
 duelGames: 3381
 duelRatingUpdated: "2026-02-04"
@@ -58,6 +60,21 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 1
+  average_rank_pct: 42.3
+  best_record:
+    map: vanilla_03
+    rank: 10
+    total: 65
+    time: 2617
+    rank_pct: 15.4
+  top_maps:
+    - {map: vanilla_03, rank: 10, total: 65, time: 2617, rank_pct: 15.4}
+    - {map: crashcourse, rank: 20, total: 129, time: 22024, rank_pct: 15.5}
+    - {map: df_lickgirls, rank: 16, total: 98, time: 10496, rank_pct: 16.3}
+    - {map: df_dinirun4, rank: 11, total: 62, time: 22018, rank_pct: 17.7}
+    - {map: aa_shorty2, rank: 5, total: 28, time: 1876, rank_pct: 17.9}
+  fetched_at: '2026-04-17'
+ze: 1
   speed_top: 0
   average_rank_pct: 42.3
   best_record:

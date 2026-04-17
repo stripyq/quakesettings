@@ -2,10 +2,10 @@ name: proZaC
 steamId: "76561197993233912"
 country: Unknown
 category: tdm
-hoqCtfRating: 20.287057876586914
-hoqCtfGames: 22
-hoqTdmRating: 30.506744384765625
-hoqTdmGames: 318
+
+
+
+
 
 lastUpdated: 2025-01
 duelRating: 1372
@@ -43,6 +43,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 22
 tdmGames: 318
+hoqCtfRating: 20.29
+hoqCtfGames: 22
+hoqTdmRating: 30.51
+hoqTdmGames: 318
 
 qlrace: null
 favorite_map: deepinside

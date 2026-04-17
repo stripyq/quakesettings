@@ -2,10 +2,10 @@ name: Furtzilla
 steamId: "76561198053186404"
 country: Unknown
 category: tdm
-hoqCtfRating: 22.545732498168945
-hoqCtfGames: 176
-hoqTdmRating: 26.775840759277344
-hoqTdmGames: 2093
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 26.775840759277344
@@ -39,6 +39,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 176
 tdmGames: 2093
+hoqCtfRating: 22.55
+hoqCtfGames: 176
+hoqTdmRating: 26.78
+hoqTdmGames: 2093
 
 qlrace: null
 favorite_map: purgatory

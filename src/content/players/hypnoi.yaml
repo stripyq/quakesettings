@@ -30,6 +30,22 @@ qlrace:
     time: 44922
     rank_pct: 1.3
   top_maps:
+    - {map: df_inferno, rank: 1, total: 80, time: 44922, rank_pct: 1.3}
+    - {map: df_lickgoogle, rank: 2, total: 103, time: 2820, rank_pct: 1.9}
+    - {map: campgrounds, rank: 9, total: 387, time: 19648, rank_pct: 2.3}
+    - {map: lick_max, rank: 1, total: 44, time: 5808, rank_pct: 2.3}
+    - {map: tele_world, rank: 1, total: 42, time: 39335, rank_pct: 2.4}
+  fetched_at: '2026-04-17'
+ze: 31
+  speed_top: 1822
+  average_rank_pct: 14.3
+  best_record:
+    map: df_inferno
+    rank: 1
+    total: 80
+    time: 44922
+    rank_pct: 1.3
+  top_maps:
     - map: df_inferno
       rank: 1
       total: 80
@@ -73,9 +89,15 @@ qlrace:
   fetched_at: "2026-02-23"
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 22.16
+qllrCtfGames: 23
+hoqCtfRating: 26.14
+hoqCtfGames: 230
+hoqTdmRating: 22.76
+hoqTdmGames: 539
 
 tdmRatingUpdated: "2026-03-12"
-hoqCtfRating: 26.140064239501953
-hoqCtfGames: 230
-hoqTdmRating: 22.760435104370117
-hoqTdmGames: 539
+
+
+
+

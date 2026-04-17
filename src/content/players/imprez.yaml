@@ -5,10 +5,10 @@ aliases:
 team2024: CTF4
 country: Unknown
 category: ctf
-hoqCtfRating: 9.723896026611328
-hoqCtfGames: 146
-hoqTdmRating: 14.325284004211426
-hoqTdmGames: 67
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1398
 duelRatingUpdated: "2026-01-31"
@@ -44,6 +44,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 146
 tdmGames: 67
+hoqCtfRating: 9.72
+hoqCtfGames: 146
+hoqTdmRating: 14.33
+hoqTdmGames: 67
 qlrace:
   mode: 2
   records: 6
@@ -52,6 +56,21 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 64.2
+  best_record:
+    map: inder_failrun4
+    rank: 26
+    total: 67
+    time: 30544
+    rank_pct: 38.8
+  top_maps:
+    - {map: inder_failrun4, rank: 26, total: 67, time: 30544, rank_pct: 38.8}
+    - {map: temple_in_perdition, rank: 16, total: 34, time: 75203, rank_pct: 47.1}
+    - {map: theatreofpain, rank: 61, total: 89, time: 22531, rank_pct: 68.5}
+    - {map: df_bardokstatik, rank: 116, total: 157, time: 24454, rank_pct: 73.9}
+    - {map: jlhc2, rank: 56, total: 73, time: 7825, rank_pct: 76.7}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 64.2
   best_record:

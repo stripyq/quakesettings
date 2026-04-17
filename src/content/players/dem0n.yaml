@@ -11,10 +11,10 @@ team2026Shortname: SHREK
 country: BE
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 44.14175033569336
-hoqCtfGames: 1068
-hoqTdmRating: 32.66770553588867
-hoqTdmGames: 40
+
+
+
+
 
 lastUpdated: 2025-01
 duelRating: 1783
@@ -23,8 +23,14 @@ tdmRating: 32.66770553588867
 tdmRatingUpdated: "2026-03-12"
 ctfRating: 44.14175033569336
 ctfRatingUpdated: "2026-03-12"
-qllrCtfRating: 31
-qllrCtfGames: 56
+qllrCtfRating: 32.42
+qllrCtfGames: 76
+hoqCtfRating: 44.14
+hoqCtfGames: 1068
+hoqTdmRating: 32.67
+hoqTdmGames: 40
+
+
 
 dataSource: player
 source: ""
@@ -74,6 +80,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 26
+  best_record:
+    map: bardok_egypt
+    rank: 19
+    total: 73
+    time: 16617
+    rank_pct: 26
+  top_maps:
+    - {map: bardok_egypt, rank: 19, total: 73, time: 16617, rank_pct: 26}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 26
   best_record:

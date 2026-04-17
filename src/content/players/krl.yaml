@@ -5,10 +5,10 @@ aliases:
   - KRL
 team2024: Whatever name IDC
 category: duel
-hoqCtfRating: 23.98732566833496
-hoqCtfGames: 1374
-hoqTdmRating: 16.3620662689209
-hoqTdmGames: 8
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
 
@@ -46,6 +46,10 @@ headset: hyperx-cloud-alpha
 skates: Stock
 ctfGames: 1374
 tdmGames: 8
+hoqCtfRating: 23.99
+hoqCtfGames: 1374
+hoqTdmRating: 16.36
+hoqTdmGames: 8
 
 qlrace: null
 favorite_map: japanesecastles

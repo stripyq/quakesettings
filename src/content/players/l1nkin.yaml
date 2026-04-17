@@ -8,10 +8,14 @@ team2026: SHREKTALIKA
 team2026Shortname: SHREK
 country: FR
 category: ctf
-hoqCtfRating: 35.470909118652344
-hoqCtfGames: 87
+
+
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 25.6
+qllrCtfGames: 20
+hoqCtfRating: 35.47
+hoqCtfGames: 87
 
 lastUpdated: 2026-02
 dataSource: player
@@ -19,8 +23,8 @@ duelRating: 1366
 duelGames: 35
 ctfRating: 35.470909118652344
 ctfGames: 87
-qllrCtfRating: 26.49
-qllrCtfGames: 13
+
+
 
 dpi: 1000
 sensitivity: 1.9

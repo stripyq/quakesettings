@@ -13,17 +13,17 @@ ctfGames: 586
 tdmRating: 34.097869873046875
 tdmGames: 390
 
-qllrCtfRating: 19.82
-qllrCtfGames: 61
+
+
 
 duelRating: 1785
 duelRatingSource: qlstats
 duelGames: 260
 dataSource: player
-hoqCtfRating: 26.09772491455078
-hoqCtfGames: 586
-hoqTdmRating: 34.097869873046875
-hoqTdmGames: 390
+
+
+
+
 
 dpi: 1600
 sensitivity: 1.68
@@ -57,6 +57,19 @@ qlrace:
     gold: 1
     silver: 0
     bronze: 0
+  average_rank_pct: 16.9
+  best_record:
+    map: df_cityrocket
+    rank: 1
+    total: 39
+    time: 32487
+    rank_pct: 2.6
+  top_maps:
+    - {map: df_cityrocket, rank: 1, total: 39, time: 32487, rank_pct: 2.6}
+    - {map: df_lickmax, rank: 18, total: 87, time: 6532, rank_pct: 20.7}
+    - {map: spacectf, rank: 78, total: 284, time: 4925, rank_pct: 27.5}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 16.9
   best_record:
@@ -81,5 +94,11 @@ qlrace:
   fetched_at: "2026-02-23"
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 22.41
+qllrCtfGames: 93
+hoqCtfRating: 26.1
+hoqCtfGames: 586
+hoqTdmRating: 34.1
+hoqTdmGames: 390
 
 tdmRatingUpdated: "2026-03-12"

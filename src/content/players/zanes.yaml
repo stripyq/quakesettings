@@ -2,8 +2,8 @@ name: zanes
 steamId: "76561198026248899"
 country: Unknown
 category: tdm
-hoqTdmRating: 23.758777618408203
-hoqTdmGames: 228
+
+
 lastUpdated: 2025-01
 tdmRating: 23.758777618408203
 tdmRatingUpdated: "2026-03-12"
@@ -11,6 +11,8 @@ ctfRating: 23.76
 ctfRatingUpdated: "2026-01-31"
 duelRating: 606
 tdmGames: 228
+hoqTdmRating: 23.76
+hoqTdmGames: 228
 duelGames: 3676
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -48,6 +50,19 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 64.4
+  best_record:
+    map: 4pornstar
+    rank: 7
+    total: 19
+    time: 45400
+    rank_pct: 36.8
+  top_maps:
+    - {map: 4pornstar, rank: 7, total: 19, time: 45400, rank_pct: 36.8}
+    - {map: l1th_heavy, rank: 6, total: 10, time: 30360, rank_pct: 60}
+    - {map: df_pornstarslopin, rank: 218, total: 226, time: 37006, rank_pct: 96.5}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 64.4
   best_record:

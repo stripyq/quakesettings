@@ -2,10 +2,10 @@ name: Wallsnag
 country: OTHER
 steamId: "76561198098777141"
 category: duel
-hoqCtfRating: 20.218067169189453
-hoqCtfGames: 2412
-hoqTdmRating: 18.574724197387695
-hoqTdmGames: 336
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
 
@@ -16,6 +16,10 @@ lastUpdated: 2025-02
 duelRating: 750
 ctfGames: 2412
 tdmGames: 336
+hoqCtfRating: 20.22
+hoqCtfGames: 2412
+hoqTdmRating: 18.57
+hoqTdmGames: 336
 
 duelGames: 75
 ctfRating: 20.218067169189453
@@ -57,6 +61,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 2.9
+  best_record:
+    map: qzpractice2
+    rank: 17
+    total: 591
+    time: 20007
+    rank_pct: 2.9
+  top_maps:
+    - {map: qzpractice2, rank: 17, total: 591, time: 20007, rank_pct: 2.9}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 2.9
   best_record:

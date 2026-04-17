@@ -2,10 +2,10 @@ name: b1ohazzard
 steamId: "76561198132543406"
 country: Unknown
 category: tdm
-hoqCtfRating: 3.25726318359375
-hoqCtfGames: 11
-hoqTdmRating: 20.842327117919922
-hoqTdmGames: 2166
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 20.842327117919922
@@ -40,6 +40,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 11
 tdmGames: 2166
+hoqCtfRating: 3.26
+hoqCtfGames: 11
+hoqTdmRating: 20.84
+hoqTdmGames: 2166
 
 qlrace: null
 favorite_map: purgatory

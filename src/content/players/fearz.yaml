@@ -2,8 +2,8 @@ name: fearz
 steamId: "76561198090058821"
 country: RU
 category: tdm
-hoqTdmRating: 28.98751449584961
-hoqTdmGames: 698
+
+
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
@@ -39,6 +39,8 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 698
+hoqTdmRating: 28.99
+hoqTdmGames: 698
 qlrace:
   mode: 2
   records: 2
@@ -47,6 +49,18 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 26.2
+  best_record:
+    map: tenuous
+    rank: 16
+    total: 98
+    time: 61538
+    rank_pct: 16.3
+  top_maps:
+    - {map: tenuous, rank: 16, total: 98, time: 61538, rank_pct: 16.3}
+    - {map: df_lickhuar, rank: 9, total: 25, time: 47591, rank_pct: 36}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 26.2
   best_record:

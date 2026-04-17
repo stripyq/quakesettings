@@ -4,10 +4,10 @@ aliases:
   - coffin
 country: Unknown
 category: ctf
-hoqCtfRating: 31.95003318786621
-hoqCtfGames: 945
-hoqTdmRating: 23.428905487060547
-hoqTdmGames: 14
+
+
+
+
 lastUpdated: 2025-01
 duelRating: 1318
 duelRatingUpdated: "2026-01-31"
@@ -45,6 +45,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 945
 tdmGames: 14
+hoqCtfRating: 31.95
+hoqCtfGames: 945
+hoqTdmRating: 23.43
+hoqTdmGames: 14
 
 qlrace:
   mode: 2
@@ -54,6 +58,21 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 4000
+  average_rank_pct: 39.2
+  best_record:
+    map: zzz_rocket1
+    rank: 8
+    total: 93
+    time: 9432
+    rank_pct: 8.6
+  top_maps:
+    - {map: zzz_rocket1, rank: 8, total: 93, time: 9432, rank_pct: 8.6}
+    - {map: xyligan-ghost, rank: 6, total: 19, time: 8104, rank_pct: 31.6}
+    - {map: lovet-fourth, rank: 8, total: 16, time: 17856, rank_pct: 50}
+    - {map: pornstar-slopin, rank: 30, total: 45, time: 27544, rank_pct: 66.7}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 4000
   average_rank_pct: 39
   best_record:

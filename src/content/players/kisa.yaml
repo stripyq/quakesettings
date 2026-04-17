@@ -2,10 +2,10 @@ name: KISA
 steamId: "76561198286173236"
 country: Unknown
 category: ctf
-hoqCtfRating: 6.6151123046875
-hoqCtfGames: 921
-hoqTdmRating: 20.65290069580078
-hoqTdmGames: 494
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 20.65290069580078
@@ -35,6 +35,10 @@ monitor: samsung-crg5
 headset: audio-technica-ath-m50x
 ctfGames: 921
 tdmGames: 494
+hoqCtfRating: 6.62
+hoqCtfGames: 921
+hoqTdmRating: 20.65
+hoqTdmGames: 494
 
 qlrace: null
 favorite_map: japanesecastles

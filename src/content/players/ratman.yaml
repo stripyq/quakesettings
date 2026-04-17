@@ -3,10 +3,10 @@ steamId: "76561197993423662"
 aliases:
   - Ratman
 category: ctf
-hoqCtfRating: 17.306758880615234
-hoqCtfGames: 965
-hoqTdmRating: 23.106613159179688
-hoqTdmGames: 325
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 17.306758880615234
@@ -17,6 +17,10 @@ tdmRatingUpdated: "2026-03-12"
 tdmRating: 23.106613159179688
 
 tdmGames: 325
+hoqCtfRating: 17.31
+hoqCtfGames: 965
+hoqTdmRating: 23.11
+hoqTdmGames: 325
 published: false
 qlrace:
   mode: 2
@@ -26,6 +30,21 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 42.8
+  best_record:
+    map: df_inferno
+    rank: 10
+    total: 80
+    time: 55201
+    rank_pct: 12.5
+  top_maps:
+    - {map: df_inferno, rank: 10, total: 80, time: 55201, rank_pct: 12.5}
+    - {map: overkill_race, rank: 4, total: 32, time: 31341, rank_pct: 12.5}
+    - {map: schody, rank: 9, total: 57, time: 9209, rank_pct: 15.8}
+    - {map: aa_slope, rank: 13, total: 73, time: 31642, rank_pct: 17.8}
+    - {map: charon, rank: 35, total: 194, time: 27253, rank_pct: 18}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 42.8
   best_record:

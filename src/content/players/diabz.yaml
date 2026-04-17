@@ -2,10 +2,10 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
-hoqCtfRating: 30.44696807861328
-hoqCtfGames: 301
-hoqTdmRating: 26.94189453125
-hoqTdmGames: 18
+
+
+
+
 
 lastUpdated: 2026-02
 ctfRating: 30.44696807861328
@@ -42,6 +42,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 301
 tdmGames: 18
+hoqCtfRating: 30.45
+hoqCtfGames: 301
+hoqTdmRating: 26.94
+hoqTdmGames: 18
 
 qlrace:
   mode: 2
@@ -51,6 +55,20 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 1123
+  average_rank_pct: 12.2
+  best_record:
+    map: shiningforces
+    rank: 10
+    total: 147
+    time: 9952
+    rank_pct: 6.8
+  top_maps:
+    - {map: shiningforces, rank: 10, total: 147, time: 9952, rank_pct: 6.8}
+    - {map: spidercrossings, rank: 11, total: 126, time: 10712, rank_pct: 8.7}
+    - {map: campercrossings, rank: 25, total: 118, time: 9616, rank_pct: 21.2}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 1123
   average_rank_pct: 12.3
   best_record:

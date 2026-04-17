@@ -3,15 +3,21 @@ steamId: "76561198152936342"
 aliases:
   - rindo
 category: ctf
-hoqCtfRating: -2.5480384826660156
+
 ctfRatingUpdated: "2026-03-12"
-ctfRating: -2.5480384826660156
+qllrCtfRating: 23.44
+qllrCtfGames: 10
+hoqCtfRating: -2.55
 hoqCtfGames: 105
+hoqTdmRating: 6.9
+hoqTdmGames: 18
+ctfRating: -2.5480384826660156
+
 ctfGames: 105
-hoqTdmRating: 6.899965286254883
+
 tdmRatingUpdated: "2026-03-12"
 tdmRating: 6.899965286254883
-hoqTdmGames: 18
+
 tdmGames: 18
 published: false
 qlrace: null

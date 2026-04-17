@@ -3,8 +3,8 @@ steamId: "76561198256080242"
 country: SI
 team: ""
 category: ctf
-hoqCtfRating: 18.882715225219727
-hoqCtfGames: 2565
+
+
 
 lastUpdated: 2025-01
 duelRating: null
@@ -50,6 +50,8 @@ crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
 ctfGames: 2565
+hoqCtfRating: 18.88
+hoqCtfGames: 2565
 
 qlrace:
   mode: 2
@@ -59,6 +61,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 41.2
+  best_record:
+    map: cruton2
+    rank: 54
+    total: 131
+    time: 64387
+    rank_pct: 41.2
+  top_maps:
+    - {map: cruton2, rank: 54, total: 131, time: 64387, rank_pct: 41.2}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 41.2
   best_record:

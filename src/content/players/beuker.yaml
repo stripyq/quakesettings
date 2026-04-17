@@ -9,10 +9,14 @@ ctfGames: 908
 ctfRatingUpdated: "2026-02-04"
 tdmRating: 22.42
 tdmGames: 45
-hoqCtfRating: 25.26
-hoqCtfGames: 908
+hoqCtfRating: 24.42
+hoqCtfGames: 957
 hoqTdmRating: 22.42
 hoqTdmGames: 45
+
+
+
+
 tdmRatingUpdated: "2026-02-04"
 duelRating: 1652
 duelGames: 2127
@@ -65,6 +69,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 35.5
+  best_record:
+    map: qzpractice2
+    rank: 210
+    total: 591
+    time: 25384
+    rank_pct: 35.5
+  top_maps:
+    - {map: qzpractice2, rank: 210, total: 591, time: 25384, rank_pct: 35.5}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 35.5
   best_record:

@@ -6,16 +6,22 @@ team2026: Astral Starlight
 country: Unknown
 team: Astral Starlight
 category: ctf
-hoqCtfRating: 35.67305374145508
-hoqCtfGames: 837
-hoqTdmRating: 30.2099666595459
-hoqTdmGames: 382
+
+
+
+
 
 lastUpdated: 2025-01
 ctfRating: 35.67305374145508
 ctfRatingUpdated: "2026-03-12"
-qllrCtfRating: 26.48
-qllrCtfGames: 33
+qllrCtfRating: 24.43
+qllrCtfGames: 47
+hoqCtfRating: 35.67
+hoqCtfGames: 837
+hoqTdmRating: 30.21
+hoqTdmGames: 382
+
+
 tdmRating: 30.2099666595459
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1624
@@ -56,6 +62,22 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 3205
+  average_rank_pct: 58.5
+  best_record:
+    map: spacectf
+    rank: 29
+    total: 284
+    time: 4328
+    rank_pct: 10.2
+  top_maps:
+    - {map: spacectf, rank: 29, total: 284, time: 4328, rank_pct: 10.2}
+    - {map: rmg01_09, rank: 4, total: 22, time: 48248, rank_pct: 18.2}
+    - {map: campgrounds, rank: 104, total: 387, time: 25648, rank_pct: 26.9}
+    - {map: qzpractice2, rank: 259, total: 591, time: 27912, rank_pct: 43.8}
+    - {map: zzz_rocket1, rank: 41, total: 93, time: 11776, rank_pct: 44.1}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 3205
   average_rank_pct: 58.4
   best_record:

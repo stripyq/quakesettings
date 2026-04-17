@@ -7,10 +7,10 @@ team2024: unreliable dogs
 country: SE
 team: ""
 category: ctf
-hoqCtfRating: 27.765039443969727
-hoqCtfGames: 303
-hoqTdmRating: 24.129335403442383
-hoqTdmGames: 43
+
+
+
+
 
 lastUpdated: 2025-01
 duelRating: 1547
@@ -55,6 +55,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 303
 tdmGames: 43
+hoqCtfRating: 27.77
+hoqCtfGames: 303
+hoqTdmRating: 24.13
+hoqTdmGames: 43
 
 qlrace: null
 favorite_map: campgrounds

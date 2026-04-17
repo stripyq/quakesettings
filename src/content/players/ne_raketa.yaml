@@ -2,10 +2,10 @@ name: ne_raketa
 steamId: "76561198284683846"
 country: Unknown
 category: tdm
-hoqCtfRating: 10.390388488769531
-hoqCtfGames: 15
-hoqTdmRating: 19.361141204833984
-hoqTdmGames: 4437
+
+
+
+
 
 lastUpdated: 2025-01
 tdmRating: 19.361141204833984
@@ -41,6 +41,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
 tdmGames: 4437
+hoqCtfRating: 10.39
+hoqCtfGames: 15
+hoqTdmRating: 19.36
+hoqTdmGames: 4437
 
 qlrace: null
 favorite_map: purgatory

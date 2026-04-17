@@ -9,17 +9,21 @@ team2026: Astral Starlight
 country: ""
 team: ""
 category: ctf
-hoqCtfRating: 24.05807876586914
+
 ctfRatingUpdated: "2026-03-12"
-hoqCtfGames: 1077
-hoqTdmRating: 31.107351303100586
+
+
 tdmRatingUpdated: "2026-03-12"
-hoqTdmGames: 118
+
 lastUpdated: 2024-12
 ctfRating: 24.05807876586914
 ctfGames: 1077
 tdmRating: 31.107351303100586
 tdmGames: 118
+hoqCtfRating: 24.06
+hoqCtfGames: 1077
+hoqTdmRating: 31.11
+hoqTdmGames: 118
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -62,6 +66,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 57.4
+  best_record:
+    map: df_0ups
+    rank: 27
+    total: 47
+    time: 38759
+    rank_pct: 57.4
+  top_maps:
+    - {map: df_0ups, rank: 27, total: 47, time: 38759, rank_pct: 57.4}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 57.4
   best_record:

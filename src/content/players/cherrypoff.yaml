@@ -12,13 +12,19 @@ tdmRating: 39.02
 tdmRatingUpdated: "2026-02-24"
 ctfRating: 36.34
 ctfRatingUpdated: "2026-02-24"
+qllrCtfRating: 24.02
+qllrCtfGames: 20
+hoqCtfRating: 34.64
+hoqCtfGames: 949
+hoqTdmRating: 39.02
+hoqTdmGames: 1010
 duelRating: 2140
 ctfGames: 924
 tdmGames: 1010
-hoqCtfRating: 36.34
-hoqCtfGames: 924
-hoqTdmRating: 39.02
-hoqTdmGames: 1010
+
+
+
+
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -59,6 +65,19 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  average_rank_pct: 88.2
+  best_record:
+    map: vanilla_09
+    rank: 35
+    total: 44
+    time: 13851
+    rank_pct: 79.5
+  top_maps:
+    - {map: vanilla_09, rank: 35, total: 44, time: 13851, rank_pct: 79.5}
+    - {map: wsm, rank: 10, total: 11, time: 547653, rank_pct: 90.9}
+    - {map: actf02, rank: 33, total: 35, time: 40731, rank_pct: 94.3}
+  fetched_at: '2026-04-17'
+ze: 0
   speed_top: 0
   average_rank_pct: 88.2
   best_record:

@@ -3,10 +3,10 @@ steamId: "76561197985659232"
 aliases:
   - "#matr1x"
 category: ctf
-hoqCtfRating: 16.037477493286133
-hoqCtfGames: 2125
-hoqTdmRating: 25.54431915283203
-hoqTdmGames: 996
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
 ctfRating: 16.037477493286133
@@ -17,6 +17,10 @@ tdmRatingUpdated: "2026-03-12"
 tdmRating: 25.54431915283203
 
 tdmGames: 996
+hoqCtfRating: 16.04
+hoqCtfGames: 2125
+hoqTdmRating: 25.54
+hoqTdmGames: 996
 published: false
 team2024: Bad But Happy
 qlrace: null

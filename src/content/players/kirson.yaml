@@ -32,12 +32,18 @@ back: s
 left: a
 right: d
 dataSource: player
-hoqCtfRating: 32.26467514038086
-hoqCtfGames: 1158
-hoqTdmRating: 29.156415939331055
-hoqTdmGames: 212
+
+
+
+
 
 ctfRatingUpdated: "2026-03-12"
+qllrCtfRating: 31.06
+qllrCtfGames: 61
+hoqCtfRating: 32.26
+hoqCtfGames: 1158
+hoqTdmRating: 29.16
+hoqTdmGames: 212
 
 tdmRatingUpdated: "2026-03-12"
 
@@ -47,3 +53,22 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_rg: 64
 accuracy_lg: 36
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1096
+  average_rank_pct: 73.1
+  best_record:
+    map: r7-clear
+    rank: 38
+    total: 52
+    time: 16328
+    rank_pct: 73.1
+  top_maps:
+    - {map: r7-clear, rank: 38, total: 52, time: 16328, rank_pct: 73.1}
+  fetched_at: '2026-04-17'
