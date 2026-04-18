@@ -62,25 +62,41 @@ const isActive = (path: string) => {
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
   <!-- Self-hosted hit counter (Cloudflare Worker + KV). No cookies, no profiling,
-       no third-party analytics domains that ad blockers target. Counts player page
-       views and normalised compare-page pairs. Dedupes within a browser session. -->
+       no third-party analytics domains that ad blockers target. Sends a stable
+       per-session ID so the worker can track BOTH total hits AND unique sessions
+       for each player page / normalised compare-page pair. 2-second in-memory
+       guard prevents a single page-load from double-firing. -->
   <script is:inline>
     (function () {
       var WORKER = 'https://quakesettings-counter.quakesettings.workers.dev/hit';
       var BASE = '/quakesettings/';
+      var recentHits = {}; // { 'type:key': timestamp }
+
+      // Stable ID per browser session (resets on new tab/window).
+      function sid() {
+        try {
+          var v = sessionStorage.getItem('qst_sid');
+          if (!v) {
+            v = Math.random().toString(36).slice(2) + Date.now().toString(36);
+            sessionStorage.setItem('qst_sid', v);
+          }
+          return v;
+        } catch (e) {
+          return 'x' + Math.random().toString(36).slice(2);
+        }
+      }
 
       function sendHit(type, key) {
         if (!type || !key) return;
-        var dedupe = 'qst_hit:' + type + ':' + key;
-        try {
-          if (sessionStorage.getItem(dedupe)) return;
-          sessionStorage.setItem(dedupe, '1');
-        } catch (e) { /* sessionStorage disabled — proceed anyway */ }
+        var combined = type + ':' + key;
+        var now = Date.now();
+        if (recentHits[combined] && now - recentHits[combined] < 2000) return;
+        recentHits[combined] = now;
         try {
           fetch(WORKER, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ type: type, key: key }),
+            body: JSON.stringify({ type: type, key: key, session: sid() }),
             keepalive: true,
           }).catch(function () {});
         } catch (e) { /* network error — swallow */ }
