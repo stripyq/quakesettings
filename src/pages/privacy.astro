@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
-<BaseLayout title="Privacy & Data" description="Privacy policy for QL Pro Settings. No tracking, no cookies, community-driven project." ogImage="/images/og/player.jpg">
+<BaseLayout title="Privacy & Data" description="Privacy policy for QL Pro Settings. Anonymous hit counter, no cookies, no third-party analytics, community-driven project." ogImage="/images/og/player.jpg">
   <main class="main-content privacy-page">
     <div class="page-header">
       <h1>Privacy & Data</h1>
@@ -32,12 +32,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     </section>
 
     <section class="privacy-section">
-      <h2>No Tracking</h2>
+      <h2>Tracking</h2>
       <ul class="no-bullets">
-        <li>No analytics</li>
         <li>No cookies</li>
         <li>No ads</li>
         <li>No data sharing or selling</li>
+        <li>Has counter</li>
       </ul>
     </section>
 
