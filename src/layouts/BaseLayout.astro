@@ -61,20 +61,61 @@ const isActive = (path: string) => {
 
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
-  <!-- GoatCounter analytics (privacy-friendly, no cookies). Normalises compare-page pair order -->
+  <!-- Self-hosted hit counter (Cloudflare Worker + KV). No cookies, no profiling,
+       no third-party analytics domains that ad blockers target. Counts player page
+       views and normalised compare-page pairs. Dedupes within a browser session. -->
   <script is:inline>
-    window.goatcounter = window.goatcounter || {};
-    window.goatcounter.path = function (p) {
-      if (!location.pathname.includes('/compare/')) return p;
-      var params = new URLSearchParams(location.search);
-      var p1 = params.get('p1');
-      var p2 = params.get('p2');
-      if (!p1 || !p2) return p;
-      return location.pathname + [p1, p2].sort().join(' vs ');
-    };
+    (function () {
+      var WORKER = 'https://quakesettings-counter.quakesettings.workers.dev/hit';
+      var BASE = '/quakesettings/';
+
+      function sendHit(type, key) {
+        if (!type || !key) return;
+        var dedupe = 'qst_hit:' + type + ':' + key;
+        try {
+          if (sessionStorage.getItem(dedupe)) return;
+          sessionStorage.setItem(dedupe, '1');
+        } catch (e) { /* sessionStorage disabled — proceed anyway */ }
+        try {
+          fetch(WORKER, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: type, key: key }),
+            keepalive: true,
+          }).catch(function () {});
+        } catch (e) { /* network error — swallow */ }
+      }
+
+      function trackCurrent() {
+        var p = location.pathname;
+        // Player page: /quakesettings/players/<slug>/
+        if (p.indexOf(BASE + 'players/') === 0 && p !== BASE + 'players/') {
+          var slug = p.replace(BASE + 'players/', '').replace(/\/$/, '');
+          if (slug) sendHit('player', slug);
+          return;
+        }
+        // Compare page: normalise pair order
+        if (p.indexOf('/compare/') !== -1) {
+          var params = new URLSearchParams(location.search);
+          var p1 = params.get('p1'), p2 = params.get('p2');
+          if (p1 && p2) sendHit('pair', [p1, p2].sort().join(' vs '));
+        }
+      }
+
+      trackCurrent();
+
+      // Compare page changes URL via history.pushState without a reload;
+      // hook those so dropdown changes still count.
+      ['pushState', 'replaceState'].forEach(function (m) {
+        var orig = history[m];
+        history[m] = function () {
+          orig.apply(this, arguments);
+          setTimeout(trackCurrent, 0);
+        };
+      });
+      window.addEventListener('popstate', trackCurrent);
+    })();
   </script>
-  <script is:inline data-goatcounter="https://quakesettings.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <nav class="main-nav">
