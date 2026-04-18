@@ -20,10 +20,11 @@ ctfRating: 24.05807876586914
 ctfGames: 1077
 tdmRating: 31.107351303100586
 tdmGames: 118
-hoqCtfRating: 24.06
-hoqCtfGames: 1077
+hoqCtfRating: 22.13
+hoqCtfGames: 1088
 hoqTdmRating: 31.11
 hoqTdmGames: 118
+
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -76,21 +77,6 @@ qlrace:
   top_maps:
     - {map: df_0ups, rank: 27, total: 47, time: 38759, rank_pct: 57.4}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 57.4
-  best_record:
-    map: df_0ups
-    rank: 27
-    total: 47
-    time: 38759
-    rank_pct: 57.4
-  top_maps:
-    - map: df_0ups
-      rank: 27
-      total: 47
-      time: 38759
-  fetched_at: "2026-02-23"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

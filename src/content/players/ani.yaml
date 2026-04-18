@@ -55,10 +55,11 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 303
 tdmGames: 43
-hoqCtfRating: 27.77
-hoqCtfGames: 303
+hoqCtfRating: 26.99
+hoqCtfGames: 313
 hoqTdmRating: 24.13
 hoqTdmGames: 43
+
 
 qlrace: null
 favorite_map: campgrounds

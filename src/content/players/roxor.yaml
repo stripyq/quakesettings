@@ -32,25 +32,6 @@ qlrace:
     - {map: bobo, rank: 17, total: 43, time: 12136, rank_pct: 39.5}
     - {map: bes-jumparound, rank: 15, total: 29, time: 37768, rank_pct: 51.7}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 855
-  average_rank_pct: 45.6
-  best_record:
-    map: bobo
-    rank: 17
-    total: 43
-    time: 12136
-    rank_pct: 39.5
-  top_maps:
-    - map: bobo
-      rank: 17
-      total: 43
-      time: 12136
-    - map: bes-jumparound
-      rank: 15
-      total: 29
-      time: 37768
-  fetched_at: "2026-02-23"
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

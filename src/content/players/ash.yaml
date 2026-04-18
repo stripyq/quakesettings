@@ -60,21 +60,6 @@ qlrace:
   top_maps:
     - {map: regrelue04, rank: 27, total: 57, time: 47432, rank_pct: 47.4}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 1368
-  average_rank_pct: 45.1
-  best_record:
-    map: regrelue04
-    rank: 23
-    total: 51
-    time: 47432
-    rank_pct: 45.1
-  top_maps:
-    - map: regrelue04
-      rank: 23
-      total: 51
-      time: 47432
-  fetched_at: "2026-02-23"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

@@ -9,10 +9,11 @@ ctfRating: 17.013174057006836
 ctfGames: 1056
 tdmRating: 22.543384552001953
 tdmGames: 177
-hoqCtfRating: 17.01
-hoqCtfGames: 1056
+hoqCtfRating: 15.73
+hoqCtfGames: 1087
 hoqTdmRating: 22.54
 hoqTdmGames: 177
+
 
 qlrace:
   mode: 3
@@ -36,34 +37,6 @@ qlrace:
     - {map: hangtime-df, rank: 41, total: 68, time: 1009600, rank_pct: 60.3}
     - {map: kool_m2, rank: 24, total: 26, time: 42576, rank_pct: 92.3}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 1283
-  average_rank_pct: 60.1
-  best_record:
-    map: base1
-    rank: 13
-    total: 32
-    time: 7480
-    rank_pct: 40.6
-  top_maps:
-    - map: base1
-      rank: 13
-      total: 32
-      time: 7480
-    - map: kool_fastwho2
-      rank: 22
-      total: 47
-      time: 39616
-    - map: hangtime-df
-      rank: 37
-      total: 61
-      time: 1009600
-    - map: kool_m2
-      rank: 24
-      total: 26
-      time: 42576
-  fetched_at: "2026-02-23"
-
 ctfRatingUpdated: "2026-03-12"
 
 tdmRatingUpdated: "2026-03-12"

@@ -26,29 +26,6 @@ qlrace:
     - {map: nood-quickie1-1, rank: 17, total: 39, time: 7728, rank_pct: 43.6}
     - {map: kool_sh3, rank: 27, total: 41, time: 48312, rank_pct: 65.9}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 826
-  average_rank_pct: 37.1
-  best_record:
-    map: qzpractice2
-    rank: 87
-    total: 327
-    time: 23392
-    rank_pct: 26.6
-  top_maps:
-    - map: qzpractice2
-      rank: 87
-      total: 327
-      time: 23392
-    - map: nood-quickie1-4
-      rank: 7
-      total: 17
-      time: 10160
-    - map: nood-quickie1-1
-      rank: 17
-      total: 39
-      time: 7728
-  fetched_at: "2026-02-23"
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

@@ -66,21 +66,6 @@ qlrace:
   top_maps:
     - {map: japanesecastles, rank: 27, total: 243, time: 10423, rank_pct: 11.1}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 11.2
-  best_record:
-    map: japanesecastles
-    rank: 27
-    total: 242
-    time: 10423
-    rank_pct: 11.2
-  top_maps:
-    - map: japanesecastles
-      rank: 27
-      total: 242
-      time: 10423
-  fetched_at: "2026-02-23"
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

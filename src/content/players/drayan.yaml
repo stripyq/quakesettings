@@ -46,10 +46,11 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 5605
 tdmGames: 1445
-hoqCtfRating: 29.7
-hoqCtfGames: 5907
-hoqTdmRating: 28.56
-hoqTdmGames: 1447
+hoqCtfRating: 33.13
+hoqCtfGames: 6129
+hoqTdmRating: 28.19
+hoqTdmGames: 1460
+
 
 
 
@@ -75,21 +76,6 @@ qlrace:
   top_maps:
     - {map: base1, rank: 17, total: 32, time: 8224, rank_pct: 53.1}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 517
-  average_rank_pct: 53.1
-  best_record:
-    map: base1
-    rank: 17
-    total: 32
-    time: 8224
-    rank_pct: 53.1
-  top_maps:
-    - map: base1
-      rank: 17
-      total: 32
-      time: 8224
-  fetched_at: "2026-02-23"
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 46

@@ -18,8 +18,9 @@ ctfGames: 150
 tdmGames: 1837
 hoqCtfRating: 14.17
 hoqCtfGames: 150
-hoqTdmRating: 19.24
-hoqTdmGames: 1837
+hoqTdmRating: 19.07
+hoqTdmGames: 1983
+
 
 duelGames: 227
 ctfRating: 14.17286491394043
@@ -73,25 +74,6 @@ qlrace:
     - {map: reflux, rank: 34, total: 83, time: 12255, rank_pct: 41}
     - {map: df_licklonger, rank: 41, total: 57, time: 40521, rank_pct: 71.9}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 56.7
-  best_record:
-    map: reflux
-    rank: 34
-    total: 82
-    time: 12255
-    rank_pct: 41.5
-  top_maps:
-    - map: reflux
-      rank: 34
-      total: 82
-      time: 12255
-    - map: df_licklonger
-      rank: 41
-      total: 57
-      time: 40521
-  fetched_at: "2026-02-23"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

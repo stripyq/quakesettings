@@ -43,9 +43,10 @@ cpuBrand: Intel
 ctfGames: 2976
 tdmGames: 1068
 hoqCtfRating: 19.08
-hoqCtfGames: 2976
-hoqTdmRating: 20.63
-hoqTdmGames: 1068
+hoqCtfGames: 3008
+hoqTdmRating: 20.14
+hoqTdmGames: 1074
+
 
 qlrace: null
 favorite_map: japanesecastles

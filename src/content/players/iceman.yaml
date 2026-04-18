@@ -17,10 +17,11 @@ ctfRating: 37.582908630371094
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 30.4
 qllrCtfGames: 23
-hoqCtfRating: 37.58
-hoqCtfGames: 1018
-hoqTdmRating: 30.94
-hoqTdmGames: 193
+hoqCtfRating: 35.36
+hoqCtfGames: 1071
+hoqTdmRating: 31.18
+hoqTdmGames: 196
+
 tdmRating: 30.94354820251465
 tdmRatingUpdated: "2026-03-12"
 duelRating: 1400
@@ -73,21 +74,6 @@ qlrace:
   top_maps:
     - {map: coldrun, rank: 24, total: 31, time: 20512, rank_pct: 77.4}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 1202
-  average_rank_pct: 71
-  best_record:
-    map: kool_bricks1
-    rank: 22
-    total: 31
-    time: 63256
-    rank_pct: 71
-  top_maps:
-    - map: kool_bricks1
-      rank: 22
-      total: 31
-      time: 63256
-  fetched_at: "2026-02-23"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

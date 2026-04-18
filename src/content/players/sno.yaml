@@ -11,10 +11,11 @@ tdmRatingUpdated: "2026-03-12"
 duelRating: 1066
 ctfGames: 2208
 tdmGames: 1
-hoqCtfRating: 22.53
-hoqCtfGames: 2208
+hoqCtfRating: 22.58
+hoqCtfGames: 2256
 hoqTdmRating: 19.29
 hoqTdmGames: 1
+
 
 duelGames: 901
 duelRatingUpdated: "2026-02-04"
@@ -67,58 +68,3 @@ qlrace:
     - {map: qw_race3, rank: 8, total: 39, time: 18416, rank_pct: 20.5}
     - {map: df_licksewage, rank: 7, total: 34, time: 18240, rank_pct: 20.6}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 3585
-  average_rank_pct: 52.2
-  best_record:
-    map: aa_rmg2
-    rank: 6
-    total: 37
-    time: 25258
-    rank_pct: 16.2
-  top_maps:
-    - map: aa_rmg2
-      rank: 6
-      total: 37
-      time: 25258
-    - map: actf14
-      rank: 6
-      total: 37
-      time: 9161
-    - map: tatmt_s2
-      rank: 12
-      total: 64
-      time: 20328
-    - map: qw_race3
-      rank: 8
-      total: 39
-      time: 18416
-    - map: df_licksewage
-      rank: 7
-      total: 34
-      time: 18240
-    - map: tatmt_s8
-      rank: 31
-      total: 149
-      time: 22699
-    - map: pornstar_sandnigga
-      rank: 7
-      total: 30
-      time: 26760
-    - map: p3nt4_ralco
-      rank: 16
-      total: 68
-      time: 41960
-    - map: pornstar_quickie2
-      rank: 9
-      total: 37
-      time: 18352
-    - map: zeel_ponpon
-      rank: 9
-      total: 37
-      time: 23016
-  fetched_at: "2026-02-23"
-
-
-
-

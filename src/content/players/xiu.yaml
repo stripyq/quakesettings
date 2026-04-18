@@ -55,21 +55,6 @@ qlrace:
   top_maps:
     - {map: df_lickdecease, rank: 43, total: 132, time: 11346, rank_pct: 32.6}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 32.6
-  best_record:
-    map: df_lickdecease
-    rank: 43
-    total: 132
-    time: 11346
-    rank_pct: 32.6
-  top_maps:
-    - map: df_lickdecease
-      rank: 43
-      total: 132
-      time: 11346
-  fetched_at: "2026-02-23"
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

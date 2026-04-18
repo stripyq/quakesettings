@@ -39,8 +39,9 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 698
-hoqTdmRating: 28.99
-hoqTdmGames: 698
+hoqTdmRating: 30.3
+hoqTdmGames: 729
+
 qlrace:
   mode: 2
   records: 2
@@ -60,25 +61,6 @@ qlrace:
     - {map: tenuous, rank: 16, total: 98, time: 61538, rank_pct: 16.3}
     - {map: df_lickhuar, rank: 9, total: 25, time: 47591, rank_pct: 36}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 26.2
-  best_record:
-    map: tenuous
-    rank: 16
-    total: 98
-    time: 61538
-    rank_pct: 16.3
-  top_maps:
-    - map: tenuous
-      rank: 16
-      total: 98
-      time: 61538
-    - map: df_lickhuar
-      rank: 9
-      total: 25
-      time: 47591
-  fetched_at: "2026-02-23"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

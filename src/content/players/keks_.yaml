@@ -16,10 +16,11 @@ ctfGames: 462
 tdmRating: 20.87
 tdmRatingUpdated: "2026-03-02"
 tdmGames: 82
-hoqCtfRating: 14.11
-hoqCtfGames: 493
-hoqTdmRating: 20.87
-hoqTdmGames: 82
+hoqCtfRating: 14.47
+hoqCtfGames: 555
+hoqTdmRating: 20.62
+hoqTdmGames: 89
+
 dataSource: player
 dpi: 800
 sensitivity: 8.4

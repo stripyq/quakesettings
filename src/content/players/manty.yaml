@@ -16,8 +16,9 @@ ctfRating: 22.35732650756836
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 13.33
 qllrCtfGames: 23
-hoqCtfRating: 22.36
-hoqCtfGames: 1630
+hoqCtfRating: 21.94
+hoqCtfGames: 1693
+
 
 
 
@@ -74,25 +75,6 @@ qlrace:
     - {map: qzpractice2, rank: 84, total: 327, time: 23368, rank_pct: 25.7}
     - {map: japanesecastles, rank: 78, total: 212, time: 11848, rank_pct: 36.8}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 837
-  average_rank_pct: 31.9
-  best_record:
-    map: qzpractice2
-    rank: 84
-    total: 327
-    time: 23368
-    rank_pct: 25.7
-  top_maps:
-    - map: qzpractice2
-      rank: 84
-      total: 327
-      time: 23368
-    - map: japanesecastles
-      rank: 76
-      total: 199
-      time: 11848
-  fetched_at: "2026-02-23"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

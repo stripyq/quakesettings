@@ -20,10 +20,11 @@ ctfRating: 13.65864086151123
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 24.18
 qllrCtfGames: 11
-hoqCtfRating: 13.66
-hoqCtfGames: 352
-hoqTdmRating: 10.6
-hoqTdmGames: 15
+hoqCtfRating: 15.05
+hoqCtfGames: 408
+hoqTdmRating: 9.69
+hoqTdmGames: 16
+
 
 dataSource: player
 dpi: 1000

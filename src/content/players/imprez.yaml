@@ -70,41 +70,6 @@ qlrace:
     - {map: df_bardokstatik, rank: 116, total: 157, time: 24454, rank_pct: 73.9}
     - {map: jlhc2, rank: 56, total: 73, time: 7825, rank_pct: 76.7}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 64.2
-  best_record:
-    map: inder_failrun4
-    rank: 26
-    total: 67
-    time: 30544
-    rank_pct: 38.8
-  top_maps:
-    - map: inder_failrun4
-      rank: 26
-      total: 67
-      time: 30544
-    - map: temple_in_perdition
-      rank: 16
-      total: 34
-      time: 75203
-    - map: theatreofpain
-      rank: 61
-      total: 89
-      time: 22531
-    - map: df_bardokstatik
-      rank: 116
-      total: 157
-      time: 24454
-    - map: jlhc2
-      rank: 56
-      total: 73
-      time: 7825
-    - map: ump3ctf6
-      rank: 4
-      total: 5
-      time: 32608
-  fetched_at: "2026-02-23"
 favorite_map: trinity
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

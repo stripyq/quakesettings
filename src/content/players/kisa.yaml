@@ -35,10 +35,11 @@ monitor: samsung-crg5
 headset: audio-technica-ath-m50x
 ctfGames: 921
 tdmGames: 494
-hoqCtfRating: 6.62
-hoqCtfGames: 921
+hoqCtfRating: 6.13
+hoqCtfGames: 932
 hoqTdmRating: 20.65
 hoqTdmGames: 494
+
 
 qlrace: null
 favorite_map: japanesecastles

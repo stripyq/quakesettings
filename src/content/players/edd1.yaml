@@ -13,10 +13,11 @@ duelRating: 1406
 ctfRating: 29.16
 qllrCtfRating: 28.24
 qllrCtfGames: 121
-hoqCtfRating: 30.91
-hoqCtfGames: 507
-hoqTdmRating: 39.7
-hoqTdmGames: 128
+hoqCtfRating: 34.05
+hoqCtfGames: 613
+hoqTdmRating: 39.43
+hoqTdmGames: 129
+
 tdmRating: 39.7
 dataSource: player
 lastUpdated: 2025-02
@@ -72,21 +73,6 @@ qlrace:
   top_maps:
     - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 18.4
-  best_record:
-    map: df_lickmax
-    rank: 16
-    total: 87
-    time: 6388
-    rank_pct: 18.4
-  top_maps:
-    - map: df_lickmax
-      rank: 16
-      total: 87
-      time: 6388
-  fetched_at: "2026-02-23"
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 52

@@ -50,8 +50,9 @@ crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
 ctfGames: 2565
-hoqCtfRating: 18.88
-hoqCtfGames: 2565
+hoqCtfRating: 17.67
+hoqCtfGames: 2633
+
 
 qlrace:
   mode: 2
@@ -71,21 +72,6 @@ qlrace:
   top_maps:
     - {map: cruton2, rank: 54, total: 131, time: 64387, rank_pct: 41.2}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 41.2
-  best_record:
-    map: cruton2
-    rank: 54
-    total: 131
-    time: 64387
-    rank_pct: 41.2
-  top_maps:
-    - map: cruton2
-      rank: 54
-      total: 131
-      time: 64387
-  fetched_at: "2026-02-23"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

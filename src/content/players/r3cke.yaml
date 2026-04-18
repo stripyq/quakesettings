@@ -51,10 +51,11 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 4779
 tdmGames: 67
-hoqCtfRating: 16.01
-hoqCtfGames: 4779
+hoqCtfRating: 18.37
+hoqCtfGames: 4934
 hoqTdmRating: 17.26
 hoqTdmGames: 67
+
 
 qlrace: null
 favorite_map: japanesecastles

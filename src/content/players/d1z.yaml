@@ -11,10 +11,11 @@ ctfRating: 22.34
 ctfRatingUpdated: "2026-02-04"
 qllrCtfRating: 22.31
 qllrCtfGames: 18
-hoqCtfRating: 22.5
-hoqCtfGames: 187
-hoqTdmRating: 25.25
-hoqTdmGames: 362
+hoqCtfRating: 24.43
+hoqCtfGames: 236
+hoqTdmRating: 24.81
+hoqTdmGames: 378
+
 duelRating: 1554
 ctfGames: 173
 tdmGames: 362
@@ -73,25 +74,6 @@ qlrace:
     - {map: cities_of_gold, rank: 11, total: 66, time: 41381, rank_pct: 16.7}
     - {map: moko_slick, rank: 11, total: 21, time: 7336, rank_pct: 52.4}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 34.5
-  best_record:
-    map: cities_of_gold
-    rank: 11
-    total: 66
-    time: 41381
-    rank_pct: 16.7
-  top_maps:
-    - map: cities_of_gold
-      rank: 11
-      total: 66
-      time: 41381
-    - map: moko_slick
-      rank: 11
-      total: 21
-      time: 7336
-  fetched_at: "2026-02-23"
 favorite_map: hiddenfortress
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

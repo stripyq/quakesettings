@@ -40,10 +40,11 @@ dataSource: player
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 31.06
 qllrCtfGames: 61
-hoqCtfRating: 32.26
-hoqCtfGames: 1158
+hoqCtfRating: 32.48
+hoqCtfGames: 1173
 hoqTdmRating: 29.16
 hoqTdmGames: 212
+
 
 tdmRatingUpdated: "2026-03-12"
 

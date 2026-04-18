@@ -17,10 +17,11 @@ ctfRating: 28.431108474731445
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 22.91
 qllrCtfGames: 10
-hoqCtfRating: 28.43
-hoqCtfGames: 1296
+hoqCtfRating: 27.53
+hoqCtfGames: 1324
 hoqTdmRating: 18.8
 hoqTdmGames: 1
+
 dataSource: player
 dpi: 1800
 sensitivity: 1
@@ -71,37 +72,6 @@ qlrace:
     - {map: japanesecastles, rank: 46, total: 243, time: 11320, rank_pct: 18.9}
     - {map: spidercrossings, rank: 34, total: 126, time: 12544, rank_pct: 27}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 1185
-  average_rank_pct: 16.1
-  best_record:
-    map: ironworks
-    rank: 6
-    total: 95
-    time: 6336
-    rank_pct: 6.3
-  top_maps:
-    - map: ironworks
-      rank: 6
-      total: 95
-      time: 6336
-    - map: troubledwaters
-      rank: 7
-      total: 74
-      time: 8648
-    - map: df_lickgirls
-      rank: 18
-      total: 98
-      time: 10568
-    - map: japanesecastles
-      rank: 46
-      total: 242
-      time: 11320
-    - map: spidercrossings
-      rank: 34
-      total: 124
-      time: 12544
-  fetched_at: "2026-02-23"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

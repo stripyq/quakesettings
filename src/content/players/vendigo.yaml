@@ -42,8 +42,9 @@ ctfGames: 1
 tdmGames: 1797
 hoqCtfRating: 11.44
 hoqCtfGames: 1
-hoqTdmRating: 26.76
-hoqTdmGames: 1797
+hoqTdmRating: 26.7
+hoqTdmGames: 1803
+
 qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

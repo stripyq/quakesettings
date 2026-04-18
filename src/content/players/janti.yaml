@@ -23,10 +23,11 @@ ctfRating: 16.39952278137207
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 28.64
 qllrCtfGames: 14
-hoqCtfRating: 16.4
-hoqCtfGames: 9447
-hoqTdmRating: 14.8
-hoqTdmGames: 65
+hoqCtfRating: 16.91
+hoqCtfGames: 9714
+hoqTdmRating: 14.51
+hoqTdmGames: 67
+
 ctfGames: 9447
 
 
@@ -82,57 +83,6 @@ qlrace:
     - {map: maze_gen_24, rank: 9, total: 36, time: 15424, rank_pct: 25}
     - {map: 13plant, rank: 16, total: 48, time: 7668, rank_pct: 33.3}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 43.3
-  best_record:
-    map: q3wc5
-    rank: 5
-    total: 27
-    time: 15552
-    rank_pct: 18.5
-  top_maps:
-    - map: q3wc5
-      rank: 5
-      total: 27
-      time: 15552
-    - map: wiggle
-      rank: 9
-      total: 48
-      time: 42744
-    - map: pornstar_dhoni
-      rank: 8
-      total: 34
-      time: 24008
-    - map: maze_gen_24
-      rank: 9
-      total: 36
-      time: 15424
-    - map: 13plant
-      rank: 16
-      total: 48
-      time: 7668
-    - map: daanstrafe06
-      rank: 9
-      total: 27
-      time: 26120
-    - map: vanilla_06
-      rank: 17
-      total: 50
-      time: 3248
-    - map: actf32
-      rank: 11
-      total: 26
-      time: 19464
-    - map: actf13
-      rank: 15
-      total: 34
-      time: 9999
-    - map: actf02
-      rank: 16
-      total: 35
-      time: 21280
-  fetched_at: "2026-02-23"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

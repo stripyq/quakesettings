@@ -25,10 +25,11 @@ ctfRating: 44.14175033569336
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 32.42
 qllrCtfGames: 76
-hoqCtfRating: 44.14
-hoqCtfGames: 1068
+hoqCtfRating: 42.29
+hoqCtfGames: 1131
 hoqTdmRating: 32.67
 hoqTdmGames: 40
+
 
 
 
@@ -90,21 +91,6 @@ qlrace:
   top_maps:
     - {map: bardok_egypt, rank: 19, total: 73, time: 16617, rank_pct: 26}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 0
-  average_rank_pct: 26
-  best_record:
-    map: bardok_egypt
-    rank: 19
-    total: 73
-    time: 16617
-    rank_pct: 26
-  top_maps:
-    - map: bardok_egypt
-      rank: 19
-      total: 73
-      time: 16617
-  fetched_at: "2026-02-23"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

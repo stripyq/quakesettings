@@ -9,8 +9,9 @@ category: ctf
 ctfRatingUpdated: "2026-03-12"
 qllrCtfRating: 21.9
 qllrCtfGames: 12
-hoqCtfRating: 3.33
-hoqCtfGames: 1964
+hoqCtfRating: 4.14
+hoqCtfGames: 1983
+
 
 lastUpdated: "2026-02-13"
 duelRating: 725
@@ -73,29 +74,6 @@ qlrace:
     - {map: campgrounds, rank: 155, total: 387, time: 27208, rank_pct: 40.1}
     - {map: spr_toofoo, rank: 25, total: 41, time: 34472, rank_pct: 61}
   fetched_at: '2026-04-17'
-ze: 0
-  speed_top: 1331
-  average_rank_pct: 34.3
-  best_record:
-    map: japanesecastles
-    rank: 7
-    total: 242
-    time: 8176
-    rank_pct: 2.9
-  top_maps:
-    - map: japanesecastles
-      rank: 7
-      total: 242
-      time: 8176
-    - map: campgrounds
-      rank: 155
-      total: 387
-      time: 27208
-    - map: spr_toofoo
-      rank: 24
-      total: 40
-      time: 34472
-  fetched_at: "2026-02-23"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

@@ -9,8 +9,9 @@ category: ctf
 ctfRating: 0.009290201589465141
 ctfRatingUpdated: "2026-03-12"
 ctfGames: 214
-hoqCtfRating: 0.01
-hoqCtfGames: 214
+hoqCtfRating: -0.56
+hoqCtfGames: 226
+
 published: true
 
 dataSource: player
