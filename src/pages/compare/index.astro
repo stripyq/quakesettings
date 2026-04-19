@@ -122,6 +122,7 @@ const schema = {
   <div id="hoq-overall-container" class="hoq-overall-container hidden"></div>
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="h2h-container" class="h2h-container hidden"></div>
+  <div id="h2h-alltime-container" class="h2h-alltime-container hidden"></div>
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
   <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)}></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
@@ -142,11 +143,33 @@ const schema = {
       const p2Header = document.getElementById('p2-header');
       const hoqOverallContainer = document.getElementById('hoq-overall-container');
       const h2hContainer = document.getElementById('h2h-container');
+      const h2hAlltimeContainer = document.getElementById('h2h-alltime-container');
       const matchupHistoryContainer = document.getElementById('matchup-history-container');
       const seasonCompareContainer = document.getElementById('season-compare-container');
       const rivalriesContainer = document.getElementById('rivalries-container');
       const raceCompareContainer = document.getElementById('race-compare-container');
       const hoqHistoryContainer = document.getElementById('hoq-history-container');
+
+      // All-time H2H data (scraped from HoQ match history, filtered to featured
+      // players by scripts/filter-h2h-to-featured.cjs). Fetched once on page load;
+      // lookup by sorted steamId pair joined with "|".
+      let alltimeH2HData = null;
+      // GH Pages serves this site under /quakesettings/, so we build the
+      // fetch path from location.pathname rather than a fragile DOM query.
+      const basePathMatch = location.pathname.match(/^(.*?)\/compare\//);
+      const basePath = basePathMatch ? basePathMatch[1] + '/' : '/';
+      fetch(basePath + 'data/alltime-h2h-featured.json')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          alltimeH2HData = data;
+          // If both players already selected at load, re-render now that data is ready
+          if (player1Select.value && player2Select.value) {
+            const p1 = playersData[player1Select.value];
+            const p2 = playersData[player2Select.value];
+            if (p1 && p2) updateAllTimeH2H(p1, p2);
+          }
+        })
+        .catch(function() { /* file absent or network error — all-time H2H stays hidden */ });
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -382,6 +405,7 @@ const schema = {
           comparisonContainer.classList.add('hidden');
           hoqOverallContainer.classList.add('hidden');
           h2hContainer.classList.add('hidden');
+          h2hAlltimeContainer.classList.add('hidden');
           seasonCompareContainer.classList.add('hidden');
           rivalriesContainer.classList.add('hidden');
           raceCompareContainer.classList.add('hidden');
@@ -487,6 +511,7 @@ const schema = {
         compareBody.innerHTML = html;
         updateHoqOverall(p1, p2);
         updateH2H(p1, p2);
+        updateAllTimeH2H(p1, p2);
         updateMatchupHistory(p1, p2);
         updateSeasonCompare(p1, p2);
         updateRivalries(p1, p2);
@@ -688,6 +713,80 @@ const schema = {
         if (!cards) return;
         h2hContainer.innerHTML = '<div class="cmp-section-heading">Head to Head</div>' + cards;
         h2hContainer.classList.remove('hidden');
+      }
+
+      // All-time H2H (from HoQ match history scrape — CTF only for now).
+      // Renders a card per mode that has data, with the same visual style as
+      // the seasonal H2H but tagged "All-Time". Hidden if no shared matches.
+      function updateAllTimeH2H(p1, p2) {
+        h2hAlltimeContainer.classList.add('hidden');
+        h2hAlltimeContainer.innerHTML = '';
+
+        if (!alltimeH2HData || !p1.steamId || !p2.steamId) return;
+
+        // Pairs are keyed by sorted-steamId joined with "|"
+        var a = p1.steamId < p2.steamId ? p1.steamId : p2.steamId;
+        var c = p1.steamId < p2.steamId ? p2.steamId : p1.steamId;
+        var key = a + '|' + c;
+        var entry = alltimeH2HData[key];
+        if (!entry || !entry.matches) return;
+
+        // wins_a is the smaller-steamId player's wins; figure out which of p1/p2 that is
+        var p1Wins, p2Wins;
+        if (p1.steamId === a) {
+          p1Wins = entry.wins_a;
+          p2Wins = entry.wins_b;
+        } else {
+          p1Wins = entry.wins_b;
+          p2Wins = entry.wins_a;
+        }
+
+        var total = p1Wins + p2Wins;
+        var p1Pct = total > 0 ? (p1Wins / total) * 100 : 50;
+        var winRate = p1Pct.toFixed(1);
+
+        // Only CTF has data right now; when TDM scrape ships, this becomes a loop
+        var modeLabel = 'CTF';
+        var p1WinClass = p1Wins > p2Wins ? ' h2h-p1-color' : '';
+        var p2WinClass = p2Wins > p1Wins ? ' h2h-p2-color' : '';
+
+        var card =
+          '<div class="h2h-card h2h-alltime-card">' +
+            '<div class="h2h-title">Head to Head \u2013 ' + modeLabel + ' <span class="h2h-alltime-tag">All-Time</span></div>' +
+            '<div class="h2h-matchup">' +
+              '<div class="h2h-side h2h-left">' +
+                '<div class="h2h-player-info h2h-align-right">' +
+                  '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
+                '</div>' +
+                '<div class="h2h-stat-block h2h-align-right">' +
+                  '<span class="h2h-kill-count' + p1WinClass + '">' + p1Wins + '</span>' +
+                  '<span class="h2h-kill-label">wins</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="h2h-vs">vs</div>' +
+              '<div class="h2h-side h2h-right">' +
+                '<div class="h2h-stat-block h2h-align-left">' +
+                  '<span class="h2h-kill-count' + p2WinClass + '">' + p2Wins + '</span>' +
+                  '<span class="h2h-kill-label">wins</span>' +
+                '</div>' +
+                '<div class="h2h-player-info h2h-align-left">' +
+                  '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="h2h-bar">' +
+              '<div class="h2h-bar-p1" style="width:' + p1Pct + '%"></div>' +
+              '<div class="h2h-bar-p2" style="width:' + (100 - p1Pct) + '%"></div>' +
+            '</div>' +
+            '<div class="h2h-meta">' +
+              '<span class="h2h-winrate">' + winRate + '% win rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
+              '<span class="h2h-games">' + entry.matches + ' matches together</span>' +
+            '</div>' +
+            '<div class="h2h-alltime-source">All-time CTF matches on HoQ (via scoreboard archive)</div>' +
+          '</div>';
+
+        h2hAlltimeContainer.innerHTML = '<div class="cmp-section-heading">All-Time Head to Head</div>' + card;
+        h2hAlltimeContainer.classList.remove('hidden');
       }
 
       function updateMatchupHistory(p1, p2) {
@@ -1850,6 +1949,35 @@ const schema = {
     width: 10px;
     height: 10px;
     border-radius: 2px;
+  }
+
+  /* --- All-Time H2H (uses shared h2h styles, adds a different tag + source line) --- */
+  .h2h-alltime-container {
+    margin-top: 1.25rem;
+  }
+
+  .h2h-alltime-container.hidden { display: none; }
+
+  :global(.h2h-alltime-tag) {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  :global(.h2h-alltime-source) {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-dim, #999);
+    text-align: center;
+    font-style: italic;
   }
 
   /* --- Head to Head --- */

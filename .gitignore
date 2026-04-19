@@ -33,3 +33,9 @@ tdm.json
 
 # Cowork skill-eval artifacts (local review only)
 .claude-eval/
+
+# H2H scraper checkpoint (progress state, not shipped data)
+public/data/.alltime-h2h-checkpoint.json
+
+# Raw H2H scrape output (too large for repo; filtered version is committed)
+public/data/alltime-h2h.json
