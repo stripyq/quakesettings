@@ -308,7 +308,7 @@ async function deriveOne(gt) {
 
   const h2hFullCompact = h2hAll.map(({ maps, ...rest }) => rest);
   fs.writeFileSync(path.join(OUT_DIR, 'h2h-full.json'), JSON.stringify(h2hFullCompact));
-  fs.writeFileSync(path.join(OUT_DIR, 'h2h-featured.json'), JSON.stringify(h2hFeatured, null, 2));
+  fs.writeFileSync(path.join(OUT_DIR, 'h2h-featured.json'), JSON.stringify(h2hFeatured));
   // Count featured pair-map buckets so we can see how dense the new data is.
   let mapBuckets = 0;
   for (const r of h2hFeatured) if (r.maps) mapBuckets += Object.keys(r.maps).length;
@@ -333,13 +333,4 @@ async function deriveOne(gt) {
   return true;
 }
 
-// ---------- main ----------
-(async () => {
-  const results = [];
-  for (const gt of GTS) {
-    const ok = await deriveOne(gt);
-    results.push({ gt, ok });
-  }
-  console.log(`\n========== Summary ==========`);
-  for (const r of results) console.log(`  ${r.gt}: ${r.ok ? 'done' : 'FAILED'}`);
-})().catch(e => { console.error(e); process.exit(1); });
+// ---------- mai
