@@ -148,26 +148,54 @@ const schema = {
       const raceCompareContainer = document.getElementById('race-compare-container');
       const hoqHistoryContainer = document.getElementById('hoq-history-container');
 
-      // All-time H2H data (scraped from HoQ match history, filtered to featured
-      // players by scripts/filter-h2h-to-featured.cjs). Fetched once on page load;
-      // lookup by sorted steamId pair joined with "|".
-      let alltimeH2HData = null;
+      // Map-name aliases for pretty display. Start narrow; promote to
+      // /public/data/maps.json once the list grows past a handful.
+      var MAP_ALIASES = {
+        q3wcp9: 'Spider Crossings',
+      };
+      function prettyMapName(raw) {
+        if (!raw) return 'Unknown';
+        var key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+        if (MAP_ALIASES[key]) return MAP_ALIASES[key];
+        var stripped = String(raw).replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
+        return stripped.charAt(0).toUpperCase() + stripped.slice(1);
+      }
+
+      // All-time H2H data — derived from full HoQ match archive by
+      // scripts/derive-archive.cjs into public/data/<gt>/h2h-featured.json.
+      // Each file is an array of pair records; we index them by sorted
+      // "sidA|sidB" for O(1) lookup. Filled lazily on page load.
+      var alltimeH2H = { ctf: null, tdm: null };
       // GH Pages serves this site under /quakesettings/, so we build the
       // fetch path from location.pathname rather than a fragile DOM query.
       const basePathMatch = location.pathname.match(/^(.*?)\/compare\//);
       const basePath = basePathMatch ? basePathMatch[1] + '/' : '/';
-      fetch(basePath + 'data/alltime-h2h-featured.json')
-        .then(function(r) { return r.ok ? r.json() : null; })
-        .then(function(data) {
-          alltimeH2HData = data;
-          // If both players already selected at load, re-render now that data is ready
-          if (player1Select.value && player2Select.value) {
-            const p1 = playersData[player1Select.value];
-            const p2 = playersData[player2Select.value];
-            if (p1 && p2) updateH2H(p1, p2);
-          }
-        })
-        .catch(function() { /* file absent or network error — all-time H2H stays hidden */ });
+
+      function indexH2HArray(arr) {
+        var idx = {};
+        if (!Array.isArray(arr)) return idx;
+        for (var i = 0; i < arr.length; i++) {
+          var r = arr[i];
+          if (r && r.a && r.b) idx[r.a + '|' + r.b] = r;
+        }
+        return idx;
+      }
+
+      function loadAllTimeH2H(gt) {
+        return fetch(basePath + 'data/' + gt + '/h2h-featured.json')
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(data) { alltimeH2H[gt] = indexH2HArray(data); })
+          .catch(function() { /* absent/error — that mode's card stays hidden */ });
+      }
+
+      Promise.all([loadAllTimeH2H('ctf'), loadAllTimeH2H('tdm')]).then(function() {
+        // If both players already selected at load, re-render now that data is ready
+        if (player1Select.value && player2Select.value) {
+          const p1 = playersData[player1Select.value];
+          const p2 = playersData[player2Select.value];
+          if (p1 && p2) updateH2H(p1, p2);
+        }
+      });
 
       // Check URL params for pre-selected players
       const urlParams = new URLSearchParams(window.location.search);
@@ -552,6 +580,93 @@ const schema = {
         hoqOverallContainer.classList.remove('hidden');
       }
 
+      // Resolve Season match-record W/L for a pair + mode from season-stats.json
+      // (tries direct lookup first, then reverses if data lives on p2's record).
+      function getSeasonH2H(p1SteamId, p2SteamId, mode) {
+        var p1Stats = getModeStats(p1SteamId, mode);
+        var detail = p1Stats?.headToHeadMatchups?.[p2SteamId];
+        if (detail?.overall) {
+          var o = detail.overall;
+          var played = o.matches_played || ((o.matches_won || 0) + (o.matches_lost || 0));
+          if (played > 0) return { wins: o.matches_won || 0, losses: o.matches_lost || 0, played: played };
+        }
+        var p2Stats = getModeStats(p2SteamId, mode);
+        var rev = p2Stats?.headToHeadMatchups?.[p1SteamId];
+        if (rev?.overall) {
+          var r = rev.overall;
+          var rp = r.matches_played || ((r.matches_won || 0) + (r.matches_lost || 0));
+          if (rp > 0) return { wins: r.matches_lost || 0, losses: r.matches_won || 0, played: rp };
+        }
+        return null;
+      }
+
+      // Resolve All-Time opponent W/L + teammate record from our derived archive.
+      function getAllTimeH2H(p1SteamId, p2SteamId, mode) {
+        var idx = alltimeH2H[mode];
+        if (!idx) return null;
+        var a = p1SteamId < p2SteamId ? p1SteamId : p2SteamId;
+        var c = p1SteamId < p2SteamId ? p2SteamId : p1SteamId;
+        var entry = idx[a + '|' + c];
+        if (!entry) return null;
+        var opp = entry.as_opp || 0;
+        var wins = p1SteamId === entry.a ? (entry.a_wins_vs_b || 0) : (entry.b_wins_vs_a || 0);
+        var losses = p1SteamId === entry.a ? (entry.b_wins_vs_a || 0) : (entry.a_wins_vs_b || 0);
+        return {
+          wins: wins,
+          losses: losses,
+          opp: opp,
+          mates: entry.as_mates || 0,
+          mates_wins: entry.mates_wins || 0,
+        };
+      }
+
+      // All-time per-map breakdown for this pair, normalized to p1's perspective.
+      // Returns { [mapKey]: { p1Wins, p2Wins, opp } } or null if no data.
+      // Graceful when derive archive hasn't been rerun with map tracking yet.
+      function getAllTimeH2HMaps(p1SteamId, p2SteamId, mode) {
+        var idx = alltimeH2H[mode];
+        if (!idx) return null;
+        var a = p1SteamId < p2SteamId ? p1SteamId : p2SteamId;
+        var c = p1SteamId < p2SteamId ? p2SteamId : p1SteamId;
+        var entry = idx[a + '|' + c];
+        if (!entry || !entry.maps) return null;
+        var p1IsA = p1SteamId === entry.a;
+        var out = {};
+        for (var mk in entry.maps) {
+          if (!Object.prototype.hasOwnProperty.call(entry.maps, mk)) continue;
+          var mm = entry.maps[mk];
+          out[mk] = {
+            p1Wins: p1IsA ? (mm.a_wins || 0) : (mm.b_wins || 0),
+            p2Wins: p1IsA ? (mm.b_wins || 0) : (mm.a_wins || 0),
+            opp: mm.opp || 0,
+          };
+        }
+        return out;
+      }
+
+      // Render one dual-bar row (bar + label). Used for both Season and All-Time.
+      function renderDualH2HRow(p1W, p2W, timeframe, metaText) {
+        var decided = p1W + p2W;
+        var p1Pct = decided > 0 ? (p1W / decided) * 100 : 50;
+        var pctLabel = p1Pct.toFixed(1) + '%';
+        return (
+          '<div class="h2h-dual-row">' +
+            '<span class="h2h-dual-end l">' + p1W + 'W</span>' +
+            '<div class="h2h-dual-bar">' +
+              '<div class="h2h-bar-p1" style="width:' + p1Pct + '%"></div>' +
+              '<div class="h2h-bar-p2" style="width:' + (100 - p1Pct) + '%"></div>' +
+              '<span class="h2h-dual-inline-pct">' + pctLabel + '</span>' +
+            '</div>' +
+            '<span class="h2h-dual-end r">' + p2W + 'W</span>' +
+          '</div>' +
+          '<div class="h2h-dual-label">' +
+            '<span class="h2h-dual-timeframe">' + timeframe + '</span>' +
+            '<span class="h2h-dual-sep">\u00b7</span>' +
+            '<span>' + metaText + '</span>' +
+          '</div>'
+        );
+      }
+
       function updateH2H(p1, p2) {
         h2hContainer.classList.add('hidden');
         h2hContainer.innerHTML = '';
@@ -559,216 +674,50 @@ const schema = {
         if (!p1.steamId || !p2.steamId) return;
 
         var cards = '';
-        var modes = ['ctf', 'tdm'];
+        var modes = [
+          { key: 'ctf', label: 'CTF' },
+          { key: 'tdm', label: 'TDM' },
+        ];
+
         for (var mi = 0; mi < modes.length; mi++) {
-          var mode = modes[mi];
-          var modeLabel = mode.toUpperCase();
-          var p1ModeStats = getModeStats(p1.steamId, mode);
-          var raw = p1ModeStats?.headToHead;
-          if (!raw) continue;
+          var mode = modes[mi].key;
+          var modeLabel = modes[mi].label;
 
-          var data = Array.isArray(raw) ? raw : (Array.isArray(raw?.data) ? raw.data : null);
-          if (!data) continue;
+          var season = getSeasonH2H(p1.steamId, p2.steamId, mode);
+          var alltime = getAllTimeH2H(p1.steamId, p2.steamId, mode);
 
-          var match = data.find(function(entry) {
-            return entry.steam_id === p2.steamId || entry.opponent_steam_id === p2.steamId;
-          });
-          if (!match) continue;
+          if (!season && !alltime) continue;
 
-          var p1Kills = match.kills_against != null ? match.kills_against
-            : (match.kills != null ? match.kills : match.wins);
-          var p2Kills = match.deaths_to != null ? match.deaths_to
-            : (match.deaths != null ? match.deaths : match.losses);
-          if (p1Kills == null || p2Kills == null) continue;
-
-          var total = p1Kills + p2Kills;
-          var p1Pct = total > 0 ? (p1Kills / total) * 100 : 50;
-          var winRate = p1Pct.toFixed(1);
-          var matchesTogether = match.matches_together || match.games || match.total_games || null;
-          var p1Dmg = match.damage_dealt || match.damage || null;
-          var p2Dmg = match.damage_received || match.damage_taken || null;
-
-          // Check for detailed matchup data (match W/L when on opposite teams)
-          var matchupDetail = p1ModeStats?.headToHeadMatchups?.[p2.steamId];
-          // Try reverse lookup if not found
-          if (!matchupDetail) {
-            var p2ModeStatsH2H = getModeStats(p2.steamId, mode);
-            var reverseH2H = p2ModeStatsH2H?.headToHeadMatchups?.[p1.steamId];
-            if (reverseH2H?.overall) {
-              matchupDetail = {
-                overall: {
-                  matches_won: reverseH2H.overall.matches_lost || 0,
-                  matches_lost: reverseH2H.overall.matches_won || 0,
-                  matches_played: reverseH2H.overall.matches_played || 0,
-                },
-                maps: Array.isArray(reverseH2H.maps) ? reverseH2H.maps.map(function(rm) {
-                  return { map: rm.map, matches_won: rm.matches_lost || 0, matches_lost: rm.matches_won || 0, matches_played: rm.matches_played || 0 };
-                }) : null,
-              };
-            }
+          var rowsHtml = '';
+          if (season) {
+            rowsHtml += renderDualH2HRow(season.wins, season.losses, 'Season', season.played + ' matches');
           }
-          var matchRecordHtml = '';
-          if (matchupDetail?.overall) {
-            var mWon = matchupDetail.overall.matches_won || 0;
-            var mLost = matchupDetail.overall.matches_lost || 0;
-            var mPlayed = matchupDetail.overall.matches_played || (mWon + mLost);
-            if (mPlayed > 0) {
-              var mPct = ((mWon / mPlayed) * 100).toFixed(1);
-              var mBarW = (mWon / mPlayed) * 100;
-
-              // Best/worst map from detailed matchup data
-              var bestWorstHtml = '';
-              var mMaps = Array.isArray(matchupDetail.maps) ? matchupDetail.maps : [];
-              if (mMaps.length > 0) {
-                var mapWithRates = mMaps.filter(function(m) {
-                  return ((m.matches_won || 0) + (m.matches_lost || 0)) > 0;
-                }).map(function(m) {
-                  var mw = m.matches_won || 0;
-                  var ml = m.matches_lost || 0;
-                  var mp = m.matches_played || (mw + ml);
-                  var name = (m.map || '').replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
-                  return { name: name, won: mw, lost: ml, played: mp, rate: mp > 0 ? mw / mp : 0 };
-                }).sort(function(a, b) { return b.rate - a.rate; });
-
-                if (mapWithRates.length > 0) {
-                  var best = mapWithRates[0];
-                  var worst = mapWithRates[mapWithRates.length - 1];
-                  bestWorstHtml = '<div class="h2h-match-record-maps">';
-                  bestWorstHtml += '<span class="h2h-map-best">Best map: ' + best.name + ' (' + best.won + '-' + best.lost + ')</span>';
-                  if (worst !== best) {
-                    bestWorstHtml += '<span class="h2h-map-worst">Worst map: ' + worst.name + ' (' + worst.won + '-' + worst.lost + ')</span>';
-                  }
-                  bestWorstHtml += '</div>';
-                }
-              }
-
-              // Winning side gets player color; losing side stays neutral
-              var mWonClass = mWon > mLost ? ' h2h-p1-color' : '';
-              var mLostClass = mLost > mWon ? ' h2h-p2-color' : '';
-
-              matchRecordHtml =
-                '<div class="h2h-match-record">' +
-                  '<div class="h2h-match-record-label">Match record (when on opposite teams)</div>' +
-                  '<div class="h2h-match-record-row">' +
-                    '<span class="h2h-match-record-side' + mWonClass + '">' + mWon + 'W</span>' +
-                    '<div class="h2h-match-record-bar">' +
-                      '<div class="h2h-bar-p1" style="width:' + mBarW + '%"></div>' +
-                      '<div class="h2h-bar-p2" style="width:' + (100 - mBarW) + '%"></div>' +
-                    '</div>' +
-                    '<span class="h2h-match-record-side' + mLostClass + '">' + mLost + 'W</span>' +
-                  '</div>' +
-                  '<div class="h2h-match-record-meta">' + mPct + '% match win rate \u00b7 ' + mPlayed + ' matches</div>' +
-                  bestWorstHtml +
-                '</div>';
+          if (alltime && alltime.opp > 0) {
+            rowsHtml += renderDualH2HRow(alltime.wins, alltime.losses, 'All-Time', alltime.opp + ' games as opponents');
+            if (alltime.mates > 0) {
+              var mateLosses = alltime.mates - alltime.mates_wins;
+              rowsHtml +=
+                '<div class="h2h-dual-mate">also ' + alltime.mates +
+                ' games as teammates: ' + alltime.mates_wins + 'W \u2013 ' + mateLosses + 'L together</div>';
             }
           }
 
-          // Winning player gets their color on kill count; losing stays neutral
-          var p1KillClass = p1Kills >= p2Kills ? ' h2h-p1-color' : '';
-          var p2KillClass = p2Kills >= p1Kills ? ' h2h-p2-color' : '';
-          if (p1Kills === p2Kills) { p1KillClass = ''; p2KillClass = ''; }
+          if (!rowsHtml) continue;
 
           cards +=
-            '<div class="h2h-card">' +
-              '<div class="h2h-title">Head to Head \u2013 ' + modeLabel + ' <span class="h2h-season-tag">Season</span></div>' +
-              '<div class="h2h-matchup">' +
-                '<div class="h2h-side h2h-left">' +
-                  '<div class="h2h-player-info h2h-align-right">' +
-                    '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
-                  '</div>' +
-                  '<div class="h2h-stat-block h2h-align-right">' +
-                    '<span class="h2h-kill-count' + p1KillClass + '">' + p1Kills + '</span>' +
-                    '<span class="h2h-kill-label">kills</span>' +
-                    (p1Dmg ? '<span class="h2h-dmg">' + fmtNum(p1Dmg) + ' dmg</span>' : '') +
-                  '</div>' +
-                '</div>' +
-                '<div class="h2h-vs">vs</div>' +
-                '<div class="h2h-side h2h-right">' +
-                  '<div class="h2h-stat-block h2h-align-left">' +
-                    '<span class="h2h-kill-count' + p2KillClass + '">' + p2Kills + '</span>' +
-                    '<span class="h2h-kill-label">kills</span>' +
-                    (p2Dmg ? '<span class="h2h-dmg">' + fmtNum(p2Dmg) + ' dmg</span>' : '') +
-                  '</div>' +
-                  '<div class="h2h-player-info h2h-align-left">' +
-                    '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
-                  '</div>' +
-                '</div>' +
+            '<div class="h2h-card h2h-dual-card">' +
+              '<div class="h2h-title">Head to Head \u2013 ' + modeLabel + '</div>' +
+              '<div class="h2h-dual-names">' +
+                '<span class="h2h-p1-color">' + p1.name + '</span>' +
+                '<span class="h2h-p2-color">' + p2.name + '</span>' +
               '</div>' +
-              '<div class="h2h-bar">' +
-                '<div class="h2h-bar-p1" style="width:' + p1Pct + '%"></div>' +
-                '<div class="h2h-bar-p2" style="width:' + (100 - p1Pct) + '%"></div>' +
-              '</div>' +
-              '<div class="h2h-meta">' +
-                '<span class="h2h-winrate">' + winRate + '% kill rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
-                (matchesTogether ? '<span class="h2h-games">' + matchesTogether + ' games together</span>' : '') +
-              '</div>' +
-              matchRecordHtml +
+              rowsHtml +
             '</div>';
         }
 
-        // Append all-time H2H card(s) below the seasonal ones, same container,
-        // same card style so they visually belong together.
-        var alltimeCards = buildAllTimeH2HCards(p1, p2);
-        var combined = cards + alltimeCards;
-
-        if (!combined) return;
-        h2hContainer.innerHTML = '<div class="cmp-section-heading">Head to Head</div>' + combined;
+        if (!cards) return;
+        h2hContainer.innerHTML = '<div class="cmp-section-heading">Head to Head</div>' + cards;
         h2hContainer.classList.remove('hidden');
-      }
-
-      // Build all-time H2H card(s) — returns HTML string (empty if no data).
-      // Currently CTF-only; when TDM scrape ships, loop over modes and keys
-      // per mode (e.g. "ctf:a|b" vs "tdm:a|b") in alltimeH2HData.
-      function buildAllTimeH2HCards(p1, p2) {
-        if (!alltimeH2HData || !p1.steamId || !p2.steamId) return '';
-
-        var a = p1.steamId < p2.steamId ? p1.steamId : p2.steamId;
-        var c = p1.steamId < p2.steamId ? p2.steamId : p1.steamId;
-        var entry = alltimeH2HData[a + '|' + c];
-        if (!entry || !entry.matches) return '';
-
-        var p1Wins = p1.steamId === a ? entry.wins_a : entry.wins_b;
-        var p2Wins = p1.steamId === a ? entry.wins_b : entry.wins_a;
-        var total = p1Wins + p2Wins;
-        var p1Pct = total > 0 ? (p1Wins / total) * 100 : 50;
-        var winRate = p1Pct.toFixed(1);
-        var p1WinClass = p1Wins > p2Wins ? ' h2h-p1-color' : '';
-        var p2WinClass = p2Wins > p1Wins ? ' h2h-p2-color' : '';
-
-        return (
-          '<div class="h2h-card h2h-alltime-card">' +
-            '<div class="h2h-title">Head to Head \u2013 CTF <span class="h2h-alltime-tag">All-Time</span></div>' +
-            '<div class="h2h-matchup">' +
-              '<div class="h2h-side h2h-left">' +
-                '<div class="h2h-player-info h2h-align-right">' +
-                  '<span class="h2h-name h2h-p1-color">' + p1.name + '</span>' +
-                '</div>' +
-                '<div class="h2h-stat-block h2h-align-right">' +
-                  '<span class="h2h-kill-count' + p1WinClass + '">' + p1Wins + '</span>' +
-                  '<span class="h2h-kill-label">wins</span>' +
-                '</div>' +
-              '</div>' +
-              '<div class="h2h-vs">vs</div>' +
-              '<div class="h2h-side h2h-right">' +
-                '<div class="h2h-stat-block h2h-align-left">' +
-                  '<span class="h2h-kill-count' + p2WinClass + '">' + p2Wins + '</span>' +
-                  '<span class="h2h-kill-label">wins</span>' +
-                '</div>' +
-                '<div class="h2h-player-info h2h-align-left">' +
-                  '<span class="h2h-name h2h-p2-color">' + p2.name + '</span>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="h2h-bar">' +
-              '<div class="h2h-bar-p1" style="width:' + p1Pct + '%"></div>' +
-              '<div class="h2h-bar-p2" style="width:' + (100 - p1Pct) + '%"></div>' +
-            '</div>' +
-            '<div class="h2h-meta">' +
-              '<span class="h2h-winrate">' + winRate + '% win rate for <span class="h2h-p1-color">' + p1.name + '</span></span>' +
-              '<span class="h2h-games">' + entry.matches + ' matches together</span>' +
-            '</div>' +
-          '</div>'
-        );
       }
 
       function updateMatchupHistory(p1, p2) {
@@ -836,42 +785,119 @@ const schema = {
           var winPctNum = parseFloat(winPct);
           var p1BarW = played > 0 ? (won / played) * 100 : 50;
 
-          // Per-map table
+          // Per-map table — Variant C: merged Season + All-Time cells, mini-bars.
+          // Season maps come from the live API matchup.maps; All-Time maps come
+          // from our derived archive (may be absent until derive-archive rerun).
           var mapTableHtml = '';
-          var maps = Array.isArray(matchup.maps) ? matchup.maps : [];
-          if (maps.length > 0) {
-            var sorted = maps.slice().sort(function(a, b) {
-              return (b.matches_played || 0) - (a.matches_played || 0);
+          var seasonMaps = Array.isArray(matchup.maps) ? matchup.maps : [];
+          var allTimeMaps = getAllTimeH2HMaps(p1.steamId, p2.steamId, mode);
+
+          // Merge season + all-time by normalized map key.
+          var byKey = {};
+          for (var sj = 0; sj < seasonMaps.length; sj++) {
+            var sm = seasonMaps[sj];
+            if (!sm) continue;
+            var skRaw = sm.map || 'unknown';
+            var sk = String(skRaw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+            var sWon = sm.matches_won || 0;
+            var sLost = sm.matches_lost || 0;
+            var sPlayed = sm.matches_played || (sWon + sLost);
+            if (sPlayed === 0) continue;
+            byKey[sk] = {
+              rawName: skRaw,
+              season: { p1Wins: sWon, p2Wins: sLost, played: sPlayed },
+              alltime: null,
+            };
+          }
+          if (allTimeMaps) {
+            for (var atk in allTimeMaps) {
+              if (!Object.prototype.hasOwnProperty.call(allTimeMaps, atk)) continue;
+              var atRow = allTimeMaps[atk];
+              if (!atRow || atRow.opp === 0) continue;
+              if (!byKey[atk]) byKey[atk] = { rawName: atk, season: null, alltime: null };
+              byKey[atk].alltime = atRow;
+            }
+          }
+
+          // Sort: all-time opp games desc, then season played desc.
+          var mergedRows = Object.keys(byKey).map(function(k) { return byKey[k]; });
+          if (mergedRows.length > 0) {
+            mergedRows.sort(function(a, b) {
+              var aAT = a.alltime ? a.alltime.opp : 0;
+              var bAT = b.alltime ? b.alltime.opp : 0;
+              if (bAT !== aAT) return bAT - aAT;
+              var aS = a.season ? a.season.played : 0;
+              var bS = b.season ? b.season.played : 0;
+              return bS - aS;
             });
+
+            function statNum(cls, val) {
+              return '<span class="' + cls + '">' + val + '</span>';
+            }
+            function statDash() {
+              return '<span class="mh-stack-muted">\u2014</span>';
+            }
+            function miniBar(label, p1W, p2W) {
+              var decided = p1W + p2W;
+              if (decided === 0) {
+                return '<div class="mh-mini-bar">' +
+                  '<span class="mh-mini-label">' + label + '</span>' +
+                  '<span class="mh-mini-track empty"></span>' +
+                '</div>';
+              }
+              var p1Pct = (p1W / decided) * 100;
+              return '<div class="mh-mini-bar">' +
+                '<span class="mh-mini-label">' + label + '</span>' +
+                '<span class="mh-mini-track">' +
+                  (p1W > 0 ? '<span class="mh-mini-fill-p1" style="width:' + p1Pct + '%"></span>' : '') +
+                  (p2W > 0 ? '<span class="mh-mini-fill-p2" style="width:' + (100 - p1Pct) + '%"></span>' : '') +
+                '</span>' +
+              '</div>';
+            }
+
             var tableRows = '';
-            for (var j = 0; j < sorted.length; j++) {
-              var m = sorted[j];
-              var mWon = m.matches_won || 0;
-              var mLost = m.matches_lost || 0;
-              var mPlayed = m.matches_played || (mWon + mLost);
-              if (mPlayed === 0) continue;
-              var mWinPct = mPlayed > 0 ? Math.round((mWon / mPlayed) * 100) : 0;
-              var mapName = m.map || 'Unknown';
-              var displayName = mapName.replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
+            for (var j = 0; j < mergedRows.length; j++) {
+              var row = mergedRows[j];
+              var s = row.season;
+              var at = row.alltime;
+              var displayName = prettyMapName(row.rawName);
+
+              var sWinCell = s ? statNum('mh-stack-s h2h-p1-color', s.p1Wins) : statDash();
+              var atWinCell = at ? statNum('mh-stack-at h2h-p1-color', at.p1Wins) : statDash();
+              var sLossCell = s ? statNum('mh-stack-s h2h-p2-color', s.p2Wins) : statDash();
+              var atLossCell = at ? statNum('mh-stack-at h2h-p2-color', at.p2Wins) : statDash();
+
+              var sPctCell = s && s.played > 0
+                ? statNum('mh-stack-s', Math.round((s.p1Wins / s.played) * 100) + '%')
+                : statDash();
+              var atPctCell = at && at.opp > 0
+                ? statNum('mh-stack-at', Math.round((at.p1Wins / at.opp) * 100) + '%')
+                : statDash();
 
               tableRows +=
                 '<tr>' +
                   '<td class="mh-td-map">' + displayName + '</td>' +
-                  '<td class="mh-td-num">' + mWon + '</td>' +
-                  '<td class="mh-td-num">' + mLost + '</td>' +
-                  '<td class="mh-td-num mh-td-pct">' + mWinPct + '%</td>' +
+                  '<td class="mh-td-num"><div class="mh-stack">' + sWinCell + atWinCell + '</div></td>' +
+                  '<td class="mh-td-num"><div class="mh-stack">' + sLossCell + atLossCell + '</div></td>' +
+                  '<td class="mh-td-num mh-td-pct"><div class="mh-stack">' + sPctCell + atPctCell + '</div></td>' +
+                  '<td class="mh-td-bars"><div class="mh-mini-bars">' +
+                    miniBar('S', s ? s.p1Wins : 0, s ? s.p2Wins : 0) +
+                    miniBar('AT', at ? at.p1Wins : 0, at ? at.p2Wins : 0) +
+                  '</div></td>' +
                 '</tr>';
             }
+
             if (tableRows) {
               mapTableHtml =
                 '<div class="mh-maps">' +
                   '<div class="mh-maps-label">Per-Map Breakdown</div>' +
-                  '<table class="mh-table">' +
+                  '<table class="mh-table mh-table-v2">' +
                     '<thead><tr>' +
                       '<th class="mh-th-map">Map</th>' +
-                      '<th class="mh-th-num h2h-p1-color">' + p1.name + '</th>' +
-                      '<th class="mh-th-num h2h-p2-color">' + p2.name + '</th>' +
+                      '<th class="mh-th-num h2h-p1-color">' + p1.name + ' wins</th>' +
+                      '<th class="mh-th-num h2h-p2-color">' + p2.name + ' wins</th>' +
                       '<th class="mh-th-num">Win%</th>' +
+                      '<th class="mh-th-bars">Win share</th>' +
                     '</tr></thead>' +
                     '<tbody>' + tableRows + '</tbody>' +
                   '</table>' +
@@ -2093,6 +2119,93 @@ const schema = {
     transition: width 0.3s ease;
   }
 
+  /* ----- Unified dual-bar H2H card (Season + All-Time aligned on win-rate) ----- */
+  .h2h-container :global(.h2h-dual-card) {
+    text-align: left;
+    padding: 1.25rem 1.5rem;
+  }
+  .h2h-container :global(.h2h-dual-card .h2h-title) {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+  .h2h-container :global(.h2h-dual-names) {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0 0.25rem;
+    margin-bottom: 0.85rem;
+  }
+  .h2h-container :global(.h2h-dual-row) {
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .h2h-container :global(.h2h-dual-end) {
+    font-size: 0.85rem;
+    font-family: monospace;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .h2h-container :global(.h2h-dual-end.l) { text-align: right; color: #3b82f6; }
+  .h2h-container :global(.h2h-dual-end.r) { color: #a855f7; }
+  .h2h-container :global(.h2h-dual-bar) {
+    position: relative;
+    height: 18px;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+    background: var(--border-color, #2a2a35);
+  }
+  .h2h-container :global(.h2h-dual-bar .h2h-bar-p1) {
+    border-radius: 0;
+  }
+  .h2h-container :global(.h2h-dual-bar .h2h-bar-p2) {
+    border-radius: 0;
+  }
+  .h2h-container :global(.h2h-dual-inline-pct) {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    padding: 0 0.55rem;
+    pointer-events: none;
+  }
+  .h2h-container :global(.h2h-dual-label) {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    color: var(--text-secondary, #9090a0);
+    margin: 0.3rem 0 0.85rem;
+  }
+  .h2h-container :global(.h2h-dual-timeframe) {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary, #e8e8f0);
+    font-size: 0.68rem;
+  }
+  .h2h-container :global(.h2h-dual-sep) { color: #484858; }
+  .h2h-container :global(.h2h-dual-mate) {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-secondary, #9090a0);
+    font-style: italic;
+    margin-top: -0.55rem;
+    margin-bottom: 0.35rem;
+  }
+  /* Remove the stray last-row bottom margin to keep card padding clean */
+  .h2h-container :global(.h2h-dual-card .h2h-dual-label:last-child) {
+    margin-bottom: 0;
+  }
+
   .h2h-container :global(.h2h-meta) {
     display: flex;
     justify-content: space-between;
@@ -2355,6 +2468,77 @@ const schema = {
 
   .matchup-history-container :global(.mh-td-pct) {
     color: var(--text-secondary, #9090a0);
+  }
+
+  /* Variant C — stacked Season/All-Time cells + mini-bars column */
+  .matchup-history-container :global(.mh-stack) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.15;
+  }
+  .matchup-history-container :global(.mh-stack-s) {
+    font-size: 0.95em;
+    font-weight: 700;
+  }
+  .matchup-history-container :global(.mh-stack-at) {
+    font-size: 0.78em;
+    opacity: 0.8;
+    font-weight: 600;
+  }
+  .matchup-history-container :global(.mh-stack-muted) {
+    color: var(--text-secondary, #9090a0);
+    opacity: 0.6;
+  }
+  .matchup-history-container :global(.mh-th-bars) {
+    text-align: center;
+    min-width: 9rem;
+  }
+  .matchup-history-container :global(.mh-td-bars) {
+    text-align: center;
+    padding: 0.4rem 0.5rem;
+  }
+  .matchup-history-container :global(.mh-mini-bars) {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 140px;
+    vertical-align: middle;
+  }
+  .matchup-history-container :global(.mh-mini-bar) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .matchup-history-container :global(.mh-mini-label) {
+    color: var(--text-secondary, #9090a0);
+    font-weight: 700;
+    font-size: 0.55rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    min-width: 20px;
+    text-align: right;
+  }
+  .matchup-history-container :global(.mh-mini-track) {
+    flex: 1;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+  }
+  .matchup-history-container :global(.mh-mini-track.empty) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .matchup-history-container :global(.mh-mini-fill-p1) {
+    background: #3b82f6;
+    height: 100%;
+  }
+  .matchup-history-container :global(.mh-mini-fill-p2) {
+    background: #a855f7;
+    height: 100%;
   }
 
   .matchup-history-container :global(.mh-insight) {
