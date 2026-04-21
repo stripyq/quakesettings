@@ -3,6 +3,16 @@ steamId: "76561198051109164"
 country: HU
 category: duel
 published: false
+hoqCtfRating: 4.58
+ctfRatingUpdated: "2026-04-21"
+ctfRating: 4.58
+hoqCtfGames: 205
+ctfGames: 205
+hoqTdmRating: 2.97
+tdmRatingUpdated: "2026-04-21"
+tdmRating: 2.97
+hoqTdmGames: 19
+tdmGames: 19
 dataSource: player
 duelRating: 820
 duelGames: 184
