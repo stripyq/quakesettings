@@ -1,0 +1,1566 @@
+{
+  "76561198084461653": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.62,
+      "value": 52.27
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.95,
+      "value": 63.31
+    }
+  },
+  "76561198279892880": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.75,
+      "value": 19.22
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.2,
+      "value": 10365.04
+    }
+  },
+  "76561197961473367": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 3.18,
+      "value": 26.86
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 2.08,
+      "value": 64.21
+    }
+  },
+  "76561198025225261": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.88,
+      "value": 1.87
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.77,
+      "value": 16.36
+    }
+  },
+  "76561198105088252": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.28,
+      "value": 0.72
+    }
+  },
+  "76561198196618515": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.45,
+      "value": 0.76
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.28,
+      "value": 45.25
+    }
+  },
+  "76561198013356693": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.05,
+      "value": 14.47
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.33,
+      "value": 1.39
+    }
+  },
+  "76561197963388994": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1,
+      "value": 43.81
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 0.87,
+      "value": 55.92
+    }
+  },
+  "76561198002515349": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.53,
+      "value": 40.8
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.28,
+      "value": 58.72
+    }
+  },
+  "76561198109579696": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.11,
+      "value": 12.02
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.06,
+      "value": 38.4
+    }
+  },
+  "76561198023589138": {
+    "primary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.88,
+      "value": 62.84
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.85,
+      "value": 42.43
+    }
+  },
+  "76561198122684842": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.43,
+      "value": 0.75
+    }
+  },
+  "76561198062139103": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 2.03,
+      "value": 6.42
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.96,
+      "value": 11528.06
+    }
+  },
+  "76561198007335390": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2.21,
+      "value": 21.64
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.61,
+      "value": 5.84
+    }
+  },
+  "76561198042268423": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.14,
+      "value": 0.9
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.06,
+      "value": 10146.28
+    }
+  },
+  "76561198146434639": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.17,
+      "value": 12.17
+    }
+  },
+  "76561198255736445": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.28,
+      "value": 45.26
+    }
+  },
+  "76561198033439430": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2.9,
+      "value": 25.35
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 2.49,
+      "value": 7.04
+    }
+  },
+  "76561199823502432": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.11,
+      "value": 38.65
+    }
+  },
+  "76561198257433093": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.75,
+      "value": 16.3
+    }
+  },
+  "76561198006274665": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.48,
+      "value": 5.67
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.36,
+      "value": 39.9
+    }
+  },
+  "76561198001355736": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.82,
+      "value": 1.05
+    }
+  },
+  "76561198049631090": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.27,
+      "value": 5.38
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.11,
+      "value": 0.69
+    }
+  },
+  "76561197960736529": {
+    "primary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.29,
+      "value": 58.77
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.06,
+      "value": 0.67
+    }
+  },
+  "76561198151319268": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.51,
+      "value": 0.77
+    }
+  },
+  "76561198038215627": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.24,
+      "value": 45.06
+    }
+  },
+  "76561198257445213": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.72,
+      "value": 1.82
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.93,
+      "value": 14.16
+    }
+  },
+  "76561198053960733": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.43,
+      "value": 15.48
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.19,
+      "value": 0.7
+    }
+  },
+  "76561198895628868": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.56,
+      "value": 13.2
+    }
+  },
+  "76561198032236208": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.14,
+      "value": 49.77
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 2.07,
+      "value": 43.55
+    }
+  },
+  "76561198106787712": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.7,
+      "value": 13.55
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.54,
+      "value": 1.45
+    }
+  },
+  "76561198239142044": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 5.12,
+      "value": 2.58
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.77,
+      "value": 16.36
+    }
+  },
+  "76561198117978344": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 3.28,
+      "value": 27.39
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 2.39,
+      "value": 66.35
+    }
+  },
+  "76561198077156894": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.75,
+      "value": 0.82
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.17,
+      "value": 44.68
+    }
+  },
+  "76561198039145005": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.12,
+      "value": 14.67
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.87,
+      "value": 1.56
+    }
+  },
+  "76561198114832578": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2.04,
+      "value": 20.76
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 2.01,
+      "value": 63.75
+    }
+  },
+  "76561198275956025": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.39,
+      "value": 12.75
+    }
+  },
+  "76561198075079469": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.03,
+      "value": 10102.85
+    }
+  },
+  "76561198140092774": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.09,
+      "value": 0.89
+    }
+  },
+  "76561198088925347": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.72,
+      "value": 13.62
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 0.99,
+      "value": 4.99
+    }
+  },
+  "76561198149540641": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.7,
+      "value": 5.97
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.35,
+      "value": 1.39
+    }
+  },
+  "76561198077163281": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.65,
+      "value": 1.01
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.3,
+      "value": 10510.13
+    }
+  },
+  "76561197991370790": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.11,
+      "value": 15.77
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.09,
+      "value": 57.44
+    }
+  },
+  "76561198075628646": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.73,
+      "value": 0.82
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 0.84,
+      "value": 4.79
+    }
+  },
+  "76561198107461408": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.25,
+      "value": 12.38
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 0.92,
+      "value": 1.26
+    }
+  },
+  "76561197985202252": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.63,
+      "value": 41.29
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.55,
+      "value": 60.6
+    }
+  },
+  "76561197964623506": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.23,
+      "value": 12.32
+    }
+  },
+  "76561198028016604": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.87,
+      "value": 13.99
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.3,
+      "value": 16.78
+    }
+  },
+  "76561198098777141": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.13,
+      "value": 12.06
+    }
+  },
+  "76561198254687687": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2.68,
+      "value": 24.16
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.75,
+      "value": 61.96
+    }
+  },
+  "76561197983318796": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.96,
+      "value": 6.32
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.89,
+      "value": 11419.86
+    }
+  },
+  "76561197993861011": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.19,
+      "value": 10349.87
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 0.98,
+      "value": 43.72
+    }
+  },
+  "76561198257362399": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.49,
+      "value": 1.75
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.19,
+      "value": 14.85
+    }
+  },
+  "76561198047335245": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.64,
+      "value": 1.01
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.98,
+      "value": 63.57
+    }
+  },
+  "76561198013666605": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.36,
+      "value": 1.4
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.07,
+      "value": 5.1
+    }
+  },
+  "76561197977412349": {
+    "primary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.97,
+      "value": 63.48
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.57,
+      "value": 13.21
+    }
+  },
+  "76561198257310626": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.49,
+      "value": 40.58
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.33,
+      "value": 59.09
+    }
+  },
+  "76561198257391553": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 3.6,
+      "value": 2.1
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.46,
+      "value": 15.56
+    }
+  },
+  "76561198000088567": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.85,
+      "value": 42.39
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.66,
+      "value": 18.71
+    }
+  },
+  "76561198172629241": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1,
+      "value": 38.07
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 0.94,
+      "value": 14.86
+    }
+  },
+  "76561198008234329": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.06,
+      "value": 49.36
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.53,
+      "value": 0.77
+    }
+  },
+  "76561198200942503": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.35,
+      "value": 45.61
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1,
+      "value": 56.78
+    }
+  },
+  "76561198257316780": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.68,
+      "value": 16.14
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.86,
+      "value": 1.55
+    }
+  },
+  "76561197978345530": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.17,
+      "value": 1.65
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.88,
+      "value": 14.03
+    }
+  },
+  "76561198081117111": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.05,
+      "value": 44.05
+    }
+  },
+  "76561198113970099": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.72,
+      "value": 47.55
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.45,
+      "value": 59.89
+    }
+  },
+  "76561199025422032": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.44,
+      "value": 40.34
+    }
+  },
+  "76561197961473374": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.47,
+      "value": 0.76
+    }
+  },
+  "76561198346024921": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.78,
+      "value": 1.53
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.38,
+      "value": 12.73
+    }
+  },
+  "76561198122207599": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.35,
+      "value": 12.64
+    }
+  },
+  "76561198259839754": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.41,
+      "value": 45.92
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.1,
+      "value": 38.59
+    }
+  },
+  "76561198122384360": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.86,
+      "value": 0.84
+    }
+  },
+  "76561198414877431": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.74,
+      "value": 16.29
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.54,
+      "value": 1.45
+    }
+  },
+  "76561198256203867": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.75,
+      "value": 47.72
+    }
+  },
+  "76561198257420521": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.15,
+      "value": 1.33
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 0.83,
+      "value": 37.23
+    }
+  },
+  "76561198141993917": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.69,
+      "value": 13.52
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.34,
+      "value": 39.82
+    }
+  },
+  "76561198033171295": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.94,
+      "value": 6.3
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.59,
+      "value": 10959.24
+    }
+  },
+  "76561198257403817": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 4.06,
+      "value": 1.31
+    }
+  },
+  "76561199020037962": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2.48,
+      "value": 23.11
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 2.17,
+      "value": 64.84
+    }
+  },
+  "76561198228590616": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.19,
+      "value": 0.91
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.56,
+      "value": 10910.49
+    }
+  },
+  "76561197960270492": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.62,
+      "value": 47.07
+    }
+  },
+  "76561198256500351": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.57,
+      "value": 0.78
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.13,
+      "value": 44.51
+    }
+  },
+  "76561198162507961": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.55,
+      "value": 13.16
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.03,
+      "value": 1.29
+    }
+  },
+  "76561198069103826": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 2.12,
+      "value": 6.55
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 2.01,
+      "value": 11607.53
+    }
+  },
+  "76561197995338411": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.92,
+      "value": 53.83
+    }
+  },
+  "76561198045866799": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 2.44,
+      "value": 12281.67
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 2.29,
+      "value": 65.68
+    }
+  },
+  "76561198256352933": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.42,
+      "value": 5.58
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.38,
+      "value": 1.4
+    }
+  },
+  "76561198064199875": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.22,
+      "value": 0.71
+    }
+  },
+  "76561198089070422": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.1,
+      "value": 49.55
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.94,
+      "value": 20.22
+    }
+  },
+  "76561197965938361": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.71,
+      "value": 11145.02
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.65,
+      "value": 0.8
+    }
+  },
+  "76561198054868921": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.71,
+      "value": 41.7
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.06,
+      "value": 10151.42
+    }
+  },
+  "76561198007682548": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.39,
+      "value": 40.03
+    }
+  },
+  "76561198141767332": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.22,
+      "value": 10390.39
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.21,
+      "value": 5.29
+    }
+  },
+  "76561198166188119": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.03,
+      "value": 38.25
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 0.8,
+      "value": 4.74
+    }
+  },
+  "76561198068877542": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.79,
+      "value": 1.53
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.25,
+      "value": 5.35
+    }
+  },
+  "76561198834543007": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 1.48,
+      "value": 12.99
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 0.9,
+      "value": 1.25
+    }
+  },
+  "76561199496005153": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.05,
+      "value": 49.28
+    }
+  },
+  "76561198039989372": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.39,
+      "value": 45.83
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 0.89,
+      "value": 9879.63
+    }
+  },
+  "76561198093794329": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.68,
+      "value": 1.81
+    },
+    "secondary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.29,
+      "value": 15.11
+    }
+  },
+  "76561198257521635": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.34,
+      "value": 0.73
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 0.82,
+      "value": 42.88
+    }
+  },
+  "76561199018105630": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.41,
+      "value": 45.95
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 0.92,
+      "value": 9922.15
+    }
+  },
+  "76561198037076307": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.83,
+      "value": 19.63
+    },
+    "secondary": {
+      "key": "acc_rg",
+      "label": "Rail Sniper",
+      "z": 1.43,
+      "value": 59.75
+    }
+  },
+  "76561198002376252": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.03,
+      "value": 49.18
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.84,
+      "value": 19.67
+    }
+  },
+  "76561198075453821": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.08,
+      "value": 44.21
+    }
+  },
+  "76561197982035811": {
+    "primary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 2.4,
+      "value": 6.93
+    },
+    "secondary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 2.16,
+      "value": 43.99
+    }
+  },
+  "76561199123746085": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.74,
+      "value": 47.69
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.55,
+      "value": 5.76
+    }
+  },
+  "76561198063443467": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 2.57,
+      "value": 46.07
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.96,
+      "value": 20.33
+    }
+  },
+  "76561198025846557": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.24,
+      "value": 16.47
+    }
+  },
+  "76561198994704226": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.96,
+      "value": 54.07
+    }
+  },
+  "76561199000338031": {
+    "primary": {
+      "key": "acc_lg",
+      "label": "Shafter",
+      "z": 1.95,
+      "value": 42.93
+    },
+    "secondary": {
+      "key": "excellents_per_game",
+      "label": "Multi-Frag Specialist",
+      "z": 1.66,
+      "value": 5.91
+    }
+  },
+  "76561197982671330": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 3.19,
+      "value": 17.46
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 3.05,
+      "value": 1.93
+    }
+  },
+  "76561198043345474": {
+    "primary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.19,
+      "value": 1.66
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.12,
+      "value": 0.9
+    }
+  },
+  "76561198146846857": {
+    "primary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 2.15,
+      "value": 11826.46
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 2,
+      "value": 20.53
+    }
+  },
+  "76561199163321398": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.36,
+      "value": 17.15
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1,
+      "value": 10049.22
+    }
+  },
+  "76561197986714309": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.03,
+      "value": 43.95
+    }
+  },
+  "76561198139067104": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.67,
+      "value": 0.8
+    },
+    "secondary": {
+      "key": "dmg_per_game",
+      "label": "DPS Machine",
+      "z": 1.41,
+      "value": 10677.38
+    }
+  },
+  "76561198280627259": {
+    "primary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.07,
+      "value": 15.57
+    }
+  },
+  "76561199223649083": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.6,
+      "value": 1
+    }
+  },
+  "76561198025670942": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.86,
+      "value": 0.84
+    }
+  },
+  "76561198088270117": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.28,
+      "value": 15.09
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 1.72,
+      "value": 1.51
+    }
+  },
+  "76561197995384039": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.63,
+      "value": 47.11
+    },
+    "secondary": {
+      "key": "impressives_per_game",
+      "label": "Turret",
+      "z": 1.21,
+      "value": 16.31
+    }
+  },
+  "76561198008496401": {
+    "primary": {
+      "key": "defends_per_game",
+      "label": "Defensive Anchor",
+      "z": 2.96,
+      "value": 16.85
+    },
+    "secondary": {
+      "key": "kd",
+      "label": "Fragger",
+      "z": 2.55,
+      "value": 1.77
+    }
+  },
+  "76561198318866295": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 2.09,
+      "value": 49.49
+    },
+    "secondary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.45,
+      "value": 0.76
+    }
+  },
+  "76561198176224478": {
+    "primary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.15,
+      "value": 44.59
+    }
+  },
+  "76561198157555570": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 2.22,
+      "value": 0.92
+    }
+  },
+  "76561198257366499": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.44,
+      "value": 0.76
+    }
+  },
+  "76561198959359034": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.86,
+      "value": 0.84
+    }
+  },
+  "76561199014355440": {
+    "primary": {
+      "key": "caps_per_game",
+      "label": "Flag Runner",
+      "z": 1.31,
+      "value": 0.73
+    },
+    "secondary": {
+      "key": "acc_rl",
+      "label": "Rocket Jockey",
+      "z": 1.29,
+      "value": 45.35
+    }
+  }
+}

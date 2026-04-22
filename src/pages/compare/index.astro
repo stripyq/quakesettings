@@ -160,6 +160,27 @@ for (const sid of Object.keys(badgesData)) {
   badgesData[sid] = badgesData[sid].slice(0, COMPARE_BADGE_CAP);
 }
 
+// Signatures (identity-level "known for" labels) — build per-sid merged
+// struct keyed by sid, shape: { ctf?: [labels], tdm?: [labels] }. Client
+// renders as a one-liner under the player name.
+type CompareSigs = { ctf?: string[]; tdm?: string[] };
+const signaturesData: Record<string, CompareSigs> = {};
+for (const gt of ['ctf', 'tdm'] as const) {
+  try {
+    const sigPath = path.join(process.cwd(), `public/data/${gt}/signatures.json`);
+    const raw = JSON.parse(fs.readFileSync(sigPath, 'utf8'));
+    for (const sid of Object.keys(raw)) {
+      const entry = raw[sid];
+      const labels: string[] = [entry.primary.label];
+      if (entry.secondary) labels.push(entry.secondary.label);
+      const slot = signaturesData[sid] || (signaturesData[sid] = {});
+      slot[gt] = labels;
+    }
+  } catch {
+    // signatures.json missing for this gt — skip
+  }
+}
+
 // Get all data for client-side comparison (filter out unpublished)
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
@@ -258,7 +279,7 @@ const schema = {
     <p>Select two players above to compare their settings</p>
   </div>
 
-  <script define:vars={{ playersData, base, seasonStatsData, registryNameMap, badgesData }}>
+  <script define:vars={{ playersData, base, seasonStatsData, registryNameMap, badgesData, signaturesData }}>
     document.addEventListener('DOMContentLoaded', function() {
       const player1Select = document.getElementById('player1');
       const player2Select = document.getElementById('player2');
@@ -305,6 +326,31 @@ const schema = {
       function escapeAttr(s) {
         return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       }
+      // Signatures tagline — "CTF: Rail Sniper · Flag Runner · TDM: Fragger".
+      // Identity-level labels (z-score driven, built at derive time).
+      function renderCompareSignatures(steamId) {
+        if (!steamId) return '';
+        var sigs = signaturesData[steamId];
+        if (!sigs || (!sigs.ctf && !sigs.tdm)) return '';
+        var parts = [];
+        ['ctf','tdm'].forEach(function(gt) {
+          var labels = sigs[gt];
+          if (!labels || !labels.length) return;
+          var chips = labels.map(function(lbl, i) {
+            var cls = 'cmp-sig-chip cmp-sig-chip-' + (i === 0 ? 'primary' : 'secondary');
+            return '<span class="' + cls + '">' + escapeAttr(lbl) + '</span>';
+          }).join('<span class="cmp-sig-sep">·</span>');
+          parts.push(
+            '<span class="cmp-sig-row">' +
+              '<span class="cmp-sig-gt cmp-sig-gt-' + gt + '">' + gt.toUpperCase() + '</span>' +
+              '<span class="cmp-sig-labels">' + chips + '</span>' +
+            '</span>'
+          );
+        });
+        if (!parts.length) return '';
+        return '<div class="cmp-signatures">' + parts.join('') + '</div>';
+      }
+
       function renderCompareBadges(steamId) {
         if (!steamId) return '';
         var list = badgesData[steamId];
@@ -625,8 +671,8 @@ const schema = {
         const p1Flag = countryCodeToFlag(p1Country);
         const p2Flag = countryCodeToFlag(p2Country);
 
-        p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Flag ? `<span class="header-country">${p1Flag}</span>` : ''}` + renderCompareBadges(p1.steamId);
-        p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Flag ? `<span class="header-country">${p2Flag}</span>` : ''}` + renderCompareBadges(p2.steamId);
+        p1Header.innerHTML = `<span class="header-name">${p1.name}</span>${p1Flag ? `<span class="header-country">${p1Flag}</span>` : ''}` + renderCompareSignatures(p1.steamId) + renderCompareBadges(p1.steamId);
+        p2Header.innerHTML = `<span class="header-name">${p2.name}</span>${p2Flag ? `<span class="header-country">${p2Flag}</span>` : ''}` + renderCompareSignatures(p2.steamId) + renderCompareBadges(p2.steamId);
 
         // Build comparison table
         let html = '';
@@ -3442,6 +3488,46 @@ const schema = {
       padding: 0.35rem 0.5rem;
     }
   }
+
+  /* ---------- Signatures tagline under player names in headers ---------- */
+  :global(.cmp-signatures) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+  }
+  :global(.cmp-sig-row) {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  :global(.cmp-sig-gt) {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    color: #9090a0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  :global(.cmp-sig-gt-ctf) { color: #6ee7b7; border-color: rgba(110,231,183,0.25); }
+  :global(.cmp-sig-gt-tdm) { color: #fca5a5; border-color: rgba(252,165,165,0.25); }
+  :global(.cmp-sig-labels) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+  :global(.cmp-sig-chip) { font-weight: 600; letter-spacing: 0.01em; }
+  :global(.cmp-sig-chip-primary) { color: #e5e7eb; }
+  :global(.cmp-sig-chip-secondary) { color: #9090a0; font-weight: 500; }
+  :global(.cmp-sig-sep) { color: #4a4a58; font-weight: 400; margin: 0 0.1rem; }
 
   /* ---------- Compact badge strip under player names in headers ---------- */
   :global(.cmp-badges) {

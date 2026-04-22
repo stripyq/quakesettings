@@ -214,6 +214,35 @@ allBadges.sort((a, b) => {
 });
 const badgesToShow = allBadges.slice(0, BADGE_CAP);
 
+// ----------------------------------------------------------------
+// Signatures — per-player over-indexed stats (identity, not achievement)
+// ----------------------------------------------------------------
+type Signature = { key: string; label: string; z: number; value: number };
+type SignatureEntry = { primary: Signature; secondary?: Signature };
+const sigByGt: Record<'ctf' | 'tdm', SignatureEntry | null> = { ctf: null, tdm: null };
+if (p.steamId) {
+  for (const gt of ['ctf', 'tdm'] as const) {
+    try {
+      const sigPath = path.join(process.cwd(), `public/data/${gt}/signatures.json`);
+      const raw = JSON.parse(fs.readFileSync(sigPath, 'utf8'));
+      if (raw[p.steamId]) sigByGt[gt] = raw[p.steamId];
+    } catch {
+      // signatures not derived yet — skip silently
+    }
+  }
+}
+const hasSignatures = !!(sigByGt.ctf || sigByGt.tdm);
+function sigLabels(entry: SignatureEntry): string[] {
+  const out = [entry.primary.label];
+  if (entry.secondary) out.push(entry.secondary.label);
+  return out;
+}
+function sigTooltip(entry: SignatureEntry, gt: string): string {
+  const parts = [`${gt.toUpperCase()} · ${entry.primary.label} (+${entry.primary.z.toFixed(1)}σ)`];
+  if (entry.secondary) parts.push(`${entry.secondary.label} (+${entry.secondary.z.toFixed(1)}σ)`);
+  return parts.join(' · ');
+}
+
 // Pretty-print map subject for map_king / map_top10 badges
 const PROFILE_MAP_ALIASES: Record<string, string> = { q3wcp9: 'Spider Crossings' };
 function prettyMapBadge(raw: string): string {
@@ -552,6 +581,32 @@ const schema = {
         <a href={`${base}compare/?p1=${player.id}`} class="compare-btn">Compare with another player</a>
       </div>
     </div>
+
+    {hasSignatures && (
+      <section class="player-signatures">
+        <div class="player-signatures-heading">Known For</div>
+        <div class="player-signatures-body">
+          {(['ctf','tdm'] as const).map((gt) => {
+            const entry = sigByGt[gt];
+            if (!entry) return null;
+            const labels = sigLabels(entry);
+            return (
+              <div class="sig-row" title={sigTooltip(entry, gt)}>
+                <span class={`sig-gt sig-gt-${gt}`}>{gt.toUpperCase()}</span>
+                <span class="sig-labels">
+                  {labels.map((lbl, i) => (
+                    <>
+                      {i > 0 && <span class="sig-sep">·</span>}
+                      <span class={`sig-chip sig-chip-${i === 0 ? 'primary' : 'secondary'}`}>{lbl}</span>
+                    </>
+                  ))}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    )}
 
     {badgesToShow.length > 0 && (
       <section class="player-badges">
@@ -3325,6 +3380,64 @@ const schema = {
       padding: 0.35rem 0.5rem;
     }
   }
+
+  /* ---------- Signatures (Known For) ---------- */
+  .player-signatures {
+    margin: 1.5rem 0 0.75rem;
+    padding: 0.9rem 1rem;
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid #ff6b35;
+    border-radius: 8px;
+  }
+  .player-signatures-heading {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ff6b35;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .player-signatures-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .sig-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+  .sig-gt {
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    color: #9090a0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    min-width: 2.4rem;
+    text-align: center;
+  }
+  .sig-gt-ctf { color: #6ee7b7; border-color: rgba(110,231,183,0.25); }
+  .sig-gt-tdm { color: #fca5a5; border-color: rgba(252,165,165,0.25); }
+  .sig-labels {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+  .sig-chip {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .sig-chip-primary { color: #e5e7eb; }
+  .sig-chip-secondary { color: #9090a0; font-weight: 500; }
+  .sig-sep { color: #4a4a58; font-weight: 400; }
 
   /* ---------- All-Time Achievement Badges (Variant C) ---------- */
   .player-badges {
