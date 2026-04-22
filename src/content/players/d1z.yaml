@@ -5,10 +5,11 @@ aliases:
   - d1zulya
 team2026: GdeFlag?
 team2026Shortname: GF?
-tdmRating: 25.25
-tdmRatingUpdated: "2026-02-04"
-ctfRating: 22.34
-ctfRatingUpdated: "2026-02-04"
+lastUpdated: 2026-02
+tdmRating: 24.81
+tdmRatingUpdated: "2026-04-22"
+ctfRating: 24.43
+ctfRatingUpdated: "2026-04-22"
 qllrCtfRating: 22.31
 qllrCtfGames: 18
 hoqCtfRating: 24.43
@@ -17,8 +18,8 @@ hoqTdmRating: 24.81
 hoqTdmGames: 378
 
 duelRating: 1554
-ctfGames: 173
-tdmGames: 362
+ctfGames: 236
+tdmGames: 378
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii

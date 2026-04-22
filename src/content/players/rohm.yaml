@@ -6,15 +6,16 @@ category: ctf
 
 
 
-ctfRating: 0.009290201589465141
-ctfRatingUpdated: "2026-03-12"
-ctfGames: 214
+ctfRating: -0.56
+ctfRatingUpdated: "2026-04-22"
+ctfGames: 226
 hoqCtfRating: -0.56
 hoqCtfGames: 226
 
 published: true
 
 dataSource: player
+lastUpdated: 2026-03
 dpi: 1800
 sensitivity: 2.3
 m_cpi: 0
