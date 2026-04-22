@@ -161,9 +161,11 @@ for (const sid of Object.keys(badgesData)) {
 }
 
 // Signatures (identity-level "known for" labels) — build per-sid merged
-// struct keyed by sid, shape: { ctf?: [labels], tdm?: [labels] }. Client
-// renders as a one-liner under the player name.
-type CompareSigs = { ctf?: string[]; tdm?: string[] };
+// struct keyed by sid. Shape: { ctf?: [{key,label,z,value}], tdm?: [...] }.
+// We include key/z/value so the client can render a plain-English tooltip
+// ("Averages 2.5 flag caps per game. Top ~12% of CTF players").
+type CompareSigChip = { key: string; label: string; z: number; value: number };
+type CompareSigs = { ctf?: CompareSigChip[]; tdm?: CompareSigChip[] };
 const signaturesData: Record<string, CompareSigs> = {};
 for (const gt of ['ctf', 'tdm'] as const) {
   try {
@@ -171,10 +173,10 @@ for (const gt of ['ctf', 'tdm'] as const) {
     const raw = JSON.parse(fs.readFileSync(sigPath, 'utf8'));
     for (const sid of Object.keys(raw)) {
       const entry = raw[sid];
-      const labels: string[] = [entry.primary.label];
-      if (entry.secondary) labels.push(entry.secondary.label);
+      const chips: CompareSigChip[] = [entry.primary];
+      if (entry.secondary) chips.push(entry.secondary);
       const slot = signaturesData[sid] || (signaturesData[sid] = {});
-      slot[gt] = labels;
+      slot[gt] = chips;
     }
   } catch {
     // signatures.json missing for this gt — skip
@@ -327,23 +329,62 @@ const schema = {
         return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       }
       // Signatures tagline — "CTF: Rail Sniper · Flag Runner · TDM: Fragger".
-      // Identity-level labels (z-score driven, built at derive time).
+      // Identity-level labels (z-score driven, built at derive time). Each
+      // row carries a native tooltip explaining what the label means in
+      // plain English ("Averages 2.5 flag caps per game. Top ~12% of CTF
+      // players with 50+ games").
+      function sigValueSentence(key, value) {
+        switch (key) {
+          case 'kd': return 'K/D of ' + value.toFixed(2);
+          case 'dmg_per_game': return 'Averages ' + Math.round(value).toLocaleString('en-US') + ' damage per game';
+          case 'caps_per_game': return 'Averages ' + value.toFixed(1) + ' flag caps per game';
+          case 'defends_per_game': return 'Averages ' + value.toFixed(1) + ' flag defends per game';
+          case 'impressives_per_game': return 'Averages ' + value.toFixed(1) + ' Impressive medals per game (rail 2-hits)';
+          case 'excellents_per_game': return 'Averages ' + value.toFixed(1) + ' Excellent medals per game (multi-frags)';
+          case 'acc_rg': return 'Railgun accuracy of ' + value.toFixed(0) + '%';
+          case 'acc_lg': return 'Lightning Gun accuracy of ' + value.toFixed(0) + '%';
+          case 'acc_rl': return 'Rocket accuracy of ' + value.toFixed(0) + '%';
+          default: return String(value);
+        }
+      }
+      function sigPercentileBand(z) {
+        if (z >= 2.5) return 'top ~1%';
+        if (z >= 2.0) return 'top ~2%';
+        if (z >= 1.5) return 'top ~7%';
+        if (z >= 1.2) return 'top ~12%';
+        if (z >= 1.0) return 'top ~16%';
+        return 'top ~20%';
+      }
+      function buildSigTooltip(chips, gt) {
+        var GT = gt.toUpperCase();
+        var blocks = [];
+        chips.forEach(function(c, i) {
+          var band = sigPercentileBand(c.z);
+          if (i === 0) {
+            blocks.push(c.label + ' — ' + sigValueSentence(c.key, c.value) + '.\nThat\'s in the ' + band + ' of ' + GT + ' players with 50+ games.');
+          } else {
+            blocks.push(c.label + ' — ' + sigValueSentence(c.key, c.value) + '.\nIn the ' + band + '.');
+          }
+        });
+        return blocks.join('\n\n');
+      }
       function renderCompareSignatures(steamId) {
         if (!steamId) return '';
         var sigs = signaturesData[steamId];
         if (!sigs || (!sigs.ctf && !sigs.tdm)) return '';
         var parts = [];
         ['ctf','tdm'].forEach(function(gt) {
-          var labels = sigs[gt];
-          if (!labels || !labels.length) return;
-          var chips = labels.map(function(lbl, i) {
+          var chips = sigs[gt];
+          if (!chips || !chips.length) return;
+          var tooltip = buildSigTooltip(chips, gt);
+          var chipHtml = chips.map(function(c, i) {
             var cls = 'cmp-sig-chip cmp-sig-chip-' + (i === 0 ? 'primary' : 'secondary');
-            return '<span class="' + cls + '">' + escapeAttr(lbl) + '</span>';
+            return '<span class="' + cls + '">' + escapeAttr(c.label) + '</span>';
           }).join('<span class="cmp-sig-sep">·</span>');
           parts.push(
-            '<span class="cmp-sig-row">' +
+            '<span class="cmp-sig-row" title="' + escapeAttr(tooltip) + '">' +
               '<span class="cmp-sig-gt cmp-sig-gt-' + gt + '">' + gt.toUpperCase() + '</span>' +
-              '<span class="cmp-sig-labels">' + chips + '</span>' +
+              '<span class="cmp-sig-labels">' + chipHtml + '</span>' +
             '</span>'
           );
         });

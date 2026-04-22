@@ -237,10 +237,53 @@ function sigLabels(entry: SignatureEntry): string[] {
   if (entry.secondary) out.push(entry.secondary.label);
   return out;
 }
+// Per-stat plain-English sentence. Value is already rounded in signatures.json
+// but we format it nicely here (1 decimal for K/D and per-game medals,
+// thousands separator for damage, integer percentage for accuracies).
+function sigValueSentence(key: string, value: number): string {
+  switch (key) {
+    case 'kd':
+      return `K/D of ${value.toFixed(2)}`;
+    case 'dmg_per_game':
+      return `Averages ${Math.round(value).toLocaleString('en-US')} damage per game`;
+    case 'caps_per_game':
+      return `Averages ${value.toFixed(1)} flag caps per game`;
+    case 'defends_per_game':
+      return `Averages ${value.toFixed(1)} flag defends per game`;
+    case 'impressives_per_game':
+      return `Averages ${value.toFixed(1)} Impressive medals per game (rail 2-hits)`;
+    case 'excellents_per_game':
+      return `Averages ${value.toFixed(1)} Excellent medals per game (multi-frags)`;
+    case 'acc_rg':
+      return `Railgun accuracy of ${value.toFixed(0)}%`;
+    case 'acc_lg':
+      return `Lightning Gun accuracy of ${value.toFixed(0)}%`;
+    case 'acc_rl':
+      return `Rocket accuracy of ${value.toFixed(0)}%`;
+    default:
+      return `${value}`;
+  }
+}
+// Rough normal-distribution percentile bands. Used to translate z-scores
+// into something the reader actually understands.
+function sigPercentileBand(z: number): string {
+  if (z >= 2.5) return 'top ~1%';
+  if (z >= 2.0) return 'top ~2%';
+  if (z >= 1.5) return 'top ~7%';
+  if (z >= 1.2) return 'top ~12%';
+  if (z >= 1.0) return 'top ~16%';
+  return 'top ~20%';
+}
 function sigTooltip(entry: SignatureEntry, gt: string): string {
-  const parts = [`${gt.toUpperCase()} · ${entry.primary.label} (+${entry.primary.z.toFixed(1)}σ)`];
-  if (entry.secondary) parts.push(`${entry.secondary.label} (+${entry.secondary.z.toFixed(1)}σ)`);
-  return parts.join(' · ');
+  const GT = gt.toUpperCase();
+  const blocks: string[] = [];
+  const p = entry.primary;
+  blocks.push(`${p.label} — ${sigValueSentence(p.key, p.value)}.\nThat's in the ${sigPercentileBand(p.z)} of ${GT} players with 50+ games.`);
+  if (entry.secondary) {
+    const s = entry.secondary;
+    blocks.push(`${s.label} — ${sigValueSentence(s.key, s.value)}.\nIn the ${sigPercentileBand(s.z)}.`);
+  }
+  return blocks.join('\n\n');
 }
 
 // Pretty-print map subject for map_king / map_top10 badges

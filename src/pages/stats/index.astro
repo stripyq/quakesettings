@@ -857,6 +857,117 @@ const tdmMaps = buildMapLeaderboards('tdm', () => TDM_DEFAULT_MIN_GAMES);
 // Only show TDM maps with at least 3 qualifying players
 const tdmFilteredMaps = tdmMaps.sortedMaps.filter(m => tdmMaps.playerCounts[m] >= 3);
 
+// ===========================================
+// ALL-TIME ARCHIVE — activity + rating stories
+// Derived from public/data/archive/<gt>.jsonl via
+// derive-archive.cjs / derive-tdm-all.cjs / derive-rating-stories.cjs.
+// ===========================================
+
+type ActivityData = { gametype: string; total_matches: number; by_day: Record<string, number>; by_month: Record<string, number> };
+type VolatilityRow = { sid: string; nick: string; games: number; stddev: number; range: number; peak: number; trough: number };
+type ComebackRow = { sid: string; nick: string; games: number; fromPeak: number; toTrough: number; drop: number; newPeak: number; peakAt: number; troughAt: number; newPeakAt: number };
+type RatingStories = { volatility: VolatilityRow[]; comebacks: ComebackRow[] };
+
+function loadJson<T>(rel: string, fallback: T): T {
+  try { return JSON.parse(fs.readFileSync(path.join(process.cwd(), rel), 'utf8')); }
+  catch { return fallback; }
+}
+
+const ctfActivity = loadJson<ActivityData | null>('public/data/ctf/activity.json', null);
+const tdmActivity = loadJson<ActivityData | null>('public/data/tdm/activity.json', null);
+const ctfStories = loadJson<RatingStories>('public/data/ctf/rating-stories.json', { volatility: [], comebacks: [] });
+const tdmStories = loadJson<RatingStories>('public/data/tdm/rating-stories.json', { volatility: [], comebacks: [] });
+
+// Build slug lookup so we can link players from the leaderboards when
+// they have a published profile. Archive sids that don't map to a
+// published profile render as plain text.
+const archiveSlugBySid: Record<string, string> = {};
+for (const pl of allPlayers) {
+  if (pl.data.steamId && pl.data.published !== false) archiveSlugBySid[pl.data.steamId] = pl.id;
+}
+
+// ---------- activity timeline preprocessing ----------
+// Build a merged, chronologically-sorted list of all YYYY-MM keys that
+// appear in either CTF or TDM data, plus per-gt counts aligned to that
+// same axis. Months with zero games get an explicit 0.
+type MonthPoint = { key: string; label: string; ctf: number; tdm: number };
+function buildMonthlyTimeline(ctf: ActivityData | null, tdm: ActivityData | null): MonthPoint[] {
+  const keys = new Set<string>();
+  if (ctf?.by_month) Object.keys(ctf.by_month).forEach(k => keys.add(k));
+  if (tdm?.by_month) Object.keys(tdm.by_month).forEach(k => keys.add(k));
+  const sorted = [...keys].sort();
+  if (sorted.length === 0) return [];
+  // Fill in any missing months between first and last with 0 so the
+  // line chart doesn't skip gaps.
+  const [firstY, firstM] = sorted[0].split('-').map(Number);
+  const [lastY, lastM] = sorted[sorted.length - 1].split('-').map(Number);
+  const filled: string[] = [];
+  for (let y = firstY, m = firstM; y < lastY || (y === lastY && m <= lastM); ) {
+    filled.push(`${y}-${String(m).padStart(2, '0')}`);
+    m++; if (m > 12) { m = 1; y++; }
+  }
+  return filled.map(k => {
+    const [y, mo] = k.split('-').map(Number);
+    const monthNames = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return {
+      key: k,
+      label: `${monthNames[mo]} ${y}`,
+      ctf: ctf?.by_month?.[k] ?? 0,
+      tdm: tdm?.by_month?.[k] ?? 0,
+    };
+  });
+}
+const monthlyTimeline = buildMonthlyTimeline(ctfActivity, tdmActivity);
+
+// ---------- SVG path builder for activity chart ----------
+const CHART_W = 880;
+const CHART_H = 240;
+const PAD_L = 48, PAD_R = 16, PAD_T = 16, PAD_B = 36;
+const PLOT_W = CHART_W - PAD_L - PAD_R;
+const PLOT_H = CHART_H - PAD_T - PAD_B;
+
+function buildChartGeometry(points: MonthPoint[]) {
+  if (points.length === 0) return null;
+  const maxY = Math.max(1, ...points.map(p => Math.max(p.ctf, p.tdm)));
+  // Round max up to a nice round number for the axis ceiling.
+  const niceMax = (() => {
+    const step = Math.pow(10, Math.floor(Math.log10(maxY)));
+    return Math.ceil(maxY / step) * step;
+  })();
+  const stepX = points.length > 1 ? PLOT_W / (points.length - 1) : 0;
+  const xOf = (i: number) => PAD_L + i * stepX;
+  const yOf = (v: number) => PAD_T + PLOT_H - (v / niceMax) * PLOT_H;
+  const ctfPath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(p.ctf).toFixed(1)}`).join(' ');
+  const tdmPath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(p.tdm).toFixed(1)}`).join(' ');
+  // Y-axis tick labels — 0, ¼, ½, ¾, max.
+  const yTicks = [0, niceMax * 0.25, niceMax * 0.5, niceMax * 0.75, niceMax].map(v => ({
+    v,
+    label: Math.round(v).toLocaleString('en-US'),
+    y: yOf(v),
+  }));
+  // X-axis tick labels — one per year (first month of each year that appears).
+  const seenYears = new Set<string>();
+  const xTicks: { year: string; x: number }[] = [];
+  points.forEach((p, i) => {
+    const y = p.key.slice(0, 4);
+    if (!seenYears.has(y)) { seenYears.add(y); xTicks.push({ year: y, x: xOf(i) }); }
+  });
+  return { ctfPath, tdmPath, yTicks, xTicks, niceMax, points };
+}
+const chart = buildChartGeometry(monthlyTimeline);
+
+// Headline totals for the section subtitle.
+const archiveTotalMatches = (ctfActivity?.total_matches || 0) + (tdmActivity?.total_matches || 0);
+const archiveFirstMonth = monthlyTimeline.length > 0 ? monthlyTimeline[0].label : '';
+const archiveLastMonth = monthlyTimeline.length > 0 ? monthlyTimeline[monthlyTimeline.length - 1].label : '';
+
+// Helper: render a ts as a short "MMM YYYY" string for comeback narratives.
+function fmtTs(ts: number): string {
+  const d = new Date(ts * 1000);
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${monthNames[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Dataset",
@@ -1662,6 +1773,140 @@ const schema = {
         </div>
       </div>
     </div>
+
+    <!-- ========== SECTION: ALL-TIME ARCHIVE ========== -->
+    {chart && (
+    <div class="s-section-header" style="--section-color: #e0883e">
+      <div class="s-section-icon" style="background: #e0883e">&#128337;</div>
+      <span class="s-section-title" style="color: #e0883e">ALL-TIME ARCHIVE</span>
+      <span class="s-tooltip-wrap">
+        <span class="s-info-icon" style="color: #e0883e">&#9432;</span>
+        <span class="s-tooltip">Derived from every HoQ match record since {archiveFirstMonth} — {archiveTotalMatches.toLocaleString('en-US')} matches across CTF and TDM.</span>
+      </span>
+      <span class="s-section-attr">Scraped from <a href="http://88.214.20.58/" target="_blank" rel="noopener">HoQ</a></span>
+    </div>
+    )}
+    {chart && (
+    <div class="s-archive-wrap">
+      <div class="s-archive-sub">
+        {archiveTotalMatches.toLocaleString('en-US')} matches · {archiveFirstMonth} – {archiveLastMonth}
+      </div>
+
+      <!-- Card: Activity timeline -->
+      <div class="s-card s-archive-activity">
+        <h2 class="s-card-title">Games per Month</h2>
+        <p class="s-card-sub">
+          Every HoQ CTF and TDM match ever scraped, bucketed by month.
+        </p>
+        <div class="s-archive-legend">
+          <span class="s-legend-item"><span class="s-legend-swatch s-legend-ctf"></span>CTF</span>
+          <span class="s-legend-item"><span class="s-legend-swatch s-legend-tdm"></span>TDM</span>
+        </div>
+        <svg class="s-activity-chart" viewBox={`0 0 ${CHART_W} ${CHART_H}`} role="img" aria-label="Games per month timeline">
+          {/* Gridlines + y-axis labels */}
+          {chart.yTicks.map(t => (
+            <>
+              <line x1={PAD_L} y1={t.y} x2={CHART_W - PAD_R} y2={t.y} class="s-chart-grid" />
+              <text x={PAD_L - 8} y={t.y + 4} class="s-chart-ylabel" text-anchor="end">{t.label}</text>
+            </>
+          ))}
+          {/* X-axis year labels */}
+          {chart.xTicks.map(t => (
+            <text x={t.x} y={CHART_H - PAD_B + 20} class="s-chart-xlabel" text-anchor="middle">{t.year}</text>
+          ))}
+          {/* Data lines */}
+          <path d={chart.ctfPath} class="s-chart-line s-chart-ctf" fill="none" />
+          <path d={chart.tdmPath} class="s-chart-line s-chart-tdm" fill="none" />
+        </svg>
+      </div>
+
+      <!-- Card: Rating volatility (biggest swings) -->
+      <div class="s-card s-archive-rating">
+        <h2 class="s-card-title">Biggest Rating Swings</h2>
+        <p class="s-card-sub">
+          Players with the widest all-time rating range (peak − trough). 200+ games minimum.
+          The stddev column shows per-match bounciness — higher means rating jumps more game-to-game.
+        </p>
+        <div class="s-archive-split">
+          {(['ctf', 'tdm'] as const).map((gt) => {
+            const rows = gt === 'ctf' ? ctfStories.volatility : tdmStories.volatility;
+            const color = gt === 'ctf' ? '#39d353' : '#f0883e';
+            return (
+              <div class="s-archive-col">
+                <div class="s-archive-col-title" style={`color:${color}`}>{gt.toUpperCase()}</div>
+                {rows.length === 0 ? (
+                  <div class="s-archive-empty">No data. Run derive-rating-stories.cjs.</div>
+                ) : (
+                  <table class="s-archive-table">
+                    <thead><tr><th>#</th><th>Player</th><th>Range</th><th>Span</th><th>σ</th><th>Games</th></tr></thead>
+                    <tbody>
+                      {rows.map((r, i) => {
+                        const slug = archiveSlugBySid[r.sid];
+                        return (
+                          <tr>
+                            <td class="s-archive-rank">{i + 1}</td>
+                            <td class="s-archive-name">
+                              {slug ? <a href={`${base}players/${slug}/`}>{r.nick}</a> : <span>{r.nick}</span>}
+                            </td>
+                            <td class="s-archive-num">{r.trough.toFixed(1)} → {r.peak.toFixed(1)}</td>
+                            <td class="s-archive-num s-archive-hero">{r.range.toFixed(1)}</td>
+                            <td class="s-archive-num s-archive-dim">{r.stddev.toFixed(2)}</td>
+                            <td class="s-archive-num s-archive-dim">{r.games}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Card: Comeback stories -->
+      <div class="s-card s-archive-comebacks">
+        <h2 class="s-card-title">Comeback Stories</h2>
+        <p class="s-card-sub">
+          Players who fell ≥8 points from a peak and later climbed to a brand-new peak.
+          Biggest drop first.
+        </p>
+        <div class="s-archive-split">
+          {(['ctf', 'tdm'] as const).map((gt) => {
+            const rows = gt === 'ctf' ? ctfStories.comebacks : tdmStories.comebacks;
+            const color = gt === 'ctf' ? '#39d353' : '#f0883e';
+            return (
+              <div class="s-archive-col">
+                <div class="s-archive-col-title" style={`color:${color}`}>{gt.toUpperCase()}</div>
+                {rows.length === 0 ? (
+                  <div class="s-archive-empty">No qualifying comebacks.</div>
+                ) : (
+                  <ul class="s-comeback-list">
+                    {rows.slice(0, 5).map((c) => {
+                      const slug = archiveSlugBySid[c.sid];
+                      return (
+                        <li class="s-comeback-item">
+                          <div class="s-comeback-name">
+                            {slug ? <a href={`${base}players/${slug}/`}>{c.nick}</a> : <span>{c.nick}</span>}
+                          </div>
+                          <div class="s-comeback-narrative">
+                            Peaked at <strong>{c.fromPeak.toFixed(1)}</strong> ({fmtTs(c.peakAt)}),
+                            crashed to <strong>{c.toTrough.toFixed(1)}</strong> ({fmtTs(c.troughAt)}) —
+                            a <span class="s-comeback-drop">{c.drop.toFixed(1)}-point drop</span>.
+                            Then climbed back to a new peak of <strong>{c.newPeak.toFixed(1)}</strong> ({fmtTs(c.newPeakAt)}).
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+    )}
 
     <!-- ========== SECTION: CTF MAP RATING LEADERBOARDS ========== -->
     <div class="s-section-header" style="--section-color: #39d353">
@@ -2927,6 +3172,170 @@ const schema = {
 
     .s-map-lb-table {
       font-size: 0.75rem;
+    }
+  }
+
+  /* --- All-Time Archive section --- */
+  .s-archive-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .s-archive-sub {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-top: -0.25rem;
+  }
+  .s-archive-activity {
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+  .s-archive-legend {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-bottom: 0.25rem;
+  }
+  .s-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .s-legend-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .s-legend-ctf { background: #39d353; }
+  .s-legend-tdm { background: #f0883e; }
+  .s-activity-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .s-chart-grid {
+    stroke: #30363d;
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
+  }
+  .s-chart-ylabel {
+    fill: #8b949e;
+    font-size: 11px;
+    font-family: inherit;
+  }
+  .s-chart-xlabel {
+    fill: #8b949e;
+    font-size: 11px;
+    font-family: inherit;
+  }
+  .s-chart-line {
+    stroke-width: 1.75;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .s-chart-ctf { stroke: #39d353; }
+  .s-chart-tdm { stroke: #f0883e; }
+  .s-archive-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .s-archive-col-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .s-archive-empty {
+    font-size: 0.8rem;
+    color: #8b949e;
+    font-style: italic;
+  }
+  .s-archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .s-archive-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #8b949e;
+    padding: 0.35rem 0.4rem;
+    border-bottom: 1px solid #30363d;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .s-archive-table td {
+    padding: 0.35rem 0.4rem;
+    border-bottom: 1px solid #21262d;
+    color: #c9d1d9;
+  }
+  .s-archive-table tr:last-child td {
+    border-bottom: none;
+  }
+  .s-archive-rank {
+    color: #8b949e;
+    width: 1.5rem;
+  }
+  .s-archive-name a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .s-archive-name a:hover { text-decoration: underline; }
+  .s-archive-num {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .s-archive-hero {
+    color: #f0f6fc;
+    font-weight: 600;
+  }
+  .s-archive-dim {
+    color: #8b949e;
+  }
+  .s-comeback-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .s-comeback-item {
+    border-left: 2px solid #30363d;
+    padding-left: 0.75rem;
+  }
+  .s-comeback-name {
+    font-weight: 600;
+    color: #f0f6fc;
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+  }
+  .s-comeback-name a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .s-comeback-name a:hover { text-decoration: underline; }
+  .s-comeback-narrative {
+    font-size: 0.8rem;
+    color: #c9d1d9;
+    line-height: 1.5;
+  }
+  .s-comeback-narrative strong {
+    color: #f0f6fc;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .s-comeback-drop {
+    color: #f85149;
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .s-archive-split {
+      grid-template-columns: 1fr;
     }
   }
 </style>
