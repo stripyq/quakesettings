@@ -403,11 +403,16 @@ const schema = {
       }
 
       Promise.all([loadAllTimeH2H('ctf'), loadAllTimeH2H('tdm')]).then(function() {
-        // If both players already selected at load, re-render now that data is ready
+        // If both players already selected at load, re-render now that data is ready.
+        // Both the top H2H card AND the Match Record per-map table depend on
+        // alltimeH2H — without this, cold-cache loads show "—" for all-time rows.
         if (player1Select.value && player2Select.value) {
           const p1 = playersData[player1Select.value];
           const p2 = playersData[player2Select.value];
-          if (p1 && p2) updateH2H(p1, p2);
+          if (p1 && p2) {
+            updateH2H(p1, p2);
+            updateMatchupHistory(p1, p2);
+          }
         }
       });
 
