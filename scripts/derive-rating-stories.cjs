@@ -16,8 +16,8 @@
  *
  * Output: public/data/<gt>/rating-stories.json
  *   {
- *     volatility: [ { sid, nick, games, swingGames, stddev, range,
- *                     peak, trough } ...10 ]
+ *     volatility: [ { sid, nick, games, swingGames, peakFirst,
+ *                     stddev, range, peak, trough } ...10 ]
  *   }
  *
  * Usage:
@@ -156,6 +156,10 @@ async function deriveOne(gt) {
       nick: pickNick(p.nicks),
       games: p.timeline.length,
       swingGames: Math.abs(peakIdx - troughIdx),
+      // peakFirst = true  → career arc is DECLINE (peak came first, then trough).
+      //           = false → career arc is RISE   (trough came first, then peak).
+      // Render the range chronologically so the narrative matches reality.
+      peakFirst: peakIdx < troughIdx,
       stddev: round2(sd),
       range: round2(peak - trough),
       peak: round2(peak),

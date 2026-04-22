@@ -864,7 +864,7 @@ const tdmFilteredMaps = tdmMaps.sortedMaps.filter(m => tdmMaps.playerCounts[m] >
 // ===========================================
 
 type ActivityData = { gametype: string; total_matches: number; by_day: Record<string, number>; by_month: Record<string, number> };
-type VolatilityRow = { sid: string; nick: string; games: number; swingGames: number; stddev: number; range: number; peak: number; trough: number };
+type VolatilityRow = { sid: string; nick: string; games: number; swingGames: number; peakFirst: boolean; stddev: number; range: number; peak: number; trough: number };
 type RatingStories = { volatility: VolatilityRow[] };
 
 function loadJson<T>(rel: string, fallback: T): T {
@@ -877,12 +877,20 @@ const tdmActivity = loadJson<ActivityData | null>('public/data/tdm/activity.json
 const ctfStories = loadJson<RatingStories>('public/data/ctf/rating-stories.json', { volatility: [] });
 const tdmStories = loadJson<RatingStories>('public/data/tdm/rating-stories.json', { volatility: [] });
 
-// Build slug lookup so we can link players from the leaderboards when
-// they have a published profile. Archive sids that don't map to a
-// published profile render as plain text.
+// Build slug + name lookup so we can link players from the leaderboards
+// when they have a published profile, AND render their designated name
+// (YAML `name` field) instead of whatever clan-tagged nick they happened
+// to use most in HoQ matches. Example: sid 76561... → slug "artemis4",
+// display name "artemis4" (not "CUBA artemis4").
+// Archive sids that don't map to a published profile fall back to the
+// most-used HoQ nick.
 const archiveSlugBySid: Record<string, string> = {};
+const archiveNameBySid: Record<string, string> = {};
 for (const pl of allPlayers) {
-  if (pl.data.steamId && pl.data.published !== false) archiveSlugBySid[pl.data.steamId] = pl.id;
+  if (pl.data.steamId && pl.data.published !== false) {
+    archiveSlugBySid[pl.data.steamId] = pl.id;
+    archiveNameBySid[pl.data.steamId] = pl.data.name || pl.id;
+  }
 }
 
 // ---------- activity timeline preprocessing ----------
@@ -1848,13 +1856,16 @@ const schema = {
                     <tbody>
                       {rows.map((r, i) => {
                         const slug = archiveSlugBySid[r.sid];
+                        const displayName = slug ? (archiveNameBySid[r.sid] || r.nick) : r.nick;
+                        // Chronological order: decline = peak → trough, rise = trough → peak.
+                        const [a, b] = r.peakFirst ? [r.peak, r.trough] : [r.trough, r.peak];
                         return (
                           <tr>
                             <td class="s-archive-rank">{i + 1}</td>
                             <td class="s-archive-name">
-                              {slug ? <a href={`${base}players/${slug}/`}>{r.nick}</a> : <span>{r.nick}</span>}
+                              {slug ? <a href={`${base}players/${slug}/`}>{displayName}</a> : <span>{displayName}</span>}
                             </td>
-                            <td class="s-archive-num">{r.trough.toFixed(1)} → {r.peak.toFixed(1)}</td>
+                            <td class="s-archive-num" title={r.peakFirst ? 'Decline: peaked early, troughed later' : 'Rise: troughed early, peaked later'}>{a.toFixed(1)} → {b.toFixed(1)}</td>
                             <td class="s-archive-num s-archive-hero">{r.range.toFixed(1)}</td>
                             <td class="s-archive-num s-archive-dim">{r.stddev.toFixed(2)}</td>
                             <td class="s-archive-num s-archive-dim" title={`${r.swingGames} matches between peak and trough (out of ${r.games} total)`}>{r.swingGames}</td>
