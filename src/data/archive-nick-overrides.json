@@ -1,0 +1,4 @@
+{
+  "_comment": "Maps Steam IDs to preferred display names for players who appear in HoQ archive data but don't have a published profile. Used by /stats/ ALL-TIME ARCHIVE leaderboards to replace HoQ's clan-tagged or alias nicks with the player's real name. Precedence: published YAML profile > this overrides file > HoQ nick. To add an entry: find the sid from the archive (node scripts/derive-rating-stories.cjs output or /stats/ leaderboards), then add \"sid\": \"displayName\" here.",
+  "76561198035671947": "bloby"
+}

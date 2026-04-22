@@ -882,8 +882,11 @@ const tdmStories = loadJson<RatingStories>('public/data/tdm/rating-stories.json'
 // (YAML `name` field) instead of whatever clan-tagged nick they happened
 // to use most in HoQ matches. Example: sid 76561... → slug "artemis4",
 // display name "artemis4" (not "CUBA artemis4").
-// Archive sids that don't map to a published profile fall back to the
-// most-used HoQ nick.
+//
+// For archive-only players (known to us but no published profile), also
+// load src/data/archive-nick-overrides.json — a flat sid→name map that
+// lets us replace ugly HoQ aliases with real names without standing up
+// a full profile. Precedence: published profile > override > HoQ nick.
 const archiveSlugBySid: Record<string, string> = {};
 const archiveNameBySid: Record<string, string> = {};
 for (const pl of allPlayers) {
@@ -891,6 +894,13 @@ for (const pl of allPlayers) {
     archiveSlugBySid[pl.data.steamId] = pl.id;
     archiveNameBySid[pl.data.steamId] = pl.data.name || pl.id;
   }
+}
+const nickOverrides = loadJson<Record<string, string>>('src/data/archive-nick-overrides.json', {});
+for (const [sid, displayName] of Object.entries(nickOverrides)) {
+  // Skip the _comment key and skip if a published profile already claims this sid.
+  if (sid.startsWith('_')) continue;
+  if (archiveNameBySid[sid]) continue;
+  archiveNameBySid[sid] = displayName;
 }
 
 // ---------- activity timeline preprocessing ----------
@@ -1856,7 +1866,8 @@ const schema = {
                     <tbody>
                       {rows.map((r, i) => {
                         const slug = archiveSlugBySid[r.sid];
-                        const displayName = slug ? (archiveNameBySid[r.sid] || r.nick) : r.nick;
+                        // Precedence: published profile name > override name > HoQ nick.
+                        const displayName = archiveNameBySid[r.sid] || r.nick;
                         // Chronological order: decline = peak → trough, rise = trough → peak.
                         const [a, b] = r.peakFirst ? [r.peak, r.trough] : [r.trough, r.peak];
                         return (
