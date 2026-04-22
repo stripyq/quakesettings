@@ -1,27 +1,29 @@
 #!/usr/bin/env node
 /**
  * Derive "rating stories" from public/data/archive/<gt>.jsonl — the raw
- * material for the /stats/ ALL-TIME ARCHIVE section:
+ * material for the /stats/ ALL-TIME ARCHIVE section.
  *
- *   - Volatility leaderboard: players whose rating bounces most
- *     (stddev of per-match rating_diff, min 200 games).
- *   - Comeback stories: players who dropped ≥ MIN_DROP points from a
- *     peak, then later exceeded that peak. Sorted by drop magnitude.
+ * Volatility leaderboard: players with the widest rating range (peak −
+ * trough) after HoQ calibration. Skips each player's first MIN_WARMUP_GAMES
+ * (~50) to exclude the calibration period where new players' ratings
+ * swing wildly before converging. Requires MIN_GAMES (200) additional
+ * games after the warmup for the sample to be meaningful. Also reports
+ * swingGames — matches between peak and trough — for a cleaner narrative
+ * ("X points over Y games") than raw career length.
  *
  * Walks archive chronologically per player, building a rating timeline
  * (old_rating, new_rating are present on every player entry per match).
  *
  * Output: public/data/<gt>/rating-stories.json
  *   {
- *     volatility: [ { sid, nick, games, stddev, range, peak, trough } ...10 ],
- *     comebacks:  [ { sid, nick, fromPeak, toTrough, drop, newPeak,
- *                     peakAt, troughAt, newPeakAt } ... ]
+ *     volatility: [ { sid, nick, games, swingGames, stddev, range,
+ *                     peak, trough } ...10 ]
  *   }
  *
  * Usage:
  *   node scripts/derive-rating-stories.cjs --gt=ctf
  *   node scripts/derive-rating-stories.cjs --gt=ctf,tdm
- *   node scripts/derive-rating-stories.cjs --gt=ctf --min-games=300 --min-drop=10
+ *   node scripts/derive-rating-stories.cjs --gt=ctf --min-games=300
  */
 
 const fs = require('fs');
@@ -50,9 +52,12 @@ for (const gt of GTS) {
   }
 }
 const MIN_GAMES = parseInt(getArg('--min-games', '200'), 10);
-const MIN_DROP = parseFloat(getArg('--min-drop', '8'));
 const TOP_N_VOLATILITY = parseInt(getArg('--top-volatility', '10'), 10);
-const TOP_N_COMEBACKS = parseInt(getArg('--top-comebacks', '10'), 10);
+// HoQ's rating system takes ~50 games to converge on a new player's true
+// skill. During that window ratings swing wildly (including into negatives)
+// and the peak/trough both reflect calibration noise, not career arc. Skip
+// it so "biggest swing" measures post-calibration reality.
+const MIN_WARMUP_GAMES = parseInt(getArg('--min-warmup', '50'), 10);
 
 // ---------- helpers ----------
 function ensureDir(p) { if (!fs.existsSync(p)) fs.mkdirSync(p, { recursive: true }); }
@@ -126,18 +131,31 @@ async function deriveOne(gt) {
   for (const p of agg.values()) p.timeline.sort((a, b) => a.ts - b.ts);
 
   // ---------- volatility ----------
+  // Skip the first MIN_WARMUP_GAMES entries per player — they're HoQ
+  // calibration noise, not career signal. Still require MIN_GAMES entries
+  // AFTER the warmup so small-sample players ("beautiful far away" @ 221g)
+  // don't sneak in with a 50-game effective career.
+  //
+  // Track peak/trough INDEXES (not just values) so we can report how many
+  // matches the player took to travel between them — "36.6 points over
+  // 847 games" is a much better narrative than "over 1132 total games".
   const volatilityRows = [];
   for (const [sid, p] of agg.entries()) {
-    if (p.timeline.length < MIN_GAMES) continue;
-    const diffs = p.timeline.map(t => t.diff);
+    if (p.timeline.length < MIN_WARMUP_GAMES + MIN_GAMES) continue;
+    const effective = p.timeline.slice(MIN_WARMUP_GAMES);
+    const diffs = effective.map(t => t.diff);
     const sd = stddev(diffs);
-    const newRatings = p.timeline.map(t => t.new);
-    const peak = Math.max(...newRatings);
-    const trough = Math.min(...newRatings);
+    let peak = -Infinity, peakIdx = 0;
+    let trough = Infinity, troughIdx = 0;
+    effective.forEach((t, i) => {
+      if (t.new > peak) { peak = t.new; peakIdx = i; }
+      if (t.new < trough) { trough = t.new; troughIdx = i; }
+    });
     volatilityRows.push({
       sid,
       nick: pickNick(p.nicks),
       games: p.timeline.length,
+      swingGames: Math.abs(peakIdx - troughIdx),
       stddev: round2(sd),
       range: round2(peak - trough),
       peak: round2(peak),
@@ -150,64 +168,11 @@ async function deriveOne(gt) {
   volatilityRows.sort((a, b) => b.range - a.range);
   const volatility = volatilityRows.slice(0, TOP_N_VOLATILITY);
 
-  // ---------- comebacks ----------
-  // Walk chronologically. Track running peak and the trough since that
-  // peak. Record the MAX drawdown event per player, then check whether
-  // the player later exceeded the pre-drawdown peak → comeback.
-  const comebackRows = [];
-  for (const [sid, p] of agg.entries()) {
-    if (p.timeline.length < MIN_GAMES) continue;
-    let peakSoFar = -Infinity, peakAt = null;
-    let troughAfterPeak = Infinity, troughAt = null;
-    // Max drawdown seen so far for this player.
-    let dd = { drop: 0, peak: null, peakAt: null, trough: null, troughAt: null, troughIdx: -1 };
-    p.timeline.forEach((t, i) => {
-      if (t.new > peakSoFar) {
-        peakSoFar = t.new;
-        peakAt = t.ts;
-        troughAfterPeak = t.new;
-        troughAt = t.ts;
-      } else if (t.new < troughAfterPeak) {
-        troughAfterPeak = t.new;
-        troughAt = t.ts;
-        const drop = peakSoFar - troughAfterPeak;
-        if (drop > dd.drop) {
-          dd = { drop, peak: peakSoFar, peakAt, trough: troughAfterPeak, troughAt, troughIdx: i };
-        }
-      }
-    });
-    if (dd.drop < MIN_DROP || dd.troughIdx < 0) continue;
-    // Did they later exceed the pre-drawdown peak?
-    let newPeak = -Infinity, newPeakAt = null;
-    for (let i = dd.troughIdx + 1; i < p.timeline.length; i++) {
-      if (p.timeline[i].new > newPeak) {
-        newPeak = p.timeline[i].new;
-        newPeakAt = p.timeline[i].ts;
-      }
-    }
-    if (newPeak <= dd.peak) continue;
-    comebackRows.push({
-      sid,
-      nick: pickNick(p.nicks),
-      games: p.timeline.length,
-      fromPeak: round2(dd.peak),
-      toTrough: round2(dd.trough),
-      drop: round2(dd.drop),
-      newPeak: round2(newPeak),
-      peakAt: dd.peakAt,
-      troughAt: dd.troughAt,
-      newPeakAt,
-    });
-  }
-  // Sort by drop magnitude desc — biggest comeback narrative first.
-  comebackRows.sort((a, b) => b.drop - a.drop);
-  const comebacks = comebackRows.slice(0, TOP_N_COMEBACKS);
-
-  const out = { volatility, comebacks };
+  const out = { volatility };
   const outPath = path.join(OUT_DIR, 'rating-stories.json');
   fs.writeFileSync(outPath, JSON.stringify(out, null, 2));
   console.log(`[${gt}] wrote ${outPath}`);
-  console.log(`[${gt}] volatility: ${volatility.length}, comebacks: ${comebacks.length} (of ${comebackRows.length} candidates)`);
+  console.log(`[${gt}] volatility: ${volatility.length}`);
   return true;
 }
 

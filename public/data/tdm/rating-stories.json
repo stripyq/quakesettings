@@ -1,216 +1,104 @@
 {
   "volatility": [
     {
-      "sid": "76561198048532604",
-      "nick": "Latrommi",
-      "games": 229,
-      "stddev": 0.58,
-      "range": 25.3,
-      "peak": 42.9,
-      "trough": 17.6
-    },
-    {
       "sid": "76561198035671947",
       "nick": "jävla snoppdragare",
       "games": 2252,
-      "stddev": 0.21,
-      "range": 24.79,
+      "swingGames": 2193,
+      "stddev": 0.12,
+      "range": 22.86,
       "peak": 30.5,
-      "trough": 5.71
+      "trough": 7.64
+    },
+    {
+      "sid": "76561197961473367",
+      "nick": "*mad BóBr :B",
+      "games": 1771,
+      "swingGames": 1428,
+      "stddev": 0.16,
+      "range": 16.66,
+      "peak": 31.88,
+      "trough": 15.22
+    },
+    {
+      "sid": "76561198181739161",
+      "nick": "doz3r",
+      "games": 646,
+      "swingGames": 569,
+      "stddev": 0.13,
+      "range": 15.01,
+      "peak": 24.04,
+      "trough": 9.03
+    },
+    {
+      "sid": "76561198256393746",
+      "nick": "59",
+      "games": 431,
+      "swingGames": 325,
+      "stddev": 0.2,
+      "range": 14.68,
+      "peak": 29.35,
+      "trough": 14.67
     },
     {
       "sid": "76561198067064946",
       "nick": "Steve Jobs",
       "games": 2256,
-      "stddev": 0.24,
-      "range": 24.04,
-      "peak": 30.03,
+      "swingGames": 2165,
+      "stddev": 0.13,
+      "range": 14.42,
+      "peak": 20.41,
       "trough": 5.99
     },
     {
-      "sid": "76561197961473367",
-      "nick": "*mad BóBr :B",
-      "games": 1771,
-      "stddev": 0.25,
-      "range": 23.46,
-      "peak": 31.88,
-      "trough": 8.42
+      "sid": "76561198043070738",
+      "nick": "Nex",
+      "games": 1159,
+      "swingGames": 1061,
+      "stddev": 0.11,
+      "range": 13.8,
+      "peak": 36.12,
+      "trough": 22.32
     },
     {
       "sid": "76561198002515349",
       "nick": "rehepapp",
       "games": 2715,
-      "stddev": 0.23,
-      "range": 22.99,
+      "swingGames": 2479,
+      "stddev": 0.13,
+      "range": 13.52,
       "peak": 42.03,
-      "trough": 19.04
+      "trough": 28.51
     },
     {
-      "sid": "76561198158413470",
-      "nick": "g_e_o",
-      "games": 227,
-      "stddev": 0.76,
-      "range": 22.17,
-      "peak": 30.31,
-      "trough": 8.14
+      "sid": "76561198062801450",
+      "nick": "nm",
+      "games": 1461,
+      "swingGames": 1398,
+      "stddev": 0.15,
+      "range": 13,
+      "peak": 22.23,
+      "trough": 9.23
     },
     {
-      "sid": "76561198354200908",
-      "nick": "Bolland",
-      "games": 2498,
-      "stddev": 0.26,
-      "range": 21.91,
-      "peak": 32.95,
-      "trough": 11.04
+      "sid": "76561197964623506",
+      "nick": "dehumanizeR",
+      "games": 1129,
+      "swingGames": 977,
+      "stddev": 0.19,
+      "range": 13,
+      "peak": 35.17,
+      "trough": 22.17
     },
     {
-      "sid": "76561199756237860",
-      "nick": "St3f4N",
-      "games": 1639,
-      "stddev": 0.26,
-      "range": 21.86,
-      "peak": 27.12,
-      "trough": 5.26
-    },
-    {
-      "sid": "76561198022534637",
-      "nick": "prodigy",
-      "games": 1275,
-      "stddev": 0.27,
-      "range": 21.64,
-      "peak": 34.33,
-      "trough": 12.69
-    },
-    {
-      "sid": "76561198257283478",
-      "nick": "Personal_Best",
-      "games": 222,
-      "stddev": 0.64,
-      "range": 20.28,
-      "peak": 29.97,
-      "trough": 9.69
-    }
-  ],
-  "comebacks": [
-    {
-      "sid": "76561198035671947",
-      "nick": "jävla snoppdragare",
-      "games": 2252,
-      "fromPeak": 21.7,
-      "toTrough": 5.71,
-      "drop": 15.99,
-      "newPeak": 30.5,
-      "peakAt": 1571080857,
-      "troughAt": 1607876723,
-      "newPeakAt": 1770424276
-    },
-    {
-      "sid": "76561198097572547",
-      "nick": "zlz",
-      "games": 236,
-      "fromPeak": 23.06,
-      "toTrough": 9.74,
-      "drop": 13.32,
-      "newPeak": 26.05,
-      "peakAt": 1556566441,
-      "troughAt": 1558107539,
-      "newPeakAt": 1573325221
-    },
-    {
-      "sid": "76561198380825290",
-      "nick": "DimebaG",
-      "games": 4023,
-      "fromPeak": 24.73,
-      "toTrough": 12.46,
-      "drop": 12.27,
-      "newPeak": 27.04,
-      "peakAt": 1585857995,
-      "troughAt": 1586906654,
-      "newPeakAt": 1629913803
-    },
-    {
-      "sid": "76561198013666605",
-      "nick": "Ant3stor",
-      "games": 1609,
-      "fromPeak": 27.88,
-      "toTrough": 15.99,
-      "drop": 11.89,
-      "newPeak": 33.51,
-      "peakAt": 1558815753,
-      "troughAt": 1558827755,
-      "newPeakAt": 1632169911
-    },
-    {
-      "sid": "76561197961473367",
-      "nick": "*mad BóBr :B",
-      "games": 1771,
-      "fromPeak": 27.43,
-      "toTrough": 15.83,
-      "drop": 11.6,
-      "newPeak": 31.88,
-      "peakAt": 1639604826,
-      "troughAt": 1639680850,
-      "newPeakAt": 1697487671
-    },
-    {
-      "sid": "76561198162915948",
-      "nick": "400g. | sωaġ",
-      "games": 594,
-      "fromPeak": 20.91,
-      "toTrough": 10.02,
-      "drop": 10.89,
-      "newPeak": 22.57,
-      "peakAt": 1620855280,
-      "troughAt": 1622758888,
-      "newPeakAt": 1634679064
-    },
-    {
-      "sid": "76561198053960733",
-      "nick": "Frigolx",
-      "games": 382,
-      "fromPeak": 25.35,
-      "toTrough": 14.76,
-      "drop": 10.59,
-      "newPeak": 30.21,
-      "peakAt": 1658355174,
-      "troughAt": 1670802475,
-      "newPeakAt": 1748785008
-    },
-    {
-      "sid": "76561198257561075",
-      "nick": "antonio_by",
-      "games": 760,
-      "fromPeak": 33.08,
-      "toTrough": 22.74,
-      "drop": 10.34,
-      "newPeak": 35.41,
-      "peakAt": 1558806005,
-      "troughAt": 1560547754,
-      "newPeakAt": 1736694370
-    },
-    {
-      "sid": "76561197985659232",
-      "nick": "DkH matr1x",
-      "games": 995,
-      "fromPeak": 20.68,
-      "toTrough": 10.53,
-      "drop": 10.15,
-      "newPeak": 25.67,
-      "peakAt": 1607732380,
-      "troughAt": 1607785193,
-      "newPeakAt": 1737915350
-    },
-    {
-      "sid": "76561198414877431",
-      "nick": "phaze",
-      "games": 245,
-      "fromPeak": 28.66,
-      "toTrough": 19.11,
-      "drop": 9.55,
-      "newPeak": 30.33,
-      "peakAt": 1567970494,
-      "troughAt": 1568317333,
-      "newPeakAt": 1656629845
+      "sid": "76561198149540641",
+      "nick": "chr",
+      "games": 1022,
+      "swingGames": 897,
+      "stddev": 0.16,
+      "range": 12.77,
+      "peak": 41.38,
+      "trough": 28.61
     }
   ]
 }
