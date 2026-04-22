@@ -1095,8 +1095,8 @@ const schema = {
                   '<td class="mh-td-num"><div class="mh-stack">' + sLossCell + atLossCell + '</div></td>' +
                   '<td class="mh-td-num mh-td-pct"><div class="mh-stack">' + sPctCell + atPctCell + '</div></td>' +
                   '<td class="mh-td-bars"><div class="mh-mini-bars">' +
-                    miniBar('S', s ? s.p1Wins : 0, s ? s.p2Wins : 0) +
-                    miniBar('AT', at ? at.p1Wins : 0, at ? at.p2Wins : 0) +
+                    miniBar('Season', s ? s.p1Wins : 0, s ? s.p2Wins : 0) +
+                    miniBar('All-Time', at ? at.p1Wins : 0, at ? at.p2Wins : 0) +
                   '</div></td>' +
                 '</tr>';
             }
@@ -1133,7 +1133,7 @@ const schema = {
 
           cards +=
             '<div class="mh-card">' +
-              '<div class="mh-title">Match Record \u2013 ' + modeLabel + ' <span class="mh-season-tag">Season</span></div>' +
+              '<div class="mh-title">Match Record \u2013 ' + modeLabel + '</div>' +
               '<div class="mh-subtitle">When on opposite teams</div>' +
               '<div class="mh-overall">' +
                 '<div class="mh-record">' +
@@ -2732,7 +2732,7 @@ const schema = {
     font-size: 0.55rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    min-width: 20px;
+    min-width: 54px;
     text-align: right;
   }
   .matchup-history-container :global(.mh-mini-track) {
