@@ -87,6 +87,9 @@ async function deriveOne(gt) {
       nicks: new Set(),
       games: 0, wins: 0, losses: 0,
       frags: 0, deaths: 0, dmg_dealt: 0, dmg_taken: 0, time_sec: 0,
+      // Badge-source fields: per-game averages of these go into percentile badges.
+      score: 0, caps: 0, defends: 0,
+      impressive: 0, excellent: 0,
       weapons: {},
       first_ts: Infinity, last_ts: 0,
       last_rating: null, peak_rating: -Infinity,
@@ -161,6 +164,13 @@ async function deriveOne(gt) {
       p.dmg_dealt += pl.dmg_dealt || 0;
       p.dmg_taken += pl.dmg_taken || 0;
       p.time_sec += pl.time_sec || 0;
+      p.score += pl.score || 0;
+      p.caps += pl.caps || 0;
+      p.defends += pl.defends || 0;
+      if (pl.medals) {
+        p.impressive += pl.medals.impressive || 0;
+        p.excellent += pl.medals.excellent || 0;
+      }
       if (Number.isFinite(m.ts)) {
         if (m.ts < p.first_ts) p.first_ts = m.ts;
         if (m.ts > p.last_ts) {
@@ -300,6 +310,129 @@ async function deriveOne(gt) {
   fs.writeFileSync(path.join(OUT_DIR, 'maps.json'), JSON.stringify(mapsOut, null, 2));
   console.log(`  maps.json          -> ${mapsOut.length} maps (>= ${MIN_MAP_GAMES} games; dropped ${droppedByMinGames})`);
 
+  // --- badges.json ---
+  // Achievement badges: percentile tiers on per-game rate stats + map kings.
+  // Sourced from the same per-player totals we just aggregated. Keyed by sid.
+  const MIN_BADGE_GAMES = 50;
+  const MIN_MAP_BADGE_GAMES = 20;
+  const TOP_GOLD_PCT = 0.03;
+  const TOP_SILVER_PCT = 0.10;
+  const isCTF = gt === 'ctf';
+
+  // Eligible player pool for career-wide metrics (>= 50 games).
+  const eligible = [...players.values()].filter(p => p.games >= MIN_BADGE_GAMES);
+
+  // Metric list: (id, label, compute, isRelevantForGt)
+  const metrics = [
+    { id: 'kd', label: 'K/D Ratio',
+      compute: p => p.deaths > 0 ? p.frags / p.deaths : (p.frags > 0 ? p.frags : 0),
+      unit: '' },
+    { id: 'dmg_per_game', label: 'Damage / Game',
+      compute: p => p.dmg_dealt / p.games, unit: '' },
+    { id: 'score_per_game', label: 'Score / Game',
+      compute: p => p.score / p.games, unit: '' },
+    { id: 'caps_per_game', label: 'Captures / Game', ctfOnly: true,
+      compute: p => p.caps / p.games, unit: '' },
+    { id: 'defends_per_game', label: 'Defends / Game', ctfOnly: true,
+      compute: p => p.defends / p.games, unit: '' },
+    { id: 'impressives_per_game', label: 'Impressives / Game',
+      compute: p => p.impressive / p.games, unit: '' },
+    { id: 'excellents_per_game', label: 'Excellents / Game',
+      compute: p => p.excellent / p.games, unit: '' },
+  ];
+
+  // Accumulate badges per sid.
+  const badgesBySid = new Map();
+  function addBadge(sid, badge) {
+    let list = badgesBySid.get(sid);
+    if (!list) { list = []; badgesBySid.set(sid, list); }
+    list.push(badge);
+  }
+
+  for (const metric of metrics) {
+    if (metric.ctfOnly && !isCTF) continue;
+    // Drop zero-value players so an all-zero metric doesn't manufacture bogus percentile awards.
+    const scored = eligible
+      .map(p => ({ sid: p.sid, value: metric.compute(p) }))
+      .filter(x => x.value > 0)
+      .sort((a, b) => b.value - a.value);
+    const n = scored.length;
+    if (n < 10) continue; // pool too small to percentile meaningfully
+    const goldCut = Math.max(1, Math.floor(n * TOP_GOLD_PCT));
+    const silverCut = Math.max(goldCut + 1, Math.floor(n * TOP_SILVER_PCT));
+    for (let i = 0; i < silverCut; i++) {
+      const s = scored[i];
+      const tier = i < goldCut ? 'gold' : 'silver';
+      addBadge(s.sid, {
+        id: metric.id,
+        tier,
+        label: metric.label,
+        value: round1(s.value),
+        rank: i + 1,
+        of: n,
+      });
+    }
+  }
+
+  // Map Kings + Map Top 10% — per map, requires >= 20 games on that map.
+  for (const m of maps.values()) {
+    const mapPlayers = [...m.players.values()]
+      .filter(mp => mp.games >= MIN_MAP_BADGE_GAMES)
+      .map(mp => ({ sid: mp.sid, nick: mp.nick, games: mp.games, wins: mp.wins, wr: mp.wins / mp.games }))
+      .sort((a, b) => b.wr - a.wr || b.games - a.games);
+    const n = mapPlayers.length;
+    if (n < 5) continue; // too few — skip this map
+    // #1 → Legendary Map King
+    const king = mapPlayers[0];
+    addBadge(king.sid, {
+      id: `map_king_${m.name}`,
+      tier: 'legendary',
+      label: `Map King`,
+      subject: m.name,
+      value: roundPct(king.wr),
+      unit: '%',
+      rank: 1,
+      of: n,
+    });
+    // Top 3% → Gold, rest of top 10% → Silver (skip the king, already awarded)
+    const goldCut = Math.max(1, Math.floor(n * TOP_GOLD_PCT));
+    const silverCut = Math.max(goldCut + 1, Math.floor(n * TOP_SILVER_PCT));
+    for (let i = 1; i < silverCut; i++) {
+      const mp = mapPlayers[i];
+      const tier = i < goldCut ? 'gold' : 'silver';
+      addBadge(mp.sid, {
+        id: `map_top10_${m.name}`,
+        tier,
+        label: `Map Specialist`,
+        subject: m.name,
+        value: roundPct(mp.wr),
+        unit: '%',
+        rank: i + 1,
+        of: n,
+      });
+    }
+  }
+
+  // Sort each player's badges: tier order, then rank.
+  const tierOrder = { legendary: 0, gold: 1, silver: 2 };
+  const badgesOut = { gametype: gt, players: {} };
+  for (const [sid, list] of badgesBySid.entries()) {
+    list.sort((a, b) => {
+      const t = tierOrder[a.tier] - tierOrder[b.tier];
+      if (t !== 0) return t;
+      return a.rank - b.rank;
+    });
+    const p = players.get(sid);
+    badgesOut.players[sid] = {
+      nick: p ? ([...p.nicks][p.nicks.size - 1] || null) : null,
+      games: p ? p.games : 0,
+      badges: list,
+    };
+  }
+  fs.writeFileSync(path.join(OUT_DIR, 'badges.json'), JSON.stringify(badgesOut));
+  const totalBadges = [...badgesBySid.values()].reduce((s, l) => s + l.length, 0);
+  console.log(`  badges.json        -> ${badgesBySid.size} players with badges (${totalBadges} total); min ${MIN_BADGE_GAMES} games / ${MIN_MAP_BADGE_GAMES} per map`);
+
   // --- h2h ---
   // h2h-full stays lean (no maps) — it has hundreds of thousands of pairs.
   // h2h-featured is the one the compare page uses; keep the `maps` field there.
@@ -332,5 +465,16 @@ async function deriveOne(gt) {
 
   return true;
 }
+
+// ---------- main ----------
+(async () => {
+  const results = [];
+  for (const gt of GTS) {
+    const ok = await deriveOne(gt);
+    results.push({ gt, ok });
+  }
+  console.log(`\n========== Summary ==========`);
+  for (const r of results) console.log(`  ${r.gt}: ${r.ok ? 'done' : 'FAILED'}`);
+})().catch(e => { console.error(e); process.exit(1); });
 
 // ---------- mai
