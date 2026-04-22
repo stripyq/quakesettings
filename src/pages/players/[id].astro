@@ -176,6 +176,112 @@ const seasonStatsEntry = p.steamId ? seasonStatsData[p.steamId] : null;
 const ctfStats = seasonStatsEntry?.ctf || (seasonStatsEntry?.career ? seasonStatsEntry : null);
 const tdmStats = seasonStatsEntry?.tdm || null;
 
+// ----------------------------------------------------------------
+// All-time achievement badges (derived from public/data/<gt>/badges.json)
+// ----------------------------------------------------------------
+type Badge = {
+  id: string;
+  tier: 'legendary' | 'gold' | 'silver';
+  label: string;
+  subject?: string;
+  value: number;
+  unit?: string;
+  rank: number;
+  of: number;
+  gt: 'ctf' | 'tdm';
+};
+const BADGE_CAP = 10;
+const TIER_ORDER: Record<string, number> = { legendary: 0, gold: 1, silver: 2 };
+const allBadges: Badge[] = [];
+if (p.steamId) {
+  for (const gt of ['ctf', 'tdm'] as const) {
+    try {
+      const badgesPath = path.join(process.cwd(), `public/data/${gt}/badges.json`);
+      const raw = JSON.parse(fs.readFileSync(badgesPath, 'utf8'));
+      const entry = raw?.players?.[p.steamId];
+      if (entry && Array.isArray(entry.badges)) {
+        for (const b of entry.badges) allBadges.push({ ...b, gt });
+      }
+    } catch {
+      // badges.json for this gt not present yet — skip silently
+    }
+  }
+}
+allBadges.sort((a, b) => {
+  const t = TIER_ORDER[a.tier] - TIER_ORDER[b.tier];
+  if (t !== 0) return t;
+  return a.rank - b.rank;
+});
+const badgesToShow = allBadges.slice(0, BADGE_CAP);
+
+// Pretty-print map subject for map_king / map_top10 badges
+const PROFILE_MAP_ALIASES: Record<string, string> = { q3wcp9: 'Spider Crossings' };
+function prettyMapBadge(raw: string): string {
+  if (!raw) return '';
+  const key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/, '');
+  if (PROFILE_MAP_ALIASES[key]) return PROFILE_MAP_ALIASES[key];
+  const stripped = String(raw).replace(/^(ctf|tdm)_?/, '').replace(/_/g, ' ');
+  return stripped.charAt(0).toUpperCase() + stripped.slice(1);
+}
+
+function badgeRibbon(b: Badge): string {
+  if (b.tier === 'legendary') return '#1';
+  if (b.tier === 'gold') return 'TOP 3%';
+  return 'TOP 10%';
+}
+function badgeValueStr(b: Badge): string {
+  const v = b.value;
+  const shown = Math.abs(v) >= 100 ? v.toFixed(0) : v.toFixed(v >= 10 ? 1 : 2);
+  const unit = b.unit ? b.unit : '';
+  return `${shown}${unit} · #${b.rank}/${b.of}`;
+}
+function badgeLabel(b: Badge): string {
+  if (b.id.startsWith('map_king_') || b.id.startsWith('map_top10_')) {
+    const mapName = prettyMapBadge(b.subject || b.id.replace(/^map_(king|top10)_/, ''));
+    const prefix = b.id.startsWith('map_king_') ? 'Map King' : 'Map Specialist';
+    return `${prefix}|${mapName}`;
+  }
+  return b.label;
+}
+// Inline SVG paths keyed by badge-icon family. Keep viewBox 0 0 24 24.
+const BADGE_ICONS: Record<string, string> = {
+  star:      'M12 2l2.39 6.95H21l-5.3 3.85L17.09 20 12 15.77 6.91 20l1.39-7.2L3 8.95h6.61z',
+  shield:    'M12 3l9 4.5v4.5c0 4.7-3.4 8.9-9 10-5.6-1.1-9-5.3-9-10V7.5z',
+  flag:      'M5 3h14v18l-7-3-7 3z',
+  crown:     'M3 7l4 4 5-6 5 6 4-4v12H3z',
+  skull:     'M12 3a6 6 0 00-6 6v4l2 2v3h2v-2h4v2h2v-3l2-2V9a6 6 0 00-6-6zM9 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm6 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3z',
+  bolt:      'M13 2L4 14h6l-1 8 9-12h-6l1-8z',
+  crosshair: 'M12 4a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12 6 6 0 010-12zM11 1h2v4h-2zM11 19h2v4h-2zM1 11h4v2H1zM19 11h4v2h-4z',
+  sparkle:   'M12 2l2 8 8 2-8 2-2 8-2-8-8-2 8-2z',
+};
+function badgeIconKey(id: string): string {
+  if (id === 'kd') return 'skull';
+  if (id === 'dmg_per_game') return 'bolt';
+  if (id === 'score_per_game') return 'star';
+  if (id === 'caps_per_game') return 'flag';
+  if (id === 'defends_per_game') return 'shield';
+  if (id === 'impressives_per_game') return 'crosshair';
+  if (id === 'excellents_per_game') return 'sparkle';
+  if (id.startsWith('map_king_')) return 'crown';
+  if (id.startsWith('map_top10_')) return 'star';
+  return 'star';
+}
+// Real Quake Live medal images live under /public/images/medal_*.webp.
+// Stats with no direct medal fall back to the inline SVG from BADGE_ICONS.
+const BADGE_MEDAL_FILES: Record<string, string> = {
+  kd: 'medal_frags.webp',
+  dmg_per_game: 'medal_damage.webp',
+  caps_per_game: 'medal_capture.webp',
+  defends_per_game: 'medal_defense.webp',
+  impressives_per_game: 'medal_impressive.webp',
+  excellents_per_game: 'medal_excellent.webp',
+};
+function badgeMedalSrc(id: string): string | null {
+  if (BADGE_MEDAL_FILES[id]) return `${base}images/${BADGE_MEDAL_FILES[id]}`;
+  if (id.startsWith('map_top10_')) return `${base}images/medal_accuracy.webp`;
+  return null;
+}
+
 // Calculate percentiles and averages across all players with season data (per mode)
 function collectModePlayers(mode: string) {
   return Object.values(seasonStatsData).map((s: any) => {
@@ -446,6 +552,39 @@ const schema = {
         <a href={`${base}compare/?p1=${player.id}`} class="compare-btn">Compare with another player</a>
       </div>
     </div>
+
+    {badgesToShow.length > 0 && (
+      <section class="player-badges">
+        <div class="player-badges-heading">
+          All-Time Achievements
+          <span class="player-badges-count">· {badgesToShow.length} {badgesToShow.length === 1 ? 'badge' : 'badges'}</span>
+        </div>
+        <div class="player-badges-grid">
+          {badgesToShow.map((b) => {
+            const [lbl1, lbl2] = badgeLabel(b).split('|');
+            const iconKey = badgeIconKey(b.id);
+            const iconPath = BADGE_ICONS[iconKey];
+            const medalSrc = badgeMedalSrc(b.id);
+            return (
+              <div class={`pb-badge pb-tier-${b.tier}`} title={`${lbl1}${lbl2 ? ' — ' + lbl2 : ''} · ${badgeValueStr(b)} · ${b.gt.toUpperCase()}`}>
+                <div class={`pb-medal ${medalSrc ? 'pb-medal-has-img' : ''}`}>
+                  {medalSrc
+                    ? <img src={medalSrc} alt="" loading="lazy" class="pb-medal-img" />
+                    : <svg viewBox="0 0 24 24" fill="currentColor"><path d={iconPath}/></svg>}
+                  <span class="pb-ribbon">{badgeRibbon(b)}</span>
+                </div>
+                <div class="pb-label">
+                  {lbl1}
+                  {lbl2 && <><br/><span class="pb-label-sub">{lbl2}</span></>}
+                </div>
+                <div class="pb-value">{badgeValueStr(b)}</div>
+                <div class="pb-gt">{b.gt.toUpperCase()}</div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    )}
 
     <!-- Settings Cards -->
     <div class="settings-grid">
@@ -3185,5 +3324,131 @@ const schema = {
     .hoq-map-table td {
       padding: 0.35rem 0.5rem;
     }
+  }
+
+  /* ---------- All-Time Achievement Badges (Variant C) ---------- */
+  .player-badges {
+    margin: 1.5rem 0 2rem;
+    padding: 1.25rem 1rem 1.5rem;
+    background: var(--bg-card, #1a1a24);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+  }
+  .player-badges-heading {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ff6b35;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-left: 0.25rem;
+  }
+  .player-badges-count {
+    color: #9090a0;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-left: 0.35rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+  .player-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 1.1rem 0.5rem;
+  }
+  .pb-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+  }
+  .pb-tier-legendary { --tier: #c084fc; --tier-bg: rgba(192,132,252,0.14); --tier-glow: rgba(192,132,252,0.45); }
+  .pb-tier-gold      { --tier: #fbbf24; --tier-bg: rgba(251,191,36,0.14); --tier-glow: rgba(251,191,36,0.40); }
+  .pb-tier-silver    { --tier: #94a3b8; --tier-bg: rgba(148,163,184,0.14); --tier-glow: rgba(148,163,184,0.35); }
+  .pb-medal {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(255,255,255,0.08), transparent 55%),
+      linear-gradient(145deg, rgba(255,255,255,0.04), rgba(0,0,0,0.25)),
+      #141420;
+    border: 2px solid var(--tier);
+    box-shadow:
+      0 0 0 4px rgba(0,0,0,0.35),
+      0 0 14px var(--tier-glow),
+      inset 0 0 8px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tier);
+    flex-shrink: 0;
+  }
+  .pb-medal svg { width: 28px; height: 28px; }
+  /* When a real Quake medal image is available, give it a near-full footprint
+     inside the tier ring and drop the dark radial fill so the native medal
+     colors read cleanly. */
+  .pb-medal-has-img {
+    background: #0a0a12;
+  }
+  .pb-medal-img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
+  }
+  .pb-ribbon {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tier);
+    color: #0f1015;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 1px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .pb-label {
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #e8e8f0;
+    line-height: 1.2;
+    max-width: 100px;
+    overflow-wrap: anywhere;
+  }
+  .pb-label-sub {
+    color: var(--tier);
+    font-weight: 600;
+    font-size: 0.66rem;
+  }
+  .pb-value {
+    font-size: 0.63rem;
+    color: #9090a0;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+  }
+  .pb-gt {
+    font-size: 0.55rem;
+    color: #6b6b7b;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-top: 0.1rem;
+  }
+  @media (max-width: 600px) {
+    .player-badges-grid {
+      grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+      gap: 0.9rem 0.4rem;
+    }
+    .pb-medal { width: 50px; height: 50px; }
+    .pb-medal svg { width: 24px; height: 24px; }
+    .pb-medal-img { width: 36px; height: 36px; }
   }
 </style>
