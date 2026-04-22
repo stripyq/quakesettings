@@ -77,7 +77,7 @@ const COMPARE_MEDAL_FILES: Record<string, string> = {
 };
 function compareBadgeMedalFile(id: string): string | null {
   if (COMPARE_MEDAL_FILES[id]) return COMPARE_MEDAL_FILES[id];
-  if (id.startsWith('map_top10_')) return 'medal_accuracy.webp';
+  // map_top10_ falls back to SVG star (accuracy medal was semantically wrong).
   return null;
 }
 // 3–6 character label shown under the icon. Map badges use a short code

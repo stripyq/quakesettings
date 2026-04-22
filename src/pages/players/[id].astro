@@ -307,7 +307,8 @@ const BADGE_MEDAL_FILES: Record<string, string> = {
 };
 function badgeMedalSrc(id: string): string | null {
   if (BADGE_MEDAL_FILES[id]) return `${base}images/${BADGE_MEDAL_FILES[id]}`;
-  if (id.startsWith('map_top10_')) return `${base}images/medal_accuracy.webp`;
+  // map_top10_ (Map Specialist) falls back to SVG star — accuracy medal was
+  // a semantic stretch (accuracy ≠ map mastery).
   return null;
 }
 
