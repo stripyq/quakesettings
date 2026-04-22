@@ -936,8 +936,20 @@ function buildChartGeometry(points: MonthPoint[]) {
   const stepX = points.length > 1 ? PLOT_W / (points.length - 1) : 0;
   const xOf = (i: number) => PAD_L + i * stepX;
   const yOf = (v: number) => PAD_T + PLOT_H - (v / niceMax) * PLOT_H;
-  const ctfPath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(p.ctf).toFixed(1)}`).join(' ');
-  const tdmPath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(p.tdm).toFixed(1)}`).join(' ');
+  // Skip leading zero-months per gametype. HoQ coverage starts at
+  // different points for CTF (Dec 2019) vs TDM (Apr 2019), and drawing
+  // a flat-zero line pre-coverage falsely implies "no games played"
+  // when the reality is "no data tracked yet". Each line now starts
+  // at its own first non-zero month.
+  function pathFor(field: 'ctf' | 'tdm'): string {
+    const firstIdx = points.findIndex(p => p[field] > 0);
+    if (firstIdx < 0) return '';
+    return points.slice(firstIdx)
+      .map((p, j) => `${j === 0 ? 'M' : 'L'}${xOf(firstIdx + j).toFixed(1)},${yOf(p[field]).toFixed(1)}`)
+      .join(' ');
+  }
+  const ctfPath = pathFor('ctf');
+  const tdmPath = pathFor('tdm');
   // Y-axis tick labels — 0, ¼, ½, ¾, max.
   const yTicks = [0, niceMax * 0.25, niceMax * 0.5, niceMax * 0.75, niceMax].map(v => ({
     v,
