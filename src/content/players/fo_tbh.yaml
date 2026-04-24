@@ -12,8 +12,8 @@ category: ctf
 
 
 lastUpdated: 2025-01
-ctfRating: 34.774879455566406
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 34.67
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 33.37
 qllrCtfGames: 102
 hoqCtfRating: 34.67
@@ -51,7 +51,7 @@ headset: drop-sennheiser-pc37x
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 2222
+ctfGames: 2248
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

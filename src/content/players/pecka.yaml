@@ -10,7 +10,7 @@ category: tdm
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 22.31
 qllrCtfGames: 18
 hoqCtfRating: 16.29
@@ -19,17 +19,17 @@ hoqTdmRating: 27.72
 hoqTdmGames: 2410
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1041
-ctfGames: 336
-tdmGames: 2373
+ctfGames: 426
+tdmGames: 2410
 
 duelGames: 794
-ctfRating: 16.286314010620117
-tdmRating: 27.782272338867188
+ctfRating: 16.29
+tdmRating: 27.72
 dpi: 1600
 sensitivity: 1.7
 edpi: 2720
@@ -75,7 +75,8 @@ qlrace:
     rank_pct: 67
   top_maps:
     - {map: japanesecastles, rank: 142, total: 212, time: 13080, rank_pct: 67}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

@@ -8,10 +8,10 @@ category: ctf
 
 
 lastUpdated: 2025-01
-tdmRating: 20.62987518310547
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 19.076061248779297
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 20.14
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 19.08
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 800
 sensitivity: 1.75
@@ -40,8 +40,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2976
-tdmGames: 1068
+ctfGames: 3008
+tdmGames: 1074
 hoqCtfRating: 19.08
 hoqCtfGames: 3008
 hoqTdmRating: 20.14

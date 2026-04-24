@@ -5,18 +5,18 @@ aliases:
   - TK
 category: duel
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 1213
 duelGames: 8
-ctfRating: 16.683881759643555
-ctfGames: 196
-tdmRating: 22.113611221313477
+ctfRating: 16.67
+ctfGames: 200
+tdmRating: 22.11
 tdmGames: 5
 hoqCtfRating: 16.67
 hoqCtfGames: 200
@@ -76,7 +76,8 @@ qlrace:
     - {map: voltex, rank: 15, total: 28, time: 74027, rank_pct: 53.6}
     - {map: trinity, rank: 60, total: 103, time: 28781, rank_pct: 58.3}
     - {map: dinirun2, rank: 7, total: 10, time: 61392, rank_pct: 70}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: asylum
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

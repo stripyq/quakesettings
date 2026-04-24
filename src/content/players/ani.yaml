@@ -15,10 +15,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1547
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
-tdmRating: 24.129335403442383
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 27.765039443969727
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 24.13
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 26.99
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -53,7 +53,7 @@ enemyModel: Tank Jr.
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 303
+ctfGames: 313
 tdmGames: 43
 hoqCtfRating: 26.99
 hoqCtfGames: 313

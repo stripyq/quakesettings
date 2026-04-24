@@ -12,10 +12,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1398
 duelRatingUpdated: "2026-01-31"
-tdmRating: 14.325284004211426
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 9.723896026611328
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 14.33
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 9.72
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 3200
 sensitivity: 0.18
@@ -69,7 +69,8 @@ qlrace:
     - {map: theatreofpain, rank: 61, total: 89, time: 22531, rank_pct: 68.5}
     - {map: df_bardokstatik, rank: 116, total: 157, time: 24454, rank_pct: 73.9}
     - {map: jlhc2, rank: 56, total: 73, time: 7825, rank_pct: 76.7}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 6
 favorite_map: trinity
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

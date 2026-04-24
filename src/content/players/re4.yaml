@@ -13,10 +13,10 @@ category: ctf
 lastUpdated: 2025-01
 tdmRating: 21.78
 tdmRatingUpdated: "2026-01-31"
-ctfRating: 20.767757415771484
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 18.09
+ctfRatingUpdated: "2026-04-24"
 duelRating: 1310
-ctfGames: 2739
+ctfGames: 2837
 hoqCtfRating: 18.09
 hoqCtfGames: 2837
 
@@ -74,7 +74,8 @@ qlrace:
     - {map: df_lickgirls, rank: 16, total: 98, time: 10496, rank_pct: 16.3}
     - {map: df_dinirun4, rank: 11, total: 62, time: 22018, rank_pct: 17.7}
     - {map: aa_shorty2, rank: 5, total: 28, time: 1876, rank_pct: 17.9}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 185
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

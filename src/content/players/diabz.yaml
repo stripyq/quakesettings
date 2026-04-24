@@ -8,10 +8,10 @@ category: ctf
 
 
 lastUpdated: 2026-02
-ctfRating: 30.44696807861328
-ctfRatingUpdated: "2026-03-12"
-tdmRating: 26.94189453125
-tdmRatingUpdated: "2026-03-12"
+ctfRating: 29.5
+ctfRatingUpdated: "2026-04-24"
+tdmRating: 26.94
+tdmRatingUpdated: "2026-04-24"
 dataSource: player
 mouse: endgame-gear-op1-8k
 mousepad: artisan-key-83
@@ -40,7 +40,7 @@ jump: MOUSE2
 attack: MOUSE1
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 301
+ctfGames: 313
 tdmGames: 18
 hoqCtfRating: 29.5
 hoqCtfGames: 313
@@ -67,8 +67,9 @@ qlrace:
   top_maps:
     - {map: shiningforces, rank: 10, total: 147, time: 9952, rank_pct: 6.8}
     - {map: spidercrossings, rank: 11, total: 126, time: 10712, rank_pct: 8.7}
-    - {map: campercrossings, rank: 25, total: 118, time: 9616, rank_pct: 21.2}
-  fetched_at: '2026-04-17'
+    - {map: campercrossings, rank: 25, total: 119, time: 9616, rank_pct: 21}
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 5
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

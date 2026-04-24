@@ -12,7 +12,7 @@ category: ctf
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 19.06
 qllrCtfGames: 24
 hoqCtfRating: 26.16
@@ -21,7 +21,7 @@ hoqCtfGames: 930
 
 lastUpdated: "2026-02-13"
 dataSource: player
-ctfRating: 25.518451690673828
+ctfRating: 26.16
 
 
 
@@ -57,7 +57,7 @@ attack: mouse1
 zoom: space
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 911
+ctfGames: 930
 qlrace: null
 favorite_map: overkill
 favorite_gametype: Clan Arena

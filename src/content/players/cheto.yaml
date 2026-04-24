@@ -14,7 +14,7 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 21.94
 qllrCtfGames: 14
 hoqCtfRating: 14.38
@@ -23,12 +23,12 @@ hoqTdmRating: 14.37
 hoqTdmGames: 156
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 15.400238990783691
-tdmRating: 14.369336128234863
+ctfRating: 14.38
+tdmRating: 14.37
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022
@@ -56,7 +56,7 @@ keyboard: ozone-keyboard
 monitor: hp-omen
 headset: logitech-g-pro-headset
 skates: None
-ctfGames: 4041
+ctfGames: 4104
 tdmGames: 156
 
 qlrace: null

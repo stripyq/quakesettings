@@ -10,10 +10,10 @@ category: tdm
 lastUpdated: 2025-01
 duelRating: 1372
 duelRatingUpdated: "2026-01-31"
-tdmRating: 30.506744384765625
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 20.287057876586914
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 29.75
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 20.29
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 800
 m_cpi: 800
@@ -42,7 +42,7 @@ crosshairColor: Blue
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 22
-tdmGames: 318
+tdmGames: 323
 hoqCtfRating: 20.29
 hoqCtfGames: 22
 hoqTdmRating: 29.75

@@ -7,8 +7,8 @@ category: tdm
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
-tdmRating: 28.98751449584961
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 30.3
+tdmRatingUpdated: "2026-04-24"
 ctfRating: 34.1
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -38,7 +38,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 698
+tdmGames: 729
 hoqTdmRating: 30.3
 hoqTdmGames: 729
 
@@ -60,7 +60,8 @@ qlrace:
   top_maps:
     - {map: tenuous, rank: 16, total: 98, time: 61538, rank_pct: 16.3}
     - {map: df_lickhuar, rank: 9, total: 25, time: 47591, rank_pct: 36}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

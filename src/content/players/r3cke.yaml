@@ -7,14 +7,14 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2025-02
-ctfRating: 16.011199951171875
-tdmRating: 17.25713539123535
+ctfRating: 18.37
+tdmRating: 17.26
 dpi: 400
 sensitivity: 2
 m_yaw: 0.0185642
@@ -49,7 +49,7 @@ headset: sony-mdr-xd300
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 4779
+ctfGames: 4934
 tdmGames: 67
 hoqCtfRating: 18.37
 hoqCtfGames: 4934

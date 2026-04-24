@@ -12,7 +12,7 @@ category: ctf
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 20.29
 qllrCtfGames: 30
 hoqCtfRating: 24.83
@@ -21,8 +21,8 @@ hoqCtfGames: 1059
 
 lastUpdated: 2026-02
 dataSource: player
-ctfRating: 26.665311813354492
-ctfGames: 1007
+ctfRating: 24.83
+ctfGames: 1059
 
 
 
@@ -82,7 +82,8 @@ qlrace:
     - {map: df_lickgoogle, rank: 30, total: 103, time: 9192, rank_pct: 29.1}
     - {map: df_minions_run5, rank: 24, total: 82, time: 20345, rank_pct: 29.3}
     - {map: inder_a1ex, rank: 18, total: 59, time: 36718, rank_pct: 30.5}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 15
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

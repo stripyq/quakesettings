@@ -7,10 +7,10 @@ aliases:
 team2024: CTF4
 team2026: Astral Starlight
 published: false
-ctfRating: 12.668198585510254
+ctfRating: 12.67
 ctfGames: 167
-tdmRating: 17.05631446838379
-tdmGames: 6
+tdmRating: 14.73
+tdmGames: 9
 
 qlrace:
   mode: 2
@@ -30,8 +30,9 @@ qlrace:
     rank_pct: 27.3
   top_maps:
     - {map: r7-funky, rank: 6, total: 22, time: 26008, rank_pct: 27.3}
-  fetched_at: '2026-04-17'
-ctfRatingUpdated: "2026-03-12"
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 18.22
 qllrCtfGames: 29
 hoqCtfRating: 12.67
@@ -40,7 +41,7 @@ hoqTdmRating: 14.73
 hoqTdmGames: 9
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 
 

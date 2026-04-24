@@ -5,9 +5,9 @@ steamId: "76561197973893045"
 aliases: []
 team2026: Astral Starlight
 published: false
-ctfRating: 17.013174057006836
-ctfGames: 1056
-tdmRating: 22.543384552001953
+ctfRating: 15.73
+ctfGames: 1087
+tdmRating: 22.54
 tdmGames: 177
 hoqCtfRating: 15.73
 hoqCtfGames: 1087
@@ -24,7 +24,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1283
-  average_rank_pct: 60
+  average_rank_pct: 59.8
   best_record:
     map: base1
     rank: 13
@@ -34,12 +34,15 @@ qlrace:
   top_maps:
     - {map: base1, rank: 13, total: 32, time: 7480, rank_pct: 40.6}
     - {map: kool_fastwho2, rank: 22, total: 47, time: 39616, rank_pct: 46.8}
-    - {map: hangtime-df, rank: 41, total: 68, time: 1009600, rank_pct: 60.3}
+    - {map: hangtime-df, rank: 41, total: 69, time: 1009600, rank_pct: 59.4}
     - {map: kool_m2, rank: 24, total: 26, time: 42576, rank_pct: 92.3}
-  fetched_at: '2026-04-17'
-ctfRatingUpdated: "2026-03-12"
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 1009600, rank: 41, total: 69, speed_top: 1203, date: '2025-08-09T11:03:22.906Z'}
+  unique_maps_vql: 4
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 
 

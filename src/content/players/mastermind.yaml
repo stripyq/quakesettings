@@ -16,10 +16,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
-tdmRating: 35.36933517456055
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 46.532386779785156
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 35.37
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 47.16
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 36.01
 qllrCtfGames: 69
 hoqCtfRating: 47.16
@@ -59,7 +59,7 @@ enemyModel: Keel
 crosshairColor: Green, White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2733
+ctfGames: 2772
 tdmGames: 197
 qlrace:
   mode: 3
@@ -79,7 +79,8 @@ qlrace:
     rank_pct: 84.6
   top_maps:
     - {map: awumpus-slick, rank: 11, total: 13, time: 73392, rank_pct: 84.6}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

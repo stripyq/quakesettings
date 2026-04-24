@@ -18,14 +18,14 @@ category: ctf
 
 lastUpdated: 2025-01
 duelRating: 1086
-ctfGames: 2603
+ctfGames: 2628
 tdmGames: 307
 duelGames: 4
 duelRatingUpdated: "2026-02-04"
-tdmRating: 27.035308837890625
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 24.683757781982422
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 27.04
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 24.69
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 26.24
 qllrCtfGames: 60
 hoqCtfRating: 24.69
@@ -81,19 +81,20 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1040
-  average_rank_pct: 84.6
+  average_rank_pct: 84.3
   best_record:
     map: strafe_ok
     rank: 51
-    total: 68
+    total: 69
     time: 15432
-    rank_pct: 75
+    rank_pct: 73.9
   top_maps:
-    - {map: strafe_ok, rank: 51, total: 68, time: 15432, rank_pct: 75}
+    - {map: strafe_ok, rank: 51, total: 69, time: 15432, rank_pct: 73.9}
     - {map: 180turn, rank: 31, total: 40, time: 66216, rank_pct: 77.5}
     - {map: shitstrafe2, rank: 61, total: 71, time: 35680, rank_pct: 85.9}
     - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416, rank_pct: 100}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

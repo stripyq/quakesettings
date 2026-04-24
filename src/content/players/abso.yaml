@@ -4,13 +4,13 @@ aliases:
   - abso
 category: ctf
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 34.480995178222656
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 34.48
 
 ctfGames: 624
 
-tdmRatingUpdated: "2026-03-12"
-tdmRating: 34.9581413269043
+tdmRatingUpdated: "2026-04-24"
+tdmRating: 34.96
 
 tdmGames: 637
 hoqCtfRating: 34.48
@@ -36,7 +36,8 @@ qlrace:
     rank_pct: 100
   top_maps:
     - {map: p5run, rank: 13, total: 13, time: 31872, rank_pct: 100}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: japanesecastles
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

@@ -8,8 +8,8 @@ category: tdm
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
-tdmRating: 16.04018783569336
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 13.77
+tdmRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 850
 sensitivity: 6.5
@@ -36,7 +36,7 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 2465
+tdmGames: 2496
 hoqTdmRating: 13.77
 hoqTdmGames: 2496
 

@@ -4,24 +4,24 @@ steamId: "76561197972946521"
 published: false
 category: duel
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 21.41766357421875
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 21.42
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: collected
 lastUpdated: 2026-02
 duelRating: 1566
 ctfGames: 8
-tdmGames: 391
+tdmGames: 409
 hoqCtfRating: 21.42
 hoqCtfGames: 8
 hoqTdmRating: 31.42
 hoqTdmGames: 409
 
 duelGames: 869
-tdmRating: 32.43864059448242
+tdmRating: 31.42
 tdm2v2Rating: 34.16
 tdm2v2Games: 322
 sensitivity: 2.3

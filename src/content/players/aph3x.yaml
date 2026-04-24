@@ -3,13 +3,13 @@ steamId: "76561198346024921"
 aliases: []
 category: ctf
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 32.24637985229492
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 32.25
 
 ctfGames: 6537
 
-tdmRatingUpdated: "2026-03-12"
-tdmRating: 22.130783081054688
+tdmRatingUpdated: "2026-04-24"
+tdmRating: 22.13
 
 tdmGames: 18
 hoqCtfRating: 32.25
@@ -27,7 +27,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1049
-  average_rank_pct: 51.5
+  average_rank_pct: 51.6
   best_record:
     map: japanesecastles
     rank: 21
@@ -40,7 +40,8 @@ qlrace:
     - {map: campgrounds, rank: 135, total: 387, time: 26464, rank_pct: 34.9}
     - {map: henhouse, rank: 25, total: 61, time: 38536, rank_pct: 41}
     - {map: actf01, rank: 34, total: 79, time: 22904, rank_pct: 43}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 13
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

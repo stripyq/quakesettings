@@ -14,10 +14,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1265
 duelRatingUpdated: "2026-01-31"
-tdmRating: 27.716245651245117
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 32.69782638549805
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 27.72
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 34.13
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 25.29
 qllrCtfGames: 13
 hoqCtfRating: 34.13
@@ -51,7 +51,7 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1230
+ctfGames: 1253
 tdmGames: 31
 qlrace: null
 favorite_map: japanesecastles

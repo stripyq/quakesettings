@@ -56,11 +56,12 @@ qlrace:
     rank_pct: 1.5
   top_maps:
     - {map: qzpractice2, rank: 9, total: 591, time: 18705, rank_pct: 1.5}
-    - {map: cruton2, rank: 8, total: 131, time: 44280, rank_pct: 6.1}
+    - {map: cruton2, rank: 8, total: 132, time: 44280, rank_pct: 6.1}
     - {map: df_aztec, rank: 6, total: 72, time: 54020, rank_pct: 8.3}
     - {map: df_dinirun5, rank: 9, total: 83, time: 25290, rank_pct: 10.8}
     - {map: koz25, rank: 4, total: 36, time: 1511248, rank_pct: 11.1}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 88
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

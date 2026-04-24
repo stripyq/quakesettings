@@ -10,15 +10,17 @@ country: DE
 team: Le Cubanitos
 category: duel
 duelRating: 1406
-ctfRating: 29.16
+ctfRating: 34.05
 qllrCtfRating: 28.24
 qllrCtfGames: 121
 hoqCtfRating: 34.05
+ctfRatingUpdated: "2026-04-24"
 hoqCtfGames: 613
 hoqTdmRating: 39.43
+tdmRatingUpdated: "2026-04-24"
 hoqTdmGames: 129
 
-tdmRating: 39.7
+tdmRating: 39.43
 dataSource: player
 lastUpdated: 2025-02
 dpi: 1600
@@ -47,8 +49,8 @@ skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
 enemyModel: Keel
-ctfGames: 397
-tdmGames: 128
+ctfGames: 613
+tdmGames: 129
 
 
 
@@ -72,7 +74,8 @@ qlrace:
     rank_pct: 18.4
   top_maps:
     - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 52

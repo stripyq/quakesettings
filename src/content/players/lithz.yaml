@@ -12,10 +12,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1476
 duelRatingUpdated: "2026-01-31"
-tdmRating: 34.976234436035156
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 30.26048469543457
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 34.98
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 30.26
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 800
 sensitivity: 2.3
@@ -70,7 +70,10 @@ qlrace:
     - {map: spidercrossings, rank: 4, total: 126, time: 8584, rank_pct: 3.2}
     - {map: dividedcrossings, rank: 4, total: 123, time: 3776, rank_pct: 3.3}
     - {map: ironworks, rank: 4, total: 95, time: 5746, rank_pct: 4.2}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 257176, rank: 5, total: 69, speed_top: 1194, date: '2026-04-23T21:49:32.825Z'}
+  unique_maps_vql: 91
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

@@ -12,8 +12,8 @@ category: ctf
 
 
 lastUpdated: 2025-01
-ctfRating: 22.35732650756836
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 21.94
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 13.33
 qllrCtfGames: 23
 hoqCtfRating: 21.94
@@ -54,7 +54,7 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1630
+ctfGames: 1693
 qlrace:
   mode: 3
   records: 2
@@ -74,7 +74,8 @@ qlrace:
   top_maps:
     - {map: qzpractice2, rank: 84, total: 327, time: 23368, rank_pct: 25.7}
     - {map: japanesecastles, rank: 78, total: 212, time: 11848, rank_pct: 36.8}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 2
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

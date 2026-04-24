@@ -16,11 +16,11 @@ dataSource: player
 duelRating: 2050
 duelRatingUpdated: "2026-01-31"
 duelGames: 67
-tdmRating: 14.800832748413086
-tdmRatingUpdated: "2026-03-12"
-tdmGames: 65
-ctfRating: 16.39952278137207
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 14.51
+tdmRatingUpdated: "2026-04-24"
+tdmGames: 67
+ctfRating: 16.91
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 28.64
 qllrCtfGames: 14
 hoqCtfRating: 16.91
@@ -28,7 +28,7 @@ hoqCtfGames: 9714
 hoqTdmRating: 14.51
 hoqTdmGames: 67
 
-ctfGames: 9447
+ctfGames: 9714
 
 
 
@@ -82,7 +82,8 @@ qlrace:
     - {map: pornstar_dhoni, rank: 8, total: 34, time: 24008, rank_pct: 23.5}
     - {map: maze_gen_24, rank: 9, total: 36, time: 15424, rank_pct: 25}
     - {map: 13plant, rank: 16, total: 48, time: 7668, rank_pct: 33.3}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 19
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

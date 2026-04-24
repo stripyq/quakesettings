@@ -5,12 +5,12 @@ category: tdm
 
 
 lastUpdated: 2025-01
-tdmRating: 23.758777618408203
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 23.26
+tdmRatingUpdated: "2026-04-24"
 ctfRating: 23.76
 ctfRatingUpdated: "2026-01-31"
 duelRating: 606
-tdmGames: 228
+tdmGames: 230
 hoqTdmRating: 23.26
 hoqTdmGames: 230
 
@@ -62,7 +62,8 @@ qlrace:
     - {map: 4pornstar, rank: 7, total: 19, time: 45400, rank_pct: 36.8}
     - {map: l1th_heavy, rank: 6, total: 10, time: 30360, rank_pct: 60}
     - {map: df_pornstarslopin, rank: 218, total: 226, time: 37006, rank_pct: 96.5}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 13
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Lightning Gun

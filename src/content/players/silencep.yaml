@@ -10,10 +10,10 @@ category: ctf
 
 
 lastUpdated: 2025-01
-tdmRating: 33.92412185668945
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 41.69450759887695
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 33.92
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 41.69
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 34.9
 qllrCtfGames: 27
 hoqCtfRating: 41.69
@@ -65,7 +65,8 @@ qlrace:
     rank_pct: 11.1
   top_maps:
     - {map: japanesecastles, rank: 27, total: 243, time: 10423, rank_pct: 11.1}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

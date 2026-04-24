@@ -6,8 +6,8 @@ category: duel
 
 
 lastUpdated: 2025-01
-tdmRating: 26.429569244384766
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 26.43
+tdmRatingUpdated: "2026-04-24"
 ctfRating: 26.6
 ctfRatingUpdated: "2026-01-31"
 duelRating: 1224
@@ -64,7 +64,8 @@ qlrace:
     - {map: r7_cpmhome1, rank: 3, total: 10, time: 1648, rank_pct: 30}
     - {map: chile9, rank: 43, total: 143, time: 9888, rank_pct: 30.1}
     - {map: inder_failrun4, rank: 36, total: 67, time: 33327, rank_pct: 53.7}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 5
 favorite_map: campgrounds
 favorite_gametype: Team Deathmatch (2v2)
 favorite_weapon: Railgun

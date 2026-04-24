@@ -8,15 +8,15 @@ category: ctf
 
 
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 17.306758880615234
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 17.49
 
-ctfGames: 965
+ctfGames: 1009
 
-tdmRatingUpdated: "2026-03-12"
-tdmRating: 23.106613159179688
+tdmRatingUpdated: "2026-04-24"
+tdmRating: 24.1
 
-tdmGames: 325
+tdmGames: 344
 hoqCtfRating: 17.49
 hoqCtfGames: 1009
 hoqTdmRating: 24.1
@@ -44,7 +44,8 @@ qlrace:
     - {map: schody, rank: 9, total: 57, time: 9209, rank_pct: 15.8}
     - {map: aa_slope, rank: 13, total: 73, time: 31642, rank_pct: 17.8}
     - {map: charon, rank: 35, total: 194, time: 27253, rank_pct: 18}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 93
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

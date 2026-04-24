@@ -20,10 +20,10 @@ hoqTdmRating: 35.46
 hoqTdmGames: 32
 duelGames: 1890
 duelRatingUpdated: "2026-02-04"
-tdmRating: 35.457237243652344
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 18.568729400634766
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 35.46
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 18.57
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 800
 sensitivity: 1.5
@@ -69,7 +69,10 @@ qlrace:
     - {map: jumpathon, rank: 2, total: 6, time: 97040, rank_pct: 33.3}
     - {map: snazwank, rank: 6, total: 14, time: 38680, rank_pct: 42.9}
     - {map: df_0ups, rank: 28, total: 47, time: 43256, rank_pct: 59.6}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 711112, rank: 35, total: 69, speed_top: 1210, date: '2025-05-21T23:25:49.002Z'}
+  unique_maps_vql: 8
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

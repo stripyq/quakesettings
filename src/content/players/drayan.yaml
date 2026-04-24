@@ -5,10 +5,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1498
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
-tdmRating: 28.11
-tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 27.96
-ctfRatingUpdated: 2026-01-31T00:00:00.000Z
+tdmRating: 28.19
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 33.13
+ctfRatingUpdated: "2026-04-24"
 dataSource: verified
 source: ""
 sourceUrl: ""
@@ -44,8 +44,8 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 5605
-tdmGames: 1445
+ctfGames: 6129
+tdmGames: 1460
 hoqCtfRating: 33.13
 hoqCtfGames: 6129
 hoqTdmRating: 28.19
@@ -75,7 +75,8 @@ qlrace:
     rank_pct: 53.1
   top_maps:
     - {map: base1, rank: 17, total: 32, time: 8224, rank_pct: 53.1}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 46

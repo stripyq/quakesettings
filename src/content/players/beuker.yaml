@@ -4,9 +4,9 @@ steamId: "76561197971635353"
 aliases: []
 team2024: unreliable dogs
 category: ctf
-ctfRating: 25.26
-ctfGames: 908
-ctfRatingUpdated: "2026-02-04"
+ctfRating: 24.42
+ctfGames: 957
+ctfRatingUpdated: "2026-04-24"
 tdmRating: 22.42
 tdmGames: 45
 hoqCtfRating: 24.42
@@ -78,7 +78,8 @@ qlrace:
     rank_pct: 35.5
   top_maps:
     - {map: qzpractice2, rank: 210, total: 591, time: 25384, rank_pct: 35.5}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

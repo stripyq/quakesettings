@@ -8,10 +8,10 @@ category: ctf
 
 
 lastUpdated: 2025-01
-tdmRating: 20.65290069580078
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 6.6151123046875
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 20.65
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 6.13
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 3200
 sensitivity: 0.5
@@ -33,7 +33,7 @@ mousepad: la-onda-blitz
 keyboard: logitech-g413
 monitor: samsung-crg5
 headset: audio-technica-ath-m50x
-ctfGames: 921
+ctfGames: 932
 tdmGames: 494
 hoqCtfRating: 6.13
 hoqCtfGames: 932

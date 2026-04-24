@@ -8,9 +8,9 @@ aliases:
 team2026: Czesnecka
 team2026Shortname: CZE
 published: false
-ctfRating: 21.40127182006836
+ctfRating: 21.4
 ctfGames: 1080
-tdmRating: 24.328203201293945
+tdmRating: 24.33
 tdmGames: 19
 hoqCtfRating: 21.4
 hoqCtfGames: 1080
@@ -38,10 +38,11 @@ qlrace:
     - {map: kool_aqua, rank: 47, total: 100, time: 35152, rank_pct: 47}
     - {map: qlwc21_round2, rank: 48, total: 99, time: 50976, rank_pct: 48.5}
     - {map: bricks2, rank: 49, total: 66, time: 59312, rank_pct: 74.2}
-  fetched_at: '2026-04-17'
-ctfRatingUpdated: "2026-03-12"
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 
 

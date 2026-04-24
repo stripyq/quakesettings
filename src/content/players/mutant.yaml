@@ -10,15 +10,15 @@ country: ""
 team: ""
 category: ctf
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 lastUpdated: 2024-12
-ctfRating: 24.05807876586914
-ctfGames: 1077
-tdmRating: 31.107351303100586
+ctfRating: 22.13
+ctfGames: 1088
+tdmRating: 31.11
 tdmGames: 118
 hoqCtfRating: 22.13
 hoqCtfGames: 1088
@@ -76,7 +76,8 @@ qlrace:
     rank_pct: 57.4
   top_maps:
     - {map: df_0ups, rank: 27, total: 47, time: 38759, rank_pct: 57.4}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 2
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

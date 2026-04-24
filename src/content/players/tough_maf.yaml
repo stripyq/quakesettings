@@ -7,15 +7,15 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1584
 ctfGames: 150
-tdmGames: 1837
+tdmGames: 1983
 hoqCtfRating: 14.17
 hoqCtfGames: 150
 hoqTdmRating: 19.07
@@ -23,8 +23,8 @@ hoqTdmGames: 1983
 
 
 duelGames: 227
-ctfRating: 14.17286491394043
-tdmRating: 19.243898391723633
+ctfRating: 14.17
+tdmRating: 19.07
 dpi: 1600
 sensitivity: 0.8
 edpi: 1280
@@ -73,7 +73,8 @@ qlrace:
   top_maps:
     - {map: reflux, rank: 34, total: 83, time: 12255, rank_pct: 41}
     - {map: df_licklonger, rank: 41, total: 57, time: 40521, rank_pct: 71.9}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

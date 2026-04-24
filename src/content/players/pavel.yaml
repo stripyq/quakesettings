@@ -7,16 +7,16 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 20.892818450927734
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 20.89
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: collected
 lastUpdated: "2026-02-13"
 duelRating: 2108
 ctfGames: 4
-tdmGames: 330
+tdmGames: 384
 hoqCtfRating: 20.89
 hoqCtfGames: 4
 hoqTdmRating: 37.64
@@ -24,7 +24,7 @@ hoqTdmGames: 384
 
 
 duelGames: 4566
-tdmRating: 37.0091667175293
+tdmRating: 37.64
 tdm2v2Rating: 39.47
 tdm2v2Games: 261
 dpi: 800

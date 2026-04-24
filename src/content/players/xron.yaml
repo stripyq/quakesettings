@@ -4,13 +4,13 @@ aliases:
   - xron
 category: ctf
 
-ctfRatingUpdated: "2026-03-12"
-ctfRating: 14.395367622375488
+ctfRatingUpdated: "2026-04-24"
+ctfRating: 14.4
 
 ctfGames: 1
 
-tdmRatingUpdated: "2026-03-12"
-tdmRating: 28.073211669921875
+tdmRatingUpdated: "2026-04-24"
+tdmRating: 28.07
 
 tdmGames: 37
 hoqCtfRating: 14.4
@@ -35,7 +35,8 @@ qlrace:
     rank_pct: 61.5
   top_maps:
     - {map: p5run, rank: 8, total: 13, time: 9968, rank_pct: 61.5}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 2
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

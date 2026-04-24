@@ -7,16 +7,16 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 12.620637893676758
-tdmRating: 11.219002723693848
+ctfRating: 11.28
+tdmRating: 11.22
 duelRating: 1041
-ctfGames: 754
+ctfGames: 803
 tdmGames: 35
 hoqCtfRating: 11.28
 hoqCtfGames: 803
@@ -75,7 +75,8 @@ qlrace:
     - {map: tatmt_s12, rank: 41, total: 75, time: 77699, rank_pct: 54.7}
     - {map: df_dinirun3, rank: 18, total: 32, time: 170650, rank_pct: 56.3}
     - {map: df_minions_run5, rank: 47, total: 82, time: 26099, rank_pct: 57.3}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 56
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

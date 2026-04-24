@@ -16,8 +16,8 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1242
 duelRatingUpdated: "2026-01-31"
-ctfRating: 31.480911254882812
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 31.22
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 20.43
 qllrCtfGames: 35
 hoqCtfRating: 31.22
@@ -27,8 +27,8 @@ hoqTdmGames: 1
 
 
 
-tdmRating: 21.142723083496094
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 21.14
+tdmRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 800
 sensitivity: 1.7
@@ -55,7 +55,7 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: AMD
 cpuBrand: AMD
-ctfGames: 1737
+ctfGames: 1755
 tdmGames: 1
 
 qlrace: null

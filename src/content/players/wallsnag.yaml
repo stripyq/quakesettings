@@ -7,14 +7,14 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 750
-ctfGames: 2412
+ctfGames: 2451
 tdmGames: 336
 hoqCtfRating: 17.64
 hoqCtfGames: 2451
@@ -23,8 +23,8 @@ hoqTdmGames: 336
 
 
 duelGames: 75
-ctfRating: 20.218067169189453
-tdmRating: 18.574724197387695
+ctfRating: 17.64
+tdmRating: 18.57
 dpi: 400
 sensitivity: 3
 m_yaw: 0.022
@@ -71,7 +71,8 @@ qlrace:
     rank_pct: 2.9
   top_maps:
     - {map: qzpractice2, rank: 17, total: 591, time: 20007, rank_pct: 2.9}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 2
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

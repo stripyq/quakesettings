@@ -4,8 +4,8 @@ country: Unknown
 category: ctf
 lastUpdated: 2026-03
 duelRating: 1471
-ctfGames: 2635
-tdmGames: 1797
+ctfGames: 2644
+tdmGames: 1818
 hoqCtfRating: 25.13
 hoqCtfGames: 2644
 hoqTdmRating: 32.68
@@ -19,10 +19,10 @@ tdm2v2Rating: 31.34
 tdm2v2Games: 71
 duelGames: 1764
 duelRatingUpdated: "2026-02-04"
-tdmRating: 34.36
-tdmRatingUpdated: "2026-01-31"
-ctfRating: 24.86
-ctfRatingUpdated: "2026-01-31"
+tdmRating: 32.68
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 25.13
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 1600
 sensitivity: 1.17

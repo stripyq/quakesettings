@@ -73,4 +73,5 @@ qlrace:
     rank_pct: 73.1
   top_maps:
     - {map: r7-clear, rank: 38, total: 52, time: 16328, rank_pct: 73.1}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1

@@ -15,10 +15,10 @@ category: ctf
 
 
 lastUpdated: 2025-01
-tdmRating: 29.474117279052734
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 30.95530128479004
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 29.47
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 31.22
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 31.28
 qllrCtfGames: 70
 hoqCtfRating: 31.22
@@ -30,7 +30,7 @@ hoqTdmGames: 258
 
 
 duelRating: 1688
-ctfGames: 1774
+ctfGames: 1883
 tdmGames: 258
 duelGames: 1106
 duelRatingUpdated: "2026-02-04"
@@ -82,7 +82,11 @@ qlrace:
     - {map: df_coldrun, rank: 25, total: 172, time: 16430, rank_pct: 14.5}
     - {map: r7_sanity, rank: 5, total: 27, time: 72386, rank_pct: 18.5}
     - {map: tatmt_s4, rank: 11, total: 55, time: 17627, rank_pct: 20}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 277968, rank: 8, total: 69, speed_top: 1200, date: '2026-04-23T15:48:20.994Z'}
+    - {map: hangtime2-df, mode: 2, time: 21109512, rank: 15, total: 15, speed_top: 1528, date: '2026-02-06T23:35:00.730Z'}
+  unique_maps_vql: 205
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -48,14 +48,14 @@ gpuBrand: AMD
 cpuBrand: AMD
 qlrace:
   mode: 2
-  records: 88
+  records: 90
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
   speed_top: 3585
-  average_rank_pct: 52.3
+  average_rank_pct: 52.5
   best_record:
     map: aa_rmg2
     rank: 6
@@ -68,4 +68,7 @@ qlrace:
     - {map: tatmt_s2, rank: 12, total: 64, time: 20328, rank_pct: 18.8}
     - {map: qw_race3, rank: 8, total: 39, time: 18416, rank_pct: 20.5}
     - {map: df_licksewage, rank: 7, total: 34, time: 18240, rank_pct: 20.6}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 417672, rank: 19, total: 69, speed_top: 1198, date: '2026-04-20T20:31:36.748Z'}
+  unique_maps_vql: 151

@@ -147,13 +147,20 @@ function updateYamlFile(filePath, qlraceBlock) {
     noRefs: true,
   }).trimEnd();
 
-  // Check if qlrace block already exists
-  const qlraceRegex = /^qlrace:[\s\S]*?(?=^[a-zA-Z_]|\z)/m;
+  // Check if qlrace block already exists.
+  // IMPORTANT: `\z` in JavaScript regex is NOT end-of-string — it's a
+  // literal `z`. The original pattern terminated the match at the first
+  // lowercase `z` (inside `bronze`), corrupting every touched YAML.
+  // Use `(?![\s\S])` (= no char follows = end of string) instead, and
+  // require `\n` before the next-top-level-key letter so the lookahead
+  // can't match mid-line.
+  const qlraceRegex = /^qlrace:[\s\S]*?(?=\n[a-zA-Z_]|(?![\s\S]))/m;
   let newContent;
 
   if (qlraceRegex.test(content)) {
-    // Replace existing qlrace block
-    newContent = content.replace(qlraceRegex, qlraceYaml + '\n');
+    // Replace existing qlrace block. Use a function replacement so any
+    // `$` characters in qlraceYaml aren't treated as regex back-refs.
+    newContent = content.replace(qlraceRegex, () => qlraceYaml);
   } else {
     // Append at end of file
     newContent = content.trimEnd() + '\n' + qlraceYaml + '\n';

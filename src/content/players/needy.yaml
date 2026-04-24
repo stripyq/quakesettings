@@ -14,10 +14,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1356
 duelRatingUpdated: "2026-01-31"
-tdmRating: 10.597467422485352
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 13.65864086151123
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 9.69
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 15.05
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 24.18
 qllrCtfGames: 11
 hoqCtfRating: 15.05
@@ -53,8 +53,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: AMD
 cpuBrand: AMD
-ctfGames: 352
-tdmGames: 15
+ctfGames: 408
+tdmGames: 16
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

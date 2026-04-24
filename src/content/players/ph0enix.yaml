@@ -6,11 +6,11 @@ aliases:
 team2024: The expendables
 category: ctf
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
 
-tdmRatingUpdated: "2026-03-12"
-tdmRating: 29.55745506286621
+tdmRatingUpdated: "2026-04-24"
+tdmRating: 29.56
 
 lastUpdated: 2026-02
 dataSource: player
@@ -22,7 +22,7 @@ hoqCtfGames: 1066
 hoqTdmRating: 29.56
 hoqTdmGames: 1
 duelGames: 2
-ctfRating: 38.542388916015625
+ctfRating: 38.54
 dpi: 400
 sensitivity: 7
 edpi: 2800

@@ -270,6 +270,24 @@ const playersCollection = defineCollection({
         time: z.number(),
         rank_pct: z.number().optional(),
       })).optional(),
+      // Distinct maps completed across BOTH VQL modes (2 and 3). The
+      // `records` field only reflects one mode (whichever was fetched
+      // first by fetch-qlrace.cjs), so it undercounts multi-mode players.
+      // Populated by scripts/fetch-qlrace-featured-maps.cjs.
+      unique_maps_vql: z.number().optional(),
+      // Per-map records for featured maps (e.g. hangtime-df, hangtime2-df),
+      // populated by scripts/fetch-qlrace-featured-maps.cjs. Each entry is
+      // one (map, mode) combination so the same map can appear twice
+      // (mode 2 = VQL Weapons, mode 3 = VQL Strafe).
+      featured_maps: z.array(z.object({
+        map: z.string(),
+        mode: z.number(),
+        time: z.number(),
+        rank: z.number(),
+        total: z.number(),
+        speed_top: z.number().optional(),
+        date: z.string().optional(),
+      })).optional(),
       fetched_at: z.string().optional(),
     }).nullable().optional(),
 

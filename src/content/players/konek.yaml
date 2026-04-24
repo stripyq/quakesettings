@@ -47,3 +47,24 @@ skates: Aftermarket
 enemyModel: Keel
 gpuBrand: NVIDIA
 cpuBrand: AMD
+qlrace:
+  mode: 2
+  records: 2
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1889
+  average_rank_pct: 80.5
+  best_record:
+    map: kool_boma2
+    rank: 14
+    total: 20
+    time: 27872
+    rank_pct: 70
+  top_maps:
+    - {map: kool_boma2, rank: 14, total: 20, time: 27872, rank_pct: 70}
+    - {map: kool_bricks1, rank: 10, total: 11, time: 54232, rank_pct: 90.9}
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 5

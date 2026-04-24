@@ -8,10 +8,10 @@ category: tdm
 
 
 lastUpdated: 2025-01
-tdmRating: 20.842327117919922
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 3.25726318359375
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 22.6
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 3.26
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 1200
 sensitivity: 2.75
@@ -39,7 +39,7 @@ crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 11
-tdmGames: 2166
+tdmGames: 2230
 hoqCtfRating: 3.26
 hoqCtfGames: 11
 hoqTdmRating: 22.6

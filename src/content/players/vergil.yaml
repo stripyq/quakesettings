@@ -11,10 +11,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1455
 duelRatingUpdated: "2026-01-31"
-tdmRating: 18.795486450195312
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 28.431108474731445
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 18.8
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 27.53
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 22.91
 qllrCtfGames: 10
 hoqCtfRating: 27.53
@@ -47,7 +47,7 @@ enemyModel: Keel
 crosshairColor: Cyan
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1296
+ctfGames: 1324
 tdmGames: 1
 qlrace:
   mode: 2
@@ -71,7 +71,8 @@ qlrace:
     - {map: df_lickgirls, rank: 18, total: 98, time: 10568, rank_pct: 18.4}
     - {map: japanesecastles, rank: 46, total: 243, time: 11320, rank_pct: 18.9}
     - {map: spidercrossings, rank: 34, total: 126, time: 12544, rank_pct: 27}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 16
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

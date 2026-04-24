@@ -10,14 +10,14 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 23.98732566833496
-tdmRating: 16.3620662689209
+ctfRating: 24.9
+tdmRating: 16.36
 dpi: 400
 sensitivity: 1.7
 edpi: 680
@@ -44,7 +44,7 @@ keyboard: steelseries-apex-9-mini
 monitor: benq-xl2420z
 headset: hyperx-cloud-alpha
 skates: Stock
-ctfGames: 1374
+ctfGames: 1402
 tdmGames: 8
 hoqCtfRating: 24.9
 hoqCtfGames: 1402

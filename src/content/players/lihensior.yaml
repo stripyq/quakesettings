@@ -11,8 +11,8 @@ country: PL
 team: wAnnaBees
 category: ctf
 lastUpdated: 2026-03
-ctfRating: 34.35
-ctfRatingUpdated: "2026-02-24"
+ctfRating: 33.56
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 23.82
 qllrCtfGames: 85
 hoqCtfRating: 33.56
@@ -26,14 +26,14 @@ hoqTdmGames: 107
 
 
 
-tdmRating: 24.36
-tdmRatingUpdated: "2026-02-24"
+tdmRating: 24.78
+tdmRatingUpdated: "2026-04-24"
 caRating: 32.96
 caGames: 24
 caRatingUpdated: "2026-02-04"
 duelRating: 1558
-ctfGames: 1380
-tdmGames: 105
+ctfGames: 1427
+tdmGames: 107
 duelGames: 52
 duelRatingUpdated: "2026-02-04"
 dataSource: player

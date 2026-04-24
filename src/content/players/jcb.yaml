@@ -14,8 +14,8 @@ category: ctf
 
 
 lastUpdated: 2025-01
-ctfRating: 38.95551300048828
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 39.74
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 33.59
 qllrCtfGames: 86
 hoqCtfRating: 39.74
@@ -25,10 +25,10 @@ hoqTdmGames: 9
 
 
 
-tdmRating: 29.552019119262695
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 29.55
+tdmRatingUpdated: "2026-04-24"
 duelRating: 1142
-ctfGames: 2056
+ctfGames: 2066
 tdmGames: 9
 duelGames: 47
 duelRatingUpdated: "2026-02-04"
@@ -80,7 +80,11 @@ qlrace:
     - {map: ghost-luckr, rank: 2, total: 27, time: 29056, rank_pct: 7.4}
     - {map: lick_again, rank: 4, total: 32, time: 2312, rank_pct: 12.5}
     - {map: ironwood, rank: 3, total: 20, time: 4032, rank_pct: 15}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 213768, rank: 3, total: 69, speed_top: 1219, date: '2025-07-26T22:00:09.632Z'}
+    - {map: hangtime2-df, mode: 2, time: 633784, rank: 3, total: 15, speed_top: 1512, date: '2026-02-05T23:13:28.586Z'}
+  unique_maps_vql: 76
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

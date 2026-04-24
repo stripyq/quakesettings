@@ -19,10 +19,10 @@ category: ctf
 lastUpdated: 2025-01
 duelRating: 1783
 duelRatingUpdated: 2026-02-05T00:00:00.000Z
-tdmRating: 32.66770553588867
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 44.14175033569336
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 32.67
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 42.29
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 32.42
 qllrCtfGames: 76
 hoqCtfRating: 42.29
@@ -70,7 +70,7 @@ enemyModel: Keel
 crosshairColor: White
 grip: Hybrid
 duelGames: 439
-ctfGames: 1068
+ctfGames: 1131
 tdmGames: 40
 
 qlrace:
@@ -90,7 +90,10 @@ qlrace:
     rank_pct: 26
   top_maps:
     - {map: bardok_egypt, rank: 19, total: 73, time: 16617, rank_pct: 26}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 5143840, rank: 65, total: 69, speed_top: 1247, date: '2026-04-04T13:05:13.433Z'}
+  unique_maps_vql: 2
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

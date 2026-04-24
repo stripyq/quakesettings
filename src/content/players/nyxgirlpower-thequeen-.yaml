@@ -11,8 +11,8 @@ duelRating: null
 duelRatingUpdated: ""
 tdmRating: 17.62
 tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 18.882715225219727
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 17.67
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -49,7 +49,7 @@ gpuBrand: NVIDIA
 crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
-ctfGames: 2565
+ctfGames: 2633
 hoqCtfRating: 17.67
 hoqCtfGames: 2633
 
@@ -62,16 +62,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 41.2
+  average_rank_pct: 41.7
   best_record:
     map: cruton2
-    rank: 54
-    total: 131
+    rank: 55
+    total: 132
     time: 64387
-    rank_pct: 41.2
+    rank_pct: 41.7
   top_maps:
-    - {map: cruton2, rank: 54, total: 131, time: 64387, rank_pct: 41.2}
-  fetched_at: '2026-04-17'
+    - {map: cruton2, rank: 55, total: 132, time: 64387, rank_pct: 41.7}
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

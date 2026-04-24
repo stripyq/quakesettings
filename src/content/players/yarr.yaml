@@ -25,7 +25,8 @@ qlrace:
     - {map: nood-quickie1-4, rank: 7, total: 17, time: 10160, rank_pct: 41.2}
     - {map: nood-quickie1-1, rank: 17, total: 39, time: 7728, rank_pct: 43.6}
     - {map: kool_sh3, rank: 27, total: 41, time: 48312, rank_pct: 65.9}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

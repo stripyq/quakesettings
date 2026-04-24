@@ -5,8 +5,8 @@ category: ctf
 
 
 lastUpdated: 2025-01
-ctfRating: 23.803884506225586
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 23.8
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 1600
 sensitivity: 1.25
@@ -54,7 +54,8 @@ qlrace:
     rank_pct: 32.6
   top_maps:
     - {map: df_lickdecease, rank: 43, total: 132, time: 11346, rank_pct: 32.6}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

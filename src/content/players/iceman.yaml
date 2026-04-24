@@ -13,8 +13,8 @@ category: ctf
 
 
 lastUpdated: 2025-01
-ctfRating: 37.582908630371094
-ctfRatingUpdated: "2026-03-12"
+ctfRating: 35.36
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 30.4
 qllrCtfGames: 23
 hoqCtfRating: 35.36
@@ -22,8 +22,8 @@ hoqCtfGames: 1071
 hoqTdmRating: 31.18
 hoqTdmGames: 196
 
-tdmRating: 30.94354820251465
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 31.18
+tdmRatingUpdated: "2026-04-24"
 duelRating: 1400
 dataSource: player
 dpi: 1600
@@ -52,8 +52,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 1018
-tdmGames: 193
+ctfGames: 1071
+tdmGames: 196
 
 qlrace:
   mode: 2
@@ -73,7 +73,8 @@ qlrace:
     rank_pct: 77.4
   top_maps:
     - {map: coldrun, rank: 24, total: 31, time: 20512, rank_pct: 77.4}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 6
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

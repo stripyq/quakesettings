@@ -8,10 +8,10 @@ category: ctf
 
 
 lastUpdated: 2025-01
-tdmRating: 14.09441089630127
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 7.778433322906494
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 14.09
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 9.07
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 dpi: 400
 sensitivity: 3.4
@@ -37,7 +37,7 @@ enemyModel: Keel
 crosshairColor: Red
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2217
+ctfGames: 2260
 tdmGames: 3
 hoqCtfRating: 9.07
 hoqCtfGames: 2260
@@ -65,7 +65,8 @@ qlrace:
     - {map: run_un-dead_enter, rank: 21, total: 27, time: 32808, rank_pct: 77.8}
     - {map: ameisen-comp2, rank: 28, total: 34, time: 62768, rank_pct: 82.4}
     - {map: lubricious, rank: 30, total: 33, time: 54664, rank_pct: 90.9}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 3
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -7,10 +7,10 @@ category: tdm
 
 
 
-ctfRating: 9.792500495910645
-ctfRatingUpdated: "2026-03-12"
-tdmRating: 8.143621444702148
-tdmRatingUpdated: "2026-03-12"
+ctfRating: 9.79
+ctfRatingUpdated: "2026-04-24"
+tdmRating: 8.39
+tdmRatingUpdated: "2026-04-24"
 dataSource: player
 lastUpdated: 2025-01
 dpi: 1000
@@ -39,7 +39,7 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 17
-tdmGames: 2244
+tdmGames: 2257
 hoqCtfRating: 9.79
 hoqCtfGames: 17
 hoqTdmRating: 8.39

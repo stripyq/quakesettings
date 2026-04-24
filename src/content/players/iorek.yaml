@@ -13,7 +13,7 @@ category: duel
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 29.06
 qllrCtfGames: 110
 hoqCtfRating: 28.85
@@ -22,9 +22,9 @@ hoqCtfGames: 1936
 
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 28.631118774414062
+ctfRating: 28.85
 duelRating: 987
-ctfGames: 1832
+ctfGames: 1936
 duelGames: 30
 
 

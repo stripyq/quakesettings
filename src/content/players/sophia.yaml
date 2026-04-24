@@ -12,10 +12,10 @@ category: ctf
 
 lastUpdated: 2025-01
 duelRatingUpdated: ""
-tdmRating: 16.324039459228516
-tdmRatingUpdated: "2026-03-12"
-ctfRating: 12.950797080993652
-ctfRatingUpdated: "2026-03-12"
+tdmRating: 16.7
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 12.41
+ctfRatingUpdated: "2026-04-24"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -49,8 +49,8 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 6486
-tdmGames: 802
+ctfGames: 6563
+tdmGames: 805
 hoqCtfRating: 12.41
 hoqCtfGames: 6563
 hoqTdmRating: 16.7
@@ -76,7 +76,8 @@ qlrace:
     - {map: spacectf, rank: 73, total: 284, time: 4872, rank_pct: 25.7}
     - {map: rebound, rank: 62, total: 157, time: 8815, rank_pct: 39.5}
     - {map: r7_barkskin, rank: 22, total: 34, time: 21448, rank_pct: 64.7}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 3
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

@@ -8,10 +8,10 @@ team2026Shortname: GF?
 country: RU
 category: tdm
 lastUpdated: 2025-01
-tdmRating: 39.02
-tdmRatingUpdated: "2026-02-24"
-ctfRating: 36.34
-ctfRatingUpdated: "2026-02-24"
+tdmRating: 38.65
+tdmRatingUpdated: "2026-04-24"
+ctfRating: 35.96
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 24.02
 qllrCtfGames: 20
 hoqCtfRating: 35.96
@@ -20,8 +20,8 @@ hoqTdmRating: 38.65
 hoqTdmGames: 1021
 
 duelRating: 2140
-ctfGames: 924
-tdmGames: 1010
+ctfGames: 969
+tdmGames: 1021
 
 
 
@@ -77,7 +77,8 @@ qlrace:
     - {map: vanilla_09, rank: 35, total: 44, time: 13851, rank_pct: 79.5}
     - {map: wsm, rank: 10, total: 11, time: 547653, rank_pct: 90.9}
     - {map: actf02, rank: 33, total: 35, time: 40731, rank_pct: 94.3}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 4
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 37

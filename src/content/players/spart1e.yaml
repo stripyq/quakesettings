@@ -13,7 +13,7 @@ category: ctf
 
 
 
-ctfRatingUpdated: "2026-03-12"
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 33.58
 qllrCtfGames: 94
 hoqCtfRating: 34.82
@@ -22,16 +22,16 @@ hoqTdmRating: 35.03
 hoqTdmGames: 354
 
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 2070
 duelGames: 2866
-ctfRating: 35.937191009521484
-ctfGames: 918
-tdmRating: 34.83157730102539
-tdmGames: 345
+ctfRating: 34.82
+ctfGames: 1036
+tdmRating: 35.03
+tdmGames: 354
 
 
 

@@ -7,8 +7,8 @@ category: tdm
 lastUpdated: 2025-01
 duelRating: 1756
 duelRatingUpdated: "2026-01-31"
-tdmRating: 34.71157455444336
-tdmRatingUpdated: "2026-03-12"
+tdmRating: 34.71
+tdmRatingUpdated: "2026-04-24"
 ctfRating: 29.8
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -59,7 +59,8 @@ qlrace:
     rank_pct: 47.4
   top_maps:
     - {map: regrelue04, rank: 27, total: 57, time: 47432, rank_pct: 47.4}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 1
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

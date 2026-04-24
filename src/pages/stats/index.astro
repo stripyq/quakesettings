@@ -697,15 +697,21 @@ const tdmMostTargeted = buildNemesisLeaderboard(tdmRivalries.victimCounts);
 // RACE LEADERBOARDS (qlrace.com)
 // ===========================================
 
+function mapsCompletedCount(q) {
+  if (!q) return 0;
+  if (typeof q.unique_maps_vql === 'number' && q.unique_maps_vql > 0) return q.unique_maps_vql;
+  return typeof q.records === 'number' ? q.records : 0;
+}
+
 const topRaceRecords = rankWithTies(
   players
-    .filter(p => p.data.qlrace && p.data.qlrace.records > 0)
-    .sort((a, b) => b.data.qlrace!.records - a.data.qlrace!.records)
+    .filter(p => p.data.qlrace && mapsCompletedCount(p.data.qlrace) > 0)
+    .sort((a, b) => mapsCompletedCount(b.data.qlrace) - mapsCompletedCount(a.data.qlrace))
     .slice(0, 10)
     .map(p => ({
       id: p.id,
       name: p.data.name,
-      value: p.data.qlrace!.records,
+      value: mapsCompletedCount(p.data.qlrace),
     }))
 );
 
@@ -718,19 +724,6 @@ const topRaceWRs = rankWithTies(
       id: p.id,
       name: p.data.name,
       value: p.data.qlrace!.wrs,
-    }))
-);
-
-const topRaceSpeed = rankWithTies(
-  players
-    .filter(p => p.data.qlrace && p.data.qlrace.records >= 1 && p.data.qlrace.speed_top != null && p.data.qlrace.speed_top > 0)
-    .sort((a, b) => b.data.qlrace!.speed_top! - a.data.qlrace!.speed_top!)
-    .slice(0, 10)
-    .map(p => ({
-      id: p.id,
-      name: p.data.name,
-      value: Math.round(p.data.qlrace!.speed_top!),
-      mode: p.data.qlrace!.mode,
     }))
 );
 
@@ -762,6 +755,50 @@ const topRaceRankPct = rankWithTies(
       mode: p.data.qlrace!.mode,
     }))
 );
+
+// Featured race maps (hangtime-df, hangtime2-df) — per-map leaderboards
+// drawn from qlrace.featured_maps, populated by
+// scripts/fetch-qlrace-featured-maps.cjs.
+const FEATURED_RACE_MAPS = [
+  { slug: 'hangtime-df', label: 'hangtime-df' },
+  { slug: 'hangtime2-df', label: 'hangtime2-df' },
+];
+
+function formatRaceTime(ms) {
+  const totalSeconds = ms / 1000;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const secStr = seconds < 10 ? '0' + seconds.toFixed(3) : seconds.toFixed(3);
+  return minutes + ':' + secStr;
+}
+
+function buildFeaturedBoard(mapSlug, mode) {
+  const rows = [];
+  for (const p of players) {
+    const list = p.data.qlrace && p.data.qlrace.featured_maps;
+    if (!list) continue;
+    const hit = list.find(f => f.map === mapSlug && f.mode === mode);
+    if (!hit) continue;
+    rows.push({
+      id: p.id,
+      name: p.data.name,
+      time: hit.time,
+      rank: hit.rank,
+      total: hit.total,
+      displayTime: formatRaceTime(hit.time),
+    });
+  }
+  rows.sort((a, b) => a.time - b.time);
+  return rows;
+}
+
+const featuredBoards = FEATURED_RACE_MAPS.map(m => {
+  const weapons = buildFeaturedBoard(m.slug, 2);
+  const strafe = buildFeaturedBoard(m.slug, 3);
+  return Object.assign({}, m, { weapons: weapons, strafe: strafe, hasAny: weapons.length + strafe.length > 0 });
+});
+const anyFeaturedBoard = featuredBoards.some(b => b.hasAny);
+
 
 // ===========================================
 // INTERESTING FACTS
@@ -1616,18 +1653,18 @@ const schema = {
     )}
 
     <!-- ========== SECTION: RACE / MOVEMENT ========== -->
-    {(topRaceRecords.length > 0 || topRaceSpeed.length > 0 || topRaceRankPct.length > 0) && (
+    {(topRaceRecords.length > 0 || topRaceRankPct.length > 0) && (
     <div class="s-section-header" style="--section-color: #58a6ff">
       <div class="s-section-icon" style="background: #58a6ff">&#127939;</div>
-      <span class="s-section-title" style="color: #58a6ff">MOVEMENT / RACE</span>
+      <span class="s-section-title" style="color: #58a6ff">VQL MOVEMENT / RACE</span>
       <span class="s-section-attr">Data from <a href="https://qlrace.com" target="_blank" rel="noopener" style="color: #58a6ff">qlrace.com</a></span>
     </div>
 
     <div class="s-two-col">
       {topRaceRecords.length > 0 && (
       <div class="s-card">
-        <h2 class="s-card-title">Most Race Records (VQL)</h2>
-        <p class="s-card-sub">Total records set across all race maps</p>
+        <h2 class="s-card-title">Most Maps Completed (VQL)</h2>
+        <p class="s-card-sub">Distinct maps finished across both VQL modes (Weapons + Strafe)</p>
         <div class="s-leaderboard">
           {topRaceRecords.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
@@ -1658,22 +1695,6 @@ const schema = {
     </div>
 
     <div class="s-two-col">
-      {topRaceSpeed.length > 0 && (
-      <div class="s-card">
-        <h2 class="s-card-title">Highest Top Speed (VQL)</h2>
-        <p class="s-card-sub">Fastest recorded speed across all race maps</p>
-        <div class="s-leaderboard">
-          {topRaceSpeed.map((p) => (
-            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
-              <span class="s-lb-rank">{p.rank}.</span>
-              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-              <span class="s-lb-value">{p.value} <span class="s-lb-unit">ups</span></span>
-            </div>
-          ))}
-        </div>
-      </div>
-      )}
-
       {topRaceRankPct.length > 0 && (
       <div class="s-card">
         <h2 class="s-card-title">Best Average Rank % <span class="s-info-icon" title="Popularity-weighted average: sum(your rank) ÷ sum(total runners) across all top maps. Maps with more runners count more — a top rank on a popular map matters more than a WR on a 5-person map. Lower = consistently near the top of the field.">?</span></h2>
@@ -1690,6 +1711,52 @@ const schema = {
       </div>
       )}
     </div>
+
+    <div class="s-featured-wrapper">
+      {anyFeaturedBoard && (
+        <div class="s-two-col">
+          {featuredBoards.filter(b => b.hasAny).map((b) => (
+            <div class="s-card">
+              <h2 class="s-card-title">{b.label} — best HoQ times</h2>
+              <p class="s-card-sub">VQL. Faster = better. Rank shown is qlrace.com standing.</p>
+
+              {b.weapons.length > 0 && (
+                <div class="s-featured-mode">
+                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Weapons (mode 2)</p>
+                  <div class="s-leaderboard">
+                    {b.weapons.map((p, i) => (
+                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                        <span class="s-lb-rank">{i + 1}.</span>
+                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                        <span class="s-lb-value">{p.displayTime}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {b.strafe.length > 0 && (
+                <div class="s-featured-mode">
+                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Strafe (mode 3)</p>
+                  <div class="s-leaderboard">
+                    {b.strafe.map((p, i) => (
+                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                        <span class="s-lb-rank">{i + 1}.</span>
+                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                        <span class="s-lb-value">{p.displayTime}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+
+
     )}
 
     <!-- ========== SECTION 4: CONTROLS ========== -->
@@ -3289,3 +3356,4 @@ const schema = {
     }
   }
 </style>
+

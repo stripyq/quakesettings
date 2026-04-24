@@ -69,7 +69,8 @@ qlrace:
     - {map: df_cityrocket, rank: 1, total: 39, time: 32487, rank_pct: 2.6}
     - {map: df_lickmax, rank: 18, total: 87, time: 6532, rank_pct: 20.7}
     - {map: spacectf, rank: 78, total: 284, time: 4925, rank_pct: 27.5}
-  fetched_at: '2026-04-17'
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 5
 ctfRatingUpdated: "2026-04-22"
 qllrCtfRating: 22.41
 qllrCtfGames: 93

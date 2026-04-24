@@ -8,9 +8,9 @@ team2024: Old Sexy Quakers
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: false
-ctfRating: 26.140064239501953
+ctfRating: 26.14
 ctfGames: 230
-tdmRating: 22.760435104370117
+tdmRating: 22.76
 tdmGames: 539
 
 qlrace:
@@ -35,8 +35,9 @@ qlrace:
     - {map: campgrounds, rank: 9, total: 387, time: 19648, rank_pct: 2.3}
     - {map: lick_max, rank: 1, total: 44, time: 5808, rank_pct: 2.3}
     - {map: tele_world, rank: 1, total: 42, time: 39335, rank_pct: 2.4}
-  fetched_at: '2026-04-17'
-ctfRatingUpdated: "2026-03-12"
+  fetched_at: '2026-04-24'
+  unique_maps_vql: 242
+ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 22.16
 qllrCtfGames: 23
 hoqCtfRating: 26.14
@@ -44,7 +45,7 @@ hoqCtfGames: 230
 hoqTdmRating: 22.76
 hoqTdmGames: 539
 
-tdmRatingUpdated: "2026-03-12"
+tdmRatingUpdated: "2026-04-24"
 
 
 
