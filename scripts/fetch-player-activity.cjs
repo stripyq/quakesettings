@@ -72,8 +72,12 @@ async function fetchPlayerMatches(steamId) {
       if (matches.length === 0) break;
 
       for (const match of matches) {
-        const ts = match.started_at ?? match.timestamp ?? match.date;
-        if (ts != null) timestamps.push(ts);
+        const ts = Number(match.started_at ?? match.timestamp ?? match.date);
+        if (!Number.isFinite(ts)) {
+          console.warn('[skip] non-numeric ts:', match.date, 'match id:', match._id || match.id);
+          continue;
+        }
+        timestamps.push(ts);
       }
 
       offset += matches.length;
