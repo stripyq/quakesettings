@@ -199,6 +199,7 @@ async function main() {
     if (hasVictim) entry.favoriteVictim = stats.favoriteVictim;
     if (hasH2H) entry.headToHead = stats.headToHead;
     if (stats.mapStats) entry.mapStats = stats.mapStats;
+    entry.lastUpdated = new Date().toISOString();
     return entry;
   }
 
