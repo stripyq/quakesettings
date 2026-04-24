@@ -209,7 +209,7 @@ if (p.steamId) {
 }
 
 // Race badges — one per hangtime-* map run, derived from qlrace.featured_maps.
-const featuredMaps = (p.data as any)?.qlrace?.featured_maps;
+const featuredMaps = (p as any)?.qlrace?.featured_maps;
 if (Array.isArray(featuredMaps)) {
   for (const entry of featuredMaps) {
     if (!entry || typeof entry.map !== 'string') continue;
