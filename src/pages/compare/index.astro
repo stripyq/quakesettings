@@ -1399,45 +1399,51 @@ const schema = {
 
         var r1 = p1.qlrace;
         var r2 = p2.qlrace;
+        if (!r1 || !r2) return;
 
-        console.log('[Race H2H] p1.qlrace:', r1 ? ('mode=' + r1.mode + ' top_maps=' + (r1.top_maps ? r1.top_maps.length : 'none')) : 'null');
-        console.log('[Race H2H] p2.qlrace:', r2 ? ('mode=' + r2.mode + ' top_maps=' + (r2.top_maps ? r2.top_maps.length : 'none')) : 'null');
-
-        // Need both players to have qlrace data with top_maps
-        if (!r1 || !r2 || !r1.top_maps || !r2.top_maps) return;
-
-        // Different modes: show a message
-        if (r1.mode !== r2.mode) {
-          var m1Label = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
-          var m2Label = r2.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
-          raceCompareContainer.innerHTML = '<div class="cmp-section-heading">Race Head to Head</div>' +
-            '<div class="race-h2h-card">' +
-            '<p class="race-h2h-empty">Cannot compare — ' + p1.name + ' plays ' + m1Label + ' while ' + p2.name + ' plays ' + m2Label + '.</p>' +
-            '</div>';
-          raceCompareContainer.classList.remove('hidden');
-          return;
+        // Collect records per player keyed by "map|mode" so we can match
+        // across primary-mode boundaries. Includes the legacy top_maps
+        // (all in the player's primary mode) PLUS featured_maps (each entry
+        // has its own mode, e.g. hangtime-df in VQL Strafe).
+        function collect(r) {
+          var out = {};
+          if (Array.isArray(r.top_maps)) {
+            for (var i = 0; i < r.top_maps.length; i++) {
+              var t = r.top_maps[i];
+              if (!t || !t.map || !t.time) continue;
+              out[t.map + '|' + r.mode] = { map: t.map, mode: r.mode, time: t.time, rank: t.rank, total: t.total };
+            }
+          }
+          if (Array.isArray(r.featured_maps)) {
+            for (var j = 0; j < r.featured_maps.length; j++) {
+              var f = r.featured_maps[j];
+              if (!f || !f.map || !f.time) continue;
+              out[f.map + '|' + f.mode] = { map: f.map, mode: f.mode, time: f.time, rank: f.rank, total: f.total };
+            }
+          }
+          return out;
         }
 
-        // Find shared maps
-        var r2MapIndex = {};
-        for (var i = 0; i < r2.top_maps.length; i++) {
-          r2MapIndex[r2.top_maps[i].map] = r2.top_maps[i];
-        }
+        var p1Maps = collect(r1);
+        var p2Maps = collect(r2);
 
         var sharedMaps = [];
-        for (var j = 0; j < r1.top_maps.length; j++) {
-          var m1 = r1.top_maps[j];
-          var m2 = r2MapIndex[m1.map];
-          if (m2) {
-            sharedMaps.push({ map: m1.map, p1: m1, p2: m2 });
+        for (var key in p1Maps) {
+          if (p2Maps[key]) {
+            sharedMaps.push({ map: p1Maps[key].map, mode: p1Maps[key].mode, p1: p1Maps[key], p2: p2Maps[key] });
           }
         }
+        sharedMaps.sort(function(a, b) {
+          if (a.mode !== b.mode) return a.mode - b.mode;
+          return a.map.localeCompare(b.map);
+        });
 
         if (sharedMaps.length === 0) {
-          var modeLabel0 = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+          var p1Count = Object.keys(p1Maps).length;
+          var p2Count = Object.keys(p2Maps).length;
           raceCompareContainer.innerHTML = '<div class="cmp-section-heading">Race Head to Head</div>' +
             '<div class="race-h2h-card">' +
-            '<p class="race-h2h-empty">No shared race maps between ' + p1.name + ' (' + r1.top_maps.length + ' maps) and ' + p2.name + ' (' + r2.top_maps.length + ' maps).</p>' +
+            '<p class="race-h2h-empty">No shared race maps between ' + p1.name + ' (' + p1Count + ' maps) and ' + p2.name + ' (' + p2Count + ' maps).</p>' +
             '</div>';
           raceCompareContainer.classList.remove('hidden');
           return;
@@ -1449,16 +1455,22 @@ const schema = {
           var sec = totalSec % 60;
           return min + ':' + (sec < 10 ? '0' : '') + sec.toFixed(3);
         }
-
         function fmtDelta(ms) {
           var sec = Math.abs(ms) / 1000;
           return (ms > 0 ? '+' : '-') + sec.toFixed(3) + 's';
         }
+        function modeName(m) { return m === 2 ? 'Weapons' : 'Strafe'; }
 
-        var modeLabel = r1.mode === 2 ? 'VQL Weapons' : 'VQL Strafe';
+        var modesPresent = {};
+        for (var mi = 0; mi < sharedMaps.length; mi++) modesPresent[sharedMaps[mi].mode] = true;
+        var modeCount = Object.keys(modesPresent).length;
+        var headerLabel = modeCount > 1
+          ? 'VQL (Weapons + Strafe)'
+          : 'VQL ' + modeName(sharedMaps[0].mode);
+
         var html = '<div class="cmp-section-heading">Race Head to Head</div>' +
           '<div class="race-h2h-card">' +
-          '<span class="race-h2h-mode">' + modeLabel + '</span>' +
+          '<span class="race-h2h-mode">' + headerLabel + '</span>' +
           '<table class="race-h2h-table">' +
           '<thead><tr>' +
             '<th>Map</th>' +
@@ -1472,9 +1484,10 @@ const schema = {
           var delta = sm.p1.time - sm.p2.time;
           var p1Faster = delta < 0;
           var p2Faster = delta > 0;
+          var mapLabel = sm.map + (modeCount > 1 ? ' <span class="race-h2h-mode-tag">(' + modeName(sm.mode) + ')</span>' : '');
 
           html += '<tr>' +
-            '<td class="race-h2h-map">' + sm.map + '</td>' +
+            '<td class="race-h2h-map">' + mapLabel + '</td>' +
             '<td class="' + (p1Faster ? 'race-faster' : '') + '">' +
               '<span class="race-h2h-time">' + fmtTime(sm.p1.time) + '</span>' +
               '<span class="race-h2h-rank">' + sm.p1.rank + '/' + sm.p1.total + '</span>' +
