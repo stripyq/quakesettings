@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// ---------- data loading ----------
+
+type MapEntry = {
+  map: string;
+  games: number;
+  pct_of_total?: number;
+  avg_duration_sec: number;
+  avg_total_score: number;
+  blue_win_rate_pct: number;
+  red_win_rate_pct: number;
+  top_performer_metric?: 'frags' | 'score' | 'win_rate';
+  top_performer_min_games?: number;
+  top_performers: {
+    sid: string;
+    nick: string | null;
+    games: number;
+    wins?: number;
+    win_rate_pct?: number;
+    avg_score?: number;
+    avg_frags?: number;
+    value?: number;
+  }[];
+};
+
+type RegistryEntry = { name: string; hasProfile: boolean; slug: string | null };
+
+function loadMaps(gt: string): MapEntry[] {
+  try {
+    const p = path.join(process.cwd(), 'public/data', gt, 'maps.json');
+    return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch {
+    return [];
+  }
+}
+
+function loadRegistry(): Record<string, RegistryEntry> {
+  try {
+    const p = path.join(process.cwd(), 'src/data/player-registry.json');
+    const reg = JSON.parse(fs.readFileSync(p, 'utf8'));
+    const out: Record<string, RegistryEntry> = {};
+    for (const pl of (reg.players || [])) {
+      out[pl.steamId] = { name: pl.name, hasProfile: !!pl.hasProfile, slug: pl.slug || null };
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+const ctfMaps = loadMaps('ctf');
+const tdmMaps = loadMaps('tdm');
+const registry = loadRegistry();
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+function formatDuration(sec: number): string {
+  if (!sec) return '—';
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return s ? `${m}m ${s}s` : `${m}m`;
+}
+
+function resolveName(sid: string, fallback: string | null): string {
+  const r = registry[sid];
+  if (r && r.name) return r.name;
+  return fallback || sid.slice(-6);
+}
+
+function resolveHref(sid: string): string | null {
+  const r = registry[sid];
+  if (r && r.hasProfile && r.slug) return `${base}players/${r.slug}/`;
+  return null;
+}
+
+function totalGames(entries: MapEntry[]): number {
+  return entries.reduce((a, b) => a + b.games, 0);
+}
+const ctfTotal = totalGames(ctfMaps);
+const tdmTotal = totalGames(tdmMaps);
+---
+
+<BaseLayout
+  title="All-Time Map Stats"
+  description="Per-map leaderboards, win rates, and most-played maps across all seasons of Quake Live CTF and TDM."
+>
+  <div class="maps-page">
+    <div class="page-header">
+      <h1>All-Time Map Stats</h1>
+      <p class="subtitle">Per-map popularity and the players who win on them most often.</p>
+    </div>
+
+    <div class="m-tabs" role="tablist" aria-label="Gametype">
+      <button class="m-tab active" data-tab="ctf" role="tab" aria-selected="true">
+        CTF <span class="m-tab-count">{ctfTotal.toLocaleString()}</span>
+      </button>
+      <button class="m-tab" data-tab="tdm" role="tab" aria-selected="false">
+        TDM <span class="m-tab-count">{tdmTotal.toLocaleString()}</span>
+      </button>
+    </div>
+
+    {['ctf', 'tdm'].map((gt) => {
+      const entries = gt === 'ctf' ? ctfMaps : tdmMaps;
+      const total = gt === 'ctf' ? ctfTotal : tdmTotal;
+      return (
+        <section class={`m-panel ${gt === 'ctf' ? 'active' : ''}`} data-panel={gt} role="tabpanel">
+          <div class="m-table-wrap">
+            <table class="m-table" data-sortable>
+              <thead>
+                <tr>
+                  <th data-sort="map" data-type="str">Map</th>
+                  <th data-sort="games" data-type="num" class="sort-desc">Games</th>
+                  <th data-sort="pct" data-type="num">Share</th>
+                  <th class="m-th-perf">Top Win% on map <span class="m-th-sub">(min {entries[0]?.top_performer_min_games ?? 30} games)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {entries.map((m) => {
+                  const pct = m.pct_of_total ?? (total ? Math.round((m.games / total) * 1000) / 10 : 0);
+                  return (
+                    <tr>
+                      <td class="m-cell-map">{m.map}</td>
+                      <td data-num={m.games}>{m.games.toLocaleString()}</td>
+                      <td data-num={pct} class="m-cell-pct">{pct.toFixed(1)}%</td>
+                      <td class="m-cell-perf">
+                        {m.top_performers.length === 0 ? (
+                          <span class="m-muted">insufficient data</span>
+                        ) : (
+                          <span class="m-perf-inline">
+                            {m.top_performers.slice(0, 5).map((p, i) => {
+                              const href = resolveHref(p.sid);
+                              const name = resolveName(p.sid, p.nick);
+                              const wr = p.win_rate_pct ?? 0;
+                              return (
+                                <span class="m-perf-item" data-sep={i > 0 ? '1' : '0'}>
+                                  {href ? <a href={href}>{name}</a> : <span class="m-perf-name">{name}</span>}
+                                  <span class="m-perf-wr">{wr.toFixed(0)}%</span>
+                                  <span class="m-perf-games">{p.games}g</span>
+                                </span>
+                              );
+                            })}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })}
+  </div>
+
+  <script is:inline>
+    // ---- tabs ----
+    document.querySelectorAll('.m-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+        document.querySelectorAll('.m-tab').forEach((t) => {
+          const active = t.getAttribute('data-tab') === target;
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.m-panel').forEach((p) => {
+          p.classList.toggle('active', p.getAttribute('data-panel') === target);
+        });
+      });
+    });
+
+    // ---- sortable tables ----
+    document.querySelectorAll('table[data-sortable]').forEach((table) => {
+      const ths = table.querySelectorAll('th[data-sort]');
+      ths.forEach((th, colIdx) => {
+        th.style.cursor = 'pointer';
+        th.addEventListener('click', () => {
+          const type = th.getAttribute('data-type');
+          const currentDesc = th.classList.contains('sort-desc');
+          const currentAsc = th.classList.contains('sort-asc');
+          // clear all
+          ths.forEach((x) => x.classList.remove('sort-asc', 'sort-desc'));
+          // toggle
+          const desc = !currentDesc; // if was desc, go asc; otherwise desc
+          th.classList.add(desc ? 'sort-desc' : 'sort-asc');
+          const tbody = table.querySelector('tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          rows.sort((a, b) => {
+            const cellA = a.children[colIdx];
+            const cellB = b.children[colIdx];
+            let va, vb;
+            if (type === 'num') {
+              va = parseFloat(cellA.getAttribute('data-num') || cellA.textContent);
+              vb = parseFloat(cellB.getAttribute('data-num') || cellB.textContent);
+              if (isNaN(va)) va = -Infinity;
+              if (isNaN(vb)) vb = -Infinity;
+              return desc ? vb - va : va - vb;
+            }
+            va = (cellA.textContent || '').trim().toLowerCase();
+            vb = (cellB.textContent || '').trim().toLowerCase();
+            return desc ? vb.localeCompare(va) : va.localeCompare(vb);
+          });
+          rows.forEach((r) => tbody.appendChild(r));
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .maps-page { max-width: 1400px; margin: 0 auto; padding: 1rem 1rem 2rem; color: #c9d1d9; }
+    .page-header h1 { margin: 0 0 .15rem; font-size: 1.4rem; }
+    .page-header .subtitle { margin: 0 0 .9rem; color: #8b949e; font-size: .85rem; }
+
+    .m-tabs { display: flex; gap: .25rem; border-bottom: 1px solid #30363d; margin-bottom: .5rem; }
+    .m-tab {
+      background: transparent; border: 0; color: #8b949e;
+      padding: .4rem .75rem; font-size: .85rem; font-weight: 600;
+      cursor: pointer; border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .m-tab:hover { color: #c9d1d9; }
+    .m-tab.active { color: #f0f6fc; border-bottom-color: #58a6ff; }
+    .m-tab-count { color: #6e7681; font-weight: 400; font-size: .85em; margin-left: .35rem; }
+
+    .m-panel { display: none; }
+    .m-panel.active { display: block; }
+
+    .m-table-wrap { overflow-x: auto; border: 1px solid #30363d; border-radius: 4px; }
+    .m-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .m-table thead { background: #161b22; }
+    .m-table th {
+      text-align: left; padding: .35rem .6rem; font-weight: 600;
+      color: #c9d1d9; border-bottom: 1px solid #30363d;
+      white-space: nowrap; user-select: none;
+    }
+    .m-th-sub { color: #6e7681; font-weight: 400; font-size: .85em; margin-left: .25rem; }
+    .m-table th.sort-asc::after { content: ' ▲'; color: #58a6ff; }
+    .m-table th.sort-desc::after { content: ' ▼'; color: #58a6ff; }
+    .m-table td { padding: .3rem .6rem; border-bottom: 1px solid #21262d; vertical-align: middle; }
+    .m-table tbody tr:hover { background: #161b22; }
+    .m-cell-map { font-weight: 600; color: #f0f6fc; }
+    .m-cell-pct { color: #8b949e; }
+    .m-cell-perf { width: 100%; }
+
+    .m-perf-inline { display: flex; flex-wrap: wrap; gap: .15rem .6rem; line-height: 1.6; }
+    .m-perf-item { white-space: nowrap; }
+    .m-perf-item[data-sep="1"]::before { content: "·"; color: #484f58; margin-right: .6rem; }
+    .m-perf-item a { color: #58a6ff; text-decoration: none; font-weight: 500; }
+    .m-perf-item a:hover { text-decoration: underline; }
+    .m-perf-name { color: #c9d1d9; }
+    .m-perf-wr { color: #f0f6fc; font-weight: 700; margin-left: .25rem; }
+    .m-perf-games { color: #6e7681; font-size: .85em; margin-left: .15rem; }
+    .m-muted { color: #6e7681; font-style: italic; }
+
+    @media (max-width: 700px) {
+      .m-table { font-size: .78rem; }
+      .m-perf-games { display: none; }
+    }
+  </style>
+</BaseLayout>
