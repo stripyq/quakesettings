@@ -756,12 +756,11 @@ const topRaceRankPct = rankWithTies(
     }))
 );
 
-// Featured race maps (hangtime-df, hangtime2-df) — per-map leaderboards
+// Featured race map (hangtime-df) — per-map leaderboard
 // drawn from qlrace.featured_maps, populated by
 // scripts/fetch-qlrace-featured-maps.cjs.
 const FEATURED_RACE_MAPS = [
   { slug: 'hangtime-df', label: 'hangtime-df' },
-  { slug: 'hangtime2-df', label: 'hangtime2-df' },
 ];
 
 function formatRaceTime(ms) {
@@ -1652,113 +1651,6 @@ const schema = {
     </div>
     )}
 
-    <!-- ========== SECTION: RACE / MOVEMENT ========== -->
-    {(topRaceRecords.length > 0 || topRaceRankPct.length > 0) && (
-    <div class="s-section-header" style="--section-color: #58a6ff">
-      <div class="s-section-icon" style="background: #58a6ff">&#127939;</div>
-      <span class="s-section-title" style="color: #58a6ff">VQL MOVEMENT / RACE</span>
-      <span class="s-section-attr">Data from <a href="https://qlrace.com" target="_blank" rel="noopener" style="color: #58a6ff">qlrace.com</a></span>
-    </div>
-
-    <div class="s-two-col">
-      {topRaceRecords.length > 0 && (
-      <div class="s-card">
-        <h2 class="s-card-title">Most Maps Completed (VQL)</h2>
-        <p class="s-card-sub">Distinct maps finished across both VQL modes (Weapons + Strafe)</p>
-        <div class="s-leaderboard">
-          {topRaceRecords.map((p) => (
-            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
-              <span class="s-lb-rank">{p.rank}.</span>
-              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-              <span class="s-lb-value">{p.value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      )}
-
-      {topRaceWRs.length > 0 && (
-      <div class="s-card">
-        <h2 class="s-card-title">Most World Records (VQL)</h2>
-        <p class="s-card-sub">Current #1 ranks across all race maps</p>
-        <div class="s-leaderboard">
-          {topRaceWRs.map((p) => (
-            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
-              <span class="s-lb-rank">{p.rank}.</span>
-              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-              <span class="s-lb-value">{p.value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      )}
-    </div>
-
-    <div class="s-two-col">
-      {topRaceRankPct.length > 0 && (
-      <div class="s-card">
-        <h2 class="s-card-title">Best Average Rank % <span class="s-info-icon" title="Popularity-weighted average: sum(your rank) ÷ sum(total runners) across all top maps. Maps with more runners count more — a top rank on a popular map matters more than a WR on a 5-person map. Lower = consistently near the top of the field.">?</span></h2>
-        <p class="s-card-sub">Lower is better. Minimum 5 records.</p>
-        <div class="s-leaderboard">
-          {topRaceRankPct.map((p) => (
-            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
-              <span class="s-lb-rank">{p.rank}.</span>
-              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-              <span class="s-lb-value">{p.value}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      )}
-    </div>
-
-    <div class="s-featured-wrapper">
-      {anyFeaturedBoard && (
-        <div class="s-two-col">
-          {featuredBoards.filter(b => b.hasAny).map((b) => (
-            <div class="s-card">
-              <h2 class="s-card-title">{b.label} — best HoQ times</h2>
-              <p class="s-card-sub">VQL. Faster = better. Rank shown is qlrace.com standing.</p>
-
-              {b.weapons.length > 0 && (
-                <div class="s-featured-mode">
-                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Weapons (mode 2)</p>
-                  <div class="s-leaderboard">
-                    {b.weapons.map((p, i) => (
-                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
-                        <span class="s-lb-rank">{i + 1}.</span>
-                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-                        <span class="s-lb-value">{p.displayTime}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {b.strafe.length > 0 && (
-                <div class="s-featured-mode">
-                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Strafe (mode 3)</p>
-                  <div class="s-leaderboard">
-                    {b.strafe.map((p, i) => (
-                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
-                        <span class="s-lb-rank">{i + 1}.</span>
-                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-                        <span class="s-lb-value">{p.displayTime}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-
-
-
-    )}
-
     <!-- ========== SECTION 4: CONTROLS ========== -->
     <div class="s-section-header" style="--section-color: #da3633">
       <div class="s-section-icon" style="background: #da3633">&#9000;&#65039;</div>
@@ -2042,6 +1934,113 @@ const schema = {
           </div>
         ))}
       </div>
+    )}
+
+    <!-- ========== SECTION: RACE / MOVEMENT ========== -->
+    {(topRaceRecords.length > 0 || topRaceRankPct.length > 0) && (
+    <div class="s-section-header" style="--section-color: #58a6ff">
+      <div class="s-section-icon" style="background: #58a6ff">&#127939;</div>
+      <span class="s-section-title" style="color: #58a6ff">VQL MOVEMENT / RACE</span>
+      <span class="s-section-attr">Data from <a href="https://qlrace.com" target="_blank" rel="noopener" style="color: #58a6ff">qlrace.com</a></span>
+    </div>
+
+    <div class="s-two-col">
+      {topRaceRecords.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most Maps Completed (VQL)</h2>
+        <p class="s-card-sub">Distinct maps finished across both VQL modes (Weapons + Strafe)</p>
+        <div class="s-leaderboard">
+          {topRaceRecords.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+
+      {topRaceWRs.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Most World Records (VQL)</h2>
+        <p class="s-card-sub">Current #1 ranks across all race maps</p>
+        <div class="s-leaderboard">
+          {topRaceWRs.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+
+    <div class="s-two-col">
+      {topRaceRankPct.length > 0 && (
+      <div class="s-card">
+        <h2 class="s-card-title">Best Average Rank % <span class="s-info-icon" title="Popularity-weighted average: sum(your rank) ÷ sum(total runners) across all top maps. Maps with more runners count more — a top rank on a popular map matters more than a WR on a 5-person map. Lower = consistently near the top of the field.">?</span></h2>
+        <p class="s-card-sub">Lower is better. Minimum 5 records.</p>
+        <div class="s-leaderboard">
+          {topRaceRankPct.map((p) => (
+            <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
+              <span class="s-lb-rank">{p.rank}.</span>
+              <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+              <span class="s-lb-value">{p.value}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+    </div>
+
+    <div class="s-featured-wrapper">
+      {anyFeaturedBoard && (
+        <div class="s-two-col">
+          {featuredBoards.filter(b => b.hasAny).map((b) => (
+            <div class="s-card">
+              <h2 class="s-card-title">{b.label} — best HoQ times</h2>
+              <p class="s-card-sub">VQL. Faster = better. Rank shown is qlrace.com standing.</p>
+
+              {b.weapons.length > 0 && (
+                <div class="s-featured-mode">
+                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Weapons (mode 2)</p>
+                  <div class="s-leaderboard">
+                    {b.weapons.map((p, i) => (
+                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                        <span class="s-lb-rank">{i + 1}.</span>
+                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                        <span class="s-lb-value">{p.displayTime}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {b.strafe.length > 0 && (
+                <div class="s-featured-mode">
+                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Strafe (mode 3)</p>
+                  <div class="s-leaderboard">
+                    {b.strafe.map((p, i) => (
+                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                        <span class="s-lb-rank">{i + 1}.</span>
+                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                        <span class="s-lb-value">{p.displayTime}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+
+
     )}
 
     <div class="s-disclaimer">

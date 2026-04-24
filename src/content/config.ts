@@ -283,7 +283,6 @@ const playersCollection = defineCollection({
         map: z.string(),
         mode: z.number(),
         time: z.number(),
-        rank: z.number(),
         total: z.number(),
         speed_top: z.number().optional(),
         date: z.string().optional(),
