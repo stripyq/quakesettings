@@ -1456,8 +1456,22 @@ const schema = {
           return min + ':' + (sec < 10 ? '0' : '') + sec.toFixed(3);
         }
         function fmtDelta(ms) {
-          var sec = Math.abs(ms) / 1000;
-          return (ms > 0 ? '+' : '-') + sec.toFixed(3) + 's';
+          var sign = ms > 0 ? '+' : '-';
+          var totalSec = Math.abs(ms) / 1000;
+          if (totalSec < 60) return sign + totalSec.toFixed(3) + 's';
+          if (totalSec < 3600) {
+            var m = Math.floor(totalSec / 60);
+            var s = totalSec - m * 60;
+            return sign + m + 'm ' + s.toFixed(1) + 's';
+          }
+          if (totalSec < 86400) {
+            var h = Math.floor(totalSec / 3600);
+            var mm = Math.floor((totalSec - h * 3600) / 60);
+            return sign + h + 'h ' + mm + 'm';
+          }
+          var d = Math.floor(totalSec / 86400);
+          var hh = Math.floor((totalSec - d * 86400) / 3600);
+          return sign + d + 'd ' + hh + 'h';
         }
         function modeName(m) { return m === 2 ? 'Weapons' : 'Strafe'; }
 

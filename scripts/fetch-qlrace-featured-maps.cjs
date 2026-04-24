@@ -73,7 +73,11 @@ function extractFeatured(apiData, mode) {
   if (!apiData || !Array.isArray(apiData.records)) return [];
   const hits = [];
   for (const r of apiData.records) {
-    if (!FEATURED_MAPS.includes(r.map)) continue;
+    // Include explicit --maps / DEFAULT_FEATURED_MAPS entries, PLUS any
+    // map whose name starts with 'hangtime' so the full family gets picked
+    // up automatically without hardcoding every variant.
+    const isHangtime = typeof r.map === 'string' && /^hangtime/i.test(r.map);
+    if (!FEATURED_MAPS.includes(r.map) && !isHangtime) continue;
     if (!r.time || !r.rank || !r.total_records) continue;
     const entry = {
       map: r.map,

@@ -188,7 +188,7 @@ type Badge = {
   unit?: string;
   rank: number;
   of: number;
-  gt: 'ctf' | 'tdm';
+  gt: 'ctf' | 'tdm' | 'race';
 };
 const BADGE_CAP = 10;
 const TIER_ORDER: Record<string, number> = { legendary: 0, gold: 1, silver: 2 };
@@ -207,6 +207,27 @@ if (p.steamId) {
     }
   }
 }
+
+// Race badges — one per hangtime-* map run, derived from qlrace.featured_maps.
+const featuredMaps = (p.data as any)?.qlrace?.featured_maps;
+if (Array.isArray(featuredMaps)) {
+  for (const entry of featuredMaps) {
+    if (!entry || typeof entry.map !== 'string') continue;
+    if (!/^hangtime/i.test(entry.map)) continue;
+    const modeName = entry.mode === 2 ? 'Weapons' : entry.mode === 3 ? 'Strafe' : `mode ${entry.mode}`;
+    allBadges.push({
+      id: `race_hangtime_${entry.map}_m${entry.mode}`,
+      tier: 'gold',
+      label: 'Hangtime Runner',
+      subject: `${entry.map} (${modeName})`,
+      value: entry.rank || 0,
+      rank: entry.rank || 999,
+      of: entry.total || 0,
+      gt: 'race',
+    });
+  }
+}
+
 allBadges.sort((a, b) => {
   const t = TIER_ORDER[a.tier] - TIER_ORDER[b.tier];
   if (t !== 0) return t;
@@ -313,6 +334,9 @@ function badgeLabel(b: Badge): string {
     const prefix = b.id.startsWith('map_king_') ? 'Map King' : 'Map Specialist';
     return `${prefix}|${mapName}`;
   }
+  if (b.id.startsWith('race_hangtime_')) {
+    return `Hangtime|${b.subject || ''}`;
+  }
   return b.label;
 }
 // Inline SVG paths keyed by badge-icon family. Keep viewBox 0 0 24 24.
@@ -336,6 +360,7 @@ function badgeIconKey(id: string): string {
   if (id === 'excellents_per_game') return 'sparkle';
   if (id.startsWith('map_king_')) return 'crown';
   if (id.startsWith('map_top10_')) return 'star';
+  if (id.startsWith('race_hangtime_')) return 'bolt';
   return 'star';
 }
 // Real Quake Live medal images live under /public/images/medal_*.webp.

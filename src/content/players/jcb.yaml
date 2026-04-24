@@ -82,6 +82,7 @@ qlrace:
     - {map: ironwood, rank: 3, total: 20, time: 4032, rank_pct: 15}
   fetched_at: '2026-04-24'
   featured_maps:
+    - {map: hangtime, mode: 3, time: 291016, rank: 4, total: 69, date: '2018-08-18T22:26:14.995Z'}
     - {map: hangtime-df, mode: 3, time: 213768, rank: 3, total: 69, speed_top: 1219, date: '2025-07-26T22:00:09.632Z'}
     - {map: hangtime2-df, mode: 2, time: 633784, rank: 3, total: 15, speed_top: 1512, date: '2026-02-05T23:13:28.586Z'}
   unique_maps_vql: 76
