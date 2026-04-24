@@ -1994,49 +1994,43 @@ const schema = {
         </div>
       </div>
       )}
-    </div>
 
-    <div class="s-featured-wrapper">
-      {anyFeaturedBoard && (
-        <div class="s-two-col">
-          {featuredBoards.filter(b => b.hasAny).map((b) => (
-            <div class="s-card">
-              <h2 class="s-card-title">{b.label} — best HoQ times</h2>
-              <p class="s-card-sub">VQL. Faster = better. Rank shown is qlrace.com standing.</p>
+      {featuredBoards.filter(b => b.hasAny).map((b) => (
+        <div class="s-card">
+          <h2 class="s-card-title">{b.label} — best HoQ times</h2>
+          <p class="s-card-sub">VQL. Faster = better. Rank shown is qlrace.com standing.</p>
 
-              {b.weapons.length > 0 && (
-                <div class="s-featured-mode">
-                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Weapons (mode 2)</p>
-                  <div class="s-leaderboard">
-                    {b.weapons.map((p, i) => (
-                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
-                        <span class="s-lb-rank">{i + 1}.</span>
-                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-                        <span class="s-lb-value">{p.displayTime}</span>
-                      </div>
-                    ))}
+          {b.weapons.length > 0 && (
+            <div class="s-featured-mode">
+              <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Weapons (mode 2)</p>
+              <div class="s-leaderboard">
+                {b.weapons.map((p, i) => (
+                  <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                    <span class="s-lb-rank">{i + 1}.</span>
+                    <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                    <span class="s-lb-value">{p.displayTime}</span>
                   </div>
-                </div>
-              )}
-
-              {b.strafe.length > 0 && (
-                <div class="s-featured-mode">
-                  <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Strafe (mode 3)</p>
-                  <div class="s-leaderboard">
-                    {b.strafe.map((p, i) => (
-                      <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
-                        <span class="s-lb-rank">{i + 1}.</span>
-                        <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
-                        <span class="s-lb-value">{p.displayTime}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-          ))}
+          )}
+
+          {b.strafe.length > 0 && (
+            <div class="s-featured-mode">
+              <p class="s-card-sub" style="margin-top: 12px; font-weight: 600; color: #58a6ff;">Strafe (mode 3)</p>
+              <div class="s-leaderboard">
+                {b.strafe.map((p, i) => (
+                  <div class={`s-lb-row${i < 3 ? ` s-lb-top${i + 1}` : ''}`}>
+                    <span class="s-lb-rank">{i + 1}.</span>
+                    <a href={`${base}players/${p.id}/`} class="s-lb-name">{p.name}</a>
+                    <span class="s-lb-value">{p.displayTime}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      ))}
     </div>
 
 
