@@ -1982,7 +1982,7 @@ const schema = {
       {topRaceRankPct.length > 0 && (
       <div class="s-card">
         <h2 class="s-card-title">Best Average Rank % <span class="s-info-icon" title="Popularity-weighted average: sum(your rank) ÷ sum(total runners) across all top maps. Maps with more runners count more — a top rank on a popular map matters more than a WR on a 5-person map. Lower = consistently near the top of the field.">?</span></h2>
-        <p class="s-card-sub">Lower is better. Minimum 5 records.</p>
+        <p class="s-card-sub">Your rank position expressed as a % of total runners on each map, averaged across all your runs and weighted so popular maps count more. Example: #3 on a 69-runner map = 4.3%. Lower = consistently near the top. Minimum 5 runs.</p>
         <div class="s-leaderboard">
           {topRaceRankPct.map((p) => (
             <div class={`s-lb-row${p.rank <= 3 ? ` s-lb-top${p.rank}` : ''}`}>
