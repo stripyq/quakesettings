@@ -1509,7 +1509,7 @@ const schema = {
         <h2>Data Source</h2>
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
-          {p.lastUpdated && <p><strong>Settings:</strong> Last updated {p.lastUpdated}</p>}
+          {p.lastUpdated && <p><strong>Settings:</strong> Last updated {String(p.lastUpdated).substring(0, 7)}</p>}
           {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
           {p.qlrace && <p><strong>Race Data:</strong> From <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a>{p.qlrace.fetched_at ? ` (${p.qlrace.fetched_at})` : ''}</p>}
         </div>

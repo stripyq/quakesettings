@@ -104,7 +104,7 @@ const playersCollection = defineCollection({
     team: z.string().optional(),
     category: z.string().optional().default('duel'),
     published: z.boolean().optional().default(true), // false = ratings-only, no settings page
-    lastUpdated: z.string().optional(), // Date string YYYY-MM
+    lastUpdated: z.string().optional(), // Date string YYYY-MM or YYYY-MM-DD (must be quoted in YAML)
 
     // Player Identity (for external data matching)
     steamId: z.string().optional(), // Steam64 ID (e.g., "76561198012345678")

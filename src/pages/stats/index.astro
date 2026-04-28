@@ -1712,7 +1712,7 @@ const schema = {
                 <span class="s-recent-rank">{i + 1}</span>
                 <a href={`${base}players/${p.id}/`} class="s-recent-name">{p.data.name}</a>
                 {p.data.country && <span class="s-recent-country">{p.data.country}</span>}
-                <span class="s-recent-date">{p.data.lastUpdated?.substring(0, 10)}</span>
+                <span class="s-recent-date">{p.data.lastUpdated?.substring(0, 7)}</span>
               </div>
             ))}
           </div>
