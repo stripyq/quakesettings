@@ -66,15 +66,10 @@ qlrace:
     time: 41381
     rank_pct: 16.7
   top_maps:
-    - map: cities_of_gold
-      rank: 11
-      total: 66
-      time: 41381
-    - map: moko_slick
-      rank: 11
-      total: 21
-      time: 7336
-  fetched_at: "2026-04-28"
+    - {map: cities_of_gold, rank: 11, total: 66, time: 41381}
+    - {map: moko_slick, rank: 11, total: 21, time: 7336}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 2
 favorite_map: hiddenfortress
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

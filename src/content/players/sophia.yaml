@@ -67,19 +67,11 @@ qlrace:
     time: 4872
     rank_pct: 25.7
   top_maps:
-    - map: spacectf
-      rank: 73
-      total: 284
-      time: 4872
-    - map: rebound
-      rank: 62
-      total: 157
-      time: 8815
-    - map: r7_barkskin
-      rank: 22
-      total: 34
-      time: 21448
-  fetched_at: "2026-04-28"
+    - {map: spacectf, rank: 73, total: 284, time: 4872}
+    - {map: rebound, rank: 62, total: 157, time: 8815}
+    - {map: r7_barkskin, rank: 22, total: 34, time: 21448}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 3
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

@@ -70,15 +70,12 @@ qlrace:
     time: 13221
     rank_pct: 29.5
   top_maps:
-    - map: cubicle
-      rank: 18
-      total: 61
-      time: 13221
-    - map: bloxrox
-      rank: 16
-      total: 22
-      time: 73151
-  fetched_at: "2026-04-28"
+    - {map: cubicle, rank: 18, total: 61, time: 13221}
+    - {map: bloxrox, rank: 16, total: 22, time: 73151}
+  fetched_at: '2026-04-28'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 281472, rank: 9, total: 69, speed_top: 1195, date: '2026-04-28T19:50:30.865Z'}
+  unique_maps_vql: 6
 favorite_map: hiddenfortress
 favorite_gametype: "Weapon: Shotgun"
 favorite_weapon: Shotgun

@@ -32,15 +32,10 @@ qlrace:
     time: 11637
     rank_pct: 25.1
   top_maps:
-    - map: japanesecastles
-      rank: 61
-      total: 243
-      time: 11637
-    - map: oilrig
-      rank: 11
-      total: 36
-      time: 10934
-  fetched_at: "2026-04-28"
+    - {map: japanesecastles, rank: 61, total: 243, time: 11637}
+    - {map: oilrig, rank: 11, total: 36, time: 10934}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 24
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

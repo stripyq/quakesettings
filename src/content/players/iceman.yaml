@@ -65,11 +65,9 @@ qlrace:
     time: 20512
     rank_pct: 77.4
   top_maps:
-    - map: coldrun
-      rank: 24
-      total: 31
-      time: 20512
-  fetched_at: "2026-04-28"
+    - {map: coldrun, rank: 24, total: 31, time: 20512}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 6
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

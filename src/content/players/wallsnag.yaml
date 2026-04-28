@@ -62,11 +62,9 @@ qlrace:
     time: 20007
     rank_pct: 2.9
   top_maps:
-    - map: qzpractice2
-      rank: 17
-      total: 591
-      time: 20007
-  fetched_at: "2026-04-28"
+    - {map: qzpractice2, rank: 17, total: 591, time: 20007}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 2
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

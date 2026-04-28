@@ -56,27 +56,13 @@ qlrace:
     time: 6621
     rank_pct: 24.6
   top_maps:
-    - map: duotest
-      rank: 14
-      total: 57
-      time: 6621
-    - map: spacectf
-      rank: 84
-      total: 284
-      time: 5024
-    - map: r7_cpmhome1
-      rank: 3
-      total: 10
-      time: 1648
-    - map: chile9
-      rank: 43
-      total: 143
-      time: 9888
-    - map: inder_failrun4
-      rank: 36
-      total: 67
-      time: 33327
-  fetched_at: "2026-04-28"
+    - {map: duotest, rank: 14, total: 57, time: 6621}
+    - {map: spacectf, rank: 84, total: 284, time: 5024}
+    - {map: r7_cpmhome1, rank: 3, total: 10, time: 1648}
+    - {map: chile9, rank: 43, total: 143, time: 9888}
+    - {map: inder_failrun4, rank: 36, total: 67, time: 33327}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 5
 favorite_map: campgrounds
 favorite_gametype: Team Deathmatch (2v2)
 favorite_weapon: Railgun

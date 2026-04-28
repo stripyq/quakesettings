@@ -31,11 +31,9 @@ qlrace:
     time: 9968
     rank_pct: 61.5
   top_maps:
-    - map: p5run
-      rank: 8
-      total: 13
-      time: 9968
-  fetched_at: "2026-04-28"
+    - {map: p5run, rank: 8, total: 13, time: 9968}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 2
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

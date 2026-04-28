@@ -65,47 +65,18 @@ qlrace:
     time: 2617
     rank_pct: 15.4
   top_maps:
-    - map: vanilla_03
-      rank: 10
-      total: 65
-      time: 2617
-    - map: crashcourse
-      rank: 20
-      total: 129
-      time: 22024
-    - map: df_lickgirls
-      rank: 16
-      total: 98
-      time: 10496
-    - map: df_dinirun4
-      rank: 11
-      total: 62
-      time: 22018
-    - map: aa_shorty2
-      rank: 5
-      total: 28
-      time: 1876
-    - map: r7_romo
-      rank: 11
-      total: 56
-      time: 35820
-    - map: snazwank
-      rank: 3
-      total: 14
-      time: 35840
-    - map: inder_a1ex
-      rank: 13
-      total: 59
-      time: 35247
-    - map: daanstrafe06
-      rank: 6
-      total: 27
-      time: 20963
-    - map: getupthere
-      rank: 4
-      total: 17
-      time: 11967
-  fetched_at: "2026-04-28"
+    - {map: vanilla_03, rank: 10, total: 65, time: 2617}
+    - {map: crashcourse, rank: 20, total: 129, time: 22024}
+    - {map: df_lickgirls, rank: 16, total: 98, time: 10496}
+    - {map: df_dinirun4, rank: 11, total: 62, time: 22018}
+    - {map: aa_shorty2, rank: 5, total: 28, time: 1876}
+    - {map: r7_romo, rank: 11, total: 56, time: 35820}
+    - {map: snazwank, rank: 3, total: 14, time: 35840}
+    - {map: inder_a1ex, rank: 13, total: 59, time: 35247}
+    - {map: daanstrafe06, rank: 6, total: 27, time: 20963}
+    - {map: getupthere, rank: 4, total: 17, time: 11967}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 185
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

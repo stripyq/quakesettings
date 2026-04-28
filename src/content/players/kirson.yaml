@@ -63,8 +63,6 @@ qlrace:
     time: 16328
     rank_pct: 73.1
   top_maps:
-    - map: r7-clear
-      rank: 38
-      total: 52
-      time: 16328
-  fetched_at: "2026-04-28"
+    - {map: r7-clear, rank: 38, total: 52, time: 16328}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 1

@@ -68,23 +68,12 @@ qlrace:
     time: 16835
     rank_pct: 16.3
   top_maps:
-    - map: df_coldrun
-      rank: 28
-      total: 172
-      time: 16835
-    - map: voltex
-      rank: 15
-      total: 28
-      time: 74027
-    - map: trinity
-      rank: 60
-      total: 103
-      time: 28781
-    - map: dinirun2
-      rank: 7
-      total: 10
-      time: 61392
-  fetched_at: "2026-04-28"
+    - {map: df_coldrun, rank: 28, total: 172, time: 16835}
+    - {map: voltex, rank: 15, total: 28, time: 74027}
+    - {map: trinity, rank: 60, total: 103, time: 28781}
+    - {map: dinirun2, rank: 7, total: 10, time: 61392}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 4
 favorite_map: asylum
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

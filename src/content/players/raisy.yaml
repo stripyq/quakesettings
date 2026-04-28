@@ -28,32 +28,14 @@ qlrace:
     time: 37432
     rank_pct: 18.8
   top_maps:
-    - map: r7-prodigy3
-      rank: 3
-      total: 16
-      time: 37432
-    - map: inder_siwd
-      rank: 17
-      total: 34
-      time: 20000
-    - map: inder_speed2
-      rank: 18
-      total: 35
-      time: 10984
-    - map: kool_speed1
-      rank: 42
-      total: 70
-      time: 37896
-    - map: kool_mini7
-      rank: 33
-      total: 53
-      time: 35936
-    - map: hangtime-df
-      rank: 44
-      total: 69
-      time: 1145664
-    - map: dfwc2017-6
-      rank: 165
-      total: 238
-      time: 195384
-  fetched_at: "2026-04-28"
+    - {map: r7-prodigy3, rank: 3, total: 16, time: 37432}
+    - {map: inder_siwd, rank: 17, total: 34, time: 20000}
+    - {map: inder_speed2, rank: 18, total: 35, time: 10984}
+    - {map: kool_speed1, rank: 42, total: 70, time: 37896}
+    - {map: kool_mini7, rank: 33, total: 53, time: 35936}
+    - {map: hangtime-df, rank: 44, total: 69, time: 1145664}
+    - {map: dfwc2017-6, rank: 165, total: 238, time: 195384}
+  fetched_at: '2026-04-28'
+  featured_maps:
+    - {map: hangtime-df, mode: 3, time: 1145664, rank: 44, total: 69, speed_top: 1215, date: '2025-06-18T12:23:54.793Z'}
+  unique_maps_vql: 7

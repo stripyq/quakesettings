@@ -70,31 +70,14 @@ qlrace:
     time: 18496
     rank_pct: 19
   top_maps:
-    - map: actf01
-      rank: 15
-      total: 79
-      time: 18496
-    - map: df_lickgirls
-      rank: 19
-      total: 98
-      time: 10616
-    - map: df_lickgoogle
-      rank: 30
-      total: 103
-      time: 9192
-    - map: df_minions_run5
-      rank: 24
-      total: 82
-      time: 20345
-    - map: inder_a1ex
-      rank: 18
-      total: 59
-      time: 36718
-    - map: df_pornstarslopin
-      rank: 152
-      total: 226
-      time: 31521
-  fetched_at: "2026-04-28"
+    - {map: actf01, rank: 15, total: 79, time: 18496}
+    - {map: df_lickgirls, rank: 19, total: 98, time: 10616}
+    - {map: df_lickgoogle, rank: 30, total: 103, time: 9192}
+    - {map: df_minions_run5, rank: 24, total: 82, time: 20345}
+    - {map: inder_a1ex, rank: 18, total: 59, time: 36718}
+    - {map: df_pornstarslopin, rank: 152, total: 226, time: 31521}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 15
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

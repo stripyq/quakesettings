@@ -67,11 +67,9 @@ qlrace:
     time: 6388
     rank_pct: 18.4
   top_maps:
-    - map: df_lickmax
-      rank: 16
-      total: 87
-      time: 6388
-  fetched_at: "2026-04-28"
+    - {map: df_lickmax, rank: 16, total: 87, time: 6388}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 1
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 52

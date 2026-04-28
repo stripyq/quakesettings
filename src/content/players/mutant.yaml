@@ -70,11 +70,9 @@ qlrace:
     time: 38759
     rank_pct: 57.4
   top_maps:
-    - map: df_0ups
-      rank: 27
-      total: 47
-      time: 38759
-  fetched_at: "2026-04-28"
+    - {map: df_0ups, rank: 27, total: 47, time: 38759}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 2
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

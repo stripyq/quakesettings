@@ -58,19 +58,11 @@ qlrace:
     time: 9952
     rank_pct: 6.8
   top_maps:
-    - map: shiningforces
-      rank: 10
-      total: 147
-      time: 9952
-    - map: spidercrossings
-      rank: 11
-      total: 126
-      time: 10712
-    - map: campercrossings
-      rank: 25
-      total: 119
-      time: 9616
-  fetched_at: "2026-04-28"
+    - {map: shiningforces, rank: 10, total: 147, time: 9952}
+    - {map: spidercrossings, rank: 11, total: 126, time: 10712}
+    - {map: campercrossings, rank: 25, total: 119, time: 9616}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 5
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -64,19 +64,11 @@ qlrace:
     time: 13851
     rank_pct: 79.5
   top_maps:
-    - map: vanilla_09
-      rank: 35
-      total: 44
-      time: 13851
-    - map: wsm
-      rank: 10
-      total: 11
-      time: 547653
-    - map: actf02
-      rank: 33
-      total: 35
-      time: 40731
-  fetched_at: "2026-04-28"
+    - {map: vanilla_09, rank: 35, total: 44, time: 13851}
+    - {map: wsm, rank: 10, total: 11, time: 547653}
+    - {map: actf02, rank: 33, total: 35, time: 40731}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 4
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 37

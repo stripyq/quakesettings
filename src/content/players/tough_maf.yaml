@@ -63,15 +63,10 @@ qlrace:
     time: 12255
     rank_pct: 41
   top_maps:
-    - map: reflux
-      rank: 34
-      total: 83
-      time: 12255
-    - map: df_licklonger
-      rank: 41
-      total: 57
-      time: 40521
-  fetched_at: "2026-04-28"
+    - {map: reflux, rank: 34, total: 83, time: 12255}
+    - {map: df_licklonger, rank: 41, total: 57, time: 40521}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 4
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

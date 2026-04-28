@@ -64,12 +64,7 @@ qlrace:
     time: 27872
     rank_pct: 70
   top_maps:
-    - map: kool_boma2
-      rank: 14
-      total: 20
-      time: 27872
-    - map: kool_bricks1
-      rank: 10
-      total: 11
-      time: 54232
-  fetched_at: "2026-04-28"
+    - {map: kool_boma2, rank: 14, total: 20, time: 27872}
+    - {map: kool_bricks1, rank: 10, total: 11, time: 54232}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 5

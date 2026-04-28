@@ -31,11 +31,9 @@ qlrace:
     time: 107734
     rank_pct: 16.5
   top_maps:
-    - map: cruton4
-      rank: 15
-      total: 91
-      time: 107734
-  fetched_at: "2026-04-28"
+    - {map: cruton4, rank: 15, total: 91, time: 107734}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -61,31 +61,14 @@ qlrace:
     time: 6336
     rank_pct: 6.3
   top_maps:
-    - map: ironworks
-      rank: 6
-      total: 95
-      time: 6336
-    - map: troubledwaters
-      rank: 7
-      total: 74
-      time: 8648
-    - map: df_lickgirls
-      rank: 18
-      total: 98
-      time: 10568
-    - map: japanesecastles
-      rank: 46
-      total: 243
-      time: 11320
-    - map: spidercrossings
-      rank: 34
-      total: 126
-      time: 12544
-    - map: coldrun
-      rank: 20
-      total: 31
-      time: 19464
-  fetched_at: "2026-04-28"
+    - {map: ironworks, rank: 6, total: 95, time: 6336}
+    - {map: troubledwaters, rank: 7, total: 74, time: 8648}
+    - {map: df_lickgirls, rank: 18, total: 98, time: 10568}
+    - {map: japanesecastles, rank: 46, total: 243, time: 11320}
+    - {map: spidercrossings, rank: 34, total: 126, time: 12544}
+    - {map: coldrun, rank: 20, total: 31, time: 19464}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 16
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

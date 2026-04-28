@@ -65,15 +65,10 @@ qlrace:
     time: 23368
     rank_pct: 25.7
   top_maps:
-    - map: qzpractice2
-      rank: 84
-      total: 327
-      time: 23368
-    - map: japanesecastles
-      rank: 78
-      total: 212
-      time: 11848
-  fetched_at: "2026-04-28"
+    - {map: qzpractice2, rank: 84, total: 327, time: 23368}
+    - {map: japanesecastles, rank: 78, total: 212, time: 11848}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 2
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

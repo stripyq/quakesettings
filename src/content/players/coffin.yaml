@@ -62,27 +62,13 @@ qlrace:
     time: 9432
     rank_pct: 8.6
   top_maps:
-    - map: zzz_rocket1
-      rank: 8
-      total: 93
-      time: 9432
-    - map: nood_speed4
-      rank: 5
-      total: 29
-      time: 14056
-    - map: xyligan-ghost
-      rank: 6
-      total: 19
-      time: 8104
-    - map: lovet-fourth
-      rank: 8
-      total: 16
-      time: 17856
-    - map: pornstar-slopin
-      rank: 30
-      total: 45
-      time: 27544
-  fetched_at: "2026-04-28"
+    - {map: zzz_rocket1, rank: 8, total: 93, time: 9432}
+    - {map: nood_speed4, rank: 5, total: 29, time: 14056}
+    - {map: xyligan-ghost, rank: 6, total: 19, time: 8104}
+    - {map: lovet-fourth, rank: 8, total: 16, time: 17856}
+    - {map: pornstar-slopin, rank: 30, total: 45, time: 27544}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 17
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -25,11 +25,9 @@ qlrace:
     time: 13936
     rank_pct: 75.5
   top_maps:
-    - map: japanesecastles
-      rank: 160
-      total: 212
-      time: 13936
-  fetched_at: "2026-04-28"
+    - {map: japanesecastles, rank: 160, total: 212, time: 13936}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 1
 ctfGames: 1561
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

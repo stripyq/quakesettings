@@ -34,19 +34,11 @@ qlrace:
     time: 30552
     rank_pct: 60.2
   top_maps:
-    - map: campgrounds
-      rank: 231
-      total: 384
-      time: 30552
-    - map: kopo_fe
-      rank: 28
-      total: 46
-      time: 68240
-    - map: elbmoop
-      rank: 26
-      total: 39
-      time: 96136
-  fetched_at: "2026-04-28"
+    - {map: campgrounds, rank: 231, total: 384, time: 30552}
+    - {map: kopo_fe, rank: 28, total: 46, time: 68240}
+    - {map: elbmoop, rank: 26, total: 39, time: 96136}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 3
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 35.5
 qllrCtfGames: 39

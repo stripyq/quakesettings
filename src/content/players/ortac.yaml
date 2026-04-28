@@ -57,12 +57,7 @@ qlrace:
     time: 7258
     rank_pct: 60.2
   top_maps:
-    - map: spacectf
-      rank: 171
-      total: 284
-      time: 7258
-    - map: df_dinirun3
-      rank: 22
-      total: 32
-      time: 194944
-  fetched_at: "2026-04-28"
+    - {map: spacectf, rank: 171, total: 284, time: 7258}
+    - {map: df_dinirun3, rank: 22, total: 32, time: 194944}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 12

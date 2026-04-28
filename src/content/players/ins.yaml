@@ -68,47 +68,22 @@ qlrace:
     time: 7200
     rank_pct: 14
   top_maps:
-    - map: rebound
-      rank: 22
-      total: 157
-      time: 7200
-    - map: q3wcp19
-      rank: 10
-      total: 71
-      time: 13744
-    - map: df_coldrun
-      rank: 25
-      total: 172
-      time: 16430
-    - map: r7_sanity
-      rank: 5
-      total: 27
-      time: 72386
-    - map: tatmt_s4
-      rank: 11
-      total: 55
-      time: 17627
-    - map: cruton6
-      rank: 24
-      total: 85
-      time: 101982
-    - map: df_pornstarslopin
-      rank: 69
-      total: 226
-      time: 28888
-    - map: duotest
-      rank: 19
-      total: 57
-      time: 6927
-    - map: sarcasmjump
-      rank: 19
-      total: 56
-      time: 428165
-    - map: pillbox
-      rank: 20
-      total: 58
-      time: 10230
-  fetched_at: "2026-04-28"
+    - {map: rebound, rank: 22, total: 157, time: 7200}
+    - {map: q3wcp19, rank: 10, total: 71, time: 13744}
+    - {map: df_coldrun, rank: 25, total: 172, time: 16430}
+    - {map: r7_sanity, rank: 5, total: 27, time: 72386}
+    - {map: tatmt_s4, rank: 11, total: 55, time: 17627}
+    - {map: cruton6, rank: 24, total: 85, time: 101982}
+    - {map: df_pornstarslopin, rank: 69, total: 226, time: 28888}
+    - {map: duotest, rank: 19, total: 57, time: 6927}
+    - {map: sarcasmjump, rank: 19, total: 56, time: 428165}
+    - {map: pillbox, rank: 20, total: 58, time: 10230}
+  fetched_at: '2026-04-28'
+  featured_maps:
+    - {map: hangtime, mode: 3, time: 1000576, rank: 40, total: 69, date: '2017-03-17T20:52:00.069Z'}
+    - {map: hangtime-df, mode: 3, time: 274688, rank: 8, total: 69, speed_top: 1194, date: '2026-04-28T18:28:13.433Z'}
+    - {map: hangtime2-df, mode: 2, time: 21109512, rank: 15, total: 15, speed_top: 1528, date: '2026-02-06T23:35:00.730Z'}
+  unique_maps_vql: 206
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

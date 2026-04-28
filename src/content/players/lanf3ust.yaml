@@ -63,16 +63,8 @@ qlrace:
     time: 66728
     rank_pct: 67.3
   top_maps:
-    - map: cos1_beta7b
-      rank: 384
-      total: 571
-      time: 66728
-    - map: r7-tech
-      rank: 9
-      total: 10
-      time: 48152
-    - map: apple-runround
-      rank: 11
-      total: 12
-      time: 27952
-  fetched_at: "2026-04-28"
+    - {map: cos1_beta7b, rank: 384, total: 571, time: 66728}
+    - {map: r7-tech, rank: 9, total: 10, time: 48152}
+    - {map: apple-runround, rank: 11, total: 12, time: 27952}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 12

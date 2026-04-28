@@ -69,11 +69,9 @@ qlrace:
     time: 73392
     rank_pct: 84.6
   top_maps:
-    - map: awumpus-slick
-      rank: 11
-      total: 13
-      time: 73392
-  fetched_at: "2026-04-28"
+    - {map: awumpus-slick, rank: 11, total: 13, time: 73392}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

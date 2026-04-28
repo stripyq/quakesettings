@@ -57,19 +57,11 @@ qlrace:
     time: 45400
     rank_pct: 36.8
   top_maps:
-    - map: 4pornstar
-      rank: 7
-      total: 19
-      time: 45400
-    - map: l1th_heavy
-      rank: 6
-      total: 10
-      time: 30360
-    - map: df_pornstarslopin
-      rank: 218
-      total: 226
-      time: 37006
-  fetched_at: "2026-04-28"
+    - {map: 4pornstar, rank: 7, total: 19, time: 45400}
+    - {map: l1th_heavy, rank: 6, total: 10, time: 30360}
+    - {map: df_pornstarslopin, rank: 218, total: 226, time: 37006}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 13
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Lightning Gun

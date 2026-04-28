@@ -80,23 +80,12 @@ qlrace:
     time: 15432
     rank_pct: 73.9
   top_maps:
-    - map: strafe_ok
-      rank: 51
-      total: 69
-      time: 15432
-    - map: 180turn
-      rank: 31
-      total: 40
-      time: 66216
-    - map: shitstrafe2
-      rank: 61
-      total: 71
-      time: 35680
-    - map: df-nuke_inverted
-      rank: 15
-      total: 15
-      time: 111416
-  fetched_at: "2026-04-28"
+    - {map: strafe_ok, rank: 51, total: 69, time: 15432}
+    - {map: 180turn, rank: 31, total: 40, time: 66216}
+    - {map: shitstrafe2, rank: 61, total: 71, time: 35680}
+    - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416}
+  fetched_at: '2026-04-28'
+  unique_maps_vql: 4
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
