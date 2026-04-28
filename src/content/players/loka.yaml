@@ -37,14 +37,9 @@ jump: Mouse2
 crouch: mouse4
 attack: Mouse1
 zoom: shift
-mouse: __other__
-mouseOther: Cooler Master MM720
-mousepad: __other__
-mousepadOther: Forgeon Cordura
-keyboard: __other__
-keyboardOther: Trust
-monitor: __other__
-monitorOther: LG 27GL850
+mouse: cooler-master-mm720
+mousepad: forgeon-cordura
+monitor: lg-27gl850
 headset: philips-fidelio-x2
 skates: Stock
 enemyModel: Keel

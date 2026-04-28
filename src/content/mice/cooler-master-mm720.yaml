@@ -1,0 +1,9 @@
+name: "Cooler Master MM720"
+brand: "Cooler Master"
+weight: "49g"
+shape: "Ergonomic"
+sensor: "PMW3389"
+dpiRange: "100-16000"
+pollingRate: "1000Hz"
+buttons: 6
+connection: "Wired"
