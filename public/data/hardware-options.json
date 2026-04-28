@@ -226,6 +226,11 @@
       "brand": "Cooler Master"
     },
     {
+      "slug": "cooler-master-mm720",
+      "name": "Cooler Master MM720",
+      "brand": "Cooler Master"
+    },
+    {
       "slug": "coolm0dz-qt1p",
       "name": "cOoLm0Dz Qt1p",
       "brand": "cOoLm0Dz"
@@ -2187,6 +2192,11 @@
       "slug": "fantech-motion-pad-wind",
       "name": "Fantech Motion Pad Wind",
       "brand": "Fantech"
+    },
+    {
+      "slug": "forgeon-cordura",
+      "name": "Forgeon Cordura",
+      "brand": "Forgeon"
     },
     {
       "slug": "freefall-sv-base-control-v2",
@@ -4623,6 +4633,11 @@
       "slug": "koorui-g7",
       "name": "Koorui G7",
       "brand": "Koorui"
+    },
+    {
+      "slug": "lg-27gl850",
+      "name": "LG 27GL850",
+      "brand": "LG"
     },
     {
       "slug": "lg-32gs95ue-b",

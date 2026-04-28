@@ -1,8 +1,8 @@
 {
   "version": "2.0",
   "generatedAt": "2026-04-28",
-  "totalPlayers": 2293,
-  "playersWithProfiles": 145,
+  "totalPlayers": 2294,
+  "playersWithProfiles": 146,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -18742,7 +18742,7 @@
     },
     {
       "steamId": "76561198030933162",
-      "name": "loka",
+      "name": "Lokario",
       "slug": "loka",
       "hasProfile": true,
       "ratings": {
@@ -23042,6 +23042,22 @@
         "ctf": 8,
         "tdm": 391,
         "2v2": 322
+      }
+    },
+    {
+      "steamId": "76561199170550701",
+      "name": "odler",
+      "slug": "odler",
+      "hasProfile": true,
+      "ratings": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
+      },
+      "gamesPlayed": {
+        "ctf": null,
+        "tdm": null,
+        "2v2": null
       }
     },
     {
