@@ -4,6 +4,16 @@ country: FR
 category: duel
 published: true
 lastUpdated: "2026-04-26"
+hoqCtfRating: 10.85
+ctfRatingUpdated: "2026-04-28"
+ctfRating: 10.85
+hoqCtfGames: 154
+ctfGames: 154
+hoqTdmRating: 16.32
+tdmRatingUpdated: "2026-04-28"
+tdmRating: 16.32
+hoqTdmGames: 13
+tdmGames: 13
 duelRating: 1108
 duelRatingSource: qlstats
 duelGames: 609
