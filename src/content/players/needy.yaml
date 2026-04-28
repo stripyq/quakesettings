@@ -6,11 +6,6 @@ team2026Shortname: CZE
 country: Unknown
 team: Czesnecka
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1356
 duelRatingUpdated: "2026-01-31"
@@ -24,8 +19,6 @@ hoqCtfRating: 15.05
 hoqCtfGames: 408
 hoqTdmRating: 9.69
 hoqTdmGames: 16
-
-
 dataSource: player
 dpi: 1000
 sensitivity: 3.3

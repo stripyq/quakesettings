@@ -2,11 +2,6 @@ name: Grandbolus
 steamId: "76561198255736445"
 country: NL
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 20.14
 tdmRatingUpdated: "2026-04-24"
@@ -46,8 +41,6 @@ hoqCtfRating: 19.08
 hoqCtfGames: 3008
 hoqTdmRating: 20.14
 hoqTdmGames: 1074
-
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

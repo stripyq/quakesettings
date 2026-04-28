@@ -34,3 +34,37 @@ skates: Stock
 enemyModel: Keel
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace:
+  mode: 2
+  records: 4
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 2147
+  average_rank_pct: 59.6
+  best_record:
+    map: skate2fix
+    rank: 6
+    total: 11
+    time: 30088
+    rank_pct: 54.5
+  top_maps:
+    - map: skate2fix
+      rank: 6
+      total: 11
+      time: 30088
+    - map: hunterun_20
+      rank: 11
+      total: 19
+      time: 17464
+    - map: skate8
+      rank: 7
+      total: 12
+      time: 42280
+    - map: qlwc21_round1
+      rank: 23
+      total: 34
+      time: 50528
+  fetched_at: "2026-04-28"

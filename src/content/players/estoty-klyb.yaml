@@ -3,15 +3,11 @@ steamId: "76561198199452077"
 aliases:
   - estoty Klyb
 category: ctf
-
 ctfRatingUpdated: "2026-04-24"
 ctfRating: 22.02
-
 ctfGames: 45
-
 tdmRatingUpdated: "2026-04-24"
 tdmRating: 25.24
-
 tdmGames: 19
 hoqCtfRating: 22.02
 hoqCtfGames: 45
@@ -26,6 +22,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 16.5
   best_record:
     map: cruton4
@@ -34,9 +31,11 @@ qlrace:
     time: 107734
     rank_pct: 16.5
   top_maps:
-    - {map: cruton4, rank: 15, total: 91, time: 107734, rank_pct: 16.5}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: cruton4
+      rank: 15
+      total: 91
+      time: 107734
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

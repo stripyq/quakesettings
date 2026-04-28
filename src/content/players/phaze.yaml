@@ -3,15 +3,11 @@ steamId: "76561198414877431"
 aliases:
   - phaze
 category: ctf
-
 ctfRatingUpdated: "2026-04-24"
 ctfRating: 25.97
-
 ctfGames: 131
-
 tdmRatingUpdated: "2026-04-24"
 tdmRating: 29.07
-
 tdmGames: 245
 hoqCtfRating: 25.97
 hoqCtfGames: 131
@@ -35,13 +31,19 @@ qlrace:
     time: 19448
     rank_pct: 7.7
   top_maps:
-    - {map: lovet-mikendo, rank: 9, total: 117, time: 19448, rank_pct: 7.7}
-    - {map: cavesvq3, rank: 5, total: 55, time: 80168, rank_pct: 9.1}
-    - {map: hangtime-df, rank: 20, total: 69, time: 422200, rank_pct: 29}
-  fetched_at: '2026-04-24'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 422200, rank: 20, total: 69, speed_top: 1215, date: '2025-06-14T00:57:54.921Z'}
-  unique_maps_vql: 3
+    - map: lovet-mikendo
+      rank: 9
+      total: 117
+      time: 19448
+    - map: cavesvq3
+      rank: 5
+      total: 55
+      time: 80168
+    - map: hangtime-df
+      rank: 20
+      total: 69
+      time: 422200
+  fetched_at: "2026-04-28"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

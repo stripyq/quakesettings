@@ -2,9 +2,6 @@ name: dimon
 steamId: "76561198257799111"
 country: Unknown
 category: duel
-
-
-
 lastUpdated: 2026-02
 tdmRating: 21.07
 tdmRatingUpdated: "2026-04-24"
@@ -12,7 +9,6 @@ duelRating: 1486
 tdmGames: 25
 hoqTdmRating: 21.07
 hoqTdmGames: 25
-
 duelGames: 1428
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -38,7 +34,6 @@ grip: Palm
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
 qlrace: null
 favorite_map: campgrounds
 favorite_gametype: Team Deathmatch (2v2)

@@ -6,11 +6,6 @@ team2026: Astral Starlight
 country: Unknown
 team: Astral Starlight
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 ctfRating: 36.66
 ctfRatingUpdated: "2026-04-24"
@@ -20,9 +15,6 @@ hoqCtfRating: 36.66
 hoqCtfGames: 872
 hoqTdmRating: 30.21
 hoqTdmGames: 382
-
-
-
 tdmRating: 30.21
 tdmRatingUpdated: "2026-04-24"
 duelRating: 1624
@@ -72,15 +64,47 @@ qlrace:
     time: 4328
     rank_pct: 10.2
   top_maps:
-    - {map: spacectf, rank: 29, total: 284, time: 4328, rank_pct: 10.2}
-    - {map: rmg01_09, rank: 4, total: 22, time: 48248, rank_pct: 18.2}
-    - {map: campgrounds, rank: 104, total: 387, time: 25648, rank_pct: 26.9}
-    - {map: qzpractice2, rank: 259, total: 591, time: 27912, rank_pct: 43.8}
-    - {map: zzz_rocket1, rank: 41, total: 93, time: 11776, rank_pct: 44.1}
-  fetched_at: '2026-04-24'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 1987976, rank: 58, total: 69, speed_top: 1199, date: '2026-04-15T11:40:47.842Z'}
-  unique_maps_vql: 22
+    - map: spacectf
+      rank: 29
+      total: 284
+      time: 4328
+    - map: rmg01_09
+      rank: 4
+      total: 22
+      time: 48248
+    - map: campgrounds
+      rank: 104
+      total: 387
+      time: 25648
+    - map: qzpractice2
+      rank: 259
+      total: 591
+      time: 27912
+    - map: zzz_rocket1
+      rank: 41
+      total: 93
+      time: 11776
+    - map: kool_quickgrass1
+      rank: 20
+      total: 35
+      time: 20168
+    - map: r7-funky
+      rank: 15
+      total: 22
+      time: 31728
+    - map: daan_fuckfest
+      rank: 27
+      total: 36
+      time: 43648
+    - map: maze_gen_06
+      rank: 15
+      total: 20
+      time: 40176
+    - map: torp_nubt_fix
+      rank: 11
+      total: 13
+      time: 20448
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

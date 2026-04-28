@@ -2,11 +2,6 @@ name: KISA
 steamId: "76561198286173236"
 country: Unknown
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 20.65
 tdmRatingUpdated: "2026-04-24"
@@ -39,8 +34,6 @@ hoqCtfRating: 6.13
 hoqCtfGames: 932
 hoqTdmRating: 20.65
 hoqTdmGames: 494
-
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

@@ -10,11 +10,6 @@ hoqCtfRating: 25.13
 hoqCtfGames: 2644
 hoqTdmRating: 32.68
 hoqTdmGames: 1818
-
-
-
-
-
 tdm2v2Rating: 31.34
 tdm2v2Games: 71
 duelGames: 1764
@@ -27,7 +22,7 @@ dataSource: player
 dpi: 1600
 sensitivity: 1.17
 edpi: 1872
-cm360: 22.20
+cm360: 22.2
 acceleration: true
 accelValue: 0.007
 rawInput: true

@@ -33,7 +33,7 @@ back: s
 left: a
 right: d
 jump: space
-crouch: "alt,ctrl"
+crouch: alt,ctrl
 attack: mouse1
 zoom: mouse3
 mouse: logitech-g-pro-x-superlight
@@ -64,7 +64,12 @@ qlrace:
     time: 27872
     rank_pct: 70
   top_maps:
-    - {map: kool_boma2, rank: 14, total: 20, time: 27872, rank_pct: 70}
-    - {map: kool_bricks1, rank: 10, total: 11, time: 54232, rank_pct: 90.9}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 5
+    - map: kool_boma2
+      rank: 14
+      total: 20
+      time: 27872
+    - map: kool_bricks1
+      rank: 10
+      total: 11
+      time: 54232
+  fetched_at: "2026-04-28"

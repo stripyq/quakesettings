@@ -4,11 +4,6 @@ aliases:
   - loka
 country: HR
 category: ctf
-
-
-
-
-
 lastUpdated: "2026-04-23"
 tdmRating: 14.09
 tdmRatingUpdated: "2026-04-24"
@@ -26,7 +21,7 @@ acceleration: true
 accelValue: 0.1
 rawInput: true
 fov: 90
-crosshair: "6, 23"
+crosshair: 6, 23
 invertedMouse: false
 grip: Claw
 forward: uparrow
@@ -52,8 +47,6 @@ hoqCtfRating: 9.07
 hoqCtfGames: 2260
 hoqTdmRating: 14.09
 hoqTdmGames: 3
-
-
 qlrace:
   mode: 3
   records: 3
@@ -71,11 +64,19 @@ qlrace:
     time: 32808
     rank_pct: 77.8
   top_maps:
-    - {map: run_un-dead_enter, rank: 21, total: 27, time: 32808, rank_pct: 77.8}
-    - {map: ameisen-comp2, rank: 28, total: 34, time: 62768, rank_pct: 82.4}
-    - {map: lubricious, rank: 30, total: 33, time: 54664, rank_pct: 90.9}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 3
+    - map: run_un-dead_enter
+      rank: 21
+      total: 27
+      time: 32808
+    - map: ameisen-comp2
+      rank: 28
+      total: 34
+      time: 62768
+    - map: lubricious
+      rank: 30
+      total: 33
+      time: 54664
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

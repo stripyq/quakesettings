@@ -12,7 +12,6 @@ ctfRating: 32.48
 ctfGames: 1173
 tdmRating: 29.16
 tdmGames: 212
-
 mouse: logitech-g-pro-x-superlight-ii
 mousepad: logitech-g640
 monitor: msi-mpg-271qrx-qd-oled
@@ -33,11 +32,6 @@ back: s
 left: a
 right: d
 dataSource: player
-
-
-
-
-
 ctfRatingUpdated: "2026-04-22"
 qllrCtfRating: 31.06
 qllrCtfGames: 61
@@ -45,10 +39,7 @@ hoqCtfRating: 32.48
 hoqCtfGames: 1173
 hoqTdmRating: 29.16
 hoqTdmGames: 212
-
-
 tdmRatingUpdated: "2026-04-22"
-
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
@@ -72,6 +63,8 @@ qlrace:
     time: 16328
     rank_pct: 73.1
   top_maps:
-    - {map: r7-clear, rank: 38, total: 52, time: 16328, rank_pct: 73.1}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: r7-clear
+      rank: 38
+      total: 52
+      time: 16328
+  fetched_at: "2026-04-28"

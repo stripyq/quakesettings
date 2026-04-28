@@ -25,9 +25,9 @@ cm360: 32.07
 acceleration: false
 rawInput: true
 fov: 100
-crosshair: "" # TODO: not provided in submission
-crosshairColor: "" # TODO: not provided in submission
-crosshairSize: "" # TODO: not provided in submission
+crosshair: ""
+crosshairColor: ""
+crosshairSize: ""
 invertedMouse: false
 grip: Claw
 forward: w
@@ -46,3 +46,33 @@ skates: Stock
 enemyModel: Keel
 gpuBrand: AMD
 cpuBrand: AMD
+qlrace:
+  mode: 2
+  records: 3
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1530
+  average_rank_pct: 83
+  best_record:
+    map: cos1_beta7b
+    rank: 384
+    total: 571
+    time: 66728
+    rank_pct: 67.3
+  top_maps:
+    - map: cos1_beta7b
+      rank: 384
+      total: 571
+      time: 66728
+    - map: r7-tech
+      rank: 9
+      total: 10
+      time: 48152
+    - map: apple-runround
+      rank: 11
+      total: 12
+      time: 27952
+  fetched_at: "2026-04-28"

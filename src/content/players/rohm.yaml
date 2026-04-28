@@ -3,17 +3,12 @@ steamId: "76561198018576230"
 country: DE
 aliases: []
 category: ctf
-
-
-
 ctfRating: -0.56
 ctfRatingUpdated: "2026-04-22"
 ctfGames: 226
 hoqCtfRating: -0.56
 hoqCtfGames: 226
-
 published: true
-
 dataSource: player
 lastUpdated: 2026-03
 dpi: 1800
@@ -50,3 +45,4 @@ headset: hyperx-cloud-iii
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
+qlrace: null

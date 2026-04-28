@@ -16,7 +16,6 @@ hoqCtfRating: 21.4
 hoqCtfGames: 1080
 hoqTdmRating: 24.33
 hoqTdmGames: 19
-
 qlrace:
   mode: 3
   records: 4
@@ -34,16 +33,22 @@ qlrace:
     time: 20360
     rank_pct: 28.2
   top_maps:
-    - {map: lovet-mikendo, rank: 33, total: 117, time: 20360, rank_pct: 28.2}
-    - {map: kool_aqua, rank: 47, total: 100, time: 35152, rank_pct: 47}
-    - {map: qlwc21_round2, rank: 48, total: 99, time: 50976, rank_pct: 48.5}
-    - {map: bricks2, rank: 49, total: 66, time: 59312, rank_pct: 74.2}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: lovet-mikendo
+      rank: 33
+      total: 117
+      time: 20360
+    - map: kool_aqua
+      rank: 47
+      total: 100
+      time: 35152
+    - map: qlwc21_round2
+      rank: 48
+      total: 99
+      time: 50976
+    - map: bricks2
+      rank: 49
+      total: 66
+      time: 59312
+  fetched_at: "2026-04-28"
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
-
-
-

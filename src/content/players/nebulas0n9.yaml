@@ -11,7 +11,6 @@ ctfRating: 12.67
 ctfGames: 167
 tdmRating: 14.73
 tdmGames: 9
-
 qlrace:
   mode: 2
   records: 1
@@ -29,9 +28,11 @@ qlrace:
     time: 26008
     rank_pct: 27.3
   top_maps:
-    - {map: r7-funky, rank: 6, total: 22, time: 26008, rank_pct: 27.3}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: r7-funky
+      rank: 6
+      total: 22
+      time: 26008
+  fetched_at: "2026-04-28"
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 18.22
 qllrCtfGames: 29
@@ -39,10 +40,4 @@ hoqCtfRating: 12.67
 hoqCtfGames: 167
 hoqTdmRating: 14.73
 hoqTdmGames: 9
-
-
 tdmRatingUpdated: "2026-04-24"
-
-
-
-

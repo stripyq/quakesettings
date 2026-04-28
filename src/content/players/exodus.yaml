@@ -3,15 +3,11 @@ steamId: "76561197965938361"
 aliases:
   - ᴴᴬᴴᴬ XDS
 category: ctf
-
 ctfRatingUpdated: "2026-04-24"
 ctfRating: 32.83
-
 ctfGames: 54
-
 tdmRatingUpdated: "2026-04-24"
 tdmRating: 27.56
-
 tdmGames: 11
 hoqCtfRating: 32.83
 hoqCtfGames: 54
@@ -27,6 +23,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 27.8
   best_record:
     map: japanesecastles
@@ -35,10 +32,15 @@ qlrace:
     time: 11637
     rank_pct: 25.1
   top_maps:
-    - {map: japanesecastles, rank: 61, total: 243, time: 11637, rank_pct: 25.1}
-    - {map: oilrig, rank: 11, total: 36, time: 10934, rank_pct: 30.6}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 24
+    - map: japanesecastles
+      rank: 61
+      total: 243
+      time: 11637
+    - map: oilrig
+      rank: 11
+      total: 36
+      time: 10934
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

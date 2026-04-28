@@ -8,11 +8,6 @@ team2026Shortname: OSQ
 country: ES
 team: Old Sexy Quakers
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1242
 duelRatingUpdated: "2026-01-31"
@@ -24,9 +19,6 @@ hoqCtfRating: 31.22
 hoqCtfGames: 1755
 hoqTdmRating: 21.14
 hoqTdmGames: 1
-
-
-
 tdmRating: 21.14
 tdmRatingUpdated: "2026-04-24"
 dataSource: player
@@ -57,7 +49,6 @@ gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 1755
 tdmGames: 1
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

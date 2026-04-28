@@ -8,7 +8,6 @@ team2026Shortname: CZE
 country: CZ
 team: Czesnecka
 published: false
-
 qlrace:
   mode: 3
   records: 1
@@ -26,24 +25,20 @@ qlrace:
     time: 13936
     rank_pct: 75.5
   top_maps:
-    - {map: japanesecastles, rank: 160, total: 212, time: 13936, rank_pct: 75.5}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: japanesecastles
+      rank: 160
+      total: 212
+      time: 13936
+  fetched_at: "2026-04-28"
 ctfGames: 1561
-
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
-
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 15.9
 qllrCtfGames: 21
 hoqCtfRating: 25.42
 hoqCtfGames: 1561
-
 ctfRating: 25.42
-
-
-

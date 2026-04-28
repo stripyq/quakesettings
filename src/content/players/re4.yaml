@@ -7,9 +7,6 @@ team2026Shortname: OSQ
 country: PL
 team: Old Sexy Quakers
 category: ctf
-
-
-
 lastUpdated: 2025-01
 tdmRating: 21.78
 tdmRatingUpdated: "2026-01-31"
@@ -19,8 +16,6 @@ duelRating: 1310
 ctfGames: 2837
 hoqCtfRating: 18.09
 hoqCtfGames: 2837
-
-
 duelGames: 3381
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -61,6 +56,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 1
+  speed_top: 0
   average_rank_pct: 42.3
   best_record:
     map: vanilla_03
@@ -69,13 +65,47 @@ qlrace:
     time: 2617
     rank_pct: 15.4
   top_maps:
-    - {map: vanilla_03, rank: 10, total: 65, time: 2617, rank_pct: 15.4}
-    - {map: crashcourse, rank: 20, total: 129, time: 22024, rank_pct: 15.5}
-    - {map: df_lickgirls, rank: 16, total: 98, time: 10496, rank_pct: 16.3}
-    - {map: df_dinirun4, rank: 11, total: 62, time: 22018, rank_pct: 17.7}
-    - {map: aa_shorty2, rank: 5, total: 28, time: 1876, rank_pct: 17.9}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 185
+    - map: vanilla_03
+      rank: 10
+      total: 65
+      time: 2617
+    - map: crashcourse
+      rank: 20
+      total: 129
+      time: 22024
+    - map: df_lickgirls
+      rank: 16
+      total: 98
+      time: 10496
+    - map: df_dinirun4
+      rank: 11
+      total: 62
+      time: 22018
+    - map: aa_shorty2
+      rank: 5
+      total: 28
+      time: 1876
+    - map: r7_romo
+      rank: 11
+      total: 56
+      time: 35820
+    - map: snazwank
+      rank: 3
+      total: 14
+      time: 35840
+    - map: inder_a1ex
+      rank: 13
+      total: 59
+      time: 35247
+    - map: daanstrafe06
+      rank: 6
+      total: 27
+      time: 20963
+    - map: getupthere
+      rank: 4
+      total: 17
+      time: 11967
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

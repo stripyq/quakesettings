@@ -2,15 +2,8 @@ name: r3cke
 country: Unknown
 steamId: "76561198279892880"
 category: duel
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 dataSource: player
 lastUpdated: 2025-02
 ctfRating: 18.37
@@ -55,8 +48,6 @@ hoqCtfRating: 18.37
 hoqCtfGames: 4934
 hoqTdmRating: 17.26
 hoqTdmGames: 67
-
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

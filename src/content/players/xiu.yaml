@@ -2,8 +2,6 @@ name: Xiu
 steamId: "76561198010106923"
 country: Unknown
 category: ctf
-
-
 lastUpdated: 2025-01
 ctfRating: 23.8
 ctfRatingUpdated: "2026-04-24"
@@ -45,6 +43,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 32.6
   best_record:
     map: df_lickdecease
@@ -53,9 +52,11 @@ qlrace:
     time: 11346
     rank_pct: 32.6
   top_maps:
-    - {map: df_lickdecease, rank: 43, total: 132, time: 11346, rank_pct: 32.6}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: df_lickdecease
+      rank: 43
+      total: 132
+      time: 11346
+  fetched_at: "2026-04-28"
 favorite_map: overkill
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

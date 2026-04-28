@@ -24,7 +24,7 @@ cm360: 25.98
 acceleration: false
 rawInput: true
 fov: 105
-crosshair: "2, 13"
+crosshair: 2, 13
 crosshairColor: Yellow
 crosshairSize: "15"
 invertedMouse: false
@@ -64,12 +64,44 @@ qlrace:
     time: 11432
     rank_pct: 19.8
   top_maps:
-    - {map: japanesecastles, rank: 48, total: 243, time: 11432, rank_pct: 19.8}
-    - {map: kaine, rank: 18, total: 91, time: 21304, rank_pct: 19.8}
-    - {map: lick_again, rank: 7, total: 32, time: 2584, rank_pct: 21.9}
-    - {map: marci4, rank: 5, total: 21, time: 11000, rank_pct: 23.8}
-    - {map: lick_dead, rank: 2, total: 8, time: 37488, rank_pct: 25}
-  fetched_at: '2026-04-24'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 690808, rank: 34, total: 69, speed_top: 1233, date: '2026-04-18T11:10:10.354Z'}
-  unique_maps_vql: 22
+    - map: japanesecastles
+      rank: 48
+      total: 243
+      time: 11432
+    - map: kaine
+      rank: 18
+      total: 91
+      time: 21304
+    - map: lick_again
+      rank: 7
+      total: 32
+      time: 2584
+    - map: marci4
+      rank: 5
+      total: 21
+      time: 11000
+    - map: lick_dead
+      rank: 2
+      total: 8
+      time: 37488
+    - map: q3shw25
+      rank: 10
+      total: 29
+      time: 31009
+    - map: dfwc2017_6
+      rank: 32
+      total: 78
+      time: 149224
+    - map: 13plant
+      rank: 20
+      total: 48
+      time: 8086
+    - map: greendick
+      rank: 11
+      total: 26
+      time: 15256
+    - map: p3nt4_ralco
+      rank: 33
+      total: 68
+      time: 52448
+  fetched_at: "2026-04-28"

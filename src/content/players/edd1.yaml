@@ -19,7 +19,6 @@ hoqCtfGames: 613
 hoqTdmRating: 39.43
 tdmRatingUpdated: "2026-04-24"
 hoqTdmGames: 129
-
 tdmRating: 39.43
 dataSource: player
 lastUpdated: 2025-02
@@ -51,12 +50,6 @@ cpuBrand: AMD
 enemyModel: Keel
 ctfGames: 613
 tdmGames: 129
-
-
-
-
-
-
 qlrace:
   mode: 2
   records: 1
@@ -65,6 +58,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 18.4
   best_record:
     map: df_lickmax
@@ -73,9 +67,11 @@ qlrace:
     time: 6388
     rank_pct: 18.4
   top_maps:
-    - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: df_lickmax
+      rank: 16
+      total: 87
+      time: 6388
+  fetched_at: "2026-04-28"
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun
 accuracy_rl: 52

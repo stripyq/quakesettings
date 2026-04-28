@@ -3,10 +3,8 @@ steamId: "76561198043802405"
 aliases:
   - Roxor
 category: ctf
-
 tdmRatingUpdated: "2026-04-24"
 tdmRating: 25.45
-
 tdmGames: 2
 hoqTdmRating: 25.45
 hoqTdmGames: 2
@@ -29,10 +27,15 @@ qlrace:
     time: 12136
     rank_pct: 39.5
   top_maps:
-    - {map: bobo, rank: 17, total: 43, time: 12136, rank_pct: 39.5}
-    - {map: bes-jumparound, rank: 15, total: 29, time: 37768, rank_pct: 51.7}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 2
+    - map: bobo
+      rank: 17
+      total: 43
+      time: 12136
+    - map: bes-jumparound
+      rank: 15
+      total: 29
+      time: 37768
+  fetched_at: "2026-04-28"
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

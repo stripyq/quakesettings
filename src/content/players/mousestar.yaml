@@ -3,15 +3,11 @@ steamId: "76561198191100033"
 aliases:
   - FF^mouse*
 category: ctf
-
 ctfRatingUpdated: "2026-04-24"
 ctfRating: 9.61
-
 ctfGames: 14
-
 tdmRatingUpdated: "2026-04-24"
 tdmRating: 23.39
-
 tdmGames: 47
 hoqCtfRating: 9.61
 hoqCtfGames: 14
@@ -27,6 +23,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 55.1
   best_record:
     map: dfwc2017_6
@@ -35,9 +32,11 @@ qlrace:
     time: 172088
     rank_pct: 55.1
   top_maps:
-    - {map: dfwc2017_6, rank: 43, total: 78, time: 172088, rank_pct: 55.1}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 9
+    - map: dfwc2017_6
+      rank: 43
+      total: 78
+      time: 172088
+  fetched_at: "2026-04-28"
 favorite_map: campgrounds
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

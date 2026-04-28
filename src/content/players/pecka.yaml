@@ -5,11 +5,6 @@ aliases: []
 team2026: GdeFlag?
 team2026Shortname: GF?
 category: tdm
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 22.31
 qllrCtfGames: 18
@@ -17,16 +12,12 @@ hoqCtfRating: 16.29
 hoqCtfGames: 426
 hoqTdmRating: 27.72
 hoqTdmGames: 2410
-
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1041
 ctfGames: 426
 tdmGames: 2410
-
 duelGames: 794
 ctfRating: 16.29
 tdmRating: 27.72
@@ -74,9 +65,11 @@ qlrace:
     time: 13080
     rank_pct: 67
   top_maps:
-    - {map: japanesecastles, rank: 142, total: 212, time: 13080, rank_pct: 67}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: japanesecastles
+      rank: 142
+      total: 212
+      time: 13080
+  fetched_at: "2026-04-28"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

@@ -11,11 +11,6 @@ team2026Shortname: wB
 country: HR
 team: wAnnaBees
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1086
 ctfGames: 2628
@@ -32,10 +27,6 @@ hoqCtfRating: 24.69
 hoqCtfGames: 2628
 hoqTdmRating: 27.04
 hoqTdmGames: 307
-
-
-
-
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -89,12 +80,23 @@ qlrace:
     time: 15432
     rank_pct: 73.9
   top_maps:
-    - {map: strafe_ok, rank: 51, total: 69, time: 15432, rank_pct: 73.9}
-    - {map: 180turn, rank: 31, total: 40, time: 66216, rank_pct: 77.5}
-    - {map: shitstrafe2, rank: 61, total: 71, time: 35680, rank_pct: 85.9}
-    - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416, rank_pct: 100}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: strafe_ok
+      rank: 51
+      total: 69
+      time: 15432
+    - map: 180turn
+      rank: 31
+      total: 40
+      time: 66216
+    - map: shitstrafe2
+      rank: 61
+      total: 71
+      time: 35680
+    - map: df-nuke_inverted
+      rank: 15
+      total: 15
+      time: 111416
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

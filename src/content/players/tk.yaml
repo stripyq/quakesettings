@@ -4,12 +4,8 @@ steamId: "76561197977412349"
 aliases:
   - TK
 category: duel
-
 ctfRatingUpdated: "2026-04-24"
-
-
 tdmRatingUpdated: "2026-04-24"
-
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 1213
@@ -22,7 +18,6 @@ hoqCtfRating: 16.67
 hoqCtfGames: 200
 hoqTdmRating: 22.11
 hoqTdmGames: 5
-
 dpi: 4800
 sensitivity: 0.29
 m_cpi: 0
@@ -64,6 +59,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 49.5
   best_record:
     map: df_coldrun
@@ -72,12 +68,23 @@ qlrace:
     time: 16835
     rank_pct: 16.3
   top_maps:
-    - {map: df_coldrun, rank: 28, total: 172, time: 16835, rank_pct: 16.3}
-    - {map: voltex, rank: 15, total: 28, time: 74027, rank_pct: 53.6}
-    - {map: trinity, rank: 60, total: 103, time: 28781, rank_pct: 58.3}
-    - {map: dinirun2, rank: 7, total: 10, time: 61392, rank_pct: 70}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: df_coldrun
+      rank: 28
+      total: 172
+      time: 16835
+    - map: voltex
+      rank: 15
+      total: 28
+      time: 74027
+    - map: trinity
+      rank: 60
+      total: 103
+      time: 28781
+    - map: dinirun2
+      rank: 7
+      total: 10
+      time: 61392
+  fetched_at: "2026-04-28"
 favorite_map: asylum
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

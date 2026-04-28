@@ -5,10 +5,6 @@ aliases:
 team2024: The expendables
 country: Unknown
 category: ctf
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 33.92
 tdmRatingUpdated: "2026-04-24"
@@ -56,6 +52,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 11.1
   best_record:
     map: japanesecastles
@@ -64,9 +61,11 @@ qlrace:
     time: 10423
     rank_pct: 11.1
   top_maps:
-    - {map: japanesecastles, rank: 27, total: 243, time: 10423, rank_pct: 11.1}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: japanesecastles
+      rank: 27
+      total: 243
+      time: 10423
+  fetched_at: "2026-04-28"
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

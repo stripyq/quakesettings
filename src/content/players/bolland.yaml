@@ -2,9 +2,6 @@ name: Bolland
 steamId: "76561198354200908"
 country: Unknown
 category: tdm
-
-
-
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
@@ -39,8 +36,6 @@ cpuBrand: Intel
 tdmGames: 2496
 hoqTdmRating: 13.77
 hoqTdmGames: 2496
-
-
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

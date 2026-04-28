@@ -2,11 +2,6 @@ name: St3f4N
 steamId: "76561199756237860"
 country: Unknown
 category: tdm
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 23.36
 tdmRatingUpdated: "2026-04-24"
@@ -19,8 +14,6 @@ hoqCtfRating: 19.77
 hoqCtfGames: 4
 hoqTdmRating: 23.36
 hoqTdmGames: 1641
-
-
 duelGames: 108
 duelRatingUpdated: "2026-02-04"
 dataSource: player

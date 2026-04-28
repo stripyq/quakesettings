@@ -2,8 +2,6 @@ name: fearz
 steamId: "76561198090058821"
 country: RU
 category: tdm
-
-
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
@@ -41,7 +39,6 @@ cpuBrand: Intel
 tdmGames: 729
 hoqTdmRating: 30.3
 hoqTdmGames: 729
-
 qlrace:
   mode: 2
   records: 2
@@ -50,6 +47,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 26.2
   best_record:
     map: tenuous
@@ -58,10 +56,15 @@ qlrace:
     time: 61538
     rank_pct: 16.3
   top_maps:
-    - {map: tenuous, rank: 16, total: 98, time: 61538, rank_pct: 16.3}
-    - {map: df_lickhuar, rank: 9, total: 25, time: 47591, rank_pct: 36}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: tenuous
+      rank: 16
+      total: 98
+      time: 61538
+    - map: df_lickhuar
+      rank: 9
+      total: 25
+      time: 47591
+  fetched_at: "2026-04-28"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

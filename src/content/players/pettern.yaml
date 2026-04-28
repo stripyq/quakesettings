@@ -4,11 +4,6 @@ aliases: []
 team2024: Flappy Flags
 country: Unknown
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 20.95
 tdmRatingUpdated: "2026-04-24"
@@ -47,8 +42,6 @@ hoqCtfRating: 12.91
 hoqCtfGames: 5340
 hoqTdmRating: 20.95
 hoqTdmGames: 1
-
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

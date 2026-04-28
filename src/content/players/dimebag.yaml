@@ -2,16 +2,9 @@ name: DimebaG
 country: OTHER
 steamId: "76561198380825290"
 category: tdm
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
 ctfRating: 24.84
-
 tdmRatingUpdated: "2026-04-24"
-
 dataSource: collected
 lastUpdated: 2026-02
 tdmRating: 23.84
@@ -24,8 +17,6 @@ hoqCtfRating: 24.84
 hoqCtfGames: 2
 hoqTdmRating: 23.84
 hoqTdmGames: 4015
-
-
 duelGames: 380
 dpi: 2400
 sensitivity: 0.92
@@ -57,7 +48,6 @@ headset: cooler-master-mh752
 skates: Aftermarket
 gpuBrand: AMD
 cpuBrand: AMD
-
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

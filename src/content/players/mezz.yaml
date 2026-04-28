@@ -5,15 +5,8 @@ aliases:
 team2024: Bad But Happy
 country: DE
 category: tdm
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1408
@@ -26,8 +19,6 @@ hoqCtfRating: 19.31
 hoqCtfGames: 212
 hoqTdmRating: 30.71
 hoqTdmGames: 1774
-
-
 dpi: 800
 sensitivity: 0.75
 edpi: 600

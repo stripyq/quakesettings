@@ -3,15 +3,8 @@ country: HU
 steamId: "76561198257679175"
 published: true
 category: tdm
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: "2026-02-13"
 dataSource: player
 tdmRating: 25.89
@@ -20,7 +13,6 @@ hoqCtfRating: 12.14
 hoqCtfGames: 454
 hoqTdmRating: 25.89
 hoqTdmGames: 5115
-
 ctfRating: 12.14
 ctfGames: 454
 tdm2v2Rating: 31.94
@@ -66,7 +58,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 3451
-  average_rank_pct: 10.6
+  average_rank_pct: 10.2
   best_record:
     map: cruton2
     rank: 6
@@ -74,11 +66,19 @@ qlrace:
     time: 41319
     rank_pct: 4.5
   top_maps:
-    - {map: cruton2, rank: 6, total: 132, time: 41319, rank_pct: 4.5}
-    - {map: qlwc21_round4, rank: 4, total: 36, time: 25096, rank_pct: 11.1}
-    - {map: qlwc21_round3, rank: 4, total: 25, time: 21864, rank_pct: 16}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: cruton2
+      rank: 6
+      total: 132
+      time: 41319
+    - map: qlwc21_round4
+      rank: 4
+      total: 37
+      time: 25096
+    - map: qlwc21_round3
+      rank: 4
+      total: 26
+      time: 21864
+  fetched_at: "2026-04-28"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher

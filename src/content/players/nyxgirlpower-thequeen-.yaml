@@ -3,9 +3,6 @@ steamId: "76561198256080242"
 country: SI
 team: ""
 category: ctf
-
-
-
 lastUpdated: 2025-01
 duelRating: null
 duelRatingUpdated: ""
@@ -52,8 +49,6 @@ skates: Stock
 ctfGames: 2633
 hoqCtfRating: 17.67
 hoqCtfGames: 2633
-
-
 qlrace:
   mode: 2
   records: 1
@@ -62,6 +57,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 41.7
   best_record:
     map: cruton2
@@ -70,9 +66,11 @@ qlrace:
     time: 64387
     rank_pct: 41.7
   top_maps:
-    - {map: cruton2, rank: 55, total: 132, time: 64387, rank_pct: 41.7}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: cruton2
+      rank: 55
+      total: 132
+      time: 64387
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

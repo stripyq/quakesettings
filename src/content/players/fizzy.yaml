@@ -3,24 +3,16 @@ steamId: "76561198129795100"
 aliases: []
 country: PL
 category: ctf
-
-
-
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 21.9
 qllrCtfGames: 12
 hoqCtfRating: 4.14
 hoqCtfGames: 1983
-
-
 lastUpdated: "2026-02-13"
 duelRating: 725
 ctfGames: 1983
 duelGames: 26
 ctfRating: 4.14
-
-
-
 dataSource: player
 dpi: 800
 sensitivity: 3
@@ -55,14 +47,14 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 qlrace:
   mode: 2
-  records: 5
+  records: 6
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
   speed_top: 1434
-  average_rank_pct: 51.8
+  average_rank_pct: 57.6
   best_record:
     map: japanesecastles
     rank: 7
@@ -70,15 +62,31 @@ qlrace:
     time: 8176
     rank_pct: 2.9
   top_maps:
-    - {map: japanesecastles, rank: 7, total: 243, time: 8176, rank_pct: 2.9}
-    - {map: campgrounds, rank: 155, total: 387, time: 27208, rank_pct: 40.1}
-    - {map: spr_toofoo, rank: 25, total: 41, time: 34472, rank_pct: 61}
-    - {map: greenstrafe, rank: 12, total: 16, time: 56368, rank_pct: 75}
-    - {map: aa_pm6, rank: 4, total: 5, time: 12328, rank_pct: 80}
-  fetched_at: '2026-04-24'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 632440, rank: 31, total: 69, speed_top: 1204, date: '2026-04-19T15:21:29.473Z'}
-  unique_maps_vql: 14
+    - map: japanesecastles
+      rank: 7
+      total: 243
+      time: 8176
+    - map: campgrounds
+      rank: 155
+      total: 387
+      time: 27208
+    - map: spr_toofoo
+      rank: 25
+      total: 41
+      time: 34472
+    - map: greenstrafe
+      rank: 12
+      total: 16
+      time: 56368
+    - map: aa_pm6
+      rank: 4
+      total: 5
+      time: 12328
+    - map: eksha_kool
+      rank: 32
+      total: 37
+      time: 23432
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

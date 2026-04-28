@@ -16,7 +16,6 @@ hoqCtfRating: 24.43
 hoqCtfGames: 236
 hoqTdmRating: 24.81
 hoqTdmGames: 378
-
 duelRating: 1554
 ctfGames: 236
 tdmGames: 378
@@ -50,12 +49,6 @@ attack: MOUSE1
 zoom: shift
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
-
 qlrace:
   mode: 2
   records: 2
@@ -64,6 +57,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 34.5
   best_record:
     map: cities_of_gold
@@ -72,10 +66,15 @@ qlrace:
     time: 41381
     rank_pct: 16.7
   top_maps:
-    - {map: cities_of_gold, rank: 11, total: 66, time: 41381, rank_pct: 16.7}
-    - {map: moko_slick, rank: 11, total: 21, time: 7336, rank_pct: 52.4}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 2
+    - map: cities_of_gold
+      rank: 11
+      total: 66
+      time: 41381
+    - map: moko_slick
+      rank: 11
+      total: 21
+      time: 7336
+  fetched_at: "2026-04-28"
 favorite_map: hiddenfortress
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

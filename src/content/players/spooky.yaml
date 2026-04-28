@@ -2,9 +2,6 @@ name: spooky
 steamId: "76561198041115896"
 country: Unknown
 category: duel
-
-
-
 lastUpdated: 2025-01
 tdmRating: 26.43
 tdmRatingUpdated: "2026-04-24"
@@ -14,7 +11,6 @@ duelRating: 1224
 tdmGames: 755
 hoqTdmRating: 26.43
 hoqTdmGames: 755
-
 duelGames: 276
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -51,6 +47,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 1
+  speed_top: 0
   average_rank_pct: 33.6
   best_record:
     map: duotest
@@ -59,13 +56,27 @@ qlrace:
     time: 6621
     rank_pct: 24.6
   top_maps:
-    - {map: duotest, rank: 14, total: 57, time: 6621, rank_pct: 24.6}
-    - {map: spacectf, rank: 84, total: 284, time: 5024, rank_pct: 29.6}
-    - {map: r7_cpmhome1, rank: 3, total: 10, time: 1648, rank_pct: 30}
-    - {map: chile9, rank: 43, total: 143, time: 9888, rank_pct: 30.1}
-    - {map: inder_failrun4, rank: 36, total: 67, time: 33327, rank_pct: 53.7}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 5
+    - map: duotest
+      rank: 14
+      total: 57
+      time: 6621
+    - map: spacectf
+      rank: 84
+      total: 284
+      time: 5024
+    - map: r7_cpmhome1
+      rank: 3
+      total: 10
+      time: 1648
+    - map: chile9
+      rank: 43
+      total: 143
+      time: 9888
+    - map: inder_failrun4
+      rank: 36
+      total: 67
+      time: 33327
+  fetched_at: "2026-04-28"
 favorite_map: campgrounds
 favorite_gametype: Team Deathmatch (2v2)
 favorite_weapon: Railgun

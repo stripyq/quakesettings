@@ -2,11 +2,6 @@ name: ne_raketa
 steamId: "76561198284683846"
 country: Unknown
 category: tdm
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 20.01
 tdmRatingUpdated: "2026-04-24"
@@ -45,8 +40,6 @@ hoqCtfRating: 10.39
 hoqCtfGames: 15
 hoqTdmRating: 20.01
 hoqTdmGames: 4501
-
-
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

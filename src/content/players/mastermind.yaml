@@ -8,11 +8,6 @@ team2026Shortname: SHREK
 country: "NO"
 team: SHREKTALIKA
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
@@ -26,10 +21,6 @@ hoqCtfRating: 47.16
 hoqCtfGames: 2772
 hoqTdmRating: 35.37
 hoqTdmGames: 197
-
-
-
-
 dataSource: player
 dpi: 800
 sensitivity: 4
@@ -78,9 +69,11 @@ qlrace:
     time: 73392
     rank_pct: 84.6
   top_maps:
-    - {map: awumpus-slick, rank: 11, total: 13, time: 73392, rank_pct: 84.6}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: awumpus-slick
+      rank: 11
+      total: 13
+      time: 73392
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

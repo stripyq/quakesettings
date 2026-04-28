@@ -3,10 +3,6 @@ steamId: "76561197972822622"
 country: DE
 category: ctf
 lastUpdated: 2026-03
-
-
-
-
 duelRating: 1224
 duelGames: 125
 duelRatingUpdated: "2026-03-02"
@@ -20,7 +16,6 @@ hoqCtfRating: 14.47
 hoqCtfGames: 555
 hoqTdmRating: 20.62
 hoqTdmGames: 89
-
 dataSource: player
 dpi: 800
 sensitivity: 8.4
@@ -56,3 +51,4 @@ headset: sennheiser-hd-560s
 skates: Stock
 gpuBrand: AMD
 cpuBrand: AMD
+qlrace: null

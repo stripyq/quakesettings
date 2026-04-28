@@ -9,13 +9,8 @@ hoqCtfRating: 9.13
 hoqCtfGames: 1769
 hoqTdmRating: 21.4
 hoqTdmGames: 199
-
 tdmRatingUpdated: "2026-02-24"
-
-
 ctfGames: 1769
-
-
 ctfRating: 9.13
 ctfRatingUpdated: "2026-04-24"
 duelRating: 1394
@@ -31,7 +26,7 @@ acceleration: false
 rawInput: true
 windowsSensitivity: 6
 fov: 90
-crosshair: "2, 3, 10, 13, 18"
+crosshair: 2, 3, 10, 13, 18
 invertedMouse: false
 forward: w
 back: s
@@ -52,7 +47,6 @@ cpuBrand: Intel
 accuracy_rg: 58
 accuracy_lg: 41
 accuracy_rl: 39
-
 qlrace: null
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

@@ -2,15 +2,8 @@ name: Wallsnag
 country: OTHER
 steamId: "76561198098777141"
 category: duel
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 750
@@ -20,8 +13,6 @@ hoqCtfRating: 17.64
 hoqCtfGames: 2451
 hoqTdmRating: 18.57
 hoqTdmGames: 336
-
-
 duelGames: 75
 ctfRating: 17.64
 tdmRating: 18.57
@@ -62,6 +53,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 2.9
   best_record:
     map: qzpractice2
@@ -70,9 +62,11 @@ qlrace:
     time: 20007
     rank_pct: 2.9
   top_maps:
-    - {map: qzpractice2, rank: 17, total: 591, time: 20007, rank_pct: 2.9}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 2
+    - map: qzpractice2
+      rank: 17
+      total: 591
+      time: 20007
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

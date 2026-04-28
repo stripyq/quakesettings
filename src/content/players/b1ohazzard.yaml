@@ -2,11 +2,6 @@ name: b1ohazzard
 steamId: "76561198132543406"
 country: Unknown
 category: tdm
-
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 22.6
 tdmRatingUpdated: "2026-04-24"
@@ -44,8 +39,6 @@ hoqCtfRating: 3.26
 hoqCtfGames: 11
 hoqTdmRating: 22.6
 hoqTdmGames: 2230
-
-
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

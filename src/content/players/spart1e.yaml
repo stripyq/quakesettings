@@ -8,11 +8,6 @@ team2024: SHREKTALIKA
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
 category: ctf
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 33.58
 qllrCtfGames: 94
@@ -20,10 +15,7 @@ hoqCtfRating: 34.82
 hoqCtfGames: 1036
 hoqTdmRating: 35.03
 hoqTdmGames: 354
-
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 2070
@@ -32,9 +24,6 @@ ctfRating: 34.82
 ctfGames: 1036
 tdmRating: 35.03
 tdmGames: 354
-
-
-
 dpi: 1600
 sensitivity: 1
 edpi: 1600

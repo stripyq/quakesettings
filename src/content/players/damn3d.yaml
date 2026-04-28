@@ -5,10 +5,6 @@ aliases:
 team2024: CTF4
 country: RU
 category: ctf
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 26.77
 tdmRatingUpdated: "2026-04-24"
@@ -51,7 +47,6 @@ enemyModel: Keel
 crosshairColor: Blue, Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
-
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

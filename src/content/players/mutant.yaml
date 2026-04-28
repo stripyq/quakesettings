@@ -9,12 +9,8 @@ team2026: Astral Starlight
 country: ""
 team: ""
 category: ctf
-
 ctfRatingUpdated: "2026-04-24"
-
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: 2024-12
 ctfRating: 22.13
 ctfGames: 1088
@@ -24,7 +20,6 @@ hoqCtfRating: 22.13
 hoqCtfGames: 1088
 hoqTdmRating: 31.11
 hoqTdmGames: 118
-
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -58,7 +53,6 @@ headset: philips-fidelio-x2
 gpuBrand: NVIDIA
 cpuBrand: Intel
 enemyModel: Tank Jr.
-
 qlrace:
   mode: 2
   records: 1
@@ -67,6 +61,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 57.4
   best_record:
     map: df_0ups
@@ -75,9 +70,11 @@ qlrace:
     time: 38759
     rank_pct: 57.4
   top_maps:
-    - {map: df_0ups, rank: 27, total: 47, time: 38759, rank_pct: 57.4}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 2
+    - map: df_0ups
+      rank: 27
+      total: 47
+      time: 38759
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

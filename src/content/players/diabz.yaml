@@ -2,11 +2,6 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
-
-
-
-
-
 lastUpdated: 2026-02
 ctfRating: 29.5
 ctfRatingUpdated: "2026-04-24"
@@ -46,8 +41,6 @@ hoqCtfRating: 29.5
 hoqCtfGames: 313
 hoqTdmRating: 26.94
 hoqTdmGames: 18
-
-
 qlrace:
   mode: 2
   records: 3
@@ -65,11 +58,19 @@ qlrace:
     time: 9952
     rank_pct: 6.8
   top_maps:
-    - {map: shiningforces, rank: 10, total: 147, time: 9952, rank_pct: 6.8}
-    - {map: spidercrossings, rank: 11, total: 126, time: 10712, rank_pct: 8.7}
-    - {map: campercrossings, rank: 25, total: 119, time: 9616, rank_pct: 21}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 5
+    - map: shiningforces
+      rank: 10
+      total: 147
+      time: 9952
+    - map: spidercrossings
+      rank: 11
+      total: 126
+      time: 10712
+    - map: campercrossings
+      rank: 25
+      total: 119
+      time: 9616
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

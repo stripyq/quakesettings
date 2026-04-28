@@ -2,11 +2,6 @@ name: proZaC
 steamId: "76561197993233912"
 country: Unknown
 category: tdm
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1372
 duelRatingUpdated: "2026-01-31"
@@ -47,8 +42,6 @@ hoqCtfRating: 20.29
 hoqCtfGames: 22
 hoqTdmRating: 29.75
 hoqTdmGames: 323
-
-
 qlrace: null
 favorite_map: deepinside
 favorite_gametype: Team Deathmatch

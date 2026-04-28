@@ -7,11 +7,6 @@ aliases:
 team2026: Aimdead Brainers
 team2026Shortname: cock
 category: ctf
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
 qllrCtfRating: 27.08
 qllrCtfGames: 81
@@ -19,10 +14,7 @@ hoqCtfRating: 33.18
 hoqCtfGames: 645
 hoqTdmRating: 16.9
 hoqTdmGames: 12
-
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: "2026-02-15T14:00:00"
 dpi: 3200
 sensitivity: 0.28864
@@ -44,7 +36,6 @@ ctfRating: 33.18
 ctfGames: 645
 tdmRating: 16.9
 tdmGames: 12
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

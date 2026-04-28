@@ -13,10 +13,6 @@ hoqCtfRating: 24.42
 hoqCtfGames: 957
 hoqTdmRating: 22.42
 hoqTdmGames: 45
-
-
-
-
 tdmRatingUpdated: "2026-02-04"
 duelRating: 1652
 duelGames: 2127
@@ -55,12 +51,6 @@ headset: beyerdynamic-dt-770-pro
 skates: Aftermarket
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
-
-
-
 qlrace:
   mode: 2
   records: 1
@@ -69,6 +59,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 35.5
   best_record:
     map: qzpractice2
@@ -77,9 +68,11 @@ qlrace:
     time: 25384
     rank_pct: 35.5
   top_maps:
-    - {map: qzpractice2, rank: 210, total: 591, time: 25384, rank_pct: 35.5}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 1
+    - map: qzpractice2
+      rank: 210
+      total: 591
+      time: 25384
+  fetched_at: "2026-04-28"
 favorite_map: q3wcp9
 favorite_gametype: "Weapon: Railgun"
 favorite_weapon: Railgun

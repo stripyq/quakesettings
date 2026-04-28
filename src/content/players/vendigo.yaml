@@ -2,10 +2,6 @@ name: vendigo
 steamId: "76561198258932158"
 country: Unknown
 category: tdm
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1465
 duelRatingUpdated: "2026-01-31"
@@ -44,7 +40,6 @@ hoqCtfRating: 11.44
 hoqCtfGames: 1
 hoqTdmRating: 26.7
 hoqTdmGames: 1803
-
 qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

@@ -5,15 +5,8 @@ aliases:
   - KRL
 team2024: Whatever name IDC
 category: duel
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 dataSource: player
 lastUpdated: 2026-02
 ctfRating: 24.9
@@ -50,8 +43,6 @@ hoqCtfRating: 24.9
 hoqCtfGames: 1402
 hoqTdmRating: 16.36
 hoqTdmGames: 8
-
-
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

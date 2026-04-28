@@ -11,11 +11,6 @@ team2026Shortname: SHREK
 country: BE
 team: SHREKTALIKA
 category: ctf
-
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1783
 duelRatingUpdated: 2026-02-05T00:00:00.000Z
@@ -29,10 +24,6 @@ hoqCtfRating: 42.29
 hoqCtfGames: 1131
 hoqTdmRating: 32.67
 hoqTdmGames: 40
-
-
-
-
 dataSource: player
 source: ""
 sourceUrl: https://qlstats.net/player/10922#duel
@@ -72,7 +63,6 @@ grip: Hybrid
 duelGames: 439
 ctfGames: 1131
 tdmGames: 40
-
 qlrace:
   mode: 2
   records: 1
@@ -81,6 +71,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 26
   best_record:
     map: bardok_egypt
@@ -89,11 +80,11 @@ qlrace:
     time: 16617
     rank_pct: 26
   top_maps:
-    - {map: bardok_egypt, rank: 19, total: 73, time: 16617, rank_pct: 26}
-  fetched_at: '2026-04-24'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 5143840, rank: 65, total: 69, speed_top: 1247, date: '2026-04-04T13:05:13.433Z'}
-  unique_maps_vql: 2
+    - map: bardok_egypt
+      rank: 19
+      total: 73
+      time: 16617
+  fetched_at: "2026-04-28"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

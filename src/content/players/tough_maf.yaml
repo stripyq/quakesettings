@@ -2,15 +2,8 @@ name: tough maf
 steamId: "76561198257330241"
 country: RU
 category: duel
-
-
-
-
-
 ctfRatingUpdated: "2026-04-24"
-
 tdmRatingUpdated: "2026-04-24"
-
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1584
@@ -20,8 +13,6 @@ hoqCtfRating: 14.17
 hoqCtfGames: 150
 hoqTdmRating: 19.07
 hoqTdmGames: 1983
-
-
 duelGames: 227
 ctfRating: 14.17
 tdmRating: 19.07
@@ -63,6 +54,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
+  speed_top: 0
   average_rank_pct: 56.4
   best_record:
     map: reflux
@@ -71,10 +63,15 @@ qlrace:
     time: 12255
     rank_pct: 41
   top_maps:
-    - {map: reflux, rank: 34, total: 83, time: 12255, rank_pct: 41}
-    - {map: df_licklonger, rank: 41, total: 57, time: 40521, rank_pct: 71.9}
-  fetched_at: '2026-04-24'
-  unique_maps_vql: 4
+    - map: reflux
+      rank: 34
+      total: 83
+      time: 12255
+    - map: df_licklonger
+      rank: 41
+      total: 57
+      time: 40521
+  fetched_at: "2026-04-28"
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
