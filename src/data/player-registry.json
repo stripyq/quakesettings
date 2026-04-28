@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-04-24",
+  "generatedAt": "2026-04-28",
   "totalPlayers": 2293,
-  "playersWithProfiles": 144,
+  "playersWithProfiles": 145,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -18055,8 +18055,8 @@
     {
       "steamId": "76561198006274665",
       "name": "Lanf3ust",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "lanf3ust",
+      "hasProfile": true,
       "ratings": {
         "ctf": 11.558123588562012,
         "tdm": null,
