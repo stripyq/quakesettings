@@ -28,15 +28,10 @@ jump: CAPSLOCK
 crouch: mouse4
 attack: mouse1
 zoom: mouse2
-mouse: __other__
-mouseOther: ATK F1 Extreme
+mouse: atk-f1-extreme
 mousepad: razer-gigantus
-keyboard: __other__
-keyboardOther: Razer Huntsman Tournament Edition
-monitor: __other__
-monitorOther: Zowie BenQ XL2566X+
-headset: __other__
-headsetOther: Marshal in ears
+keyboard: razer-huntsman-tournament-edition
+monitor: benq-zowie-xl2566x-plus
 skates: Stock
 enemyModel: Keel
 gpuBrand: AMD

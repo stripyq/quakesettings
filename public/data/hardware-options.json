@@ -91,6 +91,11 @@
       "brand": "ATK"
     },
     {
+      "slug": "atk-f1-extreme",
+      "name": "ATK F1 Extreme",
+      "brand": "ATK"
+    },
+    {
       "slug": "atk-f1-v2-extreme",
       "name": "ATK F1 V2 Extreme",
       "brand": "ATK"
@@ -3918,6 +3923,11 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-huntsman-tournament-edition",
+      "name": "Razer Huntsman Tournament Edition",
+      "brand": "Razer"
+    },
+    {
       "slug": "razer-huntsman-v2",
       "name": "Razer Huntsman V2",
       "brand": "Razer"
@@ -4532,6 +4542,11 @@
     {
       "slug": "benq-zowie-xl2566k",
       "name": "BenQ Zowie XL2566K",
+      "brand": "BenQ"
+    },
+    {
+      "slug": "benq-zowie-xl2566x-plus",
+      "name": "BenQ Zowie XL2566X+",
       "brand": "BenQ"
     },
     {
