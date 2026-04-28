@@ -2,7 +2,7 @@ name: Lanf3ust
 steamId: "76561198006274665"
 country: FR
 category: duel
-published: false
+published: true
 lastUpdated: 2026-04
 duelRating: 1108
 duelRatingSource: qlstats
