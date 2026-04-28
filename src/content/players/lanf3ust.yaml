@@ -3,6 +3,9 @@ steamId: "76561198006274665"
 country: FR
 category: duel
 published: false
+duelRating: 1108
+duelRatingSource: qlstats
+duelGames: 609
 dataSource: player
 dpi: 1800
 sensitivity: 0.72

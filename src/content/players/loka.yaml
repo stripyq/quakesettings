@@ -1,5 +1,7 @@
-name: loka
+name: Lokario
 steamId: "76561198030933162"
+aliases:
+  - loka
 country: HR
 category: ctf
 
@@ -12,33 +14,41 @@ tdmRating: 14.09
 tdmRatingUpdated: "2026-04-24"
 ctfRating: 9.07
 ctfRatingUpdated: "2026-04-24"
+duelRating: 1431
+duelRatingSource: qlstats
+duelGames: 12
 dataSource: player
 dpi: 400
-sensitivity: 3.4
-edpi: 1360
-cm360: 30.56
-acceleration: false
+sensitivity: 3.2
+edpi: 1280
+cm360: 32.47
+acceleration: true
 accelValue: 0.1
 rawInput: true
 fov: 90
-crosshair: "6"
+crosshair: "6, 23"
 invertedMouse: false
 grip: Claw
 forward: uparrow
-back: leftarrow
-left: downarrow
+back: downarrow
+left: leftarrow
 right: rightarrow
 jump: Mouse2
 crouch: mouse4
 attack: Mouse1
 zoom: shift
-mouse: zowie-ec2-b
-mousepad: corepad-xxxl
-monitor: benq-zowie-xl2411t
+mouse: __other__
+mouseOther: Cooler Master MM720
+mousepad: __other__
+mousepadOther: Forgeon Cordura
+keyboard: __other__
+keyboardOther: Trust
+monitor: __other__
+monitorOther: LG 27GL850
 headset: philips-fidelio-x2
 skates: Stock
 enemyModel: Keel
-crosshairColor: Red
+crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 2260
