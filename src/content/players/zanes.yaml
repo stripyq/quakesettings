@@ -2,15 +2,17 @@ name: zanes
 steamId: "76561198026248899"
 country: Unknown
 category: tdm
+hoqTdmRating: 23.255590438842773
+hoqTdmGames: 230
 lastUpdated: 2025-01
 tdmRating: 23.26
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 23.76
 ctfRatingUpdated: "2026-01-31"
 duelRating: 606
 tdmGames: 230
-hoqTdmRating: 23.26
-hoqTdmGames: 230
+
+
 duelGames: 3676
 duelRatingUpdated: "2026-02-04"
 dataSource: player

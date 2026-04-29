@@ -2,19 +2,23 @@ name: rehepapp
 steamId: "76561198002515349"
 country: EE
 category: tdm
+hoqCtfRating: 32.23799514770508
+hoqCtfGames: 860
+hoqTdmRating: 41.113162994384766
+hoqTdmGames: 2744
 duelRating: 1690
-ctfGames: 846
-tdmGames: 2711
-hoqCtfRating: 31.66
-hoqCtfGames: 846
-hoqTdmRating: 41.33
-hoqTdmGames: 2711
+ctfGames: 860
+tdmGames: 2744
+
+
+
+
 duelGames: 1336
 duelRatingUpdated: "2026-02-04"
-ctfRating: 31.66
-ctfRatingUpdated: "2026-04-24"
-tdmRating: 41.33
-tdmRatingUpdated: "2026-04-24"
+ctfRating: 32.24
+ctfRatingUpdated: "2026-04-29"
+tdmRating: 41.11
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2026-02
 dpi: 3200

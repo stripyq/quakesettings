@@ -4,16 +4,20 @@ aliases:
   - Many
   - ynam
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 29.04062271118164
+hoqCtfGames: 1733
+hoqTdmRating: 23.557178497314453
+hoqTdmGames: 43
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 29.04
 ctfGames: 1733
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 23.56
 tdmGames: 43
-hoqCtfRating: 29.04
-hoqCtfGames: 1733
-hoqTdmRating: 23.56
-hoqTdmGames: 43
+
+
+
+
 published: false
 team2024: Whatever name IDC
 qlrace: null

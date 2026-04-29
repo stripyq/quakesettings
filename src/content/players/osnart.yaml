@@ -2,16 +2,20 @@ name: Osnart
 steamId: "76561198122684842"
 country: DE
 category: ctf
-published: true
-hoqCtfRating: 21.26
-ctfRatingUpdated: "2026-04-21"
-ctfRating: 21.26
-hoqCtfGames: 1550
-ctfGames: 1550
-hoqTdmRating: 25.23
-tdmRatingUpdated: "2026-04-21"
-tdmRating: 25.23
+hoqCtfRating: 21.76626968383789
+hoqCtfGames: 1595
+hoqTdmRating: 25.232967376708984
 hoqTdmGames: 327
+published: true
+
+ctfRatingUpdated: "2026-04-29"
+ctfRating: 21.77
+
+ctfGames: 1595
+
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 25.23
+
 tdmGames: 327
 dataSource: player
 lastUpdated: 2026-04
@@ -78,3 +82,9 @@ qlrace:
   featured_maps:
     - {map: hangtime-df, mode: 3, time: 690808, rank: 35, total: 69, speed_top: 1233, date: '2026-04-18T11:10:10.354Z'}
   unique_maps_vql: 22
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 42
+accuracy_rg: 51
+accuracy_lg: 34

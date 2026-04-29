@@ -8,19 +8,23 @@ team2026Shortname: SHREK
 country: HR
 team: SHREKTALIKA
 category: ctf
+hoqCtfRating: 31.116670608520508
+hoqCtfGames: 1902
+hoqTdmRating: 23.43008041381836
+hoqTdmGames: 206
 lastUpdated: 2025-01
 tdmRating: 23.43
-tdmRatingUpdated: "2026-04-24"
-ctfRating: 32.03
-ctfRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
+ctfRating: 31.12
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 17.85
 qllrCtfGames: 33
-hoqCtfRating: 32.03
-hoqCtfGames: 1894
-hoqTdmRating: 23.43
-hoqTdmGames: 206
+
+
+
+
 duelRating: 1651
-ctfGames: 1894
+ctfGames: 1902
 tdmGames: 206
 duelGames: 61
 duelRatingUpdated: "2026-02-04"

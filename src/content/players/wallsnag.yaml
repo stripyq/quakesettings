@@ -2,17 +2,21 @@ name: Wallsnag
 country: OTHER
 steamId: "76561198098777141"
 category: duel
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 17.64010238647461
+hoqCtfGames: 2451
+hoqTdmRating: 18.574724197387695
+hoqTdmGames: 336
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 750
 ctfGames: 2451
 tdmGames: 336
-hoqCtfRating: 17.64
-hoqCtfGames: 2451
-hoqTdmRating: 18.57
-hoqTdmGames: 336
+
+
+
+
 duelGames: 75
 ctfRating: 17.64
 tdmRating: 18.57

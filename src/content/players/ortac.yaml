@@ -6,11 +6,11 @@ caRating: 25.56
 caGames: 904
 caRatingUpdated: "2026-02-04"
 tdmRating: 20.16
-tdmRatingUpdated: "2026-04-22"
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1200
 tdmGames: 246
-hoqTdmRating: 20.16
-hoqTdmGames: 246
+
+
 duelGames: 1227
 duelRatingUpdated: "2026-02-04"
 mouse: zaopin-z11-pro
@@ -61,3 +61,11 @@ qlrace:
     - {map: df_dinirun3, rank: 22, total: 32, time: 194944}
   fetched_at: '2026-04-28'
   unique_maps_vql: 12
+hoqTdmRating: 20.161855697631836
+hoqTdmGames: 246
+favorite_map: hiddenfortress
+favorite_gametype: Clan Arena
+favorite_weapon: Railgun
+accuracy_rl: 45
+accuracy_rg: 53
+accuracy_lg: 41

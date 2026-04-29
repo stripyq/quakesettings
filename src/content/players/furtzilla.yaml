@@ -2,11 +2,15 @@ name: Furtzilla
 steamId: "76561198053186404"
 country: Unknown
 category: tdm
+hoqCtfRating: 22.545732498168945
+hoqCtfGames: 176
+hoqTdmRating: 27.290603637695312
+hoqTdmGames: 2130
 lastUpdated: 2025-01
-tdmRating: 26.54
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 27.29
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 22.55
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 900
 sensitivity: 1.1
@@ -33,11 +37,11 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 176
-tdmGames: 2114
-hoqCtfRating: 22.55
-hoqCtfGames: 176
-hoqTdmRating: 26.54
-hoqTdmGames: 2114
+tdmGames: 2130
+
+
+
+
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

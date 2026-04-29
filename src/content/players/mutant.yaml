@@ -9,17 +9,21 @@ team2026: Astral Starlight
 country: ""
 team: ""
 category: ctf
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 22.76917839050293
+hoqCtfGames: 1091
+hoqTdmRating: 31.107351303100586
+hoqTdmGames: 118
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 lastUpdated: 2024-12
-ctfRating: 22.13
-ctfGames: 1088
+ctfRating: 22.77
+ctfGames: 1091
 tdmRating: 31.11
 tdmGames: 118
-hoqCtfRating: 22.13
-hoqCtfGames: 1088
-hoqTdmRating: 31.11
-hoqTdmGames: 118
+
+
+
+
 dataSource: player
 source: ""
 sourceUrl: ""

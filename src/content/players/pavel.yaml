@@ -2,20 +2,24 @@ name: pavel
 country: RU
 steamId: "76561198054844275"
 category: duel
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 20.892818450927734
+hoqCtfGames: 4
+hoqTdmRating: 37.541343688964844
+hoqTdmGames: 394
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 20.89
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 dataSource: collected
 lastUpdated: "2026-02-13"
 duelRating: 2108
 ctfGames: 4
-tdmGames: 384
-hoqCtfRating: 20.89
-hoqCtfGames: 4
-hoqTdmRating: 37.64
-hoqTdmGames: 384
+tdmGames: 394
+
+
+
+
 duelGames: 4566
-tdmRating: 37.64
+tdmRating: 37.54
 tdm2v2Rating: 39.47
 tdm2v2Games: 261
 dpi: 800
@@ -48,5 +52,5 @@ favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Lightning Gun
 accuracy_rl: 41
-accuracy_rg: 49
-accuracy_lg: 33
+accuracy_rg: 50
+accuracy_lg: 34

@@ -2,13 +2,15 @@ name: dimon
 steamId: "76561198257799111"
 country: Unknown
 category: duel
+hoqTdmRating: 21.07310676574707
+hoqTdmGames: 25
 lastUpdated: 2026-02
 tdmRating: 21.07
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1486
 tdmGames: 25
-hoqTdmRating: 21.07
-hoqTdmGames: 25
+
+
 duelGames: 1428
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -39,5 +41,5 @@ favorite_map: campgrounds
 favorite_gametype: Team Deathmatch (2v2)
 favorite_weapon: Lightning Gun
 accuracy_rl: 43
-accuracy_rg: 49
+accuracy_rg: 50
 accuracy_lg: 32

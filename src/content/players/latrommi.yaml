@@ -3,14 +3,28 @@ steamId: "76561198048532604"
 aliases: []
 country: RU
 category: ctf
+<<<<<<< HEAD
 ctfRatingUpdated: "2026-04-24"
 hoqCtfRating: 23.18
 hoqCtfGames: 4
 hoqTdmRating: 42.9
 hoqTdmGames: 230
+=======
+hoqCtfRating: 23.178543090820312
+hoqCtfGames: 4
+hoqTdmRating: 42.89962387084961
+hoqTdmGames: 230
+ctfRatingUpdated: "2026-04-29"
+qllrCtfRating: 23.23
+qllrCtfGames: 16
+
+
+
+
+>>>>>>> 52d1b5c (data: refresh HoQ stats + sync, round ratings to 2 decimals)
 ctfRating: 23.18
 ctfGames: 4
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 42.9
 tdmGames: 230
 published: true
@@ -58,5 +72,5 @@ favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 47
-accuracy_rg: 56
+accuracy_rg: 57
 accuracy_lg: 40

@@ -2,11 +2,15 @@ name: p5ych0
 steamId: "76561197995121689"
 country: Unknown
 category: ctf
+hoqCtfRating: 12.704608917236328
+hoqCtfGames: 386
+hoqTdmRating: 13.027443885803223
+hoqTdmGames: 143
 lastUpdated: 2025-01
-tdmRating: 13.63
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 13.03
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 12.7
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 800
 sensitivity: 1.4
@@ -34,11 +38,11 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 386
-tdmGames: 121
-hoqCtfRating: 12.7
-hoqCtfGames: 386
-hoqTdmRating: 13.63
-hoqTdmGames: 121
+tdmGames: 143
+
+
+
+
 qlrace:
   mode: 2
   records: 11

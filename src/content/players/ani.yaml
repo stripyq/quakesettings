@@ -7,13 +7,17 @@ team2024: unreliable dogs
 country: SE
 team: ""
 category: ctf
+hoqCtfRating: 26.992088317871094
+hoqCtfGames: 313
+hoqTdmRating: 24.129335403442383
+hoqTdmGames: 43
 lastUpdated: 2025-01
 duelRating: 1547
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
 tdmRating: 24.13
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 26.99
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -50,10 +54,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 313
 tdmGames: 43
-hoqCtfRating: 26.99
-hoqCtfGames: 313
-hoqTdmRating: 24.13
-hoqTdmGames: 43
+
+
+
+
 qlrace: null
 favorite_map: campgrounds
 favorite_gametype: Clan Arena

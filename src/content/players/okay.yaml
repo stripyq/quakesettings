@@ -2,10 +2,12 @@ name: Okay.
 steamId: "76561198257018686"
 country: Unknown
 category: ctf
+hoqCtfRating: 15.751227378845215
+hoqCtfGames: 29
 duelRating: 1332
 duelRatingUpdated: "2026-01-31"
 ctfRating: 15.75
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 tdmRating: 19.8
 tdmRatingUpdated: "2026-01-31"
 dataSource: player
@@ -34,8 +36,8 @@ crosshairColor: White
 gpuBrand: INTEL
 cpuBrand: Intel
 ctfGames: 29
-hoqCtfRating: 15.75
-hoqCtfGames: 29
+
+
 qlrace:
   mode: 2
   records: 2

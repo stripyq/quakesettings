@@ -2,15 +2,17 @@ name: spooky
 steamId: "76561198041115896"
 country: Unknown
 category: duel
+hoqTdmRating: 26.429569244384766
+hoqTdmGames: 755
 lastUpdated: 2025-01
 tdmRating: 26.43
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 26.6
 ctfRatingUpdated: "2026-01-31"
 duelRating: 1224
 tdmGames: 755
-hoqTdmRating: 26.43
-hoqTdmGames: 755
+
+
 duelGames: 276
 duelRatingUpdated: "2026-02-04"
 dataSource: player

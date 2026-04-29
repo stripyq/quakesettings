@@ -4,13 +4,17 @@ steamId: "76561198257437671"
 country: HU
 team: ""
 category: tdm
+hoqCtfRating: 18.22330093383789
+hoqCtfGames: 2
+hoqTdmRating: 32.32355880737305
+hoqTdmGames: 2492
 lastUpdated: 2025-01
 duelRating: 1589
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
 tdmRating: 32.32
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 18.22
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -50,10 +54,10 @@ gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 2
 tdmGames: 2492
-hoqCtfRating: 18.22
-hoqCtfGames: 2
-hoqTdmRating: 32.32
-hoqTdmGames: 2492
+
+
+
+
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

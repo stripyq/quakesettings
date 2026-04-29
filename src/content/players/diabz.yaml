@@ -2,11 +2,15 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
+hoqCtfRating: 29.502588272094727
+hoqCtfGames: 315
+hoqTdmRating: 26.94189453125
+hoqTdmGames: 18
 lastUpdated: 2026-02
 ctfRating: 29.5
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 tdmRating: 26.94
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 mouse: endgame-gear-op1-8k
 mousepad: artisan-key-83
@@ -35,12 +39,12 @@ jump: MOUSE2
 attack: MOUSE1
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 313
+ctfGames: 315
 tdmGames: 18
-hoqCtfRating: 29.5
-hoqCtfGames: 313
-hoqTdmRating: 26.94
-hoqTdmGames: 18
+
+
+
+
 qlrace:
   mode: 2
   records: 3
@@ -66,6 +70,6 @@ qlrace:
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
-accuracy_rl: 40
+accuracy_rl: 39
 accuracy_rg: 61
 accuracy_lg: 41

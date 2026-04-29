@@ -8,22 +8,26 @@ team2024: SHREKTALIKA
 team2026: SHREKTALIKA
 team2026Shortname: SHREK
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 34.73501205444336
+hoqCtfGames: 1054
+hoqTdmRating: 34.576412200927734
+hoqTdmGames: 378
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 33.58
 qllrCtfGames: 94
-hoqCtfRating: 34.82
-hoqCtfGames: 1036
-hoqTdmRating: 35.03
-hoqTdmGames: 354
-tdmRatingUpdated: "2026-04-24"
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 2070
 duelGames: 2866
-ctfRating: 34.82
-ctfGames: 1036
-tdmRating: 35.03
-tdmGames: 354
+ctfRating: 34.74
+ctfGames: 1054
+tdmRating: 34.58
+tdmGames: 378
 dpi: 1600
 sensitivity: 1
 edpi: 1600
@@ -53,4 +57,4 @@ favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 46
 accuracy_rg: 58
-accuracy_lg: 40
+accuracy_lg: 39

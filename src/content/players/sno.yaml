@@ -5,17 +5,17 @@ aliases:
   - sno
 team2024: Flappy Flags
 lastUpdated: 2026-01
-ctfRating: 22.58
-ctfRatingUpdated: "2026-04-22"
+ctfRating: 22.06
+ctfRatingUpdated: "2026-04-29"
 tdmRating: 19.29
-tdmRatingUpdated: "2026-04-22"
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1066
-ctfGames: 2256
+ctfGames: 2265
 tdmGames: 1
-hoqCtfRating: 22.58
-hoqCtfGames: 2256
-hoqTdmRating: 19.29
-hoqTdmGames: 1
+
+
+
+
 duelGames: 901
 duelRatingUpdated: "2026-02-04"
 mouse: razer-viper-v3-pro
@@ -75,3 +75,13 @@ qlrace:
   featured_maps:
     - {map: hangtime-df, mode: 3, time: 414648, rank: 19, total: 69, speed_top: 1194, date: '2026-04-26T20:42:16.881Z'}
   unique_maps_vql: 152
+hoqCtfRating: 22.056699752807617
+hoqCtfGames: 2265
+hoqTdmRating: 19.292423248291016
+hoqTdmGames: 1
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 40
+accuracy_rg: 51
+accuracy_lg: 30

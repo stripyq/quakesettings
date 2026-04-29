@@ -2,9 +2,11 @@ name: Xiu
 steamId: "76561198010106923"
 country: Unknown
 category: ctf
+hoqCtfRating: 23.803884506225586
+hoqCtfGames: 15
 lastUpdated: 2025-01
 ctfRating: 23.8
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 1600
 sensitivity: 1.25
@@ -33,8 +35,8 @@ crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-hoqCtfRating: 23.8
-hoqCtfGames: 15
+
+
 qlrace:
   mode: 3
   records: 1

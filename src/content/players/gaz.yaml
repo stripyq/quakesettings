@@ -2,16 +2,20 @@ name: gaz
 steamId: "76561197991370790"
 aliases: []
 category: ctf
-ctfRatingUpdated: "2026-04-24"
-ctfRating: 21.21
-ctfGames: 1939
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 20.570369720458984
+hoqCtfGames: 1958
+hoqTdmRating: 29.279401779174805
+hoqTdmGames: 333
+ctfRatingUpdated: "2026-04-29"
+ctfRating: 20.57
+ctfGames: 1958
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 29.28
 tdmGames: 333
-hoqCtfRating: 21.21
-hoqCtfGames: 1939
-hoqTdmRating: 29.28
-hoqTdmGames: 333
+
+
+
+
 published: false
 qlrace: null
 favorite_map: q3wcp9

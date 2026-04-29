@@ -6,23 +6,27 @@ team2026: Astral Starlight
 country: DE
 team: Astral Starlight
 category: ctf
+hoqCtfRating: 17.287569046020508
+hoqCtfGames: 9805
+hoqTdmRating: 14.50886058807373
+hoqTdmGames: 67
 lastUpdated: "2026-02-15T14:00:00"
 dataSource: player
 duelRating: 2050
 duelRatingUpdated: "2026-01-31"
 duelGames: 67
 tdmRating: 14.51
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmGames: 67
-ctfRating: 16.91
-ctfRatingUpdated: "2026-04-24"
+ctfRating: 17.29
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 28.64
 qllrCtfGames: 14
-hoqCtfRating: 16.91
-hoqCtfGames: 9714
-hoqTdmRating: 14.51
-hoqTdmGames: 67
-ctfGames: 9714
+
+
+
+
+ctfGames: 9805
 dpi: 1200
 sensitivity: 1.3
 m_yaw: 0.022
@@ -85,5 +89,5 @@ favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
 accuracy_rl: 36
-accuracy_rg: 46
-accuracy_lg: 29
+accuracy_rg: 47
+accuracy_lg: 30

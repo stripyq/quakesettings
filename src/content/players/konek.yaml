@@ -2,17 +2,21 @@ name: konek
 steamId: "76561198051109164"
 country: HU
 category: duel
+hoqCtfRating: 3.8749141693115234
+hoqCtfGames: 218
+hoqTdmRating: 3.9344751834869385
+hoqTdmGames: 25
 published: true
-hoqCtfRating: 4.58
-ctfRatingUpdated: "2026-04-21"
-ctfRating: 4.58
-hoqCtfGames: 205
-ctfGames: 205
-hoqTdmRating: 2.97
-tdmRatingUpdated: "2026-04-21"
-tdmRating: 2.97
-hoqTdmGames: 19
-tdmGames: 19
+
+ctfRatingUpdated: "2026-04-29"
+ctfRating: 3.87
+
+ctfGames: 218
+
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 3.93
+
+tdmGames: 25
 dataSource: player
 lastUpdated: 2026-04
 duelRating: 820
@@ -68,3 +72,9 @@ qlrace:
     - {map: kool_bricks1, rank: 10, total: 11, time: 54232}
   fetched_at: '2026-04-28'
   unique_maps_vql: 5
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 32
+accuracy_rg: 51
+accuracy_lg: 32

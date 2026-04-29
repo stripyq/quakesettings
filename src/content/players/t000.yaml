@@ -2,11 +2,13 @@ name: t000
 steamId: "76561198246535026"
 aliases: []
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 5.886887073516846
+hoqCtfGames: 2811
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 5.89
 ctfGames: 2811
-hoqCtfRating: 5.89
-hoqCtfGames: 2811
+
+
 published: false
 qlrace: null
 favorite_map: japanesecastles

@@ -2,11 +2,13 @@ name: fearz
 steamId: "76561198090058821"
 country: RU
 category: tdm
+hoqTdmRating: 31.219768524169922
+hoqTdmGames: 740
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
-tdmRating: 30.3
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 31.22
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 34.1
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -36,9 +38,9 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 729
-hoqTdmRating: 30.3
-hoqTdmGames: 729
+tdmGames: 740
+
+
 qlrace:
   mode: 2
   records: 2
@@ -64,5 +66,5 @@ favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 36
-accuracy_rg: 44
+accuracy_rg: 45
 accuracy_lg: 32

@@ -2,21 +2,25 @@ name: DimebaG
 country: OTHER
 steamId: "76561198380825290"
 category: tdm
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 24.844650268554688
+hoqCtfGames: 2
+hoqTdmRating: 22.05609703063965
+hoqTdmGames: 4050
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 24.84
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 dataSource: collected
 lastUpdated: 2026-02
-tdmRating: 23.84
+tdmRating: 22.06
 tdm2v2Rating: 21.38
 tdm2v2Games: 91
 duelRating: 1215
 ctfGames: 2
-tdmGames: 4015
-hoqCtfRating: 24.84
-hoqCtfGames: 2
-hoqTdmRating: 23.84
-hoqTdmGames: 4015
+tdmGames: 4050
+
+
+
+
 duelGames: 380
 dpi: 2400
 sensitivity: 0.92

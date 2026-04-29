@@ -11,22 +11,26 @@ team2026Shortname: wB
 country: HR
 team: wAnnaBees
 category: ctf
+hoqCtfRating: 24.48638153076172
+hoqCtfGames: 2643
+hoqTdmRating: 26.982009887695312
+hoqTdmGames: 311
 lastUpdated: 2025-01
 duelRating: 1086
-ctfGames: 2628
-tdmGames: 307
+ctfGames: 2643
+tdmGames: 311
 duelGames: 4
 duelRatingUpdated: "2026-02-04"
-tdmRating: 27.04
-tdmRatingUpdated: "2026-04-24"
-ctfRating: 24.69
-ctfRatingUpdated: "2026-04-24"
+tdmRating: 26.98
+tdmRatingUpdated: "2026-04-29"
+ctfRating: 24.49
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 26.24
 qllrCtfGames: 60
-hoqCtfRating: 24.69
-hoqCtfGames: 2628
-hoqTdmRating: 27.04
-hoqTdmGames: 307
+
+
+
+
 dataSource: player
 source: ""
 sourceUrl: ""

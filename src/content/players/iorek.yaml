@@ -10,16 +10,18 @@ team2024: CTF4
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 category: duel
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 28.450023651123047
+hoqCtfGames: 1961
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 29.06
 qllrCtfGames: 110
-hoqCtfRating: 28.85
-hoqCtfGames: 1936
+
+
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 28.85
+ctfRating: 28.45
 duelRating: 987
-ctfGames: 1936
+ctfGames: 1961
 duelGames: 30
 dpi: 800
 sensitivity: 1.8
@@ -55,4 +57,4 @@ favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun
 accuracy_rl: 42
 accuracy_rg: 59
-accuracy_lg: 37
+accuracy_lg: 36

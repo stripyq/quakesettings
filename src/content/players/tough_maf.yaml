@@ -2,20 +2,24 @@ name: tough maf
 steamId: "76561198257330241"
 country: RU
 category: duel
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 14.17286491394043
+hoqCtfGames: 150
+hoqTdmRating: 19.428173065185547
+hoqTdmGames: 2024
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1584
 ctfGames: 150
-tdmGames: 1983
-hoqCtfRating: 14.17
-hoqCtfGames: 150
-hoqTdmRating: 19.07
-hoqTdmGames: 1983
+tdmGames: 2024
+
+
+
+
 duelGames: 227
 ctfRating: 14.17
-tdmRating: 19.07
+tdmRating: 19.43
 dpi: 1600
 sensitivity: 0.8
 edpi: 1280
@@ -70,6 +74,6 @@ qlrace:
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
-accuracy_rl: 41
+accuracy_rl: 40
 accuracy_rg: 50
 accuracy_lg: 30

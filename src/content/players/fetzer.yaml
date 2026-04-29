@@ -2,13 +2,17 @@ name: fetzer
 steamId: "76561197968556118"
 country: Unknown
 category: ctf
+hoqCtfRating: 12.536035537719727
+hoqCtfGames: 1
+hoqTdmRating: 11.50948429107666
+hoqTdmGames: 1
 lastUpdated: 2025-01
 duelRating: 1231
 duelRatingUpdated: "2026-01-31"
 tdmRating: 11.51
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 12.54
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 1350
 sensitivity: 1.625
@@ -38,10 +42,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1
 tdmGames: 1
-hoqCtfRating: 12.54
-hoqCtfGames: 1
-hoqTdmRating: 11.51
-hoqTdmGames: 1
+
+
+
+
 qlrace: null
 favorite_map: campgrounds
 favorite_gametype: Clan Arena

@@ -2,20 +2,24 @@ name: keks_
 steamId: "76561197972822622"
 country: DE
 category: ctf
+hoqCtfRating: 15.66950798034668
+hoqCtfGames: 573
+hoqTdmRating: 20.847105026245117
+hoqTdmGames: 90
 lastUpdated: 2026-03
 duelRating: 1224
 duelGames: 125
 duelRatingUpdated: "2026-03-02"
-ctfRating: 14.47
-ctfRatingUpdated: "2026-04-24"
-ctfGames: 555
-tdmRating: 20.62
-tdmRatingUpdated: "2026-04-24"
-tdmGames: 89
-hoqCtfRating: 14.47
-hoqCtfGames: 555
-hoqTdmRating: 20.62
-hoqTdmGames: 89
+ctfRating: 15.67
+ctfRatingUpdated: "2026-04-29"
+ctfGames: 573
+tdmRating: 20.85
+tdmRatingUpdated: "2026-04-29"
+tdmGames: 90
+
+
+
+
 dataSource: player
 dpi: 800
 sensitivity: 8.4
@@ -52,3 +56,9 @@ skates: Stock
 gpuBrand: AMD
 cpuBrand: AMD
 qlrace: null
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 44
+accuracy_rg: 54
+accuracy_lg: 35

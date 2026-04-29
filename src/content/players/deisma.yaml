@@ -2,17 +2,21 @@ name: deisma
 steamId: "76561198257310626"
 country: RU
 category: ctf
+hoqCtfRating: 9.127662658691406
+hoqCtfGames: 1769
+hoqTdmRating: 21.39876937866211
+hoqTdmGames: 199
 lastUpdated: "2026-02-26"
 tdmRating: 21.4
 tdmGames: 199
-hoqCtfRating: 9.13
-hoqCtfGames: 1769
-hoqTdmRating: 21.4
-hoqTdmGames: 199
-tdmRatingUpdated: "2026-02-24"
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
 ctfGames: 1769
 ctfRating: 9.13
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 duelRating: 1394
 duelRatingSource: qlstats
 duelGames: 5
@@ -44,9 +48,13 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
+
+
+
+qlrace: null
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 39
 accuracy_rg: 58
 accuracy_lg: 41
-accuracy_rl: 39
-qlrace: null
-favorite_gametype: "Weapon: Railgun"
-favorite_weapon: Railgun

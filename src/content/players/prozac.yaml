@@ -2,13 +2,17 @@ name: proZaC
 steamId: "76561197993233912"
 country: Unknown
 category: tdm
+hoqCtfRating: 20.287057876586914
+hoqCtfGames: 22
+hoqTdmRating: 29.070194244384766
+hoqTdmGames: 326
 lastUpdated: 2025-01
 duelRating: 1372
 duelRatingUpdated: "2026-01-31"
-tdmRating: 29.75
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 29.07
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 20.29
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 800
 m_cpi: 800
@@ -37,11 +41,11 @@ crosshairColor: Blue
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 22
-tdmGames: 323
-hoqCtfRating: 20.29
-hoqCtfGames: 22
-hoqTdmRating: 29.75
-hoqTdmGames: 323
+tdmGames: 326
+
+
+
+
 qlrace: null
 favorite_map: deepinside
 favorite_gametype: Team Deathmatch

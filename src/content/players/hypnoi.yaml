@@ -41,11 +41,21 @@ qlrace:
     - {map: pornstar_lamba, rank: 1, total: 34, time: 27064}
   fetched_at: '2026-04-28'
   unique_maps_vql: 242
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 22.16
 qllrCtfGames: 23
-hoqCtfRating: 26.14
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
+hoqCtfRating: 26.140064239501953
 hoqCtfGames: 230
-hoqTdmRating: 22.76
+hoqTdmRating: 22.760435104370117
 hoqTdmGames: 539
-tdmRatingUpdated: "2026-04-24"
+favorite_map: purgatory
+favorite_gametype: Team Deathmatch
+favorite_weapon: Railgun
+accuracy_rl: 41
+accuracy_rg: 53
+accuracy_lg: 34

@@ -2,11 +2,15 @@ name: gog
 steamId: "76561198047715408"
 country: Unknown
 category: ctf
+hoqCtfRating: 18.83621597290039
+hoqCtfGames: 2544
+hoqTdmRating: 22.905427932739258
+hoqTdmGames: 566
 lastUpdated: 2026-02
 ctfRating: 18.84
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 tdmRating: 22.91
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 800
 sensitivity: 1.9
@@ -32,10 +36,10 @@ gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 2544
 tdmGames: 566
-hoqCtfRating: 18.84
-hoqCtfGames: 2544
-hoqTdmRating: 22.91
-hoqTdmGames: 566
+
+
+
+
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

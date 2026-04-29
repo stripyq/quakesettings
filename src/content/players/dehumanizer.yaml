@@ -4,6 +4,11 @@ steamId: "76561197964623506"
 aliases: []
 team2024: CTF4
 category: tdm
+hoqCtfRating: 25.06305694580078
+hoqCtfGames: 545
+hoqTdmRating: 30.232011795043945
+tdmRatingUpdated: "2026-04-29"
+hoqTdmGames: 1130
 lastUpdated: 2026-02
 duelRating: 1361
 ctfGames: 545
@@ -13,11 +18,11 @@ tdmRating: 30.23
 ctfRating: 25.06
 qllrCtfRating: 22.24
 qllrCtfGames: 28
-hoqCtfRating: 25.06
-ctfRatingUpdated: "2026-04-24"
-hoqCtfGames: 545
-hoqTdmRating: 30.23
-hoqTdmGames: 1130
+
+ctfRatingUpdated: "2026-04-29"
+
+
+
 dataSource: collected
 dpi: 400
 sensitivity: 1.2
@@ -77,8 +82,8 @@ qlrace:
     - {map: hangtime-df, mode: 3, time: 281472, rank: 9, total: 69, speed_top: 1195, date: '2026-04-28T19:50:30.865Z'}
   unique_maps_vql: 6
 favorite_map: hiddenfortress
-favorite_gametype: "Weapon: Shotgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
-accuracy_rl: 43
+accuracy_rl: 42
 accuracy_rg: 53
-accuracy_lg: 34
+accuracy_lg: 35

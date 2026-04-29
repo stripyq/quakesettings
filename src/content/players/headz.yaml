@@ -9,18 +9,24 @@ country: FR
 team: SHREKTALIKA
 published: false
 qlrace: null
-ctfGames: 3797
+ctfGames: 3801
+
+
+
+
+
+ctfRatingUpdated: "2026-04-29"
+ctfRating: 24.47
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 21.47
+tdmGames: 701
+hoqCtfRating: 24.474143981933594
+hoqCtfGames: 3801
+hoqTdmRating: 21.473522186279297
+hoqTdmGames: 701
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 31
 accuracy_rg: 52
-ctfRatingUpdated: "2026-04-24"
-ctfRating: 24.03
-tdmRatingUpdated: "2026-04-24"
-tdmRating: 20.76
-tdmGames: 694
-hoqCtfRating: 24.03
-hoqCtfGames: 3797
-hoqTdmRating: 20.76
-hoqTdmGames: 694
+accuracy_lg: 36

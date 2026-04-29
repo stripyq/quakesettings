@@ -5,20 +5,24 @@ aliases:
 team2024: Bad But Happy
 country: DE
 category: tdm
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 20.53481674194336
+hoqCtfGames: 231
+hoqTdmRating: 31.41800880432129
+hoqTdmGames: 1779
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1408
 duelGames: 176
-ctfRating: 19.31
-ctfGames: 212
-tdmRating: 30.71
-tdmGames: 1774
-hoqCtfRating: 19.31
-hoqCtfGames: 212
-hoqTdmRating: 30.71
-hoqTdmGames: 1774
+ctfRating: 20.53
+ctfGames: 231
+tdmRating: 31.42
+tdmGames: 1779
+
+
+
+
 dpi: 800
 sensitivity: 0.75
 edpi: 600
@@ -51,6 +55,6 @@ qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
-accuracy_rl: 43
+accuracy_rl: 42
 accuracy_rg: 62
 accuracy_lg: 38

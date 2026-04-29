@@ -3,16 +3,20 @@ steamId: "76561198045866799"
 aliases:
   - abso
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 34.480995178222656
+hoqCtfGames: 624
+hoqTdmRating: 34.9581413269043
+hoqTdmGames: 637
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 34.48
 ctfGames: 624
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 34.96
 tdmGames: 637
-hoqCtfRating: 34.48
-hoqCtfGames: 624
-hoqTdmRating: 34.96
-hoqTdmGames: 637
+
+
+
+
 published: false
 team2024: The expendables
 qlrace:

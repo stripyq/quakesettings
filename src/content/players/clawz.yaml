@@ -3,11 +3,13 @@ steamId: "76561198393765487"
 aliases:
   - clawz
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 23.18943214416504
+hoqCtfGames: 4
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 23.19
 ctfGames: 4
-hoqCtfRating: 23.19
-hoqCtfGames: 4
+
+
 published: false
 team2024: The expendables
 qlrace:

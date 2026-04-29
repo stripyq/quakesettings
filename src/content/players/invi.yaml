@@ -3,16 +3,20 @@ steamId: "76561198064199875"
 aliases:
   - invi
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 27.947214126586914
+hoqCtfGames: 3445
+hoqTdmRating: 27.080549240112305
+hoqTdmGames: 1274
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 27.95
 ctfGames: 3445
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 27.08
 tdmGames: 1274
-hoqCtfRating: 27.95
-hoqCtfGames: 3445
-hoqTdmRating: 27.08
-hoqTdmGames: 1274
+
+
+
+
 published: false
 team2024: unreliable dogs
 qlrace: null

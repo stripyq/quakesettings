@@ -2,11 +2,15 @@ name: r3cke
 country: Unknown
 steamId: "76561198279892880"
 category: duel
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 17.65837287902832
+hoqCtfGames: 4999
+hoqTdmRating: 17.25713539123535
+hoqTdmGames: 67
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2025-02
-ctfRating: 18.37
+ctfRating: 17.66
 tdmRating: 17.26
 dpi: 400
 sensitivity: 2
@@ -42,12 +46,12 @@ headset: sony-mdr-xd300
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 4934
+ctfGames: 4999
 tdmGames: 67
-hoqCtfRating: 18.37
-hoqCtfGames: 4934
-hoqTdmRating: 17.26
-hoqTdmGames: 67
+
+
+
+
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

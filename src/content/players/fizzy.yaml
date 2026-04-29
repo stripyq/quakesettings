@@ -3,11 +3,13 @@ steamId: "76561198129795100"
 aliases: []
 country: PL
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 4.143519401550293
+hoqCtfGames: 1983
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 21.9
 qllrCtfGames: 12
-hoqCtfRating: 4.14
-hoqCtfGames: 1983
+
+
 lastUpdated: "2026-02-13"
 duelRating: 725
 ctfGames: 1983
@@ -76,5 +78,5 @@ favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
 accuracy_rl: 37
-accuracy_rg: 43
+accuracy_rg: 44
 accuracy_lg: 28

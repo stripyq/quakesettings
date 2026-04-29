@@ -3,16 +3,20 @@ steamId: "76561198199452077"
 aliases:
   - estoty Klyb
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 22.02436637878418
+hoqCtfGames: 45
+hoqTdmRating: 23.687166213989258
+hoqTdmGames: 51
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 22.02
 ctfGames: 45
-tdmRatingUpdated: "2026-04-24"
-tdmRating: 25.24
-tdmGames: 19
-hoqCtfRating: 22.02
-hoqCtfGames: 45
-hoqTdmRating: 25.24
-hoqTdmGames: 19
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 23.69
+tdmGames: 51
+
+
+
+
 published: false
 qlrace:
   mode: 2
@@ -35,8 +39,8 @@ qlrace:
   fetched_at: '2026-04-28'
   unique_maps_vql: 1
 favorite_map: q3wcp9
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 43
-accuracy_rg: 48
+favorite_gametype: Team Deathmatch
+favorite_weapon: Shotgun
+accuracy_rl: 41
+accuracy_rg: 49
 accuracy_lg: 35

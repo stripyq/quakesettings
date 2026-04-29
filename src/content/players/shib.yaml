@@ -2,16 +2,20 @@ name: shib
 steamId: "76561198200942503"
 aliases: []
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 8.623580932617188
+hoqCtfGames: 331
+hoqTdmRating: 17.68816566467285
+hoqTdmGames: 29
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 8.62
 ctfGames: 331
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 17.69
 tdmGames: 29
-hoqCtfRating: 8.62
-hoqCtfGames: 331
-hoqTdmRating: 17.69
-hoqTdmGames: 29
+
+
+
+
 published: false
 team2024: 4friends
 qlrace:

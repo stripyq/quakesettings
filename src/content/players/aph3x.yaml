@@ -2,16 +2,20 @@ name: APH3X
 steamId: "76561198346024921"
 aliases: []
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 32.24637985229492
+hoqCtfGames: 6537
+hoqTdmRating: 22.130783081054688
+hoqTdmGames: 18
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 32.25
 ctfGames: 6537
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 22.13
 tdmGames: 18
-hoqCtfRating: 32.25
-hoqCtfGames: 6537
-hoqTdmRating: 22.13
-hoqTdmGames: 18
+
+
+
+
 published: false
 team2024: unreliable dogs
 qlrace:

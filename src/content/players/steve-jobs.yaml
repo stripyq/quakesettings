@@ -2,10 +2,14 @@ name: Steve Jobs
 steamId: "76561198067064946"
 country: Unknown
 category: tdm
+hoqCtfRating: 9.792500495910645
+hoqCtfGames: 17
+hoqTdmRating: 8.180025100708008
+hoqTdmGames: 2260
 ctfRating: 9.79
-ctfRatingUpdated: "2026-04-24"
-tdmRating: 8.39
-tdmRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
+tdmRating: 8.18
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2025-01
 dpi: 1000
@@ -34,11 +38,11 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 17
-tdmGames: 2257
-hoqCtfRating: 9.79
-hoqCtfGames: 17
-hoqTdmRating: 8.39
-hoqTdmGames: 2257
+tdmGames: 2260
+
+
+
+
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

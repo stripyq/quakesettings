@@ -2,12 +2,19 @@ name: Antosh
 steamId: "76561199559373528"
 country: PL
 category: ctf
+hoqCtfRating: 18.87910270690918
+hoqCtfGames: 51
+hoqTdmRating: 17.12697410583496
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 17.13
+hoqTdmGames: 13
+tdmGames: 13
 published: true
-hoqCtfRating: 18.72
-ctfRatingUpdated: "2026-04-21"
-ctfRating: 18.72
-hoqCtfGames: 25
-ctfGames: 25
+
+ctfRatingUpdated: "2026-04-29"
+ctfRating: 18.88
+
+ctfGames: 51
 dataSource: player
 lastUpdated: 2026-04
 dpi: 1600
@@ -42,3 +49,9 @@ enemyModel: Keel
 gpuBrand: NVIDIA
 cpuBrand: Intel
 qlrace: null
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Lightning Gun
+accuracy_rl: 39
+accuracy_rg: 57
+accuracy_lg: 39

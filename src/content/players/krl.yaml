@@ -5,11 +5,15 @@ aliases:
   - KRL
 team2024: Whatever name IDC
 category: duel
-ctfRatingUpdated: "2026-04-24"
-tdmRatingUpdated: "2026-04-24"
+hoqCtfRating: 25.100975036621094
+hoqCtfGames: 1405
+hoqTdmRating: 16.3620662689209
+hoqTdmGames: 8
+ctfRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 24.9
+ctfRating: 25.1
 tdmRating: 16.36
 dpi: 400
 sensitivity: 1.7
@@ -37,12 +41,12 @@ keyboard: steelseries-apex-9-mini
 monitor: benq-xl2420z
 headset: hyperx-cloud-alpha
 skates: Stock
-ctfGames: 1402
+ctfGames: 1405
 tdmGames: 8
-hoqCtfRating: 24.9
-hoqCtfGames: 1402
-hoqTdmRating: 16.36
-hoqTdmGames: 8
+
+
+
+
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

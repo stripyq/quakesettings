@@ -5,17 +5,21 @@ aliases:
 team2024: The expendables
 country: Unknown
 category: ctf
+hoqCtfRating: 41.69450759887695
+hoqCtfGames: 7
+hoqTdmRating: 33.92412185668945
+hoqTdmGames: 4
 lastUpdated: 2025-01
 tdmRating: 33.92
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 41.69
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 34.9
 qllrCtfGames: 27
-hoqCtfRating: 41.69
-hoqCtfGames: 7
-hoqTdmRating: 33.92
-hoqTdmGames: 4
+
+
+
+
 dataSource: player
 dpi: 800
 sensitivity: 2

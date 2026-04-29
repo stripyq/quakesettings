@@ -4,19 +4,23 @@ aliases: []
 team2024: Whatever name IDC
 country: HR
 category: ctf
+hoqCtfRating: 27.527164459228516
+hoqCtfGames: 1324
+hoqTdmRating: 18.795486450195312
+hoqTdmGames: 1
 lastUpdated: 2025-01
 duelRating: 1455
 duelRatingUpdated: "2026-01-31"
 tdmRating: 18.8
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 27.53
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 22.91
 qllrCtfGames: 10
-hoqCtfRating: 27.53
-hoqCtfGames: 1324
-hoqTdmRating: 18.8
-hoqTdmGames: 1
+
+
+
+
 dataSource: player
 dpi: 1800
 sensitivity: 1

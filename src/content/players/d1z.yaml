@@ -6,19 +6,19 @@ aliases:
 team2026: GdeFlag?
 team2026Shortname: GF?
 lastUpdated: 2026-02
-tdmRating: 24.81
-tdmRatingUpdated: "2026-04-22"
-ctfRating: 24.43
-ctfRatingUpdated: "2026-04-22"
+tdmRating: 24.83
+tdmRatingUpdated: "2026-04-29"
+ctfRating: 24.8
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 22.31
 qllrCtfGames: 18
-hoqCtfRating: 24.43
-hoqCtfGames: 236
-hoqTdmRating: 24.81
-hoqTdmGames: 378
+
+
+
+
 duelRating: 1554
-ctfGames: 236
-tdmGames: 378
+ctfGames: 244
+tdmGames: 380
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii
@@ -70,9 +70,18 @@ qlrace:
     - {map: moko_slick, rank: 11, total: 21, time: 7336}
   fetched_at: '2026-04-28'
   unique_maps_vql: 2
+
+
+
+
+
+hoqCtfRating: 24.803192138671875
+hoqCtfGames: 244
+hoqTdmRating: 24.828292846679688
+hoqTdmGames: 380
 favorite_map: hiddenfortress
-favorite_gametype: "Weapon: Railgun"
+favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
 accuracy_rl: 42
-accuracy_rg: 50
+accuracy_rg: 51
 accuracy_lg: 36

@@ -8,19 +8,23 @@ team2026Shortname: wB
 country: DK
 team: wAnnaBees
 category: ctf
+hoqCtfRating: 39.12364959716797
+hoqCtfGames: 2077
+hoqTdmRating: 29.552019119262695
+hoqTdmGames: 9
 lastUpdated: 2025-01
-ctfRating: 39.74
-ctfRatingUpdated: "2026-04-24"
+ctfRating: 39.12
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 33.59
 qllrCtfGames: 86
-hoqCtfRating: 39.74
-hoqCtfGames: 2066
-hoqTdmRating: 29.55
-hoqTdmGames: 9
+
+
+
+
 tdmRating: 29.55
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1142
-ctfGames: 2066
+ctfGames: 2077
 tdmGames: 9
 duelGames: 47
 duelRatingUpdated: "2026-02-04"

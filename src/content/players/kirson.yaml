@@ -8,8 +8,8 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 lastUpdated: 2026-02
-ctfRating: 32.48
-ctfGames: 1173
+ctfRating: 32.14
+ctfGames: 1186
 tdmRating: 29.16
 tdmGames: 212
 mouse: logitech-g-pro-x-superlight-ii
@@ -32,20 +32,24 @@ back: s
 left: a
 right: d
 dataSource: player
-ctfRatingUpdated: "2026-04-22"
+hoqCtfRating: 32.14358139038086
+hoqCtfGames: 1186
+hoqTdmRating: 29.156415939331055
+hoqTdmGames: 212
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 31.06
 qllrCtfGames: 61
-hoqCtfRating: 32.48
-hoqCtfGames: 1173
-hoqTdmRating: 29.16
-hoqTdmGames: 212
-tdmRatingUpdated: "2026-04-22"
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 43
-accuracy_rg: 64
-accuracy_lg: 36
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
+
+
+
+
+
+
 qlrace:
   mode: 3
   records: 1
@@ -66,3 +70,9 @@ qlrace:
     - {map: r7-clear, rank: 38, total: 52, time: 16328}
   fetched_at: '2026-04-28'
   unique_maps_vql: 1
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_rg: 64
+accuracy_lg: 36

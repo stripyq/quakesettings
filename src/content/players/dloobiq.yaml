@@ -9,20 +9,30 @@ team2024: wAnnaBees
 team2026: Czesnecka
 team2026Shortname: CZE
 published: false
-ctfRating: 24.57
+ctfRating: 25.23
 qllrCtfRating: 27.82
 qllrCtfGames: 24
-hoqCtfRating: 24.57
-ctfRatingUpdated: "2026-04-24"
-hoqCtfGames: 4699
-hoqTdmRating: 24.21
-hoqTdmGames: 671
-ctfGames: 4699
-tdmRating: 24.21
-tdmGames: 671
+
+ctfRatingUpdated: "2026-04-29"
+
+
+
+ctfGames: 4769
+tdmRating: 23.66
+tdmGames: 675
 qlrace: null
+
+
+
+
+
+hoqCtfRating: 25.227956771850586
+hoqCtfGames: 4769
+hoqTdmRating: 23.657018661499023
+tdmRatingUpdated: "2026-04-29"
+hoqTdmGames: 675
 favorite_map: japanesecastles
-favorite_gametype: "Weapon: Rocket Launcher"
+favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
 accuracy_rl: 37
 accuracy_rg: 46

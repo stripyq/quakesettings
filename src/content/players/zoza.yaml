@@ -9,14 +9,14 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 published: false
-ctfRating: 27.76
-ctfGames: 2417
-favorite_map: asylum
-favorite_gametype: Clan Arena
-favorite_weapon: Railgun
-accuracy_rl: 54
-accuracy_lg: 34
-accuracy_rg: 45
+ctfRating: 28
+ctfGames: 2436
+
+
+
+
+
+
 qlrace:
   mode: 3
   records: 3
@@ -39,13 +39,23 @@ qlrace:
     - {map: elbmoop, rank: 26, total: 39, time: 96136}
   fetched_at: '2026-04-28'
   unique_maps_vql: 3
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 35.5
 qllrCtfGames: 39
-hoqCtfRating: 27.76
-hoqCtfGames: 2417
-hoqTdmRating: 28.46
-hoqTdmGames: 1241
-tdmRatingUpdated: "2026-04-24"
-tdmRating: 28.46
-tdmGames: 1241
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 28.68
+tdmGames: 1252
+hoqCtfRating: 27.99859619140625
+hoqCtfGames: 2436
+hoqTdmRating: 28.677976608276367
+hoqTdmGames: 1252
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 43
+accuracy_rg: 54
+accuracy_lg: 36

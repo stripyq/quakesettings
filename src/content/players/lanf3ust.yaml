@@ -2,17 +2,21 @@ name: Lanf3ust
 steamId: "76561198006274665"
 country: FR
 category: duel
+hoqCtfRating: 10.847587585449219
+hoqCtfGames: 154
+hoqTdmRating: 16.32176399230957
+hoqTdmGames: 13
 published: true
 lastUpdated: "2026-04-26"
-hoqCtfRating: 10.85
-ctfRatingUpdated: "2026-04-28"
+
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 10.85
-hoqCtfGames: 154
+
 ctfGames: 154
-hoqTdmRating: 16.32
-tdmRatingUpdated: "2026-04-28"
+
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 16.32
-hoqTdmGames: 13
+
 tdmGames: 13
 duelRating: 1108
 duelRatingSource: qlstats
@@ -68,3 +72,9 @@ qlrace:
     - {map: apple-runround, rank: 11, total: 12, time: 27952}
   fetched_at: '2026-04-28'
   unique_maps_vql: 12
+favorite_map: q3wcp9
+favorite_gametype: Capture the Flag
+favorite_weapon: Railgun
+accuracy_rl: 39
+accuracy_rg: 56
+accuracy_lg: 40

@@ -7,17 +7,21 @@ team2026Shortname: SHREK
 country: SE
 team: SHREKTALIKA
 category: ctf
+hoqCtfRating: 36.563899993896484
+hoqCtfGames: 1082
+hoqTdmRating: 31.182283401489258
+hoqTdmGames: 196
 lastUpdated: 2025-01
-ctfRating: 35.36
-ctfRatingUpdated: "2026-04-24"
+ctfRating: 36.56
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 30.4
 qllrCtfGames: 23
-hoqCtfRating: 35.36
-hoqCtfGames: 1071
-hoqTdmRating: 31.18
-hoqTdmGames: 196
+
+
+
+
 tdmRating: 31.18
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1400
 dataSource: player
 dpi: 1600
@@ -46,7 +50,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 1071
+ctfGames: 1082
 tdmGames: 196
 qlrace:
   mode: 2
@@ -71,6 +75,6 @@ qlrace:
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
-accuracy_rl: 43
+accuracy_rl: 42
 accuracy_rg: 54
 accuracy_lg: 34

@@ -2,11 +2,15 @@ name: ne_raketa
 steamId: "76561198284683846"
 country: Unknown
 category: tdm
+hoqCtfRating: 10.390388488769531
+hoqCtfGames: 15
+hoqTdmRating: 21.111370086669922
+hoqTdmGames: 4538
 lastUpdated: 2025-01
-tdmRating: 20.01
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 21.11
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 10.39
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 400
 sensitivity: 2.7
@@ -35,11 +39,11 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-tdmGames: 4501
-hoqCtfRating: 10.39
-hoqCtfGames: 15
-hoqTdmRating: 20.01
-hoqTdmGames: 4501
+tdmGames: 4538
+
+
+
+
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

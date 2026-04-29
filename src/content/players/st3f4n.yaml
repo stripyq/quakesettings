@@ -2,18 +2,22 @@ name: St3f4N
 steamId: "76561199756237860"
 country: Unknown
 category: tdm
+hoqCtfRating: 19.770828247070312
+hoqCtfGames: 4
+hoqTdmRating: 24.16012191772461
+hoqTdmGames: 1667
 lastUpdated: 2025-01
-tdmRating: 23.36
-tdmRatingUpdated: "2026-04-24"
+tdmRating: 24.16
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 19.77
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 duelRating: 1301
 ctfGames: 4
-tdmGames: 1641
-hoqCtfRating: 19.77
-hoqCtfGames: 4
-hoqTdmRating: 23.36
-hoqTdmGames: 1641
+tdmGames: 1667
+
+
+
+
 duelGames: 108
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -48,5 +52,5 @@ favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 46
-accuracy_rg: 54
+accuracy_rg: 53
 accuracy_lg: 33

@@ -3,16 +3,20 @@ steamId: "76561198191100033"
 aliases:
   - FF^mouse*
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 9.612053871154785
+hoqCtfGames: 14
+hoqTdmRating: 23.3856201171875
+hoqTdmGames: 47
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 9.61
 ctfGames: 14
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 23.39
 tdmGames: 47
-hoqCtfRating: 9.61
-hoqCtfGames: 14
-hoqTdmRating: 23.39
-hoqTdmGames: 47
+
+
+
+
 published: false
 team2024: Flappy Flags
 qlrace:

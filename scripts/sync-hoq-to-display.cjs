@@ -66,8 +66,19 @@ function main() {
     const changes = [];
 
     for (const { src, dst, updated } of FIELD_MAP) {
-      const srcVal = extractField(content, src);
+      let srcVal = extractField(content, src);
       if (srcVal == null) continue;
+
+      // Round rating fields to 2 decimals — HoQ's API now returns full
+      // float precision (e.g. 34.480995178222656). Without this, every
+      // sync run produces a noisy diff and YAMLs get ugly long values.
+      // Games fields stay as integers untouched.
+      if (dst.endsWith('Rating')) {
+        const num = parseFloat(srcVal);
+        if (!Number.isNaN(num)) {
+          srcVal = (Math.round(num * 100) / 100).toString();
+        }
+      }
 
       const dstVal = extractField(content, dst);
       if (dstVal === srcVal) continue;

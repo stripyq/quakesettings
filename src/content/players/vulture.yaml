@@ -2,16 +2,20 @@ name: vulTure
 steamId: "76561198257391553"
 aliases: []
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 25.5953369140625
+hoqCtfGames: 482
+hoqTdmRating: 28.84204864501953
+hoqTdmGames: 499
+ctfRatingUpdated: "2026-04-29"
 ctfRating: 25.6
 ctfGames: 482
-tdmRatingUpdated: "2026-04-24"
-tdmRating: 29.34
-tdmGames: 497
-hoqCtfRating: 25.6
-hoqCtfGames: 482
-hoqTdmRating: 29.34
-hoqTdmGames: 497
+tdmRatingUpdated: "2026-04-29"
+tdmRating: 28.84
+tdmGames: 499
+
+
+
+
 published: false
 team2024: Bad But Happy
 qlrace: null

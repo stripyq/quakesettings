@@ -4,16 +4,20 @@ steamId: "76561197971635353"
 aliases: []
 team2024: unreliable dogs
 category: ctf
+hoqCtfRating: 24.416831970214844
+hoqCtfGames: 957
+hoqTdmRating: 22.4172306060791
+hoqTdmGames: 45
 ctfRating: 24.42
 ctfGames: 957
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 tdmRating: 22.42
 tdmGames: 45
-hoqCtfRating: 24.42
-hoqCtfGames: 957
-hoqTdmRating: 22.42
-hoqTdmGames: 45
-tdmRatingUpdated: "2026-02-04"
+
+
+
+
+tdmRatingUpdated: "2026-04-29"
 duelRating: 1652
 duelGames: 2127
 duelRatingUpdated: "2026-02-04"
@@ -72,8 +76,8 @@ qlrace:
   fetched_at: '2026-04-28'
   unique_maps_vql: 1
 favorite_map: q3wcp9
-favorite_gametype: "Weapon: Railgun"
+favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
-accuracy_rl: 37
-accuracy_lg: 37
+accuracy_rl: 38
 accuracy_rg: 52
+accuracy_lg: 37

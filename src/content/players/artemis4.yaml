@@ -8,19 +8,23 @@ team2026Shortname: CUBA
 country: SI
 team: Le Cubanitos
 category: ctf
+hoqCtfRating: 25.900909423828125
+hoqCtfGames: 1596
+hoqTdmRating: 14.384278297424316
+hoqTdmGames: 25
 lastUpdated: 2025-01
 tdmRating: 14.38
-tdmRatingUpdated: "2026-02-02"
-ctfRating: 26.25
-ctfRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
+ctfRating: 25.9
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 25.15
 qllrCtfGames: 106
-hoqCtfRating: 26.25
-hoqCtfGames: 1588
-hoqTdmRating: 14.38
-hoqTdmGames: 25
+
+
+
+
 duelRating: 1559
-ctfGames: 1588
+ctfGames: 1596
 tdmGames: 25
 duelGames: 1561
 duelRatingUpdated: "2026-02-04"
@@ -84,8 +88,9 @@ qlrace:
     - {map: dividedcrossings, rank: 30, total: 123, time: 5427}
   fetched_at: '2026-04-28'
   unique_maps_vql: 31
-favorite_gametype: "Weapon: Rocket Launcher"
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
-accuracy_rl: 40
+accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 30

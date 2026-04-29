@@ -2,13 +2,17 @@ name: krysa
 steamId: "76561198044065399"
 country: CZ
 category: tdm
+hoqCtfRating: 30.888498306274414
+hoqCtfGames: 20
+hoqTdmRating: 36.27463150024414
+hoqTdmGames: 31
 lastUpdated: 2025-01
 duelRating: 1442
 duelRatingUpdated: "2026-01-31"
 tdmRating: 36.27
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 30.89
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 dpi: 800
 sensitivity: 2.3
@@ -36,10 +40,10 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 20
 tdmGames: 31
-hoqCtfRating: 30.89
-hoqCtfGames: 20
-hoqTdmRating: 36.27
-hoqTdmGames: 31
+
+
+
+
 qlrace: null
 favorite_map: limbus
 favorite_gametype: Team Deathmatch

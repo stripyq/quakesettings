@@ -3,13 +3,15 @@ steamId: "76561198256080242"
 country: SI
 team: ""
 category: ctf
+hoqCtfRating: 16.529664993286133
+hoqCtfGames: 2674
 lastUpdated: 2025-01
 duelRating: null
 duelRatingUpdated: ""
 tdmRating: 17.62
 tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 17.67
-ctfRatingUpdated: "2026-04-24"
+ctfRating: 16.53
+ctfRatingUpdated: "2026-04-29"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -46,9 +48,9 @@ gpuBrand: NVIDIA
 crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
-ctfGames: 2633
-hoqCtfRating: 17.67
-hoqCtfGames: 2633
+ctfGames: 2674
+
+
 qlrace:
   mode: 2
   records: 1

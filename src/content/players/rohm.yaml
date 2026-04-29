@@ -3,11 +3,13 @@ steamId: "76561198018576230"
 country: DE
 aliases: []
 category: ctf
-ctfRating: -0.56
-ctfRatingUpdated: "2026-04-22"
-ctfGames: 226
-hoqCtfRating: -0.56
+hoqCtfRating: -0.5640233159065247
 hoqCtfGames: 226
+ctfRating: -0.56
+ctfRatingUpdated: "2026-04-29"
+ctfGames: 226
+
+
 published: true
 dataSource: player
 lastUpdated: 2026-03
@@ -46,3 +48,9 @@ skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: Intel
 qlrace: null
+favorite_map: japanesecastles
+favorite_gametype: Capture the Flag
+favorite_weapon: Rocket Launcher
+accuracy_rl: 44
+accuracy_rg: 46
+accuracy_lg: 32

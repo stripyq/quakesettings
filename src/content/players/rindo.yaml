@@ -3,16 +3,20 @@ steamId: "76561198152936342"
 aliases:
   - rindo
 category: ctf
-ctfRatingUpdated: "2026-04-24"
+hoqCtfRating: 8.011112213134766
+hoqCtfGames: 170
+hoqTdmRating: 6.899965286254883
+hoqTdmGames: 18
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 23.44
 qllrCtfGames: 10
-hoqCtfRating: -2.55
-hoqCtfGames: 105
-hoqTdmRating: 6.9
-hoqTdmGames: 18
-ctfRating: -2.55
-ctfGames: 105
-tdmRatingUpdated: "2026-04-24"
+
+
+
+
+ctfRating: 8.01
+ctfGames: 170
+tdmRatingUpdated: "2026-04-29"
 tdmRating: 6.9
 tdmGames: 18
 published: false
@@ -21,5 +25,5 @@ favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun
 accuracy_rl: 32
-accuracy_rg: 41
-accuracy_lg: 26
+accuracy_rg: 45
+accuracy_lg: 27

@@ -5,17 +5,21 @@ aliases:
 team2024: CTF4
 country: RU
 category: ctf
+hoqCtfRating: 27.25933837890625
+hoqCtfGames: 846
+hoqTdmRating: 26.769987106323242
+hoqTdmGames: 73
 lastUpdated: 2025-01
 tdmRating: 26.77
-tdmRatingUpdated: "2026-04-24"
+tdmRatingUpdated: "2026-04-29"
 ctfRating: 27.26
-ctfRatingUpdated: "2026-04-24"
+ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 19.56
 qllrCtfGames: 13
-hoqCtfRating: 27.26
-hoqCtfGames: 846
-hoqTdmRating: 26.77
-hoqTdmGames: 73
+
+
+
+
 duelRating: 1227
 ctfGames: 846
 tdmGames: 73
