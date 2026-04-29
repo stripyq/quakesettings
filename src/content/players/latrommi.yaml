@@ -17,6 +17,11 @@ tdmRating: 42.9
 tdmGames: 230
 published: true
 lastUpdated: "2026-04-29"
+duelRating: 1713
+duelRatingSource: qlstats
+duelGames: 972
+qllrCtfRating: 29.89
+qllrCtfGames: 21
 dataSource: player
 dpi: 800
 sensitivity: 4
