@@ -17,8 +17,9 @@ qlrace: null
 
 
 ctfRatingUpdated: "2026-04-29"
-qllrCtfRating: 26.71
-qllrCtfGames: 48
+qllrCtfRating: 25.5
+qllrCtfGames: 53
+
 hoqCtfRating: 25.175155639648438
 hoqCtfGames: 6
 favorite_map: overkill
