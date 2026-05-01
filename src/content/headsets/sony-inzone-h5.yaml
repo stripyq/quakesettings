@@ -2,3 +2,6 @@ name: "Sony Inzone H5"
 brand: "Sony"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

@@ -2,3 +2,6 @@ name: "SteelSeries Arctis Nova Elite"
 brand: "SteelSeries"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

@@ -1,0 +1,10 @@
+name: "AKG K702"
+brand: "AKG"
+type: "Open-back"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "Unknown"
+frequencyResponse: "10Hz - 39.8kHz"
+impedance: "62 Ohm"
+connection: "Wired"
+microphone: false

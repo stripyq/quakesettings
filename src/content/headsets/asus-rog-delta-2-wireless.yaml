@@ -2,3 +2,6 @@ name: "Asus ROG Delta 2 Wireless"
 brand: "Asus"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

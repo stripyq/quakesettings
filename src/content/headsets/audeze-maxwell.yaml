@@ -2,3 +2,6 @@ name: "Audeze Maxwell"
 brand: "Audeze"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

@@ -2,3 +2,6 @@ name: "Astro A50X"
 brand: "Astro"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

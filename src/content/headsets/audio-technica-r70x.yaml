@@ -1,0 +1,10 @@
+name: "Audio-Technica R70x"
+brand: "Audio-Technica"
+type: "Open-back"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "45mm"
+frequencyResponse: "5Hz - 40kHz"
+impedance: "470 Ohm"
+connection: "Wired"
+microphone: false

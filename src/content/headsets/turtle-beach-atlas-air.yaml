@@ -2,3 +2,6 @@ name: "Turtle Beach Atlas Air"
 brand: "Turtle Beach"
 connection: "Wireless"
 type: "Open"
+formFactor: "Over-ear"
+backStyle: "Open"
+microphone: true

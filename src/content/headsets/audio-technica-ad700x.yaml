@@ -1,0 +1,10 @@
+name: "Audio-Technica AD700X"
+brand: "Audio-Technica"
+type: "Open-back"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "53mm"
+frequencyResponse: "5Hz - 30kHz"
+impedance: "45 Ohm"
+connection: "Wired"
+microphone: false

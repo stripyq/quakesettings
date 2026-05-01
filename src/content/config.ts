@@ -85,6 +85,8 @@ const headsetsCollection = defineCollection({
     name: z.string(),
     brand: z.string(),
     type: z.string().optional().default('Closed-back'),
+    formFactor: z.string().optional(), // Over-ear / On-ear / IEM
+    backStyle: z.string().optional(), // Closed / Open / Semi-open
     driverSize: z.string().optional().default('Unknown'),
     driver: z.string().optional(), // Legacy field
     frequencyResponse: z.string().optional(),

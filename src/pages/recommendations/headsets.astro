@@ -38,12 +38,12 @@ const headsetSlugMap: Record<string, string[]> = {
   "Turtle Beach Atlas Air": ["turtle-beach-atlas-air"],
   "Astro A50X": ["astro-a50x"],
   "Fosi K7": ["fosi-k7"],
-  "Sennheiser HD560S": ["sennheiser-hd560s"],
+  "Sennheiser HD560S": ["sennheiser-hd-560s", "sennheiser-hd560s"],
   "Audio-Technica AD700X": ["audio-technica-ad700x"],
   "Hifiman HE400se": ["hifiman-he400se"],
   "AKG K702": ["akg-k702"],
   "Beyerdynamic DT880": ["beyerdynamic-dt880"],
-  "Sennheiser HD599": ["sennheiser-hd598", "sennheiser-hd599"],
+  "Sennheiser HD599": ["sennheiser-hd-599", "sennheiser-hd599", "sennheiser-hd598"],
   "Audio-Technica R70x": ["audio-technica-r70x"],
 };
 
@@ -106,6 +106,24 @@ const specialty = [
   { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
 ];
 
+const allHeadsets = await getCollection('headsets');
+const hsBySlug = new Map(allHeadsets.map(h => [h.id, h.data]));
+
+function getHsData(name: string) {
+  const slugs = headsetSlugMap[name];
+  if (!slugs) return null;
+  for (const s of slugs) {
+    const d = hsBySlug.get(s);
+    if (d) return d;
+  }
+  return null;
+}
+
+function fmtMic(data: any): string {
+  if (!data) return '—';
+  return data.microphone ? 'Yes' : 'No';
+}
+
 function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; asr?: boolean; mle?: boolean }) {
   return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.asr ? 1 : 0) + (h.mle ? 1 : 0);
 }
@@ -142,33 +160,42 @@ const schema = {
 
   <h2 class="section-title">Wireless Gaming</h2>
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table rec-sortable" id="rec-table-wireless">
       <thead>
         <tr>
           <th>Headset</th>
-          <th class="col-type">Type</th>
-          <th class="col-price">Price</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
+          <th>Price</th>
+          <th class="sortable" data-sort="form" data-type="str">Form</th>
+          <th class="sortable" data-sort="back" data-type="str">Back</th>
+          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
         {wirelessGaming.map(h => {
           const playerCount = getPlayerCount(h.name);
+          const hd = getHsData(h.name);
           return (
-            <tr>
+            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td>{h.type}</td>
               <td class="price">{h.price}</td>
-              <td class="center">{h.gt ? '✓' : ''}</td>
-              <td class="center">{h.bs ? '✓' : ''}</td>
-              <td class="center">{h.jv ? '✓' : ''}</td>
-              <td class="center">{h.asr ? '✓' : ''}</td>
-              <td class="center">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || '—'}</td>
+              <td class="spec">{hd?.backStyle || '—'}</td>
+              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec">{hd?.connection || '—'}</td>
+              <td class="spec">{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
+              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
+              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
+              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
+              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -190,33 +217,42 @@ const schema = {
 
   <h2 class="section-title">Budget Wireless/Wired</h2>
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table rec-sortable" id="rec-table-budget">
       <thead>
         <tr>
           <th>Headset</th>
-          <th class="col-type">Type</th>
-          <th class="col-price">Price</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
+          <th>Price</th>
+          <th class="sortable" data-sort="form" data-type="str">Form</th>
+          <th class="sortable" data-sort="back" data-type="str">Back</th>
+          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
         {budgetOptions.map(h => {
           const playerCount = getPlayerCount(h.name);
+          const hd = getHsData(h.name);
           return (
-            <tr>
+            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td>{h.type}</td>
               <td class="price">{h.price}</td>
-              <td class="center">{h.gt ? '✓' : ''}</td>
-              <td class="center">{h.bs ? '✓' : ''}</td>
-              <td class="center">{h.jv ? '✓' : ''}</td>
-              <td class="center">{h.asr ? '✓' : ''}</td>
-              <td class="center">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || '—'}</td>
+              <td class="spec">{hd?.backStyle || '—'}</td>
+              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec">{hd?.connection || '—'}</td>
+              <td class="spec">{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
+              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
+              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
+              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
+              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -238,33 +274,42 @@ const schema = {
 
   <h2 class="section-title">Audiophile / Open-Back (Competitive FPS)</h2>
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table rec-sortable" id="rec-table-audiophile">
       <thead>
         <tr>
           <th>Headset</th>
-          <th class="col-type">Type</th>
-          <th class="col-price">Price</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="col-reviewer has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="col-players has-tooltip" data-tooltip="Quake Live players using this headset">Players</th>
+          <th>Price</th>
+          <th class="sortable" data-sort="form" data-type="str">Form</th>
+          <th class="sortable" data-sort="back" data-type="str">Back</th>
+          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
+          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
+          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
+          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
+          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
+          <th>Players</th>
         </tr>
       </thead>
       <tbody>
         {audiophile.map(h => {
           const playerCount = getPlayerCount(h.name);
+          const hd = getHsData(h.name);
           return (
-            <tr>
+            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td>{h.type}</td>
               <td class="price">{h.price}</td>
-              <td class="center">{h.gt ? '✓' : ''}</td>
-              <td class="center">{h.bs ? '✓' : ''}</td>
-              <td class="center">{h.jv ? '✓' : ''}</td>
-              <td class="center">{h.asr ? '✓' : ''}</td>
-              <td class="center">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || '—'}</td>
+              <td class="spec">{hd?.backStyle || '—'}</td>
+              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec">{hd?.connection || '—'}</td>
+              <td class="spec">{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
+              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
+              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
+              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
+              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -491,59 +536,13 @@ const schema = {
   .rec-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
   }
 
   .rec-table th,
   .rec-table td {
-    padding: 0.5rem 0.25rem;
+    padding: 0.5rem 0.4rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color, #2a2a3a);
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Column widths */
-  .rec-table th:first-child,
-  .rec-table td:first-child {
-    width: 32%;
-  }
-
-  .rec-table th.col-type {
-    width: 15%;
-  }
-
-  .rec-table th.col-price {
-    width: 8%;
-  }
-
-  .rec-table th.col-reviewer {
-    width: 6%;
-    text-align: center;
-  }
-
-  .rec-table th.col-players {
-    width: 8%;
-    text-align: center;
-  }
-
-  /* Compact reviewer + players columns */
-  .rec-table td.center {
-    padding: 0.5rem 0.25rem;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .rec-table td.center.players {
-    text-align: center;
-  }
-
-  /* Let headset name and type wrap */
-  .rec-table .headset-name,
-  .rec-table td:nth-child(2) {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
   }
 
   .rec-table th {
@@ -595,6 +594,7 @@ const schema = {
   .headset-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
+    white-space: nowrap;
   }
 
   .price {
@@ -605,6 +605,47 @@ const schema = {
   .center {
     text-align: center;
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .rev-col {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    text-align: center;
+  }
+
+  .spec {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .sortable:hover {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .sortable::after {
+    content: ' ⇅';
+    font-size: 0.65em;
+    opacity: 0.4;
+  }
+
+  .sortable.asc::after {
+    content: ' ▲';
+    opacity: 1;
+  }
+
+  .sortable.desc::after {
+    content: ' ▼';
+    opacity: 1;
   }
 
   .players {
@@ -708,3 +749,28 @@ const schema = {
     text-decoration: underline;
   }
 </style>
+
+<script>
+  document.querySelectorAll('.rec-sortable').forEach(table => {
+    const headers = table.querySelectorAll('th.sortable');
+    const tbody = table.querySelector('tbody');
+    headers.forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const type = th.dataset.type;
+        const isAsc = th.classList.contains('asc');
+        headers.forEach(h => h.classList.remove('asc', 'desc'));
+        th.classList.add(isAsc ? 'desc' : 'asc');
+        const dir = isAsc ? -1 : 1;
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+          const av = a.dataset[key] || '';
+          const bv = b.dataset[key] || '';
+          if (type === 'num') return (parseFloat(av) - parseFloat(bv)) * dir;
+          return av.localeCompare(bv) * dir;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+      });
+    });
+  });
+</script>

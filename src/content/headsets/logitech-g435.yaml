@@ -2,3 +2,6 @@ name: "Logitech G435"
 brand: "Logitech"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

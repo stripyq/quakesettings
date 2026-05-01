@@ -1,0 +1,10 @@
+name: "HiFiMAN HE400se"
+brand: "HiFiMAN"
+type: "Open-back (planar)"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "Planar magnetic"
+frequencyResponse: "20Hz - 20kHz"
+impedance: "25 Ohm"
+connection: "Wired"
+microphone: false

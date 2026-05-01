@@ -2,3 +2,6 @@ name: "SteelSeries Arctis Nova Pro Wireless"
 brand: "SteelSeries"
 connection: "Wireless"
 type: "Closed"
+formFactor: "Over-ear"
+backStyle: "Closed"
+microphone: true

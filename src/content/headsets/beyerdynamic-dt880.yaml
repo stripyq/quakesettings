@@ -1,0 +1,10 @@
+name: "Beyerdynamic DT 880"
+brand: "Beyerdynamic"
+type: "Semi-open"
+formFactor: "Over-ear"
+backStyle: "Semi-open"
+driverSize: "Unknown"
+frequencyResponse: "5Hz - 35kHz"
+impedance: "250 Ohm"
+connection: "Wired"
+microphone: false

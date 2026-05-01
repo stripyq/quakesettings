@@ -4852,6 +4852,11 @@
       "brand": "7Hz"
     },
     {
+      "slug": "akg-k702",
+      "name": "AKG K702",
+      "brand": "AKG"
+    },
+    {
       "slug": "akg-k99",
       "name": "AKG K99",
       "brand": "AKG"
@@ -4892,8 +4897,18 @@
       "brand": "Audeze"
     },
     {
+      "slug": "audio-technica-ad700x",
+      "name": "Audio-Technica AD700X",
+      "brand": "Audio-Technica"
+    },
+    {
       "slug": "audio-technica-ath-m50x",
       "name": "Audio-Technica ATH-M50x",
+      "brand": "Audio-Technica"
+    },
+    {
+      "slug": "audio-technica-r70x",
+      "name": "Audio-Technica R70x",
       "brand": "Audio-Technica"
     },
     {
@@ -4904,6 +4919,11 @@
     {
       "slug": "beyerdynamic-dt-770-pro",
       "name": "Beyerdynamic DT 770 Pro",
+      "brand": "Beyerdynamic"
+    },
+    {
+      "slug": "beyerdynamic-dt880",
+      "name": "Beyerdynamic DT 880",
       "brand": "Beyerdynamic"
     },
     {
@@ -4950,6 +4970,11 @@
       "slug": "havit-h2002d",
       "name": "Havit H2002D",
       "brand": "Havit"
+    },
+    {
+      "slug": "hifiman-he400se",
+      "name": "HiFiMAN HE400se",
+      "brand": "HiFiMAN"
     },
     {
       "slug": "zon-home-of-victory-headset1",

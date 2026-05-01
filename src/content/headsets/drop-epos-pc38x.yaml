@@ -2,3 +2,6 @@ name: "Drop EPOS PC38X"
 brand: "Drop/EPOS"
 connection: "Wired"
 type: "Open"
+formFactor: "Over-ear"
+backStyle: "Open"
+microphone: true

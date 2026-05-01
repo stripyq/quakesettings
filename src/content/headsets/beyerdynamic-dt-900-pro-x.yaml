@@ -2,3 +2,6 @@ name: "Beyerdynamic DT 900 Pro X"
 brand: "Beyerdynamic"
 connection: "Wired"
 type: "Open"
+formFactor: "Over-ear"
+backStyle: "Open"
+microphone: false
