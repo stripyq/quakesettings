@@ -59,6 +59,19 @@ function getPlayersForKeyboard(name: string): typeof players {
   return result;
 }
 
+const allKeyboards = await getCollection('keyboards');
+const kbBySlug = new Map(allKeyboards.map(k => [k.id, k.data]));
+
+function getKbData(name: string) {
+  const slugs = keyboardSlugMap[name];
+  if (!slugs || slugs.length === 0) return null;
+  for (const s of slugs) {
+    const d = kbBySlug.get(s);
+    if (d) return d;
+  }
+  return null;
+}
+
 const keyboardData = [
   { name: "Wooting 60HE+ / 60HE V2", price: "$$$", dl: true, tl: true, ju: true },
   { name: "Wooting 80HE", price: "$$$", dl: false, tl: false, ju: true },
@@ -108,27 +121,35 @@ const schema = {
   </div>
 
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table" id="rec-table">
       <thead>
         <tr>
           <th>Keyboard</th>
           <th>Price</th>
-          <th>DL</th>
-          <th>TL</th>
-          <th>JU</th>
+          <th class="rev-col">DL</th>
+          <th class="rev-col">TL</th>
+          <th class="rev-col">JU</th>
+          <th class="sortable" data-sort="size" data-type="str">Size</th>
+          <th class="sortable" data-sort="switches" data-type="str">Switch Type</th>
           <th>Players</th>
         </tr>
       </thead>
       <tbody>
         {sortedKeyboards.map(k => {
           const playerCount = getPlayerCount(k.name);
+          const kd = getKbData(k.name);
           return (
-            <tr>
+            <tr
+              data-size={kd?.size || ''}
+              data-switches={kd?.switches || ''}
+            >
               <td class="kb-name">{k.name}</td>
               <td class="price">{k.price}</td>
-              <td class="center">{k.dl ? '✓' : ''}</td>
-              <td class="center">{k.tl ? '✓' : ''}</td>
-              <td class="center">{k.ju ? '✓' : ''}</td>
+              <td class="center rev-col">{k.dl ? '✓' : ''}</td>
+              <td class="center rev-col">{k.tl ? '✓' : ''}</td>
+              <td class="center rev-col">{k.ju ? '✓' : ''}</td>
+              <td class="spec">{kd?.size || '—'}</td>
+              <td class="spec">{kd?.switches || '—'}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -222,6 +243,7 @@ const schema = {
   .kb-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
+    white-space: nowrap;
   }
 
   .price {
@@ -232,6 +254,47 @@ const schema = {
   .center {
     text-align: center;
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .rev-col {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    text-align: center;
+  }
+
+  .spec {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .sortable:hover {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .sortable::after {
+    content: ' ⇅';
+    font-size: 0.65em;
+    opacity: 0.4;
+  }
+
+  .sortable.asc::after {
+    content: ' ▲';
+    opacity: 1;
+  }
+
+  .sortable.desc::after {
+    content: ' ▼';
+    opacity: 1;
   }
 
   .players {
@@ -303,3 +366,29 @@ const schema = {
     text-decoration: underline;
   }
 </style>
+
+<script>
+  const table = document.getElementById('rec-table');
+  if (table) {
+    const headers = table.querySelectorAll('th.sortable');
+    const tbody = table.querySelector('tbody');
+    headers.forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const type = th.dataset.type;
+        const isAsc = th.classList.contains('asc');
+        headers.forEach(h => h.classList.remove('asc', 'desc'));
+        th.classList.add(isAsc ? 'desc' : 'asc');
+        const dir = isAsc ? -1 : 1;
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+          const av = a.dataset[key] || '';
+          const bv = b.dataset[key] || '';
+          if (type === 'num') return (parseFloat(av) - parseFloat(bv)) * dir;
+          return av.localeCompare(bv) * dir;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+      });
+    });
+  }
+</script>
