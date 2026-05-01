@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-04-29",
+  "generatedAt": "2026-05-01",
   "totalPlayers": 2294,
   "playersWithProfiles": 146,
   "players": [
@@ -3418,13 +3418,13 @@
       "slug": "antosh",
       "hasProfile": true,
       "ratings": {
-        "ctf": 18.72,
-        "tdm": null,
+        "ctf": 18.88,
+        "tdm": 17.13,
         "2v2": null
       },
       "gamesPlayed": {
-        "ctf": 25,
-        "tdm": null,
+        "ctf": 51,
+        "tdm": 13,
         "2v2": null
       }
     },
