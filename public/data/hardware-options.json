@@ -886,6 +886,11 @@
       "brand": "MAMBASNAKE"
     },
     {
+      "slug": "mchose-a5",
+      "name": "MCHOSE A5",
+      "brand": "MCHOSE"
+    },
+    {
       "slug": "mchose-a5-v3",
       "name": "MCHOSE A5 V3",
       "brand": "MCHOSE"
@@ -1126,6 +1131,11 @@
       "brand": "Pulsar"
     },
     {
+      "slug": "pulsar-xlite-v3-crazylight-medium",
+      "name": "Pulsar Xlite V3 CrazyLight Medium",
+      "brand": "Pulsar"
+    },
+    {
       "slug": "pulsar-xlite-v3-medium",
       "name": "Pulsar Xlite V3 Medium",
       "brand": "Pulsar"
@@ -1358,6 +1368,11 @@
     {
       "slug": "vaxee-outset-ax-wireless",
       "name": "VAXEE OUTSET AX Wireless",
+      "brand": "VAXEE"
+    },
+    {
+      "slug": "vaxee-xe-v2",
+      "name": "VAXEE XE V2",
       "brand": "VAXEE"
     },
     {

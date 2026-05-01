@@ -45,6 +45,20 @@ function getPlayerCount(name: string): number {
   return mouseUsageMap.get(slug) || 0;
 }
 
+const allMice = await getCollection('mice');
+const miceBySlug = new Map(allMice.map(m => [m.id, m.data]));
+
+function getMouseData(name: string) {
+  const slug = mouseSlugMap[name];
+  if (!slug) return null;
+  return miceBySlug.get(slug) || null;
+}
+
+function weightSortVal(data: any): number {
+  if (!data || !data.weight || data.weight === 'Unknown') return 999;
+  return parseFloat(data.weight) || 999;
+}
+
 const mouseData = [
   { mouse: "VXE R1 Pro", price: "$", dl: true, tl: true, bz: true, ju: true },
   { mouse: "Endgame Gear OP1 8K", price: "$$", dl: true, tl: true, bz: false, ju: true },
@@ -98,15 +112,18 @@ const schema = {
   </div>
 
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table" id="rec-table">
       <thead>
         <tr>
           <th>Mouse</th>
           <th>Price</th>
-          <th>DL</th>
-          <th>TL</th>
-          <th>BZ</th>
-          <th>JU</th>
+          <th class="sortable" data-sort="shape" data-type="str">Shape</th>
+          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+          <th class="sortable" data-sort="weight" data-type="num">Weight</th>
+          <th class="rev-col">DL</th>
+          <th class="rev-col">TL</th>
+          <th class="rev-col">BZ</th>
+          <th class="rev-col">JU</th>
           <th>Players</th>
         </tr>
       </thead>
@@ -114,14 +131,22 @@ const schema = {
         {sortedMice.map(m => {
           const playerCount = getPlayerCount(m.mouse);
           const slug = mouseSlugMap[m.mouse];
+          const md = getMouseData(m.mouse);
           return (
-            <tr>
+            <tr
+              data-shape={md?.shape || ''}
+              data-conn={md?.connection || ''}
+              data-weight={weightSortVal(md)}
+            >
               <td class="mouse-name">{m.mouse}</td>
               <td class="price">{m.price}</td>
-              <td class="center">{m.dl ? '✓' : ''}</td>
-              <td class="center">{m.tl ? '✓' : ''}</td>
-              <td class="center">{m.bz ? '✓' : ''}</td>
-              <td class="center">{m.ju ? '✓' : ''}</td>
+              <td class="spec">{md?.shape || '—'}</td>
+              <td class="spec">{md?.connection || '—'}</td>
+              <td class="spec">{md?.weight && md.weight !== 'Unknown' ? md.weight : '—'}</td>
+              <td class="center rev-col">{m.dl ? '✓' : ''}</td>
+              <td class="center rev-col">{m.tl ? '✓' : ''}</td>
+              <td class="center rev-col">{m.bz ? '✓' : ''}</td>
+              <td class="center rev-col">{m.ju ? '✓' : ''}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -216,6 +241,7 @@ const schema = {
   .mouse-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
+    white-space: nowrap;
   }
 
   .price {
@@ -226,6 +252,47 @@ const schema = {
   .center {
     text-align: center;
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .rev-col {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    text-align: center;
+  }
+
+  .spec {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .sortable:hover {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .sortable::after {
+    content: ' ⇅';
+    font-size: 0.65em;
+    opacity: 0.4;
+  }
+
+  .sortable.asc::after {
+    content: ' ▲';
+    opacity: 1;
+  }
+
+  .sortable.desc::after {
+    content: ' ▼';
+    opacity: 1;
   }
 
   .players {
@@ -297,3 +364,29 @@ const schema = {
     text-decoration: underline;
   }
 </style>
+
+<script>
+  const table = document.getElementById('rec-table');
+  if (table) {
+    const headers = table.querySelectorAll('th.sortable');
+    const tbody = table.querySelector('tbody');
+    headers.forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const type = th.dataset.type;
+        const isAsc = th.classList.contains('asc');
+        headers.forEach(h => h.classList.remove('asc', 'desc'));
+        th.classList.add(isAsc ? 'desc' : 'asc');
+        const dir = isAsc ? -1 : 1;
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+          const av = a.dataset[key] || '';
+          const bv = b.dataset[key] || '';
+          if (type === 'num') return (parseFloat(av) - parseFloat(bv)) * dir;
+          return av.localeCompare(bv) * dir;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+      });
+    });
+  }
+</script>
