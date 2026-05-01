@@ -4415,6 +4415,11 @@
       "brand": "AOC"
     },
     {
+      "slug": "aoc-q27g3xmn",
+      "name": "AOC Q27G3XMN",
+      "brand": "AOC"
+    },
+    {
       "slug": "aoc-q27g4x",
       "name": "AOC Q27G4X",
       "brand": "AOC"
@@ -4487,6 +4492,11 @@
     {
       "slug": "asus-rog-swift-pg27aqn",
       "name": "ASUS ROG Swift PG27AQN",
+      "brand": "ASUS"
+    },
+    {
+      "slug": "asus-pg27aqwp-w",
+      "name": "ASUS ROG Swift PG27AQWP-W",
       "brand": "ASUS"
     },
     {
@@ -4665,6 +4675,11 @@
       "brand": "LG"
     },
     {
+      "slug": "lg-27gs95qe",
+      "name": "LG 27GS95QE",
+      "brand": "LG"
+    },
+    {
       "slug": "lg-32gs95ue-b",
       "name": "LG 32GS95UE-B",
       "brand": "LG"
@@ -4693,6 +4708,11 @@
       "slug": "lg-w2261vp-pf",
       "name": "LG W2261VP-PF",
       "brand": "LG"
+    },
+    {
+      "slug": "msi-mag-271qpx",
+      "name": "MSI MAG 271QPX",
+      "brand": "MSI"
     },
     {
       "slug": "msi-mag-272qp-qd-oled-x50",
@@ -4812,6 +4832,11 @@
     {
       "slug": "viewsonic-xg2401",
       "name": "ViewSonic XG2401",
+      "brand": "ViewSonic"
+    },
+    {
+      "slug": "viewsonic-xg2431",
+      "name": "ViewSonic XG2431",
       "brand": "ViewSonic"
     },
     {

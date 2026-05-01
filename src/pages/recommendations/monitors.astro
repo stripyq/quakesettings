@@ -76,23 +76,33 @@ function shortRes(r?: string): string | null {
   return map[r] || r;
 }
 
-function getMonitorSpecs(name: string): string | null {
+function getMonitorData(name: string) {
   const slugs = monitorSlugMap[name];
   if (!slugs || slugs.length === 0) return null;
-  const data = monitorBySlug.get(slugs[0]);
-  if (!data) return null;
-  const parts: string[] = [];
-  if (data.size && data.size !== 'Unknown') parts.push(data.size);
-  // Dual-mode: render "1440p/1080p" + "240Hz/480Hz" if secondary present
+  return monitorBySlug.get(slugs[0]) || null;
+}
+
+function fmtRes(data: any): string {
+  if (!data) return '—';
   const r1 = shortRes(data.resolution);
   const r2 = shortRes(data.resolution2);
-  if (r1) parts.push(r2 ? `${r1}/${r2}` : r1);
-  if (data.refreshRate && data.refreshRate !== 'Unknown') {
-    parts.push(data.refreshRate2 ? `${data.refreshRate}/${data.refreshRate2}` : data.refreshRate);
-  }
-  if (data.panelType) parts.push(data.panelType);
-  if (data.coating) parts.push(data.coating);
-  return parts.length > 0 ? parts.join(' · ') : null;
+  if (!r1) return '—';
+  return r2 ? `${r1}/${r2}` : r1;
+}
+
+function fmtHz(data: any): string {
+  if (!data || !data.refreshRate || data.refreshRate === 'Unknown') return '—';
+  return data.refreshRate2 ? `${data.refreshRate}/${data.refreshRate2}` : data.refreshRate;
+}
+
+function hzSortVal(data: any): number {
+  if (!data || !data.refreshRate || data.refreshRate === 'Unknown') return 0;
+  return parseInt(data.refreshRate) || 0;
+}
+
+function sizeSortVal(data: any): number {
+  if (!data || !data.size || data.size === 'Unknown') return 0;
+  return parseFloat(data.size) || 0;
 }
 
 const monitorData = [
@@ -145,36 +155,48 @@ const schema = {
   </div>
 
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table" id="rec-table">
       <thead>
         <tr>
           <th>Monitor</th>
           <th>Price</th>
-          <th>MU</th>
-          <th>OT</th>
-          <th>TFT</th>
-          <th>RT</th>
-          <th>TL</th>
+          <th class="rev-col">MU</th>
+          <th class="rev-col">OT</th>
+          <th class="rev-col">TFT</th>
+          <th class="rev-col">RT</th>
+          <th class="rev-col">TL</th>
+          <th class="sortable" data-sort="size" data-type="num">Size</th>
+          <th class="sortable" data-sort="res" data-type="str">Res</th>
+          <th class="sortable" data-sort="hz" data-type="num">Hz</th>
+          <th class="sortable" data-sort="panel" data-type="str">Panel</th>
+          <th class="sortable" data-sort="coating" data-type="str">Coating</th>
           <th>Players</th>
         </tr>
       </thead>
       <tbody>
         {sortedMonitors.map(m => {
           const playerCount = getPlayerCount(m.name);
+          const md = getMonitorData(m.name);
           return (
-            <tr>
-              <td class="monitor-name">
-                <div class="monitor-name-text">{m.name}</div>
-                {getMonitorSpecs(m.name) && (
-                  <div class="monitor-specs">{getMonitorSpecs(m.name)}</div>
-                )}
-              </td>
+            <tr
+              data-size={sizeSortVal(md)}
+              data-res={fmtRes(md)}
+              data-hz={hzSortVal(md)}
+              data-panel={md?.panelType || ''}
+              data-coating={md?.coating || ''}
+            >
+              <td class="monitor-name">{m.name}</td>
               <td class="price">{m.price}</td>
-              <td class="center">{m.mu ? '✓' : ''}</td>
-              <td class="center">{m.ot ? '✓' : ''}</td>
-              <td class="center">{m.tft ? '✓' : ''}</td>
-              <td class="center">{m.rt ? '✓' : ''}</td>
-              <td class="center">{m.tl ? '✓' : ''}</td>
+              <td class="center rev-col">{m.mu ? '✓' : ''}</td>
+              <td class="center rev-col">{m.ot ? '✓' : ''}</td>
+              <td class="center rev-col">{m.tft ? '✓' : ''}</td>
+              <td class="center rev-col">{m.rt ? '✓' : ''}</td>
+              <td class="center rev-col">{m.tl ? '✓' : ''}</td>
+              <td class="spec">{md?.size && md.size !== 'Unknown' ? md.size : '—'}</td>
+              <td class="spec">{fmtRes(md)}</td>
+              <td class="spec">{fmtHz(md)}</td>
+              <td class="spec">{md?.panelType || '—'}</td>
+              <td class="spec">{md?.coating || '—'}</td>
               <td class="center players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -270,17 +292,7 @@ const schema = {
   .monitor-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
-  }
-
-  .monitor-name-text {
-    font-weight: 500;
-  }
-
-  .monitor-specs {
-    font-size: 0.8rem;
-    color: var(--text-secondary, #888);
-    font-weight: 400;
-    margin-top: 0.2rem;
+    white-space: nowrap;
   }
 
   .price {
@@ -291,6 +303,47 @@ const schema = {
   .center {
     text-align: center;
     color: var(--accent-primary, #ff6b35);
+  }
+
+  .rev-col {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    text-align: center;
+  }
+
+  .spec {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .sortable:hover {
+    color: var(--accent-primary, #ff6b35);
+  }
+
+  .sortable::after {
+    content: ' ⇅';
+    font-size: 0.65em;
+    opacity: 0.4;
+  }
+
+  .sortable.asc::after {
+    content: ' ▲';
+    opacity: 1;
+  }
+
+  .sortable.desc::after {
+    content: ' ▼';
+    opacity: 1;
   }
 
   .players {
@@ -362,3 +415,29 @@ const schema = {
     text-decoration: underline;
   }
 </style>
+
+<script>
+  const table = document.getElementById('rec-table');
+  if (table) {
+    const headers = table.querySelectorAll('th.sortable');
+    const tbody = table.querySelector('tbody');
+    headers.forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const type = th.dataset.type;
+        const isAsc = th.classList.contains('asc');
+        headers.forEach(h => h.classList.remove('asc', 'desc'));
+        th.classList.add(isAsc ? 'desc' : 'asc');
+        const dir = isAsc ? -1 : 1;
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+          const av = a.dataset[key] || '';
+          const bv = b.dataset[key] || '';
+          if (type === 'num') return (parseFloat(av) - parseFloat(bv)) * dir;
+          return av.localeCompare(bv) * dir;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+      });
+    });
+  }
+</script>
