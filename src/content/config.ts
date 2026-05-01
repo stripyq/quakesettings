@@ -28,11 +28,16 @@ const monitorsCollection = defineCollection({
     brand: z.string(),
     size: z.string().optional().default('Unknown'),
     resolution: z.string().optional().default('1920x1080'),
+    // Dual-mode monitors (e.g. 4K@240Hz / 1080p@480Hz) — populate both
+    // resolution2 and refreshRate2 to render "4K/1080p · 240Hz/480Hz".
+    resolution2: z.string().optional(),
     panelType: z.string().optional().default('TN'),
     panel: z.string().optional(), // Legacy field
     refreshRate: z.string().optional().default('Unknown'),
+    refreshRate2: z.string().optional(),
     responseTime: z.string().optional().default('1ms'),
     adaptiveSync: z.string().optional(),
+    coating: z.string().optional(), // Glossy / Matte / Semi-glossy
     image: z.string().optional(),
       }),
 });

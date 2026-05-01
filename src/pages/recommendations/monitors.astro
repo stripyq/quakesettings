@@ -57,6 +57,44 @@ function getPlayersForMonitor(name: string): typeof players {
   return result;
 }
 
+// Pull the actual monitor YAML data so we can render specs under the
+// recommendation name. Uses the first slug from the slug map.
+const allMonitors = await getCollection('monitors');
+const monitorBySlug = new Map(allMonitors.map(m => [m.id, m.data]));
+
+// Friendly label shorteners — full pixel strings ("2560x1440") read poorly
+// in a one-liner; show "1440p"/"4K" instead.
+function shortRes(r?: string): string | null {
+  if (!r) return null;
+  const map: Record<string, string> = {
+    '3840x2160': '4K',
+    '2560x1440': '1440p',
+    '1920x1080': '1080p',
+    '3440x1440': '1440p UW',
+    '5120x1440': '1440p SUW',
+  };
+  return map[r] || r;
+}
+
+function getMonitorSpecs(name: string): string | null {
+  const slugs = monitorSlugMap[name];
+  if (!slugs || slugs.length === 0) return null;
+  const data = monitorBySlug.get(slugs[0]);
+  if (!data) return null;
+  const parts: string[] = [];
+  if (data.size && data.size !== 'Unknown') parts.push(data.size);
+  // Dual-mode: render "1440p/1080p" + "240Hz/480Hz" if secondary present
+  const r1 = shortRes(data.resolution);
+  const r2 = shortRes(data.resolution2);
+  if (r1) parts.push(r2 ? `${r1}/${r2}` : r1);
+  if (data.refreshRate && data.refreshRate !== 'Unknown') {
+    parts.push(data.refreshRate2 ? `${data.refreshRate}/${data.refreshRate2}` : data.refreshRate);
+  }
+  if (data.panelType) parts.push(data.panelType);
+  if (data.coating) parts.push(data.coating);
+  return parts.length > 0 ? parts.join(' · ') : null;
+}
+
 const monitorData = [
   { name: "Asus ROG Swift PG27AQDP", price: "$$$$", mu: true, ot: false, tft: false, rt: true, tl: false },
   { name: "Asus PG27AQWP-W", price: "$$$$", mu: false, ot: true, tft: false, rt: false, tl: false },
@@ -125,7 +163,12 @@ const schema = {
           const playerCount = getPlayerCount(m.name);
           return (
             <tr>
-              <td class="monitor-name">{m.name}</td>
+              <td class="monitor-name">
+                <div class="monitor-name-text">{m.name}</div>
+                {getMonitorSpecs(m.name) && (
+                  <div class="monitor-specs">{getMonitorSpecs(m.name)}</div>
+                )}
+              </td>
               <td class="price">{m.price}</td>
               <td class="center">{m.mu ? '✓' : ''}</td>
               <td class="center">{m.ot ? '✓' : ''}</td>
@@ -227,6 +270,17 @@ const schema = {
   .monitor-name {
     font-weight: 500;
     color: var(--text-primary, #fff);
+  }
+
+  .monitor-name-text {
+    font-weight: 500;
+  }
+
+  .monitor-specs {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #888);
+    font-weight: 400;
+    margin-top: 0.2rem;
   }
 
   .price {
