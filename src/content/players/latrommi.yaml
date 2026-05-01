@@ -3,27 +3,13 @@ steamId: "76561198048532604"
 aliases: []
 country: RU
 category: ctf
-<<<<<<< HEAD
-ctfRatingUpdated: "2026-04-24"
 hoqCtfRating: 23.18
 hoqCtfGames: 4
 hoqTdmRating: 42.9
 hoqTdmGames: 230
-=======
-hoqCtfRating: 23.178543090820312
-hoqCtfGames: 4
-hoqTdmRating: 42.89962387084961
-hoqTdmGames: 230
 ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 29.89
 qllrCtfGames: 21
-
-
-
-
-
-
->>>>>>> 52d1b5c (data: refresh HoQ stats + sync, round ratings to 2 decimals)
 ctfRating: 23.18
 ctfGames: 4
 tdmRatingUpdated: "2026-04-29"
@@ -34,8 +20,6 @@ lastUpdated: "2026-04-29"
 duelRating: 1713
 duelRatingSource: qlstats
 duelGames: 972
-qllrCtfRating: 29.89
-qllrCtfGames: 21
 dataSource: player
 dpi: 800
 sensitivity: 4
