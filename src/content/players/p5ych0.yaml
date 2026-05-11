@@ -4,11 +4,15 @@ country: Unknown
 category: ctf
 hoqCtfRating: 12.704608917236328
 hoqCtfGames: 386
-hoqTdmRating: 13.027443885803223
-hoqTdmGames: 143
+hoqTdmRating: 11.926412582397461
+hoqTdmGames: 165
+
+
+
+
 lastUpdated: 2025-01
-tdmRating: 13.03
-tdmRatingUpdated: "2026-04-29"
+tdmRating: 11.93
+tdmRatingUpdated: "2026-05-11"
 ctfRating: 12.7
 ctfRatingUpdated: "2026-04-29"
 dataSource: player
@@ -38,7 +42,7 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 386
-tdmGames: 143
+tdmGames: 165
 
 
 

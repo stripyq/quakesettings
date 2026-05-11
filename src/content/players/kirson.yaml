@@ -8,8 +8,8 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 lastUpdated: 2026-02
-ctfRating: 32.14
-ctfGames: 1186
+ctfRating: 31.36
+ctfGames: 1211
 tdmRating: 29.16
 tdmGames: 212
 mouse: logitech-g-pro-x-superlight-ii
@@ -32,11 +32,15 @@ back: s
 left: a
 right: d
 dataSource: player
-hoqCtfRating: 32.14358139038086
-hoqCtfGames: 1186
+hoqCtfRating: 31.355562210083008
+hoqCtfGames: 1211
 hoqTdmRating: 29.156415939331055
 hoqTdmGames: 212
-ctfRatingUpdated: "2026-04-29"
+
+
+
+
+ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 30.41
 qllrCtfGames: 63
 
@@ -77,4 +81,4 @@ favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_rg: 64
-accuracy_lg: 36
+accuracy_lg: 37

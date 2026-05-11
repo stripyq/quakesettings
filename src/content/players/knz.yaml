@@ -7,30 +7,19 @@ aliases:
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: false
-ctfRating: 27.17
-ctfGames: 2447
-tdmRating: 18.47
-tdmGames: 15
+ctfRating: 26.73
+ctfGames: 2485
+tdmRating: 19.41
+tdmGames: 18
 qlrace: null
-
-
-
-
-
-ctfRatingUpdated: "2026-04-29"
-qllrCtfRating: 29.31
-qllrCtfGames: 119
-
-
-
-
-
-
-tdmRatingUpdated: "2026-04-29"
-hoqCtfRating: 27.171043395996094
-hoqCtfGames: 2447
-hoqTdmRating: 18.470056533813477
-hoqTdmGames: 15
+ctfRatingUpdated: "2026-05-11"
+qllrCtfRating: 29.11
+qllrCtfGames: 122
+tdmRatingUpdated: "2026-05-11"
+hoqCtfRating: 26.730873107910156
+hoqCtfGames: 2485
+hoqTdmRating: 19.41094207763672
+hoqTdmGames: 18
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

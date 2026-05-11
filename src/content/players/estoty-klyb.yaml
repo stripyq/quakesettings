@@ -5,14 +5,18 @@ aliases:
 category: ctf
 hoqCtfRating: 22.02436637878418
 hoqCtfGames: 45
-hoqTdmRating: 23.687166213989258
-hoqTdmGames: 51
+hoqTdmRating: 23.558080673217773
+hoqTdmGames: 61
+
+
+
+
 ctfRatingUpdated: "2026-04-29"
 ctfRating: 22.02
 ctfGames: 45
-tdmRatingUpdated: "2026-04-29"
-tdmRating: 23.69
-tdmGames: 51
+tdmRatingUpdated: "2026-05-11"
+tdmRating: 23.56
+tdmGames: 61
 
 
 
@@ -38,9 +42,9 @@ qlrace:
     - {map: cruton4, rank: 15, total: 91, time: 107734}
   fetched_at: '2026-04-28'
   unique_maps_vql: 1
-favorite_map: q3wcp9
+favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun
 accuracy_rl: 41
 accuracy_rg: 49
-accuracy_lg: 35
+accuracy_lg: 34

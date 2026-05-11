@@ -9,17 +9,23 @@ team2026Shortname: cock
 country: PT
 team: Aimdead brainers
 category: ctf
-hoqCtfRating: 32.299072265625
-hoqCtfGames: 1915
-hoqTdmRating: 29.474117279052734
-hoqTdmGames: 258
+hoqCtfRating: 32.82870101928711
+hoqCtfGames: 1925
+hoqTdmRating: 29.466583251953125
+hoqTdmGames: 266
+
+
+
+
 lastUpdated: 2025-01
 tdmRating: 29.47
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 32.3
-ctfRatingUpdated: "2026-04-29"
-qllrCtfRating: 31.23
-qllrCtfGames: 81
+ctfRating: 32.83
+ctfRatingUpdated: "2026-05-11"
+qllrCtfRating: 30.76
+qllrCtfGames: 85
+
+
 
 
 
@@ -27,8 +33,8 @@ qllrCtfGames: 81
 
 
 duelRating: 1688
-ctfGames: 1915
-tdmGames: 258
+ctfGames: 1925
+tdmGames: 266
 duelGames: 1106
 duelRatingUpdated: "2026-02-04"
 dataSource: player

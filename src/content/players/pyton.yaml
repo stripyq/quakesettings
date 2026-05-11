@@ -9,9 +9,11 @@ team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: true
 category: ctf
-hoqCtfRating: 24.6257266998291
-hoqCtfGames: 1082
-ctfRatingUpdated: "2026-04-29"
+hoqCtfRating: 24.80132293701172
+hoqCtfGames: 1087
+
+
+ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 19.98
 qllrCtfGames: 32
 
@@ -20,8 +22,8 @@ qllrCtfGames: 32
 
 lastUpdated: 2026-02
 dataSource: player
-ctfRating: 24.63
-ctfGames: 1082
+ctfRating: 24.8
+ctfGames: 1087
 duelRating: 1395
 duelRatingSource: qlstats
 duelGames: 64

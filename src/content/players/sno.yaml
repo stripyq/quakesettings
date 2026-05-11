@@ -5,12 +5,12 @@ aliases:
   - sno
 team2024: Flappy Flags
 lastUpdated: 2026-01
-ctfRating: 22.06
-ctfRatingUpdated: "2026-04-29"
+ctfRating: 21.93
+ctfRatingUpdated: "2026-05-11"
 tdmRating: 19.29
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1066
-ctfGames: 2265
+ctfGames: 2280
 tdmGames: 1
 
 
@@ -75,8 +75,17 @@ qlrace:
   featured_maps:
     - {map: hangtime-df, mode: 3, time: 414648, rank: 19, total: 69, speed_top: 1194, date: '2026-04-26T20:42:16.881Z'}
   unique_maps_vql: 152
-hoqCtfRating: 22.056699752807617
-hoqCtfGames: 2265
+
+
+
+
+
+
+
+
+
+hoqCtfRating: 21.931577682495117
+hoqCtfGames: 2280
 hoqTdmRating: 19.292423248291016
 hoqTdmGames: 1
 favorite_map: q3wcp9

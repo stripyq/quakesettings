@@ -2,21 +2,17 @@ name: Kung
 steamId: "76561198068070185"
 country: Unknown
 category: ctf
-hoqCtfRating: 16.67340087890625
-hoqCtfGames: 1357
+hoqCtfRating: 16.39667320251465
+hoqCtfGames: 1363
 hoqTdmRating: 22.68046760559082
 hoqTdmGames: 251
 lastUpdated: 2026-02
 dataSource: player
-ctfRating: 16.67
-ctfGames: 1357
-ctfRatingUpdated: "2026-04-29"
+ctfRating: 16.4
+ctfGames: 1363
+ctfRatingUpdated: "2026-05-11"
 tdmRating: 22.68
 tdmGames: 251
-
-
-
-
 tdmRatingUpdated: "2026-04-29"
 mouse: logitech-g305-lightspeed
 mousepad: ""

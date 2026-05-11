@@ -9,18 +9,22 @@ team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: true
 lastUpdated: 2026-02
-ctfRating: 28.65
-ctfGames: 650
-tdmRating: 33.83
-tdmGames: 391
+ctfRating: 28.5
+ctfGames: 653
+tdmRating: 33.01
+tdmGames: 396
 duelRating: 1785
 duelRatingSource: qlstats
 duelGames: 260
 dataSource: player
-hoqCtfRating: 28.647281646728516
-hoqCtfGames: 650
-hoqTdmRating: 33.83245849609375
-hoqTdmGames: 391
+hoqCtfRating: 28.496784210205078
+hoqCtfGames: 653
+hoqTdmRating: 33.01471710205078
+hoqTdmGames: 396
+
+
+
+
 dpi: 1600
 sensitivity: 1.68
 m_yaw: 0.022
@@ -67,7 +71,7 @@ qlrace:
     - {map: spacectf, rank: 78, total: 284, time: 4925}
   fetched_at: '2026-04-28'
   unique_maps_vql: 5
-ctfRatingUpdated: "2026-04-29"
+ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 22.13
 qllrCtfGames: 97
 
@@ -76,7 +80,7 @@ qllrCtfGames: 97
 
 
 
-tdmRatingUpdated: "2026-04-29"
+tdmRatingUpdated: "2026-05-11"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

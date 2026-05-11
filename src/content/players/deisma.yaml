@@ -9,10 +9,6 @@ hoqTdmGames: 199
 lastUpdated: "2026-02-26"
 tdmRating: 21.4
 tdmGames: 199
-
-
-
-
 tdmRatingUpdated: "2026-04-29"
 ctfGames: 1769
 ctfRating: 9.13
@@ -48,9 +44,6 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-
-
-
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

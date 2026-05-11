@@ -3,20 +3,16 @@ steamId: "76561198109579696"
 aliases:
   - chakoala
 category: ctf
-hoqCtfRating: 11.887517929077148
-hoqCtfGames: 2331
-hoqTdmRating: 16.86918830871582
-hoqTdmGames: 7
-ctfRatingUpdated: "2026-04-29"
-ctfRating: 11.89
-ctfGames: 2331
-tdmRatingUpdated: "2026-04-29"
-tdmRating: 16.87
-tdmGames: 7
-
-
-
-
+hoqCtfRating: 12.001863479614258
+hoqCtfGames: 2350
+hoqTdmRating: 14.932188987731934
+hoqTdmGames: 8
+ctfRatingUpdated: "2026-05-11"
+ctfRating: 12
+ctfGames: 2350
+tdmRatingUpdated: "2026-05-11"
+tdmRating: 14.93
+tdmGames: 8
 published: false
 qlrace: null
 favorite_map: q3wcp9

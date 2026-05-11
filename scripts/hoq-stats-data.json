@@ -1,11 +1,11 @@
 {
-  "76561198151319268": {
-    "favorite_map": "japanesecastles",
+  "76561199559373528": {
+    "favorite_map": "ironworks",
     "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 41,
-    "accuracy_rg": 51,
-    "accuracy_lg": 30
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 39,
+    "accuracy_rg": 58,
+    "accuracy_lg": 39
   },
   "76561198077156894": {
     "favorite_map": "japanesecastles",
@@ -39,14 +39,6 @@
     "accuracy_rg": 65,
     "accuracy_lg": 40
   },
-  "76561198354200908": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 44,
-    "accuracy_rg": 52,
-    "accuracy_lg": 30
-  },
   "76561198132543406": {
     "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
@@ -54,6 +46,22 @@
     "accuracy_rl": 44,
     "accuracy_rg": 41,
     "accuracy_lg": 29
+  },
+  "76561198151319268": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 41,
+    "accuracy_rg": 51,
+    "accuracy_lg": 30
+  },
+  "76561198034120620": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 43,
+    "accuracy_rg": 55,
+    "accuracy_lg": 37
   },
   "76561198028016604": {
     "favorite_map": "japanesecastles",
@@ -71,22 +79,6 @@
     "accuracy_rg": 52,
     "accuracy_lg": 37
   },
-  "76561198034120620": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 43,
-    "accuracy_rg": 55,
-    "accuracy_lg": 37
-  },
-  "76561198393765487": {
-    "favorite_map": "campgrounds",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Lightning Gun",
-    "accuracy_rl": 33,
-    "accuracy_rg": 59,
-    "accuracy_lg": 51
-  },
   "76561198109579696": {
     "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
@@ -94,6 +86,14 @@
     "accuracy_rl": 39,
     "accuracy_rg": 53,
     "accuracy_lg": 39
+  },
+  "76561198354200908": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 44,
+    "accuracy_rg": 52,
+    "accuracy_lg": 30
   },
   "76561199044683584": {
     "favorite_map": "japanesecastles",
@@ -119,6 +119,14 @@
     "accuracy_rg": 48,
     "accuracy_lg": 26
   },
+  "76561198393765487": {
+    "favorite_map": "campgrounds",
+    "favorite_gametype": "Clan Arena",
+    "favorite_weapon": "Lightning Gun",
+    "accuracy_rl": 33,
+    "accuracy_rg": 59,
+    "accuracy_lg": 51
+  },
   "76561199496005153": {
     "favorite_map": "overkill",
     "favorite_gametype": "Clan Arena",
@@ -134,22 +142,6 @@
     "accuracy_rl": 43,
     "accuracy_rg": 62,
     "accuracy_lg": 47
-  },
-  "76561198075079469": {
-    "favorite_map": "hiddenfortress",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 50,
-    "accuracy_lg": 36
-  },
-  "76561198007682548": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 41,
-    "accuracy_rg": 54,
-    "accuracy_lg": 40
   },
   "76561198077163281": {
     "favorite_map": "japanesecastles",
@@ -175,29 +167,45 @@
     "accuracy_rg": 58,
     "accuracy_lg": 41
   },
+  "76561198075079469": {
+    "favorite_map": "hiddenfortress",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 41,
+    "accuracy_rg": 51,
+    "accuracy_lg": 36
+  },
   "76561197964623506": {
     "favorite_map": "hiddenfortress",
     "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Shotgun",
     "accuracy_rl": 42,
     "accuracy_rg": 53,
-    "accuracy_lg": 34
+    "accuracy_lg": 35
+  },
+  "76561198007682548": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 41,
+    "accuracy_rg": 54,
+    "accuracy_lg": 40
+  },
+  "76561197985202252": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 39,
+    "accuracy_rg": 61,
+    "accuracy_lg": 41
   },
   "76561198257799111": {
     "favorite_map": "campgrounds",
     "favorite_gametype": "Team Deathmatch (2v2)",
     "favorite_weapon": "Lightning Gun",
     "accuracy_rl": 43,
-    "accuracy_rg": 49,
+    "accuracy_rg": 50,
     "accuracy_lg": 32
-  },
-  "76561197985202252": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 40,
-    "accuracy_rg": 61,
-    "accuracy_lg": 41
   },
   "76561198380825290": {
     "favorite_map": "purgatory",
@@ -215,21 +223,13 @@
     "accuracy_rg": 46,
     "accuracy_lg": 30
   },
-  "76561198196618515": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 46,
-    "accuracy_rg": 53,
-    "accuracy_lg": 36
-  },
   "76561198199452077": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 43,
-    "accuracy_rg": 48,
-    "accuracy_lg": 35
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 41,
+    "accuracy_rg": 49,
+    "accuracy_lg": 34
   },
   "76561198032236208": {
     "favorite_map": "japanesecastles",
@@ -245,7 +245,7 @@
     "favorite_weapon": "Railgun",
     "accuracy_rl": 52,
     "accuracy_rg": 63,
-    "accuracy_lg": 39
+    "accuracy_lg": 40
   },
   "76561197965308771": {
     "favorite_map": "hiddenfortress",
@@ -255,13 +255,13 @@
     "accuracy_rg": 49,
     "accuracy_lg": 29
   },
-  "76561198257679175": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 38,
-    "accuracy_rg": 42,
-    "accuracy_lg": 29
+  "76561198196618515": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 46,
+    "accuracy_rg": 53,
+    "accuracy_lg": 36
   },
   "76561197968556118": {
     "favorite_map": "campgrounds",
@@ -271,6 +271,14 @@
     "accuracy_rg": 47,
     "accuracy_lg": 26
   },
+  "76561198090058821": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 36,
+    "accuracy_rg": 45,
+    "accuracy_lg": 32
+  },
   "76561197965938361": {
     "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
@@ -279,29 +287,29 @@
     "accuracy_rg": 59,
     "accuracy_lg": 39
   },
-  "76561198090058821": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 36,
-    "accuracy_rg": 44,
-    "accuracy_lg": 32
-  },
-  "76561198075628646": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 55,
-    "accuracy_lg": 37
-  },
   "76561198129795100": {
     "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Rocket Launcher",
     "accuracy_rl": 37,
-    "accuracy_rg": 43,
+    "accuracy_rg": 44,
     "accuracy_lg": 28
+  },
+  "76561198257679175": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 38,
+    "accuracy_rg": 42,
+    "accuracy_lg": 29
+  },
+  "76561198075628646": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 42,
+    "accuracy_rg": 55,
+    "accuracy_lg": 37
   },
   "76561198895628868": {
     "favorite_map": "japanesecastles",
@@ -319,13 +327,13 @@
     "accuracy_rg": 57,
     "accuracy_lg": 38
   },
-  "76561198047715408": {
-    "favorite_map": "q3wcp9",
+  "76561198053960733": {
+    "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 33,
-    "accuracy_rg": 47,
-    "accuracy_lg": 34
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 41,
+    "accuracy_rg": 54,
+    "accuracy_lg": 35
   },
   "76561198053186404": {
     "favorite_map": "purgatory",
@@ -335,44 +343,20 @@
     "accuracy_rg": 51,
     "accuracy_lg": 35
   },
-  "76561198053960733": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 41,
-    "accuracy_rg": 53,
-    "accuracy_lg": 35
-  },
   "76561198001355736": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 43,
+    "accuracy_rl": 42,
     "accuracy_rg": 54,
     "accuracy_lg": 34
   },
-  "76561198256071177": {
-    "favorite_map": "trinity",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 30,
-    "accuracy_rg": 43,
-    "accuracy_lg": 39
-  },
-  "76561198255736445": {
-    "favorite_map": "japanesecastles",
+  "76561198047715408": {
+    "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 46,
-    "accuracy_rg": 51,
-    "accuracy_lg": 34
-  },
-  "76561198141767332": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 41,
-    "accuracy_rg": 53,
+    "accuracy_rl": 33,
+    "accuracy_rg": 47,
     "accuracy_lg": 34
   },
   "76561198013356693": {
@@ -382,6 +366,22 @@
     "accuracy_rl": 31,
     "accuracy_rg": 52,
     "accuracy_lg": 36
+  },
+  "76561198141767332": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 41,
+    "accuracy_rg": 53,
+    "accuracy_lg": 34
+  },
+  "76561198255736445": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 46,
+    "accuracy_rg": 51,
+    "accuracy_lg": 34
   },
   "76561197983318796": {
     "favorite_map": "japanesecastles",
@@ -397,15 +397,15 @@
     "favorite_weapon": "Shotgun",
     "accuracy_rl": 42,
     "accuracy_rg": 59,
-    "accuracy_lg": 37
+    "accuracy_lg": 36
   },
-  "76561198034572568": {
-    "favorite_map": "hiddenfortress",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 46,
-    "accuracy_rg": 51,
-    "accuracy_lg": 32
+  "76561198256071177": {
+    "favorite_map": "trinity",
+    "favorite_gametype": "Clan Arena",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 30,
+    "accuracy_rg": 43,
+    "accuracy_lg": 39
   },
   "76561198023589138": {
     "favorite_map": "q3wcp9",
@@ -423,14 +423,6 @@
     "accuracy_rg": 53,
     "accuracy_lg": 35
   },
-  "76561197982199355": {
-    "favorite_map": "campgrounds",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 46,
-    "accuracy_rg": 58,
-    "accuracy_lg": 45
-  },
   "76561198041347061": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
@@ -447,6 +439,14 @@
     "accuracy_rg": 50,
     "accuracy_lg": 35
   },
+  "76561198034572568": {
+    "favorite_map": "hiddenfortress",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 46,
+    "accuracy_rg": 51,
+    "accuracy_lg": 32
+  },
   "76561198089070422": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
@@ -460,24 +460,24 @@
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Rocket Launcher",
     "accuracy_rl": 36,
-    "accuracy_rg": 46,
-    "accuracy_lg": 29
+    "accuracy_rg": 47,
+    "accuracy_lg": 30
   },
-  "76561198039145005": {
-    "favorite_map": "q3wcp9",
+  "76561197982199355": {
+    "favorite_map": "campgrounds",
+    "favorite_gametype": "Clan Arena",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 46,
+    "accuracy_rg": 58,
+    "accuracy_lg": 45
+  },
+  "76561198114832578": {
+    "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 34,
-    "accuracy_rg": 59,
-    "accuracy_lg": 34
-  },
-  "76561197973893045": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 39,
-    "accuracy_rg": 52,
-    "accuracy_lg": 34
+    "accuracy_rl": 43,
+    "accuracy_rg": 64,
+    "accuracy_lg": 37
   },
   "76561197972822622": {
     "favorite_map": "q3wcp9",
@@ -487,13 +487,13 @@
     "accuracy_rg": 54,
     "accuracy_lg": 35
   },
-  "76561198114832578": {
-    "favorite_map": "japanesecastles",
+  "76561197973893045": {
+    "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 43,
-    "accuracy_rg": 64,
-    "accuracy_lg": 36
+    "accuracy_rl": 39,
+    "accuracy_rg": 52,
+    "accuracy_lg": 34
   },
   "76561198286173236": {
     "favorite_map": "japanesecastles",
@@ -511,22 +511,6 @@
     "accuracy_rg": 52,
     "accuracy_lg": 35
   },
-  "76561198047335245": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 44,
-    "accuracy_rg": 64,
-    "accuracy_lg": 41
-  },
-  "76561198048532604": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 47,
-    "accuracy_rg": 56,
-    "accuracy_lg": 40
-  },
   "76561198254687687": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
@@ -534,6 +518,22 @@
     "accuracy_rl": 42,
     "accuracy_rg": 62,
     "accuracy_lg": 41
+  },
+  "76561198039145005": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 34,
+    "accuracy_rg": 59,
+    "accuracy_lg": 34
+  },
+  "76561198051109164": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 32,
+    "accuracy_rg": 51,
+    "accuracy_lg": 32
   },
   "76561198068070185": {
     "favorite_map": "q3wcp9",
@@ -543,6 +543,30 @@
     "accuracy_rg": 49,
     "accuracy_lg": 32
   },
+  "76561198048532604": {
+    "favorite_map": "purgatory",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 47,
+    "accuracy_rg": 57,
+    "accuracy_lg": 40
+  },
+  "76561198006274665": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 39,
+    "accuracy_rg": 56,
+    "accuracy_lg": 40
+  },
+  "76561198047335245": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 44,
+    "accuracy_rg": 64,
+    "accuracy_lg": 41
+  },
   "76561198033171295": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
@@ -550,6 +574,22 @@
     "accuracy_rl": 45,
     "accuracy_rg": 55,
     "accuracy_lg": 37
+  },
+  "76561198007335390": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 35,
+    "accuracy_rg": 56,
+    "accuracy_lg": 34
+  },
+  "76561198146434639": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 42,
+    "accuracy_rg": 49,
+    "accuracy_lg": 30
   },
   "76561198030933162": {
     "favorite_map": "q3wcp9",
@@ -559,13 +599,13 @@
     "accuracy_rg": 50,
     "accuracy_lg": 31
   },
-  "76561198007335390": {
-    "favorite_map": "japanesecastles",
+  "76561198033439430": {
+    "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 35,
-    "accuracy_rg": 56,
-    "accuracy_lg": 34
+    "accuracy_rl": 44,
+    "accuracy_rg": 63,
+    "accuracy_lg": 40
   },
   "76561198008234329": {
     "favorite_map": "japanesecastles",
@@ -583,29 +623,29 @@
     "accuracy_rg": 56,
     "accuracy_lg": 39
   },
+  "76561198191100033": {
+    "favorite_map": "campgrounds",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 38,
+    "accuracy_rg": 44,
+    "accuracy_lg": 27
+  },
+  "76561198257362399": {
+    "favorite_map": "overkill",
+    "favorite_gametype": "Clan Arena",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 32,
+    "accuracy_rg": 52,
+    "accuracy_lg": 41
+  },
   "76561198004545167": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 28,
+    "accuracy_rl": 29,
     "accuracy_rg": 50,
     "accuracy_lg": 32
-  },
-  "76561198146434639": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 49,
-    "accuracy_lg": 30
-  },
-  "76561198033439430": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 44,
-    "accuracy_rg": 62,
-    "accuracy_lg": 40
   },
   "76561197985659232": {
     "favorite_map": "japanesecastles",
@@ -619,17 +659,9 @@
     "favorite_map": "hiddenfortress",
     "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 43,
+    "accuracy_rl": 42,
     "accuracy_rg": 62,
     "accuracy_lg": 38
-  },
-  "76561198191100033": {
-    "favorite_map": "campgrounds",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 38,
-    "accuracy_rg": 44,
-    "accuracy_lg": 27
   },
   "76561198141993917": {
     "favorite_map": "q3wcp9",
@@ -643,49 +675,9 @@
     "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 40,
-    "accuracy_rg": 51,
-    "accuracy_lg": 31
-  },
-  "76561198257362399": {
-    "favorite_map": "overkill",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 32,
+    "accuracy_rl": 39,
     "accuracy_rg": 52,
-    "accuracy_lg": 41
-  },
-  "76561198117978344": {
-    "favorite_map": "q3wcp9",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 46,
-    "accuracy_rg": 66,
-    "accuracy_lg": 44
-  },
-  "76561198000088567": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 54,
-    "accuracy_lg": 42
-  },
-  "76561198256080242": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 38,
-    "accuracy_rg": 55,
-    "accuracy_lg": 35
-  },
-  "76561197972946521": {
-    "favorite_map": "hiddenfortress",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 44,
-    "accuracy_rg": 58,
-    "accuracy_lg": 36
+    "accuracy_lg": 31
   },
   "76561198284683846": {
     "favorite_map": "purgatory",
@@ -694,6 +686,14 @@
     "accuracy_rl": 41,
     "accuracy_rg": 52,
     "accuracy_lg": 38
+  },
+  "76561198117978344": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 46,
+    "accuracy_rg": 66,
+    "accuracy_lg": 44
   },
   "76561198043070738": {
     "favorite_map": "japanesecastles",
@@ -711,6 +711,30 @@
     "accuracy_rg": 52,
     "accuracy_lg": 32
   },
+  "76561197972946521": {
+    "favorite_map": "hiddenfortress",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 44,
+    "accuracy_rg": 58,
+    "accuracy_lg": 36
+  },
+  "76561198000088567": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 42,
+    "accuracy_rg": 54,
+    "accuracy_lg": 42
+  },
+  "76561198256080242": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 38,
+    "accuracy_rg": 55,
+    "accuracy_lg": 35
+  },
   "76561198144940773": {
     "favorite_map": "hiddenfortress",
     "favorite_gametype": "Clan Arena",
@@ -724,8 +748,8 @@
     "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Lightning Gun",
     "accuracy_rl": 41,
-    "accuracy_rg": 49,
-    "accuracy_lg": 33
+    "accuracy_rg": 50,
+    "accuracy_lg": 34
   },
   "76561197995121689": {
     "favorite_map": "q3wcp9",
@@ -734,6 +758,14 @@
     "accuracy_rl": 33,
     "accuracy_rg": 45,
     "accuracy_lg": 30
+  },
+  "76561198122684842": {
+    "favorite_map": "q3wcp9",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 42,
+    "accuracy_rg": 51,
+    "accuracy_lg": 34
   },
   "76561198025225261": {
     "favorite_map": "purgatory",
@@ -747,7 +779,7 @@
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
-    "accuracy_rl": 44,
+    "accuracy_rl": 43,
     "accuracy_rg": 61,
     "accuracy_lg": 42
   },
@@ -767,14 +799,6 @@
     "accuracy_rg": 46,
     "accuracy_lg": 33
   },
-  "76561198256203867": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 49,
-    "accuracy_rg": 55,
-    "accuracy_lg": 33
-  },
   "76561198414877431": {
     "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
@@ -782,6 +806,14 @@
     "accuracy_rl": 43,
     "accuracy_rg": 55,
     "accuracy_lg": 39
+  },
+  "76561198256203867": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 49,
+    "accuracy_rg": 55,
+    "accuracy_lg": 33
   },
   "76561197993233912": {
     "favorite_map": "deepinside",
@@ -791,20 +823,20 @@
     "accuracy_rg": 57,
     "accuracy_lg": 35
   },
-  "76561198105088252": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Rocket Launcher",
-    "accuracy_rl": 41,
-    "accuracy_rg": 49,
-    "accuracy_lg": 35
-  },
   "76561198279892880": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Railgun",
     "accuracy_rl": 30,
     "accuracy_rg": 51,
+    "accuracy_lg": 35
+  },
+  "76561198105088252": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 41,
+    "accuracy_rg": 49,
     "accuracy_lg": 35
   },
   "76561198106787712": {
@@ -820,8 +852,8 @@
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Shotgun",
     "accuracy_rl": 32,
-    "accuracy_rg": 41,
-    "accuracy_lg": 26
+    "accuracy_rg": 45,
+    "accuracy_lg": 27
   },
   "76561198155003669": {
     "favorite_map": "japanesecastles",
@@ -855,14 +887,6 @@
     "accuracy_rg": 58,
     "accuracy_lg": 40
   },
-  "76561198010942011": {
-    "favorite_map": "campgrounds",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 34,
-    "accuracy_rg": 59,
-    "accuracy_lg": 46
-  },
   "76561198043802405": {
     "favorite_map": "campgrounds",
     "favorite_gametype": "Clan Arena",
@@ -895,6 +919,22 @@
     "accuracy_rg": 52,
     "accuracy_lg": 38
   },
+  "76561198018576230": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Rocket Launcher",
+    "accuracy_rl": 44,
+    "accuracy_rg": 46,
+    "accuracy_lg": 32
+  },
+  "76561198010942011": {
+    "favorite_map": "campgrounds",
+    "favorite_gametype": "Clan Arena",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 34,
+    "accuracy_rg": 59,
+    "accuracy_lg": 46
+  },
   "76561198088011443": {
     "favorite_map": "q3wcp9",
     "favorite_gametype": "Capture the Flag",
@@ -917,15 +957,7 @@
     "favorite_weapon": "Railgun",
     "accuracy_rl": 46,
     "accuracy_rg": 58,
-    "accuracy_lg": 40
-  },
-  "76561198041115896": {
-    "favorite_map": "campgrounds",
-    "favorite_gametype": "Team Deathmatch (2v2)",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 56,
-    "accuracy_lg": 40
+    "accuracy_lg": 39
   },
   "76561198155662969": {
     "favorite_map": "japanesecastles",
@@ -951,21 +983,21 @@
     "accuracy_rg": 38,
     "accuracy_lg": 28
   },
-  "76561198246535026": {
-    "favorite_map": "japanesecastles",
-    "favorite_gametype": "Capture the Flag",
-    "favorite_weapon": "Shotgun",
-    "accuracy_rl": 42,
-    "accuracy_rg": 45,
-    "accuracy_lg": 27
-  },
   "76561199756237860": {
     "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Shotgun",
     "accuracy_rl": 46,
-    "accuracy_rg": 54,
+    "accuracy_rg": 53,
     "accuracy_lg": 33
+  },
+  "76561198041115896": {
+    "favorite_map": "campgrounds",
+    "favorite_gametype": "Team Deathmatch (2v2)",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 42,
+    "accuracy_rg": 56,
+    "accuracy_lg": 40
   },
   "76561197992882111": {
     "favorite_map": "japanesecastles",
@@ -983,13 +1015,13 @@
     "accuracy_rg": 58,
     "accuracy_lg": 43
   },
-  "76561198140092774": {
+  "76561198246535026": {
     "favorite_map": "japanesecastles",
     "favorite_gametype": "Capture the Flag",
     "favorite_weapon": "Shotgun",
-    "accuracy_rl": 33,
-    "accuracy_rg": 47,
-    "accuracy_lg": 33
+    "accuracy_rl": 42,
+    "accuracy_rg": 45,
+    "accuracy_lg": 27
   },
   "76561198257316780": {
     "favorite_map": "japanesecastles",
@@ -1011,7 +1043,7 @@
     "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
     "favorite_weapon": "Shotgun",
-    "accuracy_rl": 41,
+    "accuracy_rl": 40,
     "accuracy_rg": 50,
     "accuracy_lg": 30
   },
@@ -1023,14 +1055,6 @@
     "accuracy_rg": 44,
     "accuracy_lg": 41
   },
-  "76561198017320685": {
-    "favorite_map": "purgatory",
-    "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 49,
-    "accuracy_rg": 61,
-    "accuracy_lg": 44
-  },
   "76561198257437671": {
     "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
@@ -1038,6 +1062,14 @@
     "accuracy_rl": 36,
     "accuracy_rg": 54,
     "accuracy_lg": 37
+  },
+  "76561198140092774": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Shotgun",
+    "accuracy_rl": 33,
+    "accuracy_rg": 47,
+    "accuracy_lg": 33
   },
   "76561198098777141": {
     "favorite_map": "japanesecastles",
@@ -1063,21 +1095,13 @@
     "accuracy_rg": 44,
     "accuracy_lg": 36
   },
-  "76561198154954843": {
-    "favorite_map": "asylum",
-    "favorite_gametype": "Clan Arena",
-    "favorite_weapon": "Railgun",
-    "accuracy_rl": 54,
-    "accuracy_rg": 45,
-    "accuracy_lg": 34
-  },
-  "76561198026248899": {
-    "favorite_map": "hiddenfortress",
+  "76561198017320685": {
+    "favorite_map": "purgatory",
     "favorite_gametype": "Team Deathmatch",
-    "favorite_weapon": "Lightning Gun",
-    "accuracy_rl": 45,
-    "accuracy_rg": 53,
-    "accuracy_lg": 34
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 49,
+    "accuracy_rg": 61,
+    "accuracy_lg": 44
   },
   "76561198081117111": {
     "favorite_map": "japanesecastles",
@@ -1095,6 +1119,14 @@
     "accuracy_rg": 53,
     "accuracy_lg": 42
   },
+  "76561198026248899": {
+    "favorite_map": "hiddenfortress",
+    "favorite_gametype": "Team Deathmatch",
+    "favorite_weapon": "Lightning Gun",
+    "accuracy_rl": 45,
+    "accuracy_rg": 53,
+    "accuracy_lg": 34
+  },
   "76561198202091255": {
     "favorite_map": "troubledwaters",
     "favorite_gametype": "Capture the Flag",
@@ -1102,5 +1134,13 @@
     "accuracy_rl": 36,
     "accuracy_rg": 37,
     "accuracy_lg": 22
+  },
+  "76561198881954793": {
+    "favorite_map": "japanesecastles",
+    "favorite_gametype": "Capture the Flag",
+    "favorite_weapon": "Railgun",
+    "accuracy_rl": 43,
+    "accuracy_rg": 54,
+    "accuracy_lg": 36
   }
 }

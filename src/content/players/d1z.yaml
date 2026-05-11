@@ -8,8 +8,8 @@ team2026Shortname: GF?
 lastUpdated: 2026-02
 tdmRating: 24.83
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 24.8
-ctfRatingUpdated: "2026-04-29"
+ctfRating: 23.98
+ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 31.09
 qllrCtfGames: 26
 
@@ -19,7 +19,7 @@ qllrCtfGames: 26
 
 
 duelRating: 1554
-ctfGames: 244
+ctfGames: 271
 tdmGames: 380
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
@@ -77,13 +77,22 @@ qlrace:
 
 
 
-hoqCtfRating: 24.803192138671875
-hoqCtfGames: 244
+
+
+
+
+
+
+
+
+
+hoqCtfRating: 23.981449127197266
+hoqCtfGames: 271
 hoqTdmRating: 24.828292846679688
 hoqTdmGames: 380
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
-accuracy_rl: 42
+accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 36

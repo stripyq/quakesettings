@@ -2,15 +2,15 @@ name: KISA
 steamId: "76561198286173236"
 country: Unknown
 category: ctf
-hoqCtfRating: 4.638675212860107
-hoqCtfGames: 973
-hoqTdmRating: 19.548473358154297
-hoqTdmGames: 502
+hoqCtfRating: 5.686013221740723
+hoqCtfGames: 1006
+hoqTdmRating: 19.53229522705078
+hoqTdmGames: 504
 lastUpdated: 2025-01
-tdmRating: 19.55
-tdmRatingUpdated: "2026-04-29"
-ctfRating: 4.64
-ctfRatingUpdated: "2026-04-29"
+tdmRating: 19.53
+tdmRatingUpdated: "2026-05-11"
+ctfRating: 5.69
+ctfRatingUpdated: "2026-05-11"
 dataSource: player
 dpi: 3200
 sensitivity: 0.5
@@ -32,12 +32,8 @@ mousepad: la-onda-blitz
 keyboard: logitech-g413
 monitor: samsung-crg5
 headset: audio-technica-ath-m50x
-ctfGames: 973
-tdmGames: 502
-
-
-
-
+ctfGames: 1006
+tdmGames: 504
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

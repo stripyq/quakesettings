@@ -2,21 +2,25 @@ name: konek
 steamId: "76561198051109164"
 country: HU
 category: duel
-hoqCtfRating: 3.8749141693115234
-hoqCtfGames: 218
-hoqTdmRating: 3.9344751834869385
-hoqTdmGames: 25
+hoqCtfRating: 4.925014495849609
+hoqCtfGames: 241
+hoqTdmRating: 5.923511505126953
+hoqTdmGames: 28
+
+
+
+
 published: true
 
-ctfRatingUpdated: "2026-04-29"
-ctfRating: 3.87
+ctfRatingUpdated: "2026-05-11"
+ctfRating: 4.93
 
-ctfGames: 218
+ctfGames: 241
 
-tdmRatingUpdated: "2026-04-29"
-tdmRating: 3.93
+tdmRatingUpdated: "2026-05-11"
+tdmRating: 5.92
 
-tdmGames: 25
+tdmGames: 28
 dataSource: player
 lastUpdated: 2026-04
 duelRating: 820
