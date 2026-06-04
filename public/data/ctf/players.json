@@ -4,20 +4,20 @@
     "nicks": [
       "Janti"
     ],
-    "games": 9722,
-    "wins": 4870,
-    "losses": 4852,
+    "games": 9858,
+    "wins": 4935,
+    "losses": 4923,
     "win_rate_pct": 50.1,
     "avg_frags": 45.1,
     "avg_deaths": 51.5,
-    "avg_dmg_dealt": 8165,
-    "avg_dmg_taken": 7658,
+    "avg_dmg_dealt": 8166,
+    "avg_dmg_taken": 7665,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 21.5,
       "sg": 25.3,
       "gl": 10,
-      "rl": 36,
+      "rl": 36.1,
       "rg": 46.8,
       "pg": 11.7
     },
@@ -31,14 +31,14 @@
     "nicks": [
       "Birna"
     ],
-    "games": 6625,
-    "wins": 3264,
-    "losses": 3361,
+    "games": 6695,
+    "wins": 3300,
+    "losses": 3395,
     "win_rate_pct": 49.3,
     "avg_frags": 47.2,
     "avg_deaths": 50.4,
-    "avg_dmg_dealt": 7876,
-    "avg_dmg_taken": 7601,
+    "avg_dmg_dealt": 7874,
+    "avg_dmg_taken": 7604,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 31,
@@ -49,9 +49,9 @@
       "pg": 12.7
     },
     "peak_rating": 29.69,
-    "last_rating": 12.03,
+    "last_rating": 11.9,
     "first_ts": 1575920180,
-    "last_ts": 1779399052
+    "last_ts": 1780518620
   },
   {
     "sid": "76561198346024921",
@@ -85,41 +85,41 @@
     "nicks": [
       "Drayan"
     ],
-    "games": 6260,
-    "wins": 3162,
-    "losses": 3098,
+    "games": 6509,
+    "wins": 3285,
+    "losses": 3224,
     "win_rate_pct": 50.5,
-    "avg_frags": 56,
+    "avg_frags": 56.1,
     "avg_deaths": 49.4,
-    "avg_dmg_dealt": 10016,
-    "avg_dmg_taken": 8225,
+    "avg_dmg_dealt": 10027,
+    "avg_dmg_taken": 8234,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 30.9,
+      "mg": 31,
       "sg": 30.1,
-      "gl": 14.3,
-      "rl": 45.3,
-      "rg": 52.8,
+      "gl": 14.2,
+      "rl": 45.4,
+      "rg": 52.9,
       "pg": 14.5
     },
     "peak_rating": 35.72,
-    "last_rating": 34.15,
+    "last_rating": 34.04,
     "first_ts": 1575908973,
-    "last_ts": 1779400823
+    "last_ts": 1780527588
   },
   {
     "sid": "76561197970764070",
     "nicks": [
       "Pettern"
     ],
-    "games": 5377,
-    "wins": 2648,
-    "losses": 2729,
-    "win_rate_pct": 49.2,
+    "games": 5442,
+    "wins": 2683,
+    "losses": 2759,
+    "win_rate_pct": 49.3,
     "avg_frags": 44.7,
     "avg_deaths": 50,
-    "avg_dmg_dealt": 8427,
-    "avg_dmg_taken": 7645,
+    "avg_dmg_dealt": 8422,
+    "avg_dmg_taken": 7646,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 24,
@@ -130,84 +130,84 @@
       "pg": 11.5
     },
     "peak_rating": 29.69,
-    "last_rating": 15.08,
+    "last_rating": 14.95,
     "first_ts": 1576192804,
-    "last_ts": 1779400823
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198279892880",
     "nicks": [
       "ttv/r3cke"
     ],
-    "games": 5025,
-    "wins": 2508,
-    "losses": 2517,
-    "win_rate_pct": 49.9,
+    "games": 5158,
+    "wins": 2571,
+    "losses": 2587,
+    "win_rate_pct": 49.8,
     "avg_frags": 56.4,
     "avg_deaths": 59.8,
-    "avg_dmg_dealt": 10377,
-    "avg_dmg_taken": 8503,
+    "avg_dmg_dealt": 10383,
+    "avg_dmg_taken": 8507,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 21.4,
+      "mg": 21.3,
       "sg": 26,
-      "gl": 8.8,
+      "gl": 8.9,
       "rl": 29.6,
-      "rg": 50.8,
+      "rg": 50.9,
       "pg": 14
     },
     "peak_rating": 27.55,
-    "last_rating": 17.5,
+    "last_rating": 17.38,
     "first_ts": 1581188098,
-    "last_ts": 1779400823
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198257433093",
     "nicks": [
       "ceno"
     ],
-    "games": 4919,
-    "wins": 2414,
-    "losses": 2505,
-    "win_rate_pct": 49.1,
-    "avg_frags": 42.5,
+    "games": 4998,
+    "wins": 2457,
+    "losses": 2541,
+    "win_rate_pct": 49.2,
+    "avg_frags": 42.6,
     "avg_deaths": 35.6,
-    "avg_dmg_dealt": 6897,
-    "avg_dmg_taken": 6735,
+    "avg_dmg_dealt": 6898,
+    "avg_dmg_taken": 6736,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.8,
       "sg": 26.3,
-      "gl": 7.4,
+      "gl": 7.5,
       "rl": 40.5,
-      "rg": 47.9,
+      "rg": 48,
       "pg": 13.8
     },
     "peak_rating": 26.36,
-    "last_rating": 13.82,
+    "last_rating": 13.94,
     "first_ts": 1575914641,
-    "last_ts": 1779387222
+    "last_ts": 1780516753
   },
   {
     "sid": "76561198107461408",
     "nicks": [
       "Dloobiq"
     ],
-    "games": 4735,
-    "wins": 2347,
-    "losses": 2388,
+    "games": 4809,
+    "wins": 2386,
+    "losses": 2423,
     "win_rate_pct": 49.6,
     "avg_frags": 52.9,
     "avg_deaths": 42,
-    "avg_dmg_dealt": 8927,
-    "avg_dmg_taken": 7156,
+    "avg_dmg_dealt": 8933,
+    "avg_dmg_taken": 7153,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 29.3,
       "sg": 25.7,
       "gl": 7,
       "rl": 36.4,
-      "rg": 46.2,
+      "rg": 46.3,
       "pg": 13.1
     },
     "peak_rating": 36.05,
@@ -220,14 +220,14 @@
     "nicks": [
       "Chet0!!"
     ],
-    "games": 4148,
-    "wins": 2091,
-    "losses": 2057,
-    "win_rate_pct": 50.4,
+    "games": 4169,
+    "wins": 2099,
+    "losses": 2070,
+    "win_rate_pct": 50.3,
     "avg_frags": 42.5,
-    "avg_deaths": 58.8,
-    "avg_dmg_dealt": 7687,
-    "avg_dmg_taken": 8361,
+    "avg_deaths": 58.9,
+    "avg_dmg_dealt": 7689,
+    "avg_dmg_taken": 8365,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 21.6,
@@ -238,18 +238,18 @@
       "pg": 12.5
     },
     "peak_rating": 24.89,
-    "last_rating": 13.23,
+    "last_rating": 13.11,
     "first_ts": 1589387357,
-    "last_ts": 1779138263
+    "last_ts": 1780522479
   },
   {
     "sid": "76561198013356693",
     "nicks": [
       "ΗΞ∆ĐƵ"
     ],
-    "games": 3800,
+    "games": 3801,
     "wins": 1884,
-    "losses": 1916,
+    "losses": 1917,
     "win_rate_pct": 49.6,
     "avg_frags": 55.2,
     "avg_deaths": 39.8,
@@ -265,9 +265,9 @@
       "pg": 10.8
     },
     "peak_rating": 33,
-    "last_rating": 24.68,
+    "last_rating": 24.47,
     "first_ts": 1576872800,
-    "last_ts": 1776554248
+    "last_ts": 1776606158
   },
   {
     "sid": "76561197965374315",
@@ -297,6 +297,33 @@
     "last_ts": 1688502595
   },
   {
+    "sid": "76561198049631090",
+    "nicks": [
+      "rashtafari"
+    ],
+    "games": 3616,
+    "wins": 1787,
+    "losses": 1829,
+    "win_rate_pct": 49.4,
+    "avg_frags": 56.7,
+    "avg_deaths": 52.8,
+    "avg_dmg_dealt": 10145,
+    "avg_dmg_taken": 8244,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 25.9,
+      "sg": 28.5,
+      "gl": 10.2,
+      "rl": 40.3,
+      "rg": 53.9,
+      "pg": 13.5
+    },
+    "peak_rating": 33.26,
+    "last_rating": 26.52,
+    "first_ts": 1577048831,
+    "last_ts": 1780441868
+  },
+  {
     "sid": "76561198834543007",
     "nicks": [
       "froz1k"
@@ -322,33 +349,6 @@
     "last_rating": 30.07,
     "first_ts": 1582394170,
     "last_ts": 1719782303
-  },
-  {
-    "sid": "76561198049631090",
-    "nicks": [
-      "rashtafari"
-    ],
-    "games": 3559,
-    "wins": 1761,
-    "losses": 1798,
-    "win_rate_pct": 49.5,
-    "avg_frags": 56.7,
-    "avg_deaths": 52.8,
-    "avg_dmg_dealt": 10152,
-    "avg_dmg_taken": 8241,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 25.9,
-      "sg": 28.5,
-      "gl": 10.2,
-      "rl": 40.3,
-      "rg": 53.9,
-      "pg": 13.5
-    },
-    "peak_rating": 33.26,
-    "last_rating": 26.37,
-    "first_ts": 1577048831,
-    "last_ts": 1779124492
   },
   {
     "sid": "76561198064199875",
@@ -380,19 +380,20 @@
   {
     "sid": "76561198255736445",
     "nicks": [
-      "Bolus"
+      "Bolus",
+      "Grandbolus"
     ],
-    "games": 3047,
-    "wins": 1495,
-    "losses": 1552,
-    "win_rate_pct": 49.1,
-    "avg_frags": 42.5,
-    "avg_deaths": 47.7,
-    "avg_dmg_dealt": 7781,
-    "avg_dmg_taken": 7785,
+    "games": 3101,
+    "wins": 1526,
+    "losses": 1575,
+    "win_rate_pct": 49.2,
+    "avg_frags": 42.6,
+    "avg_deaths": 47.8,
+    "avg_dmg_dealt": 7790,
+    "avg_dmg_taken": 7792,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 30.3,
+      "mg": 30.2,
       "sg": 29.3,
       "gl": 11.1,
       "rl": 45.3,
@@ -400,36 +401,36 @@
       "pg": 14.8
     },
     "peak_rating": 30.86,
-    "last_rating": 18.98,
+    "last_rating": 20.52,
     "first_ts": 1575916253,
-    "last_ts": 1779306332
+    "last_ts": 1780518620
   },
   {
     "sid": "76561198155003669",
     "nicks": [
       "re4"
     ],
-    "games": 2921,
-    "wins": 1438,
-    "losses": 1483,
-    "win_rate_pct": 49.2,
-    "avg_frags": 44,
+    "games": 3026,
+    "wins": 1493,
+    "losses": 1533,
+    "win_rate_pct": 49.3,
+    "avg_frags": 44.1,
     "avg_deaths": 54,
-    "avg_dmg_dealt": 8043,
-    "avg_dmg_taken": 8239,
+    "avg_dmg_dealt": 8041,
+    "avg_dmg_taken": 8242,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 30,
       "sg": 27.8,
       "gl": 9,
       "rl": 34.4,
-      "rg": 48,
+      "rg": 48.1,
       "pg": 13
     },
     "peak_rating": 30.45,
-    "last_rating": 16.53,
+    "last_rating": 16.94,
     "first_ts": 1575914641,
-    "last_ts": 1779400823
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198246535026",
@@ -463,14 +464,14 @@
     "nicks": [
       "mastermind"
     ],
-    "games": 2777,
-    "wins": 1447,
-    "losses": 1330,
+    "games": 2790,
+    "wins": 1454,
+    "losses": 1336,
     "win_rate_pct": 52.1,
-    "avg_frags": 63.3,
+    "avg_frags": 63.4,
     "avg_deaths": 59.6,
-    "avg_dmg_dealt": 12281,
-    "avg_dmg_taken": 8832,
+    "avg_dmg_dealt": 12282,
+    "avg_dmg_taken": 8831,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 31.3,
@@ -478,39 +479,39 @@
       "gl": 11.8,
       "rl": 43.9,
       "rg": 62.6,
-      "pg": 14.8
+      "pg": 14.9
     },
     "peak_rating": 47.89,
     "last_rating": 47.31,
     "first_ts": 1575920660,
-    "last_ts": 1779126274
+    "last_ts": 1780335280
   },
   {
     "sid": "76561198256080242",
     "nicks": [
       "NyxGirlPower TheQueen ♥"
     ],
-    "games": 2670,
-    "wins": 1350,
-    "losses": 1320,
+    "games": 2727,
+    "wins": 1379,
+    "losses": 1348,
     "win_rate_pct": 50.6,
     "avg_frags": 45.4,
-    "avg_deaths": 46.2,
-    "avg_dmg_dealt": 7758,
-    "avg_dmg_taken": 7323,
+    "avg_deaths": 46,
+    "avg_dmg_dealt": 7749,
+    "avg_dmg_taken": 7309,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 29.1,
       "sg": 27.2,
       "gl": 6.1,
-      "rl": 37.9,
+      "rl": 37.8,
       "rg": 54.8,
       "pg": 10.9
     },
     "peak_rating": 25.11,
     "last_rating": 16.05,
     "first_ts": 1644089632,
-    "last_ts": 1779389395
+    "last_ts": 1780251511
   },
   {
     "sid": "76561197992882111",
@@ -518,14 +519,14 @@
       "stripyツ",
       "stripy��"
     ],
-    "games": 2660,
-    "wins": 1362,
-    "losses": 1298,
-    "win_rate_pct": 51.2,
+    "games": 2704,
+    "wins": 1386,
+    "losses": 1318,
+    "win_rate_pct": 51.3,
     "avg_frags": 47.7,
     "avg_deaths": 58.4,
-    "avg_dmg_dealt": 9286,
-    "avg_dmg_taken": 8561,
+    "avg_dmg_dealt": 9287,
+    "avg_dmg_taken": 8566,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 23.5,
@@ -536,23 +537,23 @@
       "pg": 11.9
     },
     "peak_rating": 31.76,
-    "last_rating": 25.07,
+    "last_rating": 25.23,
     "first_ts": 1585488130,
-    "last_ts": 1779387222
+    "last_ts": 1780524208
   },
   {
     "sid": "76561198106787712",
     "nicks": [
       "randall"
     ],
-    "games": 2656,
-    "wins": 1330,
-    "losses": 1326,
+    "games": 2661,
+    "wins": 1332,
+    "losses": 1329,
     "win_rate_pct": 50.1,
     "avg_frags": 57.8,
-    "avg_deaths": 39.7,
-    "avg_dmg_dealt": 9864,
-    "avg_dmg_taken": 6969,
+    "avg_deaths": 39.8,
+    "avg_dmg_dealt": 9868,
+    "avg_dmg_taken": 6971,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 32.4,
@@ -563,9 +564,9 @@
       "pg": 12.8
     },
     "peak_rating": 30.58,
-    "last_rating": 25.57,
+    "last_rating": 25.29,
     "first_ts": 1575920180,
-    "last_ts": 1776449883
+    "last_ts": 1780337662
   },
   {
     "sid": "76561197982671330",
@@ -593,6 +594,34 @@
     "last_rating": 34.78,
     "first_ts": 1583006326,
     "last_ts": 1654811663
+  },
+  {
+    "sid": "76561198039145005",
+    "nicks": [
+      "CUBA knz",
+      "knz"
+    ],
+    "games": 2553,
+    "wins": 1309,
+    "losses": 1244,
+    "win_rate_pct": 51.3,
+    "avg_frags": 56.1,
+    "avg_deaths": 35.7,
+    "avg_dmg_dealt": 9019,
+    "avg_dmg_taken": 6614,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 30.1,
+      "sg": 29.9,
+      "gl": 5.7,
+      "rl": 33.7,
+      "rg": 59.1,
+      "pg": 11.7
+    },
+    "peak_rating": 28.8,
+    "last_rating": 28.17,
+    "first_ts": 1621094802,
+    "last_ts": 1780507456
   },
   {
     "sid": "76561198047715408",
@@ -626,14 +655,14 @@
     "nicks": [
       "Vlad"
     ],
-    "games": 2530,
+    "games": 2531,
     "wins": 1291,
-    "losses": 1239,
+    "losses": 1240,
     "win_rate_pct": 51,
     "avg_frags": 43.9,
     "avg_deaths": 51.4,
-    "avg_dmg_dealt": 8030,
-    "avg_dmg_taken": 7703,
+    "avg_dmg_dealt": 8031,
+    "avg_dmg_taken": 7704,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.1,
@@ -644,37 +673,37 @@
       "pg": 13.1
     },
     "peak_rating": 22.83,
-    "last_rating": 19.99,
+    "last_rating": 19.78,
     "first_ts": 1619641672,
-    "last_ts": 1776119885
+    "last_ts": 1777146014
   },
   {
-    "sid": "76561198039145005",
+    "sid": "76561198881954793",
     "nicks": [
-      "CUBA knz",
-      "knz"
+      "wB zozo",
+      "zozo"
     ],
-    "games": 2465,
-    "wins": 1254,
-    "losses": 1211,
-    "win_rate_pct": 50.9,
-    "avg_frags": 55.9,
-    "avg_deaths": 35.8,
-    "avg_dmg_dealt": 8988,
-    "avg_dmg_taken": 6603,
+    "games": 2510,
+    "wins": 1295,
+    "losses": 1215,
+    "win_rate_pct": 51.6,
+    "avg_frags": 52.3,
+    "avg_deaths": 49.4,
+    "avg_dmg_dealt": 9577,
+    "avg_dmg_taken": 7614,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 30.2,
-      "sg": 29.8,
-      "gl": 5.8,
-      "rl": 33.7,
-      "rg": 59,
-      "pg": 11.8
+      "mg": 29.6,
+      "sg": 29.5,
+      "gl": 8.9,
+      "rl": 41.8,
+      "rg": 54.1,
+      "pg": 13.6
     },
-    "peak_rating": 28.8,
-    "last_rating": 26.73,
-    "first_ts": 1621094802,
-    "last_ts": 1779317160
+    "peak_rating": 32.05,
+    "last_rating": 29.21,
+    "first_ts": 1590429145,
+    "last_ts": 1780358168
   },
   {
     "sid": "76561198098777141",
@@ -704,59 +733,113 @@
     "last_ts": 1775758599
   },
   {
-    "sid": "76561198881954793",
-    "nicks": [
-      "wB zozo",
-      "zozo"
-    ],
-    "games": 2441,
-    "wins": 1257,
-    "losses": 1184,
-    "win_rate_pct": 51.5,
-    "avg_frags": 52.2,
-    "avg_deaths": 49.3,
-    "avg_dmg_dealt": 9558,
-    "avg_dmg_taken": 7604,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 29.5,
-      "sg": 29.5,
-      "gl": 9,
-      "rl": 41.7,
-      "rg": 54,
-      "pg": 13.5
-    },
-    "peak_rating": 32.05,
-    "last_rating": 27.88,
-    "first_ts": 1590429145,
-    "last_ts": 1779317160
-  },
-  {
     "sid": "76561198109579696",
     "nicks": [
       "Cham"
     ],
-    "games": 2327,
-    "wins": 1190,
-    "losses": 1137,
+    "games": 2393,
+    "wins": 1222,
+    "losses": 1171,
     "win_rate_pct": 51.1,
     "avg_frags": 50.9,
     "avg_deaths": 47.7,
-    "avg_dmg_dealt": 8649,
-    "avg_dmg_taken": 7197,
+    "avg_dmg_dealt": 8638,
+    "avg_dmg_taken": 7202,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.2,
       "sg": 28.2,
       "gl": 6.1,
-      "rl": 36.7,
+      "rl": 36.6,
       "rg": 53.4,
       "pg": 10.2
     },
     "peak_rating": 27.04,
-    "last_rating": 12.87,
+    "last_rating": 12.75,
     "first_ts": 1592171641,
-    "last_ts": 1779311045
+    "last_ts": 1780525976
+  },
+  {
+    "sid": "76561198030933162",
+    "nicks": [
+      "Lewkario",
+      "Lokario"
+    ],
+    "games": 2385,
+    "wins": 1150,
+    "losses": 1235,
+    "win_rate_pct": 48.2,
+    "avg_frags": 42.3,
+    "avg_deaths": 37.1,
+    "avg_dmg_dealt": 7351,
+    "avg_dmg_taken": 6834,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 24.6,
+      "sg": 28.7,
+      "gl": 8.5,
+      "rl": 34.1,
+      "rg": 50,
+      "pg": 13.2
+    },
+    "peak_rating": 27.37,
+    "last_rating": 8.57,
+    "first_ts": 1575918311,
+    "last_ts": 1780527588
+  },
+  {
+    "sid": "76561198075628646",
+    "nicks": [
+      "fo_tbh"
+    ],
+    "games": 2320,
+    "wins": 1136,
+    "losses": 1184,
+    "win_rate_pct": 49,
+    "avg_frags": 53,
+    "avg_deaths": 49.7,
+    "avg_dmg_dealt": 9734,
+    "avg_dmg_taken": 7769,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.7,
+      "sg": 30.6,
+      "gl": 10.4,
+      "rl": 42.3,
+      "rg": 54.7,
+      "pg": 14.4
+    },
+    "peak_rating": 41.06,
+    "last_rating": 33.38,
+    "first_ts": 1576006462,
+    "last_ts": 1780513170
+  },
+  {
+    "sid": "76561198031267126",
+    "nicks": [
+      "sno"
+    ],
+    "games": 2315,
+    "wins": 1152,
+    "losses": 1163,
+    "win_rate_pct": 49.8,
+    "avg_frags": 48.5,
+    "avg_deaths": 48.4,
+    "avg_dmg_dealt": 8384,
+    "avg_dmg_taken": 7765,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 26.7,
+      "sg": 28.2,
+      "gl": 6.6,
+      "rl": 39.8,
+      "rg": 51.2,
+      "pg": 11.3
+    },
+    "peak_rating": 31.93,
+    "last_rating": 22.16,
+    "first_ts": 1576094310,
+    "last_ts": 1780513170
   },
   {
     "sid": "76561197970616509",
@@ -786,113 +869,58 @@
     "last_ts": 1749681249
   },
   {
-    "sid": "76561198030933162",
-    "nicks": [
-      "Lewkario",
-      "Lokario"
-    ],
-    "games": 2306,
-    "wins": 1113,
-    "losses": 1193,
-    "win_rate_pct": 48.3,
-    "avg_frags": 42.3,
-    "avg_deaths": 36.9,
-    "avg_dmg_dealt": 7352,
-    "avg_dmg_taken": 6817,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 24.6,
-      "sg": 28.6,
-      "gl": 8.4,
-      "rl": 34.1,
-      "rg": 49.9,
-      "pg": 13.2
-    },
-    "peak_rating": 27.37,
-    "last_rating": 8.23,
-    "first_ts": 1575918311,
-    "last_ts": 1779383340
-  },
-  {
-    "sid": "76561198075628646",
-    "nicks": [
-      "fo_tbh"
-    ],
-    "games": 2277,
-    "wins": 1117,
-    "losses": 1160,
-    "win_rate_pct": 49.1,
-    "avg_frags": 52.9,
-    "avg_deaths": 49.5,
-    "avg_dmg_dealt": 9724,
-    "avg_dmg_taken": 7752,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 34.7,
-      "sg": 30.6,
-      "gl": 10.4,
-      "rl": 42.3,
-      "rg": 54.7,
-      "pg": 14.4
-    },
-    "peak_rating": 41.06,
-    "last_rating": 33.77,
-    "first_ts": 1576006462,
-    "last_ts": 1779306332
-  },
-  {
-    "sid": "76561198031267126",
-    "nicks": [
-      "sno"
-    ],
-    "games": 2275,
-    "wins": 1132,
-    "losses": 1143,
-    "win_rate_pct": 49.8,
-    "avg_frags": 48.4,
-    "avg_deaths": 48.4,
-    "avg_dmg_dealt": 8377,
-    "avg_dmg_taken": 7757,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 26.6,
-      "sg": 28.2,
-      "gl": 6.6,
-      "rl": 39.8,
-      "rg": 51.2,
-      "pg": 11.3
-    },
-    "peak_rating": 31.93,
-    "last_rating": 22.08,
-    "first_ts": 1576094310,
-    "last_ts": 1779383340
-  },
-  {
     "sid": "76561197985659232",
     "nicks": [
       "DkH matr1x"
     ],
-    "games": 2244,
-    "wins": 1162,
-    "losses": 1082,
+    "games": 2291,
+    "wins": 1186,
+    "losses": 1105,
     "win_rate_pct": 51.8,
-    "avg_frags": 50.5,
-    "avg_deaths": 51,
-    "avg_dmg_dealt": 8687,
-    "avg_dmg_taken": 7653,
+    "avg_frags": 50.6,
+    "avg_deaths": 50.9,
+    "avg_dmg_dealt": 8702,
+    "avg_dmg_taken": 7646,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 22,
       "sg": 31,
-      "gl": 10.1,
+      "gl": 10,
       "rl": 31.9,
-      "rg": 53.5,
+      "rg": 53.6,
       "pg": 11.5
     },
     "peak_rating": 21.48,
-    "last_rating": 17.49,
+    "last_rating": 17.39,
     "first_ts": 1613265745,
-    "last_ts": 1779131883
+    "last_ts": 1780430039
+  },
+  {
+    "sid": "76561198077156894",
+    "nicks": [
+      "apex"
+    ],
+    "games": 2260,
+    "wins": 1094,
+    "losses": 1166,
+    "win_rate_pct": 48.4,
+    "avg_frags": 51,
+    "avg_deaths": 63.2,
+    "avg_dmg_dealt": 9550,
+    "avg_dmg_taken": 9164,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 22.4,
+      "sg": 26.9,
+      "gl": 17.6,
+      "rl": 44.6,
+      "rg": 50.8,
+      "pg": 14.3
+    },
+    "peak_rating": 36.79,
+    "last_rating": 22.81,
+    "first_ts": 1575914641,
+    "last_ts": 1780522479
   },
   {
     "sid": "76561198156511395",
@@ -922,31 +950,33 @@
     "last_ts": 1715019316
   },
   {
-    "sid": "76561198077156894",
+    "sid": "76561197963388994",
     "nicks": [
-      "apex"
+      "xYz*k1lem",
+      "kilemall",
+      "20elonoob-LAGWARP"
     ],
-    "games": 2204,
-    "wins": 1076,
-    "losses": 1128,
-    "win_rate_pct": 48.8,
-    "avg_frags": 51.1,
-    "avg_deaths": 62.9,
-    "avg_dmg_dealt": 9570,
-    "avg_dmg_taken": 9143,
+    "games": 2188,
+    "wins": 1152,
+    "losses": 1036,
+    "win_rate_pct": 52.7,
+    "avg_frags": 51.3,
+    "avg_deaths": 53,
+    "avg_dmg_dealt": 9492,
+    "avg_dmg_taken": 7878,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 22.4,
-      "sg": 26.9,
-      "gl": 17.7,
-      "rl": 44.6,
-      "rg": 50.8,
-      "pg": 14.3
+      "mg": 24.2,
+      "sg": 28.5,
+      "gl": 9.8,
+      "rl": 44.1,
+      "rg": 56,
+      "pg": 10.9
     },
-    "peak_rating": 36.79,
-    "last_rating": 24.1,
-    "first_ts": 1575914641,
-    "last_ts": 1779387222
+    "peak_rating": 26.84,
+    "last_rating": 25.86,
+    "first_ts": 1632257661,
+    "last_ts": 1780525976
   },
   {
     "sid": "76561197965308771",
@@ -980,14 +1010,14 @@
     "nicks": [
       "jcb"
     ],
-    "games": 2081,
-    "wins": 1069,
-    "losses": 1012,
-    "win_rate_pct": 51.4,
+    "games": 2093,
+    "wins": 1072,
+    "losses": 1021,
+    "win_rate_pct": 51.2,
     "avg_frags": 55.1,
-    "avg_deaths": 51.3,
-    "avg_dmg_dealt": 10145,
-    "avg_dmg_taken": 7971,
+    "avg_deaths": 51.4,
+    "avg_dmg_dealt": 10147,
+    "avg_dmg_taken": 7979,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.3,
@@ -998,23 +1028,23 @@
       "pg": 15.6
     },
     "peak_rating": 41.07,
-    "last_rating": 38.48,
+    "last_rating": 38.26,
     "first_ts": 1576180989,
-    "last_ts": 1778703464
+    "last_ts": 1780343740
   },
   {
     "sid": "76561198256969692",
     "nicks": [
       "10eloguy"
     ],
-    "games": 2072,
+    "games": 2074,
     "wins": 1031,
-    "losses": 1041,
-    "win_rate_pct": 49.8,
+    "losses": 1043,
+    "win_rate_pct": 49.7,
     "avg_frags": 32.5,
-    "avg_deaths": 52.1,
+    "avg_deaths": 52,
     "avg_dmg_dealt": 6176,
-    "avg_dmg_taken": 7285,
+    "avg_dmg_taken": 7284,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 19,
@@ -1025,23 +1055,23 @@
       "pg": 8.9
     },
     "peak_rating": 27.14,
-    "last_rating": 9.17,
+    "last_rating": 8.73,
     "first_ts": 1576103804,
-    "last_ts": 1779300973
+    "last_ts": 1780253664
   },
   {
     "sid": "76561198129795100",
     "nicks": [
       "FizzY"
     ],
-    "games": 2004,
-    "wins": 1018,
-    "losses": 986,
-    "win_rate_pct": 50.8,
-    "avg_frags": 35.6,
+    "games": 2021,
+    "wins": 1025,
+    "losses": 996,
+    "win_rate_pct": 50.7,
+    "avg_frags": 35.7,
     "avg_deaths": 65.4,
-    "avg_dmg_dealt": 6698,
-    "avg_dmg_taken": 8502,
+    "avg_dmg_dealt": 6709,
+    "avg_dmg_taken": 8508,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 22.9,
@@ -1052,58 +1082,57 @@
       "pg": 10.1
     },
     "peak_rating": 14.11,
-    "last_rating": 1.65,
+    "last_rating": 1.12,
     "first_ts": 1631376378,
-    "last_ts": 1779306332
+    "last_ts": 1780520546
   },
   {
-    "sid": "76561197963388994",
+    "sid": "76561198914897304",
     "nicks": [
-      "xYz*k1lem",
-      "kilemall"
+      "VK"
     ],
-    "games": 1984,
-    "wins": 1042,
-    "losses": 942,
-    "win_rate_pct": 52.5,
-    "avg_frags": 50.9,
-    "avg_deaths": 52.9,
-    "avg_dmg_dealt": 9422,
-    "avg_dmg_taken": 7863,
+    "games": 1983,
+    "wins": 972,
+    "losses": 1011,
+    "win_rate_pct": 49,
+    "avg_frags": 39.7,
+    "avg_deaths": 59.2,
+    "avg_dmg_dealt": 7306,
+    "avg_dmg_taken": 8668,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 24.2,
-      "sg": 28.6,
-      "gl": 9.8,
-      "rl": 44,
-      "rg": 55.9,
-      "pg": 10.9
+      "mg": 24.9,
+      "sg": 27.4,
+      "gl": 10.5,
+      "rl": 38.8,
+      "rg": 48.9,
+      "pg": 12.9
     },
-    "peak_rating": 26.26,
-    "last_rating": 26.26,
-    "first_ts": 1632257661,
-    "last_ts": 1779400823
+    "peak_rating": 30.47,
+    "last_rating": 13.11,
+    "first_ts": 1578847735,
+    "last_ts": 1780527588
   },
   {
     "sid": "76561197960736529",
     "nicks": [
       "CUBA iOio_"
     ],
-    "games": 1941,
-    "wins": 1036,
-    "losses": 905,
-    "win_rate_pct": 53.4,
-    "avg_frags": 52.8,
+    "games": 1968,
+    "wins": 1052,
+    "losses": 916,
+    "win_rate_pct": 53.5,
+    "avg_frags": 52.9,
     "avg_deaths": 57.5,
-    "avg_dmg_dealt": 9562,
-    "avg_dmg_taken": 8380,
+    "avg_dmg_dealt": 9568,
+    "avg_dmg_taken": 8385,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 33.1,
+      "mg": 33,
       "sg": 30.8,
       "gl": 11.7,
       "rl": 41.9,
-      "rg": 58.8,
+      "rg": 58.7,
       "pg": 13
     },
     "peak_rating": 32.31,
@@ -1116,68 +1145,95 @@
     "nicks": [
       "gaz"
     ],
-    "games": 1939,
-    "wins": 988,
-    "losses": 951,
-    "win_rate_pct": 51,
+    "games": 1958,
+    "wins": 995,
+    "losses": 963,
+    "win_rate_pct": 50.8,
     "avg_frags": 55,
-    "avg_deaths": 43.7,
-    "avg_dmg_dealt": 9362,
-    "avg_dmg_taken": 7142,
+    "avg_deaths": 43.9,
+    "avg_dmg_dealt": 9360,
+    "avg_dmg_taken": 7155,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 33.5,
       "sg": 30.7,
-      "gl": 6.8,
+      "gl": 6.9,
       "rl": 34.8,
       "rg": 57.4,
       "pg": 12.4
     },
     "peak_rating": 23.94,
-    "last_rating": 21.21,
+    "last_rating": 20.57,
     "first_ts": 1686600937,
-    "last_ts": 1776112140
+    "last_ts": 1776985464
   },
   {
-    "sid": "76561198914897304",
+    "sid": "76561198032236208",
     "nicks": [
-      "VK"
+      "enesy"
     ],
-    "games": 1937,
-    "wins": 953,
-    "losses": 984,
-    "win_rate_pct": 49.2,
-    "avg_frags": 39.7,
-    "avg_deaths": 59.1,
-    "avg_dmg_dealt": 7305,
-    "avg_dmg_taken": 8659,
+    "games": 1944,
+    "wins": 1056,
+    "losses": 888,
+    "win_rate_pct": 54.3,
+    "avg_frags": 62.4,
+    "avg_deaths": 68.3,
+    "avg_dmg_dealt": 11529,
+    "avg_dmg_taken": 9339,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 24.9,
-      "sg": 27.4,
-      "gl": 10.5,
-      "rl": 38.8,
-      "rg": 48.9,
-      "pg": 12.8
+      "mg": 30.6,
+      "sg": 34.3,
+      "gl": 7.1,
+      "rl": 49.8,
+      "rg": 60.2,
+      "pg": 12.6
     },
-    "peak_rating": 30.47,
-    "last_rating": 14.91,
-    "first_ts": 1578847735,
-    "last_ts": 1759010766
+    "peak_rating": 41.08,
+    "last_rating": 41.08,
+    "first_ts": 1724020619,
+    "last_ts": 1780180095
+  },
+  {
+    "sid": "76561198023589138",
+    "nicks": [
+      "ins"
+    ],
+    "games": 1933,
+    "wins": 988,
+    "losses": 945,
+    "win_rate_pct": 51.1,
+    "avg_frags": 59.5,
+    "avg_deaths": 49.1,
+    "avg_dmg_dealt": 10399,
+    "avg_dmg_taken": 7799,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 37.6,
+      "sg": 33.6,
+      "gl": 8.6,
+      "rl": 47.7,
+      "rg": 62.9,
+      "pg": 12.7
+    },
+    "peak_rating": 34.95,
+    "last_rating": 33.37,
+    "first_ts": 1576186811,
+    "last_ts": 1780244265
   },
   {
     "sid": "76561198008234329",
     "nicks": [
       "MAKIE"
     ],
-    "games": 1902,
-    "wins": 962,
-    "losses": 940,
-    "win_rate_pct": 50.6,
-    "avg_frags": 57.6,
+    "games": 1916,
+    "wins": 965,
+    "losses": 951,
+    "win_rate_pct": 50.4,
+    "avg_frags": 57.5,
     "avg_deaths": 61.8,
-    "avg_dmg_dealt": 10634,
-    "avg_dmg_taken": 8644,
+    "avg_dmg_dealt": 10627,
+    "avg_dmg_taken": 8648,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 26.1,
@@ -1193,58 +1249,31 @@
     "last_ts": 1778950551
   },
   {
-    "sid": "76561198023589138",
+    "sid": "76561198146434639",
     "nicks": [
-      "ins"
+      ":)"
     ],
-    "games": 1887,
-    "wins": 960,
-    "losses": 927,
-    "win_rate_pct": 50.9,
-    "avg_frags": 59.6,
-    "avg_deaths": 49.1,
-    "avg_dmg_dealt": 10407,
-    "avg_dmg_taken": 7798,
+    "games": 1781,
+    "wins": 929,
+    "losses": 852,
+    "win_rate_pct": 52.2,
+    "avg_frags": 44.6,
+    "avg_deaths": 44,
+    "avg_dmg_dealt": 7566,
+    "avg_dmg_taken": 7338,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 37.6,
-      "sg": 33.6,
+      "mg": 21.8,
+      "sg": 28.6,
       "gl": 8.7,
-      "rl": 47.7,
-      "rg": 62.8,
-      "pg": 12.6
+      "rl": 41.4,
+      "rg": 49.7,
+      "pg": 11.5
     },
-    "peak_rating": 34.95,
-    "last_rating": 33.11,
-    "first_ts": 1576186811,
-    "last_ts": 1779314173
-  },
-  {
-    "sid": "76561198032236208",
-    "nicks": [
-      "enesy"
-    ],
-    "games": 1881,
-    "wins": 1021,
-    "losses": 860,
-    "win_rate_pct": 54.3,
-    "avg_frags": 62.3,
-    "avg_deaths": 68.2,
-    "avg_dmg_dealt": 11514,
-    "avg_dmg_taken": 9325,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 30.6,
-      "sg": 34.3,
-      "gl": 7.1,
-      "rl": 49.8,
-      "rg": 60.2,
-      "pg": 12.6
-    },
-    "peak_rating": 40.64,
-    "last_rating": 40.4,
-    "first_ts": 1724020619,
-    "last_ts": 1779131883
+    "peak_rating": 23.95,
+    "last_rating": 21.57,
+    "first_ts": 1663957821,
+    "last_ts": 1780433817
   },
   {
     "sid": "76561198257310626",
@@ -1278,27 +1307,27 @@
     "nicks": [
       "Baldur"
     ],
-    "games": 1756,
+    "games": 1763,
     "wins": 915,
-    "losses": 841,
-    "win_rate_pct": 52.1,
+    "losses": 848,
+    "win_rate_pct": 51.9,
     "avg_frags": 57.3,
-    "avg_deaths": 41.8,
+    "avg_deaths": 41.9,
     "avg_dmg_dealt": 9466,
-    "avg_dmg_taken": 7344,
+    "avg_dmg_taken": 7351,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 34.6,
       "sg": 30.5,
       "gl": 9.7,
-      "rl": 38.7,
+      "rl": 38.6,
       "rg": 57.7,
       "pg": 13.5
     },
     "peak_rating": 34.5,
-    "last_rating": 31.22,
+    "last_rating": 29.73,
     "first_ts": 1591449816,
-    "last_ts": 1775858776
+    "last_ts": 1777153891
   },
   {
     "sid": "76561198054868921",
@@ -1328,33 +1357,6 @@
     "last_ts": 1728002492
   },
   {
-    "sid": "76561198146434639",
-    "nicks": [
-      ":)"
-    ],
-    "games": 1726,
-    "wins": 899,
-    "losses": 827,
-    "win_rate_pct": 52.1,
-    "avg_frags": 44.4,
-    "avg_deaths": 44.1,
-    "avg_dmg_dealt": 7534,
-    "avg_dmg_taken": 7337,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 21.8,
-      "sg": 28.6,
-      "gl": 8.7,
-      "rl": 41.4,
-      "rg": 49.6,
-      "pg": 11.5
-    },
-    "peak_rating": 23.89,
-    "last_rating": 22.21,
-    "first_ts": 1663957821,
-    "last_ts": 1779309792
-  },
-  {
     "sid": "76561198285680726",
     "nicks": [
       "Boar of Bordeaux"
@@ -1380,6 +1382,34 @@
     "last_rating": 15.19,
     "first_ts": 1575908973,
     "last_ts": 1705965621
+  },
+  {
+    "sid": "76561198122684842",
+    "nicks": [
+      "fO* Osnart",
+      "D00M Osnart"
+    ],
+    "games": 1704,
+    "wins": 839,
+    "losses": 865,
+    "win_rate_pct": 49.2,
+    "avg_frags": 46.2,
+    "avg_deaths": 58.8,
+    "avg_dmg_dealt": 8593,
+    "avg_dmg_taken": 8808,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 26.1,
+      "sg": 29.5,
+      "gl": 10.6,
+      "rl": 41.6,
+      "rg": 51.7,
+      "pg": 14.4
+    },
+    "peak_rating": 29.76,
+    "last_rating": 21.02,
+    "first_ts": 1577028075,
+    "last_ts": 1780516753
   },
   {
     "sid": "76561198257374234",
@@ -1412,84 +1442,57 @@
     "sid": "76561198151319268",
     "nicks": [
       "CUBA artemis4",
-      "SARGE artemis4"
+      "SARGE artemis4",
+      "artemis4"
     ],
-    "games": 1625,
-    "wins": 894,
-    "losses": 731,
-    "win_rate_pct": 55,
+    "games": 1632,
+    "wins": 896,
+    "losses": 736,
+    "win_rate_pct": 54.9,
     "avg_frags": 47.5,
     "avg_deaths": 58.1,
-    "avg_dmg_dealt": 8841,
-    "avg_dmg_taken": 8357,
+    "avg_dmg_dealt": 8843,
+    "avg_dmg_taken": 8362,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 29.5,
-      "sg": 28.2,
+      "sg": 28.3,
       "gl": 11.9,
       "rl": 40.6,
-      "rg": 50.8,
+      "rg": 50.7,
       "pg": 12.5
     },
     "peak_rating": 28.03,
-    "last_rating": 26.12,
+    "last_rating": 25.84,
     "first_ts": 1602280505,
-    "last_ts": 1779136769
+    "last_ts": 1780172642
   },
   {
     "sid": "76561198895628868",
     "nicks": [
       "fr0z"
     ],
-    "games": 1586,
-    "wins": 778,
-    "losses": 808,
-    "win_rate_pct": 49.1,
+    "games": 1628,
+    "wins": 794,
+    "losses": 834,
+    "win_rate_pct": 48.8,
     "avg_frags": 51.7,
-    "avg_deaths": 43.4,
-    "avg_dmg_dealt": 9055,
-    "avg_dmg_taken": 7040,
+    "avg_deaths": 43.2,
+    "avg_dmg_dealt": 9050,
+    "avg_dmg_taken": 7035,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 30.8,
-      "sg": 28,
+      "sg": 27.9,
       "gl": 7.8,
-      "rl": 40.7,
-      "rg": 51.3,
+      "rl": 40.6,
+      "rg": 51.2,
       "pg": 14.7
     },
     "peak_rating": 31.37,
-    "last_rating": 25,
+    "last_rating": 24.01,
     "first_ts": 1711313651,
-    "last_ts": 1779389395
-  },
-  {
-    "sid": "76561198122684842",
-    "nicks": [
-      "fO* Osnart",
-      "D00M Osnart"
-    ],
-    "games": 1580,
-    "wins": 773,
-    "losses": 807,
-    "win_rate_pct": 48.9,
-    "avg_frags": 46.3,
-    "avg_deaths": 58.7,
-    "avg_dmg_dealt": 8609,
-    "avg_dmg_taken": 8785,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 26.2,
-      "sg": 29.3,
-      "gl": 10.6,
-      "rl": 41.6,
-      "rg": 51.4,
-      "pg": 14.4
-    },
-    "peak_rating": 29.76,
-    "last_rating": 20.88,
-    "first_ts": 1577028075,
-    "last_ts": 1779131883
+    "last_ts": 1779739061
   },
   {
     "sid": "76561198122207599",
@@ -1517,6 +1520,33 @@
     "last_rating": null,
     "first_ts": 1576016636,
     "last_ts": 1762470633
+  },
+  {
+    "sid": "76561198336074607",
+    "nicks": [
+      "AC/DC Charv"
+    ],
+    "games": 1543,
+    "wins": 754,
+    "losses": 789,
+    "win_rate_pct": 48.9,
+    "avg_frags": 35.2,
+    "avg_deaths": 59.3,
+    "avg_dmg_dealt": 6529,
+    "avg_dmg_taken": 7911,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 21.8,
+      "sg": 20.1,
+      "gl": 9.3,
+      "rl": 36.5,
+      "rg": 36.4,
+      "pg": 9.4
+    },
+    "peak_rating": 21.5,
+    "last_rating": 4.49,
+    "first_ts": 1588194318,
+    "last_ts": 1780509115
   },
   {
     "sid": "76561198318866295",
@@ -1573,33 +1603,6 @@
     "last_ts": 1769802472
   },
   {
-    "sid": "76561198336074607",
-    "nicks": [
-      "AC/DC Charv"
-    ],
-    "games": 1492,
-    "wins": 727,
-    "losses": 765,
-    "win_rate_pct": 48.7,
-    "avg_frags": 35,
-    "avg_deaths": 59.1,
-    "avg_dmg_dealt": 6498,
-    "avg_dmg_taken": 7886,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 21.7,
-      "sg": 20,
-      "gl": 9.3,
-      "rl": 36.3,
-      "rg": 36.3,
-      "pg": 9.4
-    },
-    "peak_rating": 21.5,
-    "last_rating": 4.73,
-    "first_ts": 1588194318,
-    "last_ts": 1779385391
-  },
-  {
     "sid": "76561197971148249",
     "nicks": [
       "djinx"
@@ -1631,14 +1634,14 @@
     "nicks": [
       "massoth"
     ],
-    "games": 1471,
-    "wins": 738,
-    "losses": 733,
-    "win_rate_pct": 50.2,
+    "games": 1479,
+    "wins": 740,
+    "losses": 739,
+    "win_rate_pct": 50,
     "avg_frags": 55.4,
     "avg_deaths": 50.8,
-    "avg_dmg_dealt": 9652,
-    "avg_dmg_taken": 7664,
+    "avg_dmg_dealt": 9650,
+    "avg_dmg_taken": 7667,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.7,
@@ -1657,46 +1660,47 @@
     "sid": "76561198007335390",
     "nicks": [
       "lihensior",
-      "kon jest koniem"
+      "kon jest koniem",
+      "tarczo-bębny"
     ],
-    "games": 1446,
-    "wins": 787,
-    "losses": 659,
+    "games": 1477,
+    "wins": 803,
+    "losses": 674,
     "win_rate_pct": 54.4,
     "avg_frags": 62.9,
-    "avg_deaths": 52.9,
-    "avg_dmg_dealt": 10893,
-    "avg_dmg_taken": 7871,
+    "avg_deaths": 53,
+    "avg_dmg_dealt": 10896,
+    "avg_dmg_taken": 7887,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 32.6,
+      "mg": 32.5,
       "sg": 29.1,
-      "gl": 8.8,
-      "rl": 34.9,
+      "gl": 8.7,
+      "rl": 34.8,
       "rg": 56.2,
       "pg": 11.1
     },
     "peak_rating": 36.69,
-    "last_rating": 34.56,
+    "last_rating": 34.42,
     "first_ts": 1671667816,
-    "last_ts": 1779389395
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198254687687",
     "nicks": [
       "KRL"
     ],
-    "games": 1428,
-    "wins": 716,
-    "losses": 712,
-    "win_rate_pct": 50.1,
+    "games": 1456,
+    "wins": 732,
+    "losses": 724,
+    "win_rate_pct": 50.3,
     "avg_frags": 60.2,
     "avg_deaths": 52.6,
-    "avg_dmg_dealt": 11192,
-    "avg_dmg_taken": 7690,
+    "avg_dmg_dealt": 11195,
+    "avg_dmg_taken": 7695,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 31.7,
+      "mg": 31.8,
       "sg": 30.8,
       "gl": 12,
       "rl": 42.4,
@@ -1704,9 +1708,9 @@
       "pg": 10.5
     },
     "peak_rating": 32.24,
-    "last_rating": 27.56,
+    "last_rating": 27.41,
     "first_ts": 1577480155,
-    "last_ts": 1779383340
+    "last_ts": 1779831596
   },
   {
     "sid": "76561198257521635",
@@ -1736,6 +1740,33 @@
     "last_ts": 1712448590
   },
   {
+    "sid": "76561198068070185",
+    "nicks": [
+      "KungShit"
+    ],
+    "games": 1377,
+    "wins": 686,
+    "losses": 691,
+    "win_rate_pct": 49.8,
+    "avg_frags": 50.2,
+    "avg_deaths": 50.5,
+    "avg_dmg_dealt": 8932,
+    "avg_dmg_taken": 7223,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 27.6,
+      "sg": 28.6,
+      "gl": 10.8,
+      "rl": 34.5,
+      "rg": 49.3,
+      "pg": 11.7
+    },
+    "peak_rating": 21.85,
+    "last_rating": 16.11,
+    "first_ts": 1608668327,
+    "last_ts": 1780433817
+  },
+  {
     "sid": "76561198257496197",
     "nicks": [
       "CRYING LAUGHING POMIDOREK"
@@ -1761,33 +1792,6 @@
     "last_rating": 13.83,
     "first_ts": 1577734490,
     "last_ts": 1767402305
-  },
-  {
-    "sid": "76561198068070185",
-    "nicks": [
-      "KungShit"
-    ],
-    "games": 1350,
-    "wins": 674,
-    "losses": 676,
-    "win_rate_pct": 49.9,
-    "avg_frags": 50.1,
-    "avg_deaths": 50.4,
-    "avg_dmg_dealt": 8918,
-    "avg_dmg_taken": 7205,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 27.6,
-      "sg": 28.6,
-      "gl": 10.8,
-      "rl": 34.4,
-      "rg": 49.4,
-      "pg": 11.6
-    },
-    "peak_rating": 21.85,
-    "last_rating": 16.54,
-    "first_ts": 1608668327,
-    "last_ts": 1776556104
   },
   {
     "sid": "76561198140092774",
@@ -1819,16 +1823,17 @@
   {
     "sid": "76561198035671947",
     "nicks": [
-      "jävla snoppdragare"
+      "jävla snoppdragare",
+      "HelloKittyOnAcid"
     ],
-    "games": 1289,
-    "wins": 703,
-    "losses": 586,
-    "win_rate_pct": 54.5,
-    "avg_frags": 51.1,
-    "avg_deaths": 65.5,
-    "avg_dmg_dealt": 9528,
-    "avg_dmg_taken": 8523,
+    "games": 1300,
+    "wins": 707,
+    "losses": 593,
+    "win_rate_pct": 54.4,
+    "avg_frags": 51.2,
+    "avg_deaths": 65.6,
+    "avg_dmg_dealt": 9542,
+    "avg_dmg_taken": 8531,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 31.7,
@@ -1836,29 +1841,57 @@
       "gl": 11.9,
       "rl": 43.2,
       "rg": 56,
-      "pg": 13.9
+      "pg": 14
     },
     "peak_rating": 21.81,
-    "last_rating": 20.01,
+    "last_rating": 19.33,
     "first_ts": 1605550975,
-    "last_ts": 1774739500
+    "last_ts": 1777847487
+  },
+  {
+    "sid": "76561198257221973",
+    "nicks": [
+      "zip trash",
+      "waste of space"
+    ],
+    "games": 1299,
+    "wins": 679,
+    "losses": 620,
+    "win_rate_pct": 52.3,
+    "avg_frags": 50.2,
+    "avg_deaths": 60.7,
+    "avg_dmg_dealt": 9075,
+    "avg_dmg_taken": 8222,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.4,
+      "sg": 29.5,
+      "gl": 11.7,
+      "rl": 37.1,
+      "rg": 54.3,
+      "pg": 12.5
+    },
+    "peak_rating": 17.35,
+    "last_rating": 14.74,
+    "first_ts": 1763067927,
+    "last_ts": 1780527588
   },
   {
     "sid": "76561197983318796",
     "nicks": [
       "ion"
     ],
-    "games": 1260,
-    "wins": 646,
-    "losses": 614,
-    "win_rate_pct": 51.3,
-    "avg_frags": 63.6,
-    "avg_deaths": 51.9,
-    "avg_dmg_dealt": 11428,
-    "avg_dmg_taken": 7486,
+    "games": 1290,
+    "wins": 657,
+    "losses": 633,
+    "win_rate_pct": 50.9,
+    "avg_frags": 63.5,
+    "avg_deaths": 52.1,
+    "avg_dmg_dealt": 11414,
+    "avg_dmg_taken": 7499,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 32.2,
+      "mg": 32.1,
       "sg": 31.4,
       "gl": 10,
       "rl": 31.4,
@@ -1866,58 +1899,85 @@
       "pg": 15.7
     },
     "peak_rating": 40.32,
-    "last_rating": 31.85,
+    "last_rating": 31.69,
     "first_ts": 1575925751,
-    "last_ts": 1778783517
+    "last_ts": 1780353906
   },
   {
     "sid": "76561198240378464",
     "nicks": [
       "PETERROR"
     ],
-    "games": 1244,
-    "wins": 605,
-    "losses": 639,
-    "win_rate_pct": 48.6,
-    "avg_frags": 45,
-    "avg_deaths": 52.4,
-    "avg_dmg_dealt": 8232,
-    "avg_dmg_taken": 7701,
+    "games": 1277,
+    "wins": 624,
+    "losses": 653,
+    "win_rate_pct": 48.9,
+    "avg_frags": 45.1,
+    "avg_deaths": 52.6,
+    "avg_dmg_dealt": 8252,
+    "avg_dmg_taken": 7720,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 22.2,
-      "sg": 25.3,
+      "sg": 25.4,
       "gl": 9.9,
       "rl": 36,
       "rg": 49.8,
       "pg": 10.2
     },
     "peak_rating": 28.41,
-    "last_rating": 8.86,
+    "last_rating": 8.57,
     "first_ts": 1587304744,
-    "last_ts": 1779389395
+    "last_ts": 1780338749
+  },
+  {
+    "sid": "76561198077163281",
+    "nicks": [
+      "DEM0N"
+    ],
+    "games": 1247,
+    "wins": 671,
+    "losses": 576,
+    "win_rate_pct": 53.8,
+    "avg_frags": 56.8,
+    "avg_deaths": 54.6,
+    "avg_dmg_dealt": 10586,
+    "avg_dmg_taken": 8470,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 31.3,
+      "sg": 30.3,
+      "gl": 11.1,
+      "rl": 42.9,
+      "rg": 54.6,
+      "pg": 14.8
+    },
+    "peak_rating": 47.44,
+    "last_rating": 42.03,
+    "first_ts": 1624584833,
+    "last_ts": 1780520546
   },
   {
     "sid": "76561198114832578",
     "nicks": [
       "kirson"
     ],
-    "games": 1215,
-    "wins": 625,
-    "losses": 590,
-    "win_rate_pct": 51.4,
+    "games": 1240,
+    "wins": 636,
+    "losses": 604,
+    "win_rate_pct": 51.3,
     "avg_frags": 59.8,
     "avg_deaths": 55,
-    "avg_dmg_dealt": 10864,
-    "avg_dmg_taken": 7982,
+    "avg_dmg_dealt": 10847,
+    "avg_dmg_taken": 7984,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 30.7,
+      "mg": 30.8,
       "sg": 29.5,
       "gl": 8,
-      "rl": 42.2,
+      "rl": 42.3,
       "rg": 63.8,
-      "pg": 15
+      "pg": 15.1
     },
     "peak_rating": 37.21,
     "last_rating": 31.06,
@@ -1925,99 +1985,72 @@
     "last_ts": 1779128338
   },
   {
-    "sid": "76561198077163281",
-    "nicks": [
-      "DEM0N"
-    ],
-    "games": 1174,
-    "wins": 633,
-    "losses": 541,
-    "win_rate_pct": 53.9,
-    "avg_frags": 56.6,
-    "avg_deaths": 54.6,
-    "avg_dmg_dealt": 10550,
-    "avg_dmg_taken": 8472,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31.2,
-      "sg": 30.2,
-      "gl": 11.1,
-      "rl": 42.8,
-      "rg": 54.4,
-      "pg": 14.7
-    },
-    "peak_rating": 47.44,
-    "last_rating": 41.79,
-    "first_ts": 1624584833,
-    "last_ts": 1779385391
-  },
-  {
     "sid": "76561198098137308",
     "nicks": [
       "Have Hugs☻"
     ],
-    "games": 1154,
-    "wins": 613,
-    "losses": 541,
-    "win_rate_pct": 53.1,
+    "games": 1167,
+    "wins": 621,
+    "losses": 546,
+    "win_rate_pct": 53.2,
     "avg_frags": 38.2,
-    "avg_deaths": 63.6,
-    "avg_dmg_dealt": 7179,
-    "avg_dmg_taken": 8874,
+    "avg_deaths": 63.7,
+    "avg_dmg_dealt": 7183,
+    "avg_dmg_taken": 8881,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 24.5,
       "sg": 25,
-      "gl": 12.6,
-      "rl": 38.1,
-      "rg": 53.1,
+      "gl": 12.5,
+      "rl": 38,
+      "rg": 53.2,
       "pg": 11.2
     },
     "peak_rating": 28.26,
-    "last_rating": 9.68,
+    "last_rating": 10.02,
     "first_ts": 1641672263,
-    "last_ts": 1779396125
+    "last_ts": 1780338749
   },
   {
-    "sid": "76561198117978344",
+    "sid": "76561197973893045",
     "nicks": [
-      "ṁǔτⱥṅτ›"
+      "ást* KHAN"
     ],
-    "games": 1092,
-    "wins": 571,
-    "losses": 521,
-    "win_rate_pct": 52.3,
-    "avg_frags": 64,
-    "avg_deaths": 37.7,
-    "avg_dmg_dealt": 11081,
-    "avg_dmg_taken": 6158,
+    "games": 1109,
+    "wins": 522,
+    "losses": 587,
+    "win_rate_pct": 47.1,
+    "avg_frags": 47.7,
+    "avg_deaths": 47.3,
+    "avg_dmg_dealt": 8358,
+    "avg_dmg_taken": 7231,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 42.6,
-      "sg": 35.6,
-      "gl": 13.3,
-      "rl": 44.9,
-      "rg": 66.3,
-      "pg": 13.1
+      "mg": 27.9,
+      "sg": 30.1,
+      "gl": 12,
+      "rl": 38.2,
+      "rg": 51.9,
+      "pg": 12.7
     },
-    "peak_rating": 26.27,
-    "last_rating": 22.55,
-    "first_ts": 1638916470,
-    "last_ts": 1776448000
+    "peak_rating": 28.95,
+    "last_rating": 15.5,
+    "first_ts": 1576085795,
+    "last_ts": 1777680520
   },
   {
     "sid": "76561198105088252",
     "nicks": [
       "PYTON"
     ],
-    "games": 1090,
-    "wins": 551,
-    "losses": 539,
-    "win_rate_pct": 50.6,
-    "avg_frags": 52.6,
-    "avg_deaths": 65.3,
-    "avg_dmg_dealt": 9650,
-    "avg_dmg_taken": 9226,
+    "games": 1106,
+    "wins": 559,
+    "losses": 547,
+    "win_rate_pct": 50.5,
+    "avg_frags": 52.5,
+    "avg_deaths": 65.2,
+    "avg_dmg_dealt": 9644,
+    "avg_dmg_taken": 9215,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 32.2,
@@ -2031,6 +2064,87 @@
     "last_rating": 24.61,
     "first_ts": 1639863200,
     "last_ts": 1779059862
+  },
+  {
+    "sid": "76561198001355736",
+    "nicks": [
+      "CharlesDoBronxs"
+    ],
+    "games": 1098,
+    "wins": 605,
+    "losses": 493,
+    "win_rate_pct": 55.1,
+    "avg_frags": 52.2,
+    "avg_deaths": 44,
+    "avg_dmg_dealt": 9205,
+    "avg_dmg_taken": 7586,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 29.1,
+      "sg": 28.6,
+      "gl": 7.5,
+      "rl": 42,
+      "rg": 54.6,
+      "pg": 14.1
+    },
+    "peak_rating": 39.43,
+    "last_rating": 35.79,
+    "first_ts": 1631308292,
+    "last_ts": 1780082609
+  },
+  {
+    "sid": "76561198239142044",
+    "nicks": [
+      "SPART1E"
+    ],
+    "games": 1094,
+    "wins": 566,
+    "losses": 528,
+    "win_rate_pct": 51.7,
+    "avg_frags": 62.5,
+    "avg_deaths": 24.3,
+    "avg_dmg_dealt": 10228,
+    "avg_dmg_taken": 6428,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.4,
+      "sg": 30.8,
+      "gl": 10.3,
+      "rl": 44.6,
+      "rg": 58.5,
+      "pg": 12.7
+    },
+    "peak_rating": 36.45,
+    "last_rating": 34.62,
+    "first_ts": 1576888271,
+    "last_ts": 1780273565
+  },
+  {
+    "sid": "76561198117978344",
+    "nicks": [
+      "ṁǔτⱥṅτ›"
+    ],
+    "games": 1093,
+    "wins": 572,
+    "losses": 521,
+    "win_rate_pct": 52.3,
+    "avg_frags": 64,
+    "avg_deaths": 37.7,
+    "avg_dmg_dealt": 11081,
+    "avg_dmg_taken": 6157,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 42.6,
+      "sg": 35.6,
+      "gl": 13.3,
+      "rl": 44.9,
+      "rg": 66.3,
+      "pg": 13.1
+    },
+    "peak_rating": 26.27,
+    "last_rating": 22.77,
+    "first_ts": 1638916470,
+    "last_ts": 1776628595
   },
   {
     "sid": "76561198201751381",
@@ -2060,60 +2174,6 @@
     "last_ts": 1771710811
   },
   {
-    "sid": "76561198001355736",
-    "nicks": [
-      "CharlesDoBronxs"
-    ],
-    "games": 1087,
-    "wins": 598,
-    "losses": 489,
-    "win_rate_pct": 55,
-    "avg_frags": 52.2,
-    "avg_deaths": 43.9,
-    "avg_dmg_dealt": 9202,
-    "avg_dmg_taken": 7575,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 29.1,
-      "sg": 28.6,
-      "gl": 7.5,
-      "rl": 42,
-      "rg": 54.5,
-      "pg": 14.1
-    },
-    "peak_rating": 39.43,
-    "last_rating": 35.93,
-    "first_ts": 1631308292,
-    "last_ts": 1779223608
-  },
-  {
-    "sid": "76561197973893045",
-    "nicks": [
-      "ást* KHAN"
-    ],
-    "games": 1085,
-    "wins": 511,
-    "losses": 574,
-    "win_rate_pct": 47.1,
-    "avg_frags": 47.7,
-    "avg_deaths": 47.3,
-    "avg_dmg_dealt": 8360,
-    "avg_dmg_taken": 7231,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 27.9,
-      "sg": 30.1,
-      "gl": 12,
-      "rl": 38.3,
-      "rg": 51.9,
-      "pg": 12.8
-    },
-    "peak_rating": 28.95,
-    "last_rating": 15.73,
-    "first_ts": 1576085795,
-    "last_ts": 1776373486
-  },
-  {
     "sid": "76561198000088567",
     "nicks": [
       "nvc"
@@ -2139,34 +2199,6 @@
     "last_rating": 21.4,
     "first_ts": 1576178574,
     "last_ts": 1772998065
-  },
-  {
-    "sid": "76561198257221973",
-    "nicks": [
-      "zip trash",
-      "waste of space"
-    ],
-    "games": 1069,
-    "wins": 556,
-    "losses": 513,
-    "win_rate_pct": 52,
-    "avg_frags": 50.4,
-    "avg_deaths": 60.4,
-    "avg_dmg_dealt": 9088,
-    "avg_dmg_taken": 8166,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 34.6,
-      "sg": 29.2,
-      "gl": 11.4,
-      "rl": 37.1,
-      "rg": 54.2,
-      "pg": 12.5
-    },
-    "peak_rating": 17.35,
-    "last_rating": 13.98,
-    "first_ts": 1763067927,
-    "last_ts": 1779400823
   },
   {
     "sid": "76561198228590616",
@@ -2196,31 +2228,31 @@
     "last_ts": 1751660428
   },
   {
-    "sid": "76561198239142044",
+    "sid": "76561197993423662",
     "nicks": [
-      "SPART1E"
+      "ratshit"
     ],
     "games": 1051,
-    "wins": 546,
-    "losses": 505,
-    "win_rate_pct": 52,
-    "avg_frags": 62.5,
-    "avg_deaths": 24.2,
-    "avg_dmg_dealt": 10221,
-    "avg_dmg_taken": 6414,
+    "wins": 543,
+    "losses": 508,
+    "win_rate_pct": 51.7,
+    "avg_frags": 48.7,
+    "avg_deaths": 50.6,
+    "avg_dmg_dealt": 8273,
+    "avg_dmg_taken": 7678,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 34.4,
-      "sg": 30.8,
-      "gl": 10.3,
-      "rl": 44.6,
-      "rg": 58.5,
-      "pg": 12.7
+      "mg": 29,
+      "sg": 24,
+      "gl": 7.4,
+      "rl": 35.3,
+      "rg": 49.7,
+      "pg": 10.8
     },
-    "peak_rating": 36.45,
-    "last_rating": 34.88,
-    "first_ts": 1576888271,
-    "last_ts": 1779059862
+    "peak_rating": 18.73,
+    "last_rating": 18.73,
+    "first_ts": 1726879492,
+    "last_ts": 1777767650
   },
   {
     "sid": "76561198139067104",
@@ -2331,58 +2363,58 @@
     "last_ts": 1759783368
   },
   {
-    "sid": "76561197993423662",
+    "sid": "76561198286173236",
     "nicks": [
-      "ratshit"
+      "jiji"
     ],
-    "games": 1013,
-    "wins": 520,
-    "losses": 493,
-    "win_rate_pct": 51.3,
-    "avg_frags": 48.9,
-    "avg_deaths": 50.7,
-    "avg_dmg_dealt": 8293,
-    "avg_dmg_taken": 7690,
+    "games": 1014,
+    "wins": 473,
+    "losses": 541,
+    "win_rate_pct": 46.6,
+    "avg_frags": 41.5,
+    "avg_deaths": 48.7,
+    "avg_dmg_dealt": 7439,
+    "avg_dmg_taken": 6922,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 29.1,
-      "sg": 24,
-      "gl": 7.5,
-      "rl": 35.5,
-      "rg": 49.9,
-      "pg": 10.8
+      "mg": 32.2,
+      "sg": 27.3,
+      "gl": 8.3,
+      "rl": 38,
+      "rg": 47.8,
+      "pg": 11.5
     },
-    "peak_rating": 18.21,
-    "last_rating": 17.53,
-    "first_ts": 1726879492,
-    "last_ts": 1776556104
+    "peak_rating": 21.33,
+    "last_rating": 5.13,
+    "first_ts": 1604012514,
+    "last_ts": 1778537476
   },
   {
     "sid": "76561198149540641",
     "nicks": [
       "chr"
     ],
-    "games": 974,
-    "wins": 491,
-    "losses": 483,
+    "games": 984,
+    "wins": 496,
+    "losses": 488,
     "win_rate_pct": 50.4,
     "avg_frags": 61.5,
-    "avg_deaths": 44.1,
-    "avg_dmg_dealt": 10377,
-    "avg_dmg_taken": 7608,
+    "avg_deaths": 43.9,
+    "avg_dmg_dealt": 10375,
+    "avg_dmg_taken": 7600,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 33.8,
-      "sg": 31.6,
+      "sg": 31.5,
       "gl": 7,
-      "rl": 35.9,
+      "rl": 35.8,
       "rg": 50.1,
       "pg": 12.8
     },
     "peak_rating": 38.78,
-    "last_rating": 35.84,
+    "last_rating": 35.87,
     "first_ts": 1576283450,
-    "last_ts": 1779383340
+    "last_ts": 1780010802
   },
   {
     "sid": "76561197971635353",
@@ -2412,33 +2444,6 @@
     "last_ts": 1771875695
   },
   {
-    "sid": "76561198286173236",
-    "nicks": [
-      "jiji"
-    ],
-    "games": 961,
-    "wins": 448,
-    "losses": 513,
-    "win_rate_pct": 46.6,
-    "avg_frags": 41.5,
-    "avg_deaths": 48.6,
-    "avg_dmg_dealt": 7423,
-    "avg_dmg_taken": 6911,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 32.2,
-      "sg": 27.1,
-      "gl": 8.2,
-      "rl": 37.9,
-      "rg": 47.8,
-      "pg": 11.4
-    },
-    "peak_rating": 21.33,
-    "last_rating": 5.13,
-    "first_ts": 1604012514,
-    "last_ts": 1778537476
-  },
-  {
     "sid": "76561199020037962",
     "nicks": [
       "coffin"
@@ -2464,6 +2469,33 @@
     "last_rating": 31.95,
     "first_ts": 1642538087,
     "last_ts": 1752103311
+  },
+  {
+    "sid": "76561198053960733",
+    "nicks": [
+      "Frigolx"
+    ],
+    "games": 931,
+    "wins": 526,
+    "losses": 405,
+    "win_rate_pct": 56.5,
+    "avg_frags": 52.8,
+    "avg_deaths": 40.9,
+    "avg_dmg_dealt": 8649,
+    "avg_dmg_taken": 7303,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 26.8,
+      "sg": 28.8,
+      "gl": 8.7,
+      "rl": 38.8,
+      "rg": 54.3,
+      "pg": 13.1
+    },
+    "peak_rating": 38.01,
+    "last_rating": 38.01,
+    "first_ts": 1637874817,
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198257362399",
@@ -2520,58 +2552,58 @@
     "last_ts": 1645812169
   },
   {
-    "sid": "76561198053960733",
-    "nicks": [
-      "Frigolx"
-    ],
-    "games": 879,
-    "wins": 496,
-    "losses": 383,
-    "win_rate_pct": 56.4,
-    "avg_frags": 52.6,
-    "avg_deaths": 40.9,
-    "avg_dmg_dealt": 8609,
-    "avg_dmg_taken": 7288,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 26.7,
-      "sg": 28.7,
-      "gl": 8.6,
-      "rl": 38.6,
-      "rg": 54,
-      "pg": 13.1
-    },
-    "peak_rating": 37.72,
-    "last_rating": 37.72,
-    "first_ts": 1637874817,
-    "last_ts": 1778020432
-  },
-  {
     "sid": "76561198002515349",
     "nicks": [
       "rehepapp"
     ],
-    "games": 862,
-    "wins": 431,
-    "losses": 431,
-    "win_rate_pct": 50,
-    "avg_frags": 59.7,
-    "avg_deaths": 61.2,
-    "avg_dmg_dealt": 10428,
-    "avg_dmg_taken": 8707,
+    "games": 913,
+    "wins": 452,
+    "losses": 461,
+    "win_rate_pct": 49.5,
+    "avg_frags": 59.6,
+    "avg_deaths": 61.3,
+    "avg_dmg_dealt": 10438,
+    "avg_dmg_taken": 8712,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 32.4,
+      "mg": 32.3,
       "sg": 32.4,
       "gl": 11.5,
-      "rl": 43.3,
-      "rg": 58.7,
+      "rl": 43.4,
+      "rg": 58.8,
       "pg": 13.9
     },
     "peak_rating": 36.45,
-    "last_rating": 32.52,
+    "last_rating": 31.46,
     "first_ts": 1576278598,
-    "last_ts": 1779387222
+    "last_ts": 1780525976
+  },
+  {
+    "sid": "76561198004545167",
+    "nicks": [
+      "Morda"
+    ],
+    "games": 857,
+    "wins": 458,
+    "losses": 399,
+    "win_rate_pct": 53.4,
+    "avg_frags": 41.2,
+    "avg_deaths": 56.2,
+    "avg_dmg_dealt": 7236,
+    "avg_dmg_taken": 7577,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 24.6,
+      "sg": 23.1,
+      "gl": 9.8,
+      "rl": 28.6,
+      "rg": 50.6,
+      "pg": 8.9
+    },
+    "peak_rating": 12.86,
+    "last_rating": 12.33,
+    "first_ts": 1679081565,
+    "last_ts": 1780525976
   },
   {
     "sid": "76561198162507961",
@@ -2601,45 +2633,18 @@
     "last_ts": 1744661816
   },
   {
-    "sid": "76561198004545167",
-    "nicks": [
-      "Morda"
-    ],
-    "games": 831,
-    "wins": 444,
-    "losses": 387,
-    "win_rate_pct": 53.4,
-    "avg_frags": 41,
-    "avg_deaths": 56,
-    "avg_dmg_dealt": 7207,
-    "avg_dmg_taken": 7548,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 24.5,
-      "sg": 23,
-      "gl": 9.8,
-      "rl": 28.6,
-      "rg": 50.5,
-      "pg": 8.9
-    },
-    "peak_rating": 12.86,
-    "last_rating": 12,
-    "first_ts": 1679081565,
-    "last_ts": 1779400823
-  },
-  {
     "sid": "76561198256203867",
     "nicks": [
       "prestij"
     ],
-    "games": 771,
+    "games": 773,
     "wins": 371,
-    "losses": 400,
-    "win_rate_pct": 48.1,
+    "losses": 402,
+    "win_rate_pct": 48,
     "avg_frags": 51.9,
     "avg_deaths": 51.2,
-    "avg_dmg_dealt": 9111,
-    "avg_dmg_taken": 7711,
+    "avg_dmg_dealt": 9109,
+    "avg_dmg_taken": 7710,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 30,
@@ -2650,9 +2655,9 @@
       "pg": 14.2
     },
     "peak_rating": 28.8,
-    "last_rating": 23.17,
+    "last_rating": 22.7,
     "first_ts": 1576097862,
-    "last_ts": 1757357956
+    "last_ts": 1780262810
   },
   {
     "sid": "76561198278403238",
@@ -2790,6 +2795,89 @@
     "last_ts": 1628195184
   },
   {
+    "sid": "76561198088925347",
+    "nicks": [
+      "CUBA lumi",
+      "733 lumi"
+    ],
+    "games": 724,
+    "wins": 391,
+    "losses": 333,
+    "win_rate_pct": 54,
+    "avg_frags": 56.8,
+    "avg_deaths": 47.7,
+    "avg_dmg_dealt": 9708,
+    "avg_dmg_taken": 7475,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 31.3,
+      "sg": 29.7,
+      "gl": 9.9,
+      "rl": 39,
+      "rg": 56.8,
+      "pg": 13.1
+    },
+    "peak_rating": 29.98,
+    "last_rating": 28.49,
+    "first_ts": 1593293820,
+    "last_ts": 1780431482
+  },
+  {
+    "sid": "76561198084461653",
+    "nicks": [
+      "edd1",
+      "733 edd1"
+    ],
+    "games": 713,
+    "wins": 372,
+    "losses": 341,
+    "win_rate_pct": 52.2,
+    "avg_frags": 60.9,
+    "avg_deaths": 59.3,
+    "avg_dmg_dealt": 11114,
+    "avg_dmg_taken": 8445,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.5,
+      "sg": 31.7,
+      "gl": 15.1,
+      "rl": 52,
+      "rg": 63.1,
+      "pg": 15.5
+    },
+    "peak_rating": 35.8,
+    "last_rating": 34.67,
+    "first_ts": 1578069226,
+    "last_ts": 1780348609
+  },
+  {
+    "sid": "76561198062139103",
+    "nicks": [
+      "pengelephant"
+    ],
+    "games": 710,
+    "wins": 414,
+    "losses": 296,
+    "win_rate_pct": 58.3,
+    "avg_frags": 62.8,
+    "avg_deaths": 60.5,
+    "avg_dmg_dealt": 11522,
+    "avg_dmg_taken": 8409,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 33.9,
+      "sg": 35.1,
+      "gl": 10.5,
+      "rl": 40.8,
+      "rg": 63,
+      "pg": 12.6
+    },
+    "peak_rating": 34.46,
+    "last_rating": 33.89,
+    "first_ts": 1725812049,
+    "last_ts": 1780425248
+  },
+  {
     "sid": "76561199163321398",
     "nicks": [
       "Ann4hilation"
@@ -2844,34 +2932,6 @@
     "last_ts": 1729800999
   },
   {
-    "sid": "76561198088925347",
-    "nicks": [
-      "CUBA lumi",
-      "733 lumi"
-    ],
-    "games": 686,
-    "wins": 375,
-    "losses": 311,
-    "win_rate_pct": 54.7,
-    "avg_frags": 56.7,
-    "avg_deaths": 47.6,
-    "avg_dmg_dealt": 9686,
-    "avg_dmg_taken": 7458,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31.3,
-      "sg": 29.7,
-      "gl": 10.1,
-      "rl": 39.1,
-      "rg": 56.7,
-      "pg": 13.2
-    },
-    "peak_rating": 29.98,
-    "last_rating": 29.4,
-    "first_ts": 1593293820,
-    "last_ts": 1779389395
-  },
-  {
     "sid": "76561198299238187",
     "nicks": [
       "sav1ge"
@@ -2899,59 +2959,31 @@
     "last_ts": 1717193949
   },
   {
-    "sid": "76561198062139103",
+    "sid": "76561199018105630",
     "nicks": [
-      "pengelephant"
+      "esdf"
     ],
-    "games": 671,
-    "wins": 395,
-    "losses": 276,
-    "win_rate_pct": 58.9,
-    "avg_frags": 62.9,
-    "avg_deaths": 60.3,
-    "avg_dmg_dealt": 11519,
-    "avg_dmg_taken": 8378,
+    "games": 664,
+    "wins": 328,
+    "losses": 336,
+    "win_rate_pct": 49.4,
+    "avg_frags": 56.9,
+    "avg_deaths": 58.1,
+    "avg_dmg_dealt": 9935,
+    "avg_dmg_taken": 8192,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 33.8,
-      "sg": 35.1,
-      "gl": 10.5,
-      "rl": 41,
-      "rg": 63.2,
-      "pg": 12.6
+      "mg": 31.8,
+      "sg": 31.3,
+      "gl": 11.6,
+      "rl": 46.2,
+      "rg": 51.1,
+      "pg": 15.2
     },
-    "peak_rating": 34.46,
-    "last_rating": 34.01,
-    "first_ts": 1725812049,
-    "last_ts": 1779131883
-  },
-  {
-    "sid": "76561198084461653",
-    "nicks": [
-      "edd1",
-      "733 edd1"
-    ],
-    "games": 663,
-    "wins": 346,
-    "losses": 317,
-    "win_rate_pct": 52.2,
-    "avg_frags": 61,
-    "avg_deaths": 58.9,
-    "avg_dmg_dealt": 11102,
-    "avg_dmg_taken": 8388,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 34.6,
-      "sg": 31.8,
-      "gl": 15.4,
-      "rl": 51.9,
-      "rg": 63.1,
-      "pg": 15.5
-    },
-    "peak_rating": 35.8,
-    "last_rating": 34.99,
-    "first_ts": 1578069226,
-    "last_ts": 1779312475
+    "peak_rating": 29.67,
+    "last_rating": 23.89,
+    "first_ts": 1609291908,
+    "last_ts": 1780432072
   },
   {
     "sid": "76561198259839754",
@@ -2981,31 +3013,31 @@
     "last_ts": 1759946745
   },
   {
-    "sid": "76561199018105630",
+    "sid": "76561197972822622",
     "nicks": [
-      "esdf"
+      "keks_"
     ],
-    "games": 646,
-    "wins": 316,
-    "losses": 330,
-    "win_rate_pct": 48.9,
-    "avg_frags": 57,
-    "avg_deaths": 57.9,
-    "avg_dmg_dealt": 9941,
-    "avg_dmg_taken": 8167,
+    "games": 626,
+    "wins": 329,
+    "losses": 297,
+    "win_rate_pct": 52.6,
+    "avg_frags": 49.5,
+    "avg_deaths": 53.3,
+    "avg_dmg_dealt": 8903,
+    "avg_dmg_taken": 7557,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 31.7,
-      "sg": 31.4,
-      "gl": 11.6,
-      "rl": 46.2,
-      "rg": 51.1,
-      "pg": 15.2
+      "mg": 27.1,
+      "sg": 29.5,
+      "gl": 10.1,
+      "rl": 43.7,
+      "rg": 53.9,
+      "pg": 14
     },
-    "peak_rating": 29.67,
-    "last_rating": 22.81,
-    "first_ts": 1609291908,
-    "last_ts": 1779304446
+    "peak_rating": 21.5,
+    "last_rating": 16.24,
+    "first_ts": 1758045742,
+    "last_ts": 1780516753
   },
   {
     "sid": "76561198045866799",
@@ -3087,33 +3119,6 @@
     "last_rating": 7.27,
     "first_ts": 1616197613,
     "last_ts": 1658953250
-  },
-  {
-    "sid": "76561197972822622",
-    "nicks": [
-      "keks_"
-    ],
-    "games": 581,
-    "wins": 305,
-    "losses": 276,
-    "win_rate_pct": 52.5,
-    "avg_frags": 49.3,
-    "avg_deaths": 53.1,
-    "avg_dmg_dealt": 8866,
-    "avg_dmg_taken": 7530,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 27.1,
-      "sg": 29.4,
-      "gl": 10.1,
-      "rl": 43.6,
-      "rg": 53.8,
-      "pg": 14.1
-    },
-    "peak_rating": 21.5,
-    "last_rating": 16.4,
-    "first_ts": 1758045742,
-    "last_ts": 1779399052
   },
   {
     "sid": "76561198050090833",
@@ -3224,31 +3229,85 @@
     "last_ts": 1612984966
   },
   {
+    "sid": "76561198025225261",
+    "nicks": [
+      "pecka"
+    ],
+    "games": 521,
+    "wins": 253,
+    "losses": 268,
+    "win_rate_pct": 48.6,
+    "avg_frags": 48.8,
+    "avg_deaths": 25.8,
+    "avg_dmg_dealt": 7359,
+    "avg_dmg_taken": 6141,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 29.9,
+      "sg": 29,
+      "gl": 7.2,
+      "rl": 38.9,
+      "rg": 46.2,
+      "pg": 12.3
+    },
+    "peak_rating": 25.99,
+    "last_rating": 17.86,
+    "first_ts": 1577036200,
+    "last_ts": 1780358168
+  },
+  {
+    "sid": "76561198038215627",
+    "nicks": [
+      "esd"
+    ],
+    "games": 506,
+    "wins": 242,
+    "losses": 264,
+    "win_rate_pct": 47.8,
+    "avg_frags": 53.9,
+    "avg_deaths": 56.8,
+    "avg_dmg_dealt": 9575,
+    "avg_dmg_taken": 8267,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 31.6,
+      "sg": 29.8,
+      "gl": 13.4,
+      "rl": 45.4,
+      "rg": 50.1,
+      "pg": 15.4
+    },
+    "peak_rating": 27.2,
+    "last_rating": 18.97,
+    "first_ts": 1575908973,
+    "last_ts": 1778005927
+  },
+  {
     "sid": "76561198068877542",
     "nicks": [
       "unity"
     ],
-    "games": 495,
-    "wins": 250,
-    "losses": 245,
-    "win_rate_pct": 50.5,
-    "avg_frags": 62,
+    "games": 504,
+    "wins": 253,
+    "losses": 251,
+    "win_rate_pct": 50.2,
+    "avg_frags": 61.8,
     "avg_deaths": 40.5,
-    "avg_dmg_dealt": 10381,
-    "avg_dmg_taken": 7452,
+    "avg_dmg_dealt": 10355,
+    "avg_dmg_taken": 7443,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 33.2,
-      "sg": 26.4,
+      "mg": 33.1,
+      "sg": 26.3,
       "gl": 9,
-      "rl": 35.2,
+      "rl": 35.1,
       "rg": 51.9,
-      "pg": 15.2
+      "pg": 15.1
     },
     "peak_rating": 32.66,
-    "last_rating": 29.08,
+    "last_rating": 28.41,
     "first_ts": 1576975286,
-    "last_ts": 1719786680
+    "last_ts": 1777499109
   },
   {
     "sid": "76561198257391553",
@@ -3305,58 +3364,31 @@
     "last_ts": 1771190048
   },
   {
-    "sid": "76561198025225261",
-    "nicks": [
-      "pecka"
-    ],
-    "games": 461,
-    "wins": 222,
-    "losses": 239,
-    "win_rate_pct": 48.2,
-    "avg_frags": 48.6,
-    "avg_deaths": 26.2,
-    "avg_dmg_dealt": 7360,
-    "avg_dmg_taken": 6156,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 29.9,
-      "sg": 29.1,
-      "gl": 7.1,
-      "rl": 38.9,
-      "rg": 46.2,
-      "pg": 12.5
-    },
-    "peak_rating": 25.99,
-    "last_rating": 18.43,
-    "first_ts": 1577036200,
-    "last_ts": 1779400823
-  },
-  {
     "sid": "76561198257679175",
     "nicks": [
       "Eteto"
     ],
-    "games": 453,
-    "wins": 226,
-    "losses": 227,
+    "games": 463,
+    "wins": 231,
+    "losses": 232,
     "win_rate_pct": 49.9,
-    "avg_frags": 47.6,
+    "avg_frags": 47.4,
     "avg_deaths": 54.6,
-    "avg_dmg_dealt": 8879,
-    "avg_dmg_taken": 7894,
+    "avg_dmg_dealt": 8853,
+    "avg_dmg_taken": 7893,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 27.2,
+      "mg": 27.3,
       "sg": 22.7,
       "gl": 12.7,
-      "rl": 36.1,
+      "rl": 35.9,
       "rg": 41.4,
-      "pg": 12.5
+      "pg": 12.4
     },
     "peak_rating": 21.74,
-    "last_rating": 12.14,
+    "last_rating": 12.15,
     "first_ts": 1586535371,
-    "last_ts": 1776208291
+    "last_ts": 1780275303
   },
   {
     "sid": "76561198019672639",
@@ -3386,6 +3418,60 @@
     "last_ts": 1623708426
   },
   {
+    "sid": "76561198275956025",
+    "nicks": [
+      "Needy"
+    ],
+    "games": 430,
+    "wins": 235,
+    "losses": 195,
+    "win_rate_pct": 54.7,
+    "avg_frags": 50.1,
+    "avg_deaths": 49.2,
+    "avg_dmg_dealt": 8311,
+    "avg_dmg_taken": 7354,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 28.1,
+      "sg": 30.5,
+      "gl": 6.2,
+      "rl": 39.3,
+      "rg": 51.7,
+      "pg": 12.8
+    },
+    "peak_rating": 15.96,
+    "last_rating": 15.29,
+    "first_ts": 1708540717,
+    "last_ts": 1780421453
+  },
+  {
+    "sid": "76561197961473374",
+    "nicks": [
+      "instantpizza"
+    ],
+    "games": 429,
+    "wins": 253,
+    "losses": 176,
+    "win_rate_pct": 59,
+    "avg_frags": 51.2,
+    "avg_deaths": 50,
+    "avg_dmg_dealt": 8897,
+    "avg_dmg_taken": 7711,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 29.9,
+      "sg": 27.7,
+      "gl": 9.6,
+      "rl": 37.7,
+      "rg": 52.6,
+      "pg": 12.9
+    },
+    "peak_rating": 25.27,
+    "last_rating": 24.12,
+    "first_ts": 1632675879,
+    "last_ts": 1779135066
+  },
+  {
     "sid": "76561198258352053",
     "nicks": [
       "l0l04"
@@ -3411,33 +3497,6 @@
     "last_rating": 1.45,
     "first_ts": 1609194793,
     "last_ts": 1718217856
-  },
-  {
-    "sid": "76561197961473374",
-    "nicks": [
-      "instantpizza"
-    ],
-    "games": 428,
-    "wins": 253,
-    "losses": 175,
-    "win_rate_pct": 59.1,
-    "avg_frags": 51.2,
-    "avg_deaths": 50,
-    "avg_dmg_dealt": 8899,
-    "avg_dmg_taken": 7708,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 29.9,
-      "sg": 27.7,
-      "gl": 9.6,
-      "rl": 37.7,
-      "rg": 52.6,
-      "pg": 12.9
-    },
-    "peak_rating": 25.27,
-    "last_rating": 24.12,
-    "first_ts": 1632675879,
-    "last_ts": 1779135066
   },
   {
     "sid": "76561198440329815",
@@ -3471,81 +3530,27 @@
     "nicks": [
       "Ant3stor"
     ],
-    "games": 416,
-    "wins": 201,
+    "games": 417,
+    "wins": 202,
     "losses": 215,
-    "win_rate_pct": 48.3,
-    "avg_frags": 58.6,
+    "win_rate_pct": 48.4,
+    "avg_frags": 58.5,
     "avg_deaths": 41.8,
-    "avg_dmg_dealt": 9842,
-    "avg_dmg_taken": 6654,
+    "avg_dmg_dealt": 9840,
+    "avg_dmg_taken": 6651,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 36.5,
-      "sg": 29.8,
+      "sg": 29.7,
       "gl": 9.6,
       "rl": 42.6,
       "rg": 53,
       "pg": 15.9
     },
     "peak_rating": 27.97,
-    "last_rating": 19.72,
+    "last_rating": 19.95,
     "first_ts": 1576094040,
-    "last_ts": 1779045981
-  },
-  {
-    "sid": "76561198038215627",
-    "nicks": [
-      "esd"
-    ],
-    "games": 413,
-    "wins": 200,
-    "losses": 213,
-    "win_rate_pct": 48.4,
-    "avg_frags": 53.7,
-    "avg_deaths": 54.8,
-    "avg_dmg_dealt": 9523,
-    "avg_dmg_taken": 8112,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31.3,
-      "sg": 29.7,
-      "gl": 13.2,
-      "rl": 45.1,
-      "rg": 49.5,
-      "pg": 15.3
-    },
-    "peak_rating": 27.2,
-    "last_rating": 20.35,
-    "first_ts": 1575908973,
-    "last_ts": 1776528595
-  },
-  {
-    "sid": "76561198275956025",
-    "nicks": [
-      "Needy"
-    ],
-    "games": 409,
-    "wins": 224,
-    "losses": 185,
-    "win_rate_pct": 54.8,
-    "avg_frags": 50,
-    "avg_deaths": 49.4,
-    "avg_dmg_dealt": 8301,
-    "avg_dmg_taken": 7356,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 28,
-      "sg": 30.5,
-      "gl": 6.4,
-      "rl": 39.4,
-      "rg": 51.6,
-      "pg": 12.8
-    },
-    "peak_rating": 15.42,
-    "last_rating": 15.27,
-    "first_ts": 1708540717,
-    "last_ts": 1778690910
+    "last_ts": 1780086738
   },
   {
     "sid": "76561198756497108",
@@ -3606,14 +3611,14 @@
     "nicks": [
       "p5ych0"
     ],
-    "games": 386,
+    "games": 387,
     "wins": 171,
-    "losses": 215,
-    "win_rate_pct": 44.3,
+    "losses": 216,
+    "win_rate_pct": 44.2,
     "avg_frags": 42.3,
     "avg_deaths": 52.5,
-    "avg_dmg_dealt": 7656,
-    "avg_dmg_taken": 7503,
+    "avg_dmg_dealt": 7649,
+    "avg_dmg_taken": 7501,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 24,
@@ -3624,9 +3629,9 @@
       "pg": 11.7
     },
     "peak_rating": 31.6,
-    "last_rating": 12.7,
+    "last_rating": 12.47,
     "first_ts": 1577133934,
-    "last_ts": 1738013834
+    "last_ts": 1779655435
   },
   {
     "sid": "76561198016340940",
@@ -3714,14 +3719,14 @@
     "nicks": [
       "ласкi"
     ],
-    "games": 363,
+    "games": 364,
     "wins": 167,
-    "losses": 196,
-    "win_rate_pct": 46,
+    "losses": 197,
+    "win_rate_pct": 45.9,
     "avg_frags": 48.1,
     "avg_deaths": 47.3,
-    "avg_dmg_dealt": 8673,
-    "avg_dmg_taken": 7849,
+    "avg_dmg_dealt": 8672,
+    "avg_dmg_taken": 7848,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 25.1,
@@ -3732,23 +3737,23 @@
       "pg": 12.6
     },
     "peak_rating": 26.03,
-    "last_rating": 20.02,
+    "last_rating": 19.78,
     "first_ts": 1577218359,
-    "last_ts": 1758571710
+    "last_ts": 1777847487
   },
   {
     "sid": "76561198200942503",
     "nicks": [
       "shib"
     ],
-    "games": 330,
-    "wins": 161,
-    "losses": 169,
+    "games": 332,
+    "wins": 162,
+    "losses": 170,
     "win_rate_pct": 48.8,
     "avg_frags": 46.3,
-    "avg_deaths": 64.6,
-    "avg_dmg_dealt": 8457,
-    "avg_dmg_taken": 8646,
+    "avg_deaths": 64.5,
+    "avg_dmg_dealt": 8444,
+    "avg_dmg_taken": 8636,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 30.8,
@@ -3759,9 +3764,9 @@
       "pg": 12.3
     },
     "peak_rating": 22.16,
-    "last_rating": 8.62,
+    "last_rating": 8.67,
     "first_ts": 1595532084,
-    "last_ts": 1772214357
+    "last_ts": 1777506424
   },
   {
     "sid": "76561198002376252",
@@ -3822,18 +3827,18 @@
     "nicks": [
       "diabz"
     ],
-    "games": 317,
-    "wins": 146,
-    "losses": 171,
+    "games": 319,
+    "wins": 147,
+    "losses": 172,
     "win_rate_pct": 46.1,
     "avg_frags": 56,
-    "avg_deaths": 51.7,
-    "avg_dmg_dealt": 10299,
-    "avg_dmg_taken": 7467,
+    "avg_deaths": 51.9,
+    "avg_dmg_dealt": 10309,
+    "avg_dmg_taken": 7483,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 33.5,
-      "sg": 29.5,
+      "sg": 29.6,
       "gl": 10.4,
       "rl": 39.3,
       "rg": 60.6,
@@ -3843,6 +3848,33 @@
     "last_rating": 29.71,
     "first_ts": 1576446964,
     "last_ts": 1778704982
+  },
+  {
+    "sid": "76561197993861011",
+    "nicks": [
+      "ani"
+    ],
+    "games": 318,
+    "wins": 149,
+    "losses": 169,
+    "win_rate_pct": 46.9,
+    "avg_frags": 55.6,
+    "avg_deaths": 53.8,
+    "avg_dmg_dealt": 10355,
+    "avg_dmg_taken": 8129,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 30.4,
+      "sg": 30.2,
+      "gl": 7.2,
+      "rl": 43.8,
+      "rg": 54.6,
+      "pg": 11.3
+    },
+    "peak_rating": 31.64,
+    "last_rating": 26.36,
+    "first_ts": 1589376257,
+    "last_ts": 1779133226
   },
   {
     "sid": "76561199047888807",
@@ -3897,33 +3929,6 @@
     "last_rating": 7.4,
     "first_ts": 1600547272,
     "last_ts": 1750891432
-  },
-  {
-    "sid": "76561197993861011",
-    "nicks": [
-      "ani"
-    ],
-    "games": 314,
-    "wins": 148,
-    "losses": 166,
-    "win_rate_pct": 47.1,
-    "avg_frags": 55.5,
-    "avg_deaths": 53.7,
-    "avg_dmg_dealt": 10352,
-    "avg_dmg_taken": 8117,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 30.4,
-      "sg": 30.2,
-      "gl": 7.1,
-      "rl": 43.7,
-      "rg": 54.6,
-      "pg": 11.3
-    },
-    "peak_rating": 31.64,
-    "last_rating": 26.36,
-    "first_ts": 1589376257,
-    "last_ts": 1779133226
   },
   {
     "sid": "76561198159947488",
@@ -4007,6 +4012,34 @@
     "last_ts": 1717018917
   },
   {
+    "sid": "76561198051109164",
+    "nicks": [
+      ".:knk:jh00:.",
+      "konek"
+    ],
+    "games": 297,
+    "wins": 143,
+    "losses": 154,
+    "win_rate_pct": 48.1,
+    "avg_frags": 41.2,
+    "avg_deaths": 57.1,
+    "avg_dmg_dealt": 7664,
+    "avg_dmg_taken": 7935,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 29.3,
+      "sg": 25.3,
+      "gl": 8,
+      "rl": 30.8,
+      "rg": 50.9,
+      "pg": 10.4
+    },
+    "peak_rating": 11.26,
+    "last_rating": 4.19,
+    "first_ts": 1764117077,
+    "last_ts": 1780509115
+  },
+  {
     "sid": "76561198155477003",
     "nicks": [
       "NADEMAFIA MaJiN"
@@ -4061,6 +4094,33 @@
     "last_ts": 1766094403
   },
   {
+    "sid": "76561198075079469",
+    "nicks": [
+      "d1zulya"
+    ],
+    "games": 271,
+    "wins": 130,
+    "losses": 141,
+    "win_rate_pct": 48,
+    "avg_frags": 54.9,
+    "avg_deaths": 59.6,
+    "avg_dmg_dealt": 10096,
+    "avg_dmg_taken": 8587,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.9,
+      "sg": 29,
+      "gl": 11.5,
+      "rl": 38.7,
+      "rg": 51.8,
+      "pg": 13.4
+    },
+    "peak_rating": 28.99,
+    "last_rating": 23.98,
+    "first_ts": 1575921927,
+    "last_ts": 1778018474
+  },
+  {
     "sid": "76561197982636025",
     "nicks": [
       "noobieone[solo]"
@@ -4086,6 +4146,34 @@
     "last_rating": 21.27,
     "first_ts": 1584548694,
     "last_ts": 1590776976
+  },
+  {
+    "sid": "76561199559373528",
+    "nicks": [
+      "Antosh",
+      "antosh"
+    ],
+    "games": 258,
+    "wins": 145,
+    "losses": 113,
+    "win_rate_pct": 56.2,
+    "avg_frags": 62.8,
+    "avg_deaths": 64.2,
+    "avg_dmg_dealt": 10755,
+    "avg_dmg_taken": 8655,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 33.5,
+      "sg": 28.4,
+      "gl": 29,
+      "rl": 35,
+      "rg": 58.4,
+      "pg": 12.7
+    },
+    "peak_rating": 22.75,
+    "last_rating": 22.75,
+    "first_ts": 1775774883,
+    "last_ts": 1780527588
   },
   {
     "sid": "76561198256772293",
@@ -4142,58 +4230,58 @@
     "last_ts": 1743874466
   },
   {
-    "sid": "76561198051109164",
+    "sid": "76561197961473367",
     "nicks": [
-      ".:knk:jh00:."
+      "*mad BóBr :B"
     ],
-    "games": 240,
-    "wins": 117,
-    "losses": 123,
-    "win_rate_pct": 48.8,
-    "avg_frags": 40.6,
-    "avg_deaths": 57.3,
-    "avg_dmg_dealt": 7592,
-    "avg_dmg_taken": 7922,
+    "games": 243,
+    "wins": 134,
+    "losses": 109,
+    "win_rate_pct": 55.1,
+    "avg_frags": 62.3,
+    "avg_deaths": 50.4,
+    "avg_dmg_dealt": 10595,
+    "avg_dmg_taken": 7093,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 29.3,
-      "sg": 25.5,
-      "gl": 8.1,
-      "rl": 31.3,
-      "rg": 51,
-      "pg": 10.5
+      "mg": 29.8,
+      "sg": 30.4,
+      "gl": 11.1,
+      "rl": 37,
+      "rg": 64.3,
+      "pg": 10.3
     },
-    "peak_rating": 11.26,
-    "last_rating": 4.37,
-    "first_ts": 1764117077,
-    "last_ts": 1779399052
+    "peak_rating": 24.22,
+    "last_rating": 20.92,
+    "first_ts": 1648082750,
+    "last_ts": 1779723764
   },
   {
-    "sid": "76561198075079469",
+    "sid": "76561198152936342",
     "nicks": [
-      "d1zulya"
+      "rindo"
     ],
-    "games": 240,
-    "wins": 115,
-    "losses": 125,
-    "win_rate_pct": 47.9,
-    "avg_frags": 54.5,
-    "avg_deaths": 59.5,
-    "avg_dmg_dealt": 10089,
-    "avg_dmg_taken": 8593,
+    "games": 232,
+    "wins": 108,
+    "losses": 124,
+    "win_rate_pct": 46.6,
+    "avg_frags": 43.9,
+    "avg_deaths": 63.6,
+    "avg_dmg_dealt": 7801,
+    "avg_dmg_taken": 8642,
     "weapon_acc_pct": {
       "gt": null,
-      "mg": 34.9,
-      "sg": 29.1,
-      "gl": 11.6,
-      "rl": 38.8,
-      "rg": 51.5,
-      "pg": 13.5
+      "mg": 18.9,
+      "sg": 21.9,
+      "gl": 9,
+      "rl": 32.5,
+      "rg": 45.7,
+      "pg": 8.3
     },
-    "peak_rating": 28.99,
-    "last_rating": 23.98,
-    "first_ts": 1575921927,
-    "last_ts": 1778018474
+    "peak_rating": 11.11,
+    "last_rating": 7.68,
+    "first_ts": 1705869605,
+    "last_ts": 1780433817
   },
   {
     "sid": "76561198141767332",
@@ -4221,6 +4309,60 @@
     "last_rating": 26.14,
     "first_ts": 1577143541,
     "last_ts": 1726779395
+  },
+  {
+    "sid": "76561198037564581",
+    "nicks": [
+      "eki22"
+    ],
+    "games": 229,
+    "wins": 104,
+    "losses": 125,
+    "win_rate_pct": 45.4,
+    "avg_frags": 44.2,
+    "avg_deaths": 59.1,
+    "avg_dmg_dealt": 8288,
+    "avg_dmg_taken": 8042,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 30.5,
+      "sg": 28,
+      "gl": 12.1,
+      "rl": 40.8,
+      "rg": 55.2,
+      "pg": 14.4
+    },
+    "peak_rating": 30.64,
+    "last_rating": 12.26,
+    "first_ts": 1577390915,
+    "last_ts": 1780513170
+  },
+  {
+    "sid": "76561199823502432",
+    "nicks": [
+      "memph1s"
+    ],
+    "games": 229,
+    "wins": 106,
+    "losses": 123,
+    "win_rate_pct": 46.3,
+    "avg_frags": 44.9,
+    "avg_deaths": 50.3,
+    "avg_dmg_dealt": 7785,
+    "avg_dmg_taken": 7287,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34.2,
+      "sg": 28.9,
+      "gl": 7.7,
+      "rl": 37.2,
+      "rg": 53.4,
+      "pg": 10.9
+    },
+    "peak_rating": 19.15,
+    "last_rating": 7.74,
+    "first_ts": 1771351554,
+    "last_ts": 1780510909
   },
   {
     "sid": "76561198049908474",
@@ -4302,33 +4444,6 @@
     "last_rating": null,
     "first_ts": 1602183692,
     "last_ts": 1749254962
-  },
-  {
-    "sid": "76561197961473367",
-    "nicks": [
-      "*mad BóBr :B"
-    ],
-    "games": 217,
-    "wins": 116,
-    "losses": 101,
-    "win_rate_pct": 53.5,
-    "avg_frags": 62.3,
-    "avg_deaths": 50.8,
-    "avg_dmg_dealt": 10628,
-    "avg_dmg_taken": 7126,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 29.6,
-      "sg": 30.7,
-      "gl": 11.2,
-      "rl": 37.7,
-      "rg": 64.2,
-      "pg": 10.1
-    },
-    "peak_rating": 24.22,
-    "last_rating": 20.76,
-    "first_ts": 1648082750,
-    "last_ts": 1779141987
   },
   {
     "sid": "76561198081744891",
@@ -4628,33 +4743,6 @@
     "last_ts": 1673732656
   },
   {
-    "sid": "76561198037564581",
-    "nicks": [
-      "eki22"
-    ],
-    "games": 177,
-    "wins": 80,
-    "losses": 97,
-    "win_rate_pct": 45.2,
-    "avg_frags": 43.3,
-    "avg_deaths": 58.3,
-    "avg_dmg_dealt": 8135,
-    "avg_dmg_taken": 7939,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31,
-      "sg": 27.6,
-      "gl": 12.4,
-      "rl": 40.8,
-      "rg": 55,
-      "pg": 14.5
-    },
-    "peak_rating": 30.64,
-    "last_rating": 12.13,
-    "first_ts": 1577390915,
-    "last_ts": 1778622459
-  },
-  {
     "sid": "76561197996713902",
     "nicks": [
       "Manco"
@@ -4734,33 +4822,6 @@
     "last_rating": 14.79,
     "first_ts": 1578597540,
     "last_ts": 1639942439
-  },
-  {
-    "sid": "76561199823502432",
-    "nicks": [
-      "memph1s"
-    ],
-    "games": 172,
-    "wins": 79,
-    "losses": 93,
-    "win_rate_pct": 45.9,
-    "avg_frags": 44.4,
-    "avg_deaths": 50.6,
-    "avg_dmg_dealt": 7684,
-    "avg_dmg_taken": 7268,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 34.1,
-      "sg": 28.9,
-      "gl": 7.9,
-      "rl": 37,
-      "rg": 53.6,
-      "pg": 10.9
-    },
-    "peak_rating": 19.15,
-    "last_rating": 7.72,
-    "first_ts": 1771351554,
-    "last_ts": 1779385391
   },
   {
     "sid": "76561198256126035",
@@ -4925,6 +4986,60 @@
     "last_ts": 1615671381
   },
   {
+    "sid": "76561198006274665",
+    "nicks": [
+      "LNFST"
+    ],
+    "games": 158,
+    "wins": 76,
+    "losses": 82,
+    "win_rate_pct": 48.1,
+    "avg_frags": 57.8,
+    "avg_deaths": 58.9,
+    "avg_dmg_dealt": 9591,
+    "avg_dmg_taken": 8420,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 34,
+      "sg": 31.8,
+      "gl": 8.7,
+      "rl": 38.7,
+      "rg": 55.9,
+      "pg": 14.8
+    },
+    "peak_rating": 19.86,
+    "last_rating": 11.49,
+    "first_ts": 1771282586,
+    "last_ts": 1778453522
+  },
+  {
+    "sid": "76561197960270492",
+    "nicks": [
+      "erk"
+    ],
+    "games": 158,
+    "wins": 61,
+    "losses": 97,
+    "win_rate_pct": 38.6,
+    "avg_frags": 49.7,
+    "avg_deaths": 63.2,
+    "avg_dmg_dealt": 9189,
+    "avg_dmg_taken": 8355,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 31.5,
+      "sg": 26.5,
+      "gl": 25,
+      "rl": 47.2,
+      "rg": 50.3,
+      "pg": 12.8
+    },
+    "peak_rating": 26.5,
+    "last_rating": 12.17,
+    "first_ts": 1595086432,
+    "last_ts": 1780343029
+  },
+  {
     "sid": "76561198113970099",
     "nicks": [
       "cougne"
@@ -5060,60 +5175,6 @@
     "last_ts": 1723660458
   },
   {
-    "sid": "76561197960270492",
-    "nicks": [
-      "erk"
-    ],
-    "games": 149,
-    "wins": 57,
-    "losses": 92,
-    "win_rate_pct": 38.3,
-    "avg_frags": 49.9,
-    "avg_deaths": 62.9,
-    "avg_dmg_dealt": 9228,
-    "avg_dmg_taken": 8344,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31.3,
-      "sg": 26.7,
-      "gl": 25,
-      "rl": 47.1,
-      "rg": 50.1,
-      "pg": 12.7
-    },
-    "peak_rating": 26.5,
-    "last_rating": 12.4,
-    "first_ts": 1595086432,
-    "last_ts": 1749489667
-  },
-  {
-    "sid": "76561198006274665",
-    "nicks": [
-      "LNFST"
-    ],
-    "games": 147,
-    "wins": 70,
-    "losses": 77,
-    "win_rate_pct": 47.6,
-    "avg_frags": 58.3,
-    "avg_deaths": 59.6,
-    "avg_dmg_dealt": 9650,
-    "avg_dmg_taken": 8443,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 34.1,
-      "sg": 31.9,
-      "gl": 8.6,
-      "rl": 38.7,
-      "rg": 55.9,
-      "pg": 14.9
-    },
-    "peak_rating": 19.86,
-    "last_rating": 11.49,
-    "first_ts": 1771282586,
-    "last_ts": 1778453522
-  },
-  {
     "sid": "76561199496005153",
     "nicks": [
       "cYpReSss"
@@ -5222,6 +5283,33 @@
     "last_ts": 1702931069
   },
   {
+    "sid": "76561198163827733",
+    "nicks": [
+      "PAINE"
+    ],
+    "games": 141,
+    "wins": 62,
+    "losses": 79,
+    "win_rate_pct": 44,
+    "avg_frags": 47.5,
+    "avg_deaths": 54.5,
+    "avg_dmg_dealt": 8268,
+    "avg_dmg_taken": 7944,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 25.4,
+      "sg": 24.4,
+      "gl": 10,
+      "rl": 42.1,
+      "rg": 51.5,
+      "pg": 12.1
+    },
+    "peak_rating": 30.76,
+    "last_rating": 14.69,
+    "first_ts": 1590945764,
+    "last_ts": 1780518620
+  },
+  {
     "sid": "76561198280627259",
     "nicks": [
       "sizzrp"
@@ -5276,6 +5364,34 @@
     "last_ts": 1601215913
   },
   {
+    "sid": "76561198414877431",
+    "nicks": [
+      "phaze",
+      "qwerty"
+    ],
+    "games": 133,
+    "wins": 61,
+    "losses": 72,
+    "win_rate_pct": 45.9,
+    "avg_frags": 52.6,
+    "avg_deaths": 36.2,
+    "avg_dmg_dealt": 8523,
+    "avg_dmg_taken": 6125,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 35.7,
+      "sg": 31.9,
+      "gl": 10.5,
+      "rl": 38.4,
+      "rg": 55.9,
+      "pg": 14.2
+    },
+    "peak_rating": 32.96,
+    "last_rating": 25.5,
+    "first_ts": 1576621831,
+    "last_ts": 1777675066
+  },
+  {
     "sid": "76561199025422032",
     "nicks": [
       "LANF"
@@ -5301,60 +5417,6 @@
     "last_rating": 9.61,
     "first_ts": 1757972465,
     "last_ts": 1767651551
-  },
-  {
-    "sid": "76561198414877431",
-    "nicks": [
-      "phaze"
-    ],
-    "games": 131,
-    "wins": 61,
-    "losses": 70,
-    "win_rate_pct": 46.6,
-    "avg_frags": 52.8,
-    "avg_deaths": 36.4,
-    "avg_dmg_dealt": 8574,
-    "avg_dmg_taken": 6162,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 35.7,
-      "sg": 32,
-      "gl": 10.6,
-      "rl": 38.5,
-      "rg": 55.9,
-      "pg": 14.2
-    },
-    "peak_rating": 32.96,
-    "last_rating": 25.97,
-    "first_ts": 1576621831,
-    "last_ts": 1758318205
-  },
-  {
-    "sid": "76561198152936342",
-    "nicks": [
-      "rindo"
-    ],
-    "games": 126,
-    "wins": 61,
-    "losses": 65,
-    "win_rate_pct": 48.4,
-    "avg_frags": 42,
-    "avg_deaths": 63.3,
-    "avg_dmg_dealt": 7395,
-    "avg_dmg_taken": 8493,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 18.1,
-      "sg": 21.6,
-      "gl": 8.9,
-      "rl": 31.5,
-      "rg": 43.1,
-      "pg": 7.7
-    },
-    "peak_rating": 11.11,
-    "last_rating": 7.69,
-    "first_ts": 1705869605,
-    "last_ts": 1779400823
   },
   {
     "sid": "76561198157555570",
@@ -5762,34 +5824,6 @@
     "last_ts": 1633464133
   },
   {
-    "sid": "76561199559373528",
-    "nicks": [
-      "Antosh",
-      "antosh"
-    ],
-    "games": 104,
-    "wins": 59,
-    "losses": 45,
-    "win_rate_pct": 56.7,
-    "avg_frags": 64.6,
-    "avg_deaths": 66.2,
-    "avg_dmg_dealt": 11182,
-    "avg_dmg_taken": 8937,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 33.5,
-      "sg": 29.5,
-      "gl": 21.1,
-      "rl": 36.1,
-      "rg": 59.1,
-      "pg": 13.2
-    },
-    "peak_rating": 21.01,
-    "last_rating": 20.65,
-    "first_ts": 1775774883,
-    "last_ts": 1779144642
-  },
-  {
     "sid": "76561198090066394",
     "nicks": [
       "-ffa-brucelee"
@@ -5896,33 +5930,6 @@
     "last_rating": 5.81,
     "first_ts": 1582062596,
     "last_ts": 1762113629
-  },
-  {
-    "sid": "76561198163827733",
-    "nicks": [
-      "PAINE"
-    ],
-    "games": 92,
-    "wins": 41,
-    "losses": 51,
-    "win_rate_pct": 44.6,
-    "avg_frags": 47,
-    "avg_deaths": 54.3,
-    "avg_dmg_dealt": 8236,
-    "avg_dmg_taken": 7904,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 24.9,
-      "sg": 24,
-      "gl": 9.7,
-      "rl": 41.9,
-      "rg": 51.6,
-      "pg": 11.9
-    },
-    "peak_rating": 30.76,
-    "last_rating": 14.86,
-    "first_ts": 1590945764,
-    "last_ts": 1779396125
   },
   {
     "sid": "76561198257366499",
@@ -6735,6 +6742,60 @@
     "last_ts": 1719870388
   },
   {
+    "sid": "76561199417609810",
+    "nicks": [
+      "kaliope"
+    ],
+    "games": 51,
+    "wins": 21,
+    "losses": 30,
+    "win_rate_pct": 41.2,
+    "avg_frags": 41.8,
+    "avg_deaths": 59.8,
+    "avg_dmg_dealt": 7519,
+    "avg_dmg_taken": 8464,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 20.8,
+      "sg": 25.5,
+      "gl": 10.6,
+      "rl": 38.8,
+      "rg": 45.3,
+      "pg": 12
+    },
+    "peak_rating": 13.1,
+    "last_rating": 5.56,
+    "first_ts": 1666810974,
+    "last_ts": 1779825673
+  },
+  {
+    "sid": "76561198063034260",
+    "nicks": [
+      "Insaccato"
+    ],
+    "games": 51,
+    "wins": 24,
+    "losses": 27,
+    "win_rate_pct": 47.1,
+    "avg_frags": 42.2,
+    "avg_deaths": 43.9,
+    "avg_dmg_dealt": 8152,
+    "avg_dmg_taken": 6919,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 32.4,
+      "sg": 28.6,
+      "gl": 9.1,
+      "rl": 41,
+      "rg": 49.2,
+      "pg": 13.4
+    },
+    "peak_rating": 27.2,
+    "last_rating": 20.92,
+    "first_ts": 1575908973,
+    "last_ts": 1779740798
+  },
+  {
     "sid": "76561198176224478",
     "nicks": [
       "epc"
@@ -6760,33 +6821,6 @@
     "last_rating": 17.11,
     "first_ts": 1608922824,
     "last_ts": 1610128119
-  },
-  {
-    "sid": "76561198063034260",
-    "nicks": [
-      "Insaccato"
-    ],
-    "games": 50,
-    "wins": 24,
-    "losses": 26,
-    "win_rate_pct": 48,
-    "avg_frags": 42.6,
-    "avg_deaths": 44.1,
-    "avg_dmg_dealt": 8239,
-    "avg_dmg_taken": 6950,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 32.7,
-      "sg": 28.8,
-      "gl": 9.1,
-      "rl": 41.2,
-      "rg": 49.4,
-      "pg": 13.5
-    },
-    "peak_rating": 27.2,
-    "last_rating": 21.41,
-    "first_ts": 1575908973,
-    "last_ts": 1656012182
   },
   {
     "sid": "76561198059180212",
@@ -6951,6 +6985,34 @@
     "last_ts": 1605398273
   },
   {
+    "sid": "76561198257190136",
+    "nicks": [
+      "zanzan",
+      "ohljoo"
+    ],
+    "games": 45,
+    "wins": 22,
+    "losses": 23,
+    "win_rate_pct": 48.9,
+    "avg_frags": 47.6,
+    "avg_deaths": 41.1,
+    "avg_dmg_dealt": 7658,
+    "avg_dmg_taken": 6502,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 31.6,
+      "sg": 29.3,
+      "gl": 6.3,
+      "rl": 34.3,
+      "rg": 54.2,
+      "pg": 12.5
+    },
+    "peak_rating": 18.58,
+    "last_rating": 13.28,
+    "first_ts": 1711400567,
+    "last_ts": 1778262999
+  },
+  {
     "sid": "76561198199452077",
     "nicks": [
       "estoty Klyb"
@@ -7113,33 +7175,6 @@
     "last_ts": 1774792539
   },
   {
-    "sid": "76561199417609810",
-    "nicks": [
-      "kaliope"
-    ],
-    "games": 42,
-    "wins": 18,
-    "losses": 24,
-    "win_rate_pct": 42.9,
-    "avg_frags": 41.4,
-    "avg_deaths": 60.8,
-    "avg_dmg_dealt": 7542,
-    "avg_dmg_taken": 8494,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 20.8,
-      "sg": 25.2,
-      "gl": 10.4,
-      "rl": 39.6,
-      "rg": 45.1,
-      "pg": 12.2
-    },
-    "peak_rating": 13.1,
-    "last_rating": 5.64,
-    "first_ts": 1666810974,
-    "last_ts": 1779223608
-  },
-  {
     "sid": "76561199129057149",
     "nicks": [
       "StrangeLove"
@@ -7192,34 +7227,6 @@
     "last_rating": 21.24,
     "first_ts": 1577643312,
     "last_ts": 1590256718
-  },
-  {
-    "sid": "76561198257190136",
-    "nicks": [
-      "zanzan",
-      "ohljoo"
-    ],
-    "games": 41,
-    "wins": 20,
-    "losses": 21,
-    "win_rate_pct": 48.8,
-    "avg_frags": 45.5,
-    "avg_deaths": 39,
-    "avg_dmg_dealt": 7343,
-    "avg_dmg_taken": 6285,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 31.5,
-      "sg": 29,
-      "gl": 6.3,
-      "rl": 33.8,
-      "rg": 53.7,
-      "pg": 12.5
-    },
-    "peak_rating": 18.58,
-    "last_rating": 13.28,
-    "first_ts": 1711400567,
-    "last_ts": 1778262999
   },
   {
     "sid": "76561198130391533",
@@ -8921,6 +8928,33 @@
     "last_rating": 9.79,
     "first_ts": 1582922836,
     "last_ts": 1769205818
+  },
+  {
+    "sid": "76561199142999171",
+    "nicks": [
+      "knightrider"
+    ],
+    "games": 17,
+    "wins": 7,
+    "losses": 10,
+    "win_rate_pct": 41.2,
+    "avg_frags": 47.6,
+    "avg_deaths": 61.3,
+    "avg_dmg_dealt": 8523,
+    "avg_dmg_taken": 8462,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 22.2,
+      "sg": 28,
+      "gl": 13.1,
+      "rl": 42.7,
+      "rg": 44.3,
+      "pg": 9.7
+    },
+    "peak_rating": 24.06,
+    "last_rating": 13.38,
+    "first_ts": 1705178789,
+    "last_ts": 1780348609
   },
   {
     "sid": "76561198258457836",
