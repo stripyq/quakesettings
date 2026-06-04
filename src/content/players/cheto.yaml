@@ -9,18 +9,18 @@ team2024: 4friends
 team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 category: duel
-hoqCtfRating: 13.578085899353027
-hoqCtfGames: 4127
-hoqTdmRating: 14.347729682922363
-hoqTdmGames: 160
-ctfRatingUpdated: "2026-05-11"
+hoqCtfRating: 13.114883422851562
+hoqCtfGames: 4163
+hoqTdmRating: 14.553378105163574
+hoqTdmGames: 161
+ctfRatingUpdated: "2026-06-04"
 qllrCtfRating: 21.94
 qllrCtfGames: 14
-tdmRatingUpdated: "2026-05-11"
+tdmRatingUpdated: "2026-05-22"
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 13.58
-tdmRating: 14.35
+ctfRating: 13.11
+tdmRating: 14.55
 dpi: 800
 sensitivity: 2.4
 m_yaw: 0.022
@@ -48,8 +48,8 @@ keyboard: ozone-keyboard
 monitor: hp-omen
 headset: logitech-g-pro-headset
 skates: None
-ctfGames: 4127
-tdmGames: 160
+ctfGames: 4163
+tdmGames: 161
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

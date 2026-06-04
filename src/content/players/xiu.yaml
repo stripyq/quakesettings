@@ -35,8 +35,6 @@ crosshairColor: Black
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 15
-
-
 qlrace:
   mode: 3
   records: 1
@@ -55,7 +53,7 @@ qlrace:
     rank_pct: 32.6
   top_maps:
     - {map: df_lickdecease, rank: 43, total: 132, time: 11346}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: overkill
 favorite_gametype: Clan Arena

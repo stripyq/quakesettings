@@ -13,10 +13,6 @@ ctfGames: 54
 tdmRatingUpdated: "2026-04-29"
 tdmRating: 27.56
 tdmGames: 11
-
-
-
-
 published: false
 team2024: The expendables
 qlrace:
@@ -32,13 +28,13 @@ qlrace:
   best_record:
     map: japanesecastles
     rank: 61
-    total: 243
+    total: 244
     time: 11637
-    rank_pct: 25.1
+    rank_pct: 25
   top_maps:
-    - {map: japanesecastles, rank: 61, total: 243, time: 11637}
+    - {map: japanesecastles, rank: 61, total: 244, time: 11637}
     - {map: oilrig, rank: 11, total: 36, time: 10934}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 24
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

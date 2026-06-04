@@ -22,10 +22,6 @@ ctfRating: 22.77
 ctfGames: 1091
 tdmRating: 31.11
 tdmGames: 118
-
-
-
-
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -77,7 +73,7 @@ qlrace:
     rank_pct: 57.4
   top_maps:
     - {map: df_0ups, rank: 27, total: 47, time: 38759}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 2
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

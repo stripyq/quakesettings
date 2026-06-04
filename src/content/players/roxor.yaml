@@ -8,8 +8,6 @@ hoqTdmGames: 2
 tdmRatingUpdated: "2026-04-29"
 tdmRating: 25.45
 tdmGames: 2
-
-
 published: false
 team2024: AHU
 qlrace:
@@ -21,7 +19,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 855
-  average_rank_pct: 45.6
+  average_rank_pct: 44
   best_record:
     map: bobo
     rank: 17
@@ -30,8 +28,8 @@ qlrace:
     rank_pct: 39.5
   top_maps:
     - {map: bobo, rank: 17, total: 43, time: 12136}
-    - {map: bes-jumparound, rank: 15, total: 29, time: 37768}
-  fetched_at: '2026-04-28'
+    - {map: bes-jumparound, rank: 15, total: 31, time: 37768}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 2
 favorite_map: campgrounds
 favorite_gametype: Clan Arena

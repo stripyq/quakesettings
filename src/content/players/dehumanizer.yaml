@@ -8,11 +8,7 @@ hoqCtfRating: 24.65671157836914
 hoqCtfGames: 547
 hoqTdmRating: 30.936386108398438
 hoqTdmGames: 1133
-
-
-
 tdmRatingUpdated: "2026-05-11"
-
 lastUpdated: 2026-02
 duelRating: 1361
 ctfGames: 547
@@ -20,17 +16,9 @@ tdmGames: 1133
 duelGames: 432
 tdmRating: 30.94
 ctfRating: 24.66
-
-
-
 ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 21.45
 qllrCtfGames: 34
-
-
-
-
-
 dataSource: collected
 dpi: 400
 sensitivity: 1.2
@@ -85,9 +73,9 @@ qlrace:
   top_maps:
     - {map: cubicle, rank: 18, total: 61, time: 13221}
     - {map: bloxrox, rank: 16, total: 22, time: 73151}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 281472, rank: 9, total: 69, speed_top: 1195, date: '2026-04-28T19:50:30.865Z'}
+    - {map: hangtime-df, mode: 3, time: 281472, rank: 9, total: 72, speed_top: 1195, date: '2026-04-28T19:50:30.865Z'}
   unique_maps_vql: 6
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

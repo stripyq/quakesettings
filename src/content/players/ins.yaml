@@ -9,32 +9,20 @@ team2026Shortname: cock
 country: PT
 team: Aimdead brainers
 category: ctf
-hoqCtfRating: 32.82870101928711
-hoqCtfGames: 1925
-hoqTdmRating: 29.466583251953125
-hoqTdmGames: 266
-
-
-
-
+hoqCtfRating: 33.37489700317383
+hoqCtfGames: 1937
+hoqTdmRating: 30.135780334472656
+hoqTdmGames: 277
 lastUpdated: 2025-01
-tdmRating: 29.47
-tdmRatingUpdated: "2026-04-29"
-ctfRating: 32.83
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 30.76
-qllrCtfGames: 85
-
-
-
-
-
-
-
-
+tdmRating: 30.14
+tdmRatingUpdated: "2026-06-04"
+ctfRating: 33.37
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 31.45
+qllrCtfGames: 89
 duelRating: 1688
-ctfGames: 1925
-tdmGames: 266
+ctfGames: 1937
+tdmGames: 277
 duelGames: 1106
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -74,14 +62,14 @@ qlrace:
   speed_top: 1528
   average_rank_pct: 51.5
   best_record:
-    map: rebound
-    rank: 22
-    total: 157
-    time: 7200
-    rank_pct: 14
+    map: q3wcp19
+    rank: 10
+    total: 72
+    time: 13744
+    rank_pct: 13.9
   top_maps:
-    - {map: rebound, rank: 22, total: 157, time: 7200}
-    - {map: q3wcp19, rank: 10, total: 71, time: 13744}
+    - {map: q3wcp19, rank: 10, total: 72, time: 13744}
+    - {map: rebound, rank: 22, total: 158, time: 7200}
     - {map: df_coldrun, rank: 25, total: 172, time: 16430}
     - {map: r7_sanity, rank: 5, total: 27, time: 72386}
     - {map: tatmt_s4, rank: 11, total: 55, time: 17627}
@@ -90,12 +78,12 @@ qlrace:
     - {map: duotest, rank: 19, total: 57, time: 6927}
     - {map: sarcasmjump, rank: 19, total: 56, time: 428165}
     - {map: pillbox, rank: 20, total: 58, time: 10230}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
     - {map: hangtime, mode: 3, time: 1000576, rank: 40, total: 69, date: '2017-03-17T20:52:00.069Z'}
-    - {map: hangtime-df, mode: 3, time: 274688, rank: 8, total: 69, speed_top: 1194, date: '2026-04-28T18:28:13.433Z'}
+    - {map: hangtime-df, mode: 3, time: 274688, rank: 8, total: 72, speed_top: 1194, date: '2026-04-28T18:28:13.433Z'}
     - {map: hangtime2-df, mode: 2, time: 21109512, rank: 15, total: 15, speed_top: 1528, date: '2026-02-06T23:35:00.730Z'}
-  unique_maps_vql: 206
+  unique_maps_vql: 238
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -9,22 +9,18 @@ team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: true
 lastUpdated: 2026-02
-ctfRating: 28.5
-ctfGames: 653
-tdmRating: 33.01
-tdmGames: 396
+ctfRating: 28.49
+ctfGames: 724
+tdmRating: 33.66
+tdmGames: 405
 duelRating: 1785
 duelRatingSource: qlstats
 duelGames: 260
 dataSource: player
-hoqCtfRating: 28.496784210205078
-hoqCtfGames: 653
-hoqTdmRating: 33.01471710205078
-hoqTdmGames: 396
-
-
-
-
+hoqCtfRating: 28.485742568969727
+hoqCtfGames: 724
+hoqTdmRating: 33.6572151184082
+hoqTdmGames: 405
 dpi: 1600
 sensitivity: 1.68
 m_yaw: 0.022
@@ -58,7 +54,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 0
-  average_rank_pct: 16.9
+  average_rank_pct: 17
   best_record:
     map: df_cityrocket
     rank: 1
@@ -68,19 +64,13 @@ qlrace:
   top_maps:
     - {map: df_cityrocket, rank: 1, total: 39, time: 32487}
     - {map: df_lickmax, rank: 18, total: 87, time: 6532}
-    - {map: spacectf, rank: 78, total: 284, time: 4925}
-  fetched_at: '2026-04-28'
+    - {map: spacectf, rank: 79, total: 285, time: 4925}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 5
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 22.13
-qllrCtfGames: 97
-
-
-
-
-
-
-tdmRatingUpdated: "2026-05-11"
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 21.98
+qllrCtfGames: 99
+tdmRatingUpdated: "2026-05-22"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

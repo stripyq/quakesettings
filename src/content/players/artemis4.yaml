@@ -8,29 +8,19 @@ team2026Shortname: CUBA
 country: SI
 team: Le Cubanitos
 category: ctf
-hoqCtfRating: 25.181398391723633
-hoqCtfGames: 1604
+hoqCtfRating: 25.840576171875
+hoqCtfGames: 1632
 hoqTdmRating: 14.384278297424316
 hoqTdmGames: 25
-
-
-
-
 lastUpdated: 2025-01
 tdmRating: 14.38
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 25.18
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 25.01
-qllrCtfGames: 112
-
-
-
-
-
-
+ctfRating: 25.84
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 24.86
+qllrCtfGames: 114
 duelRating: 1559
-ctfGames: 1604
+ctfGames: 1632
 tdmGames: 25
 duelGames: 1561
 duelRatingUpdated: "2026-02-04"
@@ -74,7 +64,7 @@ qlrace:
     silver: 0
     bronze: 1
   speed_top: 0
-  average_rank_pct: 26.5
+  average_rank_pct: 26.4
   best_record:
     map: r7_hedges
     rank: 3
@@ -91,8 +81,8 @@ qlrace:
     - {map: r7_whimsy, rank: 8, total: 39, time: 64016}
     - {map: 6percent, rank: 5, total: 24, time: 26104}
     - {map: blastradius, rank: 6, total: 28, time: 13818}
-    - {map: dividedcrossings, rank: 30, total: 123, time: 5427}
-  fetched_at: '2026-04-28'
+    - {map: dividedcrossings, rank: 30, total: 124, time: 5427}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 31
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

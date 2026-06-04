@@ -6,13 +6,13 @@ team: ""
 category: tdm
 hoqCtfRating: 18.22330093383789
 hoqCtfGames: 2
-hoqTdmRating: 32.32355880737305
-hoqTdmGames: 2492
+hoqTdmRating: 32.5887565612793
+hoqTdmGames: 2493
 lastUpdated: 2025-01
 duelRating: 1589
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
-tdmRating: 32.32
-tdmRatingUpdated: "2026-04-29"
+tdmRating: 32.59
+tdmRatingUpdated: "2026-05-22"
 ctfRating: 18.22
 ctfRatingUpdated: "2026-04-29"
 dataSource: player
@@ -53,7 +53,7 @@ crosshairColor: White
 gpuBrand: AMD
 cpuBrand: AMD
 ctfGames: 2
-tdmGames: 2492
+tdmGames: 2493
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

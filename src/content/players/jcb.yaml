@@ -8,31 +8,19 @@ team2026Shortname: wB
 country: DK
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 37.738792419433594
-hoqCtfGames: 2086
+hoqCtfRating: 38.25542068481445
+hoqCtfGames: 2093
 hoqTdmRating: 29.552019119262695
 hoqTdmGames: 9
-
-
-
-
 lastUpdated: 2025-01
-ctfRating: 37.74
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 33.23
-qllrCtfGames: 95
-
-
-
-
-
-
-
-
+ctfRating: 38.26
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 33.45
+qllrCtfGames: 98
 tdmRating: 29.55
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1142
-ctfGames: 2086
+ctfGames: 2093
 tdmGames: 9
 duelGames: 47
 duelRatingUpdated: "2026-02-04"
@@ -71,28 +59,28 @@ qlrace:
     silver: 3
     bronze: 3
   speed_top: 2018
-  average_rank_pct: 42.4
+  average_rank_pct: 42
   best_record:
     map: japanesecastles
     rank: 3
-    total: 243
+    total: 244
     time: 7584
     rank_pct: 1.2
   top_maps:
-    - {map: japanesecastles, rank: 3, total: 243, time: 7584}
+    - {map: japanesecastles, rank: 3, total: 244, time: 7584}
     - {map: chile21, rank: 1, total: 23, time: 4}
     - {map: ghost-luckr, rank: 2, total: 27, time: 29056}
     - {map: lick_again, rank: 4, total: 32, time: 2312}
-    - {map: ironwood, rank: 3, total: 20, time: 4032}
+    - {map: ironwood, rank: 3, total: 21, time: 4032}
     - {map: hangtime2-df, rank: 3, total: 15, time: 633784}
     - {map: ghost-kiddy, rank: 2, total: 9, time: 29160}
     - {map: lick_shit, rank: 7, total: 29, time: 12600}
     - {map: torp_concept07, rank: 4, total: 15, time: 5040}
     - {map: lick_more2, rank: 2, total: 7, time: 2568}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
     - {map: hangtime, mode: 3, time: 291016, rank: 4, total: 69, date: '2018-08-18T22:26:14.995Z'}
-    - {map: hangtime-df, mode: 3, time: 213768, rank: 3, total: 69, speed_top: 1219, date: '2025-07-26T22:00:09.632Z'}
+    - {map: hangtime-df, mode: 3, time: 213768, rank: 3, total: 72, speed_top: 1219, date: '2025-07-26T22:00:09.632Z'}
     - {map: hangtime2-df, mode: 2, time: 633784, rank: 3, total: 15, speed_top: 1512, date: '2026-02-05T23:13:28.586Z'}
   unique_maps_vql: 76
 favorite_map: japanesecastles

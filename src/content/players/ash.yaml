@@ -38,8 +38,6 @@ crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
 tdmGames: 367
-
-
 qlrace:
   mode: 3
   records: 1
@@ -58,7 +56,7 @@ qlrace:
     rank_pct: 47.4
   top_maps:
     - {map: regrelue04, rank: 27, total: 57, time: 47432}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

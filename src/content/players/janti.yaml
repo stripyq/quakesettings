@@ -10,10 +10,6 @@ hoqCtfRating: 15.860128402709961
 hoqCtfGames: 9859
 hoqTdmRating: 14.50886058807373
 hoqTdmGames: 67
-
-
-
-
 lastUpdated: "2026-02-15T14:00:00"
 dataSource: player
 duelRating: 2050
@@ -26,12 +22,6 @@ ctfRating: 15.86
 ctfRatingUpdated: "2026-05-11"
 qllrCtfRating: 25.73
 qllrCtfGames: 17
-
-
-
-
-
-
 ctfGames: 9859
 dpi: 1200
 sensitivity: 1.3
@@ -71,25 +61,25 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 0
-  average_rank_pct: 43.3
+  average_rank_pct: 43.2
   best_record:
     map: q3wc5
     rank: 5
-    total: 27
+    total: 29
     time: 15552
-    rank_pct: 18.5
+    rank_pct: 17.2
   top_maps:
-    - {map: q3wc5, rank: 5, total: 27, time: 15552}
+    - {map: q3wc5, rank: 5, total: 29, time: 15552}
     - {map: wiggle, rank: 9, total: 48, time: 42744}
     - {map: pornstar_dhoni, rank: 8, total: 34, time: 24008}
-    - {map: maze_gen_24, rank: 9, total: 36, time: 15424}
+    - {map: maze_gen_24, rank: 9, total: 37, time: 15424}
     - {map: 13plant, rank: 16, total: 48, time: 7668}
     - {map: daanstrafe06, rank: 9, total: 27, time: 26120}
     - {map: vanilla_06, rank: 17, total: 50, time: 3248}
     - {map: actf32, rank: 11, total: 26, time: 19464}
     - {map: actf13, rank: 15, total: 34, time: 9999}
     - {map: actf02, rank: 16, total: 35, time: 21280}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 19
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

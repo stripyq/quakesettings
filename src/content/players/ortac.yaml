@@ -9,8 +9,6 @@ tdmRating: 20.16
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1200
 tdmGames: 246
-
-
 duelGames: 1227
 duelRatingUpdated: "2026-02-04"
 mouse: zaopin-z11-pro
@@ -49,23 +47,23 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 0
-  average_rank_pct: 64.5
+  average_rank_pct: 64.6
   best_record:
     map: spacectf
-    rank: 171
-    total: 284
+    rank: 172
+    total: 285
     time: 7258
-    rank_pct: 60.2
+    rank_pct: 60.4
   top_maps:
-    - {map: spacectf, rank: 171, total: 284, time: 7258}
+    - {map: spacectf, rank: 172, total: 285, time: 7258}
     - {map: df_dinirun3, rank: 22, total: 32, time: 194944}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 12
-hoqTdmRating: 20.161855697631836
-hoqTdmGames: 246
 favorite_map: hiddenfortress
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun
 accuracy_rl: 45
 accuracy_rg: 53
 accuracy_lg: 41
+hoqTdmRating: 20.161855697631836
+hoqTdmGames: 246

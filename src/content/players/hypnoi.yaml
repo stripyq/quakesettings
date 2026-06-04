@@ -37,27 +37,21 @@ qlrace:
     - {map: chile25, rank: 1, total: 39, time: 1120}
     - {map: df_ghost_minions_fix, rank: 1, total: 39, time: 25966}
     - {map: charon, rank: 5, total: 194, time: 20779}
-    - {map: spr_gpl, rank: 3, total: 105, time: 34068}
+    - {map: spr_gpl, rank: 3, total: 106, time: 34068}
     - {map: pornstar_lamba, rank: 1, total: 34, time: 27064}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 242
 ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 21.72
 qllrCtfGames: 25
-
-
-
-
-
-
 tdmRatingUpdated: "2026-04-29"
-hoqCtfRating: 26.140064239501953
-hoqCtfGames: 230
-hoqTdmRating: 22.760435104370117
-hoqTdmGames: 539
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 53
 accuracy_lg: 34
+hoqCtfRating: 26.140064239501953
+hoqCtfGames: 230
+hoqTdmRating: 22.760435104370117
+hoqTdmGames: 539

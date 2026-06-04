@@ -2,19 +2,15 @@ name: p5ych0
 steamId: "76561197995121689"
 country: Unknown
 category: ctf
-hoqCtfRating: 12.704608917236328
-hoqCtfGames: 386
-hoqTdmRating: 11.926412582397461
-hoqTdmGames: 165
-
-
-
-
+hoqCtfRating: 12.466249465942383
+hoqCtfGames: 387
+hoqTdmRating: 11.84937858581543
+hoqTdmGames: 182
 lastUpdated: 2025-01
-tdmRating: 11.93
-tdmRatingUpdated: "2026-05-11"
-ctfRating: 12.7
-ctfRatingUpdated: "2026-04-29"
+tdmRating: 11.85
+tdmRatingUpdated: "2026-06-04"
+ctfRating: 12.47
+ctfRatingUpdated: "2026-06-04"
 dataSource: player
 dpi: 800
 sensitivity: 1.4
@@ -41,12 +37,8 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 386
-tdmGames: 165
-
-
-
-
+ctfGames: 387
+tdmGames: 182
 qlrace:
   mode: 2
   records: 11
@@ -71,10 +63,10 @@ qlrace:
     - {map: inder_failrun4, rank: 38, total: 67, time: 34162}
     - {map: maze, rank: 16, total: 27, time: 219958}
     - {map: dog_ass03, rank: 6, total: 10, time: 43384}
-    - {map: warehouse, rank: 26, total: 41, time: 34857}
+    - {map: warehouse, rank: 26, total: 42, time: 34857}
     - {map: pasteyrox, rank: 14, total: 21, time: 149384}
     - {map: cos1_beta7b, rank: 430, total: 571, time: 80024}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 14
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

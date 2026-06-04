@@ -5,32 +5,22 @@ aliases: []
 team2026: GdeFlag?
 team2026Shortname: GF?
 category: tdm
-hoqCtfRating: 17.503559112548828
-hoqCtfGames: 471
-hoqTdmRating: 28.97294807434082
-hoqTdmGames: 2505
-
-
-
-
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 25.53
-qllrCtfGames: 21
-
-
-
-
-
-
-tdmRatingUpdated: "2026-05-11"
+hoqCtfRating: 17.858776092529297
+hoqCtfGames: 521
+hoqTdmRating: 29.753021240234375
+hoqTdmGames: 2528
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 24.65
+qllrCtfGames: 23
+tdmRatingUpdated: "2026-06-04"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1041
-ctfGames: 471
-tdmGames: 2505
+ctfGames: 521
+tdmGames: 2528
 duelGames: 794
-ctfRating: 17.5
-tdmRating: 28.97
+ctfRating: 17.86
+tdmRating: 29.75
 dpi: 1600
 sensitivity: 1.7
 edpi: 2720
@@ -67,16 +57,16 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 672
-  average_rank_pct: 67
+  average_rank_pct: 66.8
   best_record:
     map: japanesecastles
-    rank: 142
-    total: 212
+    rank: 143
+    total: 214
     time: 13080
-    rank_pct: 67
+    rank_pct: 66.8
   top_maps:
-    - {map: japanesecastles, rank: 142, total: 212, time: 13080}
-  fetched_at: '2026-04-28'
+    - {map: japanesecastles, rank: 143, total: 214, time: 13080}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

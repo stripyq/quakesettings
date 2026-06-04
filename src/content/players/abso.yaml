@@ -15,10 +15,6 @@ ctfGames: 624
 tdmRatingUpdated: "2026-04-29"
 tdmRating: 34.96
 tdmGames: 637
-
-
-
-
 published: false
 team2024: The expendables
 qlrace:
@@ -39,7 +35,7 @@ qlrace:
     rank_pct: 100
   top_maps:
     - {map: p5run, rank: 13, total: 13, time: 31872}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: japanesecastles
 favorite_gametype: Team Deathmatch

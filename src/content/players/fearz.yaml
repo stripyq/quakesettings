@@ -39,8 +39,6 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
 tdmGames: 740
-
-
 qlrace:
   mode: 2
   records: 2
@@ -60,7 +58,7 @@ qlrace:
   top_maps:
     - {map: tenuous, rank: 16, total: 98, time: 61538}
     - {map: df_lickhuar, rank: 9, total: 25, time: 47591}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 4
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

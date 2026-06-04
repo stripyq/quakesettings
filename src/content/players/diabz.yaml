@@ -2,13 +2,13 @@ name: diabz
 country: GB
 steamId: "76561197985202252"
 category: ctf
-hoqCtfRating: 29.502588272094727
-hoqCtfGames: 315
+hoqCtfRating: 29.708406448364258
+hoqCtfGames: 316
 hoqTdmRating: 26.94189453125
 hoqTdmGames: 18
 lastUpdated: 2026-02
-ctfRating: 29.5
-ctfRatingUpdated: "2026-04-29"
+ctfRating: 29.71
+ctfRatingUpdated: "2026-05-22"
 tdmRating: 26.94
 tdmRatingUpdated: "2026-04-29"
 dataSource: player
@@ -39,12 +39,8 @@ jump: MOUSE2
 attack: MOUSE1
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 315
+ctfGames: 316
 tdmGames: 18
-
-
-
-
 qlrace:
   mode: 2
   records: 3
@@ -54,18 +50,18 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1123
-  average_rank_pct: 12.2
+  average_rank_pct: 12.1
   best_record:
     map: shiningforces
     rank: 10
-    total: 147
+    total: 148
     time: 9952
     rank_pct: 6.8
   top_maps:
-    - {map: shiningforces, rank: 10, total: 147, time: 9952}
-    - {map: spidercrossings, rank: 11, total: 126, time: 10712}
+    - {map: shiningforces, rank: 10, total: 148, time: 9952}
+    - {map: spidercrossings, rank: 11, total: 127, time: 10712}
     - {map: campercrossings, rank: 25, total: 119, time: 9616}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 5
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

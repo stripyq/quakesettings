@@ -13,10 +13,6 @@ ctfGames: 957
 ctfRatingUpdated: "2026-04-29"
 tdmRating: 22.42
 tdmGames: 45
-
-
-
-
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1652
 duelGames: 2127
@@ -68,12 +64,12 @@ qlrace:
   best_record:
     map: qzpractice2
     rank: 210
-    total: 591
+    total: 592
     time: 25384
     rank_pct: 35.5
   top_maps:
-    - {map: qzpractice2, rank: 210, total: 591, time: 25384}
-  fetched_at: '2026-04-28'
+    - {map: qzpractice2, rank: 210, total: 592, time: 25384}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

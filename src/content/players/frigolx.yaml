@@ -6,29 +6,19 @@ team2026: Astral Starlight
 country: Unknown
 team: Astral Starlight
 category: ctf
-hoqCtfRating: 37.71875
-hoqCtfGames: 909
+hoqCtfRating: 38.007102966308594
+hoqCtfGames: 931
 hoqTdmRating: 30.2099666595459
 hoqTdmGames: 382
-
-
-
-
 lastUpdated: 2025-01
-ctfRating: 37.72
-ctfRatingUpdated: "2026-05-11"
+ctfRating: 38.01
+ctfRatingUpdated: "2026-06-04"
 qllrCtfRating: 22.21
 qllrCtfGames: 52
-
-
-
-
-
-
 tdmRating: 30.21
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1624
-ctfGames: 909
+ctfGames: 931
 tdmGames: 382
 duelGames: 1127
 duelRatingUpdated: "2026-02-04"
@@ -66,28 +56,28 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 3205
-  average_rank_pct: 58.6
+  average_rank_pct: 58.5
   best_record:
     map: spacectf
     rank: 29
-    total: 284
+    total: 285
     time: 4328
     rank_pct: 10.2
   top_maps:
-    - {map: spacectf, rank: 29, total: 284, time: 4328}
+    - {map: spacectf, rank: 29, total: 285, time: 4328}
     - {map: rmg01_09, rank: 4, total: 22, time: 48248}
     - {map: campgrounds, rank: 104, total: 387, time: 25648}
-    - {map: qzpractice2, rank: 259, total: 591, time: 27912}
+    - {map: qzpractice2, rank: 259, total: 592, time: 27912}
     - {map: zzz_rocket1, rank: 41, total: 93, time: 11776}
     - {map: kool_quickgrass1, rank: 20, total: 35, time: 20168}
-    - {map: r7-funky, rank: 15, total: 22, time: 31728}
+    - {map: r7-funky, rank: 15, total: 23, time: 31728}
     - {map: daan_fuckfest, rank: 27, total: 36, time: 43648}
-    - {map: maze_gen_06, rank: 15, total: 20, time: 40176}
-    - {map: torp_nubt_fix, rank: 11, total: 13, time: 20448}
-  fetched_at: '2026-04-28'
+    - {map: maze_gen_06, rank: 16, total: 21, time: 40176}
+    - {map: torp_nubt_fix, rank: 12, total: 14, time: 20448}
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 1987976, rank: 58, total: 69, speed_top: 1199, date: '2026-04-15T11:40:47.842Z'}
-  unique_maps_vql: 22
+    - {map: hangtime-df, mode: 3, time: 1987976, rank: 60, total: 72, speed_top: 1199, date: '2026-04-15T11:40:47.842Z'}
+  unique_maps_vql: 23
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

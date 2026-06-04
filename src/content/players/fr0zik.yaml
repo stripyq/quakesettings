@@ -17,43 +17,27 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 721
-  average_rank_pct: 75.5
+  average_rank_pct: 75.2
   best_record:
     map: japanesecastles
-    rank: 160
-    total: 212
+    rank: 161
+    total: 214
     time: 13936
-    rank_pct: 75.5
+    rank_pct: 75.2
   top_maps:
-    - {map: japanesecastles, rank: 160, total: 212, time: 13936}
-  fetched_at: '2026-04-28'
+    - {map: japanesecastles, rank: 161, total: 214, time: 13936}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
-ctfGames: 1601
-
-
-
-
-
-ctfRatingUpdated: "2026-05-11"
+ctfGames: 1631
+ctfRatingUpdated: "2026-06-04"
 qllrCtfRating: 20.99
 qllrCtfGames: 28
-
-
-
-
-ctfRating: 25.85
-
-
-
-
-
-
-
-hoqCtfRating: 25.847190856933594
-hoqCtfGames: 1601
+ctfRating: 24.01
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 33
+hoqCtfRating: 24.011133193969727
+hoqCtfGames: 1631

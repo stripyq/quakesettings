@@ -14,10 +14,6 @@ lastUpdated: 2025-01
 duelRating: 1834
 ctfGames: 1
 tdmGames: 32
-
-
-
-
 duelGames: 1890
 duelRatingUpdated: "2026-02-04"
 tdmRating: 35.46
@@ -70,9 +66,9 @@ qlrace:
     - {map: jumpathon, rank: 2, total: 6, time: 97040}
     - {map: snazwank, rank: 6, total: 14, time: 38680}
     - {map: df_0ups, rank: 28, total: 47, time: 43256}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 711112, rank: 36, total: 69, speed_top: 1210, date: '2025-05-21T23:25:49.002Z'}
+    - {map: hangtime-df, mode: 3, time: 711112, rank: 37, total: 72, speed_top: 1210, date: '2025-05-21T23:25:49.002Z'}
   unique_maps_vql: 8
 favorite_map: campgrounds
 favorite_gametype: Clan Arena

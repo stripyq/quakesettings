@@ -2,17 +2,17 @@ name: Antosh
 steamId: "76561199559373528"
 country: PL
 category: ctf
-hoqCtfRating: 19.160375595092773
-hoqCtfGames: 98
-hoqTdmRating: 23.458070755004883
-hoqTdmGames: 40
-tdmRatingUpdated: "2026-05-11"
-tdmRating: 23.46
-tdmGames: 40
+hoqCtfRating: 22.747859954833984
+hoqCtfGames: 258
+hoqTdmRating: 24.305383682250977
+hoqTdmGames: 68
+tdmRatingUpdated: "2026-06-04"
+tdmRating: 24.31
+tdmGames: 68
 published: true
-ctfRatingUpdated: "2026-05-11"
-ctfRating: 19.16
-ctfGames: 98
+ctfRatingUpdated: "2026-06-04"
+ctfRating: 22.75
+ctfGames: 258
 dataSource: player
 lastUpdated: 2026-04
 dpi: 1600
@@ -51,5 +51,5 @@ favorite_map: ironworks
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 39
-accuracy_rg: 58
+accuracy_rg: 59
 accuracy_lg: 39

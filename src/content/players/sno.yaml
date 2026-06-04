@@ -5,17 +5,13 @@ aliases:
   - sno
 team2024: Flappy Flags
 lastUpdated: 2026-01
-ctfRating: 21.93
-ctfRatingUpdated: "2026-05-11"
+ctfRating: 22.16
+ctfRatingUpdated: "2026-06-04"
 tdmRating: 19.29
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1066
-ctfGames: 2280
+ctfGames: 2313
 tdmGames: 1
-
-
-
-
 duelGames: 901
 duelRatingUpdated: "2026-02-04"
 mouse: razer-viper-v3-pro
@@ -46,14 +42,14 @@ gpuBrand: AMD
 cpuBrand: AMD
 qlrace:
   mode: 2
-  records: 91
+  records: 93
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
   speed_top: 3585
-  average_rank_pct: 52.7
+  average_rank_pct: 52.8
   best_record:
     map: aa_rmg2
     rank: 6
@@ -71,26 +67,17 @@ qlrace:
     - {map: p3nt4_ralco, rank: 16, total: 68, time: 41960}
     - {map: pornstar_quickie2, rank: 9, total: 37, time: 18352}
     - {map: zeel_ponpon, rank: 9, total: 37, time: 23016}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 414648, rank: 19, total: 69, speed_top: 1194, date: '2026-04-26T20:42:16.881Z'}
-  unique_maps_vql: 152
-
-
-
-
-
-
-
-
-
-hoqCtfRating: 21.931577682495117
-hoqCtfGames: 2280
-hoqTdmRating: 19.292423248291016
-hoqTdmGames: 1
+    - {map: hangtime-df, mode: 3, time: 350208, rank: 16, total: 72, speed_top: 1209, date: '2026-05-11T20:27:15.792Z'}
+  unique_maps_vql: 166
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 40
 accuracy_rg: 51
 accuracy_lg: 30
+hoqCtfRating: 22.155176162719727
+hoqCtfGames: 2313
+hoqTdmRating: 19.292423248291016
+hoqTdmGames: 1

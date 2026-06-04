@@ -8,31 +8,19 @@ team2026Shortname: SHREK
 country: "NO"
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 47.524871826171875
-hoqCtfGames: 2780
+hoqCtfRating: 47.31231689453125
+hoqCtfGames: 2791
 hoqTdmRating: 35.36933517456055
 hoqTdmGames: 197
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1345
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.37
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 47.52
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 37.19
-qllrCtfGames: 72
-
-
-
-
-
-
-
-
+ctfRating: 47.31
+ctfRatingUpdated: "2026-05-22"
+qllrCtfRating: 36.33
+qllrCtfGames: 78
 dataSource: player
 dpi: 800
 sensitivity: 4
@@ -62,7 +50,7 @@ enemyModel: Keel
 crosshairColor: Green, White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2780
+ctfGames: 2791
 tdmGames: 197
 qlrace:
   mode: 3
@@ -82,7 +70,7 @@ qlrace:
     rank_pct: 84.6
   top_maps:
     - {map: awumpus-slick, rank: 11, total: 13, time: 73392}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

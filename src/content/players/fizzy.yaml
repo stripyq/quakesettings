@@ -3,20 +3,16 @@ steamId: "76561198129795100"
 aliases: []
 country: PL
 category: ctf
-hoqCtfRating: 2.228929281234741
-hoqCtfGames: 1999
-
-
-ctfRatingUpdated: "2026-05-11"
+hoqCtfRating: 1.12363600730896
+hoqCtfGames: 2023
+ctfRatingUpdated: "2026-06-04"
 qllrCtfRating: 21.9
 qllrCtfGames: 12
-
-
 lastUpdated: "2026-02-13"
 duelRating: 725
-ctfGames: 1999
+ctfGames: 2023
 duelGames: 26
-ctfRating: 2.23
+ctfRating: 1.12
 dataSource: player
 dpi: 800
 sensitivity: 3
@@ -62,20 +58,20 @@ qlrace:
   best_record:
     map: japanesecastles
     rank: 7
-    total: 243
+    total: 244
     time: 8176
     rank_pct: 2.9
   top_maps:
-    - {map: japanesecastles, rank: 7, total: 243, time: 8176}
+    - {map: japanesecastles, rank: 7, total: 244, time: 8176}
     - {map: campgrounds, rank: 155, total: 387, time: 27208}
     - {map: spr_toofoo, rank: 25, total: 41, time: 34472}
     - {map: greenstrafe, rank: 12, total: 16, time: 56368}
     - {map: aa_pm6, rank: 4, total: 5, time: 12328}
     - {map: eksha_kool, rank: 32, total: 37, time: 23432}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 632440, rank: 31, total: 69, speed_top: 1204, date: '2026-04-19T15:21:29.473Z'}
-  unique_maps_vql: 15
+    - {map: hangtime-df, mode: 3, time: 372344, rank: 17, total: 72, speed_top: 1205, date: '2026-05-13T16:53:25.545Z'}
+  unique_maps_vql: 19
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

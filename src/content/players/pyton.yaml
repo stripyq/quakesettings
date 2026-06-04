@@ -9,21 +9,15 @@ team2026: Old Sexy Quakers
 team2026Shortname: OSQ
 published: true
 category: ctf
-hoqCtfRating: 24.80132293701172
-hoqCtfGames: 1087
-
-
-ctfRatingUpdated: "2026-05-11"
+hoqCtfRating: 24.613157272338867
+hoqCtfGames: 1106
+ctfRatingUpdated: "2026-05-22"
 qllrCtfRating: 19.98
 qllrCtfGames: 32
-
-
-
-
 lastUpdated: 2026-02
 dataSource: player
-ctfRating: 24.8
-ctfGames: 1087
+ctfRating: 24.61
+ctfGames: 1106
 duelRating: 1395
 duelRatingSource: qlstats
 duelGames: 64
@@ -82,7 +76,7 @@ qlrace:
     - {map: df_minions_run5, rank: 24, total: 82, time: 20345}
     - {map: inder_a1ex, rank: 18, total: 59, time: 36718}
     - {map: df_pornstarslopin, rank: 152, total: 226, time: 31521}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 15
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

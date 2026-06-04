@@ -5,22 +5,14 @@ aliases:
 category: ctf
 hoqCtfRating: 18.727022171020508
 hoqCtfGames: 1051
-hoqTdmRating: 23.68500518798828
-hoqTdmGames: 364
-
-
-
-
+hoqTdmRating: 24.001502990722656
+hoqTdmGames: 366
 ctfRatingUpdated: "2026-05-11"
 ctfRating: 18.73
 ctfGames: 1051
-tdmRatingUpdated: "2026-05-11"
-tdmRating: 23.69
-tdmGames: 364
-
-
-
-
+tdmRatingUpdated: "2026-06-04"
+tdmRating: 24
+tdmGames: 366
 published: false
 qlrace:
   mode: 2
@@ -46,10 +38,10 @@ qlrace:
     - {map: charon, rank: 35, total: 194, time: 27253}
     - {map: tatmt_s2, rank: 18, total: 64, time: 20958}
     - {map: inder_a1ex, rank: 17, total: 59, time: 36673}
+    - {map: q3wcp24, rank: 11, total: 38, time: 18684}
     - {map: 18percent, rank: 18, total: 61, time: 42105}
-    - {map: q3wcp24, rank: 11, total: 37, time: 18684}
     - {map: mega_ramp, rank: 82, total: 227, time: 27554}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 93
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

@@ -13,10 +13,6 @@ lastUpdated: 2025-02
 duelRating: 750
 ctfGames: 2451
 tdmGames: 336
-
-
-
-
 duelGames: 75
 ctfRating: 17.64
 tdmRating: 18.57
@@ -62,12 +58,12 @@ qlrace:
   best_record:
     map: qzpractice2
     rank: 17
-    total: 591
+    total: 592
     time: 20007
     rank_pct: 2.9
   top_maps:
-    - {map: qzpractice2, rank: 17, total: 591, time: 20007}
-  fetched_at: '2026-04-28'
+    - {map: qzpractice2, rank: 17, total: 592, time: 20007}
+  fetched_at: '2026-05-22'
   unique_maps_vql: 2
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

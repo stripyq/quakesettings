@@ -11,34 +11,22 @@ team2026Shortname: wB
 country: HR
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 25.17605209350586
-hoqCtfGames: 2661
-hoqTdmRating: 27.005720138549805
-hoqTdmGames: 313
-
-
-
-
+hoqCtfRating: 25.229711532592773
+hoqCtfGames: 2701
+hoqTdmRating: 26.957374572753906
+hoqTdmGames: 315
 lastUpdated: 2025-01
 duelRating: 1086
-ctfGames: 2661
-tdmGames: 313
+ctfGames: 2701
+tdmGames: 315
 duelGames: 4
 duelRatingUpdated: "2026-02-04"
-tdmRating: 27.01
-tdmRatingUpdated: "2026-05-11"
-ctfRating: 25.18
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 25.09
-qllrCtfGames: 67
-
-
-
-
-
-
-
-
+tdmRating: 26.96
+tdmRatingUpdated: "2026-06-04"
+ctfRating: 25.23
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 24.78
+qllrCtfGames: 70
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -84,7 +72,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1040
-  average_rank_pct: 84.3
+  average_rank_pct: 84.4
   best_record:
     map: strafe_ok
     rank: 51
@@ -94,9 +82,9 @@ qlrace:
   top_maps:
     - {map: strafe_ok, rank: 51, total: 69, time: 15432}
     - {map: 180turn, rank: 31, total: 40, time: 66216}
-    - {map: shitstrafe2, rank: 61, total: 71, time: 35680}
+    - {map: shitstrafe2, rank: 62, total: 72, time: 35680}
     - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 4
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

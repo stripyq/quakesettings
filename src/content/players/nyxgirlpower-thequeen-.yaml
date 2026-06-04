@@ -3,17 +3,15 @@ steamId: "76561198256080242"
 country: SI
 team: ""
 category: ctf
-hoqCtfRating: 16.41741371154785
-hoqCtfGames: 2707
-
-
+hoqCtfRating: 16.049816131591797
+hoqCtfGames: 2728
 lastUpdated: 2025-01
 duelRating: null
 duelRatingUpdated: ""
 tdmRating: 17.62
 tdmRatingUpdated: 2026-01-31T00:00:00.000Z
-ctfRating: 16.42
-ctfRatingUpdated: "2026-05-11"
+ctfRating: 16.05
+ctfRatingUpdated: "2026-05-22"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -50,9 +48,7 @@ gpuBrand: NVIDIA
 crosshairColor: Pink
 enemyModel: Keel
 skates: Stock
-ctfGames: 2707
-
-
+ctfGames: 2728
 qlrace:
   mode: 2
   records: 1
@@ -71,7 +67,7 @@ qlrace:
     rank_pct: 41.7
   top_maps:
     - {map: cruton2, rank: 55, total: 132, time: 64387}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 4
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

@@ -10,14 +10,8 @@ tdmRating: 24.83
 tdmRatingUpdated: "2026-04-29"
 ctfRating: 23.98
 ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 31.09
-qllrCtfGames: 26
-
-
-
-
-
-
+qllrCtfRating: 30.67
+qllrCtfGames: 29
 duelRating: 1554
 ctfGames: 271
 tdmGames: 380
@@ -70,29 +64,15 @@ qlrace:
   top_maps:
     - {map: cities_of_gold, rank: 11, total: 66, time: 41381}
     - {map: moko_slick, rank: 11, total: 21, time: 7336}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-hoqCtfRating: 23.981449127197266
-hoqCtfGames: 271
-hoqTdmRating: 24.828292846679688
-hoqTdmGames: 380
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 36
+hoqCtfRating: 23.981449127197266
+hoqCtfGames: 271
+hoqTdmRating: 24.828292846679688
+hoqTdmGames: 380

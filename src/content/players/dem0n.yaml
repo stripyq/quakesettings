@@ -11,31 +11,19 @@ team2026Shortname: SHREK
 country: BE
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 41.51313018798828
-hoqCtfGames: 1182
+hoqCtfRating: 42.03194808959961
+hoqCtfGames: 1250
 hoqTdmRating: 32.66770553588867
 hoqTdmGames: 40
-
-
-
-
 lastUpdated: 2025-01
 duelRating: 1783
 duelRatingUpdated: 2026-02-05T00:00:00.000Z
 tdmRating: 32.67
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 41.51
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 33.44
-qllrCtfGames: 79
-
-
-
-
-
-
-
-
+ctfRating: 42.03
+ctfRatingUpdated: "2026-06-04"
+qllrCtfRating: 32.42
+qllrCtfGames: 83
 dataSource: player
 source: ""
 sourceUrl: https://qlstats.net/player/10922#duel
@@ -73,7 +61,7 @@ enemyModel: Keel
 crosshairColor: White
 grip: Hybrid
 duelGames: 439
-ctfGames: 1182
+ctfGames: 1250
 tdmGames: 40
 qlrace:
   mode: 2
@@ -93,9 +81,9 @@ qlrace:
     rank_pct: 26
   top_maps:
     - {map: bardok_egypt, rank: 19, total: 73, time: 16617}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   featured_maps:
-    - {map: hangtime-df, mode: 3, time: 5143840, rank: 65, total: 69, speed_top: 1247, date: '2026-04-04T13:05:13.433Z'}
+    - {map: hangtime-df, mode: 3, time: 5143840, rank: 68, total: 72, speed_top: 1247, date: '2026-04-04T13:05:13.433Z'}
   unique_maps_vql: 2
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

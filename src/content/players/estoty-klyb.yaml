@@ -5,22 +5,14 @@ aliases:
 category: ctf
 hoqCtfRating: 22.02436637878418
 hoqCtfGames: 45
-hoqTdmRating: 23.558080673217773
-hoqTdmGames: 61
-
-
-
-
+hoqTdmRating: 23.561328887939453
+hoqTdmGames: 63
 ctfRatingUpdated: "2026-04-29"
 ctfRating: 22.02
 ctfGames: 45
 tdmRatingUpdated: "2026-05-11"
 tdmRating: 23.56
-tdmGames: 61
-
-
-
-
+tdmGames: 63
 published: false
 qlrace:
   mode: 2
@@ -40,7 +32,7 @@ qlrace:
     rank_pct: 16.5
   top_maps:
     - {map: cruton4, rank: 15, total: 91, time: 107734}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 1
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

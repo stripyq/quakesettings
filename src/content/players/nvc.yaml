@@ -12,10 +12,6 @@ ctfRating: 21.4
 ctfGames: 1080
 tdmRating: 24.33
 tdmGames: 19
-
-
-
-
 qlrace:
   mode: 3
   records: 4
@@ -37,17 +33,17 @@ qlrace:
     - {map: kool_aqua, rank: 47, total: 100, time: 35152}
     - {map: qlwc21_round2, rank: 48, total: 99, time: 50976}
     - {map: bricks2, rank: 49, total: 66, time: 59312}
-  fetched_at: '2026-04-28'
+  fetched_at: '2026-05-22'
   unique_maps_vql: 4
 ctfRatingUpdated: "2026-04-29"
 tdmRatingUpdated: "2026-04-29"
-hoqCtfRating: 21.40127182006836
-hoqCtfGames: 1080
-hoqTdmRating: 24.328203201293945
-hoqTdmGames: 19
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_rg: 54
 accuracy_lg: 42
+hoqCtfRating: 21.40127182006836
+hoqCtfGames: 1080
+hoqTdmRating: 24.328203201293945
+hoqTdmGames: 19
