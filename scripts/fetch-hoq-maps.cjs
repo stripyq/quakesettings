@@ -14,8 +14,10 @@ const path = require('path');
 const HOQ_BASE = 'http://88.214.20.58';
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
 const OUTPUT_DIR = path.join(__dirname, '../public/data/hoq');
-const BATCH_SIZE = 20;
-const BATCH_DELAY_MS = 200;
+// Gentle by default: this hits the same small HoQ host as the ratings/archive fetchers, and
+// each player makes 2 calls. Override via HOQ_MAPS_BATCH_SIZE / HOQ_MAPS_BATCH_DELAY_MS.
+const BATCH_SIZE = Number(process.env.HOQ_MAPS_BATCH_SIZE || 5);
+const BATCH_DELAY_MS = Number(process.env.HOQ_MAPS_BATCH_DELAY_MS || 500);
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

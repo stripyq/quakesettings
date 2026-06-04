@@ -20,8 +20,11 @@ const API_BASE = 'http://77.90.2.137:8004/api';
 const REGISTRY_PATH = path.join(__dirname, '../src/data/player-registry.json');
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
 const OUTPUT_PATH = path.join(__dirname, '../public/data/season-stats.json');
-const BATCH_SIZE = 10; // Parallel fetches per batch
-const BATCH_DELAY_MS = 100; // Delay between batches
+// Deliberately gentle: this hits a small community API, and each player fans out to ~13
+// endpoint calls, so BATCH_SIZE players run ~13x that many requests in parallel. Keep it low
+// to avoid overloading the box. Override via SEASON_BATCH_SIZE / SEASON_BATCH_DELAY_MS.
+const BATCH_SIZE = Number(process.env.SEASON_BATCH_SIZE || 3); // players in parallel per batch
+const BATCH_DELAY_MS = Number(process.env.SEASON_BATCH_DELAY_MS || 750); // ms pause between batches
 const PROFILES_ONLY = process.argv.includes('--profiles-only');
 
 function sleep(ms) {
@@ -83,9 +86,13 @@ function getAllPlayers() {
   return players;
 }
 
+const REQUEST_TIMEOUT_MS = Number(process.env.SEASON_TIMEOUT_MS || 15000);
+
 async function fetchJson(url) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: ctrl.signal });
     if (!res.ok) {
       console.warn(`  API error ${res.status} for ${url}`);
       return { __error: true, status: res.status };
@@ -94,6 +101,8 @@ async function fetchJson(url) {
   } catch (err) {
     console.warn(`  Fetch failed for ${url}: ${err.message}`);
     return { __error: true };
+  } finally {
+    clearTimeout(timer);
   }
 }
 
