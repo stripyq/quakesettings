@@ -34,10 +34,18 @@ function getPlayersWithSteamId() {
   return players;
 }
 
-async function fetchJson(url) {
-  const res = await fetch(url);
-  if (!res.ok) return null;
-  return res.json();
+async function fetchJson(url, timeoutMs = 15000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null; // timeout (HoQ's per-player JSON 504s after 60s when its backend stalls) or network error
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function fetchPlayer(steamId) {
@@ -87,6 +95,16 @@ async function main() {
   }
 
   console.log(`Done: ${historyCount} history files, ${mapCount} map_ratings files saved to public/data/hoq/`);
+
+  // Coverage gate: a near-empty result means HoQ was unreachable (or changed format), not that
+  // players genuinely have no maps. Fail loudly so the deploy keeps the last-good site instead of
+  // shipping empty map leaderboards. Tune via MIN_MAP_COVERAGE (default 0.25 of profiled players).
+  const minCoverage = Number(process.env.MIN_MAP_COVERAGE || 0.25);
+  const minFiles = Math.max(1, Math.floor(steamIds.length * minCoverage));
+  if (mapCount < minFiles) {
+    console.error(`\nFATAL: only ${mapCount}/${steamIds.length} map_ratings fetched (need >= ${minFiles}). HoQ likely down; failing so empty leaderboards are not deployed.`);
+    process.exit(1);
+  }
 }
 
 main().catch(err => {

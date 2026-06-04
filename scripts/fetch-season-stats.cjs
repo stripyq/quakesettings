@@ -180,40 +180,48 @@ async function main() {
   /**
    * Build a mode entry from fetched stats, returning null if no useful data.
    */
-  function buildModeEntry(stats) {
-    if (!stats) return null;
+  function buildModeEntry(stats, existing) {
+    // Whole-mode fetch errored: keep whatever we already had (don't wipe on an outage).
+    if (!stats) return existing || null;
 
-    const hasFlagData = stats.flagStats && stats.flagStats.data;
-    const hasNemesis = stats.nemesis && stats.nemesis.data;
-    const hasVictim = stats.favoriteVictim && stats.favoriteVictim.data;
-    const hasH2H = stats.headToHead && stats.headToHead.length > 0;
-    const hasData = stats.career || stats.weapons || hasFlagData;
+    // Start from existing so endpoints that failed this run (null) keep their prior value.
+    const entry = { ...(existing || {}) };
 
-    if (!hasData) return null;
+    // Bulk fields: null means the endpoint errored (keep existing); a value is authoritative.
+    if (stats.career != null) entry.career = stats.career;
+    if (stats.weapons != null) entry.weapons = stats.weapons;
+    if (stats.mapStats != null) entry.mapStats = stats.mapStats;
 
-    const entry = {};
-    if (stats.career) entry.career = stats.career;
-    if (stats.weapons) entry.weapons = stats.weapons;
-    if (hasFlagData) entry.flagStats = stats.flagStats;
-    if (hasNemesis) entry.nemesis = stats.nemesis;
-    if (hasVictim) entry.favoriteVictim = stats.favoriteVictim;
-    if (hasH2H) entry.headToHead = stats.headToHead;
-    if (stats.mapStats) entry.mapStats = stats.mapStats;
+    // Rivalry/flag fields carry a .data payload. On a successful fetch reflect reality
+    // (set when there's data, clear when the API authoritatively says there's none); on a
+    // fetch error (null) leave the previous value untouched.
+    const apply = (key, val, hasData) => {
+      if (val == null) return;
+      if (hasData) entry[key] = val;
+      else delete entry[key];
+    };
+    apply('flagStats', stats.flagStats, stats.flagStats && stats.flagStats.data);
+    apply('nemesis', stats.nemesis, stats.nemesis && stats.nemesis.data);
+    apply('favoriteVictim', stats.favoriteVictim, stats.favoriteVictim && stats.favoriteVictim.data);
+    apply('headToHead', stats.headToHead, stats.headToHead && stats.headToHead.length > 0);
+
+    // Nothing meaningful and nothing carried over: no entry.
+    if (!entry.career && !entry.weapons && !(entry.flagStats && entry.flagStats.data)) return null;
     entry.lastUpdated = new Date().toISOString();
     return entry;
   }
 
   // Process results for a single player, merging with existing data
   function processResult(steamId, name, stats) {
-    const ctfEntry = buildModeEntry(stats?.ctf);
-    const tdmEntry = buildModeEntry(stats?.tdm);
+    const existing = results[steamId] || {};
+    // Pass existing per-mode data so a partial fetch merges field-by-field instead of replacing.
+    const ctfEntry = buildModeEntry(stats?.ctf, existing.ctf);
+    const tdmEntry = buildModeEntry(stats?.tdm, existing.tdm);
 
     if (ctfEntry || tdmEntry) {
-      // Merge with existing data so a partial fetch doesn't destroy previous data
-      const existing = results[steamId] || {};
       const entry = { ...existing, name, fetchedAt: new Date().toISOString() };
-      if (ctfEntry) entry.ctf = ctfEntry;
-      if (tdmEntry) entry.tdm = tdmEntry;
+      if (ctfEntry) entry.ctf = ctfEntry; else delete entry.ctf;
+      if (tdmEntry) entry.tdm = tdmEntry; else delete entry.tdm;
       results[steamId] = entry;
       fetchedCount++;
       return 'OK' + (ctfEntry && tdmEntry ? ' (CTF+TDM)' : ctfEntry ? ' (CTF)' : ' (TDM)');

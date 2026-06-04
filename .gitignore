@@ -42,3 +42,6 @@ public/data/alltime-h2h.json
 
 # Raw match archive (too large for repo; derived JSON is committed)
 public/data/archive/*.jsonl
+
+# Per-player HoQ map/history fetch output (re-fetched at deploy time; not committed)
+public/data/hoq/
