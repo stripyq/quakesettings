@@ -1,7 +1,7 @@
 [
   {
     "map": "purgatory",
-    "games": 5234,
+    "games": 5231,
     "avg_duration_sec": 1179,
     "avg_total_score": 289,
     "blue_win_rate_pct": 49.5,
@@ -41,7 +41,7 @@
   },
   {
     "map": "hiddenfortress",
-    "games": 4587,
+    "games": 4586,
     "avg_duration_sec": 1149,
     "avg_total_score": 379,
     "blue_win_rate_pct": 50.1,
@@ -81,7 +81,7 @@
   },
   {
     "map": "dreadfulplace",
-    "games": 3640,
+    "games": 3638,
     "avg_duration_sec": 1159,
     "avg_total_score": 301,
     "blue_win_rate_pct": 50.5,
@@ -161,7 +161,7 @@
   },
   {
     "map": "ragnarok",
-    "games": 2097,
+    "games": 2095,
     "avg_duration_sec": 1157,
     "avg_total_score": 300,
     "blue_win_rate_pct": 48.7,
@@ -201,11 +201,11 @@
   },
   {
     "map": "deepinside",
-    "games": 1085,
+    "games": 1083,
     "avg_duration_sec": 1158,
     "avg_total_score": 260,
-    "blue_win_rate_pct": 49.3,
-    "red_win_rate_pct": 50.7,
+    "blue_win_rate_pct": 49.2,
+    "red_win_rate_pct": 50.8,
     "top_performers": [
       {
         "sid": "76561198028376914",
@@ -361,11 +361,11 @@
   },
   {
     "map": "intervention",
-    "games": 226,
+    "games": 225,
     "avg_duration_sec": 1165,
     "avg_total_score": 270,
-    "blue_win_rate_pct": 47.3,
-    "red_win_rate_pct": 52.7,
+    "blue_win_rate_pct": 47.6,
+    "red_win_rate_pct": 52.4,
     "top_performers": [
       {
         "sid": "76561198033439430",

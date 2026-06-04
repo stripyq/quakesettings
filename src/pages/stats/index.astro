@@ -857,9 +857,19 @@ const TDM_DEFAULT_MIN_GAMES = 50;
 
 function buildMapLeaderboards(gametype: string, getMinGames: (map: string) => number, excludedMaps: Set<string> = new Set()) {
   const allEntries: Record<string, MapEntry[]> = {};
+  // One row per Steam account: map_ratings.json is keyed by steamId, so two profiles
+  // sharing a steamId (e.g. an unpublished duplicate stub) would double-count. Prefer
+  // the published profile, then dedup any remaining repeats.
+  const publishedSteamIds = new Set(
+    allPlayers.filter((pp) => pp.data.published !== false && pp.data.steamId).map((pp) => pp.data.steamId)
+  );
+  const seenSteamIds = new Set<string>();
   // First pass: collect all entries per map (no threshold yet — we need the map name first)
   for (const p of allPlayers) {
     if (!p.data.steamId) continue;
+    if (p.data.published === false && publishedSteamIds.has(p.data.steamId)) continue;
+    if (seenSteamIds.has(p.data.steamId)) continue;
+    seenSteamIds.add(p.data.steamId);
     const mapRatingsPath = path.join(hoqDataDir, p.data.steamId, 'map_ratings.json');
     let raw: any[];
     try { raw = JSON.parse(fs.readFileSync(mapRatingsPath, 'utf8')); } catch { continue; }

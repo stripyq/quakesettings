@@ -132,10 +132,11 @@ function fetchPage(url) {
 
 // ---------------- Enumeration ----------------
 
-async function enumerateMatches(gt, alreadyKnown) {
+async function enumerateMatches(gt, alreadyKnown, stopWhenKnown = false) {
   const uuids = [...alreadyKnown];
   const seen = new Set(alreadyKnown);
   let consecErrors = 0;
+  let allKnownStreak = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
     const url = page === 0 ? `${HOQ_BASE}/matches/${gt}/` : `${HOQ_BASE}/matches/${gt}/${page}/`;
     let r = await fetchPage(url);
@@ -176,6 +177,19 @@ async function enumerateMatches(gt, alreadyKnown) {
       if (!seen.has(u)) { seen.add(u); uuids.push(u); added++; }
     }
     process.stdout.write(`\r  [${gt}] listing page ${page}: +${added} (${uuids.length} total)   `);
+    // Incremental resume: the listing is newest-first, so a couple of pages that
+    // add nothing new means we've reached already-archived matches. Stop early
+    // instead of re-walking the whole history every run.
+    if (stopWhenKnown) {
+      if (added === 0) {
+        if (++allKnownStreak >= 2) {
+          process.stdout.write(`\n  [${gt}] reached already-known matches, stopping incremental enumeration\n`);
+          break;
+        }
+      } else {
+        allKnownStreak = 0;
+      }
+    }
     if (page + 1 < MAX_PAGES) await sleep(DELAY_MS);
   }
   process.stdout.write('\n');
@@ -475,12 +489,15 @@ async function runGametype(gt) {
   console.log(`  Dead/permanent: ${deadSet.size}`);
   console.log(`  Pending retry: ${Object.keys(state.failed).length}\n`);
 
-  // Enumerate
-  if (state.uuids.length === 0 || MAX_PAGES < Infinity) {
-    console.log(`Phase 1: enumerating ${gt} match pages...`);
-    state.uuids = await enumerateMatches(gt, state.uuids);
-    saveState(gt, state);
-  }
+  // Enumerate. Always run so new matches are discovered on every resume. This
+  // used to be skipped once any UUIDs were known, which silently froze the
+  // archive (and everything derived from it) at the first crawl.
+  const incremental = state.uuids.length > 0 && MAX_PAGES === Infinity;
+  console.log(`Phase 1: enumerating ${gt} match pages${incremental ? ' (incremental, stops at known matches)' : ''}...`);
+  const knownBefore = state.uuids.length;
+  state.uuids = await enumerateMatches(gt, state.uuids, incremental);
+  console.log(`  +${state.uuids.length - knownBefore} new UUID(s) (${state.uuids.length} total)`);
+  saveState(gt, state);
 
   // Build todo
   const retryQueue = Object.keys(state.failed);

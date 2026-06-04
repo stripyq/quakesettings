@@ -287,7 +287,15 @@ function generatePlayerRegistry() {
 
   for (const p of yamlPlayers) {
     if (p.steamId) {
-      yamlBySteamId.set(p.steamId, p);
+      const existing = yamlBySteamId.get(p.steamId);
+      if (existing) {
+        // Two profiles share one Steam account; keep the published one and warn so it gets resolved.
+        const keep = existing.published === false && p.published !== false ? p : existing;
+        console.warn(`  ⚠️  duplicate steamId ${p.steamId}: "${existing.slug}" + "${p.slug}", keeping "${keep.slug}"`);
+        yamlBySteamId.set(p.steamId, keep);
+      } else {
+        yamlBySteamId.set(p.steamId, p);
+      }
     }
     yamlSlugs.add(p.slug);
   }

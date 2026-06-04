@@ -44,6 +44,8 @@ const h2h = new Map();         // pairKey -> record
 const activity = { byDay: {}, byMonth: {} };
 let totalMatches = 0;
 let parseErrors = 0;
+let dupSkipped = 0;
+const seenUuids = new Set(); // dedup by uuid: a crash mid-build can append a match twice
 
 function getPlayer(sid) {
   let p = players.get(sid);
@@ -131,6 +133,10 @@ async function main() {
       continue;
     }
     if (!m || !Array.isArray(m.players)) continue;
+    if (m.uuid) {
+      if (seenUuids.has(m.uuid)) { dupSkipped++; continue; }
+      seenUuids.add(m.uuid);
+    }
     totalMatches++;
 
     // ---- map stats ----
@@ -223,7 +229,8 @@ async function main() {
 
   const parseMs = Date.now() - t0;
   console.log(`Parsed ${totalMatches} matches in ${(parseMs / 1000).toFixed(1)}s` +
-    (parseErrors ? ` (${parseErrors} parse errors skipped)` : ''));
+    (parseErrors ? ` (${parseErrors} parse errors skipped)` : '') +
+    (dupSkipped ? ` (${dupSkipped} duplicate uuids skipped)` : ''));
 
   // ---------- players.json ----------
   const playersOut = [];
