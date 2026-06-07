@@ -1,4 +1,4 @@
----
+﻿---
 name: refresh-quakesettings
 description: Refresh Quake Live player rating data on the quakesettings site from HoQ, QLLR (qllr.xyz), and QLRace (qlrace.com). Triggers on any ask to refresh, update, sync, or pull fresh ratings for quakesettings / the Quake Live settings database / stripyq.github.io/quakesettings. Use this whenever the user says "refresh qs", "refresh quake ratings", "update player ratings", "sync HoQ", "pull fresh ratings", "refresh the site data", or mentions refreshing any combination of HoQ ratings, QLLR ratings, seasonal stats, or race data. Also use when the user references the quakesettings repo and asks about running the scripts in scripts/fetch-*.cjs or scripts/update-*.cjs. Do not use for player submissions (new profile adds) or accuracy-only refreshes, those are separate workflows.
 ---
@@ -9,7 +9,7 @@ The Quake Live settings database at `stripyq.github.io/quakesettings` pulls rati
 
 ## Context the user already knows
 
-- Repo: `C:\Users\marin\quakesettings` on M's PC, `stripyq/quakesettings` on GitHub, deployed via GitHub Pages from `main` (auto-rebuilds 1-2 min after push).
+- Repo: `~\quakesettings` on M's PC, `stripyq/quakesettings` on GitHub, deployed via GitHub Pages from `main` (auto-rebuilds 1-2 min after push).
 - Astro static site, Node scripts in `scripts/*.cjs`, YAMLs per player in `src/content/players/`.
 - **Sandbox cannot reach the data sources** (`qllr.xyz`, `88.214.20.58`, `77.90.2.137`, `qlrace.com`, raw.githubusercontent.com all blocked). The skill hands M PowerShell commands; M runs them on his PC and pastes output back.
 
@@ -38,7 +38,7 @@ Keep the check short. If the user says "just do it", skip questions 2 and 3 and 
 Give M exactly these commands to run:
 
 ```powershell
-cd C:\Users\marin\quakesettings
+cd ~\quakesettings
 git fetch origin
 git status
 ```
@@ -140,19 +140,19 @@ Add `public/data/season-stats.json` only if the seasonal fetch wrote new data. D
 
 ## When the user wants something slightly different
 
-- **"Only QLLR"** or **"only HoQ"** — skip the others; the scripts are independent. For "only HoQ", still run BOTH `fetch-hoq-ratings.cjs` and `sync-hoq-to-display.cjs` (fetch alone updates source fields but leaves the site showing the old display values).
-- **"Also refresh accuracies"** — that's the `fetch-hoq-stats.cjs` flow, deliberately NOT part of this skill. Run it separately, after the rating refresh, and confirm with M first.
-- **"Set up a scheduled weekly run"** — possible via the scheduled-tasks MCP, but the fetches must run on M's PC (the sandbox can't reach the sources), so a sandbox-side cron cannot do it. Revisit only after the seasonal API stabilizes.
+- **"Only QLLR"** or **"only HoQ"** â€” skip the others; the scripts are independent. For "only HoQ", still run BOTH `fetch-hoq-ratings.cjs` and `sync-hoq-to-display.cjs` (fetch alone updates source fields but leaves the site showing the old display values).
+- **"Also refresh accuracies"** â€” that's the `fetch-hoq-stats.cjs` flow, deliberately NOT part of this skill. Run it separately, after the rating refresh, and confirm with M first.
+- **"Set up a scheduled weekly run"** â€” possible via the scheduled-tasks MCP, but the fetches must run on M's PC (the sandbox can't reach the sources), so a sandbox-side cron cannot do it. Revisit only after the seasonal API stabilizes.
 
 ## If the user asks for a dry-run
 
-- `fetch-qllr-ratings.cjs --dry-run` — prints the updates it would make without writing YAMLs.
-- `fetch-hoq-ratings.cjs` and `sync-hoq-to-display.cjs` — no dry-run flag, but each prints every change as it writes. Inspect the output, then run the Step 4 verifier before committing. (If you must preview without writing, pull the API JSON and diff it against current YAML values by hand.)
-- `fetch-season-stats.cjs` — no dry-run; it only writes after a full successful fetch.
-- `fetch-qlrace.cjs --dry-run` — prints the YAML block it would add per player.
+- `fetch-qllr-ratings.cjs --dry-run` â€” prints the updates it would make without writing YAMLs.
+- `fetch-hoq-ratings.cjs` and `sync-hoq-to-display.cjs` â€” no dry-run flag, but each prints every change as it writes. Inspect the output, then run the Step 4 verifier before committing. (If you must preview without writing, pull the API JSON and diff it against current YAML values by hand.)
+- `fetch-season-stats.cjs` â€” no dry-run; it only writes after a full successful fetch.
+- `fetch-qlrace.cjs --dry-run` â€” prints the YAML block it would add per player.
 
 Offer dry-runs unsolicited if M seems nervous or if the session started after a long gap (state drift likely).
 
 ## Path note
 
-The repo is at `C:\Users\marin\quakesettings`, not `C:\Users\m\quakesettings`. The starter doc `claude-code-quakesettings-starter.md` in the repo root still has the wrong path, and its "TASK RECIPE, Refresh HoQ ratings" section still points at `update-hoq-ratings.cjs` + a separate sync; update it to the `fetch-hoq-ratings.cjs` + `sync-hoq-to-display.cjs` pair next time it comes up.
+The repo is at `~\quakesettings`, not `C:\Users\m\quakesettings`. The starter doc `claude-code-quakesettings-starter.md` in the repo root still has the wrong path, and its "TASK RECIPE, Refresh HoQ ratings" section still points at `update-hoq-ratings.cjs` + a separate sync; update it to the `fetch-hoq-ratings.cjs` + `sync-hoq-to-display.cjs` pair next time it comes up.

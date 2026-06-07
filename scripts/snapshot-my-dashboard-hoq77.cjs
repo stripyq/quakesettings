@@ -29,7 +29,7 @@ const parse = require('./lib/hoq77-parse.cjs');
 
 // ---------- Args ----------
 
-const DEFAULT_VAULT = 'C:\\Users\\marin\\Documents\\Obsidian Vault\\Quake';
+const DEFAULT_VAULT = process.env.QUAKE_VAULT || require('path').join(require('os').homedir(), 'Documents', 'Obsidian Vault', 'Quake');
 const DEFAULT_SID = '76561197992882111';
 const SLUG = 'cbd0a2e9';
 

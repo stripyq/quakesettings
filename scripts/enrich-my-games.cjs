@@ -13,7 +13,7 @@
  *
  * Usage:
  *   node scripts/enrich-my-games.cjs \
- *     --vault="C:\Users\marin\Documents\Obsidian Vault\Quake" \
+ *     --vault="C:\Users\<you>\Documents\Obsidian Vault\Quake" \
  *     --steamid=76561197992882111 \
  *     --gt=ctf
  *
@@ -28,7 +28,7 @@ const yaml = require('js-yaml');
 
 // ---------- Defaults + CLI ----------
 
-const DEFAULT_VAULT = 'C:\\Users\\marin\\Documents\\Obsidian Vault\\Quake';
+const DEFAULT_VAULT = process.env.QUAKE_VAULT || path.join(require('os').homedir(), 'Documents', 'Obsidian Vault', 'Quake');
 const DEFAULT_STEAMID = '76561197992882111'; // stripy
 
 const args = process.argv.slice(2);

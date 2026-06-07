@@ -33,7 +33,7 @@ const parse = require('./lib/hoq77-parse.cjs');
 
 // ---------- Args ----------
 
-const DEFAULT_VAULT = 'C:\\Users\\marin\\Documents\\Obsidian Vault\\Quake';
+const DEFAULT_VAULT = process.env.QUAKE_VAULT || require('path').join(require('os').homedir(), 'Documents', 'Obsidian Vault', 'Quake');
 const args = process.argv.slice(2);
 const getArg = (k, d) => {
   const a = args.find(x => x.startsWith(k + '='));
