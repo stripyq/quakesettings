@@ -30,9 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # If HoQ is unreachable the fetch script exits non-zero (coverage gate). That now fails
-      # the build on purpose, so GitHub Pages keeps the last good deploy instead of publishing
-      # empty map leaderboards. Individual player misses are tolerated by the script itself.
+      # Refreshes per-player HoQ map/history JSON when HoQ is reachable. GitHub runners are
+      # frequently blocked by that box, so the repo commits this data under public/data/hoq/
+      # as a fallback: on a failed fetch the script warns (exit 0) and the build ships the
+      # committed last-good data. Refresh and commit the files locally during data refreshes.
       - name: Fetch HoQ map data
         run: npm run fetch:hoq
 

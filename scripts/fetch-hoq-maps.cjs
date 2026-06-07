@@ -98,14 +98,15 @@ async function main() {
 
   console.log(`Done: ${historyCount} history files, ${mapCount} map_ratings files saved to public/data/hoq/`);
 
-  // Coverage gate: a near-empty result means HoQ was unreachable (or changed format), not that
-  // players genuinely have no maps. Fail loudly so the deploy keeps the last-good site instead of
-  // shipping empty map leaderboards. Tune via MIN_MAP_COVERAGE (default 0.25 of profiled players).
+  // Coverage check: a near-empty result means HoQ was unreachable from this machine (GitHub's
+  // runners are often blocked by that box) or the endpoint changed. The repo commits the
+  // per-player JSON under public/data/hoq/ as a fallback, so warn and continue: the build then
+  // ships the committed last-good data instead of failing or going empty. Refresh and commit
+  // these files locally when HoQ is reachable. Tune via MIN_MAP_COVERAGE (default 0.25).
   const minCoverage = Number(process.env.MIN_MAP_COVERAGE || 0.25);
   const minFiles = Math.max(1, Math.floor(steamIds.length * minCoverage));
   if (mapCount < minFiles) {
-    console.error(`\nFATAL: only ${mapCount}/${steamIds.length} map_ratings fetched (need >= ${minFiles}). HoQ likely down; failing so empty leaderboards are not deployed.`);
-    process.exit(1);
+    console.warn(`\nWARNING: only ${mapCount}/${steamIds.length} map_ratings fetched (expected >= ${minFiles}). HoQ unreachable from here; the build will use the committed fallback under public/data/hoq/.`);
   }
 }
 
