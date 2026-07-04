@@ -46,7 +46,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 64.6
   best_record:
     map: spacectf
@@ -55,10 +54,9 @@ qlrace:
     time: 7258
     rank_pct: 60.4
   top_maps:
-    - {map: spacectf, rank: 172, total: 285, time: 7258}
-    - {map: df_dinirun3, rank: 22, total: 32, time: 194944}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 12
+    - {map: spacectf, rank: 172, total: 285, time: 7258, rank_pct: 60.4}
+    - {map: df_dinirun3, rank: 22, total: 32, time: 194944, rank_pct: 68.8}
+  fetched_at: '2026-07-04'
 favorite_map: hiddenfortress
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

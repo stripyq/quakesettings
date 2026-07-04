@@ -4,18 +4,18 @@ country: RU
 category: duel
 hoqCtfRating: 14.17286491394043
 hoqCtfGames: 150
-hoqTdmRating: 19.867185592651367
-hoqTdmGames: 2138
+hoqTdmRating: 19.855571746826172
+hoqTdmGames: 2214
 ctfRatingUpdated: "2026-04-29"
-tdmRatingUpdated: "2026-06-04"
+tdmRatingUpdated: "2026-07-04"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1584
 ctfGames: 150
-tdmGames: 2138
+tdmGames: 2214
 duelGames: 227
 ctfRating: 14.17
-tdmRating: 19.87
+tdmRating: 19.86
 dpi: 1600
 sensitivity: 0.8
 edpi: 1280
@@ -54,7 +54,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 56.4
   best_record:
     map: reflux
@@ -63,10 +62,9 @@ qlrace:
     time: 12255
     rank_pct: 41
   top_maps:
-    - {map: reflux, rank: 34, total: 83, time: 12255}
-    - {map: df_licklonger, rank: 41, total: 57, time: 40521}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: reflux, rank: 34, total: 83, time: 12255, rank_pct: 41}
+    - {map: df_licklonger, rank: 41, total: 57, time: 40521, rank_pct: 71.9}
+  fetched_at: '2026-07-04'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

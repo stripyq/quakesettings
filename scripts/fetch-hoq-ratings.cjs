@@ -3,8 +3,8 @@
  * Fetch HoQ ratings from export_rating JSON endpoints and update player YAML files.
  *
  * Data sources:
- *   - http://88.214.20.58/export_rating/ctf.json
- *   - http://88.214.20.58/export_rating/tdm.json
+ *   - http://stats.houseofquake.com/export_rating/ctf.json
+ *   - http://stats.houseofquake.com/export_rating/tdm.json
  *
  * Each JSON entry has: { _id: steamId, name, rating, n (games) }
  * Matches players by steamId and updates hoqCtfRating, hoqCtfGames, hoqTdmRating, hoqTdmGames.
@@ -19,8 +19,8 @@ const path = require('path');
 const http = require('http');
 
 const PLAYERS_DIR = path.join(__dirname, '../src/content/players');
-const CTF_URL = 'http://88.214.20.58/export_rating/ctf.json';
-const TDM_URL = 'http://88.214.20.58/export_rating/tdm.json';
+const CTF_URL = 'http://stats.houseofquake.com/export_rating/ctf.json';
+const TDM_URL = 'http://stats.houseofquake.com/export_rating/tdm.json';
 const USE_JSON = process.argv.includes('--from-json');
 const CTF_JSON_PATH = path.join(__dirname, 'ctf.json');
 const TDM_JSON_PATH = path.join(__dirname, 'tdm.json');

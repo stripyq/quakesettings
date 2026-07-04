@@ -3,16 +3,16 @@ steamId: "76561197993423662"
 aliases:
   - Ratman
 category: ctf
-hoqCtfRating: 18.727022171020508
-hoqCtfGames: 1051
-hoqTdmRating: 24.001502990722656
-hoqTdmGames: 366
-ctfRatingUpdated: "2026-05-11"
-ctfRating: 18.73
-ctfGames: 1051
-tdmRatingUpdated: "2026-06-04"
-tdmRating: 24
-tdmGames: 366
+hoqCtfRating: 19.145959854125977
+hoqCtfGames: 1054
+hoqTdmRating: 24.384992599487305
+hoqTdmGames: 374
+ctfRatingUpdated: "2026-07-04"
+ctfRating: 19.15
+ctfGames: 1054
+tdmRatingUpdated: "2026-07-04"
+tdmRating: 24.38
+tdmGames: 374
 published: false
 qlrace:
   mode: 2
@@ -22,7 +22,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 42.8
   best_record:
     map: df_inferno
@@ -31,18 +30,12 @@ qlrace:
     time: 55201
     rank_pct: 12.5
   top_maps:
-    - {map: df_inferno, rank: 10, total: 80, time: 55201}
-    - {map: overkill_race, rank: 4, total: 32, time: 31341}
-    - {map: schody, rank: 9, total: 57, time: 9209}
-    - {map: aa_slope, rank: 13, total: 73, time: 31642}
-    - {map: charon, rank: 35, total: 194, time: 27253}
-    - {map: tatmt_s2, rank: 18, total: 64, time: 20958}
-    - {map: inder_a1ex, rank: 17, total: 59, time: 36673}
-    - {map: q3wcp24, rank: 11, total: 38, time: 18684}
-    - {map: 18percent, rank: 18, total: 61, time: 42105}
-    - {map: mega_ramp, rank: 82, total: 227, time: 27554}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 93
+    - {map: df_inferno, rank: 10, total: 80, time: 55201, rank_pct: 12.5}
+    - {map: overkill_race, rank: 4, total: 32, time: 31341, rank_pct: 12.5}
+    - {map: schody, rank: 9, total: 57, time: 9209, rank_pct: 15.8}
+    - {map: aa_slope, rank: 13, total: 73, time: 31642, rank_pct: 17.8}
+    - {map: charon, rank: 35, total: 194, time: 27253, rank_pct: 18}
+  fetched_at: '2026-07-04'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

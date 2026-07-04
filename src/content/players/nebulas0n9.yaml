@@ -9,8 +9,8 @@ team2026: Astral Starlight
 published: false
 ctfRating: 12.67
 ctfGames: 167
-tdmRating: 16.4
-tdmGames: 24
+tdmRating: 16.5
+tdmGames: 26
 qlrace:
   mode: 2
   records: 1
@@ -28,13 +28,12 @@ qlrace:
     time: 26008
     rank_pct: 26.1
   top_maps:
-    - {map: r7-funky, rank: 6, total: 23, time: 26008}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: r7-funky, rank: 6, total: 23, time: 26008, rank_pct: 26.1}
+  fetched_at: '2026-07-04'
 ctfRatingUpdated: "2026-04-29"
 qllrCtfRating: 16.21
 qllrCtfGames: 32
-tdmRatingUpdated: "2026-06-04"
+tdmRatingUpdated: "2026-07-04"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
@@ -43,5 +42,5 @@ accuracy_rg: 54
 accuracy_lg: 39
 hoqCtfRating: 12.668198585510254
 hoqCtfGames: 167
-hoqTdmRating: 16.40322494506836
-hoqTdmGames: 24
+hoqTdmRating: 16.496227264404297
+hoqTdmGames: 26

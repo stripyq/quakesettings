@@ -9,16 +9,16 @@ team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: true
 lastUpdated: 2026-02
-ctfRating: 28.49
-ctfGames: 724
+ctfRating: 28.09
+ctfGames: 773
 tdmRating: 33.66
 tdmGames: 405
 duelRating: 1785
 duelRatingSource: qlstats
 duelGames: 260
 dataSource: player
-hoqCtfRating: 28.485742568969727
-hoqCtfGames: 724
+hoqCtfRating: 28.087413787841797
+hoqCtfGames: 773
 hoqTdmRating: 33.6572151184082
 hoqTdmGames: 405
 dpi: 1600
@@ -53,7 +53,6 @@ qlrace:
     gold: 1
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 17
   best_record:
     map: df_cityrocket
@@ -62,12 +61,11 @@ qlrace:
     time: 32487
     rank_pct: 2.6
   top_maps:
-    - {map: df_cityrocket, rank: 1, total: 39, time: 32487}
-    - {map: df_lickmax, rank: 18, total: 87, time: 6532}
-    - {map: spacectf, rank: 79, total: 285, time: 4925}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 5
-ctfRatingUpdated: "2026-06-04"
+    - {map: df_cityrocket, rank: 1, total: 39, time: 32487, rank_pct: 2.6}
+    - {map: df_lickmax, rank: 18, total: 87, time: 6532, rank_pct: 20.7}
+    - {map: spacectf, rank: 79, total: 285, time: 4925, rank_pct: 27.7}
+  fetched_at: '2026-07-04'
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 21.98
 qllrCtfGames: 99
 tdmRatingUpdated: "2026-05-22"

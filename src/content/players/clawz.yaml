@@ -29,9 +29,8 @@ qlrace:
     time: 45432
     rank_pct: 50
   top_maps:
-    - {map: zdorov-fakir-re, rank: 18, total: 36, time: 45432}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 1
+    - {map: zdorov-fakir-re, rank: 18, total: 36, time: 45432, rank_pct: 50}
+  fetched_at: '2026-07-04'
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Lightning Gun

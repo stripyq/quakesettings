@@ -36,26 +36,24 @@ gpuBrand: NVIDIA
 cpuBrand: Intel
 qlrace:
   mode: 2
-  records: 6
+  records: 10
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 2147
-  average_rank_pct: 55.5
+  speed_top: 2387
+  average_rank_pct: 63.9
   best_record:
-    map: inder_failrun2
-    rank: 4
-    total: 9
-    time: 17296
-    rank_pct: 44.4
+    map: rdk-h1
+    rank: 9
+    total: 18
+    time: 27312
+    rank_pct: 50
   top_maps:
-    - {map: inder_failrun2, rank: 4, total: 9, time: 17296}
-    - {map: rdk-h1, rank: 9, total: 18, time: 27312}
-    - {map: skate2fix, rank: 6, total: 11, time: 30088}
-    - {map: hunterun_20, rank: 11, total: 19, time: 17464}
-    - {map: skate8, rank: 7, total: 12, time: 42280}
-    - {map: qlwc21_round1, rank: 23, total: 34, time: 50528}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 6
+    - {map: rdk-h1, rank: 9, total: 18, time: 27312, rank_pct: 50}
+    - {map: qk1, rank: 10, total: 19, time: 12432, rank_pct: 52.6}
+    - {map: lappen, rank: 16, total: 30, time: 22288, rank_pct: 53.3}
+    - {map: hunterun_20, rank: 11, total: 19, time: 17464, rank_pct: 57.9}
+    - {map: inder_failrun2, rank: 7, total: 12, time: 17296, rank_pct: 58.3}
+  fetched_at: '2026-07-04'

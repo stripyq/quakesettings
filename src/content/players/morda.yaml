@@ -2,19 +2,19 @@ name: Morda
 country: RU
 steamId: "76561198004545167"
 category: duel
-hoqCtfRating: 12.328946113586426
-hoqCtfGames: 855
-hoqTdmRating: 11.192423820495605
-hoqTdmGames: 37
-ctfRatingUpdated: "2026-06-04"
-tdmRatingUpdated: "2026-06-04"
+hoqCtfRating: 11.425397872924805
+hoqCtfGames: 928
+hoqTdmRating: 11.2034912109375
+hoqTdmGames: 39
+ctfRatingUpdated: "2026-07-04"
+tdmRatingUpdated: "2026-07-04"
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 12.33
-tdmRating: 11.19
+ctfRating: 11.43
+tdmRating: 11.2
 duelRating: 1041
-ctfGames: 855
-tdmGames: 37
+ctfGames: 928
+tdmGames: 39
 duelGames: 30
 dpi: 1600
 sensitivity: 1
@@ -53,7 +53,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 73.1
   best_record:
     map: nood_charon
@@ -62,18 +61,12 @@ qlrace:
     time: 31840
     rank_pct: 24.3
   top_maps:
-    - {map: nood_charon, rank: 9, total: 37, time: 31840}
-    - {map: ameisen_comp2, rank: 22, total: 50, time: 63307}
-    - {map: tatmt_s12, rank: 41, total: 75, time: 77699}
-    - {map: df_dinirun3, rank: 18, total: 32, time: 170650}
-    - {map: df_minions_run5, rank: 47, total: 82, time: 26099}
-    - {map: qzpractice2, rank: 352, total: 592, time: 35158}
-    - {map: vanilla_06, rank: 33, total: 50, time: 5772}
-    - {map: mu_nood, rank: 20, total: 30, time: 35465}
-    - {map: st1, rank: 72, total: 108, time: 8830}
-    - {map: actf38, rank: 32, total: 47, time: 12396}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 56
+    - {map: nood_charon, rank: 9, total: 37, time: 31840, rank_pct: 24.3}
+    - {map: ameisen_comp2, rank: 22, total: 50, time: 63307, rank_pct: 44}
+    - {map: tatmt_s12, rank: 41, total: 75, time: 77699, rank_pct: 54.7}
+    - {map: df_dinirun3, rank: 18, total: 32, time: 170650, rank_pct: 56.3}
+    - {map: df_minions_run5, rank: 47, total: 82, time: 26099, rank_pct: 57.3}
+  fetched_at: '2026-07-04'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

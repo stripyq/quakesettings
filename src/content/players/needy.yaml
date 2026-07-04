@@ -6,8 +6,8 @@ team2026Shortname: CZE
 country: Unknown
 team: Czesnecka
 category: ctf
-hoqCtfRating: 15.293059349060059
-hoqCtfGames: 431
+hoqCtfRating: 14.403157234191895
+hoqCtfGames: 453
 hoqTdmRating: 12.287792205810547
 hoqTdmGames: 19
 lastUpdated: 2025-01
@@ -15,8 +15,8 @@ duelRating: 1356
 duelRatingUpdated: "2026-01-31"
 tdmRating: 12.29
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 15.29
-ctfRatingUpdated: "2026-06-04"
+ctfRating: 14.4
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 24.18
 qllrCtfGames: 18
 dataSource: player
@@ -46,7 +46,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: AMD
 cpuBrand: AMD
-ctfGames: 431
+ctfGames: 453
 tdmGames: 19
 qlrace: null
 favorite_map: q3wcp9

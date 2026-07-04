@@ -11,20 +11,20 @@ team2026Shortname: wB
 country: HR
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 25.229711532592773
-hoqCtfGames: 2701
-hoqTdmRating: 26.957374572753906
-hoqTdmGames: 315
+hoqCtfRating: 25.091739654541016
+hoqCtfGames: 2750
+hoqTdmRating: 26.997461318969727
+hoqTdmGames: 317
 lastUpdated: 2025-01
 duelRating: 1086
-ctfGames: 2701
-tdmGames: 315
+ctfGames: 2750
+tdmGames: 317
 duelGames: 4
 duelRatingUpdated: "2026-02-04"
-tdmRating: 26.96
-tdmRatingUpdated: "2026-06-04"
-ctfRating: 25.23
-ctfRatingUpdated: "2026-06-04"
+tdmRating: 27
+tdmRatingUpdated: "2026-07-04"
+ctfRating: 25.09
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 24.78
 qllrCtfGames: 70
 dataSource: player
@@ -72,7 +72,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1040
-  average_rank_pct: 84.4
+  average_rank_pct: 84.1
   best_record:
     map: strafe_ok
     rank: 51
@@ -80,12 +80,11 @@ qlrace:
     time: 15432
     rank_pct: 73.9
   top_maps:
-    - {map: strafe_ok, rank: 51, total: 69, time: 15432}
-    - {map: 180turn, rank: 31, total: 40, time: 66216}
-    - {map: shitstrafe2, rank: 62, total: 72, time: 35680}
-    - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: strafe_ok, rank: 51, total: 69, time: 15432, rank_pct: 73.9}
+    - {map: 180turn, rank: 31, total: 40, time: 66216, rank_pct: 77.5}
+    - {map: shitstrafe2, rank: 63, total: 74, time: 35680, rank_pct: 85.1}
+    - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416, rank_pct: 100}
+  fetched_at: '2026-07-04'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

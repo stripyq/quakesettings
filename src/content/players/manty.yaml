@@ -8,11 +8,11 @@ team2026Shortname: CZE
 country: CZ
 team: Czesnecka
 category: ctf
-hoqCtfRating: 21.565061569213867
-hoqCtfGames: 1782
+hoqCtfRating: 21.345447540283203
+hoqCtfGames: 1834
 lastUpdated: 2025-01
-ctfRating: 21.57
-ctfRatingUpdated: "2026-06-04"
+ctfRating: 21.35
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 14.32
 qllrCtfGames: 26
 dataSource: player
@@ -47,7 +47,7 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1782
+ctfGames: 1834
 qlrace:
   mode: 3
   records: 2
@@ -65,10 +65,9 @@ qlrace:
     time: 23368
     rank_pct: 25.7
   top_maps:
-    - {map: qzpractice2, rank: 84, total: 327, time: 23368}
-    - {map: japanesecastles, rank: 79, total: 214, time: 11848}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 2
+    - {map: qzpractice2, rank: 84, total: 327, time: 23368, rank_pct: 25.7}
+    - {map: japanesecastles, rank: 79, total: 214, time: 11848, rank_pct: 36.9}
+  fetched_at: '2026-07-04'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

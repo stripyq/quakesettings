@@ -6,15 +6,15 @@ aliases:
 team2026: GdeFlag?
 team2026Shortname: GF?
 lastUpdated: 2026-02
-tdmRating: 24.83
-tdmRatingUpdated: "2026-04-29"
-ctfRating: 23.98
-ctfRatingUpdated: "2026-05-11"
-qllrCtfRating: 30.67
-qllrCtfGames: 29
+tdmRating: 24.62
+tdmRatingUpdated: "2026-07-04"
+ctfRating: 23.6
+ctfRatingUpdated: "2026-07-04"
+qllrCtfRating: 29.21
+qllrCtfGames: 33
 duelRating: 1554
-ctfGames: 271
-tdmGames: 380
+ctfGames: 277
+tdmGames: 381
 duelGames: 2786
 duelRatingUpdated: "2026-02-04"
 mouse: logitech-g-pro-x-superlight-ii
@@ -53,7 +53,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 34.5
   best_record:
     map: cities_of_gold
@@ -62,17 +61,16 @@ qlrace:
     time: 41381
     rank_pct: 16.7
   top_maps:
-    - {map: cities_of_gold, rank: 11, total: 66, time: 41381}
-    - {map: moko_slick, rank: 11, total: 21, time: 7336}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 2
+    - {map: cities_of_gold, rank: 11, total: 66, time: 41381, rank_pct: 16.7}
+    - {map: moko_slick, rank: 11, total: 21, time: 7336, rank_pct: 52.4}
+  fetched_at: '2026-07-04'
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 36
-hoqCtfRating: 23.981449127197266
-hoqCtfGames: 271
-hoqTdmRating: 24.828292846679688
-hoqTdmGames: 380
+hoqCtfRating: 23.60131072998047
+hoqCtfGames: 277
+hoqTdmRating: 24.61754035949707
+hoqTdmGames: 381

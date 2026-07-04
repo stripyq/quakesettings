@@ -54,7 +54,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 4000
-  average_rank_pct: 32.5
+  average_rank_pct: 32.2
   best_record:
     map: zzz_rocket1
     rank: 8
@@ -62,14 +62,12 @@ qlrace:
     time: 9432
     rank_pct: 8.6
   top_maps:
-    - {map: zzz_rocket1, rank: 8, total: 93, time: 9432}
-    - {map: nood_speed4, rank: 5, total: 30, time: 14056}
-    - {map: effect_inder_reverse, rank: 4, total: 18, time: 7680}
-    - {map: xyligan-ghost, rank: 6, total: 19, time: 8104}
-    - {map: lovet-fourth, rank: 8, total: 16, time: 17856}
-    - {map: pornstar-slopin, rank: 31, total: 47, time: 27544}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 25
+    - {map: zzz_rocket1, rank: 8, total: 93, time: 9432, rank_pct: 8.6}
+    - {map: nood_speed4, rank: 5, total: 30, time: 14056, rank_pct: 16.7}
+    - {map: effect_inder_reverse, rank: 4, total: 19, time: 7680, rank_pct: 21.1}
+    - {map: xyligan-ghost, rank: 6, total: 19, time: 8104, rank_pct: 31.6}
+    - {map: lovet-fourth, rank: 8, total: 17, time: 17856, rank_pct: 47.1}
+  fetched_at: '2026-07-04'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

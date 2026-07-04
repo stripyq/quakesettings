@@ -22,7 +22,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 61.5
   best_record:
     map: p5run
@@ -31,9 +30,8 @@ qlrace:
     time: 9968
     rank_pct: 61.5
   top_maps:
-    - {map: p5run, rank: 8, total: 13, time: 9968}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 2
+    - {map: p5run, rank: 8, total: 13, time: 9968, rank_pct: 61.5}
+  fetched_at: '2026-07-04'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

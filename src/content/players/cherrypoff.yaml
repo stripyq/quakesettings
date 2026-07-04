@@ -7,20 +7,20 @@ team2026: GdeFlag?
 team2026Shortname: GF?
 country: RU
 category: tdm
-hoqCtfRating: 35.874324798583984
-hoqCtfGames: 984
-hoqTdmRating: 38.87024688720703
-hoqTdmGames: 1032
+hoqCtfRating: 35.69276809692383
+hoqCtfGames: 993
+hoqTdmRating: 38.67619323730469
+hoqTdmGames: 1035
 lastUpdated: 2025-01
-tdmRating: 38.87
-tdmRatingUpdated: "2026-06-04"
-ctfRating: 35.87
-ctfRatingUpdated: "2026-06-04"
-qllrCtfRating: 31.86
-qllrCtfGames: 31
+tdmRating: 38.68
+tdmRatingUpdated: "2026-07-04"
+ctfRating: 35.69
+ctfRatingUpdated: "2026-07-04"
+qllrCtfRating: 30.46
+qllrCtfGames: 35
 duelRating: 2140
-ctfGames: 984
-tdmGames: 1032
+ctfGames: 993
+tdmGames: 1035
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
 dataSource: player
@@ -55,7 +55,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 87.7
   best_record:
     map: vanilla_09
@@ -64,11 +63,10 @@ qlrace:
     time: 13851
     rank_pct: 77.8
   top_maps:
-    - {map: vanilla_09, rank: 35, total: 45, time: 13851}
-    - {map: wsm, rank: 10, total: 11, time: 547653}
-    - {map: actf02, rank: 33, total: 35, time: 40731}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: vanilla_09, rank: 35, total: 45, time: 13851, rank_pct: 77.8}
+    - {map: wsm, rank: 10, total: 11, time: 547653, rank_pct: 90.9}
+    - {map: actf02, rank: 33, total: 35, time: 40731, rank_pct: 94.3}
+  fetched_at: '2026-07-04'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

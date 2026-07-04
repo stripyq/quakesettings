@@ -9,17 +9,17 @@ team2026Shortname: CUBA
 country: DE
 team: Le Cubanitos
 category: duel
-hoqCtfRating: 34.670166015625
-hoqCtfGames: 714
-hoqTdmRating: 38.80684280395508
-hoqTdmGames: 138
+hoqCtfRating: 35.17912673950195
+hoqCtfGames: 738
+hoqTdmRating: 39.0406379699707
+hoqTdmGames: 139
 duelRating: 1406
-ctfRating: 34.67
-ctfRatingUpdated: "2026-06-04"
+ctfRating: 35.18
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 27.65
 qllrCtfGames: 141
-tdmRatingUpdated: "2026-05-11"
-tdmRating: 38.81
+tdmRatingUpdated: "2026-07-04"
+tdmRating: 39.04
 dataSource: player
 lastUpdated: 2025-02
 dpi: 1600
@@ -48,8 +48,8 @@ skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
 enemyModel: Keel
-ctfGames: 714
-tdmGames: 138
+ctfGames: 738
+tdmGames: 139
 qlrace:
   mode: 2
   records: 1
@@ -58,7 +58,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 18.4
   best_record:
     map: df_lickmax
@@ -67,9 +66,8 @@ qlrace:
     time: 6388
     rank_pct: 18.4
   top_maps:
-    - {map: df_lickmax, rank: 16, total: 87, time: 6388}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 1
+    - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
+  fetched_at: '2026-07-04'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

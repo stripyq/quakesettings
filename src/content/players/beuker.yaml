@@ -59,7 +59,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 35.5
   best_record:
     map: qzpractice2
@@ -68,9 +67,8 @@ qlrace:
     time: 25384
     rank_pct: 35.5
   top_maps:
-    - {map: qzpractice2, rank: 210, total: 592, time: 25384}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 1
+    - {map: qzpractice2, rank: 210, total: 592, time: 25384, rank_pct: 35.5}
+  fetched_at: '2026-07-04'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

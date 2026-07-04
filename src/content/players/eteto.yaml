@@ -3,18 +3,18 @@ country: HU
 steamId: "76561198257679175"
 published: true
 category: tdm
-hoqCtfRating: 12.149689674377441
-hoqCtfGames: 464
-hoqTdmRating: 25.521102905273438
-hoqTdmGames: 5234
-ctfRatingUpdated: "2026-06-04"
-tdmRatingUpdated: "2026-06-04"
+hoqCtfRating: 12.14185619354248
+hoqCtfGames: 466
+hoqTdmRating: 25.33308219909668
+hoqTdmGames: 5251
+ctfRatingUpdated: "2026-07-04"
+tdmRatingUpdated: "2026-07-04"
 lastUpdated: "2026-02-13"
 dataSource: player
-tdmRating: 25.52
-tdmGames: 5234
-ctfRating: 12.15
-ctfGames: 464
+tdmRating: 25.33
+tdmGames: 5251
+ctfRating: 12.14
+ctfGames: 466
 tdm2v2Rating: 31.94
 tdm2v2Games: 5
 mouse: razer-deathadder-essential
@@ -66,11 +66,10 @@ qlrace:
     time: 41319
     rank_pct: 4.5
   top_maps:
-    - {map: cruton2, rank: 6, total: 132, time: 41319}
-    - {map: qlwc21_round4, rank: 4, total: 37, time: 25096}
-    - {map: qlwc21_round3, rank: 4, total: 26, time: 21864}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: cruton2, rank: 6, total: 132, time: 41319, rank_pct: 4.5}
+    - {map: qlwc21_round4, rank: 4, total: 37, time: 25096, rank_pct: 10.8}
+    - {map: qlwc21_round3, rank: 4, total: 26, time: 21864, rank_pct: 15.4}
+  fetched_at: '2026-07-04'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher

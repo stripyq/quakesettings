@@ -7,8 +7,8 @@ team2026: GdeFlag?
 team2026Shortname: GF?
 country: NL
 category: ctf
-hoqCtfRating: 31.686412811279297
-hoqCtfGames: 1293
+hoqCtfRating: 31.251632690429688
+hoqCtfGames: 1310
 hoqTdmRating: 27.716245651245117
 hoqTdmGames: 31
 lastUpdated: 2025-01
@@ -16,10 +16,10 @@ duelRating: 1265
 duelRatingUpdated: "2026-01-31"
 tdmRating: 27.72
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 31.69
-ctfRatingUpdated: "2026-06-04"
-qllrCtfRating: 37.77
-qllrCtfGames: 22
+ctfRating: 31.25
+ctfRatingUpdated: "2026-07-04"
+qllrCtfRating: 37.41
+qllrCtfGames: 24
 dataSource: player
 dpi: 3200
 sensitivity: 0.4
@@ -46,7 +46,7 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1293
+ctfGames: 1310
 tdmGames: 31
 qlrace: null
 favorite_map: japanesecastles

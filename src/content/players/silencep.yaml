@@ -52,7 +52,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 11.1
   best_record:
     map: japanesecastles
@@ -61,9 +60,8 @@ qlrace:
     time: 10423
     rank_pct: 11.1
   top_maps:
-    - {map: japanesecastles, rank: 27, total: 244, time: 10423}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 1
+    - {map: japanesecastles, rank: 27, total: 244, time: 10423, rank_pct: 11.1}
+  fetched_at: '2026-07-04'
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

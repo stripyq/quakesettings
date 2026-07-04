@@ -9,17 +9,17 @@ team2026: Astral Starlight
 country: ""
 team: ""
 category: ctf
-hoqCtfRating: 22.76917839050293
-hoqCtfGames: 1091
+hoqCtfRating: 21.481569290161133
+hoqCtfGames: 1122
 hoqTdmRating: 31.107351303100586
 hoqTdmGames: 118
-ctfRatingUpdated: "2026-04-29"
+ctfRatingUpdated: "2026-07-04"
 qllrCtfRating: 12.79
 qllrCtfGames: 10
 tdmRatingUpdated: "2026-04-29"
 lastUpdated: 2024-12
-ctfRating: 22.77
-ctfGames: 1091
+ctfRating: 21.48
+ctfGames: 1122
 tdmRating: 31.11
 tdmGames: 118
 dataSource: player
@@ -63,7 +63,6 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 0
   average_rank_pct: 57.4
   best_record:
     map: df_0ups
@@ -72,9 +71,8 @@ qlrace:
     time: 38759
     rank_pct: 57.4
   top_maps:
-    - {map: df_0ups, rank: 27, total: 47, time: 38759}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 2
+    - {map: df_0ups, rank: 27, total: 47, time: 38759, rank_pct: 57.4}
+  fetched_at: '2026-07-04'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

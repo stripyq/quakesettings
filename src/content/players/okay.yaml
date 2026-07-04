@@ -53,10 +53,9 @@ qlrace:
     time: 26920
     rank_pct: 42.9
   top_maps:
-    - {map: sk8, rank: 6, total: 14, time: 26920}
-    - {map: tatmt-s4, rank: 8, total: 10, time: 21600}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 2
+    - {map: sk8, rank: 6, total: 14, time: 26920, rank_pct: 42.9}
+    - {map: tatmt-s4, rank: 8, total: 10, time: 21600, rank_pct: 80}
+  fetched_at: '2026-07-04'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

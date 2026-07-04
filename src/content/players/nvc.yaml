@@ -21,20 +21,19 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1163
-  average_rank_pct: 49.5
+  average_rank_pct: 49.2
   best_record:
     map: lovet-mikendo
     rank: 33
-    total: 117
+    total: 122
     time: 20360
-    rank_pct: 28.2
+    rank_pct: 27
   top_maps:
-    - {map: lovet-mikendo, rank: 33, total: 117, time: 20360}
-    - {map: kool_aqua, rank: 47, total: 100, time: 35152}
-    - {map: qlwc21_round2, rank: 48, total: 99, time: 50976}
-    - {map: bricks2, rank: 49, total: 66, time: 59312}
-  fetched_at: '2026-05-22'
-  unique_maps_vql: 4
+    - {map: lovet-mikendo, rank: 33, total: 122, time: 20360, rank_pct: 27}
+    - {map: kool_aqua, rank: 47, total: 100, time: 35152, rank_pct: 47}
+    - {map: qlwc21_round2, rank: 48, total: 99, time: 50976, rank_pct: 48.5}
+    - {map: bricks2, rank: 52, total: 70, time: 59312, rank_pct: 74.3}
+  fetched_at: '2026-07-04'
 ctfRatingUpdated: "2026-04-29"
 tdmRatingUpdated: "2026-04-29"
 favorite_map: japanesecastles

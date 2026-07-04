@@ -9,46 +9,40 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 published: false
-ctfRating: 29.21
-ctfGames: 2507
+ctfRating: 29.5
+ctfGames: 2550
 qlrace:
-  mode: 3
-  records: 4
+  mode: 2
+  records: 1
   wrs: 0
   medals:
     gold: 0
     silver: 0
     bronze: 0
-  speed_top: 1294
-  average_rank_pct: 59.6
+  speed_top: 805
+  average_rank_pct: 18.1
   best_record:
-    map: campgrounds
-    rank: 96
-    total: 387
-    time: 25992
-    rank_pct: 24.8
+    map: infinity
+    rank: 13
+    total: 72
+    time: 9096
+    rank_pct: 18.1
   top_maps:
-    - {map: campgrounds, rank: 96, total: 387, time: 25992}
-    - {map: kopo_fe, rank: 28, total: 46, time: 68240}
-    - {map: elbmoop, rank: 26, total: 39, time: 96136}
-    - {map: hangtime-df, rank: 62, total: 72, time: 2482752}
-  fetched_at: '2026-05-22'
-  featured_maps:
-    - {map: hangtime-df, mode: 3, time: 2482752, rank: 62, total: 72, speed_top: 1213, date: '2026-05-04T23:12:46.384Z'}
-  unique_maps_vql: 4
-ctfRatingUpdated: "2026-06-04"
-qllrCtfRating: 33.21
-qllrCtfGames: 43
-tdmRatingUpdated: "2026-06-04"
-tdmRating: 29.06
-tdmGames: 1264
+    - {map: infinity, rank: 13, total: 72, time: 9096, rank_pct: 18.1}
+  fetched_at: '2026-07-04'
+ctfRatingUpdated: "2026-07-04"
+qllrCtfRating: 32.51
+qllrCtfGames: 46
+tdmRatingUpdated: "2026-07-04"
+tdmRating: 28.12
+tdmGames: 1273
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_rg: 54
 accuracy_lg: 36
-hoqCtfRating: 29.21070671081543
-hoqCtfGames: 2507
-hoqTdmRating: 29.055511474609375
-hoqTdmGames: 1264
+hoqCtfRating: 29.50267219543457
+hoqCtfGames: 2550
+hoqTdmRating: 28.116384506225586
+hoqTdmGames: 1273
