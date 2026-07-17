@@ -37,7 +37,7 @@ cm360: 34.63
 acceleration: true
 accelValue: 0.005
 rawInput: true
-fov: 103
+fov: 102.5
 crosshair: 2, 7, 6, 1, 9, 14, 22, 4
 crosshairSize: ""
 invertedMouse: true
@@ -56,7 +56,7 @@ mousepad: artisan-key-83
 mousepadBase: Soft
 mousepadSize: XXL
 keyboard: wooting-80he
-monitor: lg-32gs95ue-b
+monitor: asus-pg27aqwp-w
 headset: drop-sennheiser-pc37x
 skates: Stock
 enemyModel: Keel
