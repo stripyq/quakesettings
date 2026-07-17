@@ -1,19 +1,23 @@
 name: JunkZ
 country: LV
 steamId: "76561198120003322"
-hoqCtfRating: 12.22
+
 ctfRatingUpdated: "2026-07-17"
 ctfRating: 12.22
-hoqCtfGames: 17
+
 ctfGames: 17
-hoqTdmRating: 18.72
+
 tdmRatingUpdated: "2026-07-17"
 tdmRating: 18.72
-hoqTdmGames: 474
+
 tdmGames: 474
 tdm2v2Rating: 15.9
 tdm2v2Games: 4
 dataSource: player
+hoqCtfRating: 12.219375610351562
+hoqCtfGames: 17
+hoqTdmRating: 18.72205352783203
+hoqTdmGames: 474
 lastUpdated: "2026-07-15"
 mouse: logitech-g-pro-x2-superstrike
 mousepad: glorious-gmp-2-xxl

@@ -7,11 +7,11 @@ aliases:
 team2026: Aimdead Brainers
 team2026Shortname: cock
 category: ctf
-hoqCtfRating: 34.11685562133789
-hoqCtfGames: 736
+hoqCtfRating: 33.19754409790039
+hoqCtfGames: 740
 hoqTdmRating: 16.90259552001953
 hoqTdmGames: 12
-ctfRatingUpdated: "2026-07-04"
+ctfRatingUpdated: "2026-07-17"
 qllrCtfRating: 27.22
 qllrCtfGames: 100
 tdmRatingUpdated: "2026-04-29"
@@ -32,8 +32,8 @@ left: a
 right: d
 duelRating: 1624
 duelGames: 275
-ctfRating: 34.12
-ctfGames: 736
+ctfRating: 33.2
+ctfGames: 740
 tdmRating: 16.9
 tdmGames: 12
 qlrace: null

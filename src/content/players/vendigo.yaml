@@ -4,13 +4,13 @@ country: Unknown
 category: tdm
 hoqCtfRating: 11.436339378356934
 hoqCtfGames: 1
-hoqTdmRating: 25.749601364135742
-hoqTdmGames: 1877
+hoqTdmRating: 26.88237190246582
+hoqTdmGames: 1890
 lastUpdated: 2025-01
 duelRating: 1465
 duelRatingUpdated: "2026-01-31"
-tdmRating: 25.75
-tdmRatingUpdated: "2026-07-04"
+tdmRating: 26.88
+tdmRatingUpdated: "2026-07-17"
 ctfRating: 11.44
 ctfRatingUpdated: "2026-04-29"
 dataSource: player
@@ -39,7 +39,7 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 1
-tdmGames: 1877
+tdmGames: 1890
 qlrace: null
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch

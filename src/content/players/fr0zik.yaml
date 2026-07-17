@@ -27,16 +27,16 @@ qlrace:
   top_maps:
     - {map: japanesecastles, rank: 161, total: 214, time: 13936, rank_pct: 75.2}
   fetched_at: '2026-07-04'
-ctfGames: 1631
-ctfRatingUpdated: "2026-06-04"
+ctfGames: 1653
+ctfRatingUpdated: "2026-07-17"
 qllrCtfRating: 20.99
 qllrCtfGames: 28
-ctfRating: 24.01
+ctfRating: 24.79
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 41
 accuracy_rg: 51
 accuracy_lg: 33
-hoqCtfRating: 24.011133193969727
-hoqCtfGames: 1631
+hoqCtfRating: 24.790021896362305
+hoqCtfGames: 1653
