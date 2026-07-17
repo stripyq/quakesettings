@@ -8,8 +8,8 @@ aliases:
 team2026: Czesnecka
 team2026Shortname: CZE
 published: false
-ctfRating: 21.4
-ctfGames: 1080
+ctfRating: 21.16
+ctfGames: 1081
 tdmRating: 24.33
 tdmGames: 19
 qlrace:
@@ -34,7 +34,7 @@ qlrace:
     - {map: qlwc21_round2, rank: 48, total: 99, time: 50976, rank_pct: 48.5}
     - {map: bricks2, rank: 52, total: 70, time: 59312, rank_pct: 74.3}
   fetched_at: '2026-07-04'
-ctfRatingUpdated: "2026-04-29"
+ctfRatingUpdated: "2026-07-17"
 tdmRatingUpdated: "2026-04-29"
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
@@ -42,7 +42,7 @@ favorite_weapon: Railgun
 accuracy_rl: 42
 accuracy_rg: 54
 accuracy_lg: 42
-hoqCtfRating: 21.40127182006836
-hoqCtfGames: 1080
+hoqCtfRating: 21.164108276367188
+hoqCtfGames: 1081
 hoqTdmRating: 24.328203201293945
 hoqTdmGames: 19

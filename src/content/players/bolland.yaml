@@ -2,13 +2,13 @@ name: Bolland
 steamId: "76561198354200908"
 country: Unknown
 category: tdm
-hoqTdmRating: 14.843381881713867
-hoqTdmGames: 2575
+hoqTdmRating: 14.653341293334961
+hoqTdmGames: 2576
 lastUpdated: 2025-01
 duelRating: 1521
 duelRatingUpdated: "2026-01-31"
-tdmRating: 14.84
-tdmRatingUpdated: "2026-07-04"
+tdmRating: 14.65
+tdmRatingUpdated: "2026-07-17"
 dataSource: player
 dpi: 850
 sensitivity: 6.5
@@ -35,7 +35,7 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 2575
+tdmGames: 2576
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
