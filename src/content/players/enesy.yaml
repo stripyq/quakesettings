@@ -8,8 +8,8 @@ team2026Shortname: cock
 country: DK
 team: Aimdead brainers
 category: ctf
-hoqCtfRating: 41.40999984741211
-hoqCtfGames: 1952
+hoqCtfRating: 41.384765625
+hoqCtfGames: 1954
 hoqTdmRating: 35.35633087158203
 hoqTdmGames: 225
 lastUpdated: 2025-01
@@ -17,8 +17,8 @@ duelRating: 1425
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.36
 tdmRatingUpdated: "2026-05-11"
-ctfRating: 41.41
-ctfRatingUpdated: "2026-07-04"
+ctfRating: 41.38
+ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 29.23
 qllrCtfGames: 155
 dataSource: player
@@ -47,7 +47,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 1952
+ctfGames: 1954
 tdmGames: 225
 qlrace: null
 favorite_map: japanesecastles

@@ -5,15 +5,15 @@ aliases:
   - KRL
 team2024: Whatever name IDC
 category: duel
-hoqCtfRating: 27.40616798400879
-hoqCtfGames: 1452
+hoqCtfRating: 26.195514678955078
+hoqCtfGames: 1457
 hoqTdmRating: 16.3620662689209
 hoqTdmGames: 8
-ctfRatingUpdated: "2026-06-04"
+ctfRatingUpdated: "2026-08-15"
 tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 27.41
+ctfRating: 26.2
 tdmRating: 16.36
 dpi: 400
 sensitivity: 1.7
@@ -41,7 +41,7 @@ keyboard: steelseries-apex-9-mini
 monitor: benq-xl2420z
 headset: hyperx-cloud-alpha
 skates: Stock
-ctfGames: 1452
+ctfGames: 1457
 tdmGames: 8
 qlrace: null
 favorite_map: japanesecastles

@@ -5,8 +5,8 @@ steamId: "76561197973893045"
 aliases: []
 team2026: Astral Starlight
 published: false
-ctfRating: 14.8
-ctfGames: 1123
+ctfRating: 14.88
+ctfGames: 1133
 tdmRating: 22.54
 tdmGames: 183
 qlrace:
@@ -31,7 +31,7 @@ qlrace:
     - {map: hangtime-df, rank: 44, total: 73, time: 1009600, rank_pct: 60.3}
     - {map: kool_m2, rank: 24, total: 26, time: 42576, rank_pct: 92.3}
   fetched_at: '2026-07-04'
-ctfRatingUpdated: "2026-07-04"
+ctfRatingUpdated: "2026-08-15"
 tdmRatingUpdated: "2026-04-29"
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
@@ -39,7 +39,7 @@ favorite_weapon: Railgun
 accuracy_rl: 39
 accuracy_rg: 52
 accuracy_lg: 34
-hoqCtfRating: 14.795371055603027
-hoqCtfGames: 1123
+hoqCtfRating: 14.878028869628906
+hoqCtfGames: 1133
 hoqTdmRating: 22.539833068847656
 hoqTdmGames: 183

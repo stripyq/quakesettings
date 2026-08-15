@@ -2,17 +2,21 @@ name: Antosh
 steamId: "76561199559373528"
 country: PL
 category: ctf
-hoqCtfRating: 23.855876922607422
-hoqCtfGames: 426
+hoqCtfRating: 24.542490005493164
+hoqCtfGames: 484
 hoqTdmRating: 25.09501838684082
 hoqTdmGames: 80
+
+
+
+
 tdmRatingUpdated: "2026-07-04"
 tdmRating: 25.1
 tdmGames: 80
 published: true
-ctfRatingUpdated: "2026-07-17"
-ctfRating: 23.86
-ctfGames: 426
+ctfRatingUpdated: "2026-08-15"
+ctfRating: 24.54
+ctfGames: 484
 dataSource: player
 lastUpdated: 2026-04
 dpi: 1600

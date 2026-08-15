@@ -7,17 +7,21 @@ ctfRating: 12.22
 
 ctfGames: 17
 
-tdmRatingUpdated: "2026-07-17"
-tdmRating: 18.72
+tdmRatingUpdated: "2026-08-15"
+tdmRating: 17.97
 
-tdmGames: 474
+tdmGames: 477
 tdm2v2Rating: 15.9
 tdm2v2Games: 4
 dataSource: player
 hoqCtfRating: 12.219375610351562
 hoqCtfGames: 17
-hoqTdmRating: 18.72205352783203
-hoqTdmGames: 474
+hoqTdmRating: 17.96611785888672
+hoqTdmGames: 477
+
+
+
+
 lastUpdated: "2026-07-15"
 mouse: logitech-g-pro-x2-superstrike
 mousepad: glorious-gmp-2-xxl

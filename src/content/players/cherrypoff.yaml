@@ -7,20 +7,24 @@ team2026: GdeFlag?
 team2026Shortname: GF?
 country: RU
 category: tdm
-hoqCtfRating: 34.99382781982422
-hoqCtfGames: 996
-hoqTdmRating: 38.67619323730469
-hoqTdmGames: 1035
+hoqCtfRating: 34.65258026123047
+hoqCtfGames: 1005
+hoqTdmRating: 38.96533203125
+hoqTdmGames: 1036
+
+
+
+
 lastUpdated: 2025-01
-tdmRating: 38.68
-tdmRatingUpdated: "2026-07-04"
-ctfRating: 34.99
-ctfRatingUpdated: "2026-07-17"
+tdmRating: 38.97
+tdmRatingUpdated: "2026-08-15"
+ctfRating: 34.65
+ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 30.46
 qllrCtfGames: 35
 duelRating: 2140
-ctfGames: 996
-tdmGames: 1035
+ctfGames: 1005
+tdmGames: 1036
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
 dataSource: player
