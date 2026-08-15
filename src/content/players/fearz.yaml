@@ -57,7 +57,7 @@ qlrace:
   top_maps:
     - {map: tenuous, rank: 16, total: 98, time: 61538, rank_pct: 16.3}
     - {map: df_lickhuar, rank: 9, total: 25, time: 47591, rank_pct: 36}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

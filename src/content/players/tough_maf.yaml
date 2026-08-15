@@ -54,17 +54,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 56.4
+  average_rank_pct: 56.8
   best_record:
     map: reflux
-    rank: 34
-    total: 83
+    rank: 35
+    total: 84
     time: 12255
-    rank_pct: 41
+    rank_pct: 41.7
   top_maps:
-    - {map: reflux, rank: 34, total: 83, time: 12255, rank_pct: 41}
+    - {map: reflux, rank: 35, total: 84, time: 12255, rank_pct: 41.7}
     - {map: df_licklonger, rank: 41, total: 57, time: 40521, rank_pct: 71.9}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

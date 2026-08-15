@@ -29,7 +29,7 @@ qlrace:
     rank_pct: 18.1
   top_maps:
     - {map: infinity, rank: 13, total: 72, time: 9096, rank_pct: 18.1}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 32.51
 qllrCtfGames: 46

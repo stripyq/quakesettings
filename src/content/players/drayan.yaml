@@ -72,7 +72,7 @@ qlrace:
     rank_pct: 53.1
   top_maps:
     - {map: base1, rank: 17, total: 32, time: 8224, rank_pct: 53.1}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -23,17 +23,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 27.8
+  average_rank_pct: 27.7
   best_record:
     map: japanesecastles
     rank: 61
-    total: 244
+    total: 246
     time: 11637
-    rank_pct: 25
+    rank_pct: 24.8
   top_maps:
-    - {map: japanesecastles, rank: 61, total: 244, time: 11637, rank_pct: 25}
+    - {map: japanesecastles, rank: 61, total: 246, time: 11637, rank_pct: 24.8}
     - {map: oilrig, rank: 11, total: 36, time: 10934, rank_pct: 30.6}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

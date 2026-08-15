@@ -84,7 +84,7 @@ qlrace:
     rank_pct: 26
   top_maps:
     - {map: bardok_egypt, rank: 19, total: 73, time: 16617, rank_pct: 26}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

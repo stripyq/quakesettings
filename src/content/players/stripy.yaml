@@ -76,19 +76,19 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1040
-  average_rank_pct: 84.1
+  average_rank_pct: 83.7
   best_record:
     map: strafe_ok
-    rank: 51
-    total: 69
+    rank: 52
+    total: 72
     time: 15432
-    rank_pct: 73.9
+    rank_pct: 72.2
   top_maps:
-    - {map: strafe_ok, rank: 51, total: 69, time: 15432, rank_pct: 73.9}
+    - {map: strafe_ok, rank: 52, total: 72, time: 15432, rank_pct: 72.2}
     - {map: 180turn, rank: 31, total: 40, time: 66216, rank_pct: 77.5}
     - {map: shitstrafe2, rank: 63, total: 74, time: 35680, rank_pct: 85.1}
     - {map: df-nuke_inverted, rank: 15, total: 15, time: 111416, rank_pct: 100}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

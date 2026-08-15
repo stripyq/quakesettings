@@ -57,16 +57,16 @@ qlrace:
   best_record:
     map: ironworks
     rank: 6
-    total: 96
+    total: 97
     time: 6336
-    rank_pct: 6.3
+    rank_pct: 6.2
   top_maps:
-    - {map: ironworks, rank: 6, total: 96, time: 6336, rank_pct: 6.3}
-    - {map: troubledwaters, rank: 7, total: 75, time: 8648, rank_pct: 9.3}
+    - {map: ironworks, rank: 6, total: 97, time: 6336, rank_pct: 6.2}
+    - {map: troubledwaters, rank: 7, total: 78, time: 8648, rank_pct: 9}
     - {map: df_lickgirls, rank: 18, total: 98, time: 10568, rank_pct: 18.4}
-    - {map: japanesecastles, rank: 46, total: 244, time: 11320, rank_pct: 18.9}
-    - {map: spidercrossings, rank: 34, total: 127, time: 12544, rank_pct: 26.8}
-  fetched_at: '2026-07-04'
+    - {map: japanesecastles, rank: 46, total: 246, time: 11320, rank_pct: 18.7}
+    - {map: spidercrossings, rank: 34, total: 128, time: 12544, rank_pct: 26.6}
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

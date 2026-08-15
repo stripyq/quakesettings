@@ -73,7 +73,7 @@ qlrace:
     - {map: cruton2, rank: 6, total: 132, time: 41319, rank_pct: 4.5}
     - {map: qlwc21_round4, rank: 4, total: 37, time: 25096, rank_pct: 10.8}
     - {map: qlwc21_round3, rank: 4, total: 26, time: 21864, rank_pct: 15.4}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Rocket Launcher

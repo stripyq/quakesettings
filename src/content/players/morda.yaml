@@ -70,7 +70,7 @@ qlrace:
     - {map: tatmt_s12, rank: 41, total: 75, time: 77699, rank_pct: 54.7}
     - {map: df_dinirun3, rank: 18, total: 32, time: 170650, rank_pct: 56.3}
     - {map: df_minions_run5, rank: 47, total: 82, time: 26099, rank_pct: 57.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

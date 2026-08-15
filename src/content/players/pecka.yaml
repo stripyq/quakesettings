@@ -61,16 +61,16 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 672
-  average_rank_pct: 66.8
+  average_rank_pct: 66.5
   best_record:
     map: japanesecastles
-    rank: 143
-    total: 214
+    rank: 145
+    total: 218
     time: 13080
-    rank_pct: 66.8
+    rank_pct: 66.5
   top_maps:
-    - {map: japanesecastles, rank: 143, total: 214, time: 13080, rank_pct: 66.8}
-  fetched_at: '2026-07-04'
+    - {map: japanesecastles, rank: 145, total: 218, time: 13080, rank_pct: 66.5}
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

@@ -60,20 +60,20 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1528
-  average_rank_pct: 51.5
+  average_rank_pct: 51.6
   best_record:
-    map: q3wcp19
-    rank: 10
-    total: 72
-    time: 13744
-    rank_pct: 13.9
+    map: rebound
+    rank: 22
+    total: 160
+    time: 7200
+    rank_pct: 13.8
   top_maps:
+    - {map: rebound, rank: 22, total: 160, time: 7200, rank_pct: 13.8}
     - {map: q3wcp19, rank: 10, total: 72, time: 13744, rank_pct: 13.9}
-    - {map: rebound, rank: 22, total: 158, time: 7200, rank_pct: 13.9}
     - {map: df_coldrun, rank: 25, total: 172, time: 16430, rank_pct: 14.5}
     - {map: r7_sanity, rank: 5, total: 27, time: 72386, rank_pct: 18.5}
     - {map: tatmt_s4, rank: 11, total: 55, time: 17627, rank_pct: 20}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

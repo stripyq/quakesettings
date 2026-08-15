@@ -68,7 +68,7 @@ qlrace:
     rank_pct: 41.7
   top_maps:
     - {map: cruton2, rank: 55, total: 132, time: 64387, rank_pct: 41.7}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

@@ -53,7 +53,25 @@ skates: Aftermarket
 enemyModel: Keel
 gpuBrand: AMD
 cpuBrand: AMD
-qlrace: null
+qlrace:
+  mode: 3
+  records: 1
+  wrs: 0
+  medals:
+    gold: 0
+    silver: 0
+    bronze: 0
+  speed_top: 1014
+  average_rank_pct: 100
+  best_record:
+    map: zeel-nezha
+    rank: 20
+    total: 20
+    time: 131120
+    rank_pct: 100
+  top_maps:
+    - {map: zeel-nezha, rank: 20, total: 20, time: 131120, rank_pct: 100}
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

@@ -53,20 +53,20 @@ qlrace:
     silver: 2
     bronze: 2
   speed_top: 3971
-  average_rank_pct: 22.9
+  average_rank_pct: 23
   best_record:
     map: campgrounds
     rank: 5
-    total: 387
+    total: 389
     time: 19236
     rank_pct: 1.3
   top_maps:
-    - {map: campgrounds, rank: 5, total: 387, time: 19236, rank_pct: 1.3}
+    - {map: campgrounds, rank: 5, total: 389, time: 19236, rank_pct: 1.3}
     - {map: lick_girls, rank: 1, total: 40, time: 8360, rank_pct: 2.5}
-    - {map: spidercrossings, rank: 4, total: 127, time: 8584, rank_pct: 3.1}
-    - {map: dividedcrossings, rank: 4, total: 124, time: 3776, rank_pct: 3.2}
-    - {map: ironworks, rank: 4, total: 96, time: 5746, rank_pct: 4.2}
-  fetched_at: '2026-07-04'
+    - {map: spidercrossings, rank: 4, total: 128, time: 8584, rank_pct: 3.1}
+    - {map: dividedcrossings, rank: 4, total: 125, time: 3776, rank_pct: 3.2}
+    - {map: ironworks, rank: 4, total: 97, time: 5746, rank_pct: 4.1}
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

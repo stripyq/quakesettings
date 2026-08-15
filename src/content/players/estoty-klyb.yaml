@@ -31,7 +31,7 @@ qlrace:
     rank_pct: 16.5
   top_maps:
     - {map: cruton4, rank: 15, total: 91, time: 107734, rank_pct: 16.5}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

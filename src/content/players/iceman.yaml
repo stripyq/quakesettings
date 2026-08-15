@@ -61,16 +61,16 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1157
-  average_rank_pct: 78.1
+  average_rank_pct: 78.8
   best_record:
     map: coldrun
-    rank: 25
-    total: 32
+    rank: 26
+    total: 33
     time: 20512
-    rank_pct: 78.1
+    rank_pct: 78.8
   top_maps:
-    - {map: coldrun, rank: 25, total: 32, time: 20512, rank_pct: 78.1}
-  fetched_at: '2026-07-04'
+    - {map: coldrun, rank: 26, total: 33, time: 20512, rank_pct: 78.8}
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

@@ -60,18 +60,18 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1125
-  average_rank_pct: 83
+  average_rank_pct: 82.3
   best_record:
     map: run_un-dead_enter
     rank: 22
-    total: 29
+    total: 30
     time: 32808
-    rank_pct: 75.9
+    rank_pct: 73.3
   top_maps:
-    - {map: run_un-dead_enter, rank: 22, total: 29, time: 32808, rank_pct: 75.9}
-    - {map: ameisen-comp2, rank: 28, total: 34, time: 62768, rank_pct: 82.4}
-    - {map: lubricious, rank: 30, total: 33, time: 54664, rank_pct: 90.9}
-  fetched_at: '2026-07-04'
+    - {map: run_un-dead_enter, rank: 22, total: 30, time: 32808, rank_pct: 73.3}
+    - {map: ameisen-comp2, rank: 32, total: 39, time: 62768, rank_pct: 82.1}
+    - {map: lubricious, rank: 32, total: 35, time: 54664, rank_pct: 91.4}
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

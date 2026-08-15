@@ -17,16 +17,16 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 721
-  average_rank_pct: 75.2
+  average_rank_pct: 74.8
   best_record:
     map: japanesecastles
-    rank: 161
-    total: 214
+    rank: 163
+    total: 218
     time: 13936
-    rank_pct: 75.2
+    rank_pct: 74.8
   top_maps:
-    - {map: japanesecastles, rank: 161, total: 214, time: 13936, rank_pct: 75.2}
-  fetched_at: '2026-07-04'
+    - {map: japanesecastles, rank: 163, total: 218, time: 13936, rank_pct: 74.8}
+  fetched_at: '2026-08-15'
 ctfGames: 1736
 ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 20.99

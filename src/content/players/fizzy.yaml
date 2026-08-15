@@ -58,16 +58,16 @@ qlrace:
   best_record:
     map: japanesecastles
     rank: 7
-    total: 244
+    total: 246
     time: 8176
-    rank_pct: 2.9
+    rank_pct: 2.8
   top_maps:
-    - {map: japanesecastles, rank: 7, total: 244, time: 8176, rank_pct: 2.9}
-    - {map: campgrounds, rank: 155, total: 387, time: 27208, rank_pct: 40.1}
+    - {map: japanesecastles, rank: 7, total: 246, time: 8176, rank_pct: 2.8}
+    - {map: campgrounds, rank: 156, total: 389, time: 27208, rank_pct: 40.1}
     - {map: spr_toofoo, rank: 27, total: 43, time: 34472, rank_pct: 62.8}
     - {map: greenstrafe, rank: 12, total: 16, time: 56368, rank_pct: 75}
     - {map: aa_pm6, rank: 4, total: 5, time: 12328, rank_pct: 80}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

@@ -66,16 +66,16 @@ qlrace:
   best_record:
     map: japanesecastles
     rank: 48
-    total: 244
+    total: 246
     time: 11432
-    rank_pct: 19.7
+    rank_pct: 19.5
   top_maps:
-    - {map: japanesecastles, rank: 48, total: 244, time: 11432, rank_pct: 19.7}
+    - {map: japanesecastles, rank: 48, total: 246, time: 11432, rank_pct: 19.5}
     - {map: kaine, rank: 18, total: 91, time: 21304, rank_pct: 19.8}
     - {map: lick_again, rank: 7, total: 32, time: 2584, rank_pct: 21.9}
     - {map: marci4, rank: 5, total: 21, time: 11000, rank_pct: 23.8}
     - {map: lick_dead, rank: 2, total: 8, time: 37488, rank_pct: 25}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

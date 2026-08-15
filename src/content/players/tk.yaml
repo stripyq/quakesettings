@@ -59,7 +59,7 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 49.4
+  average_rank_pct: 49.5
   best_record:
     map: df_coldrun
     rank: 28
@@ -69,9 +69,9 @@ qlrace:
   top_maps:
     - {map: df_coldrun, rank: 28, total: 172, time: 16835, rank_pct: 16.3}
     - {map: voltex, rank: 15, total: 28, time: 74027, rank_pct: 53.6}
-    - {map: trinity, rank: 60, total: 104, time: 28781, rank_pct: 57.7}
+    - {map: trinity, rank: 61, total: 105, time: 28781, rank_pct: 58.1}
     - {map: dinirun2, rank: 7, total: 10, time: 61392, rank_pct: 70}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: asylum
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

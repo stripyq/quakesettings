@@ -66,7 +66,7 @@ qlrace:
     - {map: cos1_beta7b, rank: 384, total: 571, time: 66728, rank_pct: 67.3}
     - {map: r7-tech, rank: 9, total: 10, time: 48152, rank_pct: 90}
     - {map: apple-runround, rank: 12, total: 13, time: 27952, rank_pct: 92.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

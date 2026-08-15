@@ -60,7 +60,7 @@ qlrace:
     - {map: chile16, rank: 14, total: 44, time: 7648, rank_pct: 31.8}
     - {map: toxicwoman, rank: 2, total: 6, time: 13248, rank_pct: 33.3}
     - {map: inder_failrun4, rank: 38, total: 67, time: 34162, rank_pct: 56.7}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Shotgun

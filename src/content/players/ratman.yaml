@@ -39,7 +39,7 @@ qlrace:
     - {map: schody, rank: 9, total: 57, time: 9209, rank_pct: 15.8}
     - {map: aa_slope, rank: 13, total: 73, time: 31642, rank_pct: 17.8}
     - {map: charon, rank: 35, total: 194, time: 27253, rank_pct: 18}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Lightning Gun

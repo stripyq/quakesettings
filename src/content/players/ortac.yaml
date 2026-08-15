@@ -46,17 +46,17 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 64.6
+  average_rank_pct: 64.7
   best_record:
     map: spacectf
-    rank: 172
-    total: 285
+    rank: 175
+    total: 289
     time: 7258
-    rank_pct: 60.4
+    rank_pct: 60.6
   top_maps:
-    - {map: spacectf, rank: 172, total: 285, time: 7258, rank_pct: 60.4}
+    - {map: spacectf, rank: 175, total: 289, time: 7258, rank_pct: 60.6}
     - {map: df_dinirun3, rank: 22, total: 32, time: 194944, rank_pct: 68.8}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: hiddenfortress
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

@@ -70,7 +70,7 @@ qlrace:
   top_maps:
     - {map: kool_boma2, rank: 14, total: 20, time: 27872, rank_pct: 70}
     - {map: kool_bricks1, rank: 10, total: 11, time: 54232, rank_pct: 90.9}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

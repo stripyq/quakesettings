@@ -23,20 +23,20 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 1049
-  average_rank_pct: 51.7
+  average_rank_pct: 52
   best_record:
     map: japanesecastles
     rank: 22
-    total: 244
+    total: 246
     time: 9816
-    rank_pct: 9
+    rank_pct: 8.9
   top_maps:
-    - {map: japanesecastles, rank: 22, total: 244, time: 9816, rank_pct: 9}
+    - {map: japanesecastles, rank: 22, total: 246, time: 9816, rank_pct: 8.9}
     - {map: skate1, rank: 14, total: 51, time: 32408, rank_pct: 27.5}
-    - {map: campgrounds, rank: 135, total: 387, time: 26464, rank_pct: 34.9}
+    - {map: campgrounds, rank: 136, total: 389, time: 26464, rank_pct: 35}
     - {map: henhouse, rank: 25, total: 61, time: 38536, rank_pct: 41}
     - {map: actf01, rank: 34, total: 79, time: 22904, rank_pct: 43}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

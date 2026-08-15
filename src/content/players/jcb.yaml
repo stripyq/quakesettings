@@ -63,16 +63,16 @@ qlrace:
   best_record:
     map: japanesecastles
     rank: 3
-    total: 244
+    total: 246
     time: 7584
     rank_pct: 1.2
   top_maps:
-    - {map: japanesecastles, rank: 3, total: 244, time: 7584, rank_pct: 1.2}
+    - {map: japanesecastles, rank: 3, total: 246, time: 7584, rank_pct: 1.2}
     - {map: chile21, rank: 1, total: 23, time: 4, rank_pct: 4.3}
     - {map: ghost-luckr, rank: 2, total: 27, time: 29056, rank_pct: 7.4}
     - {map: lick_again, rank: 4, total: 32, time: 2312, rank_pct: 12.5}
     - {map: ironwood, rank: 3, total: 21, time: 4032, rank_pct: 14.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher

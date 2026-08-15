@@ -72,7 +72,7 @@ qlrace:
   top_maps:
     - {map: cubicle, rank: 18, total: 61, time: 13221, rank_pct: 29.5}
     - {map: bloxrox, rank: 16, total: 22, time: 73151, rank_pct: 72.7}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: hiddenfortress
 favorite_gametype: Team Deathmatch
 favorite_weapon: Shotgun

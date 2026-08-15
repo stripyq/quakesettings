@@ -29,7 +29,7 @@ qlrace:
     rank_pct: 26.1
   top_maps:
     - {map: r7-funky, rank: 6, total: 23, time: 26008, rank_pct: 26.1}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 16.21
 qllrCtfGames: 32

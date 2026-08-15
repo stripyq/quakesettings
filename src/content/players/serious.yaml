@@ -65,7 +65,7 @@ qlrace:
     - {map: jumpathon, rank: 2, total: 6, time: 97040, rank_pct: 33.3}
     - {map: snazwank, rank: 6, total: 14, time: 38680, rank_pct: 42.9}
     - {map: df_0ups, rank: 28, total: 47, time: 43256, rank_pct: 59.6}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: campgrounds
 favorite_gametype: Clan Arena
 favorite_weapon: Railgun

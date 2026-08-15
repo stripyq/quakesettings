@@ -43,7 +43,7 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 2387
-  average_rank_pct: 63.9
+  average_rank_pct: 64.2
   best_record:
     map: rdk-h1
     rank: 9
@@ -56,4 +56,4 @@ qlrace:
     - {map: lappen, rank: 16, total: 30, time: 22288, rank_pct: 53.3}
     - {map: hunterun_20, rank: 11, total: 19, time: 17464, rank_pct: 57.9}
     - {map: inder_failrun2, rank: 7, total: 12, time: 17296, rank_pct: 58.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'

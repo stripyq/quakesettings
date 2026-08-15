@@ -70,7 +70,7 @@ qlrace:
     - {map: vanilla_09, rank: 35, total: 45, time: 13851, rank_pct: 77.8}
     - {map: wsm, rank: 10, total: 11, time: 547653, rank_pct: 90.9}
     - {map: actf02, rank: 33, total: 35, time: 40731, rank_pct: 94.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

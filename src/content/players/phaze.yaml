@@ -27,14 +27,14 @@ qlrace:
   best_record:
     map: lovet-mikendo
     rank: 9
-    total: 122
+    total: 124
     time: 19448
-    rank_pct: 7.4
+    rank_pct: 7.3
   top_maps:
-    - {map: lovet-mikendo, rank: 9, total: 122, time: 19448, rank_pct: 7.4}
+    - {map: lovet-mikendo, rank: 9, total: 124, time: 19448, rank_pct: 7.3}
     - {map: cavesvq3, rank: 5, total: 62, time: 80168, rank_pct: 8.1}
     - {map: hangtime-df, rank: 23, total: 73, time: 422200, rank_pct: 31.5}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch
 favorite_weapon: Railgun

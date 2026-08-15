@@ -63,17 +63,17 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 837
-  average_rank_pct: 31.3
+  average_rank_pct: 30.9
   best_record:
     map: qzpractice2
     rank: 84
-    total: 327
+    total: 328
     time: 23368
-    rank_pct: 25.7
+    rank_pct: 25.6
   top_maps:
-    - {map: qzpractice2, rank: 84, total: 327, time: 23368, rank_pct: 25.7}
-    - {map: japanesecastles, rank: 79, total: 214, time: 11848, rank_pct: 36.9}
-  fetched_at: '2026-07-04'
+    - {map: qzpractice2, rank: 84, total: 328, time: 23368, rank_pct: 25.6}
+    - {map: japanesecastles, rank: 79, total: 218, time: 11848, rank_pct: 36.2}
+  fetched_at: '2026-08-15'
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun

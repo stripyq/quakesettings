@@ -60,20 +60,20 @@ qlrace:
     gold: 0
     silver: 0
     bronze: 0
-  average_rank_pct: 43.2
+  average_rank_pct: 43.1
   best_record:
     map: q3wc5
     rank: 5
-    total: 29
+    total: 31
     time: 15552
-    rank_pct: 17.2
+    rank_pct: 16.1
   top_maps:
-    - {map: q3wc5, rank: 5, total: 29, time: 15552, rank_pct: 17.2}
+    - {map: q3wc5, rank: 5, total: 31, time: 15552, rank_pct: 16.1}
     - {map: wiggle, rank: 9, total: 48, time: 42744, rank_pct: 18.8}
     - {map: pornstar_dhoni, rank: 8, total: 34, time: 24008, rank_pct: 23.5}
     - {map: maze_gen_24, rank: 9, total: 37, time: 15424, rank_pct: 24.3}
     - {map: 13plant, rank: 16, total: 48, time: 7668, rank_pct: 33.3}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
