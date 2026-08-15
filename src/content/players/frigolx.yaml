@@ -56,20 +56,20 @@ qlrace:
     silver: 0
     bronze: 0
   speed_top: 3205
-  average_rank_pct: 58.5
+  average_rank_pct: 58.6
   best_record:
     map: spacectf
     rank: 29
-    total: 285
+    total: 289
     time: 4328
-    rank_pct: 10.2
+    rank_pct: 10
   top_maps:
-    - {map: spacectf, rank: 29, total: 285, time: 4328, rank_pct: 10.2}
+    - {map: spacectf, rank: 29, total: 289, time: 4328, rank_pct: 10}
     - {map: rmg01_09, rank: 4, total: 22, time: 48248, rank_pct: 18.2}
-    - {map: campgrounds, rank: 104, total: 387, time: 25648, rank_pct: 26.9}
-    - {map: qzpractice2, rank: 259, total: 592, time: 27912, rank_pct: 43.8}
+    - {map: campgrounds, rank: 104, total: 389, time: 25648, rank_pct: 26.7}
+    - {map: qzpractice2, rank: 261, total: 595, time: 27912, rank_pct: 43.9}
     - {map: zzz_rocket1, rank: 41, total: 93, time: 11776, rank_pct: 44.1}
-  fetched_at: '2026-07-04'
+  fetched_at: '2026-08-15'
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Rocket Launcher
