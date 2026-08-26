@@ -2,10 +2,11 @@ name: keks_
 steamId: "76561197972822622"
 country: DE
 category: ctf
-hoqCtfRating: 16.593185424804688
-hoqCtfGames: 752
+hoqCtfRating: 17.752267837524414
+hoqCtfGames: 785
 hoqTdmRating: 20.847105026245117
 hoqTdmGames: 90
+
 
 
 
@@ -14,9 +15,9 @@ lastUpdated: 2026-03
 duelRating: 1224
 duelGames: 125
 duelRatingUpdated: "2026-03-02"
-ctfRating: 16.59
-ctfRatingUpdated: "2026-08-15"
-ctfGames: 752
+ctfRating: 17.75
+ctfRatingUpdated: "2026-08-26"
+ctfGames: 785
 tdmRating: 20.85
 tdmRatingUpdated: "2026-04-29"
 tdmGames: 90

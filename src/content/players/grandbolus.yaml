@@ -2,19 +2,20 @@ name: Grandbolus
 steamId: "76561198255736445"
 country: NL
 category: ctf
-hoqCtfRating: 18.85660743713379
-hoqCtfGames: 3377
-hoqTdmRating: 20.51436424255371
-hoqTdmGames: 1089
+hoqCtfRating: 19.023765563964844
+hoqCtfGames: 3405
+hoqTdmRating: 20.258275985717773
+hoqTdmGames: 1090
+
 
 
 
 
 lastUpdated: 2025-01
-tdmRating: 20.51
-tdmRatingUpdated: "2026-08-15"
-ctfRating: 18.86
-ctfRatingUpdated: "2026-08-15"
+tdmRating: 20.26
+tdmRatingUpdated: "2026-08-26"
+ctfRating: 19.02
+ctfRatingUpdated: "2026-08-26"
 dataSource: player
 dpi: 800
 sensitivity: 1.75
@@ -43,8 +44,8 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 3377
-tdmGames: 1089
+ctfGames: 3405
+tdmGames: 1090
 qlrace: null
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag

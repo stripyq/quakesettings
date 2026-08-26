@@ -2,19 +2,20 @@ name: Kung
 steamId: "76561198068070185"
 country: Unknown
 category: ctf
-hoqCtfRating: 16.999374389648438
-hoqCtfGames: 1472
+hoqCtfRating: 16.689550399780273
+hoqCtfGames: 1484
 hoqTdmRating: 22.450349807739258
 hoqTdmGames: 256
 
 
 
 
+
 lastUpdated: 2026-02
 dataSource: player
-ctfRating: 17
-ctfGames: 1472
-ctfRatingUpdated: "2026-08-15"
+ctfRating: 16.69
+ctfGames: 1484
+ctfRatingUpdated: "2026-08-26"
 tdmRating: 22.45
 tdmGames: 256
 tdmRatingUpdated: "2026-08-15"

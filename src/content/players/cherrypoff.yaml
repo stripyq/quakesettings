@@ -9,22 +9,23 @@ country: RU
 category: tdm
 hoqCtfRating: 34.65258026123047
 hoqCtfGames: 1005
-hoqTdmRating: 38.96533203125
-hoqTdmGames: 1036
+hoqTdmRating: 38.70347595214844
+hoqTdmGames: 1037
+
 
 
 
 
 lastUpdated: 2025-01
-tdmRating: 38.97
-tdmRatingUpdated: "2026-08-15"
+tdmRating: 38.7
+tdmRatingUpdated: "2026-08-26"
 ctfRating: 34.65
 ctfRatingUpdated: "2026-08-15"
 qllrCtfRating: 30.46
 qllrCtfGames: 35
 duelRating: 2140
 ctfGames: 1005
-tdmGames: 1036
+tdmGames: 1037
 duelGames: 4589
 duelRatingUpdated: "2026-02-04"
 dataSource: player

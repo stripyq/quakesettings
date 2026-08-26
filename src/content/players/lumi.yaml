@@ -9,18 +9,19 @@ team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: true
 lastUpdated: 2026-02
-ctfRating: 27.97
-ctfGames: 814
+ctfRating: 27.36
+ctfGames: 822
 tdmRating: 33.66
 tdmGames: 405
 duelRating: 1785
 duelRatingSource: qlstats
 duelGames: 260
 dataSource: player
-hoqCtfRating: 27.966232299804688
-hoqCtfGames: 814
+hoqCtfRating: 27.357810974121094
+hoqCtfGames: 822
 hoqTdmRating: 33.6572151184082
 hoqTdmGames: 405
+
 
 
 
@@ -69,7 +70,7 @@ qlrace:
     - {map: df_lickmax, rank: 18, total: 87, time: 6532, rank_pct: 20.7}
     - {map: spacectf, rank: 81, total: 289, time: 4925, rank_pct: 28}
   fetched_at: '2026-08-15'
-ctfRatingUpdated: "2026-08-15"
+ctfRatingUpdated: "2026-08-26"
 qllrCtfRating: 21.98
 qllrCtfGames: 99
 tdmRatingUpdated: "2026-05-22"
