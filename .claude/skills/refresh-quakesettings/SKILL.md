@@ -11,13 +11,14 @@ The Quake Live settings database at `stripyq.github.io/quakesettings` pulls rati
 
 - Repo: `~\quakesettings` on M's PC, `stripyq/quakesettings` on GitHub, deployed via GitHub Pages from `main` (auto-rebuilds 1-2 min after push).
 - Astro static site, Node scripts in `scripts/*.cjs`, YAMLs per player in `src/content/players/`.
-- **Sandbox cannot reach the data sources** (`qllr.xyz`, `88.214.20.58`, `77.90.2.137`, `qlrace.com`, raw.githubusercontent.com all blocked). The skill hands M PowerShell commands; M runs them on his PC and pastes output back.
+- **Sandbox cannot reach the data sources** (`qllr.xyz`, `stats.houseofquake.com`, `77.90.2.137`, `qlrace.com`, raw.githubusercontent.com all blocked; the original HoQ box `88.214.20.58` died July 2026, `stats.houseofquake.com` is its QLLR-based replacement). The skill hands M PowerShell commands; M runs them on his PC and pastes output back.
 
 ## Data sources and what each refresh writes
 
 | Source | Script | Writes |
 |---|---|---|
 | HoQ CTF + TDM (primary ratings) | `scripts/fetch-hoq-ratings.cjs` then `scripts/sync-hoq-to-display.cjs` | **fetch** writes the source fields `hoqCtfRating`, `hoqCtfGames`, `hoqTdmRating`, `hoqTdmGames` from the live API. **sync** copies those into the display fields the site reads (`ctfRating`, `ctfGames`, `tdmRating`, `tdmGames`, plus `ctfRatingUpdated`, `tdmRatingUpdated`), rounding ratings to 2 dp. Both steps required. Do NOT use `update-hoq-ratings.cjs` for a live refresh (it is CSV-fed, see the warning in Step 3). |
+| HoQ rating history (player-page "HoQ Rating History" chart) | `scripts/append-hoq-history.cjs` | Appends one `{timestamp, gametype_short, rating, game_num}` point per gametype to `public/data/hoq/<steamId>/history.json`, sourced from the `hoq*` YAML fields. Run AFTER the fetch. |
 | QLLR (qllr.xyz, displayed as "CSQL" on the site) | `scripts/fetch-qllr-ratings.cjs` | `qllrCtfRating`, `qllrCtfGames` only |
 | HoQ seasonal stats (2026 Season N) | `scripts/fetch-season-stats.cjs` | `public/data/season-stats.json` only, no YAML writes |
 | QLRace / qlrace.com (VQL race records) | `scripts/fetch-qlrace.cjs` | `qlrace:` YAML block on players without one (add `--force` to re-fetch everyone) |
@@ -53,7 +54,7 @@ Wait for the output. Decide:
 
 ### Step 3. Run the refreshes in this order
 
-Hand M each command, wait for output, summarize before the next one. Order: QLLR first (smallest, fastest); HoQ next (the main workhorse, two commands); then seasonal (often flaky); then QLRace (slowest, talks to an external CDN).
+Hand M each command, wait for output, summarize before the next one. Order: QLLR first (smallest, fastest); HoQ next (the main workhorse, three commands); then seasonal (often flaky); then QLRace (slowest, talks to an external CDN).
 
 ```powershell
 node scripts/fetch-qllr-ratings.cjs
@@ -66,9 +67,15 @@ node scripts/fetch-hoq-ratings.cjs
 node scripts/sync-hoq-to-display.cjs
 ```
 
-Two steps, both required. `fetch-hoq-ratings.cjs` pulls the live API (`88.214.20.58/export_rating/ctf.json` + `tdm.json`) and writes the `hoq*` source fields; `sync-hoq-to-display.cjs` then copies those into the display fields the site actually reads and rounds ratings to 2 dp. Expected: fetch touches ~140 players (every value rewritten to full float precision), sync updates the few dozen whose rounded display value moved. Games should climb or hold, never drop. A fleet-wide games *decrease* means stale data was read (see the warning).
+Two steps, both required. `fetch-hoq-ratings.cjs` pulls the live API (`stats.houseofquake.com/export_rating/ctf.json` + `tdm.json`) and writes the `hoq*` source fields; `sync-hoq-to-display.cjs` then copies those into the display fields the site actually reads and rounds ratings to 2 dp. Expected: fetch touches ~140 players (every value rewritten to full float precision), sync updates the few dozen whose rounded display value moved. Games should climb or hold, never drop. A fleet-wide games *decrease* means stale data was read (see the warning).
 
 **Do NOT run `node scripts/update-hoq-ratings.cjs` with no arguments.** Despite its name it does not fetch: it reads `public/data/hoq_ctf.csv` / `hoq_tdm.csv`, which nothing in this routine refreshes, so it silently rolls every player back to whenever those CSVs were last written. On 2026-06-04 this regressed ~141 players (games fell across the board) before it was caught. It writes only `hoq*` source fields (no display sync), so the damage hides until a sync runs. It is only safe with explicit fresh JSON: save a live API pull to `ctf.json`/`tdm.json`, then `node scripts/update-hoq-ratings.cjs --ctf-json ctf.json --tdm-json tdm.json`. For a normal refresh, use the `fetch` + `sync` pair above.
+
+```powershell
+node scripts/append-hoq-history.cjs
+```
+
+Third HoQ step, only AFTER `fetch-hoq-ratings.cjs` (it reads the `hoq*` fields the fetch just wrote). Appends one rating-history point per player per gametype to `public/data/hoq/<steamId>/history.json`, the files behind the "HoQ Rating History" chart (the old per-game source died with the `88.214.20.58` server, so these files only grow through this step now). Expected: "Points appended: N across M players". Guards built in: appends only when a games count moved, never seeds a zero-games point, never appends a games regression, never rewrites existing points. Supports `--dry-run`.
 
 ```powershell
 node scripts/fetch-season-stats.cjs
@@ -91,7 +98,7 @@ git status
 git diff --stat
 ```
 
-- **Expected dirty files**: `src/content/players/*.yaml` only, for the HoQ + QLLR + QLRace steps (fetch and sync write nothing else). Add `public/data/season-stats.json` only if the seasonal fetch actually succeeded.
+- **Expected dirty files**: `src/content/players/*.yaml` plus `public/data/hoq/*/history.json` (the append step), for the HoQ + QLLR + QLRace steps. Add `public/data/season-stats.json` only if the seasonal fetch actually succeeded.
 - **Red flags**: `.astro` files, `scripts/*.cjs`, `package.json`, anything in `src/pages/`. If `ctf.json`, `tdm.json`, or the `hoq_*.csv` files show up dirty, someone ran `update-hoq-ratings.cjs` against stale CSVs, stop and discard.
 
 Then verify contents across the whole tree, not just one spot-checked file (a single spot-check missed the 2026-06-04 issues). The fast authoritative check is `git diff` on M's PC, grepped for accuracy lines:
@@ -109,13 +116,13 @@ Every match must be a context line (leading space). A `+` or `-` on any `accurac
 Draft a commit message in chat for M to paste. Template:
 
 ```
-Refresh ratings (YYYY-MM-DD): HoQ ({N1}) + QLLR ({N2}){ + QLRace if --force}
+Refresh ratings (YYYY-MM-DD): HoQ ({N1}) + QLLR ({N2}) + history ({N3} points){ + QLRace if --force}
 ```
 
 Then give the commit + push commands. Scope the `git add` to the player folder, the only thing the supported pipeline changes:
 
 ```powershell
-git add src/content/players/
+git add src/content/players/ public/data/hoq/
 git commit -m "<message>"
 git push
 ```
@@ -137,6 +144,7 @@ Add `public/data/season-stats.json` only if the seasonal fetch wrote new data. D
 7. **Preserve `published` on updates.** New player files default to `published: false`; existing values must never be clobbered.
 8. **`update-hoq-ratings.cjs` is CSV-fed, not a fetcher.** It reads stale `public/data/hoq_*.csv` and writes only `hoq*` source fields (no display sync). For a live refresh use `fetch-hoq-ratings.cjs` then `sync-hoq-to-display.cjs` (see Step 3).
 9. **Never track files over 100 MB.** GitHub rejects them outright. Raw `public/data/archive/*.jsonl` dumps are gitignored; only the derived JSON is committed.
+10. **`fetch-hoq-maps.cjs` is obsolete.** Its endpoints (`/player/<id>/history.json`, `map_ratings.json`) died with the old `88.214.20.58` server in July 2026, and the replacement QLLR server has no history endpoint. Rating history is maintained append-only by `append-hoq-history.cjs`; never regenerate, trim, or rewrite `public/data/hoq/*/history.json`.
 
 ## When the user wants something slightly different
 
