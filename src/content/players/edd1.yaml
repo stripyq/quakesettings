@@ -9,8 +9,8 @@ team2026Shortname: CUBA
 country: DE
 team: Le Cubanitos
 category: duel
-hoqCtfRating: 35.3885383605957
-hoqCtfGames: 805
+hoqCtfRating: 37.147769927978516
+hoqCtfGames: 870
 hoqTdmRating: 38.51369857788086
 hoqTdmGames: 141
 
@@ -19,10 +19,12 @@ hoqTdmGames: 141
 
 
 duelRating: 1406
-ctfRating: 35.39
-ctfRatingUpdated: "2026-08-26"
-qllrCtfRating: 27.65
-qllrCtfGames: 141
+ctfRating: 37.15
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 28.96
+qllrCtfGames: 193
+
+
 tdmRatingUpdated: "2026-08-15"
 tdmRating: 38.51
 dataSource: player
@@ -53,7 +55,7 @@ skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
 enemyModel: Keel
-ctfGames: 805
+ctfGames: 870
 tdmGames: 141
 qlrace:
   mode: 2

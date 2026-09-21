@@ -9,11 +9,13 @@ team2024: wAnnaBees
 team2026: Czesnecka
 team2026Shortname: CZE
 published: false
-ctfRating: 23.65
-ctfRatingUpdated: "2026-08-26"
-qllrCtfRating: 28.77
-qllrCtfGames: 27
-ctfGames: 4840
+ctfRating: 23.83
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 28.56
+qllrCtfGames: 28
+
+
+ctfGames: 4866
 tdmRating: 23.56
 tdmGames: 685
 qlrace: null
@@ -24,7 +26,7 @@ favorite_weapon: Rocket Launcher
 accuracy_rl: 37
 accuracy_rg: 46
 accuracy_lg: 30
-hoqCtfRating: 23.649843215942383
-hoqCtfGames: 4840
+hoqCtfRating: 23.831079483032227
+hoqCtfGames: 4866
 hoqTdmRating: 23.557117462158203
 hoqTdmGames: 685

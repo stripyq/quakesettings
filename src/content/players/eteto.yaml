@@ -3,23 +3,23 @@ country: HU
 steamId: "76561198257679175"
 published: true
 category: tdm
-hoqCtfRating: 12.057557106018066
-hoqCtfGames: 472
-hoqTdmRating: 25.95147705078125
-hoqTdmGames: 5295
+hoqCtfRating: 11.806781768798828
+hoqCtfGames: 487
+hoqTdmRating: 25.801511764526367
+hoqTdmGames: 5315
 
 
 
 
 
-ctfRatingUpdated: "2026-08-26"
-tdmRatingUpdated: "2026-08-26"
+ctfRatingUpdated: "2026-09-21"
+tdmRatingUpdated: "2026-09-21"
 lastUpdated: "2026-02-13"
 dataSource: player
-tdmRating: 25.95
-tdmGames: 5295
-ctfRating: 12.06
-ctfGames: 472
+tdmRating: 25.8
+tdmGames: 5315
+ctfRating: 11.81
+ctfGames: 487
 tdm2v2Rating: 31.94
 tdm2v2Games: 5
 mouse: razer-deathadder-essential

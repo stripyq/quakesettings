@@ -9,11 +9,11 @@ country: FR
 team: SHREKTALIKA
 published: false
 qlrace: null
-ctfGames: 3801
-ctfRatingUpdated: "2026-04-29"
-qllrCtfRating: 28.32
-qllrCtfGames: 44
-ctfRating: 24.47
+ctfGames: 3847
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 26.29
+qllrCtfGames: 60
+ctfRating: 24.31
 tdmRatingUpdated: "2026-04-29"
 tdmRating: 21.47
 tdmGames: 701
@@ -23,7 +23,7 @@ favorite_weapon: Railgun
 accuracy_rl: 31
 accuracy_rg: 52
 accuracy_lg: 36
-hoqCtfRating: 24.474143981933594
-hoqCtfGames: 3801
+hoqCtfRating: 24.310937881469727
+hoqCtfGames: 3847
 hoqTdmRating: 21.473522186279297
 hoqTdmGames: 701

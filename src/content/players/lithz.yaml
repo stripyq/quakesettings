@@ -5,8 +5,8 @@ aliases:
 team2024: unreliable dogs
 country: Unknown
 category: ctf
-hoqCtfRating: 30.3962459564209
-hoqCtfGames: 386
+hoqCtfRating: 31.235471725463867
+hoqCtfGames: 396
 hoqTdmRating: 34.62229537963867
 hoqTdmGames: 46
 lastUpdated: 2025-01
@@ -14,8 +14,8 @@ duelRating: 1476
 duelRatingUpdated: "2026-01-31"
 tdmRating: 34.62
 tdmRatingUpdated: "2026-08-26"
-ctfRating: 30.4
-ctfRatingUpdated: "2026-08-26"
+ctfRating: 31.24
+ctfRatingUpdated: "2026-09-21"
 dataSource: player
 dpi: 800
 sensitivity: 2.3
@@ -42,7 +42,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 386
+ctfGames: 396
 tdmGames: 46
 qlrace:
   mode: 2

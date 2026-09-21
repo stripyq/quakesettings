@@ -9,8 +9,8 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 published: false
-ctfRating: 29.46
-ctfGames: 2587
+ctfRating: 28.85
+ctfGames: 2623
 qlrace:
   mode: 2
   records: 1
@@ -30,19 +30,19 @@ qlrace:
   top_maps:
     - {map: infinity, rank: 13, total: 72, time: 9096, rank_pct: 18.1}
   fetched_at: '2026-08-15'
-ctfRatingUpdated: "2026-08-26"
+ctfRatingUpdated: "2026-09-21"
 qllrCtfRating: 32.51
 qllrCtfGames: 46
-tdmRatingUpdated: "2026-07-04"
-tdmRating: 28.12
-tdmGames: 1273
+tdmRatingUpdated: "2026-09-21"
+tdmRating: 28.39
+tdmGames: 1274
 favorite_map: japanesecastles
 favorite_gametype: Capture the Flag
 favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_rg: 54
 accuracy_lg: 36
-hoqCtfRating: 29.455108642578125
-hoqCtfGames: 2587
-hoqTdmRating: 28.116384506225586
-hoqTdmGames: 1273
+hoqCtfRating: 28.851667404174805
+hoqCtfGames: 2623
+hoqTdmRating: 28.390722274780273
+hoqTdmGames: 1274

@@ -4,18 +4,20 @@ steamId: "76561197977412349"
 aliases:
   - TK
 category: duel
-hoqCtfRating: 16.66763687133789
-hoqCtfGames: 200
+hoqCtfRating: 17.315013885498047
+hoqCtfGames: 207
 hoqTdmRating: 22.113611221313477
 hoqTdmGames: 5
-ctfRatingUpdated: "2026-04-29"
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 26.91
+qllrCtfGames: 17
 tdmRatingUpdated: "2026-04-29"
 dataSource: player
 lastUpdated: 2025-02
 duelRating: 1213
 duelGames: 8
-ctfRating: 16.67
-ctfGames: 200
+ctfRating: 17.32
+ctfGames: 207
 tdmRating: 22.11
 tdmGames: 5
 dpi: 4800

@@ -10,8 +10,8 @@ team2026Shortname: wB
 country: PL
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 33.96349334716797
-hoqCtfGames: 1588
+hoqCtfRating: 33.546138763427734
+hoqCtfGames: 1633
 hoqTdmRating: 25.858665466308594
 hoqTdmGames: 119
 
@@ -20,17 +20,19 @@ hoqTdmGames: 119
 
 
 lastUpdated: 2026-03
-ctfRating: 33.96
-ctfRatingUpdated: "2026-08-26"
-qllrCtfRating: 25.49
-qllrCtfGames: 105
+ctfRating: 33.55
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 26.35
+qllrCtfGames: 150
+
+
 tdmRating: 25.86
 tdmRatingUpdated: "2026-08-26"
 caRating: 32.96
 caGames: 24
 caRatingUpdated: "2026-02-04"
 duelRating: 1558
-ctfGames: 1588
+ctfGames: 1633
 tdmGames: 119
 duelGames: 52
 duelRatingUpdated: "2026-02-04"

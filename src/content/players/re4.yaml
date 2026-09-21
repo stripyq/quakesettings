@@ -7,18 +7,20 @@ team2026Shortname: OSQ
 country: PL
 team: Old Sexy Quakers
 category: ctf
-hoqCtfRating: 17.293601989746094
-hoqCtfGames: 3299
+hoqCtfRating: 16.97138786315918
+hoqCtfGames: 3344
 
 
 
 lastUpdated: 2025-01
 tdmRating: 21.78
 tdmRatingUpdated: "2026-01-31"
-ctfRating: 17.29
-ctfRatingUpdated: "2026-08-26"
+ctfRating: 16.97
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 23.59
+qllrCtfGames: 12
 duelRating: 1310
-ctfGames: 3299
+ctfGames: 3344
 duelGames: 3381
 duelRatingUpdated: "2026-02-04"
 dataSource: player

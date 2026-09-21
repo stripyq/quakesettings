@@ -8,18 +8,20 @@ team2026Shortname: CZE
 country: CZ
 team: Czesnecka
 category: ctf
-hoqCtfRating: 21.54294204711914
-hoqCtfGames: 1944
+hoqCtfRating: 20.923221588134766
+hoqCtfGames: 2014
 
 
 
 
 
 lastUpdated: "2026-07-12"
-ctfRating: 21.54
-ctfRatingUpdated: "2026-08-26"
-qllrCtfRating: 14.32
-qllrCtfGames: 26
+ctfRating: 20.92
+ctfRatingUpdated: "2026-09-21"
+qllrCtfRating: 14.1
+qllrCtfGames: 27
+
+
 dataSource: player
 dpi: 1200
 sensitivity: 1
@@ -54,7 +56,7 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 1944
+ctfGames: 2014
 qlrace:
   mode: 3
   records: 2
