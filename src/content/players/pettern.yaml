@@ -4,8 +4,8 @@ aliases: []
 team2024: Flappy Flags
 country: Unknown
 category: ctf
-hoqCtfRating: 15.165291786193848
-hoqCtfGames: 5661
+hoqCtfRating: 14.16323184967041
+hoqCtfGames: 5719
 hoqTdmRating: 20.951059341430664
 hoqTdmGames: 1
 
@@ -16,8 +16,8 @@ hoqTdmGames: 1
 lastUpdated: 2025-01
 tdmRating: 20.95
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 15.17
-ctfRatingUpdated: "2026-09-21"
+ctfRating: 14.16
+ctfRatingUpdated: "2026-10-16"
 dataSource: player
 dpi: 1600
 sensitivity: 1.15
@@ -45,7 +45,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 5661
+ctfGames: 5719
 tdmGames: 1
 qlrace: null
 favorite_map: japanesecastles

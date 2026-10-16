@@ -2,8 +2,8 @@ name: Morda
 country: RU
 steamId: "76561198004545167"
 category: duel
-hoqCtfRating: 11.84830093383789
-hoqCtfGames: 1036
+hoqCtfRating: 11.971446990966797
+hoqCtfGames: 1037
 hoqTdmRating: 10.83851146697998
 hoqTdmGames: 40
 
@@ -11,14 +11,14 @@ hoqTdmGames: 40
 
 
 
-ctfRatingUpdated: "2026-09-21"
+ctfRatingUpdated: "2026-10-16"
 tdmRatingUpdated: "2026-07-17"
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 11.85
+ctfRating: 11.97
 tdmRating: 10.84
 duelRating: 1041
-ctfGames: 1036
+ctfGames: 1037
 tdmGames: 40
 duelGames: 30
 dpi: 1600

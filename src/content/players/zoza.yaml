@@ -9,8 +9,8 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 published: false
-ctfRating: 28.85
-ctfGames: 2623
+ctfRating: 27.7
+ctfGames: 2639
 qlrace:
   mode: 2
   records: 1
@@ -30,7 +30,7 @@ qlrace:
   top_maps:
     - {map: infinity, rank: 13, total: 72, time: 9096, rank_pct: 18.1}
   fetched_at: '2026-08-15'
-ctfRatingUpdated: "2026-09-21"
+ctfRatingUpdated: "2026-10-16"
 qllrCtfRating: 32.51
 qllrCtfGames: 46
 tdmRatingUpdated: "2026-09-21"
@@ -42,7 +42,7 @@ favorite_weapon: Railgun
 accuracy_rl: 43
 accuracy_rg: 54
 accuracy_lg: 36
-hoqCtfRating: 28.851667404174805
-hoqCtfGames: 2623
+hoqCtfRating: 27.69790267944336
+hoqCtfGames: 2639
 hoqTdmRating: 28.390722274780273
 hoqTdmGames: 1274

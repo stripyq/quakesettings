@@ -5,8 +5,8 @@ aliases: []
 team2026: GdeFlag?
 team2026Shortname: GF?
 category: tdm
-hoqCtfRating: 20.500516891479492
-hoqCtfGames: 864
+hoqCtfRating: 20.13112449645996
+hoqCtfGames: 928
 hoqTdmRating: 29.526098251342773
 hoqTdmGames: 2584
 
@@ -14,17 +14,17 @@ hoqTdmGames: 2584
 
 
 
-ctfRatingUpdated: "2026-09-21"
+ctfRatingUpdated: "2026-10-16"
 qllrCtfRating: 23.1
 qllrCtfGames: 25
 tdmRatingUpdated: "2026-09-21"
 lastUpdated: 2026-02
 dataSource: player
 duelRating: 1041
-ctfGames: 864
+ctfGames: 928
 tdmGames: 2584
 duelGames: 794
-ctfRating: 20.5
+ctfRating: 20.13
 tdmRating: 29.53
 dpi: 1600
 sensitivity: 1.7

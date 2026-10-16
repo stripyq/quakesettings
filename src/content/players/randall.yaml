@@ -2,10 +2,10 @@ name: randall
 steamId: "76561198106787712"
 country: Unknown
 category: ctf
-hoqCtfRating: 23.734453201293945
-hoqCtfGames: 2666
-hoqTdmRating: 34.12860870361328
-hoqTdmGames: 1842
+hoqCtfRating: 23.159828186035156
+hoqCtfGames: 2673
+hoqTdmRating: 32.74970626831055
+hoqTdmGames: 1863
 
 
 
@@ -13,16 +13,16 @@ hoqTdmGames: 1842
 
 lastUpdated: "2026-07-15"
 duelRating: 1471
-ctfGames: 2666
-tdmGames: 1842
+ctfGames: 2673
+tdmGames: 1863
 tdm2v2Rating: 31.34
 tdm2v2Games: 71
 duelGames: 1764
 duelRatingUpdated: "2026-02-04"
-tdmRating: 34.13
-tdmRatingUpdated: "2026-09-21"
-ctfRating: 23.73
-ctfRatingUpdated: "2026-09-21"
+tdmRating: 32.75
+tdmRatingUpdated: "2026-10-16"
+ctfRating: 23.16
+ctfRatingUpdated: "2026-10-16"
 dataSource: player
 dpi: 1600
 sensitivity: 1.19

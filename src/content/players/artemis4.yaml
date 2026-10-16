@@ -8,27 +8,27 @@ team2026Shortname: CUBA
 country: SI
 team: Le Cubanitos
 category: ctf
-hoqCtfRating: 28.846370697021484
-hoqCtfGames: 1756
-hoqTdmRating: 14.384278297424316
-hoqTdmGames: 25
+hoqCtfRating: 29.774538040161133
+hoqCtfGames: 1810
+hoqTdmRating: 14.230545997619629
+hoqTdmGames: 27
 
 
 
 
 
 lastUpdated: 2025-01
-tdmRating: 14.38
-tdmRatingUpdated: "2026-04-29"
-ctfRating: 28.85
-ctfRatingUpdated: "2026-09-21"
+tdmRating: 14.23
+tdmRatingUpdated: "2026-10-16"
+ctfRating: 29.77
+ctfRatingUpdated: "2026-10-16"
 qllrCtfRating: 23.87
 qllrCtfGames: 124
 
 
 duelRating: 1559
-ctfGames: 1756
-tdmGames: 25
+ctfGames: 1810
+tdmGames: 27
 duelGames: 1561
 duelRatingUpdated: "2026-02-04"
 dataSource: player

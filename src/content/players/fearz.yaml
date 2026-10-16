@@ -2,13 +2,13 @@ name: fearz
 steamId: "76561198090058821"
 country: RU
 category: tdm
-hoqTdmRating: 31.71779441833496
-hoqTdmGames: 742
+hoqTdmRating: 31.19017219543457
+hoqTdmGames: 746
 lastUpdated: 2025-01
 duelRating: 1385
 duelRatingUpdated: "2026-01-31"
-tdmRating: 31.72
-tdmRatingUpdated: "2026-09-21"
+tdmRating: 31.19
+tdmRatingUpdated: "2026-10-16"
 ctfRating: 34.1
 ctfRatingUpdated: "2026-01-31"
 dataSource: player
@@ -38,7 +38,7 @@ enemyModel: Keel
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-tdmGames: 742
+tdmGames: 746
 qlrace:
   mode: 2
   records: 2

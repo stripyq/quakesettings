@@ -5,8 +5,8 @@ aliases:
 team2024: 4friends
 country: ES
 category: ctf
-hoqCtfRating: 10.21242618560791
-hoqCtfGames: 2668
+hoqCtfRating: 10.1984224319458
+hoqCtfGames: 2731
 hoqTdmRating: 14.932188987731934
 hoqTdmGames: 8
 
@@ -16,13 +16,13 @@ hoqTdmGames: 8
 
 lastUpdated: 2026-02
 duelRating: 988
-ctfGames: 2668
+ctfGames: 2731
 tdmGames: 8
 duelGames: 28
 tdmRating: 14.93
 tdmRatingUpdated: "2026-05-11"
-ctfRating: 10.21
-ctfRatingUpdated: "2026-09-21"
+ctfRating: 10.2
+ctfRatingUpdated: "2026-10-16"
 dataSource: player
 dpi: 800
 sensitivity: 1.9

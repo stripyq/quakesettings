@@ -6,13 +6,17 @@ qlstatsNick: ''
 country: GB
 team: ''
 category: ctf
+hoqCtfRating: 27.518592834472656
+hoqCtfGames: 3899
+hoqTdmRating: 20.73134994506836
+hoqTdmGames: 44
 lastUpdated: 2025-01
 duelRating: 1207
 duelRatingUpdated: 2026-02-04
 tdmRating: 20.73
 tdmRatingUpdated: 2026-04-29
-ctfRating: 28.04
-ctfRatingUpdated: 2026-09-21
+ctfRating: 27.52
+ctfRatingUpdated: "2026-10-16"
 dataSource: player
 source: ''
 sourceUrl: ''
@@ -49,17 +53,17 @@ accuracy_rg: 54
 accuracy_rl: 40
 cpuBrand: AMD
 crosshairColor: Yellow
-ctfGames: 3864
+ctfGames: 3899
 duelGames: 26
 enemyModel: Keel
 favorite_gametype: Capture the Flag
 favorite_map: japanesecastles
 favorite_weapon: Railgun
 gpuBrand: NVIDIA
-hoqCtfGames: 3864
-hoqCtfRating: 28.036989212036133
-hoqTdmGames: 44
-hoqTdmRating: 20.73134994506836
+
+
+
+
 qlrace: null
 skates: Stock
 tdmGames: 44
