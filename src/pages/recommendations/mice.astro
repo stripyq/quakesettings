@@ -37,6 +37,7 @@ const mouseSlugMap: Record<string, string> = {
   "ATK X1 / F1 V2": "atk-x1-v2-ultimate",
   "MCHOSE A5": "mchose-a5",
   "Asus ROG Harpe Ace 2": "asus-rog-harpe-ace-2",
+  "MelGeek Horus": "melgeek-horus",
 };
 
 function getPlayerCount(name: string): number {
@@ -54,12 +55,23 @@ function getMouseData(name: string) {
   return miceBySlug.get(slug) || null;
 }
 
-function weightSortVal(data: any): number {
-  if (!data || !data.weight || data.weight === 'Unknown') return 999;
-  return parseFloat(data.weight) || 999;
+function weightSortVal(weight?: string): number {
+  if (!weight || weight === 'Unknown') return 999;
+  return parseFloat(weight) || 999;
 }
 
-const mouseData = [
+// Row-level shape/conn/weight are a fallback; the hardware file wins when both exist.
+function getSpecs(m: { mouse: string; shape?: string; conn?: string; weight?: string }) {
+  const md = getMouseData(m.mouse);
+  const hwWeight = md?.weight && md.weight !== 'Unknown' ? md.weight : undefined;
+  return {
+    shape: md?.shape || m.shape,
+    conn: md?.connection || m.conn,
+    weight: hwWeight || m.weight,
+  };
+}
+
+const mouseData: Array<{ mouse: string; price: string; dl: boolean; tl: boolean; bz: boolean; ju: boolean; shape?: string; conn?: string; weight?: string }> = [
   { mouse: "VXE R1 Pro", price: "$", dl: true, tl: true, bz: true, ju: true },
   { mouse: "Endgame Gear OP1 8K", price: "$$", dl: true, tl: true, bz: false, ju: true },
   { mouse: "Pulsar Xlite V3 Crazy Light", price: "$$", dl: false, tl: true, bz: true, ju: false },
@@ -73,6 +85,15 @@ const mouseData = [
   { mouse: "ATK X1 / F1 V2", price: "$", dl: false, tl: true, bz: false, ju: true },
   { mouse: "MCHOSE A5", price: "$", dl: false, tl: false, bz: false, ju: true },
   { mouse: "Asus ROG Harpe Ace 2", price: "$$$", dl: false, tl: true, bz: false, ju: false },
+  // Diamond Lobby 2026 picks
+  { mouse: "Pulsar X2N CrazyLight Mini", price: "$$", dl: true, tl: false, bz: false, ju: false, shape: "Symmetrical", conn: "Wireless" },
+  { mouse: "VAXEE NP-01 Ergo", price: "$$", dl: true, tl: false, bz: false, ju: false, shape: "Ergonomic", conn: "Wireless" },
+  { mouse: "Razer Viper V4 Pro", price: "$$$", dl: true, tl: false, bz: false, ju: false, shape: "Symmetrical", conn: "Wireless" },
+  { mouse: "Rapoo VT3 Max Gen 2", price: "$", dl: true, tl: false, bz: false, ju: false, shape: "Ergonomic", conn: "Wireless" },
+  { mouse: "MCHOSE L7 Pro", price: "$$", dl: true, tl: false, bz: false, ju: false, shape: "Symmetrical", conn: "Wireless" },
+  { mouse: "VXE R1 SE", price: "$", dl: true, tl: false, bz: false, ju: false, shape: "Ergonomic", conn: "Wireless", weight: "57g" },
+  { mouse: "MelGeek Horus", price: "$$", dl: true, tl: false, bz: false, ju: false, shape: "Ambidextrous", conn: "Wireless", weight: "49g" },
+  { mouse: "XBAB Tech XA25", price: "$$$", dl: true, tl: false, bz: false, ju: false, shape: "Symmetrical", conn: "Wireless", weight: "25g" },
 ];
 
 // Sort by reviewer count, then by player count
@@ -95,7 +116,7 @@ const schema = {
 <BaseLayout title="Mice Recommendations" description="Best gaming mice for Quake Live recommended by competitive players. Lightweight, precise sensors, and pro-approved picks." schema={schema} ogImage="/images/og/recommendations.jpg">
   <div class="page-header">
     <h1>Gaming Mice Recommendations</h1>
-    <p>Recommended mice from top reviewers (2025)</p>
+    <p>Recommended mice from top reviewers (2025-2026)</p>
   </div>
 
   <div class="reviewer-legend">
@@ -131,18 +152,18 @@ const schema = {
         {sortedMice.map(m => {
           const playerCount = getPlayerCount(m.mouse);
           const slug = mouseSlugMap[m.mouse];
-          const md = getMouseData(m.mouse);
+          const spec = getSpecs(m);
           return (
             <tr
-              data-shape={md?.shape || ''}
-              data-conn={md?.connection || ''}
-              data-weight={weightSortVal(md)}
+              data-shape={spec.shape || ''}
+              data-conn={spec.conn || ''}
+              data-weight={weightSortVal(spec.weight)}
             >
               <td class="mouse-name">{m.mouse}</td>
               <td class="price">{m.price}</td>
-              <td class="spec">{md?.shape || '—'}</td>
-              <td class="spec">{md?.connection || '—'}</td>
-              <td class="spec">{md?.weight && md.weight !== 'Unknown' ? md.weight : '—'}</td>
+              <td class="spec">{spec.shape || '—'}</td>
+              <td class="spec">{spec.conn || '—'}</td>
+              <td class="spec">{spec.weight || '—'}</td>
               <td class="center rev-col">{m.dl ? '✓' : ''}</td>
               <td class="center rev-col">{m.tl ? '✓' : ''}</td>
               <td class="center rev-col">{m.bz ? '✓' : ''}</td>
