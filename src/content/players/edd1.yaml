@@ -34,10 +34,6 @@ forward: w
 back: s
 left: a
 right: d
-jump: Space
-crouch: Ctrl
-attack: Mouse1
-zoom: Mouse2
 weaponNext: ''
 weaponPrev: ''
 mouse: logitech-g-pro-x-superlight-ii

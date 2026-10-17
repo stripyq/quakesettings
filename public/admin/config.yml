@@ -376,7 +376,7 @@ collections:
           - "ctf"
           - "tdm"
           - "sacrifice"
-      - { label: "Last Updated", name: "lastUpdated", widget: "string", required: false, hint: "YYYY-MM format" }
+      - { label: "Last Updated", name: "lastUpdated", widget: "string", required: false, hint: "YYYY-MM-DD (quoted)" }
 
       # Ratings (camelCase to match schema)
       - { label: "Duel Rating", name: "duelRating", widget: "number", required: false, hint: "Duel Elo/Glicko rating", value_type: "int" }
@@ -415,14 +415,14 @@ collections:
       - { label: "Inverted Mouse", name: "invertedMouse", widget: "boolean", default: false, required: false }
 
       # Key Bindings
-      - { label: "Forward", name: "forward", widget: "string", default: "W", required: false }
-      - { label: "Back", name: "back", widget: "string", default: "S", required: false }
-      - { label: "Left", name: "left", widget: "string", default: "A", required: false }
-      - { label: "Right", name: "right", widget: "string", default: "D", required: false }
-      - { label: "Jump", name: "jump", widget: "string", default: "Space", required: false }
-      - { label: "Crouch", name: "crouch", widget: "string", default: "Ctrl", required: false }
-      - { label: "Attack", name: "attack", widget: "string", default: "Mouse1", required: false }
-      - { label: "Zoom", name: "zoom", widget: "string", default: "Mouse2", required: false }
+      - { label: "Forward", name: "forward", widget: "string", required: false }
+      - { label: "Back", name: "back", widget: "string", required: false }
+      - { label: "Left", name: "left", widget: "string", required: false }
+      - { label: "Right", name: "right", widget: "string", required: false }
+      - { label: "Jump", name: "jump", widget: "string", required: false }
+      - { label: "Crouch", name: "crouch", widget: "string", required: false }
+      - { label: "Attack", name: "attack", widget: "string", required: false }
+      - { label: "Zoom", name: "zoom", widget: "string", required: false }
       - { label: "Next Weapon", name: "weaponNext", widget: "string", required: false }
       - { label: "Prev Weapon", name: "weaponPrev", widget: "string", required: false }
 

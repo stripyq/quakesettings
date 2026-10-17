@@ -1,5 +1,12 @@
 import { defineCollection, z } from 'astro:content';
 
+// YAML parses an unquoted 2026-10-17 as a Date (the /admin/ CMS saves dates unquoted).
+// Turn it back into "YYYY-MM-DD" instead of failing the build or coercing to a long date string.
+const dateString = z.preprocess(
+  v => (v instanceof Date ? v.toISOString().slice(0, 10) : v),
+  z.string(),
+);
+
 // ============================================
 // HARDWARE COLLECTIONS
 // ============================================
@@ -111,7 +118,7 @@ const playersCollection = defineCollection({
     team: z.string().optional(),
     category: z.string().optional().default('duel'),
     published: z.boolean().optional().default(true), // false = ratings-only, no settings page
-    lastUpdated: z.string().optional(), // Date string YYYY-MM or YYYY-MM-DD (must be quoted in YAML)
+    lastUpdated: dateString.optional(), // Date string YYYY-MM or YYYY-MM-DD (must be quoted in YAML)
 
     // Player Identity (for external data matching)
     steamId: z.string().optional(), // Steam64 ID (e.g., "76561198012345678")
@@ -295,7 +302,7 @@ const playersCollection = defineCollection({
         speed_top: z.number().optional(),
         date: z.string().optional(),
       })).optional(),
-      fetched_at: z.string().optional(),
+      fetched_at: dateString.optional(),
     }).nullable().optional(),
 
     // Config file path
