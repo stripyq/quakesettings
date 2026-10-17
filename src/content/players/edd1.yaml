@@ -8,13 +8,13 @@ qlstatsNick: ''
 country: DE
 team: Le Cubanitos
 category: duel
-lastUpdated: 2025-02
+lastUpdated: "2025-02"
 duelRating: 1406
 duelRatingUpdated: ''
 tdmRating: 38.51
-tdmRatingUpdated: 2026-08-15
+tdmRatingUpdated: "2026-08-15"
 ctfRating: 36.84
-ctfRatingUpdated: 2026-10-16
+ctfRatingUpdated: "2026-10-16"
 dataSource: player
 source: ''
 sourceUrl: ''
@@ -74,7 +74,7 @@ qlrace:
     rank_pct: 18.4
     time: 6388
     total: 87
-  fetched_at: 2026-08-15
+  fetched_at: "2026-08-15"
   medals:
     bronze: 0
     gold: 0
