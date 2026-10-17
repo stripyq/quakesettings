@@ -513,7 +513,7 @@ th[class*="player"] {
 .download-btn {
   display: inline-block;
   background: linear-gradient(135deg, var(--accent-primary), #ff8c5a);
-  color: white;
+  color: #000;
   padding: 0.75rem 2rem;
   border-radius: var(--radius-md);
   text-decoration: none;
