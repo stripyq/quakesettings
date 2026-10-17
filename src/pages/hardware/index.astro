@@ -145,7 +145,7 @@ function val(v: unknown) {
             <th class="sortable" data-sort="shape">Shape</th>
             <th class="sortable" data-sort="sensor">Sensor</th>
             <th class="sortable" data-sort="connection">Connection</th>
-            <th class="sortable num sort-desc" data-sort="usage">Players</th>
+            <th class="sortable num num-mono sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -167,7 +167,7 @@ function val(v: unknown) {
               <td class="spec-cell">{val(mouse.data.shape) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(mouse.data.sensor) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(mouse.data.connection) ?? <span class="empty-val">—</span>}</td>
-              <td class="num usage-cell">
+              <td class="num num-mono usage-cell">
                 {mouse.usage > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{mouse.usage}</span>
@@ -198,7 +198,7 @@ function val(v: unknown) {
             <th class="sortable num" data-sort="refresh">Refresh Rate</th>
             <th class="sortable" data-sort="panel">Panel</th>
             <th class="sortable" data-sort="resolution">Resolution</th>
-            <th class="sortable num sort-desc" data-sort="usage">Players</th>
+            <th class="sortable num num-mono sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -220,7 +220,7 @@ function val(v: unknown) {
               <td class="spec-cell num">{val(monitor.data.refreshRate) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(monitor.data.panelType || monitor.data.panel) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(monitor.data.resolution) ?? <span class="empty-val">—</span>}</td>
-              <td class="num usage-cell">
+              <td class="num num-mono usage-cell">
                 {monitor.usage > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{monitor.usage}</span>
@@ -250,7 +250,7 @@ function val(v: unknown) {
             <th class="sortable" data-sort="size">Size</th>
             <th class="sortable" data-sort="switches">Switches</th>
             <th class="sortable" data-sort="connection">Connection</th>
-            <th class="sortable num sort-desc" data-sort="usage">Players</th>
+            <th class="sortable num num-mono sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -270,7 +270,7 @@ function val(v: unknown) {
               <td class="spec-cell">{val(kb.data.size || kb.data.format) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(kb.data.switches) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(kb.data.connection) ?? <span class="empty-val">—</span>}</td>
-              <td class="num usage-cell">
+              <td class="num num-mono usage-cell">
                 {kb.usage > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{kb.usage}</span>
@@ -300,7 +300,7 @@ function val(v: unknown) {
             <th class="sortable" data-sort="surface">Surface</th>
             <th class="sortable" data-sort="speed">Speed</th>
             <th>Sizes</th>
-            <th class="sortable num sort-desc" data-sort="usage">Players</th>
+            <th class="sortable num num-mono sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -328,7 +328,7 @@ function val(v: unknown) {
                     <span class="size-single">{val(group.variants[0]?.dimensions) ?? <span class="empty-val">—</span>}</span>
                   )}
                 </td>
-                <td class="num usage-cell">
+                <td class="num num-mono usage-cell">
                   {group.totalUsage > 0 ? (
                     <div class="usage-wrapper">
                       <span class="usage-count">{group.totalUsage}</span>
@@ -354,7 +354,7 @@ function val(v: unknown) {
                   <td class="spec-cell sizes-cell">
                     <span class="size-badges">{bv.sizes.join(' / ')}</span>
                   </td>
-                  <td class="num usage-cell">
+                  <td class="num num-mono usage-cell">
                     {bv.players.length > 0 ? (
                       <div class="usage-wrapper">
                         <span class="usage-count">{bv.players.length}</span>
@@ -379,7 +379,7 @@ function val(v: unknown) {
                   <td></td>
                   <td></td>
                   <td class="spec-cell">{val(variant.dimensions) ?? <span class="empty-val">—</span>}</td>
-                  <td class="num usage-cell">
+                  <td class="num num-mono usage-cell">
                     {variant.players.length > 0 ? (
                       <div class="usage-wrapper">
                         <span class="usage-count">{variant.players.length}</span>
@@ -412,7 +412,7 @@ function val(v: unknown) {
             <th class="sortable num" data-sort="driver">Driver</th>
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable" data-sort="microphone">Mic</th>
-            <th class="sortable num sort-desc" data-sort="usage">Players</th>
+            <th class="sortable num num-mono sort-desc" data-sort="usage">Players</th>
           </tr>
         </thead>
         <tbody>
@@ -434,7 +434,7 @@ function val(v: unknown) {
               <td class="spec-cell num">{val(hs.data.driverSize || hs.data.driver) ?? <span class="empty-val">—</span>}</td>
               <td class="spec-cell">{val(hs.data.connection) ?? <span class="empty-val">—</span>}</td>
               <td class="center">{hs.data.microphone ? '✓' : '–'}</td>
-              <td class="num usage-cell">
+              <td class="num num-mono usage-cell">
                 {hs.usage > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{hs.usage}</span>
@@ -913,9 +913,8 @@ function val(v: unknown) {
     font-size: 0.8rem;
   }
 
-  .num {
-    text-align: right;
-    font-family: var(--font-mono);
+  .num-mono {
+    font-family: monospace;
   }
 
   .center {

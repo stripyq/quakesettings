@@ -173,11 +173,11 @@ const schema = {
                   <span class:list={["hardware-model", { "empty-val": mouseDisplay.model === "—" }]}>{mouseDisplay.model}</span>
                 </div>
               </td>
-              <td class="num">{player.data.dpi}</td>
-              <td class="num">{player.data.sensitivity}</td>
-              <td class="num">{formatNum(cm360)}</td>
+              <td class="num num-narrow">{player.data.dpi}</td>
+              <td class="num num-narrow">{player.data.sensitivity}</td>
+              <td class="num num-narrow">{formatNum(cm360)}</td>
               <td class={`accel-cell ${hasAccel ? 'accel-on' : ''}`}>{hasAccel ? '✓' : '–'}</td>
-              <td class="num">{player.data.fov}</td>
+              <td class="num num-narrow">{player.data.fov}</td>
               <td class="hw-cell">
                 <div class="hardware-cell">
                   {monitorDisplay.brand && <span class="hardware-brand">{monitorDisplay.brand}</span>}
@@ -531,9 +531,8 @@ const schema = {
     font-weight: 700;
   }
 
-  .num {
-    font-family: var(--font-mono);
-    text-align: right;
+  .num-narrow {
+    font-family: monospace;
     white-space: nowrap;
     width: 55px;
     max-width: 55px;
@@ -592,7 +591,7 @@ const schema = {
   }
 
   .rating-cell {
-    font-family: var(--font-mono);
+    font-family: monospace;
     text-align: center;
     font-size: 0.8rem;
     white-space: nowrap;
@@ -721,7 +720,7 @@ const schema = {
       max-width: 150px;
     }
 
-    .num {
+    .num-narrow {
       width: 45px;
       max-width: 45px;
     }
