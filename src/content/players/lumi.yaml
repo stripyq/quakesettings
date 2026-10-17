@@ -8,7 +8,7 @@ aliases:
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 published: true
-lastUpdated: 2026-02
+lastUpdated: "2026-10-17"
 ctfRating: 27.98
 ctfGames: 866
 tdmRating: 33.66
@@ -26,29 +26,31 @@ hoqTdmGames: 405
 
 
 
-dpi: 1600
-sensitivity: 1.68
+dpi: 800
+sensitivity: 1.5
+m_cpi: 0
 m_yaw: 0.022
-edpi: 2688
-cm360: 15.46
+edpi: 1200
+cm360: 34.64
 acceleration: false
 rawInput: true
 windowsSensitivity: 6
 invertedMouse: false
-grip: Palm
-fov: 90
+grip: Fingertip
+fov: 103
 enemyModel: Keel
+crosshair: "2"
+crosshairColor: White
+crosshairSize: "24"
 forward: w
 back: s
 left: a
 right: d
 mouse: hitscan-hyperlight
-mousepad: artisan-key-83
-mousepadBase: Soft
-mousepadSize: XL
-keyboard: ducky-one-2-mini
-monitor: alienware-aw2524hf
-headset: logitech-g-pro-headset
+mousepad: vaxee-pa
+keyboard: ducky-one-2
+monitor: benq-zowie-xl2546
+headset: logitech-g-pro-x-headset
 skates: Aftermarket
 qlrace:
   mode: 2
