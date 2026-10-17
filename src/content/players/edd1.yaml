@@ -1,83 +1,94 @@
-name: edd1
-steamId: "76561198084461653"
 aliases:
   - eddi
   - CUBAedd1
   - Eddi
-team2026: Le Cubanitos
-team2026Shortname: CUBA
+name: edd1
+steamId: '76561198084461653'
+qlstatsNick: ''
 country: DE
 team: Le Cubanitos
 category: duel
-hoqCtfRating: 36.839298248291016
-hoqCtfGames: 912
-hoqTdmRating: 38.51369857788086
-hoqTdmGames: 141
-
-
-
-
-
-duelRating: 1406
-ctfRating: 36.84
-ctfRatingUpdated: "2026-10-16"
-qllrCtfRating: 28.96
-qllrCtfGames: 193
-
-
-tdmRatingUpdated: "2026-08-15"
-tdmRating: 38.51
-dataSource: player
 lastUpdated: 2025-02
+duelRating: 1406
+duelRatingUpdated: ''
+tdmRating: 38.51
+tdmRatingUpdated: 2026-08-15
+ctfRating: 36.84
+ctfRatingUpdated: 2026-10-16
+dataSource: player
+source: ''
+sourceUrl: ''
 dpi: 1600
+m_cpi: null
 sensitivity: 1
 edpi: 1600
 cm360: 25.98
 acceleration: false
+accelValue: null
 rawInput: true
 fov: 120
-crosshair: "2"
-crosshairColor: White
+crosshair: '2'
+crosshairSize: ''
 invertedMouse: false
-grip: Hybrid
 forward: w
 back: s
 left: a
 right: d
-mouse: rawm-leviathan-v4
+jump: Space
+crouch: Ctrl
+attack: Mouse1
+zoom: Mouse2
+weaponNext: ''
+weaponPrev: ''
+mouse: logitech-g-pro-x-superlight-ii
 mousepad: artisan-zero
-mousepadBase: Mid
-mousepadSize: L
 keyboard: razer-huntsman-v3-mini
 monitor: aoc-24g15n
 headset: razer-blackshark-v2
-skates: Stock
-gpuBrand: NVIDIA
+configFile: ''
+accuracy_lg: 40
+accuracy_rg: 63
+accuracy_rl: 52
 cpuBrand: AMD
-enemyModel: Keel
+crosshairColor: White
 ctfGames: 912
-tdmGames: 141
+enemyModel: Keel
+favorite_gametype: Capture the Flag
+favorite_map: japanesecastles
+favorite_weapon: Railgun
+gpuBrand: NVIDIA
+grip: Hybrid
+hoqCtfGames: 912
+hoqCtfRating: 36.839298248291016
+hoqTdmGames: 141
+hoqTdmRating: 38.51369857788086
+mousepadBase: Mid
+mousepadSize: L
+qllrCtfGames: 193
+qllrCtfRating: 28.96
 qlrace:
-  mode: 2
-  records: 1
-  wrs: 0
-  medals:
-    gold: 0
-    silver: 0
-    bronze: 0
   average_rank_pct: 18.4
   best_record:
     map: df_lickmax
     rank: 16
-    total: 87
-    time: 6388
     rank_pct: 18.4
+    time: 6388
+    total: 87
+  fetched_at: 2026-08-15
+  medals:
+    bronze: 0
+    gold: 0
+    silver: 0
+  mode: 2
+  records: 1
   top_maps:
-    - {map: df_lickmax, rank: 16, total: 87, time: 6388, rank_pct: 18.4}
-  fetched_at: '2026-08-15'
-favorite_map: japanesecastles
-favorite_gametype: Capture the Flag
-favorite_weapon: Railgun
-accuracy_rl: 52
-accuracy_rg: 63
-accuracy_lg: 40
+    - map: df_lickmax
+      rank: 16
+      rank_pct: 18.4
+      time: 6388
+      total: 87
+  wrs: 0
+skates: Stock
+tdmGames: 141
+team2026: Le Cubanitos
+team2026Shortname: CUBA
