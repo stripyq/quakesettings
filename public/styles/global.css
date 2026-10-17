@@ -977,3 +977,10 @@ th {
 .rec-table tbody tr:nth-child(even) {
   background: var(--overlay-white-02);
 }
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 1.5rem 1rem;
+}

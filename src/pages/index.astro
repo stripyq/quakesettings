@@ -201,6 +201,9 @@ const schema = {
           );
         })}
       </tbody>
+        <tbody id="player-empty" style="display: none;">
+          <tr><td colspan="13" class="empty-state">No players match your filters.</td></tr>
+        </tbody>
     </table>
   </div>
 
@@ -323,6 +326,10 @@ const schema = {
           row.style.display = '';
           tbody?.appendChild(row);
         });
+
+        // Empty state when no rows match
+        const emptyBody = document.getElementById('player-empty');
+        if (emptyBody) emptyBody.style.display = filteredRows.length ? 'none' : '';
 
         // Update pagination controls
         updatePaginationControls(totalPages);

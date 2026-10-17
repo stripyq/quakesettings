@@ -1817,6 +1817,10 @@ const schema = {
               drawChart(activeMode);
             }
           });
+        }).catch(function() {
+          if (ctrl.signal.aborted) return;
+          var l = document.getElementById('hoq-cmp-loading');
+          if (l) { l.textContent = 'Unavailable, data server offline.'; l.style.display = ''; }
         });
 
         // Fetch map ratings for both players
@@ -1895,6 +1899,10 @@ const schema = {
               '<td class="' + winCls(w2) + ' ' + cls2 + '">' + w2Str + '</td>';
             tbody.appendChild(tr);
           }
+        }).catch(function() {
+          if (ctrl.signal.aborted) return;
+          var l = document.getElementById('hoq-map-cmp-loading');
+          if (l) { l.textContent = 'Unavailable, data server offline.'; l.style.display = ''; }
         });
       }
 

@@ -1828,7 +1828,7 @@ const schema = {
               <div class="s-archive-col">
                 <div class="s-archive-col-title" style={`color:${color}`}>{gt.toUpperCase()}</div>
                 {rows.length === 0 ? (
-                  <div class="s-archive-empty">No data. Run derive-rating-stories.cjs.</div>
+                  <div class="s-archive-empty">Data not available.</div>
                 ) : (
                   <table class="s-archive-table">
                     <thead><tr><th class="num">#</th><th>Player</th><th class="num">Range</th><th class="num">Span</th><th class="num">σ</th><th class="num">Over</th></tr></thead>
@@ -1875,7 +1875,7 @@ const schema = {
       <span class="s-section-attr">Stats via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a></span>
     </div>
     {ctfMaps.sortedMaps.length === 0 ? (
-      <div class="s-map-lb-error">No CTF map data available. Run <code>npm run fetch:hoq</code> to populate.</div>
+      <div class="s-map-lb-error">Data not available.</div>
     ) : (
       <div class="s-map-lb-grid">
         {ctfMaps.sortedMaps.map(mapName => (

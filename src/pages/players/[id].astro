@@ -1862,9 +1862,8 @@ const schema = {
           }
         });
       } catch (err) {
-        loading.style.display = 'none';
-        errorEl.textContent = 'Failed to load rating history.';
-        errorEl.style.display = 'block';
+        loading.textContent = 'Unavailable, data server offline.';
+        loading.style.display = '';
       }
     })();
 
@@ -1901,9 +1900,8 @@ const schema = {
           tbody.appendChild(tr);
         }
       } catch (err) {
-        loading.style.display = 'none';
-        errorEl.textContent = 'Failed to load map performance data.';
-        errorEl.style.display = 'block';
+        loading.textContent = 'Unavailable, data server offline.';
+        loading.style.display = '';
       }
     })();
   }

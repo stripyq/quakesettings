@@ -564,6 +564,17 @@ function val(v: unknown) {
         }
       });
 
+      // Empty state: a row spanning all columns when nothing matches
+      let emptyBody = table.querySelector('tbody.empty-state-body') as HTMLElement | null;
+      if (!emptyBody) {
+        emptyBody = document.createElement('tbody');
+        emptyBody.className = 'empty-state-body';
+        const cols = table.querySelectorAll('thead th').length;
+        emptyBody.innerHTML = `<tr><td colspan="${cols}" class="empty-state">No hardware matches your filters.</td></tr>`;
+        table.appendChild(emptyBody);
+      }
+      emptyBody.style.display = visibleCount === 0 ? '' : 'none';
+
       // Update visible count in tab
       const tableType = table.getAttribute('data-type');
       const tabBtn = document.querySelector(`.tab-btn[data-tab="${tableType}"]`);
