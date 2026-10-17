@@ -963,3 +963,21 @@ td.num {
 .empty-val {
   color: var(--text-muted);
 }
+
+/* ============================================
+   Tables - shared header, zebra
+   ============================================ */
+th {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.player-table tbody tr:nth-child(even),
+.hardware-table tbody tr:nth-child(even),
+.rec-table tbody tr:nth-child(even) {
+  background: var(--overlay-white-02);
+}

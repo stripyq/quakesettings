@@ -2038,6 +2038,10 @@ const schema = {
     padding: 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border-color, #2a2a35);
+    text-transform: none;
+    font-size: inherit;
+    font-weight: bold;
+    letter-spacing: normal;
   }
 
   .player-header {
@@ -2692,13 +2696,8 @@ const schema = {
   }
 
   .matchup-history-container :global(.mh-table th) {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-secondary, #9090a0);
+    color: var(--text-muted);
     padding: 0.35rem 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-    font-weight: 600;
   }
 
   .matchup-history-container :global(.mh-th-map) {
@@ -2861,6 +2860,10 @@ const schema = {
     padding: 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border-color, #2a2a35);
+    text-transform: none;
+    font-size: inherit;
+    font-weight: bold;
+    letter-spacing: normal;
   }
 
   .hoq-overall-container :global(.hoq-overall-table .player-header) {
@@ -3007,6 +3010,9 @@ const schema = {
     font-weight: 700;
     padding: 0 0 0.75rem;
     width: 38%;
+    text-transform: none;
+    letter-spacing: normal;
+    border-bottom: none;
   }
 
   .season-compare-container :global(.sc-th-player:first-child) {
@@ -3022,6 +3028,7 @@ const schema = {
   .season-compare-container :global(.sc-th-label) {
     width: 24%;
     padding: 0 0 0.75rem;
+    border-bottom: none;
   }
 
   .season-compare-container :global(.sc-table tbody tr) {
@@ -3332,13 +3339,8 @@ const schema = {
 
   .race-compare-container :global(.race-h2h-table th) {
     text-align: left;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-secondary, #9090a0);
+    color: var(--text-muted);
     padding: 0.4rem 0.5rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
-    font-weight: 600;
   }
 
   .race-compare-container :global(.race-h2h-table td) {
@@ -3492,12 +3494,8 @@ const schema = {
 
   .season-compare-container :global(.hoq-map-cmp-table th) {
     text-align: left;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-secondary, #9090a0);
+    color: var(--text-muted);
     padding: 0.6rem 0.75rem;
-    border-bottom: 1px solid var(--border-color, #2a2a35);
   }
 
   .season-compare-container :global(.hoq-map-cmp-table td) {

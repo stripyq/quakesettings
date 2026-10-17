@@ -233,13 +233,13 @@ const tdmTotal = totalGames(tdmMaps);
     .m-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
     .m-table thead { background: var(--bg-card); }
     .m-table th {
-      text-align: left; padding: .35rem .6rem; font-weight: 600;
-      color: var(--text-primary); border-bottom: 1px solid var(--border-color);
+      text-align: left; padding: .35rem .6rem;
       white-space: nowrap; user-select: none;
     }
     .m-th-sub { color: var(--text-muted); font-weight: 400; font-size: .85em; margin-left: .25rem; }
-    .m-table th.sort-asc::after { content: ' ▲'; color: var(--link-external); }
-    .m-table th.sort-desc::after { content: ' ▼'; color: var(--link-external); }
+    .m-table th[data-sort]::after { content: ' ↕'; opacity: 0.3; }
+    .m-table th.sort-asc::after { content: ' ↑'; color: var(--link-external); opacity: 1; }
+    .m-table th.sort-desc::after { content: ' ↓'; color: var(--link-external); opacity: 1; }
     .m-table td { padding: .3rem .6rem; border-bottom: 1px solid var(--bg-card); vertical-align: middle; }
     .m-table tbody tr:hover { background: var(--bg-card); }
     .m-cell-map { font-weight: 600; color: var(--text-primary); }

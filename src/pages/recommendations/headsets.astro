@@ -547,10 +547,6 @@ const schema = {
 
   .rec-table th {
     background: var(--bg-secondary, #12121a);
-    font-weight: 600;
-    color: var(--text-secondary, #888);
-    text-transform: uppercase;
-    font-size: 0.75rem;
   }
 
   [data-tooltip] {
@@ -633,18 +629,18 @@ const schema = {
   }
 
   .sortable::after {
-    content: ' ⇅';
+    content: ' ↕';
     font-size: 0.65em;
     opacity: 0.4;
   }
 
   .sortable.asc::after {
-    content: ' ▲';
+    content: ' ↑';
     opacity: 1;
   }
 
   .sortable.desc::after {
-    content: ' ▼';
+    content: ' ↓';
     opacity: 1;
   }
 
