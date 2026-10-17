@@ -1983,7 +1983,7 @@ const schema = {
     border: 1px solid var(--border-color, #2a2a35);
     color: var(--text-primary, #e8e8f0);
     padding: 0.75rem 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     min-width: 200px;
     font-size: 1rem;
   }
@@ -1993,7 +1993,7 @@ const schema = {
     color: white;
     font-weight: 700;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
   }
 
@@ -2025,7 +2025,7 @@ const schema = {
     width: 100%;
     border-collapse: collapse;
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--border-color, #2a2a35);
   }
@@ -2068,13 +2068,13 @@ const schema = {
   :global(.cmp-section-heading) {
     padding: 0.75rem 1rem;
     background: rgba(249, 115, 22, 0.15);
-    color: #f97316;
+    color: var(--accent-primary);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: left;
-    border-left: 4px solid #f97316;
+    border-left: 4px solid var(--accent-primary);
     margin-bottom: 1rem;
     margin-top: 1.5rem;
   }
@@ -2082,14 +2082,14 @@ const schema = {
   .compare-table :global(.section-row td) {
     padding: 0.75rem 1rem;
     background: rgba(249, 115, 22, 0.15);
-    color: #f97316;
+    color: var(--accent-primary);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: left;
     border-bottom: none;
-    border-left: 4px solid #f97316;
+    border-left: 4px solid var(--accent-primary);
   }
 
   .compare-table :global(.section-row:not(:first-child) td) {
@@ -2135,7 +2135,7 @@ const schema = {
   }
 
   .compare-table :global(.value-cell.numeric) {
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .compare-table :global(.diff-arrow) {
@@ -2212,7 +2212,7 @@ const schema = {
     gap: 1.5rem;
     margin-bottom: 0.25rem;
     font-size: 0.8rem;
-    color: #d1d5db;
+    color: var(--text-primary);
   }
 
   .compare-table :global(.radar-legend-item) {
@@ -2231,14 +2231,14 @@ const schema = {
   /* --- All-Time H2H: amber tag distinguishing from seasonal's blue "SEASON" --- */
   :global(.h2h-alltime-tag) {
     background: rgba(251, 191, 36, 0.15);
-    color: #fbbf24;
+    color: var(--warning);
     border: 1px solid rgba(251, 191, 36, 0.35);
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 2px 8px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     margin-left: 0.5rem;
     vertical-align: middle;
   }
@@ -2261,7 +2261,7 @@ const schema = {
   .h2h-container :global(.h2h-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 2rem;
     text-align: center;
     max-width: 700px;
@@ -2328,7 +2328,7 @@ const schema = {
   .h2h-container :global(.h2h-kill-count) {
     font-size: 1.75rem;
     font-weight: 800;
-    font-family: monospace;
+    font-family: var(--font-mono);
     line-height: 1;
     color: var(--text-primary, #e8e8f0);
   }
@@ -2342,7 +2342,7 @@ const schema = {
 
   .h2h-container :global(.h2h-dmg) {
     font-size: 0.7rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-secondary, #9090a0);
     margin-top: 0.15rem;
   }
@@ -2369,7 +2369,7 @@ const schema = {
   .h2h-container :global(.h2h-bar) {
     display: flex;
     height: 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     margin-bottom: 0.75rem;
   }
@@ -2377,14 +2377,14 @@ const schema = {
   .h2h-container :global(.h2h-bar-p1) {
     height: 100%;
     background: #3b82f6;
-    border-radius: 4px 0 0 4px;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
     transition: width 0.3s ease;
   }
 
   .h2h-container :global(.h2h-bar-p2) {
     height: 100%;
     background: #a855f7;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     transition: width 0.3s ease;
   }
 
@@ -2413,7 +2413,7 @@ const schema = {
   }
   .h2h-container :global(.h2h-dual-end) {
     font-size: 0.85rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
     font-weight: 700;
     font-variant-numeric: tabular-nums;
   }
@@ -2525,17 +2525,17 @@ const schema = {
     flex: 1;
     display: flex;
     height: 6px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     background: #21262d;
   }
 
   .h2h-container :global(.h2h-match-record-bar .h2h-bar-p1) {
-    border-radius: 3px 0 0 3px;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   }
 
   .h2h-container :global(.h2h-match-record-bar .h2h-bar-p2) {
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
 
   .h2h-container :global(.h2h-match-record-meta) {
@@ -2558,7 +2558,7 @@ const schema = {
   }
 
   .h2h-container :global(.h2h-map-worst) {
-    color: #f87171;
+    color: var(--error);
   }
 
   /* --- Matchup History --- */
@@ -2578,7 +2578,7 @@ const schema = {
   .matchup-history-container :global(.mh-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 2rem;
     text-align: center;
     max-width: 700px;
@@ -2629,7 +2629,7 @@ const schema = {
   .matchup-history-container :global(.mh-win-count) {
     font-size: 1.5rem;
     font-weight: 800;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-primary, #e8e8f0);
     line-height: 1;
   }
@@ -2643,7 +2643,7 @@ const schema = {
   .matchup-history-container :global(.mh-bar) {
     display: flex;
     height: 6px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     margin-bottom: 0.5rem;
   }
@@ -2651,14 +2651,14 @@ const schema = {
   .matchup-history-container :global(.mh-bar-p1) {
     height: 100%;
     background: #3b82f6;
-    border-radius: 3px 0 0 3px;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
     transition: width 0.3s ease;
   }
 
   .matchup-history-container :global(.mh-bar-p2) {
     height: 100%;
     background: #a855f7;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     transition: width 0.3s ease;
   }
 
@@ -2731,7 +2731,7 @@ const schema = {
 
   .matchup-history-container :global(.mh-td-num) {
     text-align: center;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-primary, #e8e8f0);
   }
 
@@ -2847,7 +2847,7 @@ const schema = {
     width: 100%;
     border-collapse: collapse;
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--border-color, #2a2a35);
     max-width: 700px;
@@ -2917,7 +2917,7 @@ const schema = {
   }
 
   .hoq-overall-container :global(.hoq-overall-table .value-cell.numeric) {
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .hoq-overall-container :global(.hoq-overall-table .diff-arrow) {
@@ -2951,7 +2951,7 @@ const schema = {
     gap: 1.5rem;
     margin-bottom: 0.25rem;
     font-size: 0.8rem;
-    color: #d1d5db;
+    color: var(--text-primary);
   }
 
   .hoq-overall-container :global(.radar-legend-item) {
@@ -2974,7 +2974,7 @@ const schema = {
   .season-compare-container :global(.sc-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 2rem;
     max-width: 700px;
     width: 100%;
@@ -3037,7 +3037,7 @@ const schema = {
   }
 
   .season-compare-container :global(.sc-val) {
-    font-family: monospace;
+    font-family: var(--font-mono);
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
     color: var(--text-primary, #e8e8f0);
@@ -3092,7 +3092,7 @@ const schema = {
   .rivalries-container :global(.rv-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 2rem;
     max-width: 700px;
     width: 100%;
@@ -3177,7 +3177,7 @@ const schema = {
 
   .rivalries-container :global(.rv-entry:nth-child(odd)) {
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -3205,7 +3205,7 @@ const schema = {
 
   .rivalries-container :global(.rv-kd) {
     font-size: 0.75rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-secondary, #9090a0);
   }
 
@@ -3301,7 +3301,7 @@ const schema = {
   .race-compare-container :global(.race-h2h-card) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem 2rem;
     max-width: 700px;
     width: 100%;
@@ -3354,7 +3354,7 @@ const schema = {
 
   .race-compare-container :global(.race-h2h-time) {
     display: block;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: #f0f6fc;
   }
 
@@ -3373,7 +3373,7 @@ const schema = {
   }
 
   .race-compare-container :global(.race-h2h-delta) {
-    font-family: monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--text-secondary, #9090a0);
     white-space: nowrap;
@@ -3421,7 +3421,7 @@ const schema = {
     font-size: 0.8rem;
     font-weight: 600;
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--text-secondary, #9090a0);
     cursor: pointer;
@@ -3442,7 +3442,7 @@ const schema = {
   .hoq-history-container :global(.hoq-cmp-chart-wrap) {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1rem;
     min-height: 200px;
   }
@@ -3486,7 +3486,7 @@ const schema = {
     font-size: 0.85rem;
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
   }
 
@@ -3511,17 +3511,17 @@ const schema = {
   }
 
   .season-compare-container :global(.hoq-win-green) {
-    color: #4ade80 !important;
+    color: var(--success) !important;
     font-weight: 600;
   }
 
   .season-compare-container :global(.hoq-win-amber) {
-    color: #fbbf24 !important;
+    color: var(--warning) !important;
     font-weight: 600;
   }
 
   .season-compare-container :global(.hoq-win-red) {
-    color: #f87171 !important;
+    color: var(--error) !important;
     font-weight: 600;
   }
 
@@ -3566,8 +3566,8 @@ const schema = {
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 0.05rem 0.3rem;
-    border-radius: 3px;
-    color: #9090a0;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
   }
@@ -3580,8 +3580,8 @@ const schema = {
     gap: 0.3rem;
   }
   :global(.cmp-sig-chip) { font-weight: 600; letter-spacing: 0.01em; }
-  :global(.cmp-sig-chip-primary) { color: #e5e7eb; }
-  :global(.cmp-sig-chip-secondary) { color: #9090a0; font-weight: 500; }
+  :global(.cmp-sig-chip-primary) { color: var(--text-primary); }
+  :global(.cmp-sig-chip-secondary) { color: var(--text-muted); font-weight: 500; }
   :global(.cmp-sig-sep) { color: #4a4a58; font-weight: 400; margin: 0 0.1rem; }
 
   /* ---------- Compact badge strip under player names in headers ---------- */
@@ -3623,7 +3623,7 @@ const schema = {
   /* When a real Quake medal image is present, drop the dark radial fill and
      give the medal near-full footprint inside the tier ring. */
   :global(.cmp-b-medal-has-img) {
-    background: #0a0a12;
+    background: var(--bg-primary);
   }
   :global(.cmp-b-img) {
     width: 20px;

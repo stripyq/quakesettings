@@ -2082,7 +2082,7 @@ const schema = {
   .s-summary-card {
     background: #161b22;
     border: 1px solid #30363d;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 16px;
     text-align: center;
   }
@@ -2120,7 +2120,7 @@ const schema = {
   .s-section-icon {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2163,7 +2163,7 @@ const schema = {
     padding: 0.6rem 0.75rem;
     background: #1c2128;
     border: 1px solid #30363d;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     color: #c9d1d9;
     font-size: 0.75rem;
     font-weight: 400;
@@ -2224,7 +2224,7 @@ const schema = {
   .s-card {
     background: #161b22;
     border: 1px solid #30363d;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem;
     min-width: 0;
   }
@@ -2339,13 +2339,13 @@ const schema = {
     flex: 1;
     background: #21262d;
     height: 20px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
   .s-bar {
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -2404,7 +2404,7 @@ const schema = {
 
   .s-vbar {
     width: 45px;
-    border-radius: 4px 4px 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     min-height: 8px;
   }
 
@@ -2531,18 +2531,18 @@ const schema = {
   .s-cm360-track {
     height: 20px;
     background: #21262d;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
   .s-cm360-track-sm {
     height: 10px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
   }
 
   .s-cm360-fill {
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -2625,7 +2625,7 @@ const schema = {
   }
 
   .s-hm-data {
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     cursor: default;
     transition: transform 0.1s;
   }
@@ -2704,7 +2704,7 @@ const schema = {
     align-items: center;
     justify-content: center;
     min-height: 28px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 500;
     color: #f0f6fc;
@@ -2729,7 +2729,7 @@ const schema = {
     align-items: center;
     gap: 8px;
     padding: 6px 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
 
   .s-lb-row:nth-child(odd) {
@@ -2819,7 +2819,7 @@ const schema = {
     gap: 10px;
     padding: 10px 12px;
     background: #21262d;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     margin-bottom: 6px;
   }
 
@@ -2864,7 +2864,7 @@ const schema = {
 
   .s-fact-card {
     background: #21262d;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border-left: 3px solid #30363d;
     padding: 12px;
     display: flex;
@@ -3126,7 +3126,7 @@ const schema = {
   .s-map-lb-card {
     background: #161b22;
     border: 1px solid #30363d;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
   }
 
@@ -3189,7 +3189,7 @@ const schema = {
   }
 
   .s-map-lb-link {
-    color: #4ecdc4;
+    color: var(--link-internal);
     text-decoration: none;
   }
 
@@ -3198,7 +3198,7 @@ const schema = {
   }
 
   .s-map-lb-num {
-    font-family: monospace;
+    font-family: var(--font-mono);
     text-align: right;
   }
 
@@ -3208,17 +3208,17 @@ const schema = {
   }
 
   .hoq-win-green {
-    color: #4ade80 !important;
+    color: var(--success) !important;
     font-weight: 600;
   }
 
   .hoq-win-amber {
-    color: #fbbf24 !important;
+    color: var(--warning) !important;
     font-weight: 600;
   }
 
   .hoq-win-red {
-    color: #f87171 !important;
+    color: var(--error) !important;
     font-weight: 600;
   }
 

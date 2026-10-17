@@ -220,7 +220,7 @@ const schema = {
       </div>
     </div>
 
-    <div class="info-box" style="background: rgba(78, 205, 196, 0.15); border-color: #4ecdc4;">
+    <div class="info-box" style="background: rgba(78, 205, 196, 0.15); border-color: var(--link-internal);">
       <strong>Present Method Note:</strong> Both "Prefer native" and "Prefer DXGI" are valid choices. DXGI offers faster alt-tab/window switching. For most users there's no noticeable latency difference — use whichever works best for your workflow.
     </div>
 
@@ -716,7 +716,7 @@ function copyCode(btn) {
 
   .preset-card {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 2px solid var(--border-color, #2a2a35);
   }
@@ -873,7 +873,7 @@ function copyCode(btn) {
   /* Limiter Note */
   .limiter-note {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1.25rem;
     margin-top: 1.5rem;
   }
@@ -921,7 +921,7 @@ function copyCode(btn) {
   /* Settings Sections */
   .settings-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-bottom: 2rem;
     border: 1px solid var(--border-color, #2a2a35);
@@ -983,7 +983,7 @@ function copyCode(btn) {
   .warning-box {
     background: rgba(231, 76, 60, 0.15);
     border: 1px solid #e74c3c;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin-top: 1.5rem;
     font-size: 0.9rem;
@@ -992,7 +992,7 @@ function copyCode(btn) {
   .info-box {
     background: rgba(52, 152, 219, 0.15);
     border: 1px solid #3498db;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
@@ -1007,7 +1007,7 @@ function copyCode(btn) {
   /* Code Block */
   .code-block {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     margin: 1rem 0;
   }
@@ -1028,7 +1028,7 @@ function copyCode(btn) {
     color: white;
     border: none;
     padding: 0.25rem 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 0.8rem;
     transition: background 0.2s;
@@ -1060,7 +1060,7 @@ function copyCode(btn) {
   .setting-note code {
     background: rgba(255, 255, 255, 0.1);
     padding: 0.1rem 0.4rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     color: var(--accent-secondary, #4ecdc4);
   }
 
@@ -1086,7 +1086,7 @@ function copyCode(btn) {
     width: 20px;
     height: 20px;
     border: 2px solid var(--accent-secondary, #4ecdc4);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-right: 1rem;
     flex-shrink: 0;
     margin-top: 2px;
@@ -1119,7 +1119,7 @@ function copyCode(btn) {
 
   .hz-card {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1.25rem;
     border: 1px solid var(--border-color, #2a2a35);
     position: relative;
@@ -1148,7 +1148,7 @@ function copyCode(btn) {
     color: white;
     font-size: 0.7rem;
     padding: 0.2rem 0.5rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     position: absolute;
     top: 0.75rem;
@@ -1169,7 +1169,7 @@ function copyCode(btn) {
   .hz-card code {
     background: rgba(255, 255, 255, 0.1);
     padding: 0.1rem 0.4rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     color: var(--accent-secondary, #4ecdc4);
   }
 

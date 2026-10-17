@@ -839,7 +839,7 @@ function copyCode(btn) {
   /* Settings Sections */
   .settings-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-bottom: 2rem;
     border: 1px solid var(--border-color, #2a2a35);
@@ -870,7 +870,7 @@ function copyCode(btn) {
     text-decoration: none;
     font-weight: 500;
     padding: 0.1em 0.2em;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     transition: all 0.2s ease;
   }
 
@@ -897,7 +897,7 @@ function copyCode(btn) {
   .key-point {
     background: rgba(78, 205, 196, 0.15);
     border: 1px solid var(--accent-secondary, #4ecdc4);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin-top: 1.5rem;
     font-size: 0.95rem;
@@ -914,7 +914,7 @@ function copyCode(btn) {
   .definition-card {
     background: var(--bg-secondary, #12121a);
     padding: 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border-left: 3px solid var(--text-secondary, #888);
   }
 
@@ -1038,7 +1038,7 @@ function copyCode(btn) {
     gap: 0.25rem;
     padding: 0.75rem;
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border-left: 3px solid var(--border-color, #2a2a35);
   }
 
@@ -1076,7 +1076,7 @@ function copyCode(btn) {
   .graph-section {
     background: var(--bg-secondary, #12121a);
     padding: 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
   }
 
   .graph-section h4 {
@@ -1121,7 +1121,7 @@ function copyCode(btn) {
   .lagometer-infographic {
     margin: 1.5rem 0;
     background: var(--bg-secondary, #12121a);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1rem;
     text-align: center;
   }
@@ -1129,7 +1129,7 @@ function copyCode(btn) {
   .lagometer-infographic img {
     max-width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
   }
 
   /* Numbered Steps */
@@ -1172,7 +1172,7 @@ function copyCode(btn) {
   .numbered-steps li code {
     background: rgba(78, 205, 196, 0.2);
     padding: 0.1rem 0.3rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-size: 0.85rem;
   }
 
@@ -1222,7 +1222,7 @@ function copyCode(btn) {
   .disable-list li {
     padding: 0.4rem 0.75rem;
     background: rgba(231, 76, 60, 0.1);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
     color: var(--text-secondary, #ccc);
   }
@@ -1262,7 +1262,7 @@ function copyCode(btn) {
   /* ASCII Diagram */
   .ascii-diagram {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin: 1rem 0;
     overflow-x: auto;
@@ -1292,7 +1292,7 @@ function copyCode(btn) {
   .lagometer-table {
     background: var(--bg-secondary, #12121a);
     padding: 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
   }
 
   .lagometer-table h4 {
@@ -1371,7 +1371,7 @@ function copyCode(btn) {
   .path-note {
     font-size: 0.85rem;
     color: var(--text-secondary, #888);
-    font-family: monospace;
+    font-family: var(--font-mono);
     margin-bottom: 0.75rem;
   }
 
@@ -1411,7 +1411,7 @@ function copyCode(btn) {
 
   .isp-card {
     padding: 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border-left: 3px solid;
   }
 
@@ -1465,7 +1465,7 @@ function copyCode(btn) {
   .dns-option code {
     background: var(--bg-secondary, #12121a);
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 1.1rem;
     color: var(--accent-secondary, #4ecdc4);
   }
@@ -1485,7 +1485,7 @@ function copyCode(btn) {
 
   .profile-card {
     padding: 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border-left: 3px solid;
   }
 
@@ -1650,14 +1650,14 @@ function copyCode(btn) {
     gap: 0.75rem;
     padding: 0.5rem 0.75rem;
     background: var(--bg-secondary, #12121a);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
   }
 
   .final-checklist code {
     background: rgba(78, 205, 196, 0.2);
     padding: 0.1rem 0.3rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     font-size: 0.85rem;
   }
 
@@ -1670,7 +1670,7 @@ function copyCode(btn) {
   .warning-box {
     background: rgba(231, 76, 60, 0.15);
     border: 1px solid #e74c3c;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin: 1rem 0;
     font-size: 0.9rem;
@@ -1679,7 +1679,7 @@ function copyCode(btn) {
   .info-box {
     background: rgba(52, 152, 219, 0.15);
     border: 1px solid #3498db;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
     margin: 1rem 0;
     font-size: 0.9rem;
@@ -1692,7 +1692,7 @@ function copyCode(btn) {
   /* Code Block */
   .code-block {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     margin: 1rem 0;
   }
@@ -1713,7 +1713,7 @@ function copyCode(btn) {
     color: white;
     border: none;
     padding: 0.25rem 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 0.8rem;
     transition: background 0.2s;

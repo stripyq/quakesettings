@@ -406,7 +406,7 @@ const schema = {
     background: linear-gradient(135deg, var(--accent-primary), #ff8c5a);
     color: white;
     padding: 0.6rem 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
@@ -538,7 +538,7 @@ const schema = {
   }
 
   .num {
-    font-family: monospace;
+    font-family: var(--font-mono);
     text-align: right;
     white-space: nowrap;
     width: 55px;
@@ -576,7 +576,7 @@ const schema = {
     border: 1px solid var(--border-color, #2a2a3a);
     color: var(--text-primary, #fff);
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 0.85rem;
     transition: all 0.2s;
@@ -598,18 +598,18 @@ const schema = {
   }
 
   .rating-cell {
-    font-family: monospace;
+    font-family: var(--font-mono);
     text-align: center;
     font-size: 0.8rem;
     white-space: nowrap;
   }
 
   .rating-cell.duel {
-    color: #a8a8b0; /* Warm gray - data value, not a link */
+    color: var(--text-muted); /* Warm gray - data value, not a link */
   }
 
   .rating-cell.team {
-    color: #9898a8; /* Cool gray - data value, not a link */
+    color: var(--text-muted); /* Cool gray - data value, not a link */
   }
 
   .rating-type {
@@ -696,7 +696,7 @@ const schema = {
     border: 1px solid var(--border-color, #2a2a3a);
     color: var(--text-primary, #fff);
     padding: 0.5rem 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
 
   .search-input {

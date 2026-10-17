@@ -786,7 +786,7 @@ const schema = {
     border: 1px solid var(--border-color, #2a2a3a);
     color: var(--text-primary, #fff);
     padding: 0.5rem 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     min-width: 280px;
   }
 
@@ -897,7 +897,7 @@ const schema = {
 
   .num {
     text-align: right;
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .center {
@@ -934,7 +934,7 @@ const schema = {
     z-index: 100;
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a3a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 0.5rem 0;
     min-width: 150px;
     max-width: 200px;
@@ -1024,7 +1024,7 @@ const schema = {
     color: var(--accent-secondary, #4ecdc4);
     background: rgba(78, 205, 196, 0.1);
     padding: 0.15rem 0.4rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
   }
 
   .size-single {

@@ -17,6 +17,13 @@
   --border-color: #2a2a35;
   --success: #4ade80;
   --error: #f87171;
+  --warning: #fbbf24;
+  --font-mono: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --overlay-white-02: rgba(255,255,255,0.02);
+  --overlay-orange-10: rgba(255,107,53,0.1);
 }
 
 * {
@@ -173,7 +180,7 @@ th[class*="player"] {
 .search-box input {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   padding: 0.5rem 1rem;
   color: var(--text-primary);
   width: 250px;
@@ -225,7 +232,7 @@ th[class*="player"] {
   margin-bottom: 2rem;
   padding: 1rem;
   background: var(--bg-secondary);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
 }
 
@@ -243,7 +250,7 @@ th[class*="player"] {
 .filter-group select {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 0.5rem 0.75rem;
   color: var(--text-primary);
   cursor: pointer;
@@ -267,7 +274,7 @@ th[class*="player"] {
 .player-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
   text-decoration: none;
   color: inherit;
@@ -335,7 +342,7 @@ th[class*="player"] {
   display: inline-block;
   background: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.8rem;
   color: var(--text-secondary);
 }
@@ -385,7 +392,7 @@ th[class*="player"] {
   color: var(--text-secondary);
   padding: 0.25rem 0.75rem;
   background: var(--bg-card);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .player-meta .rating {
@@ -406,7 +413,7 @@ th[class*="player"] {
 
 .settings-section {
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   border: 1px solid var(--border-color);
 }
@@ -451,7 +458,7 @@ th[class*="player"] {
 
 .hardware-section .hardware-item {
   background: var(--bg-secondary);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -491,7 +498,7 @@ th[class*="player"] {
 
 .config-section {
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -508,7 +515,7 @@ th[class*="player"] {
   background: linear-gradient(135deg, var(--accent-primary), #ff8c5a);
   color: white;
   padding: 0.75rem 2rem;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   text-decoration: none;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -556,7 +563,7 @@ th[class*="player"] {
 .hardware-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
 }
 
@@ -607,7 +614,7 @@ th[class*="player"] {
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
 }
 
@@ -666,7 +673,7 @@ th[class*="player"] {
   top: 0;
   left: 0;
   height: 100%;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   opacity: 0.3;
 }
 
@@ -686,7 +693,7 @@ th[class*="player"] {
   gap: 0.75rem;
   padding: 0.5rem;
   background: var(--bg-secondary);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .popularity-item .rank {
@@ -827,7 +834,7 @@ th[class*="player"] {
 .mobile-close-btn {
   background: transparent;
   border: 1px solid var(--border-color, #2a2a35);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 0.5rem;
   cursor: pointer;
   color: var(--text-secondary, #9090a0);
@@ -886,7 +893,7 @@ th[class*="player"] {
   height: 44px;
   background: transparent;
   border: 1px solid var(--border-color, #2a2a35);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   cursor: pointer;
   color: var(--text-primary, #e8e8f0);
 }

@@ -604,7 +604,7 @@ const movementPresets = [
     font-size: 0.8em;
     background: var(--bg-secondary);
     padding: 0.1em 0.4em;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     color: var(--link-internal);
   }
 
@@ -612,7 +612,7 @@ const movementPresets = [
   .current-settings {
     background: var(--bg-card);
     border: 1px solid var(--accent-primary);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-bottom: 2rem;
   }
@@ -641,7 +641,7 @@ const movementPresets = [
     justify-content: space-between;
     padding: 0.25rem 0.5rem;
     background: var(--bg-secondary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
 
   .settings-summary .summary-label {
@@ -663,7 +663,7 @@ const movementPresets = [
   .form-section {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
   }
 
@@ -709,7 +709,7 @@ const movementPresets = [
   .form-group select {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 0.6rem 0.75rem;
     color: var(--text-primary);
     font-size: 0.95rem;
@@ -745,7 +745,7 @@ const movementPresets = [
     padding: 0.75rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
   }
 
   .mousepad-variants .form-row {
@@ -787,7 +787,7 @@ const movementPresets = [
     transform: translateX(-50%);
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     font-weight: normal;
@@ -822,7 +822,7 @@ const movementPresets = [
   .grip-card {
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1rem 0.75rem;
     text-align: center;
     cursor: pointer;
@@ -877,7 +877,7 @@ const movementPresets = [
   .crosshair-item {
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     width: 42px;
     height: 42px;
     display: flex;
@@ -918,7 +918,7 @@ const movementPresets = [
   .color-swatch {
     width: 36px;
     height: 36px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     cursor: pointer;
     border: 3px solid transparent;
     transition: all 0.2s;
@@ -955,7 +955,7 @@ const movementPresets = [
   .preset-btn {
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 0.5rem 1rem;
     color: var(--text-primary);
     font-size: 0.85rem;
@@ -987,7 +987,7 @@ const movementPresets = [
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-top: none;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     max-height: 300px;
     overflow-y: auto;
     z-index: 100;
@@ -1035,7 +1035,7 @@ const movementPresets = [
 
   .consent-notice {
     font-size: 0.85em;
-    color: #888;
+    color: var(--text-muted);
     line-height: 1.5;
     max-width: 480px;
     margin: 0 auto 1rem;
@@ -1048,7 +1048,7 @@ const movementPresets = [
     padding: 1rem 3rem;
     font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -1075,7 +1075,7 @@ const movementPresets = [
     text-align: center;
     background: var(--bg-card);
     border: 1px solid var(--success);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 3rem 2rem;
   }
 

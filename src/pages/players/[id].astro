@@ -1935,7 +1935,7 @@ const schema = {
     margin: 1rem 0;
     padding: 0.75rem 1rem;
     background: var(--bg-card, #1a1a24);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--border-color, #2a2a35);
   }
 
@@ -1971,7 +1971,7 @@ const schema = {
   .rating-value {
     font-size: 1.25rem;
     font-weight: 600;
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .rating-value.duel {
@@ -2006,7 +2006,7 @@ const schema = {
 
   .data-source {
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     font-weight: 500;
     cursor: help;
@@ -2039,7 +2039,7 @@ const schema = {
 
   .settings-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
   }
@@ -2107,7 +2107,7 @@ const schema = {
     background: var(--bg-card, #1a1a24);
     color: var(--accent-secondary, #4ecdc4);
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-size: 0.9rem;
     border: 1px solid var(--border-color, #2a2a35);
@@ -2121,7 +2121,7 @@ const schema = {
 
   .hardware-full-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2145,7 +2145,7 @@ const schema = {
 
   .hardware-item {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1rem;
   }
 
@@ -2200,7 +2200,7 @@ const schema = {
     background: var(--accent-primary, #ff6b35);
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 500;
     transition: all 0.2s;
@@ -2214,7 +2214,7 @@ const schema = {
   /* --- Setup Insights --- */
   .insights-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2239,7 +2239,7 @@ const schema = {
 
   .insight-card {
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     padding: 1.25rem;
   }
 
@@ -2261,7 +2261,7 @@ const schema = {
   .insight-big-num {
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-primary, #e8e8f0);
   }
 
@@ -2275,7 +2275,7 @@ const schema = {
     color: var(--accent-secondary, #4ecdc4);
     background: rgba(78, 205, 196, 0.1);
     padding: 0.15rem 0.5rem;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     margin-left: 0.25rem;
   }
 
@@ -2419,7 +2419,7 @@ const schema = {
 
   .insight-profile-val {
     font-weight: 600;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-primary, #e8e8f0);
     width: 30%;
   }
@@ -2437,7 +2437,7 @@ const schema = {
 
   .config-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2456,7 +2456,7 @@ const schema = {
     padding: 0.5rem 1rem;
     background: var(--accent-secondary, #4ecdc4);
     color: var(--bg-primary, #0a0a0f);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s;
@@ -2468,7 +2468,7 @@ const schema = {
 
   .source-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2513,7 +2513,7 @@ const schema = {
 
   .team-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2551,7 +2551,7 @@ const schema = {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary, #9090a0);
-    font-family: monospace;
+    font-family: var(--font-mono);
     min-width: 5rem;
   }
 
@@ -2609,7 +2609,7 @@ const schema = {
 
   .keybinds-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2648,9 +2648,9 @@ const schema = {
     background: var(--bg-secondary, #12121a);
     border: 1px solid var(--border-color, #3a3a45);
     border-bottom-width: 2px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 0.15rem 0.5rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-primary, #e8e8f0);
@@ -2661,7 +2661,7 @@ const schema = {
 
   .similar-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2706,7 +2706,7 @@ const schema = {
     flex-direction: column;
     padding: 0.5rem 0.75rem;
     background: var(--bg-secondary, #12121a);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     text-decoration: none;
     transition: all 0.2s;
   }
@@ -2741,7 +2741,7 @@ const schema = {
   /* --- HoQ Stats / Playstyle --- */
   .hoq-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2833,13 +2833,13 @@ const schema = {
     flex: 1;
     height: 20px;
     background: var(--bg-secondary, #12121a);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     position: relative;
   }
 
   .acc-fill {
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     min-width: 4px;
   }
 
@@ -2869,14 +2869,14 @@ const schema = {
     text-align: right;
     font-size: 0.9rem;
     font-weight: 600;
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: var(--text-primary, #e8e8f0);
   }
 
   /* --- Season Stats (HoQ 2026 S1) --- */
   .season-section {
     background: var(--bg-card, #1a1a24);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     border: 1px solid var(--border-color, #2a2a35);
     margin-bottom: 2rem;
@@ -2947,7 +2947,7 @@ const schema = {
 
   .stat-value {
     font-weight: 600;
-    font-family: monospace;
+    font-family: var(--font-mono);
     font-size: 0.9rem;
     color: var(--text-primary, #e8e8f0);
     text-align: right;
@@ -2961,13 +2961,13 @@ const schema = {
   .stat-bar-track {
     height: 6px;
     background: rgba(255, 255, 255, 0.06);
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
   .stat-bar-fill {
     height: 100%;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     transition: width 0.3s ease;
   }
 
@@ -3018,7 +3018,7 @@ const schema = {
 
   .season-weapons .settings-table td:nth-child(2) {
     font-weight: 600;
-    font-family: monospace;
+    font-family: var(--font-mono);
     padding-right: 1rem;
   }
 
@@ -3046,7 +3046,7 @@ const schema = {
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color, #2a2a35);
   }
@@ -3119,7 +3119,7 @@ const schema = {
   .map-stats-table tbody td {
     padding: 0.4rem 0.5rem;
     font-size: 0.9rem;
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .map-stats-table tbody td:first-child {
@@ -3230,7 +3230,7 @@ const schema = {
   .race-value {
     font-size: 0.85rem;
     color: var(--text-primary, #e8e8f0);
-    font-family: monospace;
+    font-family: var(--font-mono);
   }
 
   .race-medals {
@@ -3265,7 +3265,7 @@ const schema = {
   }
 
   .race-time {
-    font-family: monospace;
+    font-family: var(--font-mono);
     color: #f0f6fc;
   }
 
@@ -3343,7 +3343,7 @@ const schema = {
     font-size: 0.8rem;
     font-weight: 600;
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--text-secondary, #9090a0);
     cursor: pointer;
@@ -3364,7 +3364,7 @@ const schema = {
   .hoq-chart-wrap {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1rem;
     min-height: 200px;
   }
@@ -3391,7 +3391,7 @@ const schema = {
   .hoq-map-wrap {
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a35);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     padding: 1rem;
     overflow-x: auto;
   }
@@ -3423,17 +3423,17 @@ const schema = {
   }
 
   :global(.hoq-win-green) {
-    color: #4ade80 !important;
+    color: var(--success) !important;
     font-weight: 600;
   }
 
   :global(.hoq-win-amber) {
-    color: #fbbf24 !important;
+    color: var(--warning) !important;
     font-weight: 600;
   }
 
   :global(.hoq-win-red) {
-    color: #f87171 !important;
+    color: var(--error) !important;
     font-weight: 600;
   }
 
@@ -3458,14 +3458,14 @@ const schema = {
     padding: 0.9rem 1rem;
     background: var(--bg-card, #1a1a24);
     border: 1px solid rgba(255,255,255,0.06);
-    border-left: 3px solid #ff6b35;
-    border-radius: 8px;
+    border-left: 3px solid var(--accent-primary);
+    border-radius: var(--radius-lg);
   }
   .player-signatures-heading {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #ff6b35;
+    color: var(--accent-primary);
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
@@ -3486,8 +3486,8 @@ const schema = {
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-    color: #9090a0;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     min-width: 2.4rem;
@@ -3506,8 +3506,8 @@ const schema = {
     font-weight: 600;
     letter-spacing: 0.01em;
   }
-  .sig-chip-primary { color: #e5e7eb; }
-  .sig-chip-secondary { color: #9090a0; font-weight: 500; }
+  .sig-chip-primary { color: var(--text-primary); }
+  .sig-chip-secondary { color: var(--text-muted); font-weight: 500; }
   .sig-sep { color: #4a4a58; font-weight: 400; }
 
   /* ---------- All-Time Achievement Badges (Variant C) ---------- */
@@ -3522,13 +3522,13 @@ const schema = {
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #ff6b35;
+    color: var(--accent-primary);
     font-weight: 700;
     margin-bottom: 1rem;
     padding-left: 0.25rem;
   }
   .player-badges-count {
-    color: #9090a0;
+    color: var(--text-muted);
     font-size: 0.7rem;
     font-weight: 500;
     margin-left: 0.35rem;
@@ -3575,7 +3575,7 @@ const schema = {
      inside the tier ring and drop the dark radial fill so the native medal
      colors read cleanly. */
   .pb-medal-has-img {
-    background: #0a0a12;
+    background: var(--bg-primary);
   }
   .pb-medal-img {
     width: 42px;
@@ -3595,7 +3595,7 @@ const schema = {
     font-weight: 800;
     letter-spacing: 0.08em;
     padding: 1px 6px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -3603,7 +3603,7 @@ const schema = {
     margin-top: 0.25rem;
     font-size: 0.7rem;
     font-weight: 700;
-    color: #e8e8f0;
+    color: var(--text-primary);
     line-height: 1.2;
     max-width: 100px;
     overflow-wrap: anywhere;
@@ -3615,7 +3615,7 @@ const schema = {
   }
   .pb-value {
     font-size: 0.63rem;
-    color: #9090a0;
+    color: var(--text-muted);
     font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
     font-weight: 600;
   }
