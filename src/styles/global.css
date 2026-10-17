@@ -958,3 +958,8 @@ th.num,
 td.num {
   text-align: right !important;
 }
+
+/* Missing values: "—" for unavailable data */
+.empty-val {
+  color: var(--text-muted);
+}

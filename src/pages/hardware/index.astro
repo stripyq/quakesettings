@@ -89,6 +89,12 @@ const schema = {
   "url": "https://stripyq.github.io/quakesettings/hardware/",
   "numberOfItems": totalHardware
 };
+
+// Missing-value display: schema defaults ('Unknown') and placeholder data values render as "—".
+const MISSING_VALUES = new Set(['', 'Unknown', 'N/A', '-']);
+function val(v: unknown) {
+  return v == null || MISSING_VALUES.has(String(v).trim()) ? null : v;
+}
 ---
 
 <BaseLayout title="Hardware Database" description="Database of 200+ mice, keyboards, monitors, mousepads, and headsets used by Quake Live players. Filter by brand, weight, sensor, and more." schema={schema} ogImage="/images/og/hardware.jpg">
@@ -157,10 +163,10 @@ const schema = {
                 {mouse.data.name}
               </td>
               <td>{mouse.data.brand}</td>
-              <td class="spec-cell num">{mouse.data.weight}</td>
-              <td class="spec-cell">{mouse.data.shape}</td>
-              <td class="spec-cell">{mouse.data.sensor}</td>
-              <td class="spec-cell">{mouse.data.connection}</td>
+              <td class="spec-cell num">{val(mouse.data.weight) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(mouse.data.shape) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(mouse.data.sensor) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(mouse.data.connection) ?? <span class="empty-val">—</span>}</td>
               <td class="num usage-cell">
                 {mouse.usage > 0 ? (
                   <div class="usage-wrapper">
@@ -171,7 +177,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           ))}
@@ -210,10 +216,10 @@ const schema = {
                 {monitor.data.name}
               </td>
               <td>{monitor.data.brand}</td>
-              <td class="spec-cell num">{monitor.data.size}</td>
-              <td class="spec-cell num">{monitor.data.refreshRate}</td>
-              <td class="spec-cell">{monitor.data.panelType || monitor.data.panel}</td>
-              <td class="spec-cell">{monitor.data.resolution}</td>
+              <td class="spec-cell num">{val(monitor.data.size) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell num">{val(monitor.data.refreshRate) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(monitor.data.panelType || monitor.data.panel) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(monitor.data.resolution) ?? <span class="empty-val">—</span>}</td>
               <td class="num usage-cell">
                 {monitor.usage > 0 ? (
                   <div class="usage-wrapper">
@@ -224,7 +230,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           ))}
@@ -261,9 +267,9 @@ const schema = {
                 {kb.data.name}
               </td>
               <td>{kb.data.brand}</td>
-              <td class="spec-cell">{kb.data.size || kb.data.format}</td>
-              <td class="spec-cell">{kb.data.switches}</td>
-              <td class="spec-cell">{kb.data.connection}</td>
+              <td class="spec-cell">{val(kb.data.size || kb.data.format) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(kb.data.switches) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(kb.data.connection) ?? <span class="empty-val">—</span>}</td>
               <td class="num usage-cell">
                 {kb.usage > 0 ? (
                   <div class="usage-wrapper">
@@ -274,7 +280,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           ))}
@@ -313,13 +319,13 @@ const schema = {
                   {group.baseModel}
                 </td>
                 <td>{group.brand}</td>
-                <td class="spec-cell">{group.surface}</td>
-                <td class="spec-cell">{group.speed}</td>
+                <td class="spec-cell">{val(group.surface) ?? <span class="empty-val">—</span>}</td>
+                <td class="spec-cell">{val(group.speed) ?? <span class="empty-val">—</span>}</td>
                 <td class="spec-cell sizes-cell">
                   {getSizeBadges(group) ? (
                     <span class="size-badges">{getSizeBadges(group)}</span>
                   ) : (
-                    <span class="size-single">{group.variants[0]?.dimensions || '—'}</span>
+                    <span class="size-single">{val(group.variants[0]?.dimensions) ?? <span class="empty-val">—</span>}</span>
                   )}
                 </td>
                 <td class="num usage-cell">
@@ -332,7 +338,7 @@ const schema = {
                         ))}
                       </div>
                     </div>
-                  ) : '—'}
+                  ) : <span class="empty-val">—</span>}
                 </td>
               </tr>
               {/* Base variant rows for Artisan-style pads */}
@@ -358,7 +364,7 @@ const schema = {
                           ))}
                         </div>
                       </div>
-                    ) : '—'}
+                    ) : <span class="empty-val">—</span>}
                   </td>
                 </tr>
               ))}
@@ -372,7 +378,7 @@ const schema = {
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td class="spec-cell">{variant.dimensions}</td>
+                  <td class="spec-cell">{val(variant.dimensions) ?? <span class="empty-val">—</span>}</td>
                   <td class="num usage-cell">
                     {variant.players.length > 0 ? (
                       <div class="usage-wrapper">
@@ -383,7 +389,7 @@ const schema = {
                           ))}
                         </div>
                       </div>
-                    ) : '—'}
+                    ) : <span class="empty-val">—</span>}
                   </td>
                 </tr>
               ))}
@@ -424,10 +430,10 @@ const schema = {
                 {hs.data.name}
               </td>
               <td>{hs.data.brand}</td>
-              <td class="spec-cell">{hs.data.type}</td>
-              <td class="spec-cell num">{hs.data.driverSize || hs.data.driver}</td>
-              <td class="spec-cell">{hs.data.connection}</td>
-              <td class="center">{hs.data.microphone ? '✓' : '—'}</td>
+              <td class="spec-cell">{val(hs.data.type) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell num">{val(hs.data.driverSize || hs.data.driver) ?? <span class="empty-val">—</span>}</td>
+              <td class="spec-cell">{val(hs.data.connection) ?? <span class="empty-val">—</span>}</td>
+              <td class="center">{hs.data.microphone ? '✓' : '–'}</td>
               <td class="num usage-cell">
                 {hs.usage > 0 ? (
                   <div class="usage-wrapper">
@@ -438,7 +444,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           ))}

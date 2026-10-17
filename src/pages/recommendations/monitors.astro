@@ -187,16 +187,16 @@ const schema = {
             >
               <td class="monitor-name">{m.name}</td>
               <td class="price num">{m.price}</td>
-              <td class="spec num">{md?.size && md.size !== 'Unknown' ? md.size : '—'}</td>
-              <td class="spec">{fmtRes(md)}</td>
-              <td class="spec num">{fmtHz(md)}</td>
-              <td class="spec">{md?.panelType || '—'}</td>
-              <td class="spec">{md?.coating || '—'}</td>
-              <td class="center rev-col">{m.mu ? '✓' : ''}</td>
-              <td class="center rev-col">{m.ot ? '✓' : ''}</td>
-              <td class="center rev-col">{m.tft ? '✓' : ''}</td>
-              <td class="center rev-col">{m.rt ? '✓' : ''}</td>
-              <td class="center rev-col">{m.tl ? '✓' : ''}</td>
+              <td class="spec num">{md?.size && md.size !== 'Unknown' ? md.size : <span class="empty-val">—</span>}</td>
+              <td class:list={["spec", { "empty-val": fmtRes(md) === "—" }]}>{fmtRes(md)}</td>
+              <td class:list={["spec num", { "empty-val": fmtHz(md) === "—" }]}>{fmtHz(md)}</td>
+              <td class="spec">{md?.panelType || <span class="empty-val">—</span>}</td>
+              <td class="spec">{md?.coating || <span class="empty-val">—</span>}</td>
+              <td class="center rev-col">{m.mu ? '✓' : '–'}</td>
+              <td class="center rev-col">{m.ot ? '✓' : '–'}</td>
+              <td class="center rev-col">{m.tft ? '✓' : '–'}</td>
+              <td class="center rev-col">{m.rt ? '✓' : '–'}</td>
+              <td class="center rev-col">{m.tl ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -207,7 +207,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );

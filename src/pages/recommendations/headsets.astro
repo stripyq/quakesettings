@@ -186,16 +186,16 @@ const schema = {
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
               <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || '—'}</td>
-              <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
-              <td class="spec">{hd?.connection || '—'}</td>
-              <td class="spec">{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
-              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
-              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
-              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
-              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
+              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -206,7 +206,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );
@@ -243,16 +243,16 @@ const schema = {
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
               <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || '—'}</td>
-              <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
-              <td class="spec">{hd?.connection || '—'}</td>
-              <td class="spec">{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
-              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
-              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
-              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
-              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
+              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -263,7 +263,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );
@@ -300,16 +300,16 @@ const schema = {
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
               <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || '—'}</td>
-              <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
-              <td class="spec">{hd?.connection || '—'}</td>
-              <td class="spec">{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : ''}</td>
-              <td class="center rev-col">{h.bs ? '✓' : ''}</td>
-              <td class="center rev-col">{h.jv ? '✓' : ''}</td>
-              <td class="center rev-col">{h.asr ? '✓' : ''}</td>
-              <td class="center rev-col">{h.mle ? '✓' : ''}</td>
+              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
+              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
+              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
+              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
+              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -320,7 +320,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );
@@ -360,7 +360,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );
@@ -400,7 +400,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );

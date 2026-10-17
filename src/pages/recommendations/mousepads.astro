@@ -136,9 +136,9 @@ const schema = {
               <td>{p.surface}</td>
               <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
               <td class="price num">{p.price}</td>
-              <td class="center">{p.bz ? '✓' : ''}</td>
-              <td class="center">{p.tl ? '✓' : ''}</td>
-              <td class="center">{p.ju ? '✓' : ''}</td>
+              <td class="center">{p.bz ? '✓' : '–'}</td>
+              <td class="center">{p.tl ? '✓' : '–'}</td>
+              <td class="center">{p.ju ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -149,7 +149,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );

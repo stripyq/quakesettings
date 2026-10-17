@@ -752,7 +752,7 @@ const schema = {
           <tbody>
             <tr><td>FOV</td><td>{p.fov}</td></tr>
             <tr><td>Crosshair</td><td>{p.crosshair}</td></tr>
-            <tr><td>Crosshair Size</td><td>{p.crosshairSize || 'N/A'}</td></tr>
+            <tr><td>Crosshair Size</td><td>{p.crosshairSize || <span class="empty-val">—</span>}</td></tr>
             <tr><td>Inverted Mouse</td><td>{p.invertedMouse ? 'Yes' : 'No'}</td></tr>
           </tbody>
         </table>
@@ -782,14 +782,14 @@ const schema = {
             <p class="hardware-name">{mpDisplayName}</p>
             <table class="hardware-specs">
               <tr><td>Surface</td><td>{mousepadData.surface}</td></tr>
-              <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || 'N/A'}</td></tr>
+              <tr><td>Speed</td><td>{mousepadData.speed || mousepadData.speedType || <span class="empty-val">—</span>}</td></tr>
               {hasMousepadVariant ? (
                 <>
                   {mpBaseDisplay && <tr><td>Base</td><td>{mpBaseDisplay}</td></tr>}
                   {p.mousepadSize && <tr><td>Size</td><td>{p.mousepadSize}</td></tr>}
                 </>
               ) : (
-                <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || 'N/A'}</td></tr>
+                <tr><td>Dimensions</td><td>{mousepadData.dimensions || mousepadData.size || <span class="empty-val">—</span>}</td></tr>
               )}
             </table>
           </div>
@@ -800,7 +800,7 @@ const schema = {
             <h3>Keyboard</h3>
             <p class="hardware-name">{keyboardData.name}</p>
             <table class="hardware-specs">
-              <tr><td>Size</td><td>{keyboardData.size || keyboardData.format || 'N/A'}</td></tr>
+              <tr><td>Size</td><td>{keyboardData.size || keyboardData.format || <span class="empty-val">—</span>}</td></tr>
               <tr><td>Switches</td><td>{keyboardData.switches}</td></tr>
               <tr><td>Connection</td><td>{keyboardData.connection}</td></tr>
             </table>
@@ -814,7 +814,7 @@ const schema = {
             <table class="hardware-specs">
               <tr><td>Size</td><td>{monitorData.size}</td></tr>
               <tr><td>Refresh Rate</td><td>{monitorData.refreshRate}</td></tr>
-              <tr><td>Panel</td><td>{monitorData.panelType || monitorData.panel || 'N/A'}</td></tr>
+              <tr><td>Panel</td><td>{monitorData.panelType || monitorData.panel || <span class="empty-val">—</span>}</td></tr>
               <tr><td>Resolution</td><td>{monitorData.resolution}</td></tr>
             </table>
           </div>
@@ -826,7 +826,7 @@ const schema = {
             <p class="hardware-name">{headsetData.name}</p>
             <table class="hardware-specs">
               <tr><td>Type</td><td>{headsetData.type}</td></tr>
-              <tr><td>Driver Size</td><td>{headsetData.driverSize || headsetData.driver || 'N/A'}</td></tr>
+              <tr><td>Driver Size</td><td>{headsetData.driverSize || headsetData.driver || <span class="empty-val">—</span>}</td></tr>
               <tr><td>Connection</td><td>{headsetData.connection}</td></tr>
             </table>
           </div>

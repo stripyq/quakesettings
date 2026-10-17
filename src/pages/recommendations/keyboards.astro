@@ -145,11 +145,11 @@ const schema = {
             >
               <td class="kb-name">{k.name}</td>
               <td class="price num">{k.price}</td>
-              <td class="spec">{kd?.size || '—'}</td>
-              <td class="spec">{kd?.switches || '—'}</td>
-              <td class="center rev-col">{k.dl ? '✓' : ''}</td>
-              <td class="center rev-col">{k.tl ? '✓' : ''}</td>
-              <td class="center rev-col">{k.ju ? '✓' : ''}</td>
+              <td class="spec">{kd?.size || <span class="empty-val">—</span>}</td>
+              <td class="spec">{kd?.switches || <span class="empty-val">—</span>}</td>
+              <td class="center rev-col">{k.dl ? '✓' : '–'}</td>
+              <td class="center rev-col">{k.tl ? '✓' : '–'}</td>
+              <td class="center rev-col">{k.ju ? '✓' : '–'}</td>
               <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
@@ -160,7 +160,7 @@ const schema = {
                       ))}
                     </div>
                   </div>
-                ) : '—'}
+                ) : <span class="empty-val">—</span>}
               </td>
             </tr>
           );

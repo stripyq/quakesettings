@@ -162,15 +162,15 @@ const schema = {
                   {player.data.name}
                 </a>
               </td>
-              <td class="rating-cell duel num">{formatRating(player.data.duelRating || null, true)}</td>
+              <td class:list={["rating-cell duel num", { "empty-val": !player.data.duelRating }]}>{formatRating(player.data.duelRating || null, true)}</td>
               <td class="rating-cell team num" title={teamInfo.type ? teamInfo.type.toUpperCase() : ''}>
-                {formatRating(teamInfo.rating, false)}
+                {teamInfo.rating === null ? <span class="empty-val">—</span> : formatRating(teamInfo.rating, false)}
                 {teamInfo.type && <span class="rating-type">{teamInfo.type.toUpperCase()}</span>}
               </td>
               <td class="hw-cell hw-cell-wide">
                 <div class="hardware-cell">
                   {mouseDisplay.brand && <span class="hardware-brand">{mouseDisplay.brand}</span>}
-                  <span class="hardware-model">{mouseDisplay.model}</span>
+                  <span class:list={["hardware-model", { "empty-val": mouseDisplay.model === "—" }]}>{mouseDisplay.model}</span>
                 </div>
               </td>
               <td class="num">{player.data.dpi}</td>
@@ -181,22 +181,22 @@ const schema = {
               <td class="hw-cell">
                 <div class="hardware-cell">
                   {monitorDisplay.brand && <span class="hardware-brand">{monitorDisplay.brand}</span>}
-                  <span class="hardware-model">{monitorDisplay.model}</span>
+                  <span class:list={["hardware-model", { "empty-val": monitorDisplay.model === "—" }]}>{monitorDisplay.model}</span>
                 </div>
               </td>
               <td class="hw-cell">
                 <div class="hardware-cell">
                   {keyboardDisplay.brand && <span class="hardware-brand">{keyboardDisplay.brand}</span>}
-                  <span class="hardware-model">{keyboardDisplay.model}</span>
+                  <span class:list={["hardware-model", { "empty-val": keyboardDisplay.model === "—" }]}>{keyboardDisplay.model}</span>
                 </div>
               </td>
               <td class="hw-cell">
                 <div class="hardware-cell">
                   {headsetDisplay.brand && <span class="hardware-brand">{headsetDisplay.brand}</span>}
-                  <span class="hardware-model">{headsetDisplay.model}</span>
+                  <span class:list={["hardware-model", { "empty-val": headsetDisplay.model === "—" }]}>{headsetDisplay.model}</span>
                 </div>
               </td>
-              <td class="date-cell num">{player.data.lastUpdated ? String(player.data.lastUpdated).slice(0, 7) : '—'}</td>
+              <td class="date-cell num">{player.data.lastUpdated ? String(player.data.lastUpdated).slice(0, 7) : <span class="empty-val">—</span>}</td>
             </tr>
           );
         })}
