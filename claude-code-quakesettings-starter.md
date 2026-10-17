@@ -2,7 +2,7 @@
 
 Drop-in prompts for starting any Claude Code session on the Quake Live settings database.
 
-Repo lives at: `C:\Users\m\quakesettings`  
+Repo lives at: `<repo>`  
 Live site: https://stripyq.github.io/quakesettings/  
 GitHub: https://github.com/stripyq/quakesettings
 
@@ -11,7 +11,7 @@ GitHub: https://github.com/stripyq/quakesettings
 ## 1. CONTEXT BLOCK — paste at the start of every session
 
 ```
-You are working on the Quake Live player settings database at C:\Users\m\quakesettings.
+You are working on the Quake Live player settings database at <repo>.
 Repo: stripyq/quakesettings on GitHub. Deployed via GitHub Pages from main branch.
 
 TECH STACK

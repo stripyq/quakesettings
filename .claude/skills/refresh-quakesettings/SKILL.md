@@ -163,4 +163,4 @@ Offer dry-runs unsolicited if M seems nervous or if the session started after a 
 
 ## Path note
 
-The repo is at `~\quakesettings`, not `C:\Users\m\quakesettings`. The starter doc `claude-code-quakesettings-starter.md` in the repo root still has the wrong path, and its "TASK RECIPE, Refresh HoQ ratings" section still points at `update-hoq-ratings.cjs` + a separate sync; update it to the `fetch-hoq-ratings.cjs` + `sync-hoq-to-display.cjs` pair next time it comes up.
+The repo is at `~\quakesettings`, not `<repo>`. The starter doc `claude-code-quakesettings-starter.md` in the repo root still has the wrong path, and its "TASK RECIPE, Refresh HoQ ratings" section still points at `update-hoq-ratings.cjs` + a separate sync; update it to the `fetch-hoq-ratings.cjs` + `sync-hoq-to-display.cjs` pair next time it comes up.
