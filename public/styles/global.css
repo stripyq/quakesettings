@@ -972,8 +972,8 @@ th {
   border-bottom: 1px solid var(--border-color);
 }
 
-.player-table tbody tr:nth-child(even),
-.hardware-table tbody tr:nth-child(even),
+.player-table tbody tr.row-alt,
+.hardware-table tbody tr.row-alt,
 .rec-table tbody tr:nth-child(even) {
   background: var(--overlay-white-02);
 }

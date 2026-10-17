@@ -472,6 +472,17 @@ function val(v: unknown) {
       sortState[tableType] = { col: 'usage', asc: false };
     });
 
+    // Zebra on visible rows only (hidden filtered/variant rows don't count)
+    function stripeVisibleRows(tbody: Element | null) {
+      if (!tbody) return;
+      let i = 0;
+      tbody.querySelectorAll('tr').forEach(tr => {
+        const row = tr as HTMLElement;
+        if (row.style.display === 'none') { row.classList.remove('row-alt'); return; }
+        row.classList.toggle('row-alt', i++ % 2 === 1);
+      });
+    }
+
     function switchTab(tabId: string, updateHash: boolean = true) {
       // Update tab buttons
       tabButtons.forEach(btn => {
@@ -574,6 +585,7 @@ function val(v: unknown) {
         table.appendChild(emptyBody);
       }
       emptyBody.style.display = visibleCount === 0 ? '' : 'none';
+      stripeVisibleRows(tbody);
 
       // Update visible count in tab
       const tableType = table.getAttribute('data-type');
@@ -652,6 +664,7 @@ function val(v: unknown) {
       } else {
         rows.forEach(row => tbody.appendChild(row));
       }
+      stripeVisibleRows(tbody);
     }
 
     // Tab click handlers
@@ -720,6 +733,8 @@ function val(v: unknown) {
           if (icon) {
             icon.textContent = isExpanded ? '▶' : '▼';
           }
+
+          stripeVisibleRows(mousepadTable.querySelector('tbody'));
         });
       });
     }
