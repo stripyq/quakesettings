@@ -988,3 +988,27 @@ th {
   color: var(--text-muted);
   padding: 1.5rem 1rem;
 }
+
+/* Mobile: fade at the right edge of scrollable tables. The overlay shares the
+   table's grid cell and is sticky, so it stays at the visible edge while scrolling. */
+@media (max-width: 768px) {
+  .table-container {
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .table-container > table {
+    grid-area: 1 / 1;
+  }
+
+  .table-container::after {
+    content: "";
+    grid-area: 1 / 1;
+    justify-self: end;
+    position: sticky;
+    right: 0;
+    width: 24px;
+    pointer-events: none;
+    background: linear-gradient(to left, var(--bg-primary), transparent);
+  }
+}
