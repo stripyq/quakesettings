@@ -111,18 +111,18 @@ const schema = {
       <thead>
         <tr>
           <th class="sortable" data-sort="name">Player</th>
-          <th class="sortable" data-sort="duel" title="Duel rating (Glicko from QLStats)">Duel</th>
-          <th class="sortable" data-sort="team" title="Team rating (higher of CTF/TDM)">Team</th>
+          <th class="sortable num" data-sort="duel" title="Duel rating (Glicko from QLStats)">Duel</th>
+          <th class="sortable num" data-sort="team" title="Team rating (higher of CTF/TDM)">Team</th>
           <th class="sortable" data-sort="mouse">Mouse</th>
-          <th class="sortable" data-sort="dpi">DPI</th>
-          <th class="sortable" data-sort="sens">Sens</th>
-          <th class="sortable" data-sort="cm360" title="cm/360° - distance to complete one full turn">cm/360</th>
+          <th class="sortable num" data-sort="dpi">DPI</th>
+          <th class="sortable num" data-sort="sens">Sens</th>
+          <th class="sortable num" data-sort="cm360" title="cm/360° - distance to complete one full turn">cm/360</th>
           <th class="sortable" data-sort="accel">Accel</th>
-          <th class="sortable" data-sort="fov">FOV</th>
+          <th class="sortable num" data-sort="fov">FOV</th>
           <th>Monitor</th>
           <th>Keyboard</th>
           <th>Headset</th>
-          <th class="sortable" data-sort="updated">Updated</th>
+          <th class="sortable num" data-sort="updated">Updated</th>
         </tr>
       </thead>
       <tbody id="player-tbody">
@@ -162,8 +162,8 @@ const schema = {
                   {player.data.name}
                 </a>
               </td>
-              <td class="rating-cell duel">{formatRating(player.data.duelRating || null, true)}</td>
-              <td class="rating-cell team" title={teamInfo.type ? teamInfo.type.toUpperCase() : ''}>
+              <td class="rating-cell duel num">{formatRating(player.data.duelRating || null, true)}</td>
+              <td class="rating-cell team num" title={teamInfo.type ? teamInfo.type.toUpperCase() : ''}>
                 {formatRating(teamInfo.rating, false)}
                 {teamInfo.type && <span class="rating-type">{teamInfo.type.toUpperCase()}</span>}
               </td>
@@ -196,7 +196,7 @@ const schema = {
                   <span class="hardware-model">{headsetDisplay.model}</span>
                 </div>
               </td>
-              <td class="date-cell">{player.data.lastUpdated ? String(player.data.lastUpdated).slice(0, 7) : '—'}</td>
+              <td class="date-cell num">{player.data.lastUpdated ? String(player.data.lastUpdated).slice(0, 7) : '—'}</td>
             </tr>
           );
         })}

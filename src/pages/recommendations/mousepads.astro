@@ -120,11 +120,11 @@ const schema = {
           <th>Mousepad</th>
           <th>Surface</th>
           <th>Speed</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th>BZ</th>
           <th>TL</th>
           <th>JU</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -135,11 +135,11 @@ const schema = {
               <td class="pad-name">{p.name}</td>
               <td>{p.surface}</td>
               <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
-              <td class="price">{p.price}</td>
+              <td class="price num">{p.price}</td>
               <td class="center">{p.bz ? '✓' : ''}</td>
               <td class="center">{p.tl ? '✓' : ''}</td>
               <td class="center">{p.ju ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>

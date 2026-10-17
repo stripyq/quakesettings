@@ -164,10 +164,10 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th class="sortable" data-sort="form" data-type="str">Form</th>
           <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
           <th class="sortable" data-sort="conn" data-type="str">Conn</th>
           <th class="sortable" data-sort="mic" data-type="str">Mic</th>
           <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
@@ -175,7 +175,7 @@ const schema = {
           <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
           <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
           <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -185,10 +185,10 @@ const schema = {
           return (
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td class="price">{h.price}</td>
+              <td class="price num">{h.price}</td>
               <td class="spec">{hd?.formFactor || '—'}</td>
               <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
               <td class="spec">{hd?.connection || '—'}</td>
               <td class="spec">{fmtMic(hd)}</td>
               <td class="center rev-col">{h.gt ? '✓' : ''}</td>
@@ -196,7 +196,7 @@ const schema = {
               <td class="center rev-col">{h.jv ? '✓' : ''}</td>
               <td class="center rev-col">{h.asr ? '✓' : ''}</td>
               <td class="center rev-col">{h.mle ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -221,10 +221,10 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th class="sortable" data-sort="form" data-type="str">Form</th>
           <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
           <th class="sortable" data-sort="conn" data-type="str">Conn</th>
           <th class="sortable" data-sort="mic" data-type="str">Mic</th>
           <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
@@ -232,7 +232,7 @@ const schema = {
           <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
           <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
           <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -242,10 +242,10 @@ const schema = {
           return (
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td class="price">{h.price}</td>
+              <td class="price num">{h.price}</td>
               <td class="spec">{hd?.formFactor || '—'}</td>
               <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
               <td class="spec">{hd?.connection || '—'}</td>
               <td class="spec">{fmtMic(hd)}</td>
               <td class="center rev-col">{h.gt ? '✓' : ''}</td>
@@ -253,7 +253,7 @@ const schema = {
               <td class="center rev-col">{h.jv ? '✓' : ''}</td>
               <td class="center rev-col">{h.asr ? '✓' : ''}</td>
               <td class="center rev-col">{h.mle ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -278,10 +278,10 @@ const schema = {
       <thead>
         <tr>
           <th>Headset</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th class="sortable" data-sort="form" data-type="str">Form</th>
           <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable" data-sort="driver" data-type="str">Driver</th>
+          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
           <th class="sortable" data-sort="conn" data-type="str">Conn</th>
           <th class="sortable" data-sort="mic" data-type="str">Mic</th>
           <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
@@ -289,7 +289,7 @@ const schema = {
           <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
           <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
           <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -299,10 +299,10 @@ const schema = {
           return (
             <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
               <td class="headset-name">{h.name}</td>
-              <td class="price">{h.price}</td>
+              <td class="price num">{h.price}</td>
               <td class="spec">{hd?.formFactor || '—'}</td>
               <td class="spec">{hd?.backStyle || '—'}</td>
-              <td class="spec">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
+              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : '—'}</td>
               <td class="spec">{hd?.connection || '—'}</td>
               <td class="spec">{fmtMic(hd)}</td>
               <td class="center rev-col">{h.gt ? '✓' : ''}</td>
@@ -310,7 +310,7 @@ const schema = {
               <td class="center rev-col">{h.jv ? '✓' : ''}</td>
               <td class="center rev-col">{h.asr ? '✓' : ''}</td>
               <td class="center rev-col">{h.mle ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -336,9 +336,9 @@ const schema = {
         <tr>
           <th>Item</th>
           <th>Category</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th>Notes</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -348,9 +348,9 @@ const schema = {
             <tr>
               <td class="headset-name">{s.name}</td>
               <td>{s.category}</td>
-              <td class="price">{s.price}</td>
+              <td class="price num">{s.price}</td>
               <td class="notes">{s.notes}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -376,9 +376,9 @@ const schema = {
         <tr>
           <th>Item</th>
           <th>Category</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th>Notes</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -388,9 +388,9 @@ const schema = {
             <tr>
               <td class="headset-name">{s.name}</td>
               <td>{s.category}</td>
-              <td class="price">{s.price}</td>
+              <td class="price num">{s.price}</td>
               <td class="notes">{s.notes}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>

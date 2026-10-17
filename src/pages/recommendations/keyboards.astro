@@ -125,13 +125,13 @@ const schema = {
       <thead>
         <tr>
           <th>Keyboard</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th class="sortable" data-sort="size" data-type="str">Size</th>
           <th class="sortable" data-sort="switches" data-type="str">Switch Type</th>
           <th class="rev-col">DL</th>
           <th class="rev-col">TL</th>
           <th class="rev-col">JU</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -144,13 +144,13 @@ const schema = {
               data-switches={kd?.switches || ''}
             >
               <td class="kb-name">{k.name}</td>
-              <td class="price">{k.price}</td>
+              <td class="price num">{k.price}</td>
               <td class="spec">{kd?.size || '—'}</td>
               <td class="spec">{kd?.switches || '—'}</td>
               <td class="center rev-col">{k.dl ? '✓' : ''}</td>
               <td class="center rev-col">{k.tl ? '✓' : ''}</td>
               <td class="center rev-col">{k.ju ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>

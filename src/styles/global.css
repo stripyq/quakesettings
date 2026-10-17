@@ -943,3 +943,18 @@ th[class*="player"] {
     display: flex;
   }
 }
+
+/* ============================================
+   Tables - numerals and numeric alignment
+   ============================================ */
+td, th {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Numeric columns: right-aligned. Global (unscoped) so it also reaches
+   rows built in client-side JS, and !important because page-scoped
+   "table td { text-align: left }" rules outrank a single class. */
+th.num,
+td.num {
+  text-align: right !important;
+}

@@ -159,10 +159,10 @@ const schema = {
       <thead>
         <tr>
           <th>Monitor</th>
-          <th>Price</th>
-          <th class="sortable" data-sort="size" data-type="num">Size</th>
+          <th class="num">Price</th>
+          <th class="sortable num" data-sort="size" data-type="num">Size</th>
           <th class="sortable" data-sort="res" data-type="str">Res</th>
-          <th class="sortable" data-sort="hz" data-type="num">Hz</th>
+          <th class="sortable num" data-sort="hz" data-type="num">Hz</th>
           <th class="sortable" data-sort="panel" data-type="str">Panel</th>
           <th class="sortable" data-sort="coating" data-type="str">Coating</th>
           <th class="rev-col">MU</th>
@@ -170,7 +170,7 @@ const schema = {
           <th class="rev-col">TFT</th>
           <th class="rev-col">RT</th>
           <th class="rev-col">TL</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -186,10 +186,10 @@ const schema = {
               data-coating={md?.coating || ''}
             >
               <td class="monitor-name">{m.name}</td>
-              <td class="price">{m.price}</td>
-              <td class="spec">{md?.size && md.size !== 'Unknown' ? md.size : '—'}</td>
+              <td class="price num">{m.price}</td>
+              <td class="spec num">{md?.size && md.size !== 'Unknown' ? md.size : '—'}</td>
               <td class="spec">{fmtRes(md)}</td>
-              <td class="spec">{fmtHz(md)}</td>
+              <td class="spec num">{fmtHz(md)}</td>
               <td class="spec">{md?.panelType || '—'}</td>
               <td class="spec">{md?.coating || '—'}</td>
               <td class="center rev-col">{m.mu ? '✓' : ''}</td>
@@ -197,7 +197,7 @@ const schema = {
               <td class="center rev-col">{m.tft ? '✓' : ''}</td>
               <td class="center rev-col">{m.rt ? '✓' : ''}</td>
               <td class="center rev-col">{m.tl ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>

@@ -137,15 +137,15 @@ const schema = {
       <thead>
         <tr>
           <th>Mouse</th>
-          <th>Price</th>
+          <th class="num">Price</th>
           <th class="sortable" data-sort="shape" data-type="str">Shape</th>
           <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="weight" data-type="num">Weight</th>
+          <th class="sortable num" data-sort="weight" data-type="num">Weight</th>
           <th class="rev-col">DL</th>
           <th class="rev-col">TL</th>
           <th class="rev-col">BZ</th>
           <th class="rev-col">JU</th>
-          <th>Players</th>
+          <th class="num">Players</th>
         </tr>
       </thead>
       <tbody>
@@ -160,15 +160,15 @@ const schema = {
               data-weight={weightSortVal(spec.weight)}
             >
               <td class="mouse-name">{m.mouse}</td>
-              <td class="price">{m.price}</td>
+              <td class="price num">{m.price}</td>
               <td class="spec">{spec.shape || '—'}</td>
               <td class="spec">{spec.conn || '—'}</td>
-              <td class="spec">{spec.weight || '—'}</td>
+              <td class="spec num">{spec.weight || '—'}</td>
               <td class="center rev-col">{m.dl ? '✓' : ''}</td>
               <td class="center rev-col">{m.tl ? '✓' : ''}</td>
               <td class="center rev-col">{m.bz ? '✓' : ''}</td>
               <td class="center rev-col">{m.ju ? '✓' : ''}</td>
-              <td class="center players">
+              <td class="players num">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>

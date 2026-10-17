@@ -135,7 +135,7 @@ const schema = {
           <tr>
             <th class="sortable" data-sort="name">Name</th>
             <th class="sortable" data-sort="brand">Brand</th>
-            <th class="sortable" data-sort="weight">Weight</th>
+            <th class="sortable num" data-sort="weight">Weight</th>
             <th class="sortable" data-sort="shape">Shape</th>
             <th class="sortable" data-sort="sensor">Sensor</th>
             <th class="sortable" data-sort="connection">Connection</th>
@@ -157,7 +157,7 @@ const schema = {
                 {mouse.data.name}
               </td>
               <td>{mouse.data.brand}</td>
-              <td class="spec-cell">{mouse.data.weight}</td>
+              <td class="spec-cell num">{mouse.data.weight}</td>
               <td class="spec-cell">{mouse.data.shape}</td>
               <td class="spec-cell">{mouse.data.sensor}</td>
               <td class="spec-cell">{mouse.data.connection}</td>
@@ -188,8 +188,8 @@ const schema = {
           <tr>
             <th class="sortable" data-sort="name">Name</th>
             <th class="sortable" data-sort="brand">Brand</th>
-            <th class="sortable" data-sort="size">Size</th>
-            <th class="sortable" data-sort="refresh">Refresh Rate</th>
+            <th class="sortable num" data-sort="size">Size</th>
+            <th class="sortable num" data-sort="refresh">Refresh Rate</th>
             <th class="sortable" data-sort="panel">Panel</th>
             <th class="sortable" data-sort="resolution">Resolution</th>
             <th class="sortable num sort-desc" data-sort="usage">Players</th>
@@ -210,8 +210,8 @@ const schema = {
                 {monitor.data.name}
               </td>
               <td>{monitor.data.brand}</td>
-              <td class="spec-cell">{monitor.data.size}</td>
-              <td class="spec-cell">{monitor.data.refreshRate}</td>
+              <td class="spec-cell num">{monitor.data.size}</td>
+              <td class="spec-cell num">{monitor.data.refreshRate}</td>
               <td class="spec-cell">{monitor.data.panelType || monitor.data.panel}</td>
               <td class="spec-cell">{monitor.data.resolution}</td>
               <td class="num usage-cell">
@@ -403,7 +403,7 @@ const schema = {
             <th class="sortable" data-sort="name">Name</th>
             <th class="sortable" data-sort="brand">Brand</th>
             <th class="sortable" data-sort="type">Type</th>
-            <th class="sortable" data-sort="driver">Driver</th>
+            <th class="sortable num" data-sort="driver">Driver</th>
             <th class="sortable" data-sort="connection">Connection</th>
             <th class="sortable" data-sort="microphone">Mic</th>
             <th class="sortable num sort-desc" data-sort="usage">Players</th>
@@ -425,7 +425,7 @@ const schema = {
               </td>
               <td>{hs.data.brand}</td>
               <td class="spec-cell">{hs.data.type}</td>
-              <td class="spec-cell">{hs.data.driverSize || hs.data.driver}</td>
+              <td class="spec-cell num">{hs.data.driverSize || hs.data.driver}</td>
               <td class="spec-cell">{hs.data.connection}</td>
               <td class="center">{hs.data.microphone ? '✓' : '—'}</td>
               <td class="num usage-cell">

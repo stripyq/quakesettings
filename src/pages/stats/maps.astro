@@ -113,8 +113,8 @@ const tdmTotal = totalGames(tdmMaps);
               <thead>
                 <tr>
                   <th data-sort="map" data-type="str">Map</th>
-                  <th data-sort="games" data-type="num" class="sort-desc">Games</th>
-                  <th data-sort="pct" data-type="num">Share</th>
+                  <th data-sort="games" data-type="num" class="sort-desc num">Games</th>
+                  <th data-sort="pct" data-type="num" class="num">Share</th>
                   <th class="m-th-perf">Top Win% on map <span class="m-th-sub">(min {entries[0]?.top_performer_min_games ?? 30} games)</span></th>
                 </tr>
               </thead>
@@ -124,8 +124,8 @@ const tdmTotal = totalGames(tdmMaps);
                   return (
                     <tr>
                       <td class="m-cell-map">{m.map}</td>
-                      <td data-num={m.games}>{m.games.toLocaleString()}</td>
-                      <td data-num={pct} class="m-cell-pct">{pct.toFixed(1)}%</td>
+                      <td data-num={m.games} class="num">{m.games.toLocaleString()}</td>
+                      <td data-num={pct} class="m-cell-pct num">{pct.toFixed(1)}%</td>
                       <td class="m-cell-perf">
                         {m.top_performers.length === 0 ? (
                           <span class="m-muted">insufficient data</span>

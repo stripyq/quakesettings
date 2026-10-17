@@ -1831,7 +1831,7 @@ const schema = {
                   <div class="s-archive-empty">No data. Run derive-rating-stories.cjs.</div>
                 ) : (
                   <table class="s-archive-table">
-                    <thead><tr><th>#</th><th>Player</th><th>Range</th><th>Span</th><th>σ</th><th>Over</th></tr></thead>
+                    <thead><tr><th class="num">#</th><th>Player</th><th class="num">Range</th><th class="num">Span</th><th class="num">σ</th><th class="num">Over</th></tr></thead>
                     <tbody>
                       {rows.map((r, i) => {
                         const slug = archiveSlugBySid[r.sid];
@@ -1841,14 +1841,14 @@ const schema = {
                         const [a, b] = r.peakFirst ? [r.peak, r.trough] : [r.trough, r.peak];
                         return (
                           <tr>
-                            <td class="s-archive-rank">{i + 1}</td>
+                            <td class="s-archive-rank num">{i + 1}</td>
                             <td class="s-archive-name">
                               {slug ? <a href={`${base}players/${slug}/`}>{displayName}</a> : <span>{displayName}</span>}
                             </td>
-                            <td class="s-archive-num" title={r.peakFirst ? 'Decline: peaked early, troughed later' : 'Rise: troughed early, peaked later'}>{a.toFixed(1)} → {b.toFixed(1)}</td>
-                            <td class="s-archive-num s-archive-hero">{r.range.toFixed(1)}</td>
-                            <td class="s-archive-num s-archive-dim">{r.stddev.toFixed(2)}</td>
-                            <td class="s-archive-num s-archive-dim" title={`${r.swingGames} matches between peak and trough (out of ${r.games} total)`}>{r.swingGames}</td>
+                            <td class="s-archive-num num" title={r.peakFirst ? 'Decline: peaked early, troughed later' : 'Rise: troughed early, peaked later'}>{a.toFixed(1)} → {b.toFixed(1)}</td>
+                            <td class="s-archive-num num s-archive-hero">{r.range.toFixed(1)}</td>
+                            <td class="s-archive-num num s-archive-dim">{r.stddev.toFixed(2)}</td>
+                            <td class="s-archive-num num s-archive-dim" title={`${r.swingGames} matches between peak and trough (out of ${r.games} total)`}>{r.swingGames}</td>
                           </tr>
                         );
                       })}
@@ -1883,7 +1883,7 @@ const schema = {
             <h2 class="s-card-title">{mapName}</h2>
             <p class="s-card-sub">{ctfMaps.playerCounts[mapName]} players with {ctfMaps.mapThresholds[mapName]}+ games</p>
             <table class="s-map-lb-table">
-              <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>Games</th><th>Win%</th></tr></thead>
+              <thead><tr><th>#</th><th>Player</th><th class="num">Rating</th><th class="num">Games</th><th class="num">Win%</th></tr></thead>
               <tbody>
                 {ctfMaps.leaderboards[mapName].map((p, j) => (
                   <tr>
@@ -1893,9 +1893,9 @@ const schema = {
                     <td class="s-map-lb-name">
                       {p.slug ? <a href={`${base}players/${p.slug}/`} class="s-map-lb-link">{p.name}</a> : <span>{p.name}</span>}
                     </td>
-                    <td class="s-map-lb-num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
-                    <td class="s-map-lb-num">{p.games}</td>
-                    <td class={`s-map-lb-num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
+                    <td class="s-map-lb-num num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
+                    <td class="s-map-lb-num num">{p.games}</td>
+                    <td class={`s-map-lb-num num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1924,7 +1924,7 @@ const schema = {
             <h2 class="s-card-title">{mapName}</h2>
             <p class="s-card-sub">{tdmMaps.playerCounts[mapName]} players with {tdmMaps.mapThresholds[mapName]}+ games</p>
             <table class="s-map-lb-table">
-              <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>Games</th><th>Win%</th></tr></thead>
+              <thead><tr><th>#</th><th>Player</th><th class="num">Rating</th><th class="num">Games</th><th class="num">Win%</th></tr></thead>
               <tbody>
                 {tdmMaps.leaderboards[mapName].map((p, j) => (
                   <tr>
@@ -1934,9 +1934,9 @@ const schema = {
                     <td class="s-map-lb-name">
                       {p.slug ? <a href={`${base}players/${p.slug}/`} class="s-map-lb-link">{p.name}</a> : <span>{p.name}</span>}
                     </td>
-                    <td class="s-map-lb-num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
-                    <td class="s-map-lb-num">{p.games}</td>
-                    <td class={`s-map-lb-num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
+                    <td class="s-map-lb-num num s-map-lb-rating">{p.rating != null ? p.rating.toFixed(1) : '—'}</td>
+                    <td class="s-map-lb-num num">{p.games}</td>
+                    <td class={`s-map-lb-num num ${p.win_pct != null && p.win_pct > 50 ? 'hoq-win-green' : p.win_pct != null && p.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber'}`}>{p.win_pct != null ? `${p.win_pct.toFixed(1)}%` : '—'}</td>
                   </tr>
                 ))}
               </tbody>

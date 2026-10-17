@@ -1286,13 +1286,13 @@ const schema = {
             <div class="season-weapons">
               <h3>Weapon Accuracy</h3>
               <table class="settings-table">
-                {rg && (<tr><td>&#127919; Railgun</td><td>{rg.accuracy}%</td><td class="text-muted">{rg.kills} kills</td></tr>)}
-                {rl && (<tr><td>&#128640; Rocket</td><td>{rl.accuracy}%</td><td class="text-muted">{rl.kills} kills</td></tr>)}
-                {lg && (<tr><td>&#9889; Lightning Gun</td><td>{lg.accuracy}%</td><td class="text-muted">{lg.kills} kills</td></tr>)}
-                {sg && (<tr><td>&#128299; Shotgun</td><td>{sg.accuracy}%</td><td class="text-muted">{sg.kills} kills</td></tr>)}
-                {mg && (<tr><td>&#9881; Machine Gun</td><td>{mg.accuracy}%</td><td class="text-muted">{mg.kills} kills</td></tr>)}
-                {pg && (<tr><td>&#128154; Plasma</td><td>{pg.accuracy}%</td><td class="text-muted">{pg.kills} kills</td></tr>)}
-                {gl && (<tr><td>&#128163; Grenade</td><td>{gl.accuracy}%</td><td class="text-muted">{gl.kills} kills</td></tr>)}
+                {rg && (<tr><td>&#127919; Railgun</td><td class="num">{rg.accuracy}%</td><td class="text-muted num">{rg.kills} kills</td></tr>)}
+                {rl && (<tr><td>&#128640; Rocket</td><td class="num">{rl.accuracy}%</td><td class="text-muted num">{rl.kills} kills</td></tr>)}
+                {lg && (<tr><td>&#9889; Lightning Gun</td><td class="num">{lg.accuracy}%</td><td class="text-muted num">{lg.kills} kills</td></tr>)}
+                {sg && (<tr><td>&#128299; Shotgun</td><td class="num">{sg.accuracy}%</td><td class="text-muted num">{sg.kills} kills</td></tr>)}
+                {mg && (<tr><td>&#9881; Machine Gun</td><td class="num">{mg.accuracy}%</td><td class="text-muted num">{mg.kills} kills</td></tr>)}
+                {pg && (<tr><td>&#128154; Plasma</td><td class="num">{pg.accuracy}%</td><td class="text-muted num">{pg.kills} kills</td></tr>)}
+                {gl && (<tr><td>&#128163; Grenade</td><td class="num">{gl.accuracy}%</td><td class="text-muted num">{gl.kills} kills</td></tr>)}
               </table>
             </div>
             );
@@ -1385,20 +1385,20 @@ const schema = {
                 <thead>
                   <tr>
                     <th>Map</th>
-                    <th>Games</th>
-                    <th>Win%</th>
-                    <th>K/D</th>
-                    <th>DPM</th>
+                    <th class="num">Games</th>
+                    <th class="num">Win%</th>
+                    <th class="num">K/D</th>
+                    <th class="num">DPM</th>
                   </tr>
                 </thead>
                 <tbody>
                   {maps.map(m => (
                     <tr>
                       <td>{m.map}</td>
-                      <td>{m.matches}</td>
-                      <td class={m.win_rate >= 50 ? 'stat-good' : 'stat-bad'}>{m.win_rate}%</td>
-                      <td class={m.kd_ratio >= 1 ? 'stat-good' : 'stat-bad'}>{m.kd_ratio.toFixed(2)}</td>
-                      <td>{Math.round(m.dpm)}</td>
+                      <td class="num">{m.matches}</td>
+                      <td class={`num ${m.win_rate >= 50 ? 'stat-good' : 'stat-bad'}`}>{m.win_rate}%</td>
+                      <td class={`num ${m.kd_ratio >= 1 ? 'stat-good' : 'stat-bad'}`}>{m.kd_ratio.toFixed(2)}</td>
+                      <td class="num">{Math.round(m.dpm)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1439,10 +1439,10 @@ const schema = {
             <thead>
               <tr>
                 <th>Map</th>
-                <th>Games</th>
-                <th>Win%</th>
-                <th>Rating</th>
-                <th>Percentile</th>
+                <th class="num">Games</th>
+                <th class="num">Win%</th>
+                <th class="num">Rating</th>
+                <th class="num">Percentile</th>
               </tr>
             </thead>
             <tbody id="hoq-map-tbody"></tbody>
@@ -1588,16 +1588,16 @@ const schema = {
                 <thead>
                   <tr>
                     <th>Map</th>
-                    <th>Rank</th>
-                    <th>Time</th>
+                    <th class="num">Rank</th>
+                    <th class="num">Time</th>
                   </tr>
                 </thead>
                 <tbody>
                   {r.top_maps.map(m => (
                     <tr>
                       <td class="race-map">{m.map}</td>
-                      <td>{m.rank}/{m.total}</td>
-                      <td class="race-time">{fmtRaceTime(m.time)}</td>
+                      <td class="num">{m.rank}/{m.total}</td>
+                      <td class="race-time num">{fmtRaceTime(m.time)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1897,7 +1897,7 @@ const schema = {
         for (const m of ctfMaps) {
           const tr = document.createElement('tr');
           const winClass = m.win_pct > 50 ? 'hoq-win-green' : m.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber';
-          tr.innerHTML = `<td>${m.map_name}</td><td>${m.games}</td><td class="${winClass}">${m.win_pct.toFixed(1)}%</td><td>${m.rating.toFixed(1)}</td><td>${Math.round(m.percentile)}</td>`;
+          tr.innerHTML = `<td>${m.map_name}</td><td class="num">${m.games}</td><td class="num ${winClass}">${m.win_pct.toFixed(1)}%</td><td class="num">${m.rating.toFixed(1)}</td><td class="num">${Math.round(m.percentile)}</td>`;
           tbody.appendChild(tr);
         }
       } catch (err) {
