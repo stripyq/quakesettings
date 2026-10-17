@@ -211,50 +211,50 @@ const tdmTotal = totalGames(tdmMaps);
   </script>
 
   <style>
-    .maps-page { max-width: 1400px; margin: 0 auto; padding: 1rem 1rem 2rem; color: #c9d1d9; }
+    .maps-page { max-width: 1400px; margin: 0 auto; padding: 1rem 1rem 2rem; color: var(--text-primary); }
     .page-header h1 { margin: 0 0 .15rem; font-size: 1.4rem; }
-    .page-header .subtitle { margin: 0 0 .9rem; color: #8b949e; font-size: .85rem; }
+    .page-header .subtitle { margin: 0 0 .9rem; color: var(--text-muted); font-size: .85rem; }
 
-    .m-tabs { display: flex; gap: .25rem; border-bottom: 1px solid #30363d; margin-bottom: .5rem; }
+    .m-tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--border-color); margin-bottom: .5rem; }
     .m-tab {
-      background: transparent; border: 0; color: #8b949e;
+      background: transparent; border: 0; color: var(--text-muted);
       padding: .4rem .75rem; font-size: .85rem; font-weight: 600;
       cursor: pointer; border-bottom: 2px solid transparent;
       transition: color .15s, border-color .15s;
     }
-    .m-tab:hover { color: #c9d1d9; }
-    .m-tab.active { color: #f0f6fc; border-bottom-color: #58a6ff; }
-    .m-tab-count { color: #6e7681; font-weight: 400; font-size: .85em; margin-left: .35rem; }
+    .m-tab:hover { color: var(--text-primary); }
+    .m-tab.active { color: var(--text-primary); border-bottom-color: var(--link-external); }
+    .m-tab-count { color: var(--text-muted); font-weight: 400; font-size: .85em; margin-left: .35rem; }
 
     .m-panel { display: none; }
     .m-panel.active { display: block; }
 
-    .m-table-wrap { overflow-x: auto; border: 1px solid #30363d; border-radius: var(--radius-sm); }
+    .m-table-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-sm); }
     .m-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
-    .m-table thead { background: #161b22; }
+    .m-table thead { background: var(--bg-card); }
     .m-table th {
       text-align: left; padding: .35rem .6rem; font-weight: 600;
-      color: #c9d1d9; border-bottom: 1px solid #30363d;
+      color: var(--text-primary); border-bottom: 1px solid var(--border-color);
       white-space: nowrap; user-select: none;
     }
-    .m-th-sub { color: #6e7681; font-weight: 400; font-size: .85em; margin-left: .25rem; }
-    .m-table th.sort-asc::after { content: ' ▲'; color: #58a6ff; }
-    .m-table th.sort-desc::after { content: ' ▼'; color: #58a6ff; }
-    .m-table td { padding: .3rem .6rem; border-bottom: 1px solid #21262d; vertical-align: middle; }
-    .m-table tbody tr:hover { background: #161b22; }
-    .m-cell-map { font-weight: 600; color: #f0f6fc; }
-    .m-cell-pct { color: #8b949e; }
+    .m-th-sub { color: var(--text-muted); font-weight: 400; font-size: .85em; margin-left: .25rem; }
+    .m-table th.sort-asc::after { content: ' ▲'; color: var(--link-external); }
+    .m-table th.sort-desc::after { content: ' ▼'; color: var(--link-external); }
+    .m-table td { padding: .3rem .6rem; border-bottom: 1px solid var(--bg-card); vertical-align: middle; }
+    .m-table tbody tr:hover { background: var(--bg-card); }
+    .m-cell-map { font-weight: 600; color: var(--text-primary); }
+    .m-cell-pct { color: var(--text-muted); }
     .m-cell-perf { width: 100%; }
 
     .m-perf-inline { display: flex; flex-wrap: wrap; gap: .15rem .6rem; line-height: 1.6; }
     .m-perf-item { white-space: nowrap; }
     .m-perf-item[data-sep="1"]::before { content: "·"; color: #484f58; margin-right: .6rem; }
-    .m-perf-item a { color: #58a6ff; text-decoration: none; font-weight: 500; }
+    .m-perf-item a { color: var(--link-external); text-decoration: none; font-weight: 500; }
     .m-perf-item a:hover { text-decoration: underline; }
-    .m-perf-name { color: #c9d1d9; }
-    .m-perf-wr { color: #f0f6fc; font-weight: 700; margin-left: .25rem; }
-    .m-perf-games { color: #6e7681; font-size: .85em; margin-left: .15rem; }
-    .m-muted { color: #6e7681; font-style: italic; }
+    .m-perf-name { color: var(--text-primary); }
+    .m-perf-wr { color: var(--text-primary); font-weight: 700; margin-left: .25rem; }
+    .m-perf-games { color: var(--text-muted); font-size: .85em; margin-left: .15rem; }
+    .m-muted { color: var(--text-muted); font-style: italic; }
 
     @media (max-width: 700px) {
       .m-table { font-size: .78rem; }
