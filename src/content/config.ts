@@ -219,14 +219,14 @@ const playersCollection = defineCollection({
     invertedMouse: z.boolean().optional().default(false),
 
     // Key Bindings
-    forward: z.string().optional().default('W'),
-    back: z.string().optional().default('S'),
-    left: z.string().optional().default('A'),
-    right: z.string().optional().default('D'),
-    jump: z.string().optional().default('Space'),
-    crouch: z.string().optional().default('Ctrl'),
-    attack: z.string().optional().default('Mouse1'),
-    zoom: z.string().optional().default('Mouse2'),
+    forward: z.string().optional(),
+    back: z.string().optional(),
+    left: z.string().optional(),
+    right: z.string().optional(),
+    jump: z.string().optional(),
+    crouch: z.string().optional(),
+    attack: z.string().optional(),
+    zoom: z.string().optional(),
     weaponNext: z.string().optional(),
     weaponPrev: z.string().optional(),
 

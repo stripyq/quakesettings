@@ -763,14 +763,14 @@ const schema = {
 
         // Section: Key Bindings
         html += sectionHeader('Key Bindings');
-        html += compareRow('Forward', formatBind(p1.forward), formatBind(p2.forward));
-        html += compareRow('Back', formatBind(p1.back), formatBind(p2.back));
-        html += compareRow('Left', formatBind(p1.left), formatBind(p2.left));
-        html += compareRow('Right', formatBind(p1.right), formatBind(p2.right));
-        html += compareRow('Jump', formatBind(p1.jump), formatBind(p2.jump));
-        html += compareRow('Fire', formatBind(p1.attack), formatBind(p2.attack));
-        html += compareRow('Zoom', formatBind(p1.zoom), formatBind(p2.zoom));
-        html += compareRow('Crouch', formatBind(p1.crouch), formatBind(p2.crouch));
+        html += compareRow('Forward', formatBind(p1.forward), formatBind(p2.forward), false, true);
+        html += compareRow('Back', formatBind(p1.back), formatBind(p2.back), false, true);
+        html += compareRow('Left', formatBind(p1.left), formatBind(p2.left), false, true);
+        html += compareRow('Right', formatBind(p1.right), formatBind(p2.right), false, true);
+        html += compareRow('Jump', formatBind(p1.jump), formatBind(p2.jump), false, true);
+        html += compareRow('Fire', formatBind(p1.attack), formatBind(p2.attack), false, true);
+        html += compareRow('Zoom', formatBind(p1.zoom), formatBind(p2.zoom), false, true);
+        html += compareRow('Crouch', formatBind(p1.crouch), formatBind(p2.crouch), false, true);
 
         // Section: Other Hardware
         html += sectionHeader('Other Hardware');
@@ -1913,7 +1913,9 @@ const schema = {
         return `<tr class="section-row"><td colspan="3">${title}</td></tr>`;
       }
 
-      function compareRow(label, val1, val2, isNumeric = false) {
+      const EMPTY_DASH = '<span class="empty-val">—</span>';
+
+      function compareRow(label, val1, val2, isNumeric = false, emptyDash = false) {
         const v1 = val1 !== undefined && val1 !== null ? String(val1) : '';
         const v2 = val2 !== undefined && val2 !== null ? String(val2) : '';
         const isSame = v1 !== '' && v2 !== '' && v1 === v2;
@@ -1935,8 +1937,8 @@ const schema = {
 
         return `<tr class="data-row">
           <td class="label-cell">${label}</td>
-          <td class="value-cell ${highlightClass} ${numClass}">${v1}</td>
-          <td class="value-cell ${highlightClass} ${numClass}">${v2}${diffIndicator2}</td>
+          <td class="value-cell ${highlightClass} ${numClass}">${emptyDash && v1 === '' ? EMPTY_DASH : v1}</td>
+          <td class="value-cell ${highlightClass} ${numClass}">${emptyDash && v2 === '' ? EMPTY_DASH : v2}${diffIndicator2}</td>
         </tr>`;
       }
 

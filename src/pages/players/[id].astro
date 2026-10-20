@@ -956,28 +956,28 @@ const schema = {
       <h2>Key Bindings</h2>
       <div class="keybinds-compact">
         <div class="keybind-row">
-          <span class="keybind-label">Forward</span><kbd>{p.forward}</kbd>
+          <span class="keybind-label">Forward</span>{p.forward ? <kbd>{p.forward}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Back</span><kbd>{p.back}</kbd>
+          <span class="keybind-label">Back</span>{p.back ? <kbd>{p.back}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Left</span><kbd>{p.left}</kbd>
+          <span class="keybind-label">Left</span>{p.left ? <kbd>{p.left}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Right</span><kbd>{p.right}</kbd>
+          <span class="keybind-label">Right</span>{p.right ? <kbd>{p.right}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Jump</span><kbd>{p.jump}</kbd>
+          <span class="keybind-label">Jump</span>{p.jump ? <kbd>{p.jump}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Crouch</span><kbd>{p.crouch}</kbd>
+          <span class="keybind-label">Crouch</span>{p.crouch ? <kbd>{p.crouch}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Attack</span><kbd>{p.attack}</kbd>
+          <span class="keybind-label">Attack</span>{p.attack ? <kbd>{p.attack}</kbd> : <span class="empty-val">—</span>}
         </div>
         <div class="keybind-row">
-          <span class="keybind-label">Zoom</span><kbd>{p.zoom}</kbd>
+          <span class="keybind-label">Zoom</span>{p.zoom ? <kbd>{p.zoom}</kbd> : <span class="empty-val">—</span>}
         </div>
         {p.weaponNext && (
           <div class="keybind-row">
