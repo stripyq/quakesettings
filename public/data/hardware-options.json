@@ -856,11 +856,6 @@
       "brand": "Logitech"
     },
     {
-      "slug": "logitech-g-pro-x-superlight-2",
-      "name": "Lozer G Pro X Superlight 2",
-      "brand": "Logitech"
-    },
-    {
       "slug": "lunafury-luna33",
       "name": "LunaFury LUNA33",
       "brand": "LunaFury"
@@ -1179,6 +1174,11 @@
       "slug": "rawm-leviathan-v4",
       "name": "RAWM Leviathan V4",
       "brand": "RAWM"
+    },
+    {
+      "slug": "razer-abyssus-1800",
+      "name": "Razer Abyssus 1800",
+      "brand": "Razer"
     },
     {
       "slug": "razer-basilisk-v3-pro",
@@ -2237,6 +2237,11 @@
       "slug": "freefall-sv-base-haus-edition-xl",
       "name": "FreeFall SV BASE Haus Edition XL",
       "brand": "FreeFall"
+    },
+    {
+      "slug": "glorious-gmp-2-xxl",
+      "name": "Glorious GMP 2 XXL",
+      "brand": "Glorious"
     },
     {
       "slug": "glorious-ice",
@@ -3700,6 +3705,11 @@
     {
       "slug": "mchose-ace60-pro",
       "name": "MCHOSE Ace60 Pro",
+      "brand": "MCHOSE"
+    },
+    {
+      "slug": "mchose-g87",
+      "name": "MCHOSE G87",
       "brand": "MCHOSE"
     },
     {

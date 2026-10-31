@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-06-04",
+  "generatedAt": "2026-10-31",
   "totalPlayers": 2294,
-  "playersWithProfiles": 146,
+  "playersWithProfiles": 147,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -3418,13 +3418,13 @@
       "slug": "antosh",
       "hasProfile": true,
       "ratings": {
-        "ctf": 22.75,
-        "tdm": 24.31,
+        "ctf": 26.52,
+        "tdm": 25.1,
         "2v2": null
       },
       "gamesPlayed": {
-        "ctf": 258,
-        "tdm": 68,
+        "ctf": 626,
+        "tdm": 80,
         "2v2": null
       }
     },
@@ -15911,8 +15911,8 @@
     {
       "steamId": "76561198120003322",
       "name": "JunkZ",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "junkz",
+      "hasProfile": true,
       "ratings": {
         "ctf": 12.219375610351562,
         "tdm": 23.175457000732422,
@@ -16043,12 +16043,12 @@
       "hasProfile": true,
       "ratings": {
         "ctf": null,
-        "tdm": null,
+        "tdm": 16.13,
         "2v2": null
       },
       "gamesPlayed": {
         "ctf": null,
-        "tdm": null,
+        "tdm": 2,
         "2v2": null
       }
     },
