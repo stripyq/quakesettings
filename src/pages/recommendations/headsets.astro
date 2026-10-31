@@ -48,10 +48,11 @@ function byPrice(a: Headset, b: Headset): number {
 const recommended = allHeadsets.filter(h => h.data.recommendation === 'recommended');
 const alternative = allHeadsets.filter(h => h.data.recommendation === 'alternative');
 const historical = allHeadsets.filter(h => h.data.recommendation === 'historical');
-const current = [...recommended, ...alternative];
 
+// Recommended rows first, then alternatives; each group by price
 function inCategories(categories: string[]): Headset[] {
-  return current.filter(h => h.data.category != null && categories.includes(h.data.category)).sort(byPrice);
+  const pick = (list: Headset[]) => list.filter(h => h.data.category != null && categories.includes(h.data.category)).sort(byPrice);
+  return [...pick(recommended), ...pick(alternative)];
 }
 
 // variant: 'specs' = spec columns + evidence, 'source' = no spec columns, 'archive' = spec columns + legacy marks
