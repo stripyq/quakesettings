@@ -5,7 +5,7 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true
-category: headset
+category: open
 recommendation: historical
 reviews:
   - source: joshuavalour
