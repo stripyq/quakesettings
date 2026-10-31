@@ -48,20 +48,19 @@ function byPrice(a: Headset, b: Headset): number {
 const recommended = allHeadsets.filter(h => h.data.recommendation === 'recommended');
 const alternative = allHeadsets.filter(h => h.data.recommendation === 'alternative');
 
-// Hand-picked, not derived from `recommendation`: cheapest useful, value IEM, open-back default,
-// closed-back, headset with mic, premium comfort
-const quickPickSlugs = [
-  '7hz-salnotes-zero-2',
-  'truthear-hexa',
-  'sennheiser-hd-560s',
-  'beyerdynamic-dt-770-pro-x',
-  'hyperx-cloud-iii',
-  'sennheiser-hd-490-pro',
+// Hand-picked, not derived from `recommendation`; the need label is fixed per slug
+const quickPickNeeds: [string, string][] = [
+  ['7hz-salnotes-zero-2', 'Cheapest useful'],
+  ['truthear-hexa', 'Value IEM'],
+  ['sennheiser-hd-560s', 'Open-back default'],
+  ['beyerdynamic-dt-770-pro-x', 'Closed-back'],
+  ['hyperx-cloud-iii', 'Headset with mic'],
+  ['sennheiser-hd-490-pro', 'Premium comfort'],
 ];
-const quickPicks = quickPickSlugs.map(slug => {
+const quickPicks = quickPickNeeds.map(([slug, need]) => {
   const h = allHeadsets.find(x => x.id === slug);
   if (!h) throw new Error(`Quick pick not found: ${slug}`);
-  return h;
+  return { h, need };
 });
 
 // Recommended rows first, then alternatives; each group by price
@@ -70,24 +69,57 @@ function inCategories(categories: string[]): Headset[] {
   return [...pick(recommended), ...pick(alternative)];
 }
 
-// The sources table also gets a "Nothing new" first row
-const sections = [
-  { title: 'Open-back', id: 'rec-table-open', rows: inCategories(['open', 'semi-open']),
+const productSections = [
+  { id: 'open-back', title: 'Open-back', rows: inCategories(['open', 'semi-open']),
     lead: 'Quiet room only. Wide, comfortable, zero isolation.' },
-  { title: 'Closed-back', id: 'rec-table-closed', rows: inCategories(['closed']),
+  { id: 'closed-back', title: 'Closed-back', rows: inCategories(['closed']),
     lead: 'Isolation without ear-canal insertion; weaker than IEMs, breaks with glasses.' },
-  { title: 'IEMs', id: 'rec-table-iem', rows: inCategories(['iem']),
+  { id: 'iems', title: 'IEMs', rows: inCategories(['iem']),
     lead: 'Sealed, 20-35 dB of isolation, the LAN choice. Fit and tips decide the sound more than the model.' },
-  { title: 'Headsets with microphone', id: 'rec-table-headset', rows: inCategories(['headset']),
+  { id: 'headsets', title: 'Headsets with microphone', rows: inCategories(['headset']),
     lead: 'One-box convenience. Convenience tier, not an acoustic one.' },
-  { title: 'Sources, microphones, accessories', id: 'rec-table-sources', rows: inCategories(['dac-amp', 'mic', 'accessory']),
-    lead: 'Buy only to fix an identified problem: hiss, not enough volume, no mic, LAN noise. Row one: you may need nothing.' },
 ];
 
-const typeLabels: Record<string, string> = {
-  open: 'Open', 'semi-open': 'Open', closed: 'Closed', iem: 'IEM', headset: 'Headset',
-  'dac-amp': 'Source', mic: 'Source', accessory: 'Source',
-};
+const sourceRows = inCategories(['dac-amp', 'mic', 'accessory']);
+
+// Form, back, connection, mic, in that order; only what the YAML states
+function configChips(h: Headset): string[] {
+  const d = h.data;
+  const norm = (v: unknown) => (typeof v === 'string' ? v.trim().toLowerCase() : '');
+  const formFactor = norm(d.formFactor);
+  const type = norm(d.type);
+  const backStyle = norm(d.backStyle);
+  const connection = norm(d.connection);
+  const chips: string[] = [];
+
+  let form = '';
+  if (formFactor === 'iem') form = 'IEM';
+  else if (formFactor === 'over-ear') form = 'Over-ear';
+  else if (formFactor === 'on-ear') form = 'On-ear';
+  else if (formFactor.includes('clip')) form = 'Clip-on';
+  else if (!formFactor) {
+    if (type === 'in-ear') form = 'IEM';
+    else if (type === 'open-back' || type === 'closed-back' || backStyle) form = 'Over-ear';
+  }
+  if (form) chips.push(form);
+
+  const backLabels: Record<string, string> = {
+    open: 'Open', 'semi-open': 'Semi-open', closed: 'Closed',
+    'open-back': 'Open', 'closed-back': 'Closed',
+  };
+  const back = backStyle ? backLabels[backStyle] : backLabels[type];
+  if (back && form !== 'IEM') chips.push(back);
+
+  if (connection.includes('wired') && connection.includes('wireless')) chips.push('Wired + wireless');
+  else if (['wireless', 'bluetooth', '2.4'].some(k => connection.includes(k))) chips.push('Wireless');
+  else if (connection === 'wired') chips.push('Wired');
+
+  const mic: unknown = d.microphone;
+  if (typeof mic === 'boolean') chips.push(mic ? 'Mic' : 'No mic');
+  else if (typeof mic === 'string' && mic.trim()) chips.push(/^(no|none|false)$/i.test(mic.trim()) ? 'No mic' : 'Mic');
+
+  return chips;
+}
 
 // Measurement sources only; the 2025 reviewer marks and 'historical' verdicts are not shown
 const sourceLabels: Record<string, string> = {
@@ -117,12 +149,6 @@ function modelTitle(h: Headset): string | undefined {
   const parts = [h.data.whyBuy && `Why buy: ${h.data.whyBuy}`, h.data.whyNot && `Why not: ${h.data.whyNot}`].filter(Boolean);
   return parts.length ? parts.join('\n') : undefined;
 }
-
-const priceBands = [
-  ['20-150 EUR', 'Accurate tuning, matched channels, a good fit: everything that affects hearing the enemy', 'KSC75, Zero:2, Hexa, HD 560S'],
-  ['150-350 EUR', 'Comfort, build, tuning variants, a reference sound without EQ', 'DT 900 Pro X, HD 490 Pro, CrinEar Reference'],
-  ['350+ EUR', 'Materials, music, preference, not better positioning', 'Flagships'],
-];
 
 const priorities = [
   ['Localisation and cue recognition', 'Critical'],
@@ -159,38 +185,54 @@ const schema = {
     <p>Recommendations for Quake Live and arena shooters, updated October 2026</p>
   </div>
 
-  <section id="intro" class="guide">
-    <p>The game engine computes direction and distance, and the headphone only has to deliver that signal cleanly, so do not stack a spatialiser on top. What matters is neutral tuning, matched left and right channels and a good fit, not driver type or "7.1". Use open-backs in a quiet room and sealed IEMs anywhere noisy, and keep in mind that nothing on this page is proven to raise rank.</p>
-  </section>
+  <p class="intro">The game engine computes direction and distance, and the headphone only has to deliver that signal cleanly, so do not stack a spatialiser on top. What matters is neutral tuning, matched left and right channels and a good fit, not driver type or "7.1". Use open-backs in a quiet room and sealed IEMs anywhere noisy, and keep in mind that nothing on this page is proven to raise rank.</p>
+
+  <nav class="page-nav" aria-label="On this page">
+    <a href="#quick-picks">Quick picks</a>
+    <a href="#price-bands">Price bands</a>
+    <a href="#open-back">Open-back</a>
+    <a href="#closed-back">Closed-back</a>
+    <a href="#iems">IEMs</a>
+    <a href="#headsets">Headsets</a>
+    <a href="#sources">Sources</a>
+    <a href="#quake-setup">Quake Live setup</a>
+  </nav>
 
   <section id="quick-picks">
     <h2 class="section-title">Quick picks</h2>
     <div class="table-container">
-      <table class="rec-table quick-picks" id="rec-table-quick">
+      <table class="rec-table quick-picks">
         <thead>
           <tr>
             <th>Need</th>
             <th>Pick</th>
             <th class="num">~EUR</th>
+            <th>Configuration</th>
             <th>Why</th>
             <th>Why not</th>
           </tr>
         </thead>
         <tbody>
-          {quickPicks.map(h => {
+          {quickPicks.map(({ h, need }) => {
             const d = h.data;
+            const chips = configChips(h);
             return (
               <tr>
-                <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
-                <td class="headset-name">
+                <td class="notes" data-label="Need">{need}</td>
+                <td class="headset-name" data-label="Pick">
                   {d.name}
                   {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
                 </td>
                 {d.priceEur != null
-                  ? <td class="price num" title={priceTitle(h)}>{d.priceEur}</td>
-                  : <td class="price num"><span class="empty-val">—</span></td>}
-                <td class="notes">{d.whyBuy || <span class="empty-val">—</span>}</td>
-                <td class="notes">{d.whyNot || <span class="empty-val">—</span>}</td>
+                  ? <td class="price num" data-label="~EUR" title={priceTitle(h)}>{d.priceEur}</td>
+                  : <td class="price num" data-label="~EUR"><span class="empty-val">—</span></td>}
+                <td data-label="Configuration">
+                  {chips.length > 0
+                    ? <div class="config-chips">{chips.map(c => <span class="chip">{c}</span>)}</div>
+                    : <span class="empty-val">—</span>}
+                </td>
+                <td class="notes" data-label="Why">{d.whyBuy || <span class="empty-val">—</span>}</td>
+                <td class="notes" data-label="Why not">{d.whyNot || <span class="empty-val">—</span>}</td>
               </tr>
             );
           })}
@@ -199,76 +241,79 @@ const schema = {
     </div>
   </section>
 
-  <section id="paying-for" class="guide">
+  <section id="price-bands">
     <h2 class="section-title">What are you paying for</h2>
-    <div class="table-container">
-      <table class="rec-table price-bands">
-        <thead>
-          <tr>
-            <th>Price band</th>
-            <th>What the money buys</th>
-            <th>Examples</th>
-          </tr>
-        </thead>
-        <tbody>
-          {priceBands.map(([band, buys, examples]) => (
-            <tr><td class="headset-name">{band}</td><td class="notes">{buys}</td><td class="notes">{examples}</td></tr>
-          ))}
-        </tbody>
-      </table>
+    <div class="callout">
+      <p class="callout-head">Does 1,000 EUR buy 4x better positioning than 250 EUR? No evidence says so.</p>
+      <div class="bands">
+        <div class="band band-primary">
+          <div class="band-price">20-150 EUR</div>
+          <div class="band-title">Best value</div>
+          <div class="band-text">Accurate tuning, matched channels, a good fit: the things that decide whether you hear the enemy.</div>
+          <div class="band-ex">KSC75 · Zero:2 · Hexa · HD 560S</div>
+        </div>
+        <div class="band">
+          <div class="band-price">150-350 EUR</div>
+          <div class="band-title">More choice</div>
+          <div class="band-text">Comfort, build, tuning variants, a reference sound without EQ.</div>
+          <div class="band-ex">DT 900 Pro X · HD 490 Pro · CrinEar Reference</div>
+        </div>
+        <div class="band">
+          <div class="band-price">350+ EUR</div>
+          <div class="band-title">Preference</div>
+          <div class="band-text">Materials, music, personal taste. No demonstrated competitive gain.</div>
+          <div class="band-ex">Flagships</div>
+        </div>
+      </div>
+      <p class="callout-foot">Price cannot fix the wrong type: a well-sealed 50 EUR IEM is usually more useful than a 500 EUR open-back in a noisy room.</p>
+      <p class="callout-note">Indicative price bands, not measured thresholds.</p>
     </div>
-    <p>Price cannot fix the wrong type: a sealed 50 EUR IEM beats a 500 EUR open-back in a noisy room.</p>
   </section>
 
-  {sections.map(section => (
-    <section id={section.id.replace('rec-table-', 'products-')}>
+  {productSections.map(section => (
+    <section id={section.id}>
       <h2 class="section-title">{section.title}</h2>
       <p class="lead">{section.lead}</p>
       <div class="table-container">
-        <table class="rec-table products" id={section.id}>
+        <table class="rec-table products">
           <thead>
             <tr>
               <th>Model</th>
               <th class="num">~EUR</th>
-              <th>Type</th>
+              <th>Configuration</th>
               <th>Use case</th>
               <th>Evidence</th>
-              <th class="num">Players</th>
+              <th>Players</th>
             </tr>
           </thead>
           <tbody>
-            {section.id === 'rec-table-sources' && (
-              <tr>
-                <td class="headset-name">Nothing new</td>
-                <td class="price num">0</td>
-                <td class="notes"><span class="empty-val">—</span></td>
-                <td class="notes">no hiss, enough volume, a working mic, a quiet room</td>
-                <td class="evidence"><span class="empty-val">—</span></td>
-                <td class="players num"><span class="empty-val">—</span></td>
-              </tr>
-            )}
             {section.rows.map(h => {
               const d = h.data;
               const rowPlayers = getPlayersForHeadset(h.id);
               const badges = evidenceFor(h);
+              const chips = configChips(h);
               return (
                 <tr>
-                  <td class="headset-name" title={modelTitle(h)}>
+                  <td class="headset-name" data-label="Model" title={modelTitle(h)}>
                     {d.name}
                     {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
                   </td>
                   {d.priceEur != null
-                    ? <td class="price num" title={priceTitle(h)}>{d.priceEur}</td>
-                    : <td class="price num"><span class="empty-val">—</span></td>}
-                  <td class="notes">{typeLabels[d.category ?? ''] || <span class="empty-val">—</span>}</td>
-                  <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
-                  <td class="evidence">
+                    ? <td class="price num" data-label="~EUR" title={priceTitle(h)}>{d.priceEur}</td>
+                    : <td class="price num" data-label="~EUR"><span class="empty-val">—</span></td>}
+                  <td data-label="Configuration">
+                    {chips.length > 0
+                      ? <div class="config-chips">{chips.map(c => <span class="chip">{c}</span>)}</div>
+                      : <span class="empty-val">—</span>}
+                  </td>
+                  <td class="notes" data-label="Use case">{d.useCase || <span class="empty-val">—</span>}</td>
+                  <td class="evidence" data-label="Evidence">
                     {badges.length > 0 ? badges.map(r => r.url
                       ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{badgeText(r)}</a>
                       : <span class="badge" title={reviewTitle(r)}>{badgeText(r)}</span>
                     ) : <span class="empty-val">—</span>}
                   </td>
-                  <td class="players num">
+                  <td class="players" data-label="Players">
                     {rowPlayers.length > 0 ? (
                       <div class="usage-wrapper">
                         <span class="usage-count">{rowPlayers.length}</span>
@@ -289,11 +334,58 @@ const schema = {
     </section>
   ))}
 
-  <section id="principles" class="guide">
-    <h2 class="section-title">Principles</h2>
-    <p>Spatial accuracy depends on several things at once: how the game renders sound, the frequency and phase response of the headphone at your ear, how closely the two channels match, the fit, and your own hearing. Open-backs often sound more spacious. Sealed IEMs isolate better. Neither guarantees better positioning.</p>
+  <section id="sources">
+    <h2 class="section-title">Sources, microphones, accessories</h2>
+    <p class="lead">Buy only to fix an identified problem: hiss, not enough volume, no mic, LAN noise. Row one: you may need nothing.</p>
     <div class="table-container">
-      <table class="rec-table">
+      <table class="rec-table sources">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th class="num">~EUR</th>
+            <th>Purpose</th>
+            <th>Evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="headset-name" data-label="Product">Nothing new</td>
+            <td class="price num" data-label="~EUR">0</td>
+            <td class="notes" data-label="Purpose">no hiss, enough volume, a working mic, a quiet room</td>
+            <td class="evidence" data-label="Evidence"><span class="empty-val">—</span></td>
+          </tr>
+          {sourceRows.map(h => {
+            const d = h.data;
+            const badges = evidenceFor(h);
+            return (
+              <tr>
+                <td class="headset-name" data-label="Product" title={modelTitle(h)}>
+                  {d.name}
+                  {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
+                </td>
+                {d.priceEur != null
+                  ? <td class="price num" data-label="~EUR" title={priceTitle(h)}>{d.priceEur}</td>
+                  : <td class="price num" data-label="~EUR"><span class="empty-val">—</span></td>}
+                <td class="notes" data-label="Purpose">{d.useCase || <span class="empty-val">—</span>}</td>
+                <td class="evidence" data-label="Evidence">
+                  {badges.length > 0 ? badges.map(r => r.url
+                    ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{badgeText(r)}</a>
+                    : <span class="badge" title={reviewTitle(r)}>{badgeText(r)}</span>
+                  ) : <span class="empty-val">—</span>}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="principles">
+    <h2 class="section-title">Principles</h2>
+    <p class="body-text">Spatial accuracy depends on several things at once: how the game renders sound, the frequency and phase response of the headphone at your ear, how closely the two channels match, the fit, and your own hearing. Open-backs often sound more spacious. Sealed IEMs isolate better. Neither guarantees better positioning.</p>
+    <div class="table-container">
+      <table class="rec-table pairs">
         <thead>
           <tr>
             <th>Factor</th>
@@ -302,17 +394,17 @@ const schema = {
         </thead>
         <tbody>
           {priorities.map(([factor, priority]) => (
-            <tr><td class="headset-name">{factor}</td><td class="notes">{priority}</td></tr>
+            <tr><td class="headset-name" data-label="Factor">{factor}</td><td class="notes" data-label="Priority">{priority}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="common-mistakes">
+  <section id="mistakes">
     <h2 class="section-title">Common mistakes</h2>
     <div class="table-container">
-      <table class="rec-table">
+      <table class="rec-table pairs">
         <thead>
           <tr>
             <th>Mistake</th>
@@ -321,23 +413,23 @@ const schema = {
         </thead>
         <tbody>
           {mistakes.map(([mistake, better]) => (
-            <tr><td class="headset-name">{mistake}</td><td class="notes">{better}</td></tr>
+            <tr><td class="headset-name" data-label="Mistake">{mistake}</td><td class="notes" data-label="Better">{better}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="audio-setup" class="guide">
+  <section id="quake-setup">
     <h2 class="section-title">Audio setup for Quake Live</h2>
-    <ul>
+    <ul class="body-list">
       <li>Output plain stereo. No virtual surround and no stacked spatialisers; an external one is an optional experiment, never two at once.</li>
       <li>Keep the volume moderate. Do not compensate for poor isolation with loudness.</li>
       <li>Learn the map's movement, item and weapon sounds. They matter more than gear.</li>
       <li>Use EQ only for an identified tonal problem, starting from a measured preset for your model (Equalizer APO with Peace, <a href="https://www.reddit.com/r/oratory1990/wiki/index/list_of_presets" target="_blank" rel="noopener">oratory1990 preset list</a>). Cut mid-bass by 2-4 dB if explosions mask steps; no narrow treble boosts.</li>
       <li>Upgrade a DAC or amp only for hiss, volume or connectivity.</li>
     </ul>
-    <p>Quake Champions: stereo baseline, its HRTF toggle was removed in 2024. CS2 and Valorant: native HRTF, leave it on and add nothing.</p>
+    <p class="body-text">Quake Champions: stereo baseline, its HRTF toggle was removed in 2024. CS2 and Valorant: native HRTF, leave it on and add nothing.</p>
   </section>
 
   <div class="back-link">
@@ -346,23 +438,51 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .guide p,
-  .guide li {
+  /* Sticky site nav: 71px from about 920px up (it wraps to two rows below that), 131px on phones; plus 1rem */
+  section[id] {
+    scroll-margin-top: 148px;
+  }
+
+  @media (min-width: 920px) {
+    section[id] {
+      scroll-margin-top: 88px;
+    }
+  }
+
+  .intro,
+  .body-text,
+  .body-list li {
     color: var(--text-secondary, #888);
     line-height: 1.6;
   }
 
-  .guide p {
+  .body-text {
     margin-bottom: 0.75rem;
   }
 
-  .guide ul {
+  .body-list {
     margin: 0.5rem 0 1rem 1.5rem;
+  }
+
+  .page-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .page-nav a {
+    color: var(--text-secondary);
+  }
+
+  .page-nav a:hover {
+    color: var(--accent-primary);
   }
 
   .lead {
     margin-bottom: 0.75rem;
-    color: var(--text-secondary, #888);
+    color: var(--text-muted, #9090a0);
   }
 
   .section-title {
@@ -375,7 +495,6 @@ const schema = {
   }
 
   .table-container {
-    overflow-x: auto;
     margin-bottom: 1rem;
   }
 
@@ -401,25 +520,30 @@ const schema = {
     background: var(--bg-secondary, #12121a);
   }
 
-  /* Model, ~EUR, Type, Use case, Evidence, Players */
-  .products th:nth-child(1) { width: 30%; }
-  .products th:nth-child(2) { width: 8%; }
-  .products th:nth-child(3) { width: 8%; }
-  .products th:nth-child(4) { width: 26%; }
-  .products th:nth-child(5) { width: 16%; }
+  /* Need, Pick, ~EUR, Configuration, Why, Why not */
+  .quick-picks th:nth-child(1) { width: 14%; }
+  .quick-picks th:nth-child(2) { width: 20%; }
+  .quick-picks th:nth-child(3) { width: 7%; }
+  .quick-picks th:nth-child(4) { width: 22%; }
+  .quick-picks th:nth-child(5) { width: 20%; }
+  .quick-picks th:nth-child(6) { width: 17%; }
+
+  /* Model, ~EUR, Configuration, Use case, Evidence, Players */
+  .products th:nth-child(1) { width: 24%; }
+  .products th:nth-child(2) { width: 7%; }
+  .products th:nth-child(3) { width: 24%; }
+  .products th:nth-child(4) { width: 21%; }
+  .products th:nth-child(5) { width: 12%; }
   .products th:nth-child(6) { width: 12%; }
 
-  /* Need, Pick, ~EUR, Why, Why not */
-  .quick-picks th:nth-child(1) { width: 18%; }
-  .quick-picks th:nth-child(2) { width: 22%; }
-  .quick-picks th:nth-child(3) { width: 8%; }
-  .quick-picks th:nth-child(4) { width: 26%; }
-  .quick-picks th:nth-child(5) { width: 26%; }
+  /* Product, ~EUR, Purpose, Evidence */
+  .sources th:nth-child(1) { width: 30%; }
+  .sources th:nth-child(2) { width: 10%; }
+  .sources th:nth-child(3) { width: 45%; }
+  .sources th:nth-child(4) { width: 15%; }
 
-  /* Price band, What the money buys, Examples */
-  .price-bands th:nth-child(1) { width: 18%; }
-  .price-bands th:nth-child(2) { width: 52%; }
-  .price-bands th:nth-child(3) { width: 30%; }
+  .pairs th:nth-child(1) { width: 40%; }
+  .pairs th:nth-child(2) { width: 60%; }
 
   .quick-picks td {
     vertical-align: top;
@@ -435,8 +559,85 @@ const schema = {
     color: var(--text-secondary, #888);
   }
 
+  .config-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+  }
+
+  .chip {
+    display: inline-block;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .callout {
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-primary);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .callout-head {
+    font-weight: 600;
+    margin: 0 0 0.9rem;
+  }
+
+  .bands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .band-price {
+    font-weight: 600;
+  }
+
+  .band-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .band-primary .band-title {
+    color: var(--accent-primary);
+  }
+
+  .band-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .band-ex {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  .callout-foot {
+    margin: 1rem 0 0;
+  }
+
+  .callout-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0;
+  }
+
   .players {
     font-weight: 600;
+  }
+
+  .products th:last-child,
+  .products td:last-child {
+    text-align: right;
+    padding-right: 24px;
   }
 
   .usage-wrapper {
@@ -445,7 +646,10 @@ const schema = {
     cursor: pointer;
   }
 
+  /* global.css gives .usage-count a top border and padding meant for the hardware cards */
   .usage-count {
+    padding-top: 0;
+    border-top: none;
     color: var(--accent-primary, #ff6b35);
     text-decoration: underline;
     text-decoration-style: dotted;
@@ -460,7 +664,6 @@ const schema = {
     display: none;
     position: absolute;
     top: 100%;
-    /* Right-aligned: the container scrolls, so a centred dropdown in the last column would be clipped */
     right: 0;
     background: var(--bg-primary, #0a0a0f);
     border: 1px solid var(--border-color, #2a2a3a);
@@ -471,7 +674,23 @@ const schema = {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
-  .usage-wrapper:hover .player-dropdown {
+  /* The cell is the positioned ancestor, so the dropdown sits under the cell's right edge.
+     Hovering the cell (not just the count) keeps it open while the pointer moves down to it. */
+  .products td.players {
+    position: relative;
+  }
+
+  .products .usage-wrapper {
+    position: static;
+  }
+
+  .products .player-dropdown {
+    position: absolute;
+    right: 24px;
+  }
+
+  .usage-wrapper:hover .player-dropdown,
+  .products td.players:hover .player-dropdown {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -531,16 +750,82 @@ const schema = {
     color: var(--text-secondary, #888);
   }
 
+  /* Stacked rows: one labelled field per line, no horizontal scrolling */
   @media (max-width: 768px) {
-    /* Keep the column proportions readable; the container scrolls instead */
-    .products,
-    .quick-picks {
-      min-width: 40rem;
+    .bands {
+      grid-template-columns: 1fr;
+    }
+
+    /* global.css turns .table-container into a grid with a right-edge fade for scrolling tables */
+    .table-container {
+      display: block;
+    }
+
+    .table-container::after {
+      content: none;
+    }
+
+    .rec-table,
+    .rec-table tbody,
+    .rec-table tr,
+    .rec-table td {
+      display: block;
+      width: 100%;
+    }
+
+    /* Visually hidden, still read by screen readers */
+    .rec-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .rec-table tr {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color, #2a2a3a);
+    }
+
+    .rec-table td,
+    .products td:last-child {
+      padding: 0.15rem 0;
+      border-bottom: none;
+      text-align: left;
+    }
+
+    /* global.css right-aligns td.num with !important */
+    .rec-table td.num {
+      text-align: left !important;
+    }
+
+    .rec-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted, #9090a0);
+    }
+
+    .rec-table .headset-name {
+      font-weight: 600;
     }
 
     /* No hover on phones: list the players under the count instead of in a dropdown */
-    .player-dropdown,
-    .usage-wrapper:hover .player-dropdown {
+    .products td.players {
+      position: static;
+    }
+
+    .products .player-dropdown,
+    .products .usage-wrapper:hover .player-dropdown,
+    .products td.players:hover .player-dropdown {
       display: flex;
       flex-direction: column;
       gap: 0.1rem;
