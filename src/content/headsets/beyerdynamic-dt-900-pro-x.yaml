@@ -5,3 +5,19 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: false
+category: open
+recommendation: recommended
+useCase: "quiet room, sturdier build"
+whyBuy: "Replaceable parts, easy to drive at 48 Ohm, tamer treble than the DT 990."
+whyNot: "Treble still a touch forward; heavier than the HD 560S."
+priceEur: 220
+priceChecked: "2026-10-31"
+reviews:
+  - source: joshuavalour
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/beyerdynamic/dt-900-pro-x"
+    context: measurement

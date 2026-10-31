@@ -1,0 +1,18 @@
+name: "FiiO KA11"
+brand: "FiiO"
+type: "N/A"
+connection: "DAC/AMP"
+microphone: false
+category: dac-amp
+recommendation: alternative
+useCase: "more power than Apple dongle"
+whyBuy: "Small USB-C dongle with more output power than the Apple adapter."
+whyNot: "Costs four times the Apple adapter, and the extra power matters little for IEMs."
+priceEur: 39
+priceChecked: "2026-10-31"
+reviews:
+  - source: asr
+    verdict: recommended
+    date: "2026-01-12"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/fiio-ka11-portable-dac-amp-review.68800/"
+    context: measurement

@@ -1,6 +1,8 @@
 name: "7Hz Sonus"
 brand: "7Hz"
 type: "In-Ear"
+formFactor: "IEM"
 driverSize: "11.3mm DD + BA"
 impedance: "30Ω"
 connection: "Wired"
+category: iem

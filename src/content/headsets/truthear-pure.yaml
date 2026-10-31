@@ -1,0 +1,16 @@
+name: "Truthear Pure"
+brand: "Truthear"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "1DD + 3BA"
+impedance: "20 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: recommended
+useCase: "noisy room / LAN"
+whyBuy: "Hybrid 1DD + 3BA with a neutral tuning and good isolation."
+whyNot: "Costs more than the Hexa; which of the two suits you comes down to bass preference and fit."
+priceEur: 104
+priceChecked: "2026-10-31"

@@ -5,3 +5,10 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true
+category: open
+recommendation: historical
+reviews:
+  - source: joshuavalour
+    verdict: historical
+    date: "2025"
+    context: general

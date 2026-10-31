@@ -6,3 +6,4 @@ frequencyResponse: "10Hz - 20kHz"
 impedance: "63 Ohm"
 connection: "Wired"
 microphone: false
+category: closed

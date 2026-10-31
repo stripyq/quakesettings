@@ -5,3 +5,15 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true
+category: open
+recommendation: alternative
+useCase: "quiet room, open-back with mic"
+whyBuy: "HD 5xx-family open-back with a usable boom mic in one unit."
+whyNot: "EU availability is patchy (Drop); HD 560S + HD 500 BAM is the easier buy."
+priceEur: 180
+priceChecked: "2026-10-31"
+reviews:
+  - source: badseed
+    verdict: historical
+    date: "2025"
+    context: general

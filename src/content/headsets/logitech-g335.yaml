@@ -6,3 +6,4 @@ frequencyResponse: "20-20,000 Hz"
 impedance: "36 Ω"
 connection: "Wired"
 microphone: "Flip-to-mute"
+category: open

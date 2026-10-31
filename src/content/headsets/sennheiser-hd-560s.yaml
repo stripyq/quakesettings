@@ -8,3 +8,24 @@ frequencyResponse: "6Hz - 38kHz"
 impedance: "120 Ohm"
 connection: "Wired"
 microphone: false
+category: open
+recommendation: recommended
+useCase: "quiet room, default pick"
+whyBuy: "Closest to neutral at the price, light, matched channels; the benchmark."
+whyNot: "No isolation, leaks sound; no mic (add HD 500 BAM)."
+priceEur: 139
+priceChecked: "2026-10-31"
+reviews:
+  - source: asr
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sennheiser/hd-560s"
+    context: measurement
+  - source: asr
+    verdict: recommended
+    date: "2022-01-04"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/sennheiser-hd560s-review-headphone.29603/"
+    context: measurement

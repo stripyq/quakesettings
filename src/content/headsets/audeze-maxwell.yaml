@@ -5,3 +5,18 @@ type: "Closed"
 formFactor: "Over-ear"
 backStyle: "Closed"
 microphone: true
+category: headset
+recommendation: historical
+reviews:
+  - source: gadgetrytech
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: badseed
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: joshuavalour
+    verdict: historical
+    date: "2025"
+    context: general

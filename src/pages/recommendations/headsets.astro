@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudioValueCurve from '../../components/AudioValueCurve.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -8,13 +9,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
 
-// Create headset usage map and player list map
-const headsetUsageMap = new Map<string, number>();
+// Create headset player list map
 const headsetPlayersMap = new Map<string, typeof players>();
 players.forEach(p => {
   const headsetId = p.data.headset;
   if (headsetId) {
-    headsetUsageMap.set(headsetId, (headsetUsageMap.get(headsetId) || 0) + 1);
     if (!headsetPlayersMap.has(headsetId)) {
       headsetPlayersMap.set(headsetId, []);
     }
@@ -22,101 +21,85 @@ players.forEach(p => {
   }
 });
 
-// Map recommendation names to hardware slugs
-const headsetSlugMap: Record<string, string[]> = {
-  "Audeze Maxwell": ["audeze-maxwell"],
-  "SteelSeries Arctis Nova Pro Wireless": ["steelseries-arctis-nova-pro-wireless"],
-  "SteelSeries Arctis Nova Elite": ["steelseries-arctis-nova-elite"],
-  "Asus ROG Delta 2 Wireless": ["asus-rog-delta-2-wireless"],
-  "Alienware Pro Wireless": ["alienware-pro-wireless"],
-  "Sony Inzone H5": ["sony-inzone-h5"],
-  "SteelSeries Arctis Nova 3X": ["steelseries-arctis-nova-3x"],
-  "Razer BlackShark V3X": ["razer-blackshark-v3x"],
-  "Logitech G435": ["logitech-g435"],
-  "Drop EPOS PC38X": ["drop-epos-pc38x"],
-  "Beyerdynamic DT 900 Pro X": ["beyerdynamic-dt-900-pro-x"],
-  "Turtle Beach Atlas Air": ["turtle-beach-atlas-air"],
-  "Astro A50X": ["astro-a50x"],
-  "Fosi K7": ["fosi-k7"],
-  "Sennheiser HD560S": ["sennheiser-hd-560s", "sennheiser-hd560s"],
-  "Audio-Technica AD700X": ["audio-technica-ad700x"],
-  "Hifiman HE400se": ["hifiman-he400se"],
-  "AKG K702": ["akg-k702"],
-  "Beyerdynamic DT880": ["beyerdynamic-dt880"],
-  "Sennheiser HD599": ["sennheiser-hd-599", "sennheiser-hd599", "sennheiser-hd598"],
-  "Audio-Technica R70x": ["audio-technica-r70x"],
+// Player YAML may reference these older slugs instead of the collection id
+const aliases: Record<string, string[]> = {
+  'sennheiser-hd-560s': ['sennheiser-hd560s'],
+  'sennheiser-hd-599': ['sennheiser-hd599', 'sennheiser-hd598'],
 };
 
-function getPlayerCount(name: string): number {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return 0;
-  let total = 0;
-  slugs.forEach(slug => {
-    total += headsetUsageMap.get(slug) || 0;
-  });
-  return total;
+function getPlayersForHeadset(id: string): typeof players {
+  return [id, ...(aliases[id] ?? [])].flatMap(slug => headsetPlayersMap.get(slug) ?? []);
 }
-
-function getPlayersForHeadset(name: string): typeof players {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return [];
-  const result: typeof players = [];
-  slugs.forEach(slug => {
-    const playersForSlug = headsetPlayersMap.get(slug);
-    if (playersForSlug) {
-      result.push(...playersForSlug);
-    }
-  });
-  return result;
-}
-
-const wirelessGaming = [
-  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, asr: false, mle: false },
-  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, asr: false, mle: false },
-  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-];
-
-const budgetOptions = [
-  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
-];
-
-const audiophile = [
-  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, asr: false, mle: false },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, asr: false, mle: false },
-  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, asr: false, mle: false },
-  { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "AKG K702", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
-  { name: "Beyerdynamic DT880", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
-  { name: "Sennheiser HD599", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "Hifiman HE400se", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "Audio-Technica R70x", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-];
-
-const dacAmp = [
-  { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Recommended for DT880, DT900 Pro X, and other high-impedance headphones that benefit from amplification" },
-];
-
-const specialty = [
-  { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
-];
 
 const allHeadsets = await getCollection('headsets');
-const hsBySlug = new Map(allHeadsets.map(h => [h.id, h.data]));
+type Headset = (typeof allHeadsets)[number];
+type Review = NonNullable<Headset['data']['reviews']>[number];
 
-function getHsData(name: string) {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return null;
-  for (const s of slugs) {
-    const d = hsBySlug.get(s);
-    if (d) return d;
+// priceEur ascending, missing prices last
+function byPrice(a: Headset, b: Headset): number {
+  const pa = a.data.priceEur;
+  const pb = b.data.priceEur;
+  if (pa == null || pb == null) {
+    if (pa == null && pb == null) return a.data.name.localeCompare(b.data.name);
+    return pa == null ? 1 : -1;
   }
-  return null;
+  return pa - pb || a.data.name.localeCompare(b.data.name);
+}
+
+const recommended = allHeadsets.filter(h => h.data.recommendation === 'recommended');
+const alternative = allHeadsets.filter(h => h.data.recommendation === 'alternative');
+const historical = allHeadsets.filter(h => h.data.recommendation === 'historical');
+
+// Quick picks: every recommended product, by category (schema order) then price
+const categoryOrder = ['iem', 'open', 'semi-open', 'closed', 'headset', 'dac-amp', 'mic', 'accessory'];
+const quickPicks = [...recommended].sort((a, b) =>
+  categoryOrder.indexOf(a.data.category ?? '') - categoryOrder.indexOf(b.data.category ?? '') || byPrice(a, b));
+
+// Recommended rows first, then alternatives; each group by price
+function inCategories(categories: string[]): Headset[] {
+  const pick = (list: Headset[]) => list.filter(h => h.data.category != null && categories.includes(h.data.category)).sort(byPrice);
+  return [...pick(recommended), ...pick(alternative)];
+}
+
+// variant: 'specs' = spec columns + evidence, 'source' = no spec columns and a "nothing" first row
+const sections = [
+  { title: 'IEMs', id: 'rec-table-iem', variant: 'specs', rows: inCategories(['iem']),
+    lead: 'Sealed, 20-35 dB of isolation, the LAN choice. Fit and tips decide the sound more than the model.' },
+  { title: 'Open-back', id: 'rec-table-open', variant: 'specs', rows: inCategories(['open', 'semi-open']),
+    lead: 'Quiet room only. Wide, comfortable, zero isolation.' },
+  { title: 'Closed-back', id: 'rec-table-closed', variant: 'specs', rows: inCategories(['closed']),
+    lead: 'Isolation without ear-canal insertion; weaker than IEMs, breaks with glasses.' },
+  { title: 'Headsets with microphone', id: 'rec-table-headset', variant: 'specs', rows: inCategories(['headset']),
+    lead: 'One-box convenience. Convenience tier, not an acoustic one.' },
+  { title: 'Sources, microphones, accessories', id: 'rec-table-sources', variant: 'source', rows: inCategories(['dac-amp', 'mic', 'accessory']),
+    lead: 'Buy only to fix an identified problem: hiss, not enough volume, no mic, LAN noise. Row one: you may need nothing.' },
+];
+
+const archiveRows = [...historical].sort(byPrice);
+
+const measurementSources = new Set(['rtings', 'asr', 'crinacle', 'oratory1990', 'gadgetrytech', 'soundguys', 'headphones_com']);
+const sourceLabels: Record<string, string> = {
+  rtings: 'RTINGS', asr: 'ASR', crinacle: 'Crin', oratory1990: 'o1990', gadgetrytech: 'GT',
+  soundguys: 'SG', headphones_com: 'HP.com', badseed: 'BS', joshuavalour: 'JV', mle: 'MLE',
+};
+
+// Current tables show measurement sources only; the 2025 'historical' marks stay in the archive table
+function evidenceFor(h: Headset): Review[] {
+  return (h.data.reviews ?? []).filter(r => measurementSources.has(r.source) && r.verdict !== 'historical');
+}
+
+function reviewTitle(r: Review): string {
+  return [r.verdict.replace('_', ' '), r.date, r.note].filter(Boolean).join(' · ');
+}
+
+function priceTitle(h: Headset): string {
+  return h.data.priceChecked ? `approximate, checked ${h.data.priceChecked}` : 'approximate';
+}
+
+// Quick picks show whyBuy / whyNot as columns; the category tables keep them as a tooltip on the model name
+function modelTitle(h: Headset): string | undefined {
+  const parts = [h.data.whyBuy && `Why buy: ${h.data.whyBuy}`, h.data.whyNot && `Why not: ${h.data.whyNot}`].filter(Boolean);
+  return parts.length ? parts.join('\n') : undefined;
 }
 
 function fmtMic(data: any): string {
@@ -124,368 +107,315 @@ function fmtMic(data: any): string {
   return data.microphone ? 'Yes' : 'No';
 }
 
-function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; asr?: boolean; mle?: boolean }) {
-  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.asr ? 1 : 0) + (h.mle ? 1 : 0);
-}
+const priorities = [
+  ['Localisation and cue recognition', 'Critical'],
+  ['Tonal balance (no bass bloat, no harsh peaks)', 'High'],
+  ['Isolation', 'Depends on your room'],
+  ['Comfort over long sessions', 'High'],
+  ['Soundstage width', 'Secondary'],
+  ['Driver type or count', 'Not a buying criterion'],
+];
+
+const mistakes = [
+  ['Bass-heavy gaming headset', 'Neutral tuning, cut mid-bass if needed'],
+  ['Two spatialisers at once', "One pipeline: the game's, or exactly one external for stereo-only games"],
+  ['Turning volume up to hear footsteps', 'Fix isolation and balance first'],
+  ['Buying by driver type or count', 'Buy by measurements, fit, comfort'],
+  ['Widest soundstage = best positioning', 'Spaciousness is not accuracy'],
+  ['Expensive DAC without a problem to solve', 'Upgrade for hiss, power or connectivity only'],
+  ["Copying a pro's gear without context", 'Their room, sponsor and preferences are not yours'],
+  ['Assuming IEMs beat open-backs, or the reverse', 'Choose by environment and fit'],
+];
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Recommended Gaming Headsets for Quake Live",
-  "description": "Best gaming headsets for competitive Quake Live",
+  "name": "Competitive FPS audio recommendations for Quake Live",
+  "description": "IEMs, open-back and closed-back headphones, headsets, sources, game audio settings and EQ for Quake Live and arena shooters, updated October 2026.",
   "url": "https://stripyq.github.io/quakesettings/recommendations/headsets/"
 };
 ---
 
-<BaseLayout title="Headset Recommendations" description="Best gaming headsets for Quake Live. Audio clarity and comfort picks from competitive players." schema={schema} ogImage="/images/og/recommendations.jpg">
+<BaseLayout title="Competitive FPS audio" description="Recommendations for Quake Live and arena shooters, updated October 2026" schema={schema} ogImage="/images/og/recommendations.jpg">
   <div class="page-header">
-    <h1>Headset Recommendations</h1>
-    <p>Recommended headsets from top reviewers (2025)</p>
+    <h1>Competitive FPS audio</h1>
+    <p>Recommendations for Quake Live and arena shooters, updated October 2026</p>
+    <p class="scope">Primary focus: Quake Live and arena shooters. Other FPS games follow the same hardware advice but have their own audio engines; see the game settings section.</p>
   </div>
 
-  <div class="reviewer-legend">
-    <span class="legend-item"><strong>GT</strong> GadgetryTech</span>
-    <span class="legend-item"><strong>BS</strong> BadSeed Tech</span>
-    <span class="legend-item"><strong>JV</strong> Joshua Valour</span>
-    <span class="legend-item"><strong>ASR</strong> Audio Science Review</span>
-    <span class="legend-item"><strong>MLE</strong> Mad Lust Envy (Head-Fi Gaming Guide)</span>
-  </div>
+  <section id="intro" class="guide">
+    <ul>
+      <li>The game engine computes direction and distance; the headphone only has to deliver that signal cleanly. Do not add a second spatialiser on top.</li>
+      <li>What matters in hardware: tuning close to a known target, matched left and right channels, a good fit or seal, low distortion. Not driver type, not driver count, not "7.1".</li>
+      <li>Isolation is the real difference between the two sane options: open-back headphones in a quiet room, sealed IEMs anywhere noisy. Pros wear IEMs under earmuffs at LAN; the IEMs carry the game, the muffs block the crowd.</li>
+      <li>Nothing on this page is proven to raise rank. The step from a bass-heavy headset with virtual surround to a sane setup is large; every step after that is small.</li>
+    </ul>
+  </section>
 
-  <div class="price-legend">
-    <span>$ = Budget (&lt;$80)</span>
-    <span>$$ = Mid ($80-200)</span>
-    <span>$$$ = Premium ($200-400)</span>
-    <span>$$$$ = Flagship ($400+)</span>
-  </div>
+  <section id="quick-picks">
+    <h2 class="section-title">Quick picks</h2>
+    <div class="table-container">
+      <table class="rec-table quick-picks" id="rec-table-quick">
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Pick</th>
+            <th class="num">~EUR</th>
+            <th>Why</th>
+            <th>Why not</th>
+          </tr>
+        </thead>
+        <tbody>
+          {quickPicks.map(h => {
+            const d = h.data;
+            return (
+              <tr>
+                <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
+                <td class="headset-name">
+                  {d.name}
+                  {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
+                </td>
+                {d.priceEur != null
+                  ? <td class="price num" title={priceTitle(h)}>{d.priceEur}</td>
+                  : <td class="price num"><span class="empty-val">—</span></td>}
+                <td class="notes">{d.whyBuy || <span class="empty-val">—</span>}</td>
+                <td class="notes">{d.whyNot || <span class="empty-val">—</span>}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Prices are approximate EU street prices, checked on the date in each row's tooltip.</p>
+  </section>
 
-  <h2 class="section-title">Wireless Gaming</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-wireless">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {wirelessGaming.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
+  <section id="diminishing-returns" class="guide">
+    <h2 class="section-title">What are you paying for? Diminishing returns</h2>
+    <figure class="chart">
+      <AudioValueCurve />
+      <figcaption>Conceptual illustration, not a measured relationship. Individual products can fall above or below the line depending on fit, environment and the player.</figcaption>
+    </figure>
+    <p>The first 100-200 EUR buys the things that decide what you hear: accurate reproduction, matched channels and a good fit. From about 150 to 350 EUR you pay for comfort, build quality and tuning variants that suit you without EQ. Above that you pay for materials, music performance and preference.</p>
+    <p>Price cannot compensate for the wrong type. A sealed 50 EUR IEM is more useful in a noisy room than a 500 EUR open-back; a comfortable 140 EUR open-back beats an expensive IEM in a quiet room over long sessions.</p>
+  </section>
 
-  <h2 class="section-title">Budget Wireless/Wired</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-budget">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {budgetOptions.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">Audiophile / Open-Back (Competitive FPS)</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-audiophile">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {audiophile.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">DAC / AMP</h2>
-  <div class="table-container">
-    <table class="rec-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Category</th>
-          <th class="num">Price</th>
-          <th>Notes</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {dacAmp.map(s => {
-          const playerCount = getPlayerCount(s.name);
-          return (
+  {sections.map(section => (
+    <section id={section.id.replace('rec-table-', 'products-')}>
+      <h2 class="section-title">{section.title}</h2>
+      <p class="lead">{section.lead}</p>
+      <div class="table-container">
+        <table class:list={['rec-table', { 'rec-sortable': section.variant !== 'source' }]} id={section.id}>
+          <thead>
             <tr>
-              <td class="headset-name">{s.name}</td>
-              <td>{s.category}</td>
-              <td class="price num">{s.price}</td>
-              <td class="notes">{s.notes}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(s.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
+              <th>Model</th>
+              <th class="num">Price</th>
+              {section.variant !== 'source' && (
+                <Fragment>
+                  <th class="sortable" data-sort="form" data-type="str">Form</th>
+                  <th class="sortable" data-sort="back" data-type="str">Back</th>
+                  <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+                  <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+                </Fragment>
+              )}
+              <th>Use case</th>
+              <th>Evidence</th>
+              <th class="num">Players</th>
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
+          </thead>
+          <tbody>
+            {section.variant === 'source' && (
+              <tr>
+                <td class="headset-name">Nothing new</td>
+                <td class="price num">0</td>
+                <td class="notes">no hiss, enough volume, a working mic, a quiet room</td>
+                <td class="evidence"><span class="empty-val">—</span></td>
+                <td class="players num"><span class="empty-val">—</span></td>
+              </tr>
+            )}
+            {section.rows.map(h => {
+              const d = h.data;
+              const rowPlayers = getPlayersForHeadset(h.id);
+              const badges = evidenceFor(h);
+              return (
+                <tr data-form={d.formFactor || ''} data-back={d.backStyle || ''} data-conn={d.connection || ''} data-mic={fmtMic(d)}>
+                  <td class="headset-name" title={modelTitle(h)}>
+                    {d.name}
+                    {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
+                  </td>
+                  {d.priceEur != null
+                    ? <td class="price num" title={priceTitle(h)}>~{d.priceEur}</td>
+                    : <td class="price num"><span class="empty-val">—</span></td>}
+                  {section.variant !== 'source' && (
+                    <Fragment>
+                      <td class="spec">{d.formFactor || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.backStyle || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.connection || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{fmtMic(d)}</td>
+                    </Fragment>
+                  )}
+                  <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
+                  <td class="evidence">
+                    {badges.length > 0 ? badges.map(r => r.url
+                      ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{sourceLabels[r.source]}</a>
+                      : <span class="badge" title={reviewTitle(r)}>{sourceLabels[r.source]}</span>
+                    ) : <span class="empty-val">—</span>}
+                  </td>
+                  <td class="players num">
+                    {rowPlayers.length > 0 ? (
+                      <div class="usage-wrapper">
+                        <span class="usage-count">{rowPlayers.length}</span>
+                        <div class="player-dropdown">
+                          {rowPlayers.map(p => (
+                            <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : <span class="empty-val">—</span>}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
 
-  <h2 class="section-title">Specialty Picks</h2>
-  <div class="table-container">
-    <table class="rec-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Category</th>
-          <th class="num">Price</th>
-          <th>Notes</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {specialty.map(s => {
-          const playerCount = getPlayerCount(s.name);
-          return (
-            <tr>
-              <td class="headset-name">{s.name}</td>
-              <td>{s.category}</td>
-              <td class="price num">{s.price}</td>
-              <td class="notes">{s.notes}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(s.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
+  <section id="game-audio-settings" class="guide">
+    <h2 class="section-title">Game audio settings</h2>
+    <h3>Quake Live</h3>
+    <p>The engine pans sounds in stereo and has no HRTF. Start with plain stereo. An external spatialiser (Windows Sonic, Dolby Atmos) is an optional experiment, not a recommended upgrade: it cannot recover positions from a stereo signal that is already mixed. If you try one, test it for a week, and never run two.</p>
+    <h3>Quake Champions</h3>
+    <p>The game had a beta HRTF toggle from June 2018. The July 2024 update moved it to a new FMOD audio system and removed the toggle. Use stereo as the baseline; the game also offers multichannel output you can compare against. It has been a paid title since September 2026, with no further content updates announced.</p>
+    <h3>CS2 and Valorant</h3>
+    <p>Native HRTF is built in. Leave it on and add nothing. Valorant 8.0 supports selected third-party spatialisers and disables its own when you pick one.</p>
+    <p>Volume: louder does not reveal detail, it masks it. Set it so distant steps are audible and gunfire is not painful, then leave it.</p>
+  </section>
 
-  <div class="info-sections">
-    <h2 class="section-title">Arena Shooter Audio Principles</h2>
-    <p>Arena shooters like Quake Live, Diabotical, and Reflex Arena rely on precise stereo imaging rather than cinematic sound design. The key audio priorities are:</p>
+  <section id="eq" class="guide">
+    <h2 class="section-title">EQ</h2>
+    <p>No universal footstep EQ exists. Start from a measured preset for your exact model: Equalizer APO with Peace on Windows, and an <a href="https://www.reddit.com/r/oratory1990/wiki/index/list_of_presets" target="_blank" rel="noopener">oratory1990</a> or AutoEQ preset as the starting point. Moderate cuts and moderate boosts are both fine. Positive gain needs headroom: lower the pre-amp so boosted sounds do not clip. Avoid large, narrow corrections based on generic claims about footstep frequencies. Harman, diffuse-field and JM-1 are tonal references; none of them has been validated for FPS.</p>
+    <figure class="eq-example">
+      <figcaption>Equalizer APO syntax example (a demonstration, not a Quake profile)</figcaption>
+      <pre><code>Preamp: -1 dB
+Filter 1: ON LSC Fc 80 Hz Gain -2 dB Q 0.7
+Filter 2: ON PK  Fc 150 Hz Gain -3 dB Q 1.0</code></pre>
+    </figure>
+  </section>
+
+  <section id="principles" class="guide">
+    <h2 class="section-title">Principles</h2>
+    <p>Spatial accuracy depends on several things at once: how the game renders sound, the frequency and phase response of the headphone at your ear, how closely the two channels match, the fit, and your own hearing. Open-backs often sound more spacious. Sealed IEMs isolate better. Neither guarantees better positioning.</p>
     <div class="table-container">
       <table class="rec-table info-table">
         <thead>
           <tr>
-            <th>Attribute</th>
-            <th>Importance</th>
-            <th>Notes</th>
+            <th>Factor</th>
+            <th>Priority</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="headset-name">Imaging</td><td>Critical</td><td class="notes">Accurate left/right/front directional awareness</td></tr>
-          <tr><td class="headset-name">Frequency balance</td><td>High</td><td class="notes">Excess bass masks footsteps and item sounds</td></tr>
-          <tr><td class="headset-name">Soundstage</td><td>Secondary</td><td class="notes">Helpful but less important than directional precision</td></tr>
-          <tr><td class="headset-name">Comfort</td><td>High</td><td class="notes">Long sessions require lightweight headphones</td></tr>
+          {priorities.map(([factor, priority]) => (
+            <tr><td class="headset-name">{factor}</td><td class="notes">{priority}</td></tr>
+          ))}
         </tbody>
       </table>
     </div>
-    <p>Open-back headphones are generally preferred — they provide clearer spatial cues and less bass masking than closed-back designs.</p>
+  </section>
 
-    <h2 class="section-title">How Arena Shooter Audio Works</h2>
-    <p>Arena shooters use clean stereo positional audio with no cinematic mixing. This means:</p>
-    <ul>
-      <li>Stereo audio works best</li>
-      <li>Virtual surround processing is rarely helpful and can reduce directional accuracy</li>
-      <li>Neutral tuning improves clarity of movement cues</li>
-    </ul>
-
-    <h2 class="section-title">Microphone Options</h2>
-    <p>Many recommended headphones here are not headsets and require a separate microphone. Common solutions:</p>
-    <ul>
-      <li>Antlion ModMic (attaches to any headphone)</li>
-      <li>V-MODA BoomPro (works with headphones that have a 3.5mm input)</li>
-      <li>USB desk microphone (e.g. Blue Yeti, HyperX QuadCast)</li>
-    </ul>
-
-    <h2 class="section-title">EQ Guidance (Optional)</h2>
-    <p>EQ is optional but can improve competitive clarity. Apply carefully:</p>
-    <div class="table-container">
-      <table class="rec-table info-table">
-        <thead>
-          <tr>
-            <th>Frequency</th>
-            <th>Adjustment</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="headset-name">60–150 Hz</td><td>Slight cut</td><td class="notes">Reduces bass masking of footsteps</td></tr>
-          <tr><td class="headset-name">2–4 kHz</td><td>Slight boost</td><td class="notes">Improves footstep clarity</td></tr>
-          <tr><td class="headset-name">6–8 kHz</td><td>Small boost</td><td class="notes">Sharpens positional cues</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Use Equalizer APO (Windows) with Peace GUI, or ReaEQ. Oratory1990's presets on Reddit are a good starting point for many headphones.</p>
-
-    <h2 class="section-title">Common Mistakes</h2>
+  <section id="common-mistakes">
+    <h2 class="section-title">Common mistakes</h2>
     <div class="table-container">
       <table class="rec-table info-table">
         <thead>
           <tr>
             <th>Mistake</th>
-            <th>Result</th>
+            <th>Better</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="headset-name">Choosing bass-heavy gaming headsets</td><td class="notes">Footsteps become harder to hear</td></tr>
-          <tr><td class="headset-name">Enabling virtual surround processing</td><td class="notes">Can reduce directional accuracy in arena shooters</td></tr>
-          <tr><td class="headset-name">Using high-impedance headphones without an amp</td><td class="notes">Weak output, reduced clarity</td></tr>
-          <tr><td class="headset-name">Buying a headset with a built-in mic when a better open-back option exists</td><td class="notes">Worse imaging for no real benefit</td></tr>
+          {mistakes.map(([mistake, better]) => (
+            <tr><td class="headset-name">{mistake}</td><td class="notes">{better}</td></tr>
+          ))}
         </tbody>
       </table>
     </div>
+  </section>
 
-  </div>
+  <section id="archive">
+    <h2 class="section-title">Archive: historical and player gear</h2>
+    <p class="lead">Products from the 2025 reviewer list and gear documented on player pages. Kept for reference; player usage is observational, not a recommendation.</p>
+    <div class="table-container">
+      <table class="rec-table rec-sortable" id="rec-table-archive">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="num">Price</th>
+            <th class="sortable" data-sort="form" data-type="str">Form</th>
+            <th class="sortable" data-sort="back" data-type="str">Back</th>
+            <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+            <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+            <th>Legacy sources</th>
+            <th class="num">Players</th>
+          </tr>
+        </thead>
+        <tbody>
+          {archiveRows.map(h => {
+            const d = h.data;
+            const rowPlayers = getPlayersForHeadset(h.id);
+            const badges = d.reviews ?? [];
+            return (
+              <tr data-form={d.formFactor || ''} data-back={d.backStyle || ''} data-conn={d.connection || ''} data-mic={fmtMic(d)}>
+                <td class="headset-name" title={modelTitle(h)}>
+                  {d.name}
+                  {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
+                </td>
+                {d.priceEur != null
+                  ? <td class="price num" title={priceTitle(h)}>~{d.priceEur}</td>
+                  : <td class="price num"><span class="empty-val">—</span></td>}
+                <td class="spec">{d.formFactor || <span class="empty-val">—</span>}</td>
+                <td class="spec">{d.backStyle || <span class="empty-val">—</span>}</td>
+                <td class="spec">{d.connection || <span class="empty-val">—</span>}</td>
+                <td class="spec">{fmtMic(d)}</td>
+                <td class="evidence">
+                  {badges.length > 0 ? badges.map(r => r.url
+                    ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{sourceLabels[r.source]}</a>
+                    : <span class="badge" title={reviewTitle(r)}>{sourceLabels[r.source]}</span>
+                  ) : <span class="empty-val">—</span>}
+                </td>
+                <td class="players num">
+                  {rowPlayers.length > 0 ? (
+                    <div class="usage-wrapper">
+                      <span class="usage-count">{rowPlayers.length}</span>
+                      <div class="player-dropdown">
+                        {rowPlayers.map(p => (
+                          <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : <span class="empty-val">—</span>}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="how-this-page-is-made" class="guide">
+    <h2 class="section-title">How this page is made</h2>
+    <p>Recommendations combine independent measurements (RTINGS on the B&amp;K 5128 rig, Audio Science Review, GadgetryTech's headset measurements, Crinacle for IEMs), model-specific EQ references (oratory1990), EU prices with a check date, and the gear Quake players report. Reviewer badges link to the source. GT, BS, JV and MLE marks from the 2025 list are kept as historical. Where sources disagree, the original is linked so you can judge.</p>
+    <div class="source-legend">
+      <span class="legend-item"><strong>Evidence sources:</strong></span>
+      <span class="legend-item"><strong>RTINGS</strong> B&amp;K 5128 measurements</span>
+      <span class="legend-item"><strong>ASR</strong> Audio Science Review (GRAS measurements)</span>
+      <span class="legend-item"><strong>GT</strong> GadgetryTech (gaming headsets, measurements)</span>
+      <span class="legend-item"><strong>Crin</strong> Crinacle (IEM measurements)</span>
+      <span class="legend-item"><strong>o1990</strong> oratory1990 (EQ presets)</span>
+      <span class="legend-item"><strong>BS, JV, MLE</strong> BadSeed Tech, Joshua Valour, Mad Lust Envy (2025 list, archive only)</span>
+    </div>
+  </section>
 
   <div class="back-link">
     <a href={`${base}recommendations/`}>← Back to Recommendations</a>
@@ -493,7 +423,76 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .reviewer-legend {
+  .page-header .scope {
+    max-width: 46rem;
+    margin: 0.75rem auto 0;
+    font-size: 0.9rem;
+    color: var(--text-muted, #9090a0);
+  }
+
+  .guide p,
+  .guide li {
+    color: var(--text-secondary, #888);
+    line-height: 1.6;
+  }
+
+  .guide p {
+    margin-bottom: 0.75rem;
+  }
+
+  .guide ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+  }
+
+  .guide h3 {
+    margin: 1rem 0 0.25rem;
+    font-size: 1rem;
+    color: var(--text-primary, #fff);
+  }
+
+  .lead {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary, #888);
+  }
+
+  .footnote {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted, #9090a0);
+  }
+
+  .chart {
+    margin: 0 0 1rem;
+  }
+
+  .chart figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-muted, #9090a0);
+  }
+
+  .eq-example {
+    margin: 0 0 1rem;
+  }
+
+  .eq-example figcaption {
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted, #9090a0);
+  }
+
+  .eq-example pre {
+    overflow-x: auto;
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary, #12121a);
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: var(--text-primary, #fff);
+  }
+
+  .source-legend {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
@@ -508,15 +507,6 @@ const schema = {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
-  }
-
-  .price-legend {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-    font-size: 0.875rem;
-    color: var(--text-secondary, #888);
   }
 
   .section-title {
@@ -549,40 +539,6 @@ const schema = {
     background: var(--bg-secondary, #12121a);
   }
 
-  [data-tooltip] {
-    position: relative;
-    cursor: help;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-  }
-
-  [data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #222;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: var(--radius-sm);
-    white-space: normal;
-    width: max-content;
-    max-width: 300px;
-    font-size: 0.75rem;
-    font-weight: normal;
-    text-transform: none;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-    z-index: 100;
-  }
-
-  [data-tooltip]:hover::after {
-    opacity: 1;
-  }
-
   .rec-table tbody tr:hover {
     background: var(--bg-secondary, #12121a);
   }
@@ -593,23 +549,21 @@ const schema = {
     white-space: nowrap;
   }
 
+  .quick-picks td {
+    vertical-align: top;
+  }
+
+  .quick-picks .notes {
+    min-width: 12rem;
+  }
+
+  .info-table .headset-name {
+    white-space: normal;
+  }
+
   .price {
     font-family: monospace;
     color: var(--text-secondary, #888);
-  }
-
-  .center {
-    text-align: center;
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .rev-col {
-    width: 36px;
-    min-width: 36px;
-    max-width: 36px;
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
-    text-align: center;
   }
 
   .spec {
@@ -705,33 +659,6 @@ const schema = {
     font-size: 0.875rem;
   }
 
-  .info-sections {
-    margin-top: 3rem;
-    border-top: 2px solid var(--border-color, #2a2a3a);
-    padding-top: 1rem;
-  }
-
-  .info-sections p,
-  .info-sections li {
-    color: var(--text-secondary, #888);
-    line-height: 1.6;
-  }
-
-  .info-sections ul {
-    margin: 0.5rem 0 1rem 1.5rem;
-    color: var(--text-secondary, #888);
-  }
-
-  .info-sections blockquote {
-    border-left: 3px solid var(--accent-primary, #ff6b35);
-    margin: 1rem 0;
-    padding: 0.75rem 1rem;
-    color: var(--text-secondary, #888);
-    background: var(--bg-secondary, #12121a);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    font-style: italic;
-  }
-
   .back-link {
     margin-top: 2rem;
   }
@@ -743,6 +670,54 @@ const schema = {
 
   .back-link a:hover {
     text-decoration: underline;
+  }
+
+  .badge {
+    display: inline-block;
+    margin: 0 0.25rem 0.25rem 0;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  a.badge {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .disclosure {
+    cursor: help;
+    color: var(--text-secondary, #888);
+  }
+  @media (max-width: 768px) {
+    .table-container {
+      overflow-x: auto;
+    }
+
+    /* No hover on phones: list the players under the count instead of in a dropdown */
+    .player-dropdown,
+    .usage-wrapper:hover .player-dropdown {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      position: static;
+      transform: none;
+      min-width: 0;
+      padding: 0.25rem 0 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    .player-dropdown a {
+      padding: 0;
+      font-size: 0.8rem;
+      font-weight: normal;
+    }
   }
 </style>
 

@@ -6,3 +6,4 @@ frequencyResponse: "15-28,000 Hz"
 impedance: "50 Ω"
 connection: "Wired"
 microphone: "Flip-to-mute"
+category: headset

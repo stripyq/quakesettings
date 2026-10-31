@@ -1,0 +1,21 @@
+name: "Truthear Hexa"
+brand: "Truthear"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "1DD + 3BA"
+impedance: "20.5 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: recommended
+useCase: "noisy room / LAN"
+whyBuy: "Balanced tuning, strong channel matching, good isolation under 100 EUR."
+whyNot: "Large nozzles; fit is individual."
+priceEur: 85
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/truthear/hexa"
+    context: measurement

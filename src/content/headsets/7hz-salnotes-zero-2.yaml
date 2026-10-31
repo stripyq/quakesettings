@@ -1,0 +1,23 @@
+name: "7Hz x Crinacle Salnotes Zero:2"
+brand: "7Hz"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "10mm DD"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: recommended
+useCase: "first IEM, budget"
+whyBuy: "Neutral tuning with a mild bass lift at a price that makes it a low-risk first IEM."
+whyNot: "Basic cable and tips, and a single dynamic driver with less detail than hybrids."
+priceEur: 27
+priceChecked: "2026-10-31"
+disclosure: "Crinacle co-designed this product; do not use Crinacle's own graphs as independent evidence for it."
+reviews:
+  - source: asr
+    verdict: recommended
+    date: "2023-12-18"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/7hz-x-crinacle-zero-2-iem-review.50534/"
+    context: measurement

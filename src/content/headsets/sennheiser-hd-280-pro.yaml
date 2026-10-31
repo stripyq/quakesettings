@@ -6,3 +6,16 @@ frequencyResponse: "8Hz - 25kHz"
 impedance: "64 Ohm"
 connection: "Wired"
 microphone: false
+category: closed
+recommendation: recommended
+useCase: "noisy room, budget closed-back"
+whyBuy: "Strong passive isolation for the money."
+whyNot: "Firm clamp, coiled cable, plain tuning."
+priceEur: 89
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sennheiser/hd-280-pro-2016"
+    context: measurement
+    note: "RTINGS tested the 2016 revision."

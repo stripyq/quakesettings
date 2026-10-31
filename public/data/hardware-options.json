@@ -5357,8 +5357,18 @@
   ],
   "headsets": [
     {
+      "slug": "3m-peltor-x5a",
+      "name": "3M Peltor X5A earmuffs",
+      "brand": "3M"
+    },
+    {
       "slug": "7hz-sonus",
       "name": "7Hz Sonus",
+      "brand": "7Hz"
+    },
+    {
+      "slug": "7hz-salnotes-zero-2",
+      "name": "7Hz x Crinacle Salnotes Zero:2",
       "brand": "7Hz"
     },
     {
@@ -5377,6 +5387,11 @@
       "brand": "Alienware"
     },
     {
+      "slug": "antlion-modmic-usb",
+      "name": "Antlion ModMic USB",
+      "brand": "Antlion"
+    },
+    {
       "slug": "apple-airpods-pro-2nd-gen",
       "name": "Apple AirPods Pro 2nd Gen",
       "brand": "Apple"
@@ -5384,6 +5399,11 @@
     {
       "slug": "apple-earpods-3.5mm",
       "name": "Apple EarPods (3.5mm)",
+      "brand": "Apple"
+    },
+    {
+      "slug": "apple-usb-c-dongle",
+      "name": "Apple USB-C to 3.5mm adapter",
       "brand": "Apple"
     },
     {
@@ -5404,6 +5424,11 @@
     {
       "slug": "audeze-maxwell",
       "name": "Audeze Maxwell",
+      "brand": "Audeze"
+    },
+    {
+      "slug": "audeze-maxwell-2",
+      "name": "Audeze Maxwell 2",
       "brand": "Audeze"
     },
     {
@@ -5429,6 +5454,11 @@
     {
       "slug": "beyerdynamic-dt-770-pro",
       "name": "Beyerdynamic DT 770 Pro",
+      "brand": "Beyerdynamic"
+    },
+    {
+      "slug": "beyerdynamic-dt-770-pro-x",
+      "name": "Beyerdynamic DT 770 Pro X",
       "brand": "Beyerdynamic"
     },
     {
@@ -5462,9 +5492,29 @@
       "brand": "Creative"
     },
     {
+      "slug": "crinear-daybreak",
+      "name": "CrinEar Daybreak",
+      "brand": "CrinEar"
+    },
+    {
+      "slug": "crinear-reference",
+      "name": "CrinEar Reference",
+      "brand": "CrinEar"
+    },
+    {
       "slug": "drop-epos-pc38x",
       "name": "Drop EPOS PC38X",
       "brand": "Drop/EPOS"
+    },
+    {
+      "slug": "fiio-k11",
+      "name": "FiiO K11",
+      "brand": "FiiO"
+    },
+    {
+      "slug": "fiio-ka11",
+      "name": "FiiO KA11",
+      "brand": "FiiO"
     },
     {
       "slug": "fosi-k7",
@@ -5537,6 +5587,21 @@
       "brand": "JBL"
     },
     {
+      "slug": "kiwi-ears-cadenza",
+      "name": "Kiwi Ears Cadenza",
+      "brand": "Kiwi Ears"
+    },
+    {
+      "slug": "koss-ksc75",
+      "name": "Koss KSC75",
+      "brand": "Koss"
+    },
+    {
+      "slug": "letshuoer-s12-pro",
+      "name": "Letshuoer S12 Pro",
+      "brand": "Letshuoer"
+    },
+    {
       "slug": "logitech-g-pro-headset",
       "name": "Logitech G Pro",
       "brand": "Logitech"
@@ -5582,8 +5647,18 @@
       "brand": "Philips"
     },
     {
+      "slug": "qudelix-5k",
+      "name": "Qudelix 5K",
+      "brand": "Qudelix"
+    },
+    {
       "slug": "razer-blackshark-v2",
       "name": "Razer BlackShark V2",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-blackshark-v2-pro-2023",
+      "name": "Razer BlackShark V2 Pro (2023)",
       "brand": "Razer"
     },
     {
@@ -5595,6 +5670,11 @@
       "slug": "razer-kraken-kitty",
       "name": "Razer Kraken Kitty",
       "brand": "Razer"
+    },
+    {
+      "slug": "samson-q2u",
+      "name": "Samson Q2U",
+      "brand": "Samson"
     },
     {
       "slug": "drop-sennheiser-pc37x",
@@ -5614,6 +5694,21 @@
     {
       "slug": "sennheiser-hd-280-pro",
       "name": "Sennheiser HD 280 Pro",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-hd-490-pro",
+      "name": "Sennheiser HD 490 Pro",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-hd-500-bam",
+      "name": "Sennheiser HD 500 BAM",
+      "brand": "Sennheiser"
+    },
+    {
+      "slug": "sennheiser-hd-550",
+      "name": "Sennheiser HD 550",
       "brand": "Sennheiser"
     },
     {
@@ -5657,6 +5752,11 @@
       "brand": "Sennheiser"
     },
     {
+      "slug": "sony-inzone-e9",
+      "name": "Sony INZONE E9",
+      "brand": "Sony"
+    },
+    {
       "slug": "sony-inzone-h5",
       "name": "Sony Inzone H5",
       "brand": "Sony"
@@ -5684,6 +5784,11 @@
     {
       "slug": "steelseries-arctis-nova-3x",
       "name": "SteelSeries Arctis Nova 3X",
+      "brand": "SteelSeries"
+    },
+    {
+      "slug": "steelseries-arctis-nova-5",
+      "name": "SteelSeries Arctis Nova 5",
       "brand": "SteelSeries"
     },
     {
@@ -5720,6 +5825,21 @@
       "slug": "technics-rp-dj1210",
       "name": "Technics RP-DJ1210",
       "brand": "Technics"
+    },
+    {
+      "slug": "truthear-hexa",
+      "name": "Truthear Hexa",
+      "brand": "Truthear"
+    },
+    {
+      "slug": "truthear-pure",
+      "name": "Truthear Pure",
+      "brand": "Truthear"
+    },
+    {
+      "slug": "truthear-zero-blue2",
+      "name": "Truthear x Crinacle ZERO:BLUE2",
+      "brand": "Truthear"
     },
     {
       "slug": "turtle-beach-atlas-air",

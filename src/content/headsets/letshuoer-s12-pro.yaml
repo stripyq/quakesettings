@@ -1,0 +1,16 @@
+name: "Letshuoer S12 Pro"
+brand: "Letshuoer"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "14.8mm planar"
+impedance: "16 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "bright tuning, needs clean source"
+whyBuy: "Planar driver with a bright, detailed treble."
+whyNot: "Treble can fatigue on long sessions, and the 16 Ohm planar wants a clean, low-output-impedance source."
+priceEur: 140
+priceChecked: "2026-10-31"
