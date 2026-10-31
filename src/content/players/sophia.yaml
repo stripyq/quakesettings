@@ -5,8 +5,8 @@ qlstatsNick: ""
 country: CH
 team: ""
 category: ctf
-hoqCtfRating: 9.921913146972656
-hoqCtfGames: 6865
+hoqCtfRating: 9.812692642211914
+hoqCtfGames: 6876
 hoqTdmRating: 16.724321365356445
 hoqTdmGames: 807
 
@@ -18,8 +18,8 @@ lastUpdated: 2025-01
 duelRatingUpdated: ""
 tdmRating: 16.72
 tdmRatingUpdated: "2026-07-04"
-ctfRating: 9.92
-ctfRatingUpdated: "2026-09-21"
+ctfRating: 9.81
+ctfRatingUpdated: "2026-10-28"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -53,7 +53,7 @@ enemyModel: Keel
 crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 6865
+ctfGames: 6876
 tdmGames: 807
 qlrace:
   mode: 2

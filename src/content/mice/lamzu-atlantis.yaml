@@ -1,5 +1,6 @@
 name: "Lamzu Atlantis"
 brand: "Lamzu"
+dimensions: "123 x 66 x 40mm"
 weight: "55g"
 shape: "Symmetrical"
 sensor: "PAW3395"
@@ -7,3 +8,5 @@ dpiRange: "50-26000"
 pollingRate: "4000Hz"
 connection: "Wireless"
 buttons: 5
+source: "manual paste 2026-10-31 (licensed dataset)"
+checked: "2026-10-31"

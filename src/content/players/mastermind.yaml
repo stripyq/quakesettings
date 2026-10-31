@@ -8,8 +8,8 @@ team2026Shortname: SHREK
 country: "NO"
 team: SHREKTALIKA
 category: ctf
-hoqCtfRating: 45.22380447387695
-hoqCtfGames: 2874
+hoqCtfRating: 44.763702392578125
+hoqCtfGames: 2877
 hoqTdmRating: 35.36933517456055
 hoqTdmGames: 197
 
@@ -22,8 +22,8 @@ duelRating: 1345
 duelRatingUpdated: "2026-01-31"
 tdmRating: 35.37
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 45.22
-ctfRatingUpdated: "2026-10-16"
+ctfRating: 44.76
+ctfRatingUpdated: "2026-10-28"
 qllrCtfRating: 35.15
 qllrCtfGames: 82
 dataSource: player
@@ -55,7 +55,7 @@ enemyModel: Keel
 crosshairColor: Green, White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2874
+ctfGames: 2877
 tdmGames: 197
 qlrace:
   mode: 3

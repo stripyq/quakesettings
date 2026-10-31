@@ -4,16 +4,16 @@ country: Unknown
 category: tdm
 hoqCtfRating: 22.545732498168945
 hoqCtfGames: 176
-hoqTdmRating: 25.1971435546875
-hoqTdmGames: 2190
+hoqTdmRating: 25.37358283996582
+hoqTdmGames: 2193
 
 
 
 
 
 lastUpdated: 2025-01
-tdmRating: 25.2
-tdmRatingUpdated: "2026-10-16"
+tdmRating: 25.37
+tdmRatingUpdated: "2026-10-28"
 ctfRating: 22.55
 ctfRatingUpdated: "2026-04-29"
 dataSource: player
@@ -42,7 +42,7 @@ crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: AMD
 ctfGames: 176
-tdmGames: 2190
+tdmGames: 2193
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

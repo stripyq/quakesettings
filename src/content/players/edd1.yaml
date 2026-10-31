@@ -8,13 +8,17 @@ qlstatsNick: ''
 country: DE
 team: Le Cubanitos
 category: duel
+hoqCtfRating: 37.81916046142578
+hoqCtfGames: 939
+hoqTdmRating: 38.51369857788086
+hoqTdmGames: 141
 lastUpdated: "2025-02"
 duelRating: 1406
 duelRatingUpdated: ''
 tdmRating: 38.51
 tdmRatingUpdated: "2026-08-15"
-ctfRating: 36.84
-ctfRatingUpdated: "2026-10-16"
+ctfRating: 37.82
+ctfRatingUpdated: "2026-10-28"
 dataSource: player
 source: ''
 sourceUrl: ''
@@ -47,17 +51,17 @@ accuracy_rg: 63
 accuracy_rl: 52
 cpuBrand: AMD
 crosshairColor: White
-ctfGames: 912
+ctfGames: 939
 enemyModel: Keel
 favorite_gametype: Capture the Flag
 favorite_map: japanesecastles
 favorite_weapon: Railgun
 gpuBrand: NVIDIA
 grip: Hybrid
-hoqCtfGames: 912
-hoqCtfRating: 36.839298248291016
-hoqTdmGames: 141
-hoqTdmRating: 38.51369857788086
+
+
+
+
 mousepadBase: Mid
 mousepadSize: L
 qllrCtfGames: 193

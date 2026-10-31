@@ -8,3 +8,5 @@ dpiRange: "100-33000"
 pollingRate: "8000Hz"
 connection: "Wireless"
 buttons: 5
+source: "manual paste 2026-10-31 (licensed dataset)"
+checked: "2026-10-31"
