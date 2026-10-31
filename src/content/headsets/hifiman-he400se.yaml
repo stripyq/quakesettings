@@ -10,6 +10,11 @@ connection: "Wired"
 microphone: false
 category: open
 recommendation: alternative
+useCase: "quiet room, budget planar"
+whyBuy: "Planar at an entry price, even response, ASR recommended."
+whyNot: "Heavy, large cups, needs more volume from weak sources."
+priceEur: 110
+priceChecked: "2026-10-31"
 reviews:
   - source: asr
     verdict: historical

@@ -10,6 +10,11 @@ connection: "Wired"
 microphone: false
 category: open
 recommendation: recommended
+useCase: "quiet room, default pick"
+whyBuy: "Closest to neutral at the price, light, matched channels; the benchmark."
+whyNot: "No isolation, leaks sound; no mic (add HD 500 BAM)."
+priceEur: 139
+priceChecked: "2026-10-31"
 reviews:
   - source: asr
     verdict: historical

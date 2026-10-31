@@ -8,6 +8,11 @@ connection: "Wired"
 microphone: false
 category: closed
 recommendation: recommended
+useCase: "noisy room, budget closed-back"
+whyBuy: "Strong passive isolation for the money."
+whyNot: "Firm clamp, coiled cable, plain tuning."
+priceEur: 89
+priceChecked: "2026-10-31"
 reviews:
   - source: rtings
     verdict: measured

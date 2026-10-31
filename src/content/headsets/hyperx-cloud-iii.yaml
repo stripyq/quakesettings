@@ -8,6 +8,11 @@ connection: "Wired"
 microphone: true
 category: headset
 recommendation: recommended
+useCase: "one-box wired headset"
+whyBuy: "Decent mic, comfortable, plug and play."
+whyNot: "Closed, bass-tilted gaming tuning; EQ the low end down."
+priceEur: 80
+priceChecked: "2026-10-31"
 reviews:
   - source: rtings
     verdict: measured
