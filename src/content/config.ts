@@ -102,6 +102,27 @@ const headsetsCollection = defineCollection({
     microphone: z.union([z.boolean(), z.string()]).optional().default(false),
     features: z.string().optional(),
     image: z.string().optional(),
+
+    // Recommendations page metadata
+    category: z.enum(['iem', 'open', 'semi-open', 'closed', 'headset', 'dac-amp', 'mic', 'accessory']).optional(),
+    priceEur: z.number().optional(), // Approximate EU street price
+    priceChecked: z.string().optional(), // "YYYY-MM-DD", quoted in YAML
+    recommendation: z.enum(['recommended', 'alternative', 'historical']).optional(),
+    useCase: z.string().optional(), // e.g. "quiet room", "noisy room / LAN"
+    whyBuy: z.string().optional(),
+    whyNot: z.string().optional(),
+    // Review-level evidence. Missing or empty means "no verified evidence", never "disliked".
+    // Measurement sources: rtings, asr, crinacle, oratory1990, gadgetrytech. The rest are subjective.
+    reviews: z.array(z.object({
+      source: z.enum(['rtings', 'asr', 'crinacle', 'oratory1990', 'gadgetrytech', 'soundguys', 'headphones_com', 'badseed', 'joshuavalour', 'mle']),
+      verdict: z.enum(['recommended', 'favorable', 'mixed', 'not_recommended', 'measured', 'historical']),
+      date: z.string().optional(), // "YYYY-MM-DD" or "YYYY-MM"
+      url: z.string().url().optional(),
+      context: z.enum(['general', 'gaming', 'measurement', 'eq_preset']).optional(),
+      note: z.string().optional(),
+    })).optional(),
+    retailers: z.array(z.object({ name: z.string(), url: z.string().url() })).optional(),
+    disclosure: z.string().optional(), // Commercial ties of a source to this product
       }),
 });
 
