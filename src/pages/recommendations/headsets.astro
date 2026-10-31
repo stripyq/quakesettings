@@ -8,13 +8,11 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 const allPlayers = await getCollection('players');
 const players = allPlayers.filter(p => p.data.published !== false);
 
-// Create headset usage map and player list map
-const headsetUsageMap = new Map<string, number>();
+// Create headset player list map
 const headsetPlayersMap = new Map<string, typeof players>();
 players.forEach(p => {
   const headsetId = p.data.headset;
   if (headsetId) {
-    headsetUsageMap.set(headsetId, (headsetUsageMap.get(headsetId) || 0) + 1);
     if (!headsetPlayersMap.has(headsetId)) {
       headsetPlayersMap.set(headsetId, []);
     }
@@ -22,101 +20,73 @@ players.forEach(p => {
   }
 });
 
-// Map recommendation names to hardware slugs
-const headsetSlugMap: Record<string, string[]> = {
-  "Audeze Maxwell": ["audeze-maxwell"],
-  "SteelSeries Arctis Nova Pro Wireless": ["steelseries-arctis-nova-pro-wireless"],
-  "SteelSeries Arctis Nova Elite": ["steelseries-arctis-nova-elite"],
-  "Asus ROG Delta 2 Wireless": ["asus-rog-delta-2-wireless"],
-  "Alienware Pro Wireless": ["alienware-pro-wireless"],
-  "Sony Inzone H5": ["sony-inzone-h5"],
-  "SteelSeries Arctis Nova 3X": ["steelseries-arctis-nova-3x"],
-  "Razer BlackShark V3X": ["razer-blackshark-v3x"],
-  "Logitech G435": ["logitech-g435"],
-  "Drop EPOS PC38X": ["drop-epos-pc38x"],
-  "Beyerdynamic DT 900 Pro X": ["beyerdynamic-dt-900-pro-x"],
-  "Turtle Beach Atlas Air": ["turtle-beach-atlas-air"],
-  "Astro A50X": ["astro-a50x"],
-  "Fosi K7": ["fosi-k7"],
-  "Sennheiser HD560S": ["sennheiser-hd-560s", "sennheiser-hd560s"],
-  "Audio-Technica AD700X": ["audio-technica-ad700x"],
-  "Hifiman HE400se": ["hifiman-he400se"],
-  "AKG K702": ["akg-k702"],
-  "Beyerdynamic DT880": ["beyerdynamic-dt880"],
-  "Sennheiser HD599": ["sennheiser-hd-599", "sennheiser-hd599", "sennheiser-hd598"],
-  "Audio-Technica R70x": ["audio-technica-r70x"],
+// Player YAML may reference these older slugs instead of the collection id
+const aliases: Record<string, string[]> = {
+  'sennheiser-hd-560s': ['sennheiser-hd560s'],
+  'sennheiser-hd-599': ['sennheiser-hd599', 'sennheiser-hd598'],
 };
 
-function getPlayerCount(name: string): number {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return 0;
-  let total = 0;
-  slugs.forEach(slug => {
-    total += headsetUsageMap.get(slug) || 0;
-  });
-  return total;
+function getPlayersForHeadset(id: string): typeof players {
+  return [id, ...(aliases[id] ?? [])].flatMap(slug => headsetPlayersMap.get(slug) ?? []);
 }
-
-function getPlayersForHeadset(name: string): typeof players {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return [];
-  const result: typeof players = [];
-  slugs.forEach(slug => {
-    const playersForSlug = headsetPlayersMap.get(slug);
-    if (playersForSlug) {
-      result.push(...playersForSlug);
-    }
-  });
-  return result;
-}
-
-const wirelessGaming = [
-  { name: "Audeze Maxwell", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: true, asr: false, mle: false },
-  { name: "SteelSeries Arctis Nova Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: true, jv: false, asr: false, mle: false },
-  { name: "SteelSeries Arctis Nova Elite", type: "Wireless Closed", price: "$$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Asus ROG Delta 2 Wireless", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Alienware Pro Wireless", type: "Wireless Closed", price: "$$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Sony Inzone H5", type: "Wireless Closed", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-];
-
-const budgetOptions = [
-  { name: "SteelSeries Arctis Nova 3X", type: "USB-C Wireless", price: "$$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Razer BlackShark V3X", type: "Wired", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
-  { name: "Logitech G435", type: "Wireless", price: "$", gt: true, bs: false, jv: false, asr: false, mle: false },
-];
-
-const audiophile = [
-  { name: "Drop EPOS PC38X", type: "Wired Open", price: "$$", gt: false, bs: true, jv: false, asr: false, mle: false },
-  { name: "Beyerdynamic DT 900 Pro X", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: true, asr: false, mle: false },
-  { name: "Turtle Beach Atlas Air", type: "Wireless Open", price: "$$", gt: false, bs: false, jv: true, asr: false, mle: false },
-  { name: "Sennheiser HD560S", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "Audio-Technica AD700X", type: "Wired Open", price: "$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "AKG K702", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
-  { name: "Beyerdynamic DT880", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: true },
-  { name: "Sennheiser HD599", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: false, mle: true },
-  { name: "Hifiman HE400se", type: "Wired Open", price: "$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-  { name: "Audio-Technica R70x", type: "Wired Open", price: "$$$", gt: false, bs: false, jv: false, asr: true, mle: false },
-];
-
-const dacAmp = [
-  { name: "Fosi K7", category: "DAC/AMP", price: "$$", notes: "Recommended for DT880, DT900 Pro X, and other high-impedance headphones that benefit from amplification" },
-];
-
-const specialty = [
-  { name: "Astro A50X", category: "Best Mic + Console", price: "$$$", notes: "HDMI 2.1 switching" },
-];
 
 const allHeadsets = await getCollection('headsets');
-const hsBySlug = new Map(allHeadsets.map(h => [h.id, h.data]));
+type Headset = (typeof allHeadsets)[number];
+type Review = NonNullable<Headset['data']['reviews']>[number];
 
-function getHsData(name: string) {
-  const slugs = headsetSlugMap[name];
-  if (!slugs) return null;
-  for (const s of slugs) {
-    const d = hsBySlug.get(s);
-    if (d) return d;
+// priceEur ascending, missing prices last
+function byPrice(a: Headset, b: Headset): number {
+  const pa = a.data.priceEur;
+  const pb = b.data.priceEur;
+  if (pa == null || pb == null) {
+    if (pa == null && pb == null) return a.data.name.localeCompare(b.data.name);
+    return pa == null ? 1 : -1;
   }
-  return null;
+  return pa - pb || a.data.name.localeCompare(b.data.name);
+}
+
+const recommended = allHeadsets.filter(h => h.data.recommendation === 'recommended');
+const alternative = allHeadsets.filter(h => h.data.recommendation === 'alternative');
+const historical = allHeadsets.filter(h => h.data.recommendation === 'historical');
+const current = [...recommended, ...alternative];
+
+function inCategories(categories: string[]): Headset[] {
+  return current.filter(h => h.data.category != null && categories.includes(h.data.category)).sort(byPrice);
+}
+
+// variant: 'specs' = spec columns + evidence, 'source' = no spec columns, 'archive' = spec columns + legacy marks
+const sections = [
+  { title: 'IEMs', id: 'rec-table-iem', variant: 'specs', rows: inCategories(['iem']) },
+  { title: 'Open-back', id: 'rec-table-open', variant: 'specs', rows: inCategories(['open', 'semi-open']) },
+  { title: 'Closed-back', id: 'rec-table-closed', variant: 'specs', rows: inCategories(['closed']) },
+  { title: 'Headsets with microphone', id: 'rec-table-headset', variant: 'specs', rows: inCategories(['headset']) },
+  { title: 'Sources, microphones, accessories', id: 'rec-table-sources', variant: 'source', rows: inCategories(['dac-amp', 'mic', 'accessory']) },
+  { title: 'Archive: historical and player gear', id: 'rec-table-archive', variant: 'archive', rows: [...historical].sort(byPrice) },
+];
+
+const measurementSources = new Set(['rtings', 'asr', 'crinacle', 'oratory1990', 'gadgetrytech', 'soundguys', 'headphones_com']);
+const sourceLabels: Record<string, string> = {
+  rtings: 'RTINGS', asr: 'ASR', crinacle: 'Crin', oratory1990: 'o1990', gadgetrytech: 'GT',
+  soundguys: 'SG', headphones_com: 'HP.com', badseed: 'BS', joshuavalour: 'JV', mle: 'MLE',
+};
+
+// Current tables show measurement sources only; the 2025 'historical' marks stay in the archive table
+function evidenceFor(h: Headset): Review[] {
+  return (h.data.reviews ?? []).filter(r => measurementSources.has(r.source) && r.verdict !== 'historical');
+}
+
+function reviewTitle(r: Review): string {
+  return [r.verdict.replace('_', ' '), r.date, r.note].filter(Boolean).join(' · ');
+}
+
+function priceTitle(h: Headset): string {
+  return h.data.priceChecked ? `approximate, checked ${h.data.priceChecked}` : 'approximate';
+}
+
+// Phase 4 renders whyBuy / whyNot properly; until then they are a tooltip on the model name
+function modelTitle(h: Headset): string | undefined {
+  const parts = [h.data.whyBuy && `Why buy: ${h.data.whyBuy}`, h.data.whyNot && `Why not: ${h.data.whyNot}`].filter(Boolean);
+  return parts.length ? parts.join('\n') : undefined;
 }
 
 function fmtMic(data: any): string {
@@ -124,15 +94,11 @@ function fmtMic(data: any): string {
   return data.microphone ? 'Yes' : 'No';
 }
 
-function countRecs(h: { gt?: boolean; bs?: boolean; jv?: boolean; asr?: boolean; mle?: boolean }) {
-  return (h.gt ? 1 : 0) + (h.bs ? 1 : 0) + (h.jv ? 1 : 0) + (h.asr ? 1 : 0) + (h.mle ? 1 : 0);
-}
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Recommended Gaming Headsets for Quake Live",
-  "description": "Best gaming headsets for competitive Quake Live",
+  "name": "Competitive FPS Audio Recommendations",
+  "description": "Competitive FPS audio recommendations for Quake Live, updated October 2026",
   "url": "https://stripyq.github.io/quakesettings/recommendations/headsets/"
 };
 ---
@@ -140,274 +106,94 @@ const schema = {
 <BaseLayout title="Headset Recommendations" description="Best gaming headsets for Quake Live. Audio clarity and comfort picks from competitive players." schema={schema} ogImage="/images/og/recommendations.jpg">
   <div class="page-header">
     <h1>Headset Recommendations</h1>
-    <p>Recommended headsets from top reviewers (2025)</p>
+    <p>Competitive FPS audio recommendations · updated October 2026</p>
   </div>
 
   <div class="reviewer-legend">
-    <span class="legend-item"><strong>GT</strong> GadgetryTech</span>
-    <span class="legend-item"><strong>BS</strong> BadSeed Tech</span>
-    <span class="legend-item"><strong>JV</strong> Joshua Valour</span>
-    <span class="legend-item"><strong>ASR</strong> Audio Science Review</span>
-    <span class="legend-item"><strong>MLE</strong> Mad Lust Envy (Head-Fi Gaming Guide)</span>
+    <span class="legend-item"><strong>Evidence sources:</strong></span>
+    <span class="legend-item"><strong>RTINGS</strong> B&amp;K 5128 measurements</span>
+    <span class="legend-item"><strong>ASR</strong> Audio Science Review (GRAS measurements)</span>
+    <span class="legend-item"><strong>GT</strong> GadgetryTech (gaming headsets, measurements)</span>
+    <span class="legend-item"><strong>Crin</strong> Crinacle (IEM measurements)</span>
+    <span class="legend-item"><strong>o1990</strong> oratory1990 (EQ presets)</span>
+    <span class="legend-item">Badges link to the measurement or review. GT/BS/JV/MLE marks from the 2025 list are kept in the archive section as historical.</span>
   </div>
 
   <div class="price-legend">
-    <span>$ = Budget (&lt;$80)</span>
-    <span>$$ = Mid ($80-200)</span>
-    <span>$$$ = Premium ($200-400)</span>
-    <span>$$$$ = Flagship ($400+)</span>
+    <span>Prices are approximate EU street prices in EUR, checked on the date shown in the tooltip.</span>
   </div>
 
-  <h2 class="section-title">Wireless Gaming</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-wireless">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {wirelessGaming.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">Budget Wireless/Wired</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-budget">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {budgetOptions.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">Audiophile / Open-Back (Competitive FPS)</h2>
-  <div class="table-container">
-    <table class="rec-table rec-sortable" id="rec-table-audiophile">
-      <thead>
-        <tr>
-          <th>Headset</th>
-          <th class="num">Price</th>
-          <th class="sortable" data-sort="form" data-type="str">Form</th>
-          <th class="sortable" data-sort="back" data-type="str">Back</th>
-          <th class="sortable num" data-sort="driver" data-type="str">Driver</th>
-          <th class="sortable" data-sort="conn" data-type="str">Conn</th>
-          <th class="sortable" data-sort="mic" data-type="str">Mic</th>
-          <th class="rev-col has-tooltip" data-tooltip="GadgetryTech">GT</th>
-          <th class="rev-col has-tooltip" data-tooltip="BadSeed Tech">BS</th>
-          <th class="rev-col has-tooltip" data-tooltip="Joshua Valour">JV</th>
-          <th class="rev-col has-tooltip" data-tooltip="Audio Science Review">ASR</th>
-          <th class="rev-col has-tooltip" data-tooltip="Mad Lust Envy (Head-Fi Gaming Guide)">MLE</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {audiophile.map(h => {
-          const playerCount = getPlayerCount(h.name);
-          const hd = getHsData(h.name);
-          return (
-            <tr data-form={hd?.formFactor || ''} data-back={hd?.backStyle || ''} data-driver={hd?.driverSize || ''} data-conn={hd?.connection || ''} data-mic={fmtMic(hd)}>
-              <td class="headset-name">{h.name}</td>
-              <td class="price num">{h.price}</td>
-              <td class="spec">{hd?.formFactor || <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.backStyle || <span class="empty-val">—</span>}</td>
-              <td class="spec num">{hd?.driverSize && hd.driverSize !== 'Unknown' ? hd.driverSize : <span class="empty-val">—</span>}</td>
-              <td class="spec">{hd?.connection || <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtMic(hd) === "—" }]}>{fmtMic(hd)}</td>
-              <td class="center rev-col">{h.gt ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.bs ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.jv ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.asr ? '✓' : '–'}</td>
-              <td class="center rev-col">{h.mle ? '✓' : '–'}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(h.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">DAC / AMP</h2>
-  <div class="table-container">
-    <table class="rec-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Category</th>
-          <th class="num">Price</th>
-          <th>Notes</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {dacAmp.map(s => {
-          const playerCount = getPlayerCount(s.name);
-          return (
+  {sections.map(section => (
+    <Fragment>
+      <h2 class="section-title">{section.title}</h2>
+      <div class="table-container">
+        <table class:list={['rec-table', { 'rec-sortable': section.variant !== 'source' }]} id={section.id}>
+          <thead>
             <tr>
-              <td class="headset-name">{s.name}</td>
-              <td>{s.category}</td>
-              <td class="price num">{s.price}</td>
-              <td class="notes">{s.notes}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(s.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
+              <th>Model</th>
+              <th class="num">Price</th>
+              {section.variant !== 'source' && (
+                <Fragment>
+                  <th class="sortable" data-sort="form" data-type="str">Form</th>
+                  <th class="sortable" data-sort="back" data-type="str">Back</th>
+                  <th class="sortable" data-sort="conn" data-type="str">Conn</th>
+                  <th class="sortable" data-sort="mic" data-type="str">Mic</th>
+                </Fragment>
+              )}
+              {section.variant !== 'archive' && <th>Use case</th>}
+              <th>{section.variant === 'archive' ? 'Legacy sources' : 'Evidence'}</th>
+              <th class="num">Players</th>
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-
-  <h2 class="section-title">Specialty Picks</h2>
-  <div class="table-container">
-    <table class="rec-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Category</th>
-          <th class="num">Price</th>
-          <th>Notes</th>
-          <th class="num">Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        {specialty.map(s => {
-          const playerCount = getPlayerCount(s.name);
-          return (
-            <tr>
-              <td class="headset-name">{s.name}</td>
-              <td>{s.category}</td>
-              <td class="price num">{s.price}</td>
-              <td class="notes">{s.notes}</td>
-              <td class="players num">
-                {playerCount > 0 ? (
-                  <div class="usage-wrapper">
-                    <span class="usage-count">{playerCount}</span>
-                    <div class="player-dropdown">
-                      {getPlayersForHeadset(s.name).map(p => (
-                        <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
-                      ))}
-                    </div>
-                  </div>
-                ) : <span class="empty-val">—</span>}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
+          </thead>
+          <tbody>
+            {section.rows.map(h => {
+              const d = h.data;
+              const rowPlayers = getPlayersForHeadset(h.id);
+              const badges = section.variant === 'archive' ? (d.reviews ?? []) : evidenceFor(h);
+              return (
+                <tr data-form={d.formFactor || ''} data-back={d.backStyle || ''} data-conn={d.connection || ''} data-mic={fmtMic(d)}>
+                  <td class="headset-name" title={modelTitle(h)}>
+                    {d.name}
+                    {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
+                  </td>
+                  {d.priceEur != null
+                    ? <td class="price num" title={priceTitle(h)}>~{d.priceEur}</td>
+                    : <td class="price num"><span class="empty-val">—</span></td>}
+                  {section.variant !== 'source' && (
+                    <Fragment>
+                      <td class="spec">{d.formFactor || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.backStyle || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.connection || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{fmtMic(d)}</td>
+                    </Fragment>
+                  )}
+                  {section.variant !== 'archive' && <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>}
+                  <td class="evidence">
+                    {badges.length > 0 ? badges.map(r => r.url
+                      ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{sourceLabels[r.source]}</a>
+                      : <span class="badge" title={reviewTitle(r)}>{sourceLabels[r.source]}</span>
+                    ) : <span class="empty-val">—</span>}
+                  </td>
+                  <td class="players num">
+                    {rowPlayers.length > 0 ? (
+                      <div class="usage-wrapper">
+                        <span class="usage-count">{rowPlayers.length}</span>
+                        <div class="player-dropdown">
+                          {rowPlayers.map(p => (
+                            <a href={`${base}players/${p.id}/`}>{p.data.name}</a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : <span class="empty-val">—</span>}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </Fragment>
+  ))}
 
   <div class="info-sections">
     <h2 class="section-title">Arena Shooter Audio Principles</h2>
@@ -743,6 +529,27 @@ const schema = {
 
   .back-link a:hover {
     text-decoration: underline;
+  }
+  .badge {
+    display: inline-block;
+    margin: 0 0.25rem 0.25rem 0;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border-color, #2a2a3a);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary, #ccc);
+    white-space: nowrap;
+  }
+
+  a.badge {
+    color: var(--accent-primary, #ff6b35);
+    text-decoration: none;
+  }
+
+  .disclosure {
+    cursor: help;
+    color: var(--text-secondary, #888);
   }
 </style>
 
