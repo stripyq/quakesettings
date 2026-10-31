@@ -80,7 +80,7 @@ const productSections = [
     lead: 'One-box convenience. Convenience tier, not an acoustic one.' },
 ];
 
-const sourceRows = inCategories(['dac-amp', 'mic', 'accessory']);
+const accessoryRows = inCategories(['dac-amp', 'mic', 'accessory']);
 
 // Form, back, connection, mic, in that order; only what the YAML states
 function configChips(h: Headset): string[] {
@@ -194,7 +194,7 @@ const schema = {
     <a href="#closed-back">Closed-back</a>
     <a href="#iems">IEMs</a>
     <a href="#headsets">Headsets</a>
-    <a href="#sources">Sources</a>
+    <a href="#sources">Accessories</a>
     <a href="#quake-setup">Quake Live setup</a>
   </nav>
 
@@ -335,44 +335,30 @@ const schema = {
   ))}
 
   <section id="sources">
-    <h2 class="section-title">Sources, microphones, accessories</h2>
-    <p class="lead">Buy only to fix an identified problem: hiss, not enough volume, no mic, LAN noise. Row one: you may need nothing.</p>
+    <h2 class="section-title">Optional accessories</h2>
+    <p class="lead">If your PC already gives clean audio at enough volume, you need none of this. Buy only to fix a specific problem.</p>
     <div class="table-container">
       <table class="rec-table sources">
         <thead>
           <tr>
-            <th>Product</th>
+            <th>Accessory</th>
             <th class="num">~EUR</th>
-            <th>Purpose</th>
-            <th>Evidence</th>
+            <th>When you need it</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="headset-name" data-label="Product">Nothing new</td>
-            <td class="price num" data-label="~EUR">0</td>
-            <td class="notes" data-label="Purpose">no hiss, enough volume, a working mic, a quiet room</td>
-            <td class="evidence" data-label="Evidence"><span class="empty-val">—</span></td>
-          </tr>
-          {sourceRows.map(h => {
+          {accessoryRows.map(h => {
             const d = h.data;
-            const badges = evidenceFor(h);
             return (
               <tr>
-                <td class="headset-name" data-label="Product" title={modelTitle(h)}>
+                <td class="headset-name" data-label="Accessory" title={modelTitle(h)}>
                   {d.name}
                   {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
                 </td>
                 {d.priceEur != null
                   ? <td class="price num" data-label="~EUR" title={priceTitle(h)}>{d.priceEur}</td>
                   : <td class="price num" data-label="~EUR"><span class="empty-val">—</span></td>}
-                <td class="notes" data-label="Purpose">{d.useCase || <span class="empty-val">—</span>}</td>
-                <td class="evidence" data-label="Evidence">
-                  {badges.length > 0 ? badges.map(r => r.url
-                    ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{badgeText(r)}</a>
-                    : <span class="badge" title={reviewTitle(r)}>{badgeText(r)}</span>
-                  ) : <span class="empty-val">—</span>}
-                </td>
+                <td class="notes" data-label="When you need it">{d.useCase || <span class="empty-val">—</span>}</td>
               </tr>
             );
           })}
@@ -536,11 +522,10 @@ const schema = {
   .products th:nth-child(5) { width: 12%; }
   .products th:nth-child(6) { width: 12%; }
 
-  /* Product, ~EUR, Purpose, Evidence */
+  /* Accessory, ~EUR, When you need it */
   .sources th:nth-child(1) { width: 30%; }
   .sources th:nth-child(2) { width: 10%; }
-  .sources th:nth-child(3) { width: 45%; }
-  .sources th:nth-child(4) { width: 15%; }
+  .sources th:nth-child(3) { width: 60%; }
 
   .pairs th:nth-child(1) { width: 40%; }
   .pairs th:nth-child(2) { width: 60%; }

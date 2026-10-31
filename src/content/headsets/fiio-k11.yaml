@@ -4,7 +4,7 @@ type: "N/A"
 connection: "DAC/AMP"
 microphone: false
 category: dac-amp
-recommendation: alternative
+recommendation: historical
 useCase: "desktop, high-impedance cans"
 whyBuy: "Desktop DAC/amp with enough power for 250-300 Ohm headphones."
 whyNot: "Overkill for IEMs and low-impedance headphones; takes desk space."

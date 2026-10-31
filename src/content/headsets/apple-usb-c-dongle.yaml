@@ -5,7 +5,7 @@ connection: "DAC/AMP"
 microphone: false
 category: dac-amp
 recommendation: recommended
-useCase: "IEMs, low output impedance"
+useCase: "Your PC audio hisses or has no usable headphone jack"
 whyBuy: "Clean, low-output-impedance source for IEMs at about 10 EUR."
 whyNot: "Limited output power, lower on EU units than US units; not for high-impedance headphones."
 priceEur: 10

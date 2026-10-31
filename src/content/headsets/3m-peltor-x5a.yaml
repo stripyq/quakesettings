@@ -5,7 +5,7 @@ connection: "N/A"
 microphone: false
 category: accessory
 recommendation: recommended
-useCase: "LAN isolation layer over IEMs"
+useCase: "You play LAN events on IEMs and need to block the crowd"
 whyBuy: "High passive attenuation worn over IEMs to shut out LAN hall noise."
 whyNot: "Bulky and warm, and only useful with IEMs underneath."
 priceEur: 40

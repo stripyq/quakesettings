@@ -4,7 +4,7 @@ type: "N/A"
 connection: "Wired"
 microphone: true
 category: mic
-recommendation: recommended
+recommendation: historical
 useCase: "USB/XLR dynamic desk mic"
 whyBuy: "Dynamic mic with USB and XLR outputs that picks up less keyboard and room noise than condensers."
 whyNot: "Needs an arm or stand and close positioning; takes desk space a boom mic does not."

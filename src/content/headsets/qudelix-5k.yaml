@@ -4,7 +4,7 @@ type: "N/A"
 connection: "DAC/AMP"
 microphone: false
 category: dac-amp
-recommendation: recommended
+recommendation: historical
 useCase: "hardware parametric EQ"
 whyBuy: "USB and Bluetooth DAC/amp with parametric EQ stored on the device, so presets follow it to any PC."
 whyNot: "Battery-powered and more setup than a plain dongle."

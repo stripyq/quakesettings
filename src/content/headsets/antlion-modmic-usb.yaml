@@ -5,7 +5,7 @@ connection: "Wired"
 microphone: true
 category: mic
 recommendation: alternative
-useCase: "clip-on for any headphone"
+useCase: "You already own headphones without a microphone"
 whyBuy: "Attaches to almost any headphone and connects over USB."
 whyNot: "Adhesive mount and an extra cable; costs about as much as a Q2U."
 priceEur: 75

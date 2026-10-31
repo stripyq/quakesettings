@@ -5,7 +5,7 @@ connection: "DAC/AMP"
 microphone: false
 category: dac-amp
 recommendation: alternative
-useCase: "more power than Apple dongle"
+useCase: "Your dongle runs out of volume with higher-impedance headphones"
 whyBuy: "Small USB-C dongle with more output power than the Apple adapter."
 whyNot: "Costs four times the Apple adapter, and the extra power matters little for IEMs."
 priceEur: 39
