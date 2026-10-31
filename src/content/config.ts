@@ -25,6 +25,9 @@ const miceCollection = defineCollection({
     buttons: z.number().nullable().optional().default(5),
     connection: z.string().optional().default('Wired'),
     image: z.string().optional(),
+    variantOf: z.string().optional(), // slug of the base model for colourways / signature editions (stats roll up)
+    source: z.string().optional(),    // where the specs came from
+    checked: z.string().optional(),   // "YYYY-MM-DD", quoted in YAML
       }),
 });
 

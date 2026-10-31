@@ -16,6 +16,7 @@
     "fetch:activity": "node scripts/fetch-activity-data.cjs",
     "fetch:hoq-activity": "node scripts/fetch-hoq-activity.cjs",
     "fetch:player-activity": "node scripts/fetch-player-activity.cjs",
+    "audit:mice": "node scripts/mice-audit.cjs",
     "astro": "astro"
   },
   "dependencies": {

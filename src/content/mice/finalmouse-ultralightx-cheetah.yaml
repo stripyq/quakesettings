@@ -1,10 +1,12 @@
 name: "Finalmouse UltralightX Cheetah"
 brand: "Finalmouse"
+dimensions: "118 x 58 x 37mm"
 weight: "40g"
 shape: "Symmetrical"
-dimensions: "118 x 58 x 37mm"
 sensor: "Finalsensor"
 dpiRange: "400-3200"
 pollingRate: "8000Hz"
-buttons: 5
 connection: "Wireless"
+buttons: 5
+source: "manual paste 2026-10-31 (licensed dataset)"
+checked: "2026-10-31"

@@ -8,3 +8,4 @@ dpiRange: "100-6400"
 pollingRate: "8000Hz"
 connection: "Wireless"
 buttons: 5
+variantOf: "finalmouse-ultralightx-cheetah"
