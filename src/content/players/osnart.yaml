@@ -2,8 +2,8 @@ name: Osnart
 steamId: "76561198122684842"
 country: DE
 category: ctf
-hoqCtfRating: 22.921417236328125
-hoqCtfGames: 2185
+hoqCtfRating: 23.06066131591797
+hoqCtfGames: 2236
 hoqTdmRating: 24.81673812866211
 hoqTdmGames: 335
 
@@ -12,13 +12,13 @@ hoqTdmGames: 335
 
 
 published: true
-ctfRatingUpdated: "2026-10-16"
+ctfRatingUpdated: "2026-10-28"
 qllrCtfRating: 23.21
 qllrCtfGames: 38
 
 
-ctfRating: 22.92
-ctfGames: 2185
+ctfRating: 23.06
+ctfGames: 2236
 tdmRatingUpdated: "2026-08-26"
 tdmRating: 24.82
 tdmGames: 335

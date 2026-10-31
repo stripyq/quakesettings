@@ -4,8 +4,8 @@ country: EE
 category: tdm
 hoqCtfRating: 27.20053482055664
 hoqCtfGames: 1127
-hoqTdmRating: 41.19981002807617
-hoqTdmGames: 2830
+hoqTdmRating: 41.00948715209961
+hoqTdmGames: 2831
 
 
 
@@ -13,13 +13,13 @@ hoqTdmGames: 2830
 
 duelRating: 1690
 ctfGames: 1127
-tdmGames: 2830
+tdmGames: 2831
 duelGames: 1336
 duelRatingUpdated: "2026-02-04"
 ctfRating: 27.2
 ctfRatingUpdated: "2026-10-16"
-tdmRating: 41.2
-tdmRatingUpdated: "2026-10-16"
+tdmRating: 41.01
+tdmRatingUpdated: "2026-10-28"
 dataSource: player
 lastUpdated: 2026-02
 dpi: 3200

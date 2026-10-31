@@ -4,24 +4,25 @@ steamId: "76561198380825290"
 category: tdm
 hoqCtfRating: 24.844650268554688
 hoqCtfGames: 2
-hoqTdmRating: 22.233346939086914
-hoqTdmGames: 4154
+hoqTdmRating: 22.106916427612305
+hoqTdmGames: 4155
+
 
 
 
 
 ctfRatingUpdated: "2026-04-29"
 ctfRating: 24.84
-tdmRatingUpdated: "2026-10-16"
+tdmRatingUpdated: "2026-10-28"
 dataSource: player
 lastUpdated: "2026-08-24"
-tdmRating: 22.23
+tdmRating: 22.11
 tdm2v2Rating: 20.59
 tdm2v2Games: 124
 duelRating: 1169
 duelRatingUpdated: "2026-08-24"
 ctfGames: 2
-tdmGames: 4154
+tdmGames: 4155
 duelGames: 433
 dpi: 2400
 sensitivity: 0.9

@@ -8,14 +8,14 @@ team2026Shortname: wB
 country: GB-SCT
 team: wAnnaBees
 category: ctf
-hoqCtfRating: 33.08218002319336
-hoqCtfGames: 2493
+hoqCtfRating: 32.9654655456543
+hoqCtfGames: 2510
 
 
 
 lastUpdated: 2025-01
-ctfRating: 33.08
-ctfRatingUpdated: "2026-10-16"
+ctfRating: 32.97
+ctfRatingUpdated: "2026-10-28"
 qllrCtfRating: 34.49
 qllrCtfGames: 133
 
@@ -49,7 +49,7 @@ headset: drop-sennheiser-pc37x
 skates: Stock
 gpuBrand: NVIDIA
 cpuBrand: AMD
-ctfGames: 2493
+ctfGames: 2510
 qlrace: null
 favorite_map: q3wcp9
 favorite_gametype: Capture the Flag

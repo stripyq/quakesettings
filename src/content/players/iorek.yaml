@@ -10,21 +10,21 @@ team2024: CTF4
 team2026: Le Cubanitos
 team2026Shortname: CUBA
 category: duel
-hoqCtfRating: 27.209287643432617
-hoqCtfGames: 2272
+hoqCtfRating: 26.84434700012207
+hoqCtfGames: 2304
 
 
 
-ctfRatingUpdated: "2026-10-16"
+ctfRatingUpdated: "2026-10-28"
 qllrCtfRating: 27.14
 qllrCtfGames: 144
 
 
 dataSource: player
 lastUpdated: 2026-02
-ctfRating: 27.21
+ctfRating: 26.84
 duelRating: 987
-ctfGames: 2272
+ctfGames: 2304
 duelGames: 30
 dpi: 800
 sensitivity: 1.8
