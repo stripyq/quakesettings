@@ -4,8 +4,8 @@ country: Unknown
 category: ctf
 hoqCtfRating: 22.785551071166992
 hoqCtfGames: 2675
-hoqTdmRating: 32.782196044921875
-hoqTdmGames: 1869
+hoqTdmRating: 32.94998550415039
+hoqTdmGames: 1870
 
 
 
@@ -14,13 +14,13 @@ hoqTdmGames: 1869
 lastUpdated: "2026-07-15"
 duelRating: 1471
 ctfGames: 2675
-tdmGames: 1869
+tdmGames: 1870
 tdm2v2Rating: 31.34
 tdm2v2Games: 71
 duelGames: 1764
 duelRatingUpdated: "2026-02-04"
-tdmRating: 32.78
-tdmRatingUpdated: "2026-10-28"
+tdmRating: 32.95
+tdmRatingUpdated: "2026-10-31"
 ctfRating: 22.79
 ctfRatingUpdated: "2026-10-28"
 dataSource: player
