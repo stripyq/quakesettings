@@ -103,7 +103,7 @@ function modelTitle(h: Headset): string | undefined {
 }
 
 function fmtMic(data: any): string {
-  if (!data) return '–';
+  if (!data) return '—';
   return data.microphone ? 'Yes' : 'No';
 }
 
@@ -170,16 +170,16 @@ const schema = {
             const d = h.data;
             return (
               <tr>
-                <td class="notes">{d.useCase || <span class="empty-val">–</span>}</td>
+                <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
                 <td class="headset-name">
                   {d.name}
                   {d.disclosure && <span class="disclosure" title={d.disclosure}> ⓘ</span>}
                 </td>
                 {d.priceEur != null
                   ? <td class="price num" title={priceTitle(h)}>{d.priceEur}</td>
-                  : <td class="price num"><span class="empty-val">–</span></td>}
-                <td class="notes">{d.whyBuy || <span class="empty-val">–</span>}</td>
-                <td class="notes">{d.whyNot || <span class="empty-val">–</span>}</td>
+                  : <td class="price num"><span class="empty-val">—</span></td>}
+                <td class="notes">{d.whyBuy || <span class="empty-val">—</span>}</td>
+                <td class="notes">{d.whyNot || <span class="empty-val">—</span>}</td>
               </tr>
             );
           })}
@@ -228,8 +228,8 @@ const schema = {
                 <td class="headset-name">Nothing new</td>
                 <td class="price num">0</td>
                 <td class="notes">no hiss, enough volume, a working mic, a quiet room</td>
-                <td class="evidence"><span class="empty-val">–</span></td>
-                <td class="players num"><span class="empty-val">–</span></td>
+                <td class="evidence"><span class="empty-val">—</span></td>
+                <td class="players num"><span class="empty-val">—</span></td>
               </tr>
             )}
             {section.rows.map(h => {
@@ -244,21 +244,21 @@ const schema = {
                   </td>
                   {d.priceEur != null
                     ? <td class="price num" title={priceTitle(h)}>~{d.priceEur}</td>
-                    : <td class="price num"><span class="empty-val">–</span></td>}
+                    : <td class="price num"><span class="empty-val">—</span></td>}
                   {section.variant !== 'source' && (
                     <Fragment>
-                      <td class="spec">{d.formFactor || <span class="empty-val">–</span>}</td>
-                      <td class="spec">{d.backStyle || <span class="empty-val">–</span>}</td>
-                      <td class="spec">{d.connection || <span class="empty-val">–</span>}</td>
+                      <td class="spec">{d.formFactor || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.backStyle || <span class="empty-val">—</span>}</td>
+                      <td class="spec">{d.connection || <span class="empty-val">—</span>}</td>
                       <td class="spec">{fmtMic(d)}</td>
                     </Fragment>
                   )}
-                  <td class="notes">{d.useCase || <span class="empty-val">–</span>}</td>
+                  <td class="notes">{d.useCase || <span class="empty-val">—</span>}</td>
                   <td class="evidence">
                     {badges.length > 0 ? badges.map(r => r.url
                       ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{sourceLabels[r.source]}</a>
                       : <span class="badge" title={reviewTitle(r)}>{sourceLabels[r.source]}</span>
-                    ) : <span class="empty-val">–</span>}
+                    ) : <span class="empty-val">—</span>}
                   </td>
                   <td class="players num">
                     {rowPlayers.length > 0 ? (
@@ -270,7 +270,7 @@ const schema = {
                           ))}
                         </div>
                       </div>
-                    ) : <span class="empty-val">–</span>}
+                    ) : <span class="empty-val">—</span>}
                   </td>
                 </tr>
               );
@@ -372,16 +372,16 @@ Filter 2: ON PK  Fc 150 Hz Gain -3 dB Q 1.0</code></pre>
                 </td>
                 {d.priceEur != null
                   ? <td class="price num" title={priceTitle(h)}>~{d.priceEur}</td>
-                  : <td class="price num"><span class="empty-val">–</span></td>}
-                <td class="spec">{d.formFactor || <span class="empty-val">–</span>}</td>
-                <td class="spec">{d.backStyle || <span class="empty-val">–</span>}</td>
-                <td class="spec">{d.connection || <span class="empty-val">–</span>}</td>
+                  : <td class="price num"><span class="empty-val">—</span></td>}
+                <td class="spec">{d.formFactor || <span class="empty-val">—</span>}</td>
+                <td class="spec">{d.backStyle || <span class="empty-val">—</span>}</td>
+                <td class="spec">{d.connection || <span class="empty-val">—</span>}</td>
                 <td class="spec">{fmtMic(d)}</td>
                 <td class="evidence">
                   {badges.length > 0 ? badges.map(r => r.url
                     ? <a class="badge" href={r.url} title={reviewTitle(r)} target="_blank" rel="noopener">{sourceLabels[r.source]}</a>
                     : <span class="badge" title={reviewTitle(r)}>{sourceLabels[r.source]}</span>
-                  ) : <span class="empty-val">–</span>}
+                  ) : <span class="empty-val">—</span>}
                 </td>
                 <td class="players num">
                   {rowPlayers.length > 0 ? (
@@ -393,7 +393,7 @@ Filter 2: ON PK  Fc 150 Hz Gain -3 dB Q 1.0</code></pre>
                         ))}
                       </div>
                     </div>
-                  ) : <span class="empty-val">–</span>}
+                  ) : <span class="empty-val">—</span>}
                 </td>
               </tr>
             );
@@ -692,6 +692,32 @@ Filter 2: ON PK  Fc 150 Hz Gain -3 dB Q 1.0</code></pre>
   .disclosure {
     cursor: help;
     color: var(--text-secondary, #888);
+  }
+  @media (max-width: 768px) {
+    .table-container {
+      overflow-x: auto;
+    }
+
+    /* No hover on phones: list the players under the count instead of in a dropdown */
+    .player-dropdown,
+    .usage-wrapper:hover .player-dropdown {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      position: static;
+      transform: none;
+      min-width: 0;
+      padding: 0.25rem 0 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    .player-dropdown a {
+      padding: 0;
+      font-size: 0.8rem;
+      font-weight: normal;
+    }
   }
 </style>
 
