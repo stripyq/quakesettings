@@ -5,3 +5,14 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: false
+category: open
+recommendation: recommended
+reviews:
+  - source: joshuavalour
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/beyerdynamic/dt-900-pro-x"
+    context: measurement

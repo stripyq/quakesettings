@@ -1,0 +1,21 @@
+name: "Razer BlackShark V2 Pro (2023)"
+brand: "Razer"
+type: "Closed-back"
+formFactor: "Over-ear"
+backStyle: "Closed"
+driverSize: "50mm"
+impedance: "32 Ohm"
+connection: "Wireless"
+microphone: true
+category: headset
+recommendation: alternative
+useCase: "wireless, good mic"
+whyBuy: "Light wireless headset with one of the better detachable boom mics."
+whyNot: "Closed-back gaming tuning; a wired open-back plus a separate mic sounds better for similar money."
+priceEur: 135
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/razer/blackshark-v2-pro-wireless-2023"
+    context: measurement

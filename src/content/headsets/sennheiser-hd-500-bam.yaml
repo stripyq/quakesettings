@@ -1,0 +1,12 @@
+name: "Sennheiser HD 500 BAM"
+brand: "Sennheiser"
+type: "N/A"
+connection: "Wired"
+microphone: true
+category: mic
+recommendation: recommended
+useCase: "boom mic for HD 560S / HD 5xx"
+whyBuy: "Adds a boom mic to compatible Sennheiser HD 5xx headphones, no desk mic needed."
+whyNot: "Only fits compatible Sennheiser models; check yours before buying."
+priceEur: 49
+priceChecked: "2026-10-31"

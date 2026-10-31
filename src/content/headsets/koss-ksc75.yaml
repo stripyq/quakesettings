@@ -1,0 +1,21 @@
+name: "Koss KSC75"
+brand: "Koss"
+type: "Open-back"
+formFactor: "On-ear clip"
+backStyle: "Open"
+driverSize: "40mm"
+impedance: "60 Ohm"
+connection: "Wired"
+microphone: false
+category: open
+recommendation: recommended
+useCase: "cheapest open option"
+whyBuy: "Open, light, flat enough, costs almost nothing."
+whyNot: "Zero isolation, little bass, clip-on fit is not for everyone."
+priceEur: 25
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/koss/ksc75"
+    context: measurement

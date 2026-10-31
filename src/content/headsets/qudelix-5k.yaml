@@ -1,0 +1,18 @@
+name: "Qudelix 5K"
+brand: "Qudelix"
+type: "N/A"
+connection: "DAC/AMP"
+microphone: false
+category: dac-amp
+recommendation: recommended
+useCase: "hardware parametric EQ"
+whyBuy: "USB and Bluetooth DAC/amp with parametric EQ stored on the device, so presets follow it to any PC."
+whyNot: "Battery-powered and more setup than a plain dongle."
+priceEur: 110
+priceChecked: "2026-10-31"
+reviews:
+  - source: asr
+    verdict: recommended
+    date: "2020-11-09"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/qudelix-5k-bluetooth-dac-headphone-amp.17386/"
+    context: measurement

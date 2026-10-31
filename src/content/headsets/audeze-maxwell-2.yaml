@@ -1,0 +1,21 @@
+name: "Audeze Maxwell 2"
+brand: "Audeze"
+type: "Closed-back"
+formFactor: "Over-ear"
+backStyle: "Closed"
+driverSize: "90mm planar"
+connection: "Wireless"
+microphone: true
+category: headset
+recommendation: alternative
+useCase: "premium wireless"
+whyBuy: "Planar-driver wireless headset with low-latency 2.4 GHz and long battery life."
+whyNot: "Costs more than an HD 560S, a DAC and a desk mic combined."
+priceEur: 439
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/audeze/maxwell-2"
+    context: measurement
+    note: "Non-ANC model; the ANC variant has a separate review."

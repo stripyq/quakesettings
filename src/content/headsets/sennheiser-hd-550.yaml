@@ -1,0 +1,21 @@
+name: "Sennheiser HD 550"
+brand: "Sennheiser"
+type: "Open-back"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "38mm"
+impedance: "150 Ohm"
+connection: "Wired"
+microphone: false
+category: open
+recommendation: alternative
+useCase: "HD 560S successor"
+whyBuy: "Successor to the HD 560S with a similar neutral open-back presentation."
+whyNot: "Little reason to replace a working HD 560S; check which of the two is cheaper on the day."
+priceEur: 199
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sennheiser/hd-550"
+    context: measurement

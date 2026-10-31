@@ -2,3 +2,5 @@ name: "Fosi K7"
 brand: "Fosi"
 connection: "DAC/AMP"
 type: "N/A"
+category: dac-amp
+recommendation: historical

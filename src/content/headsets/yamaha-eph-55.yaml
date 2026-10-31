@@ -6,3 +6,4 @@ frequencyResponse: "20Hz - 20kHz"
 impedance: "18 Ohm"
 connection: "Wired"
 microphone: false
+category: iem

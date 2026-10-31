@@ -1,0 +1,17 @@
+name: "Truthear x Crinacle ZERO:BLUE2"
+brand: "Truthear"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "2x DD"
+impedance: "6 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "budget, fuller bass"
+whyBuy: "Dual dynamic drivers with more sub-bass than the Zero:2 and a clean midrange."
+whyNot: "Very low 6 Ohm impedance needs a low-output-impedance source; costs more than twice the Zero:2."
+priceEur: 70
+priceChecked: "2026-10-31"
+disclosure: "Crinacle co-designed this product; do not use Crinacle's own graphs as independent evidence for it."

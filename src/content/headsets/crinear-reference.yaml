@@ -1,0 +1,17 @@
+name: "CrinEar Reference"
+brand: "CrinEar"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "hybrid"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "reference tuning without EQ"
+whyBuy: "Reference-oriented tuning out of the box for people who will not run EQ."
+whyNot: "A Hexa or Pure with an EQ preset approximates the same balance for a third of the price; results differ by fit."
+priceEur: 349
+priceChecked: "2026-10-31"
+disclosure: "Crinacle co-designs CrinEar products; do not use Crinacle's own graphs as independent evidence for these."

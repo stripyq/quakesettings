@@ -6,3 +6,11 @@ frequencyResponse: "8Hz - 25kHz"
 impedance: "64 Ohm"
 connection: "Wired"
 microphone: false
+category: closed
+recommendation: recommended
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sennheiser/hd-280-pro-2016"
+    context: measurement
+    note: "RTINGS tested the 2016 revision."

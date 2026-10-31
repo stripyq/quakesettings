@@ -1,0 +1,21 @@
+name: "Sony INZONE E9"
+brand: "Sony"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "DD"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "LAN under muffs, software profiles"
+whyBuy: "Gaming-tuned IEM with a USB DAC and Sony software profiles."
+whyNot: "Profiles depend on Sony software; a Hexa or Pure with EQ costs less."
+priceEur: 140
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sony/inzone-e9"
+    context: measurement

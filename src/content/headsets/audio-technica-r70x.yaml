@@ -8,3 +8,10 @@ frequencyResponse: "5Hz - 40kHz"
 impedance: "470 Ohm"
 connection: "Wired"
 microphone: false
+category: open
+recommendation: historical
+reviews:
+  - source: asr
+    verdict: historical
+    date: "2025"
+    context: general

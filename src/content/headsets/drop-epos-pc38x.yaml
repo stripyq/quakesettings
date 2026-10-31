@@ -5,3 +5,10 @@ type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true
+category: headset
+recommendation: alternative
+reviews:
+  - source: badseed
+    verdict: historical
+    date: "2025"
+    context: general

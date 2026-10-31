@@ -1,0 +1,19 @@
+name: "FiiO K11"
+brand: "FiiO"
+type: "N/A"
+connection: "DAC/AMP"
+microphone: false
+category: dac-amp
+recommendation: alternative
+useCase: "desktop, high-impedance cans"
+whyBuy: "Desktop DAC/amp with enough power for 250-300 Ohm headphones."
+whyNot: "Overkill for IEMs and low-impedance headphones; takes desk space."
+priceEur: 140
+priceChecked: "2026-10-31"
+reviews:
+  - source: asr
+    verdict: measured
+    date: "2025-12-30"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/fiio-k11-review.68536/"
+    context: measurement
+    note: "Member review on the ASR forum, not an Amir review; no explicit recommendation."

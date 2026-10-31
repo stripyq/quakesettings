@@ -1,0 +1,17 @@
+name: "CrinEar Daybreak"
+brand: "CrinEar"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "1DD + 2BA + 2 micro-planar"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "reference tuning, cheaper"
+whyBuy: "Reference-leaning tuning in the CrinEar line at about half the price of the Reference."
+whyNot: "Still about twice the price of a Hexa, whose balance EQ can bring close."
+priceEur: 179
+priceChecked: "2026-10-31"
+disclosure: "Crinacle co-designs CrinEar products; do not use Crinacle's own graphs as independent evidence for these."

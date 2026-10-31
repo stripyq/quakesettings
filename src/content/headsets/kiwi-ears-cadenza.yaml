@@ -1,0 +1,16 @@
+name: "Kiwi Ears Cadenza"
+brand: "Kiwi Ears"
+type: "In-Ear"
+formFactor: "IEM"
+backStyle: "Closed"
+driverSize: "10mm DD"
+impedance: "32 Ohm"
+connection: "Wired"
+microphone: false
+category: iem
+recommendation: alternative
+useCase: "budget all-rounder"
+whyBuy: "Warm, easy-going single-DD tuning in a small, comfortable shell."
+whyNot: "Less detail than the hybrid IEMs one step up in price."
+priceEur: 43
+priceChecked: "2026-10-31"

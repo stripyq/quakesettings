@@ -5,3 +5,5 @@ type: "Closed"
 formFactor: "Over-ear"
 backStyle: "Closed"
 microphone: true
+category: headset
+recommendation: historical

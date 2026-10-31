@@ -8,3 +8,19 @@ frequencyResponse: "20Hz - 20kHz"
 impedance: "25 Ohm"
 connection: "Wired"
 microphone: false
+category: open
+recommendation: alternative
+reviews:
+  - source: asr
+    verdict: historical
+    date: "2025"
+    context: general
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/hifiman/he400se"
+    context: measurement
+  - source: asr
+    verdict: recommended
+    date: "2021-12-05"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/hifiman-he400se-review-headphone.28771/"
+    context: measurement

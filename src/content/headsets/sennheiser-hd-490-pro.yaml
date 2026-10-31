@@ -1,0 +1,27 @@
+name: "Sennheiser HD 490 Pro"
+brand: "Sennheiser"
+type: "Open-back"
+formFactor: "Over-ear"
+backStyle: "Open"
+driverSize: "38mm"
+impedance: "130 Ohm"
+connection: "Wired"
+microphone: false
+category: open
+recommendation: recommended
+useCase: "long sessions, comfort"
+whyBuy: "Very comfortable open-back with two swappable pad sets that change the tuning."
+whyNot: "Costs well over the HD 560S and HD 550, and ASR did not recommend it without EQ."
+priceEur: 339
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/sennheiser/hd-490-pro"
+    context: measurement
+  - source: asr
+    verdict: not_recommended
+    date: "2024-04-21"
+    url: "https://www.audiosciencereview.com/forum/index.php?threads/sennheiser-hd-490-pro-headphone-review.53935/"
+    context: measurement
+    note: "Not recommended without EQ; the review says it takes EQ well."

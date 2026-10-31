@@ -1,0 +1,12 @@
+name: "Apple USB-C to 3.5mm adapter"
+brand: "Apple"
+type: "N/A"
+connection: "DAC/AMP"
+microphone: false
+category: dac-amp
+recommendation: recommended
+useCase: "IEMs, low output impedance"
+whyBuy: "Clean, low-output-impedance source for IEMs at about 10 EUR."
+whyNot: "Limited output power, lower on EU units than US units; not for high-impedance headphones."
+priceEur: 10
+priceChecked: "2026-10-31"

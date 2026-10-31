@@ -1,0 +1,21 @@
+name: "SteelSeries Arctis Nova 5"
+brand: "SteelSeries"
+type: "Closed-back"
+formFactor: "Over-ear"
+backStyle: "Closed"
+driverSize: "40mm"
+impedance: "36 Ohm"
+connection: "Wireless"
+microphone: true
+category: headset
+recommendation: alternative
+useCase: "wireless convenience"
+whyBuy: "Low-latency 2.4 GHz wireless with long battery life and a retractable mic."
+whyNot: "Gaming-headset tuning; wired headphones at the same price sound better."
+priceEur: 130
+priceChecked: "2026-10-31"
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/steelseries/arctis-nova-5-wireless-5-5p-5x"
+    context: measurement

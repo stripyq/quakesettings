@@ -6,3 +6,11 @@ frequencyResponse: "10Hz - 21kHz"
 impedance: "64 Ohm"
 connection: "Wired"
 microphone: true
+category: headset
+recommendation: recommended
+reviews:
+  - source: rtings
+    verdict: measured
+    url: "https://www.rtings.com/headphones/reviews/hyperx/cloud-iii"
+    context: measurement
+    note: "Wired version; the wireless model has its own review."

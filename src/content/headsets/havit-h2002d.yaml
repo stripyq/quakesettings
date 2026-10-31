@@ -6,3 +6,4 @@ frequencyResponse: "20Hz - 20kHz"
 impedance: "64 Ohm"
 connection: "Wired"
 microphone: true
+category: headset

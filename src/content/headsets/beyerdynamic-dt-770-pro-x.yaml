@@ -1,0 +1,16 @@
+name: "Beyerdynamic DT 770 Pro X"
+brand: "Beyerdynamic"
+type: "Closed-back"
+formFactor: "Over-ear"
+backStyle: "Closed"
+driverSize: "45mm"
+impedance: "48 Ohm"
+connection: "Wired"
+microphone: false
+category: closed
+recommendation: recommended
+useCase: "isolation without IEMs"
+whyBuy: "Closed-back with good isolation and a 48 Ohm load that any source can drive."
+whyNot: "Less spacious than open-backs, and ears get warm on long sessions."
+priceEur: 199
+priceChecked: "2026-10-31"
