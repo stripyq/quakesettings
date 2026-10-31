@@ -46,3 +46,4 @@ public/data/archive/*.jsonl
 
 # Formspree submission export (contains submitter data, never commit)
 data-archive/formspree-export.csv
+data-archive/screenshots/
