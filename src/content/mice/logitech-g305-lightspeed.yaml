@@ -1,5 +1,6 @@
 name: "Logitech G305 Lightspeed"
 brand: "Logitech"
+dimensions: "116 x 63 x 38mm"
 weight: "99g"
 shape: "Ambidextrous"
 sensor: "HERO 12K"
@@ -7,3 +8,5 @@ dpiRange: "200-12000"
 pollingRate: "1000Hz"
 connection: "Wireless"
 buttons: 6
+source: "manual paste 2026-10-31 (licensed dataset)"
+checked: "2026-10-31"
