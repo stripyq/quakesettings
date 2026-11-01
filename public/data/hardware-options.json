@@ -1491,6 +1491,11 @@
       "brand": "RAWM"
     },
     {
+      "slug": "rawm-leviathan-v4-gt",
+      "name": "RAWM Leviathan V4 GT",
+      "brand": "RAWM"
+    },
+    {
       "slug": "razer-abyssus-1800",
       "name": "Razer Abyssus 1800",
       "brand": "Razer"
@@ -4110,6 +4115,11 @@
     {
       "slug": "logitech-g513",
       "name": "Logitech G513",
+      "brand": "Logitech"
+    },
+    {
+      "slug": "logitech-g515-rapid-tkl",
+      "name": "Logitech G515 Rapid TKL",
       "brand": "Logitech"
     },
     {
