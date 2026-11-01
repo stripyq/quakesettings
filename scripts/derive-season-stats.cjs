@@ -19,7 +19,8 @@
  *   public/data/season-meta.json   season id/title/label/window, source, counts
  *
  * Definitions: kills = frags; weapon kills = weapons[code].kills; accuracy = sum hits / sum
- * shots; DPM = damage / (time_sec || duration_sec) minutes; wins/losses from the team
+ * shots, each summed on its own (a 0-hit match still adds its shots; H.weaponHitsShots);
+ * DPM = damage / (time_sec || duration_sec) minutes; wins/losses from the team
  * result, draws (winner null) count in matches but in neither; win_rate = wins / (wins +
  * losses). Head-to-head counts every cross-team pair per match. Null values are skipped,
  * never counted as 0. Weapon and medal counters are stored null for zero by the archive
@@ -85,8 +86,8 @@ function result(team, winner) {
   return team === winner ? 'W' : 'L';
 }
 
-async function readSeason(gt, startSec, endSec, aggs) {
-  const file = path.join(ARCHIVE_DIR, `${gt}.jsonl`);
+async function readSeason(gt, startSec, endSec, aggs, archiveDir = ARCHIVE_DIR) {
+  const file = path.join(archiveDir, `${gt}.jsonl`);
   if (!fs.existsSync(file)) throw new Error(`Archive not found: ${file}`);
   const seen = new Set();
   let n = 0;
@@ -123,7 +124,8 @@ async function readSeason(gt, startSec, endSec, aggs) {
       for (const [code, w] of Object.entries(p.weapons || {})) {
         if (!WEAPON_NAMES[code] || !w) continue;
         const aw = a.weapons[code] || (a.weapons[code] = { hits: 0, shots: 0, kills: 0 });
-        if (w.hits != null && w.shots != null) { aw.hits += w.hits; aw.shots += w.shots; }
+        const hs = H.weaponHitsShots(w);
+        if (hs) { aw.hits += hs.hits; aw.shots += hs.shots; }
         aw.kills += w.kills || 0;
       }
       for (const [k, v] of Object.entries(p.medals || {})) if (v) a.medals[k] = (a.medals[k] || 0) + v;
@@ -289,7 +291,11 @@ async function main() {
     `${(fs.statSync(OUTPUT_PATH).size / 1e6).toFixed(1)} MB) and ${path.relative(ROOT, META_PATH)}`);
 }
 
-main().catch(err => {
-  console.error(`\nFAILED: ${err.message}`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    console.error(`\nFAILED: ${err.message}`);
+    process.exit(1);
+  });
+}
+
+module.exports = { readSeason, buildMode };

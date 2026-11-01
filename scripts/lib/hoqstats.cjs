@@ -15,6 +15,7 @@
  *   normalizeDetail(detail)         vercel detail record -> public/data/archive/<gt>.jsonl record
  *                                   (players carry the optional per-map rating `mr`)
  *   normalizeMapKey(name)           canonical map key: lowercase, no spaces, no ctf_/tdm_ prefix
+ *   weaponHitsShots(w)              archive weapon record -> { hits, shots } for accuracy sums
  *   seasonWindowSec(season)         [startSec, endSec) for a HOQ_MATCH_SEASONS entry
  *
  * Cache: data-archive/hoqstats-cache/<source path>. Detail chunks are cached indefinitely
@@ -208,6 +209,16 @@ const nz = v => (v == null || v === 0 ? null : v);
 const num = v => (v == null ? null : v);
 const round2 = n => Math.round(n * 100) / 100;
 
+/**
+ * { hits, shots } of an archive weapon record for accuracy sums (sum hits / sum shots).
+ * hits and shots are summed independently: a null counter is a zero, so a 0-hit match still
+ * adds its shots. null when the record is missing or both counters are null (nothing to add).
+ */
+function weaponHitsShots(w) {
+  if (!w || (w.hits == null && w.shots == null)) return null;
+  return { hits: w.hits ?? 0, shots: w.shots ?? 0 };
+}
+
 function parseDuration(d) {
   if (Number.isFinite(d)) return d;
   const parts = String(d).split(':');
@@ -346,5 +357,6 @@ module.exports = {
   parseDuration,
   normalizeDetail,
   normalizeMapKey,
+  weaponHitsShots,
   seasonWindowSec,
 };
