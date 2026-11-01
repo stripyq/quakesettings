@@ -14,7 +14,9 @@
  *      originals and update <gt>.meta.json. Any failure leaves the originals untouched.
  *
  * Existing lines are never modified by a normal sync (the new file is the old file byte for
- * byte plus appended lines; this is checked before the rename).
+ * byte plus appended lines; this is checked before the rename). The .jsonl archives are
+ * gitignored: on a fresh checkout there is no local archive, every indexed match counts as
+ * missing, and the sync writes the archive from an empty file.
  *
  * Usage:
  *   node scripts/sync-hoqstats-archive.cjs                      # route all-y2026, ctf + tdm
@@ -227,6 +229,7 @@ async function scanArchive(gt) {
 
 async function readArchiveRecords(gt, uuids) {
   const found = new Map();
+  if (!fs.existsSync(archivePath(gt))) return found;
   const rl = readline.createInterface({ input: fs.createReadStream(archivePath(gt)), crlfDelay: Infinity });
   for await (const line of rl) {
     const m = HEAD_RE.exec(line);
@@ -549,7 +552,13 @@ async function sync(up) {
       let replaced = 0;
       let changed = 0;
       let unmatched = 0;
-      if (w.replace.size === 0) {
+      // No local archive (fresh checkout): start from an empty file. w.replace only holds
+      // matches already in the archive, so it is empty too and the rewrite below never runs.
+      const exists = fs.existsSync(file);
+      if (!exists && w.replace.size) fail(`${file} is missing but ${w.replace.size} record(s) are marked present`);
+      if (!exists) {
+        fs.writeFileSync(tmp, '');
+      } else if (w.replace.size === 0) {
         fs.copyFileSync(file, tmp);
       } else {
         // Unchanged lines are copied byte for byte; the older part of the archive ends its
@@ -584,7 +593,7 @@ async function sync(up) {
       const prefix = w.replace.size === 0 && !w.plan.local.endsWithNewline ? '\n' : '';
       if (w.append.length) fs.appendFileSync(tmp, prefix + w.append.map(r => JSON.stringify(r)).join('\n') + '\n');
       const v = await validateTemp(w.gt, tmp, w.plan.local.lines + w.append.length, w.plan.local.dups);
-      if (w.replace.size === 0) {
+      if (exists && w.replace.size === 0) {
         const [before, after] = await Promise.all([
           sha256Prefix(file, w.plan.local.size), sha256Prefix(tmp, w.plan.local.size),
         ]);
