@@ -8,6 +8,7 @@
     "prebuild": "node scripts/generate-form-data.js && node scripts/sync-hoq-to-display.cjs",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "node --test \"scripts/test/*.test.cjs\"",
     "fetch:season": "node scripts/derive-season-stats.cjs",
     "sync:hoqstats": "node scripts/sync-hoqstats-archive.cjs",
     "derive:season": "node scripts/derive-season-stats.cjs",

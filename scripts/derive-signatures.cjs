@@ -18,6 +18,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const { weaponHitsShots } = require('./lib/hoqstats.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const SUPPORTED_GT = new Set(['ctf', 'tdm', 'tdm2v2', 'ft', 'ca', 'ad']);
@@ -142,10 +143,10 @@ async function deriveOne(gt) {
       }
       if (pl.weapons) {
         for (const wk of ['rg', 'lg', 'rl']) {
-          const w = pl.weapons[wk];
-          if (w && w.hits != null && w.shots != null && w.shots > 0) {
-            p.w[wk].h += w.hits;
-            p.w[wk].s += w.shots;
+          const hs = weaponHitsShots(pl.weapons[wk]);
+          if (hs) {
+            p.w[wk].h += hs.hits;
+            p.w[wk].s += hs.shots;
           }
         }
       }
