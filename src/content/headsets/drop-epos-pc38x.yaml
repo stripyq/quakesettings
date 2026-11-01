@@ -1,7 +1,9 @@
-name: "Drop EPOS PC38X"
-brand: "Drop/EPOS"
+name: "Drop + EPOS PC38X"
+brand: "Sennheiser"
+type: "Open-back"
+frequencyResponse: "10Hz - 30kHz"
+impedance: "28 Ohm"
 connection: "Wired"
-type: "Open"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true

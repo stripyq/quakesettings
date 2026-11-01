@@ -1,9 +1,0 @@
-name: "Sennheiser PC37X"
-brand: "Sennheiser"
-type: "Open-back"
-driverSize: "40mm"
-frequencyResponse: "15Hz - 28kHz"
-impedance: "50 Ohm"
-connection: "Wired"
-microphone: true
-category: open

@@ -17,7 +17,7 @@ The Quake Live settings database at `stripyq.github.io/quakesettings` pulls rati
 
 | Source | Script | Writes |
 |---|---|---|
-| HoQ CTF + TDM (primary ratings) | `scripts/fetch-hoq-ratings.cjs` then `scripts/sync-hoq-to-display.cjs` | **fetch** writes the source fields `hoqCtfRating`, `hoqCtfGames`, `hoqTdmRating`, `hoqTdmGames` from the live API. **sync** copies those into the display fields the site reads (`ctfRating`, `ctfGames`, `tdmRating`, `tdmGames`, plus `ctfRatingUpdated`, `tdmRatingUpdated`), rounding ratings to 2 dp. Both steps required. Do NOT use `update-hoq-ratings.cjs` for a live refresh (it is CSV-fed, see the warning in Step 3). |
+| HoQ CTF + TDM (primary ratings) | `scripts/fetch-hoq-ratings.cjs` then `scripts/sync-hoq-to-display.cjs` | **fetch** writes the source fields `hoqCtfRating`, `hoqCtfGames`, `hoqTdmRating`, `hoqTdmGames` from the live API, and saves the full exports to `public/data/hoq_ctf.json` / `hoq_tdm.json` (the player registry's rating source). **sync** copies those into the display fields the site reads (`ctfRating`, `ctfGames`, `tdmRating`, `tdmGames`, plus `ctfRatingUpdated`, `tdmRatingUpdated`), rounding ratings to 2 dp. Both steps required. Do NOT use `update-hoq-ratings.cjs` for a live refresh (it is CSV-fed, see the warning in Step 3). |
 | HoQ rating history (player-page "HoQ Rating History" chart) | `scripts/append-hoq-history.cjs` | Appends one `{timestamp, gametype_short, rating, game_num}` point per gametype to `public/data/hoq/<steamId>/history.json`, sourced from the `hoq*` YAML fields. Run AFTER the fetch. |
 | QLLR (qllr.xyz, displayed as "CSQL" on the site) | `scripts/fetch-qllr-ratings.cjs` | `qllrCtfRating`, `qllrCtfGames` only |
 | HoQ match archive (hoqstats.vercel.app) + everything derived from it, incl. seasonal stats | `scripts/generate-form-data.js`, `scripts/sync-hoqstats-archive.cjs`, then the `derive-*` chain (Step 3) | `public/data/archive/{ctf,tdm}.jsonl` (gitignored) + `.meta.json`, `public/data/{ctf,tdm}/*.json`, `activity-ctf.json`, `season-stats.json`, `season-meta.json`, `alltime-h2h*.json`, `hoq/<steamId>/map_ratings.json`, `player-activity/<steamId>.json`; no YAML writes |
@@ -120,8 +120,8 @@ git status
 git diff --stat
 ```
 
-- **Expected dirty files**: `src/content/players/*.yaml` plus `public/data/hoq/*/history.json` (the append step), for the HoQ + QLLR + QLRace steps. From the archive steps: `public/data/hoq/*/map_ratings.json`, `public/data/player-activity/*.json`, `src/data/player-registry.json`, `public/data/player-registry.json`, `public/data/collected-players.json`, `public/data/hardware-options.json`, `public/data/archive/{ctf,tdm}.meta.json`, `public/data/{ctf,tdm}/*.json`, `public/data/activity-ctf.json`, `public/data/season-stats.json`, `public/data/season-meta.json`, `public/data/alltime-h2h-featured.json`. The `.jsonl` archives are gitignored and never show up.
-- **Red flags**: `.astro` files, `scripts/*.cjs`, `package.json`, anything in `src/pages/`. If `ctf.json`, `tdm.json`, or the `hoq_*.csv` files show up dirty, someone ran `update-hoq-ratings.cjs` against stale CSVs, stop and discard.
+- **Expected dirty files**: `src/content/players/*.yaml`, `public/data/hoq_ctf.json` and `hoq_tdm.json` (the fetch), plus `public/data/hoq/*/history.json` (the append step), for the HoQ + QLLR + QLRace steps. From the archive steps: `public/data/hoq/*/map_ratings.json`, `public/data/player-activity/*.json`, `src/data/player-registry.json`, `public/data/player-registry.json`, `public/data/collected-players.json`, `public/data/hardware-options.json`, `public/data/archive/{ctf,tdm}.meta.json`, `public/data/{ctf,tdm}/*.json`, `public/data/activity-ctf.json`, `public/data/season-stats.json`, `public/data/season-meta.json`, `public/data/alltime-h2h-featured.json`. The `.jsonl` archives are gitignored and never show up.
+- **Red flags**: `.astro` files, `scripts/*.cjs`, `package.json`, anything in `src/pages/`. If `scripts/ctf.json`, `scripts/tdm.json`, or the `hoq_*.csv` files show up dirty (not `public/data/hoq_{ctf,tdm}.json`, which the fetch writes), someone ran `update-hoq-ratings.cjs` against stale CSVs, stop and discard.
 
 Then verify contents across the whole tree, not just one spot-checked file (a single spot-check missed the 2026-06-04 issues). The fast authoritative check is `git diff` on M's PC, grepped for accuracy lines:
 
@@ -144,7 +144,7 @@ Refresh ratings (YYYY-MM-DD): HoQ ({N1}) + QLLR ({N2}) + history ({N3} points){ 
 Then give the commit + push commands. Scope the `git add` to the player folder, the only thing the supported pipeline changes:
 
 ```powershell
-git add src/content/players/ public/data/hoq/
+git add src/content/players/ public/data/hoq/ public/data/hoq_ctf.json public/data/hoq_tdm.json
 git add src/data/player-registry.json public/data/player-registry.json public/data/collected-players.json public/data/hardware-options.json
 git add public/data/archive/ctf.meta.json public/data/archive/tdm.meta.json public/data/ctf/ public/data/tdm/ public/data/activity-ctf.json public/data/player-activity/ public/data/season-stats.json public/data/season-meta.json public/data/alltime-h2h-featured.json
 git commit -m "<message>"

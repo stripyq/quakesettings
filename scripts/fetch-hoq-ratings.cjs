@@ -9,6 +9,10 @@
  * Each JSON entry has: { _id: steamId, name, rating, n (games) }
  * Matches players by steamId and updates hoqCtfRating, hoqCtfGames, hoqTdmRating, hoqTdmGames.
  *
+ * After both downloads succeed, the full exports are also written to public/data/hoq_ctf.json and
+ * public/data/hoq_tdm.json (entries sorted by _id, keys sorted, pretty-printed): the rating source
+ * for player-registry.json in scripts/generate-form-data.js. --from-json leaves them alone.
+ *
  * Usage:
  *   node scripts/fetch-hoq-ratings.cjs                    # Fetch from API
  *   node scripts/fetch-hoq-ratings.cjs --from-json        # Import from local ctf.json / tdm.json in scripts/
@@ -24,6 +28,21 @@ const TDM_URL = 'http://stats.houseofquake.com/export_rating/tdm.json';
 const USE_JSON = process.argv.includes('--from-json');
 const CTF_JSON_PATH = path.join(__dirname, 'ctf.json');
 const TDM_JSON_PATH = path.join(__dirname, 'tdm.json');
+const CTF_EXPORT_PATH = path.join(__dirname, '../public/data/hoq_ctf.json');
+const TDM_EXPORT_PATH = path.join(__dirname, '../public/data/hoq_tdm.json');
+
+// Write a downloaded export with a stable layout, so a refresh diff shows only what moved.
+// Values are kept as downloaded. Temp file + rename: a failed write leaves the old file.
+function writeExport(file, entries) {
+  if (entries.length === 0) throw new Error(`Refusing to write an empty export to ${file}`);
+  const sorted = entries
+    .map(e => Object.fromEntries(Object.keys(e).sort().map(k => [k, e[k]])))
+    .sort((a, b) => (String(a._id) < String(b._id) ? -1 : String(a._id) > String(b._id) ? 1 : 0));
+  const tmp = `${file}.tmp-${process.pid}`;
+  fs.writeFileSync(tmp, JSON.stringify(sorted, null, 2) + '\n');
+  fs.renameSync(tmp, file);
+  console.log(`  Wrote ${sorted.length} entries to ${path.relative(path.join(__dirname, '..'), file)}`);
+}
 
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
@@ -99,11 +118,14 @@ function updateYaml(player, ctfData, tdmData) {
     return null; // Nothing changed
   }
 
-  // Remove existing hoq fields
-  content = content.replace(/^hoqCtfRating:.*\n?/gm, '');
-  content = content.replace(/^hoqCtfGames:.*\n?/gm, '');
-  content = content.replace(/^hoqTdmRating:.*\n?/gm, '');
-  content = content.replace(/^hoqTdmGames:.*\n?/gm, '');
+  // Keep the file's own line ending (CRLF on a Windows autocrlf checkout)
+  const eol = content.includes('\r\n') ? '\r\n' : '\n';
+
+  // Remove existing hoq fields, including a CRLF terminator
+  content = content.replace(/^hoqCtfRating:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqCtfGames:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqTdmRating:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqTdmGames:.*\r?\n?/gm, '');
 
   // Build new lines
   const newLines = [];
@@ -131,9 +153,9 @@ function updateYaml(player, ctfData, tdmData) {
 
     if (match) {
       const insertPos = match.index + match[0].length;
-      content = content.slice(0, insertPos) + '\n' + newLines.join('\n') + content.slice(insertPos);
+      content = content.slice(0, insertPos) + eol + newLines.join(eol) + content.slice(insertPos);
     } else {
-      content = content.trimEnd() + '\n' + newLines.join('\n') + '\n';
+      content = content.trimEnd() + eol + newLines.join(eol) + eol;
     }
   }
 
@@ -166,6 +188,10 @@ async function main() {
     console.log('Fetching TDM ratings...');
     tdmJson = unwrapResponse(await fetchJson(TDM_URL));
     console.log(`  Got ${tdmJson.length} TDM entries`);
+
+    console.log('Saving exports...');
+    writeExport(CTF_EXPORT_PATH, ctfJson);
+    writeExport(TDM_EXPORT_PATH, tdmJson);
   }
 
   // Build lookup maps by Steam ID

@@ -5,12 +5,12 @@ aliases:
   - sno
 team2024: Flappy Flags
 lastUpdated: 2026-01
-ctfRating: 23.15
-ctfRatingUpdated: "2026-10-31"
+ctfRating: 23.39
+ctfRatingUpdated: "2026-11-01"
 tdmRating: 19.29
 tdmRatingUpdated: "2026-04-29"
 duelRating: 1066
-ctfGames: 2657
+ctfGames: 2660
 tdmGames: 1
 duelGames: 901
 duelRatingUpdated: "2026-02-04"
@@ -69,7 +69,7 @@ favorite_weapon: Railgun
 accuracy_rl: 40
 accuracy_rg: 51
 accuracy_lg: 30
-hoqCtfRating: 23.145902633666992
-hoqCtfGames: 2657
+hoqCtfRating: 23.394561767578125
+hoqCtfGames: 2660
 hoqTdmRating: 19.292423248291016
 hoqTdmGames: 1

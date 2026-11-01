@@ -142,10 +142,13 @@ function curVal(content, field) {
 }
 
 function buildUpdated(content, newRating, newGames) {
-  // Remove any existing qllr lines so we can re-insert cleanly
+  // Keep the file's own line ending (CRLF on a Windows autocrlf checkout)
   let c = content;
-  c = c.replace(/^qllrCtfRating:.*\n?/gm, '');
-  c = c.replace(/^qllrCtfGames:.*\n?/gm, '');
+  const eol = c.includes('\r\n') ? '\r\n' : '\n';
+
+  // Remove any existing qllr lines, including a CRLF terminator, so we can re-insert cleanly
+  c = c.replace(/^qllrCtfRating:.*\r?\n?/gm, '');
+  c = c.replace(/^qllrCtfGames:.*\r?\n?/gm, '');
 
   const newLines = [
     `qllrCtfRating: ${newRating}`,
@@ -161,9 +164,9 @@ function buildUpdated(content, newRating, newGames) {
 
   if (m) {
     const pos = m.index + m[0].length;
-    c = c.slice(0, pos) + '\n' + newLines.join('\n') + c.slice(pos);
+    c = c.slice(0, pos) + eol + newLines.join(eol) + c.slice(pos);
   } else {
-    c = c.trimEnd() + '\n' + newLines.join('\n') + '\n';
+    c = c.trimEnd() + eol + newLines.join(eol) + eol;
   }
   return c;
 }
