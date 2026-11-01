@@ -71,3 +71,5 @@ from `main` (site https://stripyq.github.io/quakesettings, base `/quakesettings`
 - `npm run build` runs `prebuild` (generate-form-data + sync-hoq-to-display), which mutates repo files. Use `npx astro build` for a build-only check.
 - Script tests: `npm test` (`node --test`, Node 22; `scripts/test/*.test.cjs`, fixtures in `scripts/test/fixtures/`).
   No page tests: verify pages with `npx astro build` and a `git diff --stat` review.
+- CI (`.github/workflows/deploy.yml`) runs `npm test` then `npm run build` on every PR to main and every push to main;
+  only pushes to main (and manual runs) upload and deploy.
