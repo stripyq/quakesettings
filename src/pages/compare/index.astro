@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import path from 'node:path';
+import { archiveNewestDay, dayLabel, isComplete, monthLastDay, weekLastDay } from '../../utils/completePeriods';
 
 // Load season stats (derived by scripts/derive-season-stats.cjs)
 let seasonStatsData: Record<string, any> = {};
@@ -20,14 +21,19 @@ try {
   // No season meta available yet
 }
 
-// Load CTF activity data (monthly match counts)
-let activityCtfData: Array<{ month: string; games: number }> = [];
+// Load CTF activity data (weekly match counts, scripts/derive-activity-ctf.cjs)
+let activityCtfData: Array<{ week?: string; month?: string; games: number }> = [];
 try {
   const activityPath = path.join(process.cwd(), 'public/data/activity-ctf.json');
   activityCtfData = JSON.parse(fs.readFileSync(activityPath, 'utf8'));
 } catch {
   // No activity data available yet
 }
+// Only complete weeks are plotted (utils/completePeriods); the caption names the last day covered.
+const newestArchiveDay = archiveNewestDay();
+const bucketLastDay = (b: { week?: string; month?: string }) => (b.week ? weekLastDay(b.week) : monthLastDay(b.month ?? ''));
+activityCtfData = activityCtfData.filter(b => isComplete(bucketLastDay(b), newestArchiveDay));
+const activityThrough = activityCtfData.length > 0 ? dayLabel(bucketLastDay(activityCtfData[activityCtfData.length - 1])) : '';
 
 // Load player registry for name lookups (API returns current Steam names which may differ)
 let registryNameMap: Record<string, string> = {};
@@ -116,7 +122,8 @@ function compareBadgeRibbon(tier: string): string {
 }
 function compareMapName(raw: string): string {
   if (!raw) return '';
-  const key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/, '');
+  // Same rule as normalizeMapKey in scripts/lib/hoqstats.cjs.
+  const key = String(raw).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '');
   if (COMPARE_MAP_ALIASES[key]) return COMPARE_MAP_ALIASES[key];
   const stripped = String(raw).replace(/^(ctf|tdm)_?/, '').replace(/_/g, ' ');
   return stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -280,7 +287,7 @@ const schema = {
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="h2h-container" class="h2h-container hidden"></div>
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
-  <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)}></div>
+  <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)} data-activity-through={activityThrough}></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
   <div id="race-compare-container" class="race-compare-container hidden"></div>
 
@@ -310,9 +317,16 @@ const schema = {
       var MAP_ALIASES = {
         q3wcp9: 'Spider Crossings',
       };
+      // Canonical map key: lowercase, whitespace removed, one leading ctf_/tdm_ dropped, so
+      // "Spider Crossings" and "spidercrossings" are one map. Same rule as normalizeMapKey in
+      // scripts/lib/hoqstats.cjs, which keys the archive and every derived per-map file.
+      function normalizeMapKey(raw) {
+        if (raw == null) return '';
+        return String(raw).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '');
+      }
       function prettyMapName(raw) {
         if (!raw) return 'Unknown';
-        var key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+        var key = normalizeMapKey(raw);
         if (MAP_ALIASES[key]) return MAP_ALIASES[key];
         var stripped = String(raw).replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
         return stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -1059,30 +1073,35 @@ const schema = {
           var seasonMaps = Array.isArray(matchup.maps) ? matchup.maps : [];
           var allTimeMaps = getAllTimeH2HMaps(p1.steamId, p2.steamId, mode);
 
-          // Merge season + all-time by normalized map key.
+          // Merge season + all-time by normalized map key. Spellings of one map that share a
+          // key (any source) add up into one row.
           var byKey = {};
           for (var sj = 0; sj < seasonMaps.length; sj++) {
             var sm = seasonMaps[sj];
             if (!sm) continue;
             var skRaw = sm.map || 'unknown';
-            var sk = String(skRaw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+            var sk = normalizeMapKey(skRaw) || 'unknown';
             var sWon = sm.matches_won || 0;
             var sLost = sm.matches_lost || 0;
             var sPlayed = sm.matches_played || (sWon + sLost);
             if (sPlayed === 0) continue;
-            byKey[sk] = {
-              rawName: skRaw,
-              season: { p1Wins: sWon, p2Wins: sLost, played: sPlayed },
-              alltime: null,
-            };
+            if (!byKey[sk]) byKey[sk] = { rawName: skRaw, season: null, alltime: null };
+            var ss = byKey[sk].season || (byKey[sk].season = { p1Wins: 0, p2Wins: 0, played: 0 });
+            ss.p1Wins += sWon;
+            ss.p2Wins += sLost;
+            ss.played += sPlayed;
           }
           if (allTimeMaps) {
             for (var atk in allTimeMaps) {
               if (!Object.prototype.hasOwnProperty.call(allTimeMaps, atk)) continue;
               var atRow = allTimeMaps[atk];
               if (!atRow || atRow.opp === 0) continue;
-              if (!byKey[atk]) byKey[atk] = { rawName: atk, season: null, alltime: null };
-              byKey[atk].alltime = atRow;
+              var ak = normalizeMapKey(atk) || 'unknown';
+              if (!byKey[ak]) byKey[ak] = { rawName: atk, season: null, alltime: null };
+              var at = byKey[ak].alltime || (byKey[ak].alltime = { p1Wins: 0, p2Wins: 0, opp: 0 });
+              at.p1Wins += atRow.p1Wins;
+              at.p2Wins += atRow.p2Wins;
+              at.opp += atRow.opp;
             }
           }
 
@@ -1570,6 +1589,7 @@ const schema = {
           '<div class="hoq-cmp-chart-wrap">' +
             '<div class="hoq-cmp-loading" id="hoq-cmp-loading">Loading rating history\u2026</div>' +
             '<canvas id="hoq-cmp-canvas" width="800" height="320" style="display:none"></canvas>' +
+            '<p class="hoq-cmp-caption" id="hoq-cmp-activity-caption" style="display:none"></p>' +
             '<div class="hoq-cmp-note" id="hoq-cmp-note" style="display:none"></div>' +
             '<div class="hoq-cmp-error" id="hoq-cmp-error" style="display:none"></div>' +
           '</div>';
@@ -1640,6 +1660,10 @@ const schema = {
           // Parse CTF activity data from container attribute
           var activityBuckets = [];
           try { activityBuckets = JSON.parse(hoqHistoryContainer.getAttribute('data-activity') || '[]'); } catch(e) {}
+          // Shown while activity bars are drawn.
+          var activityCaption = document.getElementById('hoq-cmp-activity-caption');
+          var activityThrough = hoqHistoryContainer.getAttribute('data-activity-through') || '';
+          if (activityCaption && activityThrough) activityCaption.textContent = 'through ' + activityThrough;
 
           loading.style.display = 'none';
           canvas.style.display = 'block';
@@ -1668,6 +1692,7 @@ const schema = {
           function drawChart(mode) {
             var series1 = filterByRange(data1[mode] || [], activeRange);
             var series2 = filterByRange(data2[mode] || [], activeRange);
+            if (activityCaption) activityCaption.style.display = 'none';
 
             if (series1.length === 0 && series2.length === 0) {
               ctx.clearRect(0, 0, W, H);
@@ -1758,6 +1783,7 @@ const schema = {
 
               if (visible.length > 0) {
                 var maxGames = Math.max.apply(null, visible.map(function(b) { return b.games; }));
+                if (activityCaption && activityThrough) activityCaption.style.display = 'block';
 
                 ctx.fillStyle = 'rgba(255,255,255,0.08)';
                 for (var vi = 0; vi < visible.length; vi++) {
@@ -1842,13 +1868,25 @@ const schema = {
           var tbody = document.getElementById('hoq-map-cmp-tbody');
           var errorEl = document.getElementById('hoq-map-cmp-error');
 
+          // Keyed by normalized map name; two spellings of one map add up (win% weighted by
+          // games), and the 10-game floor applies to the sum.
           function toCtfMap(raw) {
             var map = {};
             var arr = Array.isArray(raw) ? raw : [];
             for (var i = 0; i < arr.length; i++) {
               var r = arr[i];
-              if (r.gametype_short === 'ctf' && r.games >= 10) map[r.map_name] = r;
+              if (r.gametype_short !== 'ctf') continue;
+              var key = normalizeMapKey(r.map_name);
+              if (!key) continue;
+              var prev = map[key];
+              if (!prev) { map[key] = { games: r.games, win_pct: r.win_pct }; continue; }
+              var games = prev.games + r.games;
+              var win = prev.win_pct == null ? r.win_pct
+                : r.win_pct == null ? prev.win_pct
+                : (prev.win_pct * prev.games + r.win_pct * r.games) / games;
+              map[key] = { games: games, win_pct: win };
             }
+            for (var k in map) if (map[k].games < 10) delete map[k];
             return map;
           }
 
@@ -3485,6 +3523,13 @@ const schema = {
     font-size: 0.85rem;
     padding: 1rem 0;
     text-align: center;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-caption) {
+    color: var(--text-muted, #9090a0);
+    font-size: 0.75rem;
+    margin: 0.25rem 0 0;
+    text-align: right;
   }
 
   .hoq-history-container :global(.hoq-cmp-note) {

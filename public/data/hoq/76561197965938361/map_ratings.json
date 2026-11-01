@@ -1,1 +1,4 @@
-[{"gametype_short":"ctf","map_name":"japanesecastles","rating":31.8700008392334,"games":16,"win_pct":63,"percentile":97},{"gametype_short":"ctf","map_name":"q3wcp9","rating":31.25,"games":16,"win_pct":53,"percentile":95}]
+[
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":31.2705,"games":16,"win_pct":62.5,"percentile":97},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":27.6833,"games":17,"win_pct":52.9,"percentile":81}
+]

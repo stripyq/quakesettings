@@ -3,17 +3,20 @@
   "source": "hoqstats.vercel.app",
   "matches": 22358,
   "unique_matches": 22347,
-  "last_update": "2026-11-01T14:26:21.662Z",
+  "last_update": "2026-11-01T15:34:15.080Z",
   "last_sync": {
     "route": "tdm",
     "since": null,
     "upstream_updated": "01.Nov.2026 01:21 CET",
     "upstream_update_ts": 1793492472000,
     "indexed": 22347,
-    "already_present": 22269,
-    "missing": 78,
-    "appended": 78,
-    "replaced": 0,
+    "already_present": 22347,
+    "missing": 0,
+    "appended": 0,
+    "replaced": 22347,
+    "replaced_fields": [
+      "mr"
+    ],
     "present_not_indexed": 0
   },
   "legacy_build": {

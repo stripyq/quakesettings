@@ -1,1 +1,16 @@
-[{"gametype_short":"ctf","map_name":"courtyard","rating":32.15999984741211,"games":14,"win_pct":71,"percentile":97},{"gametype_short":"ctf","map_name":"troubledwaters","rating":30.520000457763672,"games":42,"win_pct":60,"percentile":95},{"gametype_short":"ctf","map_name":"ironworks","rating":29.709999084472656,"games":137,"win_pct":57,"percentile":88},{"gametype_short":"ctf","map_name":"pillbox","rating":27.549999237060547,"games":17,"win_pct":59,"percentile":84},{"gametype_short":"ctf","map_name":"q3wcp9","rating":26.81999969482422,"games":120,"win_pct":53,"percentile":76},{"gametype_short":"ctf","map_name":"japanesecastles","rating":24.350000381469727,"games":143,"win_pct":43,"percentile":63},{"gametype_short":"ctf","map_name":"infinity","rating":23.100000381469727,"games":80,"win_pct":38,"percentile":40},{"gametype_short":"ctf","map_name":"spidercrossings","rating":20.43000030517578,"games":17,"win_pct":35,"percentile":4},{"gametype_short":"ctf","map_name":"shiningforces","rating":15.199999809265137,"games":23,"win_pct":30,"percentile":3},{"gametype_short":"tdm","map_name":"purgatory","rating":30.43000030517578,"games":26,"win_pct":58,"percentile":91},{"gametype_short":"tdm","map_name":"limbus","rating":28.959999084472656,"games":15,"win_pct":60,"percentile":82},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":26.270000457763672,"games":25,"win_pct":48,"percentile":66},{"gametype_short":"tdm","map_name":"deepinside","rating":25.829999923706055,"games":21,"win_pct":57,"percentile":55},{"gametype_short":"tdm","map_name":"dreadfulplace","rating":25.09000015258789,"games":25,"win_pct":52,"percentile":60}]
+[
+{"gametype_short":"ctf","map_name":"courtyard","rating":30.7454,"games":15,"win_pct":66.7,"percentile":89},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":30.6239,"games":48,"win_pct":58.3,"percentile":92},
+{"gametype_short":"ctf","map_name":"ironworks","rating":29.5362,"games":150,"win_pct":56.7,"percentile":88},
+{"gametype_short":"ctf","map_name":"pillbox","rating":28.3972,"games":17,"win_pct":58.8,"percentile":70},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":25.8411,"games":137,"win_pct":51.8,"percentile":69},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":23.5897,"games":165,"win_pct":43,"percentile":57},
+{"gametype_short":"ctf","map_name":"infinity","rating":23.5175,"games":95,"win_pct":38.9,"percentile":38},
+{"gametype_short":"ctf","map_name":"spidercrossings","rating":20.4541,"games":17,"win_pct":35.3,"percentile":9},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":18.0556,"games":24,"win_pct":33.3,"percentile":4},
+{"gametype_short":"tdm","map_name":"purgatory","rating":30.3933,"games":26,"win_pct":57.7,"percentile":90},
+{"gametype_short":"tdm","map_name":"limbus","rating":28.5319,"games":15,"win_pct":60,"percentile":78},
+{"gametype_short":"tdm","map_name":"deepinside","rating":25.6597,"games":21,"win_pct":57.1,"percentile":51},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":25.5164,"games":25,"win_pct":48,"percentile":58},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":25.2612,"games":25,"win_pct":52,"percentile":56}
+]

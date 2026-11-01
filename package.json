@@ -11,6 +11,8 @@
     "fetch:season": "node scripts/derive-season-stats.cjs",
     "sync:hoqstats": "node scripts/sync-hoqstats-archive.cjs",
     "derive:season": "node scripts/derive-season-stats.cjs",
+    "derive:map-ratings": "node scripts/derive-map-ratings.cjs",
+    "derive:player-activity": "node scripts/derive-player-activity.cjs",
     "derive:alltime-h2h": "node scripts/derive-alltime-h2h.cjs",
     "fetch:hoq-ratings": "node scripts/fetch-hoq-ratings.cjs",
     "fetch:qlrace": "node scripts/fetch-qlrace.cjs",

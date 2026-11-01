@@ -1,1 +1,12 @@
-[{"gametype_short":"ctf","map_name":"q3wcp9","rating":29.860000610351562,"games":671,"win_pct":56,"percentile":91},{"gametype_short":"ctf","map_name":"thedukesgarden","rating":28.31999969482422,"games":10,"win_pct":50,"percentile":70},{"gametype_short":"ctf","map_name":"courtyard","rating":28.079999923706055,"games":86,"win_pct":54,"percentile":81},{"gametype_short":"ctf","map_name":"japanesecastles","rating":27.579999923706055,"games":677,"win_pct":51,"percentile":86},{"gametype_short":"ctf","map_name":"ironworks","rating":24.360000610351562,"games":378,"win_pct":39,"percentile":56},{"gametype_short":"ctf","map_name":"troubledwaters","rating":23.68000030517578,"games":141,"win_pct":43,"percentile":41},{"gametype_short":"ctf","map_name":"infinity","rating":22.93000030517578,"games":226,"win_pct":39,"percentile":38},{"gametype_short":"ctf","map_name":"shiningforces","rating":19.770000457763672,"games":39,"win_pct":36,"percentile":17},{"gametype_short":"ctf","map_name":"spidercrossings","rating":15.59000015258789,"games":15,"win_pct":27,"percentile":0}]
+[
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":29.6869,"games":702,"win_pct":56.1,"percentile":91},
+{"gametype_short":"ctf","map_name":"courtyard","rating":27.4004,"games":88,"win_pct":53.4,"percentile":67},
+{"gametype_short":"ctf","map_name":"thedukesgarden","rating":27.1671,"games":10,"win_pct":50,"percentile":60},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":26.9846,"games":706,"win_pct":51.4,"percentile":82},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":25.1817,"games":155,"win_pct":44.5,"percentile":44},
+{"gametype_short":"ctf","map_name":"ironworks","rating":24.4741,"games":400,"win_pct":39.8,"percentile":51},
+{"gametype_short":"ctf","map_name":"infinity","rating":23.4392,"games":249,"win_pct":39.8,"percentile":37},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":20.6763,"games":43,"win_pct":37.2,"percentile":14},
+{"gametype_short":"ctf","map_name":"spidercrossings","rating":15.8101,"games":15,"win_pct":26.7,"percentile":0},
+{"gametype_short":"ctf","map_name":"pillbox","rating":11.661,"games":10,"win_pct":0,"percentile":0}
+]

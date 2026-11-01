@@ -20,7 +20,7 @@ The Quake Live settings database at `stripyq.github.io/quakesettings` pulls rati
 | HoQ CTF + TDM (primary ratings) | `scripts/fetch-hoq-ratings.cjs` then `scripts/sync-hoq-to-display.cjs` | **fetch** writes the source fields `hoqCtfRating`, `hoqCtfGames`, `hoqTdmRating`, `hoqTdmGames` from the live API. **sync** copies those into the display fields the site reads (`ctfRating`, `ctfGames`, `tdmRating`, `tdmGames`, plus `ctfRatingUpdated`, `tdmRatingUpdated`), rounding ratings to 2 dp. Both steps required. Do NOT use `update-hoq-ratings.cjs` for a live refresh (it is CSV-fed, see the warning in Step 3). |
 | HoQ rating history (player-page "HoQ Rating History" chart) | `scripts/append-hoq-history.cjs` | Appends one `{timestamp, gametype_short, rating, game_num}` point per gametype to `public/data/hoq/<steamId>/history.json`, sourced from the `hoq*` YAML fields. Run AFTER the fetch. |
 | QLLR (qllr.xyz, displayed as "CSQL" on the site) | `scripts/fetch-qllr-ratings.cjs` | `qllrCtfRating`, `qllrCtfGames` only |
-| HoQ match archive (hoqstats.vercel.app) + everything derived from it, incl. seasonal stats | `scripts/generate-form-data.js`, `scripts/sync-hoqstats-archive.cjs`, then the `derive-*` chain (Step 3) | `public/data/archive/{ctf,tdm}.jsonl` (gitignored) + `.meta.json`, `public/data/{ctf,tdm}/*.json`, `activity-ctf.json`, `season-stats.json`, `season-meta.json`, `alltime-h2h*.json`; no YAML writes |
+| HoQ match archive (hoqstats.vercel.app) + everything derived from it, incl. seasonal stats | `scripts/generate-form-data.js`, `scripts/sync-hoqstats-archive.cjs`, then the `derive-*` chain (Step 3) | `public/data/archive/{ctf,tdm}.jsonl` (gitignored) + `.meta.json`, `public/data/{ctf,tdm}/*.json`, `activity-ctf.json`, `season-stats.json`, `season-meta.json`, `alltime-h2h*.json`, `hoq/<steamId>/map_ratings.json`, `player-activity/<steamId>.json`; no YAML writes |
 | QLRace / qlrace.com (VQL race records) | `scripts/fetch-qlrace.cjs` | `qlrace:` YAML block on players without one (add `--force` to re-fetch everyone) |
 
 ## The routine
@@ -81,13 +81,13 @@ Third HoQ step, only AFTER `fetch-hoq-ratings.cjs` (it reads the `hoq*` fields t
 node scripts/generate-form-data.js
 ```
 
-Rebuilds the player registry (`src/data/player-registry.json`, `public/data/player-registry.json`) and the form data from the YAMLs. `derive-season-stats.cjs` and `derive-alltime-h2h.cjs` read the registry, so this runs after the rating steps and before the archive steps.
+Rebuilds the player registry (`src/data/player-registry.json`, `public/data/player-registry.json`) and the form data from the YAMLs. `derive-player-activity.cjs`, `derive-season-stats.cjs`, `derive-map-ratings.cjs` and `derive-alltime-h2h.cjs` read the registry, so this runs after the rating steps and before the archive steps.
 
 ```powershell
 node scripts/sync-hoqstats-archive.cjs
 ```
 
-Appends new HoQ matches from hoqstats.vercel.app (a nightly static build of the dead HoQ servers' data) to `public/data/archive/{ctf,tdm}.jsonl` and updates `<gt>.meta.json`. Default scope is the current year. Expected: per gametype it prints indexed / already present / missing / present locally but not indexed, then "temp file validated" and "wrote". "Missing" should be roughly the matches played since the last run, and "present locally, not indexed" should be 0. On any validation failure it prints ABORTED and leaves the originals untouched; report that and stop. Supports `--dry-run`. Downloads are cached in `data-archive/hoqstats-cache/` (gitignored). The archive mixes CRLF (older lines) and LF (newer lines); never rewrite those files any other way.
+Appends new HoQ matches from hoqstats.vercel.app (a nightly static build of the dead HoQ servers' data) to `public/data/archive/{ctf,tdm}.jsonl` and updates `<gt>.meta.json`. Default scope is the current year. Expected: per gametype it prints indexed / already present / missing / present locally but not indexed, then "temp file validated" and "wrote". "Missing" should be roughly the matches played since the last run, and "present locally, not indexed" should be 0. On any validation failure it prints ABORTED and leaves the originals untouched; report that and stop. Supports `--dry-run`. Downloads are cached in `data-archive/hoqstats-cache/` (gitignored). The archive mixes CRLF (older lines) and LF (newer lines); never rewrite those files any other way. New lines carry each player's per-map rating `mr`; older lines got it from `--route <ctf|tdm> --update-existing --fields mr`, which changes no other byte.
 
 Then the derive chain, one command at a time, in this order. Each one reads the archive and writes JSON under `public/data/` only:
 
@@ -95,13 +95,15 @@ Then the derive chain, one command at a time, in this order. Each one reads the 
 node scripts/derive-archive.cjs --gt=ctf,tdm
 node scripts/derive-tdm-all.cjs
 node scripts/derive-activity-ctf.cjs
+node scripts/derive-player-activity.cjs
 node scripts/derive-signatures.cjs --gt=ctf,tdm
 node scripts/derive-rating-stories.cjs --gt=ctf,tdm
 node scripts/derive-season-stats.cjs
+node scripts/derive-map-ratings.cjs
 node scripts/derive-alltime-h2h.cjs
 ```
 
-Expected: `derive-season-stats.cjs` names the current season (e.g. "y2026-s4 (2026 S4 ...)") with match and player counts per gametype. `derive-alltime-h2h.cjs` ends with a 20-pair cross-check against upstream; a few MISMATCH lines (off by 1-2) are normal, because upstream leaves out matches without a winner and merges reconnecting players.
+Expected: `derive-season-stats.cjs` names the current season (e.g. "y2026-s4 (2026 S4 ...)") with match and player counts per gametype. `derive-map-ratings.cjs` rewrites `public/data/hoq/<steamId>/map_ratings.json` for the 147-odd profiled players and reports map rows with and without a rating; a handful of "mr games vs archive games" mismatches off by 1 are normal (a player listed on both teams of one match counts once here, twice upstream). `derive-alltime-h2h.cjs` ends with a 20-pair cross-check against upstream; a few MISMATCH lines (off by 1-2) are normal, because upstream leaves out matches without a winner and merges reconnecting players.
 
 ```powershell
 node scripts/fetch-qlrace.cjs
@@ -118,7 +120,7 @@ git status
 git diff --stat
 ```
 
-- **Expected dirty files**: `src/content/players/*.yaml` plus `public/data/hoq/*/history.json` (the append step), for the HoQ + QLLR + QLRace steps. From the archive steps: `src/data/player-registry.json`, `public/data/player-registry.json`, `public/data/collected-players.json`, `public/data/hardware-options.json`, `public/data/archive/{ctf,tdm}.meta.json`, `public/data/{ctf,tdm}/*.json`, `public/data/activity-ctf.json`, `public/data/season-stats.json`, `public/data/season-meta.json`, `public/data/alltime-h2h-featured.json`. The `.jsonl` archives are gitignored and never show up.
+- **Expected dirty files**: `src/content/players/*.yaml` plus `public/data/hoq/*/history.json` (the append step), for the HoQ + QLLR + QLRace steps. From the archive steps: `public/data/hoq/*/map_ratings.json`, `public/data/player-activity/*.json`, `src/data/player-registry.json`, `public/data/player-registry.json`, `public/data/collected-players.json`, `public/data/hardware-options.json`, `public/data/archive/{ctf,tdm}.meta.json`, `public/data/{ctf,tdm}/*.json`, `public/data/activity-ctf.json`, `public/data/season-stats.json`, `public/data/season-meta.json`, `public/data/alltime-h2h-featured.json`. The `.jsonl` archives are gitignored and never show up.
 - **Red flags**: `.astro` files, `scripts/*.cjs`, `package.json`, anything in `src/pages/`. If `ctf.json`, `tdm.json`, or the `hoq_*.csv` files show up dirty, someone ran `update-hoq-ratings.cjs` against stale CSVs, stop and discard.
 
 Then verify contents across the whole tree, not just one spot-checked file (a single spot-check missed the 2026-06-04 issues). The fast authoritative check is `git diff` on M's PC, grepped for accuracy lines:
@@ -144,7 +146,7 @@ Then give the commit + push commands. Scope the `git add` to the player folder, 
 ```powershell
 git add src/content/players/ public/data/hoq/
 git add src/data/player-registry.json public/data/player-registry.json public/data/collected-players.json public/data/hardware-options.json
-git add public/data/archive/ctf.meta.json public/data/archive/tdm.meta.json public/data/ctf/ public/data/tdm/ public/data/activity-ctf.json public/data/season-stats.json public/data/season-meta.json public/data/alltime-h2h-featured.json
+git add public/data/archive/ctf.meta.json public/data/archive/tdm.meta.json public/data/ctf/ public/data/tdm/ public/data/activity-ctf.json public/data/player-activity/ public/data/season-stats.json public/data/season-meta.json public/data/alltime-h2h-featured.json
 git commit -m "<message>"
 git push
 ```
@@ -162,11 +164,11 @@ Do not blanket-add `public/data/` or the CSV/json caches, and never add `public/
 3. **HoQ API responses are wrapped.** `{ ok: true, response: [...] }`, scripts unwrap `.response`. If you're writing a new fetch path, remember this.
 4. **Match by steamId first, nickname second.** The YAML registry uses custom nicknames that diverge from API names (e.g. "zoza" vs "zozo").
 5. **Never commit or push without explicit user approval.** GitHub Pages deploys straight from main. A bad commit ships immediately.
-6. **Map casing is inconsistent.** `q3wcp9` vs `Q3WCP9`, handle both when doing map-keyed lookups.
+6. **Map casing is inconsistent upstream.** `q3wcp9` vs `Q3WCP9`, `Spider Crossings` vs `spidercrossings`. Key maps with `normalizeMapKey` (`scripts/lib/hoqstats.cjs`: lowercase, no spaces, no `ctf_`/`tdm_` prefix); the archive and every derived per-map file already use it.
 7. **Preserve `published` on updates.** New player files default to `published: false`; existing values must never be clobbered.
 8. **`update-hoq-ratings.cjs` is CSV-fed, not a fetcher.** It reads stale `public/data/hoq_*.csv` and writes only `hoq*` source fields (no display sync). For a live refresh use `fetch-hoq-ratings.cjs` then `sync-hoq-to-display.cjs` (see Step 3).
 9. **Never track files over 100 MB.** GitHub rejects them outright. Raw `public/data/archive/*.jsonl` dumps are gitignored; only the derived JSON is committed.
-10. **`fetch-hoq-maps.cjs` is retired** (in `scripts/_legacy/`, with the other dead-server fetchers). Its endpoints (`/player/<id>/history.json`, `map_ratings.json`) died with the old `88.214.20.58` server in July 2026, and the replacement QLLR server has no history endpoint. Rating history is maintained append-only by `append-hoq-history.cjs`; never regenerate, trim, or rewrite `public/data/hoq/*/history.json`.
+10. **`fetch-hoq-maps.cjs` is retired** (in `scripts/_legacy/`, with the other dead-server fetchers). Its endpoints (`/player/<id>/history.json`, `map_ratings.json`) died with the old `88.214.20.58` server in July 2026, and the replacement QLLR server has no history endpoint. `map_ratings.json` is now derived from the archive by `derive-map-ratings.cjs`. Rating history is maintained append-only by `append-hoq-history.cjs`; never regenerate, trim, or rewrite `public/data/hoq/*/history.json`.
 11. **Never rewrite the match archive.** `public/data/archive/<gt>.jsonl` has CRLF line endings on older lines and LF on newer ones. Only `sync-hoqstats-archive.cjs` writes it: it appends, and keeps existing bytes when replacing records.
 
 ## When the user wants something slightly different
@@ -180,7 +182,7 @@ Do not blanket-add `public/data/` or the CSV/json caches, and never add `public/
 - `fetch-qllr-ratings.cjs --dry-run` â€” prints the updates it would make without writing YAMLs.
 - `fetch-hoq-ratings.cjs` and `sync-hoq-to-display.cjs` â€” no dry-run flag, but each prints every change as it writes. Inspect the output, then run the Step 4 verifier before committing. (If you must preview without writing, pull the API JSON and diff it against current YAML values by hand.)
 - `sync-hoqstats-archive.cjs --dry-run` â€” prints indexed / present / missing / to-append counts without writing. `--verify-existing 50` diffs already-archived matches against upstream and also writes nothing.
-- `derive-*.cjs` â€” no dry-run; they only rewrite JSON under `public/data/`, which `git diff --stat` shows.
+- `derive-*.cjs` â€” no dry-run (except `derive-map-ratings.cjs` and `derive-player-activity.cjs`, which take `--dry-run`); they only rewrite JSON under `public/data/`, which `git diff --stat` shows.
 - `fetch-qlrace.cjs --dry-run` â€” prints the YAML block it would add per player.
 
 Offer dry-runs unsolicited if M seems nervous or if the session started after a long gap (state drift likely).

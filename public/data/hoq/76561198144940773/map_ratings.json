@@ -1,1 +1,7 @@
-[{"gametype_short":"tdm","map_name":"ragnarok","rating":27.459999084472656,"games":26,"win_pct":65,"percentile":70},{"gametype_short":"tdm","map_name":"dreadfulplace","rating":25.649999618530273,"games":34,"win_pct":53,"percentile":63},{"gametype_short":"tdm","map_name":"limbus","rating":24.889999389648438,"games":28,"win_pct":54,"percentile":47},{"gametype_short":"tdm","map_name":"purgatory","rating":22.09000015258789,"games":73,"win_pct":51,"percentile":36},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":21.040000915527344,"games":66,"win_pct":45,"percentile":23}]
+[
+{"gametype_short":"tdm","map_name":"ragnarok","rating":27.7124,"games":26,"win_pct":65.4,"percentile":68},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":27.5883,"games":34,"win_pct":52.9,"percentile":75},
+{"gametype_short":"tdm","map_name":"limbus","rating":24.6794,"games":28,"win_pct":53.6,"percentile":42},
+{"gametype_short":"tdm","map_name":"purgatory","rating":22.717,"games":73,"win_pct":50.7,"percentile":38},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":20.7075,"games":67,"win_pct":44.8,"percentile":20}
+]

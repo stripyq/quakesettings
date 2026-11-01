@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getBaseModelName } from '../../utils/mousepadGrouping';
+import { archiveNewestDay, isComplete, monthLabel, monthLastDay } from '../../utils/completePeriods';
 import { calculateRealAccel } from '../../utils/accel';
 import { calculateCm360 } from '../../utils/sensitivity';
 import fs from 'node:fs';
@@ -956,8 +957,10 @@ for (const [sid, displayName] of Object.entries(nickOverrides)) {
 // ---------- activity timeline preprocessing ----------
 // Build a merged, chronologically-sorted list of all YYYY-MM keys that
 // appear in either CTF or TDM data, plus per-gt counts aligned to that
-// same axis. Months with zero games get an explicit 0.
+// same axis. Months with zero games get an explicit 0. The current month
+// is left out until the archive covers its last day (utils/completePeriods).
 type MonthPoint = { key: string; label: string; ctf: number; tdm: number };
+const newestArchiveDay = archiveNewestDay();
 function buildMonthlyTimeline(ctf: ActivityData | null, tdm: ActivityData | null): MonthPoint[] {
   const keys = new Set<string>();
   if (ctf?.by_month) Object.keys(ctf.by_month).forEach(k => keys.add(k));
@@ -973,7 +976,7 @@ function buildMonthlyTimeline(ctf: ActivityData | null, tdm: ActivityData | null
     filled.push(`${y}-${String(m).padStart(2, '0')}`);
     m++; if (m > 12) { m = 1; y++; }
   }
-  return filled.map(k => {
+  return filled.filter(k => isComplete(monthLastDay(k), newestArchiveDay)).map(k => {
     const [y, mo] = k.split('-').map(Number);
     const monthNames = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return {
@@ -1039,6 +1042,7 @@ const chart = buildChartGeometry(monthlyTimeline);
 const archiveTotalMatches = (ctfActivity?.total_matches || 0) + (tdmActivity?.total_matches || 0);
 const archiveFirstMonth = monthlyTimeline.length > 0 ? monthlyTimeline[0].label : '';
 const archiveLastMonth = monthlyTimeline.length > 0 ? monthlyTimeline[monthlyTimeline.length - 1].label : '';
+const activityThrough = monthlyTimeline.length > 0 ? monthLabel(monthlyTimeline[monthlyTimeline.length - 1].key) : '';
 
 const schema = {
   "@context": "https://schema.org",
@@ -1813,6 +1817,7 @@ const schema = {
           <path d={chart.ctfPath} class="s-chart-line s-chart-ctf" fill="none" />
           <path d={chart.tdmPath} class="s-chart-line s-chart-tdm" fill="none" />
         </svg>
+        <p class="s-chart-caption">through {activityThrough}</p>
       </div>
 
       <!-- Card: Rating volatility (biggest swings) -->
@@ -3270,6 +3275,12 @@ const schema = {
     width: 100%;
     height: auto;
     display: block;
+  }
+  .s-chart-caption {
+    margin: 0.25rem 0 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
   }
   .s-chart-grid {
     stroke: var(--border-color);

@@ -1,1 +1,11 @@
-[{"gametype_short":"ctf","map_name":"troubledwaters","rating":26.309999465942383,"games":171,"win_pct":56,"percentile":64},{"gametype_short":"ctf","map_name":"stonekeep","rating":25.530000686645508,"games":12,"win_pct":50,"percentile":56},{"gametype_short":"ctf","map_name":"shiningforces","rating":21.889999389648438,"games":51,"win_pct":47,"percentile":32},{"gametype_short":"ctf","map_name":"ironworks","rating":21.799999237060547,"games":483,"win_pct":50,"percentile":34},{"gametype_short":"ctf","map_name":"infinity","rating":20.790000915527344,"games":289,"win_pct":45,"percentile":23},{"gametype_short":"ctf","map_name":"q3wcp9","rating":20.190000534057617,"games":643,"win_pct":49,"percentile":27},{"gametype_short":"ctf","map_name":"japanesecastles","rating":18.260000228881836,"games":593,"win_pct":46,"percentile":26},{"gametype_short":"ctf","map_name":"courtyard","rating":16.969999313354492,"games":85,"win_pct":42,"percentile":10},{"gametype_short":"ctf","map_name":"thedukesgarden","rating":16.299999237060547,"games":22,"win_pct":36,"percentile":2}]
+[
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":29.5516,"games":192,"win_pct":57.3,"percentile":84},
+{"gametype_short":"ctf","map_name":"stonekeep","rating":25.073,"games":12,"win_pct":50,"percentile":58},
+{"gametype_short":"ctf","map_name":"ironworks","rating":22.4325,"games":547,"win_pct":50.1,"percentile":35},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":21.8072,"games":53,"win_pct":47.2,"percentile":19},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":21.7201,"games":696,"win_pct":50,"percentile":33},
+{"gametype_short":"ctf","map_name":"courtyard","rating":21.1691,"games":92,"win_pct":45.7,"percentile":14},
+{"gametype_short":"ctf","map_name":"infinity","rating":20.9801,"games":326,"win_pct":44.2,"percentile":18},
+{"gametype_short":"ctf","map_name":"thedukesgarden","rating":19.0315,"games":22,"win_pct":36.4,"percentile":7},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":18.9674,"games":650,"win_pct":46,"percentile":25}
+]

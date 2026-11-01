@@ -1,1 +1,11 @@
-[{"gametype_short":"ctf","map_name":"courtyard","rating":26.829999923706055,"games":64,"win_pct":53,"percentile":70},{"gametype_short":"ctf","map_name":"shiningforces","rating":26.18000030517578,"games":37,"win_pct":54,"percentile":63},{"gametype_short":"ctf","map_name":"stonekeep","rating":24.549999237060547,"games":15,"win_pct":47,"percentile":52},{"gametype_short":"ctf","map_name":"ironworks","rating":23.860000610351562,"games":444,"win_pct":53,"percentile":51},{"gametype_short":"ctf","map_name":"q3wcp9","rating":22.59000015258789,"games":689,"win_pct":54,"percentile":48},{"gametype_short":"ctf","map_name":"troubledwaters","rating":22.540000915527344,"games":178,"win_pct":49,"percentile":29},{"gametype_short":"ctf","map_name":"infinity","rating":22.15999984741211,"games":270,"win_pct":46,"percentile":31},{"gametype_short":"ctf","map_name":"japanesecastles","rating":21.06999969482422,"games":659,"win_pct":50,"percentile":44},{"gametype_short":"ctf","map_name":"pillbox","rating":13.319999694824219,"games":23,"win_pct":30,"percentile":9}]
+[
+{"gametype_short":"ctf","map_name":"courtyard","rating":28.0045,"games":68,"win_pct":54.4,"percentile":74},
+{"gametype_short":"ctf","map_name":"stonekeep","rating":24.5487,"games":15,"win_pct":46.7,"percentile":54},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":24.4594,"games":217,"win_pct":49.8,"percentile":38},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":24.331,"games":48,"win_pct":50,"percentile":43},
+{"gametype_short":"ctf","map_name":"ironworks","rating":23.5504,"games":532,"win_pct":52.2,"percentile":44},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":22.0456,"games":775,"win_pct":53.3,"percentile":36},
+{"gametype_short":"ctf","map_name":"infinity","rating":21.7066,"games":335,"win_pct":45.4,"percentile":23},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":21.5068,"games":748,"win_pct":49.7,"percentile":43},
+{"gametype_short":"ctf","map_name":"pillbox","rating":16.606,"games":25,"win_pct":32,"percentile":3}
+]
