@@ -5502,11 +5502,6 @@
       "brand": "CrinEar"
     },
     {
-      "slug": "drop-epos-pc38x",
-      "name": "Drop EPOS PC38X",
-      "brand": "Drop/EPOS"
-    },
-    {
       "slug": "fiio-k11",
       "name": "FiiO K11",
       "brand": "FiiO"
@@ -5677,6 +5672,11 @@
       "brand": "Samson"
     },
     {
+      "slug": "drop-epos-pc38x",
+      "name": "Drop + EPOS PC38X",
+      "brand": "Sennheiser"
+    },
+    {
       "slug": "drop-sennheiser-pc37x",
       "name": "Drop + Sennheiser PC37X",
       "brand": "Sennheiser"
@@ -5744,11 +5744,6 @@
     {
       "slug": "sennheiser-pc-350",
       "name": "Sennheiser PC 350",
-      "brand": "Sennheiser"
-    },
-    {
-      "slug": "sennheiser-pc37x",
-      "name": "Sennheiser PC37X",
       "brand": "Sennheiser"
     },
     {
