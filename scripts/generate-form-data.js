@@ -64,6 +64,19 @@ function validateSteamId(id, playerName) {
 }
 
 /**
+ * Write a file only when its content changes (ignoring the CRLF a Windows checkout adds),
+ * so a plain build leaves the git tree clean
+ */
+function writeIfChanged(filePath, text) {
+  try {
+    if (fs.readFileSync(filePath, 'utf8').replace(/\r\n/g, '\n') === text) return;
+  } catch {
+    // File doesn't exist yet
+  }
+  fs.writeFileSync(filePath, text);
+}
+
+/**
  * Read all YAML files from a directory and return parsed data with slugs
  * Validates Steam IDs if present
  */
@@ -372,13 +385,23 @@ function generatePlayerRegistry() {
     players: registry
   };
 
-  // Write to src/data (source)
+  // Keep the previous date when nothing else changed, so a plain build (prebuild) doesn't dirty the tree
   const srcPath = path.join(dataDir, 'player-registry.json');
-  fs.writeFileSync(srcPath, JSON.stringify(registryData, null, 2));
+  try {
+    const prev = JSON.parse(fs.readFileSync(srcPath, 'utf8'));
+    if (JSON.stringify({ ...prev, generatedAt: null }) === JSON.stringify({ ...registryData, generatedAt: null })) {
+      registryData.generatedAt = prev.generatedAt;
+    }
+  } catch {
+    // No previous registry to compare against: keep today's date
+  }
+
+  // Write to src/data (source)
+  writeIfChanged(srcPath, JSON.stringify(registryData, null, 2));
 
   // Write to public/data (for client)
   const pubPath = path.join(outputDir, 'player-registry.json');
-  fs.writeFileSync(pubPath, JSON.stringify(registryData));
+  writeIfChanged(pubPath, JSON.stringify(registryData));
 
   console.log(`  Generated registry with ${registry.length} players (${profileCount} with profiles)`);
   console.log(`  Written to ${srcPath} and ${pubPath}`);
