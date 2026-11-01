@@ -1,1 +1,7 @@
-[{"gametype_short":"ctf","map_name":"infinity","rating":30.610000610351562,"games":47,"win_pct":53,"percentile":92},{"gametype_short":"ctf","map_name":"ironworks","rating":29.8700008392334,"games":70,"win_pct":46,"percentile":89},{"gametype_short":"ctf","map_name":"japanesecastles","rating":29.020000457763672,"games":83,"win_pct":51,"percentile":91},{"gametype_short":"ctf","map_name":"q3wcp9","rating":23.899999618530273,"games":68,"win_pct":36,"percentile":57},{"gametype_short":"ctf","map_name":"troubledwaters","rating":22.200000762939453,"games":25,"win_pct":44,"percentile":26}]
+[
+{"gametype_short":"ctf","map_name":"infinity","rating":29.8768,"games":48,"win_pct":52.1,"percentile":88},
+{"gametype_short":"ctf","map_name":"ironworks","rating":29.0481,"games":72,"win_pct":47.2,"percentile":84},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":28.6001,"games":86,"win_pct":52.3,"percentile":90},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":23.5716,"games":25,"win_pct":44,"percentile":30},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":22.6095,"games":69,"win_pct":36.2,"percentile":42}
+]

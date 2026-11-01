@@ -1,1 +1,10 @@
-[{"gametype_short":"ctf","map_name":"courtyard","rating":30.520000457763672,"games":89,"win_pct":60,"percentile":94},{"gametype_short":"ctf","map_name":"troubledwaters","rating":28.850000381469727,"games":218,"win_pct":55,"percentile":83},{"gametype_short":"ctf","map_name":"q3wcp9","rating":28.770000457763672,"games":696,"win_pct":55,"percentile":86},{"gametype_short":"ctf","map_name":"ironworks","rating":26.350000381469727,"games":473,"win_pct":49,"percentile":69},{"gametype_short":"ctf","map_name":"shiningforces","rating":26.309999465942383,"games":33,"win_pct":58,"percentile":66},{"gametype_short":"ctf","map_name":"infinity","rating":26.309999465942383,"games":340,"win_pct":49,"percentile":67},{"gametype_short":"ctf","map_name":"japanesecastles","rating":23.760000228881836,"games":653,"win_pct":48,"percentile":61},{"gametype_short":"ctf","map_name":"pillbox","rating":17.40999984741211,"games":36,"win_pct":44,"percentile":31}]
+[
+{"gametype_short":"ctf","map_name":"courtyard","rating":31.8604,"games":93,"win_pct":58.1,"percentile":94},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":29.9324,"games":243,"win_pct":54.7,"percentile":85},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":29.0866,"games":39,"win_pct":59,"percentile":79},
+{"gametype_short":"ctf","map_name":"infinity","rating":27.7639,"games":419,"win_pct":50.4,"percentile":75},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":26.9008,"games":787,"win_pct":53.4,"percentile":76},
+{"gametype_short":"ctf","map_name":"ironworks","rating":26.1478,"games":543,"win_pct":48.2,"percentile":66},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":24.5779,"games":723,"win_pct":48.1,"percentile":63},
+{"gametype_short":"ctf","map_name":"pillbox","rating":22.2805,"games":40,"win_pct":42.5,"percentile":30}
+]

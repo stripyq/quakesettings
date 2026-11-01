@@ -1,1 +1,10 @@
-[{"gametype_short":"tdm","map_name":"grimdungeons","rating":32.52000045776367,"games":10,"win_pct":90,"percentile":93},{"gametype_short":"tdm","map_name":"campgrounds","rating":31.809999465942383,"games":26,"win_pct":69,"percentile":92},{"gametype_short":"tdm","map_name":"dreadfulplace","rating":28.350000381469727,"games":131,"win_pct":54,"percentile":81},{"gametype_short":"tdm","map_name":"deepinside","rating":27.520000457763672,"games":25,"win_pct":62,"percentile":72},{"gametype_short":"tdm","map_name":"purgatory","rating":27.440000534057617,"games":214,"win_pct":54,"percentile":78},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":26.700000762939453,"games":149,"win_pct":47,"percentile":70},{"gametype_short":"tdm","map_name":"ragnarok","rating":26.649999618530273,"games":66,"win_pct":52,"percentile":66},{"gametype_short":"tdm","map_name":"limbus","rating":25.350000381469727,"games":99,"win_pct":47,"percentile":53}]
+[
+{"gametype_short":"tdm","map_name":"grimdungeons","rating":32.7324,"games":10,"win_pct":90,"percentile":92},
+{"gametype_short":"tdm","map_name":"campgrounds","rating":31.1895,"games":26,"win_pct":69.2,"percentile":89},
+{"gametype_short":"tdm","map_name":"deepinside","rating":29.4742,"games":26,"win_pct":61.5,"percentile":78},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":28.623,"games":131,"win_pct":54.2,"percentile":80},
+{"gametype_short":"tdm","map_name":"purgatory","rating":27.7256,"games":217,"win_pct":53.9,"percentile":77},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":26.9722,"games":150,"win_pct":47.3,"percentile":70},
+{"gametype_short":"tdm","map_name":"ragnarok","rating":26.401,"games":67,"win_pct":50.7,"percentile":59},
+{"gametype_short":"tdm","map_name":"limbus","rating":25.2572,"games":100,"win_pct":47.5,"percentile":48}
+]

@@ -318,7 +318,8 @@ function sigTooltip(entry: SignatureEntry, gt: string): string {
 const PROFILE_MAP_ALIASES: Record<string, string> = { q3wcp9: 'Spider Crossings' };
 function prettyMapBadge(raw: string): string {
   if (!raw) return '';
-  const key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/, '');
+  // Same rule as normalizeMapKey in scripts/lib/hoqstats.cjs.
+  const key = String(raw).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '');
   if (PROFILE_MAP_ALIASES[key]) return PROFILE_MAP_ALIASES[key];
   const stripped = String(raw).replace(/^(ctf|tdm)_?/, '').replace(/_/g, ' ');
   return stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -1884,7 +1885,9 @@ const schema = {
       try {
         const res = await fetch(`${HOQ_LOCAL}/map_ratings.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw: Array<{ gametype_short: string; map_name: string; games: number; win_pct: number; rating: number; percentile: number }> = await res.json();
+        // rating/percentile are null where no archived match on the map carries a per-map rating,
+        // win_pct where none had a result (scripts/derive-map-ratings.cjs).
+        const raw: Array<{ gametype_short: string; map_name: string; games: number; win_pct: number | null; rating: number | null; percentile: number | null }> = await res.json();
 
         const ctfMaps = raw
           .filter(r => r.gametype_short === 'ctf' && r.games >= 10)
@@ -1902,8 +1905,11 @@ const schema = {
 
         for (const m of ctfMaps) {
           const tr = document.createElement('tr');
-          const winClass = m.win_pct > 50 ? 'hoq-win-green' : m.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber';
-          tr.innerHTML = `<td>${m.map_name}</td><td class="num">${m.games}</td><td class="num ${winClass}">${m.win_pct.toFixed(1)}%</td><td class="num">${m.rating.toFixed(1)}</td><td class="num">${Math.round(m.percentile)}</td>`;
+          const winClass = m.win_pct == null ? '' : m.win_pct > 50 ? 'hoq-win-green' : m.win_pct < 50 ? 'hoq-win-red' : 'hoq-win-amber';
+          const win = m.win_pct == null ? '—' : `${m.win_pct.toFixed(1)}%`;
+          const rating = m.rating == null ? '—' : m.rating.toFixed(1);
+          const percentile = m.percentile == null ? '—' : Math.round(m.percentile);
+          tr.innerHTML = `<td>${m.map_name}</td><td class="num">${m.games}</td><td class="num ${winClass}">${win}</td><td class="num">${rating}</td><td class="num">${percentile}</td>`;
           tbody.appendChild(tr);
         }
       } catch (err) {

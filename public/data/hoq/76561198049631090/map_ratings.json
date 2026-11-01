@@ -1,1 +1,13 @@
-[{"gametype_short":"ctf","map_name":"shiningforces","rating":31.790000915527344,"games":49,"win_pct":61,"percentile":93},{"gametype_short":"ctf","map_name":"thedukesgarden","rating":31.25,"games":21,"win_pct":62,"percentile":89},{"gametype_short":"ctf","map_name":"courtyard","rating":30.559999465942383,"games":161,"win_pct":60,"percentile":94},{"gametype_short":"ctf","map_name":"q3wcp9","rating":29.8700008392334,"games":974,"win_pct":52,"percentile":91},{"gametype_short":"ctf","map_name":"ironworks","rating":28.260000228881836,"games":694,"win_pct":45,"percentile":80},{"gametype_short":"ctf","map_name":"japanesecastles","rating":26.540000915527344,"games":977,"win_pct":50,"percentile":80},{"gametype_short":"ctf","map_name":"stonekeep","rating":26.40999984741211,"games":13,"win_pct":62,"percentile":59},{"gametype_short":"ctf","map_name":"infinity","rating":25.770000457763672,"games":434,"win_pct":46,"percentile":62},{"gametype_short":"ctf","map_name":"troubledwaters","rating":24.049999237060547,"games":257,"win_pct":44,"percentile":44},{"gametype_short":"ctf","map_name":"pillbox","rating":15.619999885559082,"games":11,"win_pct":45,"percentile":16},{"gametype_short":"tdm","map_name":"purgatory","rating":23.649999618530273,"games":13,"win_pct":46,"percentile":50}]
+[
+{"gametype_short":"ctf","map_name":"shiningforces","rating":32.0025,"games":56,"win_pct":58.9,"percentile":93},
+{"gametype_short":"ctf","map_name":"courtyard","rating":31.6455,"games":168,"win_pct":60.7,"percentile":93},
+{"gametype_short":"ctf","map_name":"thedukesgarden","rating":29.125,"games":21,"win_pct":61.9,"percentile":71},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":29.0765,"games":1045,"win_pct":52.5,"percentile":90},
+{"gametype_short":"ctf","map_name":"ironworks","rating":28.2726,"games":757,"win_pct":46,"percentile":79},
+{"gametype_short":"ctf","map_name":"stonekeep","rating":26.7868,"games":13,"win_pct":61.5,"percentile":62},
+{"gametype_short":"ctf","map_name":"infinity","rating":26.1881,"games":494,"win_pct":46.4,"percentile":63},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":25.8126,"games":1051,"win_pct":49.3,"percentile":74},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":25.5434,"games":279,"win_pct":45.5,"percentile":47},
+{"gametype_short":"ctf","map_name":"pillbox","rating":22.3498,"games":11,"win_pct":45.5,"percentile":31},
+{"gametype_short":"tdm","map_name":"purgatory","rating":22.9202,"games":13,"win_pct":46.2,"percentile":40}
+]

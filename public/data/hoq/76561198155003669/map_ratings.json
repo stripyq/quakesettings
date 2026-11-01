@@ -1,1 +1,12 @@
-[{"gametype_short":"ctf","map_name":"troubledwaters","rating":25.530000686645508,"games":236,"win_pct":51,"percentile":58},{"gametype_short":"ctf","map_name":"ironworks","rating":25.459999084472656,"games":677,"win_pct":53,"percentile":63},{"gametype_short":"ctf","map_name":"infinity","rating":24.959999084472656,"games":406,"win_pct":49,"percentile":55},{"gametype_short":"ctf","map_name":"spidercrossings","rating":24.200000762939453,"games":11,"win_pct":45,"percentile":38},{"gametype_short":"ctf","map_name":"courtyard","rating":23.719999313354492,"games":91,"win_pct":47,"percentile":44},{"gametype_short":"ctf","map_name":"japanesecastles","rating":23.450000762939453,"games":762,"win_pct":50,"percentile":58},{"gametype_short":"ctf","map_name":"shiningforces","rating":23.190000534057617,"games":46,"win_pct":46,"percentile":43},{"gametype_short":"ctf","map_name":"pillbox","rating":22.59000015258789,"games":31,"win_pct":45,"percentile":62},{"gametype_short":"ctf","map_name":"thedukesgarden","rating":22.209999084472656,"games":14,"win_pct":50,"percentile":26},{"gametype_short":"ctf","map_name":"q3wcp9","rating":21.809999465942383,"games":732,"win_pct":46,"percentile":39}]
+[
+{"gametype_short":"ctf","map_name":"courtyard","rating":26.7876,"games":96,"win_pct":47.9,"percentile":62},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":26.7579,"games":281,"win_pct":50.9,"percentile":61},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":26.5546,"games":49,"win_pct":49,"percentile":61},
+{"gametype_short":"ctf","map_name":"pillbox","rating":26.5017,"games":33,"win_pct":48.5,"percentile":59},
+{"gametype_short":"ctf","map_name":"infinity","rating":25.7793,"games":497,"win_pct":49.6,"percentile":58},
+{"gametype_short":"ctf","map_name":"ironworks","rating":25.496,"games":785,"win_pct":52.4,"percentile":61},
+{"gametype_short":"ctf","map_name":"thedukesgarden","rating":24.2501,"games":14,"win_pct":50,"percentile":36},
+{"gametype_short":"ctf","map_name":"spidercrossings","rating":24.0833,"games":11,"win_pct":45.5,"percentile":35},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":22.9704,"games":864,"win_pct":49.9,"percentile":51},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":22.4999,"games":818,"win_pct":46.2,"percentile":42}
+]

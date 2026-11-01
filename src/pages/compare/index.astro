@@ -116,7 +116,8 @@ function compareBadgeRibbon(tier: string): string {
 }
 function compareMapName(raw: string): string {
   if (!raw) return '';
-  const key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/, '');
+  // Same rule as normalizeMapKey in scripts/lib/hoqstats.cjs.
+  const key = String(raw).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '');
   if (COMPARE_MAP_ALIASES[key]) return COMPARE_MAP_ALIASES[key];
   const stripped = String(raw).replace(/^(ctf|tdm)_?/, '').replace(/_/g, ' ');
   return stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -310,9 +311,16 @@ const schema = {
       var MAP_ALIASES = {
         q3wcp9: 'Spider Crossings',
       };
+      // Canonical map key: lowercase, whitespace removed, one leading ctf_/tdm_ dropped, so
+      // "Spider Crossings" and "spidercrossings" are one map. Same rule as normalizeMapKey in
+      // scripts/lib/hoqstats.cjs, which keys the archive and every derived per-map file.
+      function normalizeMapKey(raw) {
+        if (raw == null) return '';
+        return String(raw).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '');
+      }
       function prettyMapName(raw) {
         if (!raw) return 'Unknown';
-        var key = String(raw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+        var key = normalizeMapKey(raw);
         if (MAP_ALIASES[key]) return MAP_ALIASES[key];
         var stripped = String(raw).replace(/^(ctf|tdm)_?/i, '').replace(/_/g, ' ');
         return stripped.charAt(0).toUpperCase() + stripped.slice(1);
@@ -1059,30 +1067,35 @@ const schema = {
           var seasonMaps = Array.isArray(matchup.maps) ? matchup.maps : [];
           var allTimeMaps = getAllTimeH2HMaps(p1.steamId, p2.steamId, mode);
 
-          // Merge season + all-time by normalized map key.
+          // Merge season + all-time by normalized map key. Spellings of one map that share a
+          // key (any source) add up into one row.
           var byKey = {};
           for (var sj = 0; sj < seasonMaps.length; sj++) {
             var sm = seasonMaps[sj];
             if (!sm) continue;
             var skRaw = sm.map || 'unknown';
-            var sk = String(skRaw).toLowerCase().replace(/^(ctf|tdm)_?/i, '');
+            var sk = normalizeMapKey(skRaw) || 'unknown';
             var sWon = sm.matches_won || 0;
             var sLost = sm.matches_lost || 0;
             var sPlayed = sm.matches_played || (sWon + sLost);
             if (sPlayed === 0) continue;
-            byKey[sk] = {
-              rawName: skRaw,
-              season: { p1Wins: sWon, p2Wins: sLost, played: sPlayed },
-              alltime: null,
-            };
+            if (!byKey[sk]) byKey[sk] = { rawName: skRaw, season: null, alltime: null };
+            var ss = byKey[sk].season || (byKey[sk].season = { p1Wins: 0, p2Wins: 0, played: 0 });
+            ss.p1Wins += sWon;
+            ss.p2Wins += sLost;
+            ss.played += sPlayed;
           }
           if (allTimeMaps) {
             for (var atk in allTimeMaps) {
               if (!Object.prototype.hasOwnProperty.call(allTimeMaps, atk)) continue;
               var atRow = allTimeMaps[atk];
               if (!atRow || atRow.opp === 0) continue;
-              if (!byKey[atk]) byKey[atk] = { rawName: atk, season: null, alltime: null };
-              byKey[atk].alltime = atRow;
+              var ak = normalizeMapKey(atk) || 'unknown';
+              if (!byKey[ak]) byKey[ak] = { rawName: atk, season: null, alltime: null };
+              var at = byKey[ak].alltime || (byKey[ak].alltime = { p1Wins: 0, p2Wins: 0, opp: 0 });
+              at.p1Wins += atRow.p1Wins;
+              at.p2Wins += atRow.p2Wins;
+              at.opp += atRow.opp;
             }
           }
 
@@ -1842,13 +1855,25 @@ const schema = {
           var tbody = document.getElementById('hoq-map-cmp-tbody');
           var errorEl = document.getElementById('hoq-map-cmp-error');
 
+          // Keyed by normalized map name; two spellings of one map add up (win% weighted by
+          // games), and the 10-game floor applies to the sum.
           function toCtfMap(raw) {
             var map = {};
             var arr = Array.isArray(raw) ? raw : [];
             for (var i = 0; i < arr.length; i++) {
               var r = arr[i];
-              if (r.gametype_short === 'ctf' && r.games >= 10) map[r.map_name] = r;
+              if (r.gametype_short !== 'ctf') continue;
+              var key = normalizeMapKey(r.map_name);
+              if (!key) continue;
+              var prev = map[key];
+              if (!prev) { map[key] = { games: r.games, win_pct: r.win_pct }; continue; }
+              var games = prev.games + r.games;
+              var win = prev.win_pct == null ? r.win_pct
+                : r.win_pct == null ? prev.win_pct
+                : (prev.win_pct * prev.games + r.win_pct * r.games) / games;
+              map[key] = { games: games, win_pct: win };
             }
+            for (var k in map) if (map[k].games < 10) delete map[k];
             return map;
           }
 

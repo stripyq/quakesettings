@@ -1,0 +1,9 @@
+[
+{"gametype_short":"tdm","map_name":"grimdungeons","rating":27.1872,"games":10,"win_pct":60,"percentile":63},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":24.7345,"games":68,"win_pct":52.9,"percentile":52},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":24.261,"games":101,"win_pct":48.5,"percentile":47},
+{"gametype_short":"tdm","map_name":"purgatory","rating":23.2829,"games":116,"win_pct":48.3,"percentile":42},
+{"gametype_short":"tdm","map_name":"deepinside","rating":23.1759,"games":23,"win_pct":47.8,"percentile":30},
+{"gametype_short":"tdm","map_name":"limbus","rating":21.9242,"games":86,"win_pct":41.2,"percentile":21},
+{"gametype_short":"tdm","map_name":"ragnarok","rating":17.1145,"games":51,"win_pct":33.3,"percentile":3}
+]

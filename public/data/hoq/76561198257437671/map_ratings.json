@@ -1,1 +1,13 @@
-[{"gametype_short":"tdm","map_name":"tornado","rating":33.959999084472656,"games":36,"win_pct":64,"percentile":97},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":30.649999618530273,"games":518,"win_pct":52,"percentile":91},{"gametype_short":"tdm","map_name":"grimdungeons","rating":30.6200008392334,"games":50,"win_pct":56,"percentile":86},{"gametype_short":"tdm","map_name":"purgatory","rating":29.739999771118164,"games":741,"win_pct":52,"percentile":88},{"gametype_short":"tdm","map_name":"deepinside","rating":29.670000076293945,"games":78,"win_pct":57,"percentile":81},{"gametype_short":"tdm","map_name":"dreadfulplace","rating":29.149999618530273,"games":437,"win_pct":50,"percentile":84},{"gametype_short":"tdm","map_name":"limbus","rating":27.950000762939453,"games":364,"win_pct":49,"percentile":74},{"gametype_short":"tdm","map_name":"intervention","rating":27.049999237060547,"games":22,"win_pct":55,"percentile":66},{"gametype_short":"tdm","map_name":"ragnarok","rating":26.860000610351562,"games":180,"win_pct":48,"percentile":67},{"gametype_short":"tdm","map_name":"realmofsteelrats","rating":22.030000686645508,"games":13,"win_pct":38,"percentile":34},{"gametype_short":"tdm","map_name":"campgrounds","rating":21.649999618530273,"games":51,"win_pct":44,"percentile":27}]
+[
+{"gametype_short":"tdm","map_name":"tornado","rating":34.3952,"games":36,"win_pct":63.9,"percentile":97},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":30.4391,"games":518,"win_pct":51.9,"percentile":90},
+{"gametype_short":"tdm","map_name":"grimdungeons","rating":29.9688,"games":50,"win_pct":56,"percentile":81},
+{"gametype_short":"tdm","map_name":"deepinside","rating":29.827,"games":79,"win_pct":57,"percentile":82},
+{"gametype_short":"tdm","map_name":"purgatory","rating":29.5156,"games":742,"win_pct":51.9,"percentile":87},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":29.0393,"games":439,"win_pct":50.3,"percentile":83},
+{"gametype_short":"tdm","map_name":"limbus","rating":27.6435,"games":365,"win_pct":49,"percentile":71},
+{"gametype_short":"tdm","map_name":"intervention","rating":27.0588,"games":22,"win_pct":54.5,"percentile":58},
+{"gametype_short":"tdm","map_name":"ragnarok","rating":26.8158,"games":180,"win_pct":48.3,"percentile":62},
+{"gametype_short":"tdm","map_name":"campgrounds","rating":24.7151,"games":52,"win_pct":44.2,"percentile":48},
+{"gametype_short":"tdm","map_name":"realmofsteelrats","rating":21.934,"games":13,"win_pct":38.5,"percentile":35}
+]

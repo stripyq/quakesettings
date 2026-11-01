@@ -1,1 +1,9 @@
-[{"gametype_short":"tdm","map_name":"deepinside","rating":28.540000915527344,"games":16,"win_pct":50,"percentile":77},{"gametype_short":"tdm","map_name":"grimdungeons","rating":28.25,"games":19,"win_pct":63,"percentile":73},{"gametype_short":"tdm","map_name":"limbus","rating":26.989999771118164,"games":32,"win_pct":50,"percentile":65},{"gametype_short":"tdm","map_name":"dreadfulplace","rating":26.559999465942383,"games":39,"win_pct":51,"percentile":70},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":24.329999923706055,"games":38,"win_pct":47,"percentile":51},{"gametype_short":"tdm","map_name":"purgatory","rating":23.290000915527344,"games":56,"win_pct":45,"percentile":45},{"gametype_short":"tdm","map_name":"ragnarok","rating":17.6200008392334,"games":23,"win_pct":39,"percentile":5},{"gametype_short":"tdm2v2","map_name":"hiddenfortress","rating":29.950000762939453,"games":30,"win_pct":57,"percentile":73},{"gametype_short":"tdm2v2","map_name":"bloodrun","rating":29.510000228881836,"games":33,"win_pct":52,"percentile":77},{"gametype_short":"tdm2v2","map_name":"devilish","rating":29.399999618530273,"games":25,"win_pct":68,"percentile":75},{"gametype_short":"tdm2v2","map_name":"campgrounds","rating":28.329999923706055,"games":29,"win_pct":62,"percentile":76},{"gametype_short":"tdm2v2","map_name":"almostlost","rating":24.639999389648438,"games":33,"win_pct":45,"percentile":49}]
+[
+{"gametype_short":"tdm","map_name":"deepinside","rating":28.0497,"games":16,"win_pct":50,"percentile":70},
+{"gametype_short":"tdm","map_name":"grimdungeons","rating":27.695,"games":19,"win_pct":63.2,"percentile":69},
+{"gametype_short":"tdm","map_name":"dreadfulplace","rating":26.6143,"games":40,"win_pct":50,"percentile":68},
+{"gametype_short":"tdm","map_name":"limbus","rating":26.0577,"games":32,"win_pct":50,"percentile":55},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":24.5413,"games":38,"win_pct":47.4,"percentile":50},
+{"gametype_short":"tdm","map_name":"purgatory","rating":23.3366,"games":57,"win_pct":45.6,"percentile":43},
+{"gametype_short":"tdm","map_name":"ragnarok","rating":18.6274,"games":23,"win_pct":39.1,"percentile":8}
+]

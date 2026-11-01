@@ -1,1 +1,12 @@
-[{"gametype_short":"ctf","map_name":"q3wcp9","rating":35.15999984741211,"games":299,"win_pct":56,"percentile":99},{"gametype_short":"ctf","map_name":"shiningforces","rating":34.560001373291016,"games":23,"win_pct":65,"percentile":98},{"gametype_short":"ctf","map_name":"japanesecastles","rating":33.900001525878906,"games":324,"win_pct":54,"percentile":99},{"gametype_short":"ctf","map_name":"ironworks","rating":33.61000061035156,"games":230,"win_pct":52,"percentile":98},{"gametype_short":"ctf","map_name":"infinity","rating":30.90999984741211,"games":155,"win_pct":50,"percentile":94},{"gametype_short":"ctf","map_name":"troubledwaters","rating":29.510000228881836,"games":145,"win_pct":52,"percentile":89},{"gametype_short":"ctf","map_name":"pillbox","rating":28.90999984741211,"games":31,"win_pct":55,"percentile":87},{"gametype_short":"ctf","map_name":"courtyard","rating":28.110000610351562,"games":42,"win_pct":57,"percentile":83},{"gametype_short":"tdm","map_name":"hiddenfortress","rating":29.969999313354492,"games":12,"win_pct":58,"percentile":88},{"gametype_short":"tdm","map_name":"purgatory","rating":26.889999389648438,"games":10,"win_pct":50,"percentile":74}]
+[
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":34.5833,"games":350,"win_pct":55.6,"percentile":99},
+{"gametype_short":"ctf","map_name":"shiningforces","rating":33.8225,"games":25,"win_pct":64,"percentile":97},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":33.4188,"games":390,"win_pct":53,"percentile":99},
+{"gametype_short":"ctf","map_name":"ironworks","rating":33.0906,"games":294,"win_pct":51.9,"percentile":98},
+{"gametype_short":"ctf","map_name":"pillbox","rating":32.2753,"games":32,"win_pct":56.3,"percentile":87},
+{"gametype_short":"ctf","map_name":"infinity","rating":31.8108,"games":210,"win_pct":51.4,"percentile":95},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":27.7262,"games":175,"win_pct":50.3,"percentile":71},
+{"gametype_short":"ctf","map_name":"courtyard","rating":27.6344,"games":46,"win_pct":54.3,"percentile":70},
+{"gametype_short":"tdm","map_name":"hiddenfortress","rating":30.0239,"games":12,"win_pct":58.3,"percentile":88},
+{"gametype_short":"tdm","map_name":"purgatory","rating":28.1516,"games":10,"win_pct":50,"percentile":79}
+]
