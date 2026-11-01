@@ -1,14 +1,28 @@
 [
-  {
-    "month": "2025-12",
-    "games": 52
-  },
-  {
-    "month": "2026-01",
-    "games": 55
-  },
-  {
-    "month": "2026-02",
-    "games": 17
-  }
+{"month":"2024-09","games":15},
+{"month":"2024-10","games":21},
+{"month":"2024-11","games":58},
+{"month":"2024-12","games":6},
+{"month":"2025-01","games":40},
+{"month":"2025-02","games":7},
+{"month":"2025-03","games":0},
+{"month":"2025-04","games":0},
+{"month":"2025-05","games":2},
+{"month":"2025-06","games":41},
+{"month":"2025-07","games":117},
+{"month":"2025-08","games":53},
+{"month":"2025-09","games":59},
+{"month":"2025-10","games":10},
+{"month":"2025-11","games":12},
+{"month":"2025-12","games":59},
+{"month":"2026-01","games":54},
+{"month":"2026-02","games":20},
+{"month":"2026-03","games":44},
+{"month":"2026-04","games":47},
+{"month":"2026-05","games":43},
+{"month":"2026-06","games":32},
+{"month":"2026-07","games":8},
+{"month":"2026-08","games":6},
+{"month":"2026-09","games":3},
+{"month":"2026-10","games":1}
 ]
