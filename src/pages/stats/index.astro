@@ -607,7 +607,7 @@ const recentPlayers = players
 // ===========================================
 
 // Filter: must have >= 100 team mode games (CTF + TDM)
-// Game counts come from YAML only (synced from HoQ via scripts/sync-hoq-games.cjs)
+// Game counts come from YAML only (ctfGames / tdmGames, written by sync-hoq-to-display.cjs)
 function getCompetitiveGames(d: any): number {
   const ctf = d.ctfGames ?? 0;
   const tdm = d.tdmGames ?? 0;

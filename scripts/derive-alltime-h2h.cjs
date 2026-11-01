@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Derive the all-time CTF head-to-head dataset for registered players from the local match
- * archive. Replaces build-alltime-h2h.cjs + filter-h2h-to-featured.cjs (which scraped the dead
- * 88.x HoQ server).
+ * archive. Replaces scripts/_legacy/build-alltime-h2h.cjs (which scraped the dead 88.x HoQ
+ * server) + filter-h2h-to-featured.cjs.
  *
  * For every archived CTF match, every pair of players who are both in
  * src/data/player-registry.json is counted as teammates or opponents, with per-map opponent

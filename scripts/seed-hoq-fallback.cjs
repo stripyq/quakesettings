@@ -5,8 +5,8 @@
  * HoQ itself is unreachable: the live site still serves these files from the last green
  * deploy, so we copy them back into the repo.
  *
- * Skips files that already exist locally (e.g. freshly fetched from HoQ), so run
- * fetch-hoq-maps.cjs first and this second.
+ * Skips files that already exist locally. (It used to run after fetch-hoq-maps.cjs, now
+ * retired to scripts/_legacy/ with the 88.x server it fetched from.)
  *
  * Usage: node scripts/seed-hoq-fallback.cjs
  */

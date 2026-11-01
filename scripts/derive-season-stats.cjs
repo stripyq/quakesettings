@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Derive the current HoQ season's per-player stats from the local match archive.
- * Replaces fetch-season-stats.cjs (the 77.90.2.137 season API it called is dead).
+ * Replaces scripts/_legacy/fetch-season-stats.cjs (the 77.90.2.137 season API it called is dead).
  *
  * The season list comes from hoqstats.vercel.app (window.HOQ_MATCH_SEASONS on /matches/);
  * the default season is the dated one still open (endTs "Infinity", not all-time).

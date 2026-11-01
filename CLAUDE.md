@@ -24,12 +24,23 @@ from `main` (site https://stripyq.github.io/quakesettings, base `/quakesettings`
   `fetch-qlrace.js` and `migrate-players.cjs`. They are destructive (they rewrite rating fields from stale
   CSVs, hardcoded values or a dead server, or re-dump whole YAML files). NEVER execute them from there and
   NEVER move them back into `scripts/`. `npm run fetch:hoq-ratings` runs `scripts/fetch-hoq-ratings.cjs`.
+- `scripts/_legacy/` also holds the dead-server fetchers `build-hoq-archive.cjs`, `fetch-season-stats.cjs`,
+  `build-alltime-h2h.cjs`, `fetch-hoq-maps.cjs`, `fetch-hoq-stats.cjs`, `fetch-hoq-activity.cjs`,
+  `fetch-activity-data.cjs`, `fetch-player-activity.cjs` and `sync-hoq-games.cjs`. Never run them either.
 - NEVER run two YAML-writing scripts at the same time. Each one reads, edits and writes whole files; the slower one overwrites the other. Run strictly in sequence.
 - Run refresh steps one at a time in the terminal. Never paste a block that ends in git push; the push runs even if the build failed.
-- The HoQ server 88.214.20.58 is dead. Any script pointing at it (`fetch-hoq-maps`, `fetch-hoq-stats`, `fetch-hoq-activity`, `build-*`) will fail or return nothing; do not run them expecting data. `77.90.2.137` (season API) is also down.
+- The HoQ server 88.214.20.58 and the season API 77.90.2.137 are both dead. https://hoqstats.vercel.app is the
+  match source; `scripts/lib/hoqstats.cjs` is the only place that talks to it.
 - Refresh order, each a separate script run: `fetch-hoq-ratings.cjs` → `append-hoq-history.cjs` (reads the
   hoq* fields the fetch just wrote; it is not called from inside the fetch) → `sync-hoq-to-display.cjs` →
-  `fetch-qllr-ratings.cjs` → `generate-form-data.js`. Commit after verifying `git diff --stat` touches only expected fields.
+  `fetch-qllr-ratings.cjs` → `generate-form-data.js` → `sync-hoqstats-archive.cjs` →
+  `derive-archive.cjs --gt=ctf,tdm` → `derive-tdm-all.cjs` → `derive-activity-ctf.cjs` →
+  `derive-signatures.cjs --gt=ctf,tdm` → `derive-rating-stories.cjs --gt=ctf,tdm` → `derive-season-stats.cjs` →
+  `derive-alltime-h2h.cjs`. Everything from `sync-hoqstats-archive.cjs` on writes no YAML. Its download cache
+  `data-archive/hoqstats-cache/` is gitignored. Commit after verifying `git diff --stat` touches only expected fields.
+- `public/data/archive/<gt>.jsonl`: older lines end in CRLF, newer ones in LF. Never rewrite the file wholesale
+  (no read-all/write-all, no line-ending normalization); only append, or use `sync-hoqstats-archive.cjs`, which
+  keeps existing bytes.
 - After any refresh, grep for dropped keys: a script that strips and re-adds fields can delete a field when the upstream value is missing.
 - `yaml-safe-write.cjs` only detects dropped top-level keys; it does not catch blanked values or damage inside `qlrace:`.
 

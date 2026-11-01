@@ -49,7 +49,7 @@ function fetchHead(url) {
 async function main() {
   if (!fs.existsSync(CHECKPOINT)) {
     console.error(`Checkpoint not found: ${CHECKPOINT}`);
-    console.error(`Run build-hoq-archive.cjs --gt=${GT} first (or use a gametype you've scraped).`);
+    console.error(`The checkpoint came from build-hoq-archive.cjs, now retired to scripts/_legacy/; it is no longer produced.`);
     process.exit(1);
   }
   const cp = JSON.parse(fs.readFileSync(CHECKPOINT, 'utf8'));

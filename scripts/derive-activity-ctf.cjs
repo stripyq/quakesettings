@@ -8,12 +8,12 @@
  * The compare-page rating chart (src/pages/compare/index.astro) draws the grey
  * "games per week" activity bars behind the rating lines from public/data/activity-ctf.json.
  *
- * That file used to be produced by fetch-activity-data.cjs, which pulled the HoQ Season
- * Tracker API (77.90.2.137:8004). That API has been down since ~March 2026, so the bars
- * froze at 2026-02-23. The archive (built from the working 88.x match host) is the live
- * source now, so we derive the weekly buckets from it instead.
+ * That file used to be produced by fetch-activity-data.cjs (now in scripts/_legacy/), which
+ * pulled the HoQ Season Tracker API (77.90.2.137:8004). That API has been down since ~March
+ * 2026, so the bars froze at 2026-02-23. The archive (synced from hoqstats.vercel.app) is the
+ * live source now, so we derive the weekly buckets from it instead.
  *
- * Run after the archive is refreshed:  build-hoq-archive.cjs -> derive-archive.cjs -> this.
+ * Run after the archive is refreshed:  sync-hoqstats-archive.cjs -> derive-archive.cjs -> this.
  * Usage: node scripts/derive-activity-ctf.cjs
  */
 const fs = require('fs');

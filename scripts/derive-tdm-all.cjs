@@ -111,7 +111,7 @@ function getH2H(sidA, sidB) {
 async function main() {
   if (!fs.existsSync(ARCHIVE)) {
     console.error(`Archive not found: ${ARCHIVE}`);
-    console.error(`Run scripts/build-hoq-archive.cjs --gt=tdm first.`);
+    console.error(`Run scripts/sync-hoqstats-archive.cjs first.`);
     process.exit(1);
   }
   ensureDir(OUT_DIR);

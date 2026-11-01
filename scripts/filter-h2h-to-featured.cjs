@@ -7,8 +7,8 @@
  * Input:  public/data/alltime-h2h.json
  * Output: public/data/alltime-h2h-featured.json (committed, small)
  *
- * Run after build-alltime-h2h.cjs finishes. Cheap (no network). Re-run
- * whenever you publish new player profiles — no re-scrape needed.
+ * derive-alltime-h2h.cjs writes both files itself; run this only to re-filter after
+ * publishing new player profiles. Cheap (no network).
  *
  * Usage: node scripts/filter-h2h-to-featured.cjs
  */
@@ -41,7 +41,7 @@ function getFeaturedSteamIds() {
 function main() {
   if (!fs.existsSync(FULL_H2H)) {
     console.error(`Input not found: ${FULL_H2H}`);
-    console.error(`Run scripts/build-alltime-h2h.cjs first.`);
+    console.error(`Run scripts/derive-alltime-h2h.cjs first.`);
     process.exit(1);
   }
   const full = JSON.parse(fs.readFileSync(FULL_H2H, 'utf8'));

@@ -510,7 +510,8 @@ async function sync(up) {
 
       t.metaFile = path.join(ARCHIVE_DIR, `${w.gt}.meta.json`);
       const old = fs.existsSync(t.metaFile) ? JSON.parse(fs.readFileSync(t.metaFile, 'utf8')) : {};
-      // Counters from the original 88.x scrape (build-hoq-archive.cjs) are kept under legacy_build.
+      // Counters from the original 88.x scrape (scripts/_legacy/build-hoq-archive.cjs) are kept
+      // under legacy_build.
       const legacy = old.legacy_build || (old.successful != null
         ? { total_uuids: old.total_uuids, successful: old.successful, dead: old.dead, still_in_retry: old.still_in_retry, last_update: old.last_update }
         : undefined);
