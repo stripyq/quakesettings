@@ -1523,7 +1523,7 @@ const schema = {
     <div class="s-section-header" style="--section-color: #f85149">
       <div class="s-section-icon" style="background: #f85149">&#127919;</div>
       <span class="s-section-title" style="color: #f85149">WEAPON ACCURACY LEADERBOARDS</span>
-      <span class="s-section-attr">Stats via <a href="http://88.214.20.58/matches/" target="_blank" rel="noopener">HoQ</a> &middot; Players with 100+ CTF and/or TDM games</span>
+      <span class="s-section-attr">Stats via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a> &middot; Players with 100+ CTF and/or TDM games</span>
     </div>
 
     <div class="s-three-col">
@@ -1778,7 +1778,7 @@ const schema = {
         <span class="s-info-icon" style="color: #e0883e">&#9432;</span>
         <span class="s-tooltip">Derived from every HoQ match record since {archiveFirstMonth} — {archiveTotalMatches.toLocaleString('en-US')} matches across CTF and TDM.</span>
       </span>
-      <span class="s-section-attr">Scraped from <a href="http://88.214.20.58/" target="_blank" rel="noopener">HoQ</a></span>
+      <span class="s-section-attr">Data via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></span>
     </div>
     )}
     {chart && (
@@ -1876,7 +1876,7 @@ const schema = {
         <span class="s-info-icon" style="color: #39d353">&#9432;</span>
         <span class="s-tooltip">Rankings based on HoQ map rating. Minimum games threshold varies by map (20–50 games depending on map popularity). Map rating reflects overall performance relative to other players on that specific map.</span>
       </span>
-      <span class="s-section-attr">Stats via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a></span>
+      <span class="s-section-attr">Stats via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></span>
     </div>
     {ctfMaps.sortedMaps.length === 0 ? (
       <div class="s-map-lb-error">Data not available.</div>
@@ -1917,7 +1917,7 @@ const schema = {
         <span class="s-info-icon" style="color: #f0883e">&#9432;</span>
         <span class="s-tooltip">Rankings based on HoQ map rating. Only players with 50+ games on that map are included (50 game minimum). Map rating reflects overall performance relative to other players on that specific map.</span>
       </span>
-      <span class="s-section-attr">Stats via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ</a></span>
+      <span class="s-section-attr">Stats via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></span>
     </div>
     {tdmFilteredMaps.length === 0 ? (
       <div class="s-map-lb-error">No TDM map data available.</div>
@@ -2058,7 +2058,7 @@ const schema = {
     </div>
 
     <footer class="s-footer">
-      <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> &bull; CTF/TDM ratings via <a href="http://88.214.20.58/ratings/" target="_blank" rel="noopener">HoQ community tracker</a></p>
+      <p>Duel ratings via <a href="https://qlstats.net/ranks/duel/1" target="_blank" rel="noopener">QLStats</a> &bull; CTF/TDM ratings via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></p>
     </footer>
   </div>
 </BaseLayout>

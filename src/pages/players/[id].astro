@@ -1083,7 +1083,7 @@ const schema = {
         <div class="hoq-header">
           <h2>Playstyle</h2>
           {p.steamId && (
-            <span class="hoq-attr">Stats via <a href={`http://88.214.20.58/player/${p.steamId}`} target="_blank" rel="noopener">HoQ</a></span>
+            <span class="hoq-attr">Stats via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></span>
           )}
         </div>
         <div class="hoq-grid">
@@ -1158,7 +1158,7 @@ const schema = {
       <section class="season-section">
         <div class="season-header">
           <h2>{mode} Season Stats{seasonLabel && ` (${seasonLabel})`}</h2>
-          <span class="season-attr">Data via <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></span>
+          <span class="season-attr">Data via <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a></span>
         </div>
 
         <div class="season-grid">
@@ -1517,7 +1517,7 @@ const schema = {
         <div class="source-info">
           {p.source && <p><strong>Source:</strong> {p.sourceUrl ? <a href={p.sourceUrl} target="_blank" rel="noopener">{p.source}</a> : p.source}</p>}
           {p.lastUpdated && <p><strong>Settings:</strong> Last updated {String(p.lastUpdated).substring(0, 7)}</p>}
-          {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> Live from <a href="http://92.112.126.106/#dashboard" target="_blank" rel="noopener">HoQ Season Tracker</a></p>}
+          {(ctfStats || tdmStats) && <p><strong>Season Stats:</strong> From <a href="https://hoqstats.vercel.app/" target="_blank" rel="noopener">House of Quake Stats</a> match data</p>}
           {p.qlrace && <p><strong>Race Data:</strong> From <a href={`https://qlrace.com/player/${p.steamId}`} target="_blank" rel="noopener">qlrace.com</a>{p.qlrace.fetched_at ? ` (${p.qlrace.fetched_at})` : ''}</p>}
         </div>
       </section>
