@@ -25,7 +25,7 @@ hoqTdmGames: 318
 
 
 
-lastUpdated: 2025-01
+lastUpdated: "2026-11-01"
 duelRating: 1086
 ctfGames: 2886
 tdmGames: 318
@@ -61,13 +61,13 @@ attack: Mouse1
 zoom: ""
 weaponNext: ""
 weaponPrev: ""
-mouse: lamzu-maya-x
+mouse: vaxee-np-01-ergo
 mousepad: artisan-key-83
 mousepadBase: Soft
 mousepadSize: XXL
 keyboard: wooting-80he
 monitor: asus-pg27aqwp-w
-headset: drop-sennheiser-pc37x
+headset: drop-epos-pc38x
 skates: Stock
 enemyModel: Keel
 crosshairColor: White, Pink
