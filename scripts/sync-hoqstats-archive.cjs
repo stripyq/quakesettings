@@ -27,6 +27,10 @@
  *        also replace already-archived records of the route with the upstream version (for
  *        upstream corrections). Off by default: upstream lacks per-player time_sec, so replaced
  *        records lose it (see the verify report).
+ *   node scripts/sync-hoqstats-archive.cjs --update-existing --fields mr [--dry-run]
+ *        instead of replacing whole records, copy only these player fields from upstream into
+ *        the archived records (players matched by sid and occurrence). Every other byte of the
+ *        line stays as it was; the write aborts if it would not. Allowed fields: mr.
  *   --refresh-cache   ignore data-archive/hoqstats-cache and download everything again
  */
 
@@ -57,6 +61,24 @@ const REFRESH = argv.includes('--refresh-cache');
 const UPDATE_EXISTING = argv.includes('--update-existing');
 const VERIFY_N = opt('--verify-existing', null);
 const SEED = Number(opt('--seed', Date.now() % 1e9));
+// Player fields --fields may copy: ones normalizeDetail writes last, so an older line without
+// them gains them at the end of each player object.
+const MERGEABLE_FIELDS = ['mr'];
+const FIELDS = (() => {
+  const v = opt('--fields', null);
+  if (v == null) return null;
+  const list = v.split(',').map(s => s.trim()).filter(Boolean);
+  const bad = list.filter(f => !MERGEABLE_FIELDS.includes(f));
+  if (!list.length || bad.length) {
+    console.error(`Bad --fields ${v}; allowed: ${MERGEABLE_FIELDS.join(', ')}`);
+    process.exit(1);
+  }
+  if (!UPDATE_EXISTING) {
+    console.error('--fields only applies together with --update-existing');
+    process.exit(1);
+  }
+  return list;
+})();
 
 const routeMatch = /^(all|ctf|tdm)(?:-(.+))?$/.exec(ROUTE);
 if (!routeMatch) {
@@ -259,6 +281,50 @@ async function validateTemp(gt, tmp, expectLines, expectDups) {
   return { lines, unique: seen.size };
 }
 
+// ---------- field merge (--update-existing --fields) ----------
+
+// sid#n keys: a sid can appear twice in one match (rejoined on the other team).
+function occurrenceKeys(players) {
+  const seen = {};
+  return players.map(p => { seen[p.sid] = (seen[p.sid] || 0) + 1; return `${p.sid}#${seen[p.sid]}`; });
+}
+
+function withoutFields(rec) {
+  return {
+    ...rec,
+    players: rec.players.map(p => {
+      const q = { ...p };
+      for (const f of FIELDS) delete q[f];
+      return q;
+    }),
+  };
+}
+
+// The archived line `text` with FIELDS of each player taken from the normalized upstream record
+// `up`. Every archive line re-serializes byte for byte (checked), so JSON.stringify keeps all
+// other bytes; fields new to a player object land at its end.
+function mergeFields(text, up) {
+  const rec = JSON.parse(text);
+  if (JSON.stringify(rec) !== text) fail(`${rec.uuid}: archived line does not re-serialize byte for byte`);
+  const upKeys = occurrenceKeys(up.players);
+  const byKey = new Map(up.players.map((p, i) => [upKeys[i], p]));
+  let unmatched = 0;
+  occurrenceKeys(rec.players).forEach((k, i) => {
+    const u = byKey.get(k);
+    if (!u) { unmatched++; return; }
+    const p = rec.players[i];
+    for (const f of FIELDS) {
+      if (u[f] === undefined) delete p[f];
+      else p[f] = u[f];
+    }
+  });
+  const next = JSON.stringify(rec);
+  if (JSON.stringify(withoutFields(JSON.parse(next))) !== JSON.stringify(withoutFields(JSON.parse(text)))) {
+    fail(`${rec.uuid}: merging ${FIELDS.join(',')} would change other fields`);
+  }
+  return { text: next, unmatched };
+}
+
 // ---------- diff (verify-existing) ----------
 
 // Fields that must agree between the archive and the normalized upstream record.
@@ -273,6 +339,7 @@ function explain(diff, matchDiffs) {
   const { field, a, b } = diff;
   if (field === 'players.time_sec' && b === null) return 'upstream has no per-player play time (stored null)';
   if (field === 'players.nick') return 'upstream lists another alias of the same steamId (display only)';
+  if (field === 'players.mr' && a === undefined) return 'archived line predates mr (add with --update-existing --fields mr)';
   if (/^players\.(old_rating|new_rating|rating_diff)$/.test(field) && b === null) {
     return 'upstream row has diff 0 (placeholder, no rating update recorded): stored null';
   }
@@ -307,6 +374,10 @@ function diffRecords(a, b, add) {
     const pb = y.p;
     for (const f of Object.keys({ ...pa, ...pb })) {
       if (f === 'weapons' || f === 'medals' || f === 'sid') continue;
+      if (Array.isArray(pa[f]) || Array.isArray(pb[f])) {
+        if (JSON.stringify(pa[f]) !== JSON.stringify(pb[f])) add(`players.${f}`, pa[f], pb[f], pa.sid);
+        continue;
+      }
       if (pa[f] !== pb[f]) add(`players.${f}`, pa[f], pb[f], pa.sid);
     }
     const wa = pa.weapons || {};
@@ -454,7 +525,11 @@ async function sync(up) {
     console.log(`\n[${gt}] to append: ${append.length}` +
       (append.length ? ` (${fmtTs(append[0].ts)} .. ${fmtTs(append[append.length - 1].ts)})` : '') +
       (noWinner.length ? `; ${noWinner.length} without a winner (draw / no score): ${noWinner.map(r => r.uuid.slice(0, 8)).join(', ')}` : ''));
-    if (UPDATE_EXISTING) console.log(`[${gt}] to replace: ${replace.size}`);
+    if (UPDATE_EXISTING && FIELDS) {
+      const full = f => [...replace.values()].filter(r => r.players.every(pl => pl[f] !== undefined)).length;
+      console.log(`[${gt}] to update (fields ${FIELDS.join(',')}): ${replace.size}; upstream has ` +
+        FIELDS.map(f => `${f} on every player in ${full(f)}`).join(', '));
+    } else if (UPDATE_EXISTING) console.log(`[${gt}] to replace: ${replace.size}`);
     writes.push({ gt, plan: p, append, replace });
   }
 
@@ -473,6 +548,7 @@ async function sync(up) {
       temps.push(t);
       let replaced = 0;
       let changed = 0;
+      let unmatched = 0;
       if (w.replace.size === 0) {
         fs.copyFileSync(file, tmp);
       } else {
@@ -488,14 +564,22 @@ async function sync(up) {
           let bytes = raw;
           if (rec) {
             replaced++;
-            const next = JSON.stringify(rec);
+            let next;
+            if (FIELDS) {
+              const merged = mergeFields(text, rec);
+              next = merged.text;
+              unmatched += merged.unmatched;
+            } else next = JSON.stringify(rec);
             if (next !== text) { changed++; bytes = Buffer.from(next + (cr ? '\r' : ''), 'utf8'); }
           }
           await write(bytes);
           await write('\n');
         }
         await new Promise((resolve, reject) => out.end(err => (err ? reject(err) : resolve())));
-        console.log(`[${w.gt}] replaced ${replaced} existing line(s), ${changed} changed`);
+        console.log(FIELDS
+          ? `[${w.gt}] merged ${FIELDS.join(',')} into ${replaced} existing line(s), ${changed} changed; ` +
+            `${unmatched} archived player row(s) had no upstream counterpart (left as is)`
+          : `[${w.gt}] replaced ${replaced} existing line(s), ${changed} changed`);
       }
       const prefix = w.replace.size === 0 && !w.plan.local.endsWithNewline ? '\n' : '';
       if (w.append.length) fs.appendFileSync(tmp, prefix + w.append.map(r => JSON.stringify(r)).join('\n') + '\n');
@@ -531,6 +615,7 @@ async function sync(up) {
           missing: w.plan.missing.length,
           appended: w.append.length,
           replaced: w.replace.size,
+          ...(FIELDS ? { replaced_fields: FIELDS } : {}),
           present_not_indexed: w.plan.notIndexed.length,
         },
         ...(legacy ? { legacy_build: legacy } : {}),

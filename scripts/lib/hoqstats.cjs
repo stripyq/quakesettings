@@ -13,6 +13,8 @@
  *   extractAssignment(text, name)   JSON value assigned to window.<name>
  *   parseIndexRow(row)              positional match-index row -> object
  *   normalizeDetail(detail)         vercel detail record -> public/data/archive/<gt>.jsonl record
+ *                                   (players carry the optional per-map rating `mr`)
+ *   normalizeMapKey(name)           canonical map key: lowercase, no spaces, no ctf_/tdm_ prefix
  *   seasonWindowSec(season)         [startSec, endSec) for a HOQ_MATCH_SEASONS entry
  *
  * Cache: data-archive/hoqstats-cache/<source path>. Detail chunks are cached indefinitely
@@ -190,6 +192,17 @@ const BASE_MEDALS = ['assists', 'captures', 'combokill', 'defends', 'excellent',
   'headshot', 'humiliation', 'impressive', 'midair', 'revenge'];
 const NO_SCORE = -999;
 
+/**
+ * Canonical map key, used for archive records and every per-map file derived from them:
+ * lowercase, whitespace removed, one leading ctf_/tdm_ dropped ("Spider Crossings" and
+ * "ctf_spidercrossings" both become "spidercrossings"). src/pages/compare/index.astro inlines
+ * the same function for its client-side merge; keep the two in step.
+ */
+function normalizeMapKey(name) {
+  if (name == null) return null;
+  return String(name).toLowerCase().replace(/\s+/g, '').replace(/^(ctf|tdm)_/, '') || null;
+}
+
 // The archive stores counters the HoQ scoreboard left blank (zero) as null.
 const nz = v => (v == null || v === 0 ? null : v);
 const num = v => (v == null ? null : v);
@@ -209,9 +222,21 @@ function normalizeWeapon(w) {
   return { kills: nz(w.frags), hits: nz(w.hits), shots: nz(w.shots), acc: nz(w.acc) };
 }
 
+// Upstream mr = [mu, sigma, delta, games]: the player's per-map TrueSkill after this match
+// (games = their games on this map so far, this one included). Kept verbatim; absent or null
+// upstream means the archive player gets no mr key at all.
+function normalizeMr(mr, sid) {
+  if (mr == null) return undefined;
+  if (!Array.isArray(mr) || mr.length !== 4 || !mr.every(Number.isFinite)) {
+    throw new Error(`player ${sid} has malformed mr ${JSON.stringify(mr)}`);
+  }
+  return mr;
+}
+
 function normalizePlayer(p, gt, weaponKeys, medalKeys) {
   const s = p.summary || {};
   if (!p.steamId) throw new Error('player without steamId');
+  const mr = normalizeMr(p.mr, p.steamId);
   if (p.team !== 'red' && p.team !== 'blue') throw new Error(`player ${p.steamId} has team ${JSON.stringify(p.team)}`);
   const weapons = {};
   for (const wk of weaponKeys) weapons[wk] = normalizeWeapon(p.weapons && p.weapons[wk]);
@@ -246,6 +271,8 @@ function normalizePlayer(p, gt, weaponKeys, medalKeys) {
     rating_diff: diff,
     weapons,
     medals,
+    // Optional and last, so adding it to an older line leaves every other byte in place.
+    ...(mr ? { mr } : {}),
   };
 }
 
@@ -292,7 +319,7 @@ function normalizeDetail(d) {
     uuid: d.matchId,
     ts: d.playedAt,
     gt,
-    map: String(d.arena || '').toLowerCase() || null,
+    map: normalizeMapKey(d.arena),
     duration_sec: d.duration == null ? null : parseDuration(d.duration),
     rating_diff: ar != null && ab != null ? round2(ar - ab) : null,
     scores: { blue, red },
@@ -318,5 +345,6 @@ module.exports = {
   parseIndexRow,
   parseDuration,
   normalizeDetail,
+  normalizeMapKey,
   seasonWindowSec,
 };
