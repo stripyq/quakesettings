@@ -4,7 +4,7 @@
  * This script reads YAML content collections and generates:
  * - collected-players.json: All existing players' settings for pre-fill
  * - hardware-options.json: All hardware with slugs for dropdowns
- * - player-registry.json: All players from HoQ + YAML (rebuilt from source)
+ * - player-registry.json: All players from the HoQ rating exports + YAML (rebuilt from source)
  *
  * Run: node scripts/generate-form-data.js
  * Called automatically during build via package.json prebuild script
@@ -114,32 +114,47 @@ function readYamlDirectory(dirPath, validateSteamIds = false) {
 }
 
 /**
- * Read HoQ CSV files and build player data
- * Steam IDs in CSVs are the source of truth
+ * A rating or games count as a number: 0 stays 0, missing / empty / non-numeric is null
  */
-function readHoqCsvs() {
+function numOrNull(v) {
+  if (v === null || v === undefined || (typeof v === 'string' && v.trim() === '')) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+/**
+ * Read HoQ ratings and build player data
+ * - ctf, tdm: public/data/hoq_{ctf,tdm}.json, the full stats.houseofquake.com exports that
+ *   scripts/fetch-hoq-ratings.cjs saves on every refresh ([{ _id, name, rating, n }])
+ * - 2v2: no live export exists; public/data/hoq_tdm2v2.csv (frozen) is used where it has a value
+ * Steam IDs in the exports are the source of truth
+ */
+function readHoqRatings() {
   const hoqPlayers = new Map(); // steamId -> player data
+  const sources = [];
 
-  const csvFiles = [
-    { path: path.join(outputDir, 'hoq_ctf.csv'), mode: 'ctf' },
-    { path: path.join(outputDir, 'hoq_tdm.csv'), mode: 'tdm' },
-    { path: path.join(outputDir, 'hoq_tdm2v2.csv'), mode: '2v2' }
-  ];
-
-  for (const { path: csvPath, mode } of csvFiles) {
-    if (!fs.existsSync(csvPath)) {
-      console.warn(`  HoQ CSV not found: ${csvPath}`);
+  for (const mode of ['ctf', 'tdm']) {
+    const exportPath = path.join(outputDir, `hoq_${mode}.json`);
+    if (!fs.existsSync(exportPath)) {
+      console.warn(`  HoQ export not found: ${exportPath} (run scripts/fetch-hoq-ratings.cjs)`);
       continue;
     }
+    const entries = JSON.parse(fs.readFileSync(exportPath, 'utf8'));
+    if (!Array.isArray(entries)) throw new Error(`${exportPath}: expected an array of export entries`);
+    sources.push({ mode, rows: entries });
+  }
 
-    const content = fs.readFileSync(csvPath, 'utf8');
-    const records = csvParse(content, { columns: true, skip_empty_lines: true });
+  const csv2v2Path = path.join(outputDir, 'hoq_tdm2v2.csv');
+  if (fs.existsSync(csv2v2Path)) {
+    sources.push({ mode: '2v2', rows: csvParse(fs.readFileSync(csv2v2Path, 'utf8'), { columns: true, skip_empty_lines: true }) });
+  }
 
-    for (const row of records) {
-      const steamId = String(row._id || '').trim();
-      const name = String(row.name || '').trim();
-      const rating = parseFloat(row.rating) || null;
-      const games = parseInt(row.n) || null;
+  for (const { mode, rows } of sources) {
+    for (const row of rows) {
+      const steamId = String(row._id ?? '').trim();
+      const name = String(row.name ?? '').trim();
+      const rating = numOrNull(row.rating);
+      const games = numOrNull(row.n);
 
       if (!steamId || !name) continue;
 
@@ -164,7 +179,8 @@ function readHoqCsvs() {
 
       // Update name if this mode has more games (more authoritative)
       // Must compare BEFORE setting gamesPlayed, otherwise we compare games to itself
-      if (games && (!player.gamesPlayed[mode] || games > player.gamesPlayed[mode])) {
+      // The frozen 2v2 CSV never renames a player the live exports already named
+      if (mode !== '2v2' && games && (!player.gamesPlayed[mode] || games > player.gamesPlayed[mode])) {
         player.name = name;
       }
 
@@ -173,8 +189,35 @@ function readHoqCsvs() {
     }
   }
 
-  console.log(`  Loaded ${hoqPlayers.size} players from HoQ CSVs`);
+  console.log(`  Loaded ${hoqPlayers.size} players from HoQ exports (${sources.map(s => `${s.mode}: ${s.rows.length}`).join(', ')})`);
   return hoqPlayers;
+}
+
+/**
+ * Profiles carry the same export values in hoqCtfRating/hoqCtfGames/hoqTdmRating/hoqTdmGames
+ * (both written by fetch-hoq-ratings.cjs). Log where they disagree; the registry uses the export.
+ * The display fields (ctfRating, ...) are copied from the hoq* fields by sync-hoq-to-display.cjs,
+ * which runs after this script in prebuild and after the fetch in the refresh order.
+ */
+function checkProfilesAgainstExport(yamlBySteamId, hoqPlayers) {
+  const fields = [
+    ['hoqCtfRating', 'ratings', 'ctf'], ['hoqCtfGames', 'gamesPlayed', 'ctf'],
+    ['hoqTdmRating', 'ratings', 'tdm'], ['hoqTdmGames', 'gamesPlayed', 'tdm'],
+  ];
+  const mismatches = [];
+  for (const [steamId, p] of yamlBySteamId) {
+    const hoq = hoqPlayers.get(steamId);
+    for (const [field, group, mode] of fields) {
+      const fromYaml = numOrNull(p[field]);
+      const fromExport = hoq ? hoq[group][mode] : null;
+      if (fromYaml !== fromExport) mismatches.push(`${p.slug} ${field}: YAML ${fromYaml ?? '-'}, export ${fromExport ?? '-'}`);
+    }
+  }
+  if (mismatches.length) {
+    console.warn(`  ⚠️  ${mismatches.length} profile hoq* value(s) differ from the HoQ export; using the export (run fetch-hoq-ratings.cjs, then sync-hoq-to-display.cjs):`);
+    for (const m of mismatches.slice(0, 20)) console.warn(`      ${m}`);
+    if (mismatches.length > 20) console.warn(`      ... ${mismatches.length - 20} more`);
+  }
 }
 
 /**
@@ -282,7 +325,7 @@ function generateHardwareOptions() {
 }
 
 /**
- * Generate player-registry.json from YAML profiles + HoQ CSVs
+ * Generate player-registry.json from YAML profiles + HoQ exports
  * This REBUILDS the registry from source data (not just copying)
  *
  * Steam IDs are ALWAYS stored as strings, never numbers.
@@ -291,7 +334,7 @@ function generatePlayerRegistry() {
   console.log('Generating player-registry.json (from YAML + HoQ)...');
 
   // Load HoQ data (source of truth for ratings)
-  const hoqPlayers = readHoqCsvs();
+  const hoqPlayers = readHoqRatings();
 
   // Load YAML profiles (source of truth for site display)
   const yamlPlayers = readYamlDirectory(path.join(contentDir, 'players'), true);
@@ -314,6 +357,7 @@ function generatePlayerRegistry() {
   }
 
   console.log(`  Loaded ${yamlPlayers.length} YAML profiles`);
+  checkProfilesAgainstExport(yamlBySteamId, hoqPlayers);
 
   // Build registry: merge HoQ + YAML data
   const registry = [];
@@ -352,14 +396,14 @@ function generatePlayerRegistry() {
         slug: p.slug,
         hasProfile: true,
         ratings: {
-          ctf: p.ctfRating || null,
-          tdm: p.tdmRating || null,
-          '2v2': p['2v2Rating'] || null
+          ctf: p.ctfRating ?? null,
+          tdm: p.tdmRating ?? null,
+          '2v2': p['2v2Rating'] ?? null
         },
         gamesPlayed: {
-          ctf: p.ctfGames || null,
-          tdm: p.tdmGames || null,
-          '2v2': p['2v2Games'] || null
+          ctf: p.ctfGames ?? null,
+          tdm: p.tdmGames ?? null,
+          '2v2': p['2v2Games'] ?? null
         }
       });
     }
