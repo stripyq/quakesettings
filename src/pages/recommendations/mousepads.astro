@@ -114,16 +114,16 @@ const schema = {
   </div>
 
   <div class="table-container">
-    <table class="rec-table">
+    <table class="rec-table reviewer-table">
       <thead>
         <tr>
           <th>Mousepad</th>
           <th>Surface</th>
           <th>Speed</th>
           <th class="num">Price</th>
-          <th>BZ</th>
-          <th>TL</th>
-          <th>JU</th>
+          <th class="rev-col">BZ</th>
+          <th class="rev-col">TL</th>
+          <th class="rev-col">JU</th>
           <th class="num">Players</th>
         </tr>
       </thead>
@@ -132,14 +132,16 @@ const schema = {
           const playerCount = getPlayerCount(p.name);
           return (
             <tr>
-              <td class="pad-name">{p.name}</td>
-              <td>{p.surface}</td>
-              <td><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
-              <td class="price num">{p.price}</td>
-              <td class="center">{p.bz ? '✓' : '–'}</td>
-              <td class="center">{p.tl ? '✓' : '–'}</td>
-              <td class="center">{p.ju ? '✓' : '–'}</td>
-              <td class="players num">
+              <td class="pad-name" data-label="Mousepad">{p.name}</td>
+              <td data-label="Surface">{p.surface}</td>
+              <td data-label="Speed"><span class={`speed-badge ${p.speed.toLowerCase()}`}>{p.speed}</span></td>
+              <td class="price num" data-label="Price">{p.price}</td>
+              <td class="center rev-col" data-label="BZ">{p.bz ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="TL">{p.tl ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="JU">{p.ju ? '✓' : '–'}</td>
+              {/* Shown instead of the reviewer columns in the stacked mobile layout */}
+              <td class="reviewers" data-label="Reviewers">{[p.bz && 'BZ', p.tl && 'TL', p.ju && 'JU'].filter(Boolean).join(', ') || <span class="empty-val">—</span>}</td>
+              <td class="players num" data-label="Players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -201,34 +203,16 @@ const schema = {
     color: var(--text-secondary, #888);
   }
 
-  .table-container {
-    overflow-x: auto;
-  }
-
-  .rec-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .rec-table th,
-  .rec-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color, #2a2a3a);
-  }
-
-  .rec-table th {
-    background: var(--bg-secondary, #12121a);
-  }
-
-  .rec-table tbody tr:hover {
-    background: var(--bg-secondary, #12121a);
-  }
-
-  .pad-name {
-    font-weight: 500;
-    color: var(--text-primary, #fff);
-  }
+  /* Table layout, mobile stacking and the player dropdown are shared in global.css (.reviewer-table) */
+  /* Mousepad, Surface, Speed, Price, three reviewers, Players */
+  .reviewer-table th:nth-child(1) { width: 38%; }
+  .reviewer-table th:nth-child(2) { width: 15%; }
+  .reviewer-table th:nth-child(3) { width: 15%; }
+  .reviewer-table th:nth-child(4) { width: 10%; }
+  .reviewer-table th:nth-child(5) { width: 4%; }
+  .reviewer-table th:nth-child(6) { width: 4%; }
+  .reviewer-table th:nth-child(7) { width: 4%; }
+  .reviewer-table th:nth-child(8) { width: 10%; }
 
   .speed-badge {
     padding: 0.25rem 0.75rem;
@@ -240,72 +224,6 @@ const schema = {
   .speed-badge.control { background: #4a9eff; color: #000; }
   .speed-badge.balanced { background: #ffd93d; color: #000; }
   .speed-badge.speed { background: #ff6b6b; color: #000; }
-
-  .price {
-    font-family: monospace;
-    color: var(--text-secondary, #888);
-  }
-
-  .center {
-    text-align: center;
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .players {
-    font-weight: 600;
-  }
-
-  .usage-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .usage-count {
-    color: var(--accent-primary, #ff6b35);
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-  }
-
-  .usage-wrapper:hover .usage-count {
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .player-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-primary, #0a0a0f);
-    border: 1px solid var(--border-color, #2a2a3a);
-    border-radius: var(--radius-md);
-    padding: 0.5rem;
-    min-width: 120px;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .usage-wrapper:hover .player-dropdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .player-dropdown a {
-    color: var(--text-primary, #fff);
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    white-space: nowrap;
-  }
-
-  .player-dropdown a:hover {
-    background: var(--bg-secondary, #12121a);
-    color: var(--accent-primary, #ff6b35);
-  }
 
   .back-link {
     margin-top: 2rem;

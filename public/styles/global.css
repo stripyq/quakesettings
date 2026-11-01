@@ -1008,3 +1008,259 @@ th {
     background: linear-gradient(to left, var(--bg-primary), transparent);
   }
 }
+
+/* ============================================
+   Recommendation tables with reviewer columns
+   (mice, monitors, keyboards, mousepads). Each page sets its column
+   widths on th; text wraps, so the table never scrolls sideways.
+   ============================================ */
+.reviewer-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.reviewer-table th,
+.reviewer-table td {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  overflow-wrap: break-word;
+}
+
+.reviewer-table th {
+  background: var(--bg-secondary);
+}
+
+.reviewer-table tbody tr:hover {
+  background: var(--bg-secondary);
+}
+
+.reviewer-table td:first-child {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.reviewer-table .price {
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+.reviewer-table .center {
+  text-align: center;
+  color: var(--accent-primary);
+}
+
+.reviewer-table .rev-col {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  text-align: center;
+}
+
+.reviewer-table .spec {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.reviewer-table .sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.reviewer-table .sortable:hover {
+  color: var(--accent-primary);
+}
+
+/* No-break space keeps the arrow with the last word when a header wraps */
+.reviewer-table .sortable::after {
+  content: '\00a0↕';
+  font-size: 0.65em;
+  opacity: 0.4;
+}
+
+.reviewer-table .sortable.asc::after {
+  content: '\00a0↑';
+  opacity: 1;
+}
+
+.reviewer-table .sortable.desc::after {
+  content: '\00a0↓';
+  opacity: 1;
+}
+
+/* Summary of the ticked reviewers, only shown in the stacked layout */
+.reviewer-table td.reviewers {
+  display: none;
+}
+
+.reviewer-table th:last-child,
+.reviewer-table td:last-child {
+  text-align: right;
+  padding-right: 24px;
+}
+
+/* The Players cell is the positioned ancestor, so the dropdown opens under the
+   count and overlays the page. Hovering anywhere in the cell keeps it open
+   while the pointer moves down into the list. */
+.reviewer-table td.players {
+  position: relative;
+  font-weight: 600;
+}
+
+.reviewer-table .usage-wrapper {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* .usage-count above has a top border and padding meant for the hardware cards */
+.reviewer-table .usage-count {
+  padding-top: 0;
+  border-top: none;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+.reviewer-table .usage-wrapper:hover .usage-count {
+  color: var(--accent-secondary);
+}
+
+.reviewer-table .player-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 24px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  min-width: 120px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.reviewer-table td.players:hover .player-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reviewer-table .player-dropdown a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.reviewer-table .player-dropdown a:hover {
+  background: var(--bg-secondary);
+  color: var(--accent-primary);
+}
+
+/* Stacked rows: one labelled field per line */
+@media (max-width: 768px) {
+  /* Not a scrolling table, so no grid or right-edge fade */
+  .table-container:has(> .reviewer-table) {
+    display: block;
+  }
+
+  .table-container:has(> .reviewer-table)::after {
+    content: none;
+  }
+
+  .reviewer-table,
+  .reviewer-table tbody,
+  .reviewer-table tr,
+  .reviewer-table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* Visually hidden, still read by screen readers */
+  .reviewer-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .reviewer-table tr {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .reviewer-table td,
+  .reviewer-table td:last-child {
+    padding: 0.15rem 0;
+    border-bottom: none;
+    text-align: left;
+  }
+
+  /* td.num is right-aligned with !important above */
+  .reviewer-table td.num {
+    text-align: left !important;
+  }
+
+  .reviewer-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .reviewer-table td:first-child {
+    font-weight: 600;
+  }
+
+  /* One "Reviewers" line instead of a field per reviewer */
+  .reviewer-table td.rev-col {
+    display: none;
+  }
+
+  .reviewer-table td.reviewers {
+    display: block;
+  }
+
+  /* No hover on phones: list the players under the count */
+  .reviewer-table td.players {
+    position: static;
+  }
+
+  .reviewer-table .player-dropdown,
+  .reviewer-table td.players:hover .player-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    position: static;
+    min-width: 0;
+    padding: 0.25rem 0 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .reviewer-table .player-dropdown a {
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: normal;
+    white-space: normal;
+  }
+}
+
+/* "Recommendations" alone is wider than a phone column at 2.5rem */
+@media (max-width: 480px) {
+  .main-content:has(.reviewer-table) .page-header h1 {
+    font-size: 1.75rem;
+  }
+}
