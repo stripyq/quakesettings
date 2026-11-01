@@ -13,7 +13,7 @@ ctfRatingUpdated: "2026-11-01"
 qllrCtfRating: 23.1
 qllrCtfGames: 25
 tdmRatingUpdated: "2026-10-28"
-lastUpdated: 2026-02
+lastUpdated: "2026-11"
 dataSource: player
 duelRating: 1041
 ctfGames: 985
@@ -21,12 +21,14 @@ tdmGames: 2586
 duelGames: 794
 ctfRating: 19.32
 tdmRating: 29.54
-dpi: 1600
-sensitivity: 1.7
-edpi: 2720
+dpi: 3200
+sensitivity: 0.722
+edpi: 2310.4
+cm360: 17.99
 rawInput: true
+windowsSensitivity: 6
 grip: Fingertip
-fov: 95
+fov: 100
 crosshair: "2"
 crosshairColor: Red
 crosshairSize: "16"
