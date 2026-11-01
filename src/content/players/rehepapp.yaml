@@ -16,7 +16,7 @@ ctfRatingUpdated: "2026-10-16"
 tdmRating: 41.01
 tdmRatingUpdated: "2026-10-28"
 dataSource: player
-lastUpdated: 2026-02
+lastUpdated: "2026-11"
 dpi: 3200
 sensitivity: 0.476
 edpi: 1523
@@ -24,8 +24,9 @@ cm360: 27.28
 acceleration: false
 rawInput: true
 windowsSensitivity: 6
-fov: 95
+fov: 100
 crosshair: "2"
+crosshairSize: "21"
 crosshairColor: Yellow
 invertedMouse: false
 grip: Fingertip
@@ -38,9 +39,9 @@ jump: "n"
 crouch: space
 attack: Mouse1
 zoom: z
-mouse: endgame-gear-xm2w-4k-v2
+mouse: rawm-leviathan-v4-gt
 mousepad: tekkusai-phantom
-keyboard: logitech-g915-tkl
+keyboard: logitech-g515-rapid-tkl
 monitor: benq-zowie-xl2546k
 headset: beyerdynamic-dt-770-pro
 skates: Aftermarket
