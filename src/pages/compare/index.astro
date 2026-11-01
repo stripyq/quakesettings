@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import path from 'node:path';
+import { archiveNewestDay, dayLabel, isComplete, monthLastDay, weekLastDay } from '../../utils/completePeriods';
 
 // Load season stats (derived by scripts/derive-season-stats.cjs)
 let seasonStatsData: Record<string, any> = {};
@@ -20,14 +21,19 @@ try {
   // No season meta available yet
 }
 
-// Load CTF activity data (monthly match counts)
-let activityCtfData: Array<{ month: string; games: number }> = [];
+// Load CTF activity data (weekly match counts, scripts/derive-activity-ctf.cjs)
+let activityCtfData: Array<{ week?: string; month?: string; games: number }> = [];
 try {
   const activityPath = path.join(process.cwd(), 'public/data/activity-ctf.json');
   activityCtfData = JSON.parse(fs.readFileSync(activityPath, 'utf8'));
 } catch {
   // No activity data available yet
 }
+// Only complete weeks are plotted (utils/completePeriods); the caption names the last day covered.
+const newestArchiveDay = archiveNewestDay();
+const bucketLastDay = (b: { week?: string; month?: string }) => (b.week ? weekLastDay(b.week) : monthLastDay(b.month ?? ''));
+activityCtfData = activityCtfData.filter(b => isComplete(bucketLastDay(b), newestArchiveDay));
+const activityThrough = activityCtfData.length > 0 ? dayLabel(bucketLastDay(activityCtfData[activityCtfData.length - 1])) : '';
 
 // Load player registry for name lookups (API returns current Steam names which may differ)
 let registryNameMap: Record<string, string> = {};
@@ -281,7 +287,7 @@ const schema = {
   <div id="season-compare-container" class="season-compare-container hidden"></div>
   <div id="h2h-container" class="h2h-container hidden"></div>
   <div id="matchup-history-container" class="matchup-history-container hidden"></div>
-  <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)}></div>
+  <div id="hoq-history-container" class="hoq-history-container hidden" data-activity={JSON.stringify(activityCtfData)} data-activity-through={activityThrough}></div>
   <div id="rivalries-container" class="rivalries-container hidden"></div>
   <div id="race-compare-container" class="race-compare-container hidden"></div>
 
@@ -1583,6 +1589,7 @@ const schema = {
           '<div class="hoq-cmp-chart-wrap">' +
             '<div class="hoq-cmp-loading" id="hoq-cmp-loading">Loading rating history\u2026</div>' +
             '<canvas id="hoq-cmp-canvas" width="800" height="320" style="display:none"></canvas>' +
+            '<p class="hoq-cmp-caption" id="hoq-cmp-activity-caption" style="display:none"></p>' +
             '<div class="hoq-cmp-note" id="hoq-cmp-note" style="display:none"></div>' +
             '<div class="hoq-cmp-error" id="hoq-cmp-error" style="display:none"></div>' +
           '</div>';
@@ -1653,6 +1660,10 @@ const schema = {
           // Parse CTF activity data from container attribute
           var activityBuckets = [];
           try { activityBuckets = JSON.parse(hoqHistoryContainer.getAttribute('data-activity') || '[]'); } catch(e) {}
+          // Shown while activity bars are drawn.
+          var activityCaption = document.getElementById('hoq-cmp-activity-caption');
+          var activityThrough = hoqHistoryContainer.getAttribute('data-activity-through') || '';
+          if (activityCaption && activityThrough) activityCaption.textContent = 'through ' + activityThrough;
 
           loading.style.display = 'none';
           canvas.style.display = 'block';
@@ -1681,6 +1692,7 @@ const schema = {
           function drawChart(mode) {
             var series1 = filterByRange(data1[mode] || [], activeRange);
             var series2 = filterByRange(data2[mode] || [], activeRange);
+            if (activityCaption) activityCaption.style.display = 'none';
 
             if (series1.length === 0 && series2.length === 0) {
               ctx.clearRect(0, 0, W, H);
@@ -1771,6 +1783,7 @@ const schema = {
 
               if (visible.length > 0) {
                 var maxGames = Math.max.apply(null, visible.map(function(b) { return b.games; }));
+                if (activityCaption && activityThrough) activityCaption.style.display = 'block';
 
                 ctx.fillStyle = 'rgba(255,255,255,0.08)';
                 for (var vi = 0; vi < visible.length; vi++) {
@@ -3510,6 +3523,13 @@ const schema = {
     font-size: 0.85rem;
     padding: 1rem 0;
     text-align: center;
+  }
+
+  .hoq-history-container :global(.hoq-cmp-caption) {
+    color: var(--text-muted, #9090a0);
+    font-size: 0.75rem;
+    margin: 0.25rem 0 0;
+    text-align: right;
   }
 
   .hoq-history-container :global(.hoq-cmp-note) {

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { calculateRealAccel } from '../../utils/accel';
 import { calculateCm360 } from '../../utils/sensitivity';
+import { archiveNewestDay, isComplete, monthLabel, monthLastDay } from '../../utils/completePeriods';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -54,6 +55,10 @@ if (p.steamId) {
     // No per-player activity data yet
   }
 }
+// Only complete months are plotted (utils/completePeriods).
+const newestArchiveDay = archiveNewestDay();
+activityCtfData = activityCtfData.filter(b => isComplete(monthLastDay(b.month), newestArchiveDay));
+const activityThrough = activityCtfData.length > 0 ? monthLabel(activityCtfData[activityCtfData.length - 1].month) : '';
 
 // Get hardware collections
 const mice = await getCollection('mice');
@@ -1437,6 +1442,7 @@ const schema = {
         <div class="hoq-chart-wrap" id="hoq-chart-wrap">
           <div class="hoq-loading" id="hoq-chart-loading">Loading rating history&hellip;</div>
           <canvas id="hoq-chart" width="800" height="300" style="display:none"></canvas>
+          {activityThrough && <p class="hoq-chart-caption" id="hoq-activity-caption" style="display:none">through {activityThrough}</p>}
           <div class="hoq-error" id="hoq-chart-error" style="display:none"></div>
         </div>
 
@@ -1651,6 +1657,8 @@ const schema = {
       const canvas = document.getElementById('hoq-chart') as HTMLCanvasElement;
       const controls = document.getElementById('hoq-chart-controls')!;
       const tdmBtn = document.getElementById('hoq-tdm-btn')!;
+      // Shown while activity bars are drawn.
+      const activityCaption = document.getElementById('hoq-activity-caption');
 
       try {
         const res = await fetch(`${HOQ_LOCAL}/history.json`);
@@ -1705,6 +1713,7 @@ const schema = {
         function drawChart(mode: string) {
           const raw = byMode[mode] || [];
           const data = filterByRange(raw, activeRange);
+          if (activityCaption) activityCaption.style.display = 'none';
           if (data.length === 0) {
             ctx.clearRect(0, 0, W, H);
             ctx.fillStyle = '#8b949e';
@@ -1778,6 +1787,7 @@ const schema = {
 
             if (visible.length > 0) {
               const maxGames = Math.max(...visible.map(b => b.games));
+              if (activityCaption) activityCaption.style.display = '';
 
               ctx.fillStyle = 'rgba(255,255,255,0.08)';
               for (const bucket of visible) {
@@ -3372,6 +3382,13 @@ const schema = {
   #hoq-chart {
     width: 100%;
     height: 300px;
+  }
+
+  .hoq-chart-caption {
+    margin: 0.25rem 0 0;
+    color: var(--text-muted, #9090a0);
+    font-size: 0.75rem;
+    text-align: right;
   }
 
   .hoq-loading {
