@@ -7,6 +7,7 @@ connection: "Wired"
 formFactor: "Over-ear"
 backStyle: "Open"
 microphone: true
+features: "Angled dynamic drivers from the EPOS GSP 500/600 family"
 category: open
 recommendation: alternative
 useCase: "quiet room, open-back with mic"
