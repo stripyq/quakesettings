@@ -101,7 +101,7 @@ function canonicalRole(raw) {
 
 async function loadArchive(steamid) {
   if (!fs.existsSync(ARCHIVE)) {
-    throw new Error(`Archive not found: ${ARCHIVE}\nRun scripts/build-hoq-archive.cjs first (or finish the scrape).`);
+    throw new Error(`Archive not found: ${ARCHIVE}\nRun scripts/sync-hoqstats-archive.cjs first.`);
   }
   const byUuid = new Map();
   let total = 0, mine = 0;

@@ -67,7 +67,7 @@ async function deriveOne(gt) {
 
   if (!fs.existsSync(ARCHIVE)) {
     console.error(`[${gt}] Archive not found: ${ARCHIVE}`);
-    console.error(`  Run scripts/build-hoq-archive.cjs --gt=${gt} first.`);
+    console.error(`  Run scripts/sync-hoqstats-archive.cjs first.`);
     return false;
   }
   ensureDir(OUT_DIR);

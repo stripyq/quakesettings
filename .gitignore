@@ -47,3 +47,6 @@ public/data/archive/*.jsonl
 # Formspree submission export (contains submitter data, never commit)
 data-archive/formspree-export.csv
 data-archive/screenshots/
+
+# hoqstats.vercel.app download cache (scripts/lib/hoqstats.cjs)
+data-archive/hoqstats-cache/

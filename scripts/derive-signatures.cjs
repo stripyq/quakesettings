@@ -115,11 +115,17 @@ async function deriveOne(gt) {
   const stream = fs.createReadStream(ARCHIVE);
   const rl = readline.createInterface({ input: stream, crlfDelay: Infinity });
   let matches = 0;
+  let dupSkipped = 0;
+  const seenUuids = new Set(); // dedup by uuid: a crash mid-build can append a match twice
   for await (const line of rl) {
     if (!line.trim()) continue;
     let g;
     try { g = JSON.parse(line); } catch { continue; }
     if (!g.players) continue;
+    if (g.uuid) {
+      if (seenUuids.has(g.uuid)) { dupSkipped++; continue; }
+      seenUuids.add(g.uuid);
+    }
     matches++;
     for (const pl of g.players) {
       if (!pl.sid) continue;
@@ -145,7 +151,8 @@ async function deriveOne(gt) {
       }
     }
   }
-  console.log(`[${gt}] matches parsed: ${matches}, unique sids: ${agg.size}`);
+  console.log(`[${gt}] matches parsed: ${matches}, unique sids: ${agg.size}` +
+    (dupSkipped ? ` (${dupSkipped} duplicate uuids skipped)` : ''));
 
   // Compute per-player stat values
   function valueFor(p, stat) {
