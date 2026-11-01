@@ -46,7 +46,7 @@ back: s
 left: a
 right: d
 jump: Space
-crouch: ""
+crouch: "Mouse4"
 attack: Mouse1
 zoom: ""
 weaponNext: ""
