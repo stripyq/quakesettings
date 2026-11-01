@@ -155,7 +155,7 @@ const schema = {
   </div>
 
   <div class="table-container">
-    <table class="rec-table" id="rec-table">
+    <table class="rec-table reviewer-table" id="rec-table">
       <thead>
         <tr>
           <th>Monitor</th>
@@ -185,19 +185,21 @@ const schema = {
               data-panel={md?.panelType || ''}
               data-coating={md?.coating || ''}
             >
-              <td class="monitor-name">{m.name}</td>
-              <td class="price num">{m.price}</td>
-              <td class="spec num">{md?.size && md.size !== 'Unknown' ? md.size : <span class="empty-val">—</span>}</td>
-              <td class:list={["spec", { "empty-val": fmtRes(md) === "—" }]}>{fmtRes(md)}</td>
-              <td class:list={["spec num", { "empty-val": fmtHz(md) === "—" }]}>{fmtHz(md)}</td>
-              <td class="spec">{md?.panelType || <span class="empty-val">—</span>}</td>
-              <td class="spec">{md?.coating || <span class="empty-val">—</span>}</td>
-              <td class="center rev-col">{m.mu ? '✓' : '–'}</td>
-              <td class="center rev-col">{m.ot ? '✓' : '–'}</td>
-              <td class="center rev-col">{m.tft ? '✓' : '–'}</td>
-              <td class="center rev-col">{m.rt ? '✓' : '–'}</td>
-              <td class="center rev-col">{m.tl ? '✓' : '–'}</td>
-              <td class="players num">
+              <td class="monitor-name" data-label="Monitor">{m.name}</td>
+              <td class="price num" data-label="Price">{m.price}</td>
+              <td class="spec num" data-label="Size">{md?.size && md.size !== 'Unknown' ? md.size : <span class="empty-val">—</span>}</td>
+              <td class:list={["spec", { "empty-val": fmtRes(md) === "—" }]} data-label="Res">{fmtRes(md)}</td>
+              <td class:list={["spec num", { "empty-val": fmtHz(md) === "—" }]} data-label="Hz">{fmtHz(md)}</td>
+              <td class="spec" data-label="Panel">{md?.panelType || <span class="empty-val">—</span>}</td>
+              <td class="spec" data-label="Coating">{md?.coating || <span class="empty-val">—</span>}</td>
+              <td class="center rev-col" data-label="MU">{m.mu ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="OT">{m.ot ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="TFT">{m.tft ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="RT">{m.rt ? '✓' : '–'}</td>
+              <td class="center rev-col" data-label="TL">{m.tl ? '✓' : '–'}</td>
+              {/* Shown instead of the reviewer columns in the stacked mobile layout */}
+              <td class="reviewers" data-label="Reviewers">{[m.mu && 'MU', m.ot && 'OT', m.tft && 'TFT', m.rt && 'RT', m.tl && 'TL'].filter(Boolean).join(', ') || <span class="empty-val">—</span>}</td>
+              <td class="players num" data-label="Players">
                 {playerCount > 0 ? (
                   <div class="usage-wrapper">
                     <span class="usage-count">{playerCount}</span>
@@ -261,142 +263,21 @@ const schema = {
     color: var(--text-secondary, #888);
   }
 
-  .table-container {
-    overflow-x: auto;
-  }
-
-  .rec-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .rec-table th,
-  .rec-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color, #2a2a3a);
-  }
-
-  .rec-table th {
-    background: var(--bg-secondary, #12121a);
-  }
-
-  .rec-table tbody tr:hover {
-    background: var(--bg-secondary, #12121a);
-  }
-
-  .monitor-name {
-    font-weight: 500;
-    color: var(--text-primary, #fff);
-    white-space: nowrap;
-  }
-
-  .price {
-    font-family: monospace;
-    color: var(--text-secondary, #888);
-  }
-
-  .center {
-    text-align: center;
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .rev-col {
-    width: 36px;
-    min-width: 36px;
-    max-width: 36px;
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
-    text-align: center;
-  }
-
-  .spec {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #ccc);
-    white-space: nowrap;
-  }
-
-  .sortable {
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .sortable:hover {
-    color: var(--accent-primary, #ff6b35);
-  }
-
-  .sortable::after {
-    content: ' ↕';
-    font-size: 0.65em;
-    opacity: 0.4;
-  }
-
-  .sortable.asc::after {
-    content: ' ↑';
-    opacity: 1;
-  }
-
-  .sortable.desc::after {
-    content: ' ↓';
-    opacity: 1;
-  }
-
-  .players {
-    font-weight: 600;
-  }
-
-  .usage-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .usage-count {
-    color: var(--accent-primary, #ff6b35);
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-  }
-
-  .usage-wrapper:hover .usage-count {
-    color: var(--accent-secondary, #4ecdc4);
-  }
-
-  .player-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-primary, #0a0a0f);
-    border: 1px solid var(--border-color, #2a2a3a);
-    border-radius: var(--radius-md);
-    padding: 0.5rem;
-    min-width: 120px;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .usage-wrapper:hover .player-dropdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .player-dropdown a {
-    color: var(--text-primary, #fff);
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    white-space: nowrap;
-  }
-
-  .player-dropdown a:hover {
-    background: var(--bg-secondary, #12121a);
-    color: var(--accent-primary, #ff6b35);
-  }
+  /* Table layout, mobile stacking and the player dropdown are shared in global.css (.reviewer-table) */
+  /* Monitor, Price, Size, Res, Hz, Panel, Coating, five reviewers, Players */
+  .reviewer-table th:nth-child(1) { width: 17%; }
+  .reviewer-table th:nth-child(2) { width: 7%; }
+  .reviewer-table th:nth-child(3) { width: 7%; }
+  .reviewer-table th:nth-child(4) { width: 10%; }
+  .reviewer-table th:nth-child(5) { width: 9%; }
+  .reviewer-table th:nth-child(6) { width: 9%; }
+  .reviewer-table th:nth-child(7) { width: 11%; }
+  .reviewer-table th:nth-child(8) { width: 4%; }
+  .reviewer-table th:nth-child(9) { width: 4%; }
+  .reviewer-table th:nth-child(10) { width: 4%; }
+  .reviewer-table th:nth-child(11) { width: 4%; }
+  .reviewer-table th:nth-child(12) { width: 4%; }
+  .reviewer-table th:nth-child(13) { width: 10%; }
 
   .back-link {
     margin-top: 2rem;
