@@ -99,11 +99,14 @@ function updateYaml(player, ctfData, tdmData) {
     return null; // Nothing changed
   }
 
-  // Remove existing hoq fields
-  content = content.replace(/^hoqCtfRating:.*\n?/gm, '');
-  content = content.replace(/^hoqCtfGames:.*\n?/gm, '');
-  content = content.replace(/^hoqTdmRating:.*\n?/gm, '');
-  content = content.replace(/^hoqTdmGames:.*\n?/gm, '');
+  // Keep the file's own line ending (CRLF on a Windows autocrlf checkout)
+  const eol = content.includes('\r\n') ? '\r\n' : '\n';
+
+  // Remove existing hoq fields, including a CRLF terminator
+  content = content.replace(/^hoqCtfRating:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqCtfGames:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqTdmRating:.*\r?\n?/gm, '');
+  content = content.replace(/^hoqTdmGames:.*\r?\n?/gm, '');
 
   // Build new lines
   const newLines = [];
@@ -131,9 +134,9 @@ function updateYaml(player, ctfData, tdmData) {
 
     if (match) {
       const insertPos = match.index + match[0].length;
-      content = content.slice(0, insertPos) + '\n' + newLines.join('\n') + content.slice(insertPos);
+      content = content.slice(0, insertPos) + eol + newLines.join(eol) + content.slice(insertPos);
     } else {
-      content = content.trimEnd() + '\n' + newLines.join('\n') + '\n';
+      content = content.trimEnd() + eol + newLines.join(eol) + eol;
     }
   }
 
