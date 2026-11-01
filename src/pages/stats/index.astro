@@ -653,8 +653,8 @@ function countRivalries(mode: string) {
   const victimCounts: Record<string, number> = {};
 
   Object.values(seasonStatsData).forEach((player: any) => {
-    // Support both nested (player.ctf/tdm) and legacy flat format
-    const modeData = player[mode] || (mode === 'ctf' && player.career ? player : null);
+    // Support both nested (player.ctf/tdm) and legacy flat format; players only have the modes they played
+    const modeData = player?.[mode] || (mode === 'ctf' && player?.career ? player : null);
     if (!modeData) return;
 
     const nemesisSteamId = modeData.nemesis?.data?.opponent_steam_id;
@@ -685,6 +685,10 @@ function buildNemesisLeaderboard(counts: Record<string, number>, limit = 10) {
       return { rank: i + 1, steamId, name, count, profileId };
     });
 }
+
+// Most Feared / Most Targeted came from the season API's nemesis / favorite-victim fields.
+// Season stats are now derived from match records, which carry no per-opponent kills.
+const SHOW_RIVALRY_CARDS = false;
 
 const ctfRivalries = countRivalries('ctf');
 const tdmRivalries = countRivalries('tdm');
@@ -1567,7 +1571,7 @@ const schema = {
     </div>
 
     <!-- ========== SECTION: RIVALRIES ========== -->
-    {(ctfMostFeared.length > 0 || ctfMostTargeted.length > 0 || tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
+    {SHOW_RIVALRY_CARDS && (ctfMostFeared.length > 0 || ctfMostTargeted.length > 0 || tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
     <div class="s-section-header" style="--section-color: #d29922">
       <div class="s-section-icon" style="background: #d29922">&#9876;&#65039;</div>
       <span class="s-section-title" style="color: #d29922">RIVALRIES</span>
@@ -1575,7 +1579,7 @@ const schema = {
     </div>
     )}
 
-    {(ctfMostFeared.length > 0 || ctfMostTargeted.length > 0) && (
+    {SHOW_RIVALRY_CARDS && (ctfMostFeared.length > 0 || ctfMostTargeted.length > 0) && (
     <h3 class="s-mode-label">CTF</h3>
     <div class="s-two-col">
       {ctfMostFeared.length > 0 && (
@@ -1618,7 +1622,7 @@ const schema = {
     </div>
     )}
 
-    {(tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
+    {SHOW_RIVALRY_CARDS && (tdmMostFeared.length > 0 || tdmMostTargeted.length > 0) && (
     <h3 class="s-mode-label">TDM</h3>
     <div class="s-two-col">
       {tdmMostFeared.length > 0 && (

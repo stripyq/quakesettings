@@ -4,13 +4,20 @@ import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import path from 'node:path';
 
-// Load season stats (pre-fetched by scripts/fetch-season-stats.cjs)
+// Load season stats (derived by scripts/derive-season-stats.cjs)
 let seasonStatsData: Record<string, any> = {};
 try {
   const seasonPath = path.join(process.cwd(), 'public/data/season-stats.json');
   seasonStatsData = JSON.parse(fs.readFileSync(seasonPath, 'utf8'));
 } catch {
   // No season stats available yet
+}
+let seasonLabel = '';
+try {
+  const metaPath = path.join(process.cwd(), 'public/data/season-meta.json');
+  seasonLabel = JSON.parse(fs.readFileSync(metaPath, 'utf8')).label || '';
+} catch {
+  // No season meta available yet
 }
 
 // Load CTF activity data (monthly match counts)
@@ -281,7 +288,7 @@ const schema = {
     <p>Select two players above to compare their settings</p>
   </div>
 
-  <script define:vars={{ playersData, base, seasonStatsData, registryNameMap, badgesData, signaturesData }}>
+  <script define:vars={{ playersData, base, seasonStatsData, seasonLabel, registryNameMap, badgesData, signaturesData }}>
     document.addEventListener('DOMContentLoaded', function() {
       const player1Select = document.getElementById('player1');
       const player2Select = document.getElementById('player2');
@@ -1315,7 +1322,7 @@ const schema = {
 
           cards +=
             '<div class="sc-card">' +
-              '<div class="sc-title">' + modeLabel + ' Season Stats <span class="sc-season-tag">2026 S1</span></div>' +
+              '<div class="sc-title">' + modeLabel + ' Season Stats' + (seasonLabel ? ' <span class="sc-season-tag">' + seasonLabel + '</span>' : '') + '</div>' +
               '<table class="sc-table">' +
                 '<thead><tr>' +
                   '<th class="sc-th-player h2h-p1-color">' + p1.name + '</th>' +

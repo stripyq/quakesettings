@@ -1,0 +1,18 @@
+{
+  "id": "y2026-s4",
+  "title": "Current Season",
+  "desc": "Since Oct 1, 2026",
+  "label": "2026 S4",
+  "startTs": 1790812800000,
+  "endTs": "Infinity",
+  "source": "hoqstats.vercel.app via public/data/archive (sync-hoqstats-archive.cjs)",
+  "generatedAt": "2026-11-01T13:51:51.780Z",
+  "matches": {
+    "ctf": 419,
+    "tdm": 51
+  },
+  "players": {
+    "ctf": 101,
+    "tdm": 54
+  }
+}

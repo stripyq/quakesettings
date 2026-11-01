@@ -1,7 +1,7 @@
 [
   {
     "map": "purgatory",
-    "games": 5317,
+    "games": 5426,
     "avg_duration_sec": 1179,
     "avg_total_score": 289,
     "blue_win_rate_pct": 49.6,
@@ -41,11 +41,11 @@
   },
   {
     "map": "hiddenfortress",
-    "games": 4654,
+    "games": 4716,
     "avg_duration_sec": 1148,
     "avg_total_score": 379,
-    "blue_win_rate_pct": 50.1,
-    "red_win_rate_pct": 49.9,
+    "blue_win_rate_pct": 50,
+    "red_win_rate_pct": 50,
     "top_performers": [
       {
         "sid": "76561198069103826",
@@ -81,11 +81,11 @@
   },
   {
     "map": "dreadfulplace",
-    "games": 3692,
+    "games": 3740,
     "avg_duration_sec": 1159,
     "avg_total_score": 302,
-    "blue_win_rate_pct": 50.5,
-    "red_win_rate_pct": 49.5,
+    "blue_win_rate_pct": 50.4,
+    "red_win_rate_pct": 49.6,
     "top_performers": [
       {
         "sid": "76561198136963513",
@@ -121,11 +121,11 @@
   },
   {
     "map": "limbus",
-    "games": 3017,
-    "avg_duration_sec": 1172,
+    "games": 3068,
+    "avg_duration_sec": 1171,
     "avg_total_score": 301,
-    "blue_win_rate_pct": 51,
-    "red_win_rate_pct": 49,
+    "blue_win_rate_pct": 51.1,
+    "red_win_rate_pct": 48.9,
     "top_performers": [
       {
         "sid": "76561198048532604",
@@ -154,18 +154,18 @@
       {
         "sid": "76561198002515349",
         "nick": "rehepapp",
-        "games": 445,
+        "games": 453,
         "avg_frags": 52.8
       }
     ]
   },
   {
     "map": "ragnarok",
-    "games": 2124,
+    "games": 2165,
     "avg_duration_sec": 1157,
     "avg_total_score": 300,
-    "blue_win_rate_pct": 48.6,
-    "red_win_rate_pct": 51.4,
+    "blue_win_rate_pct": 48.7,
+    "red_win_rate_pct": 51.3,
     "top_performers": [
       {
         "sid": "76561198048532604",
@@ -201,11 +201,11 @@
   },
   {
     "map": "deepinside",
-    "games": 1099,
+    "games": 1107,
     "avg_duration_sec": 1159,
     "avg_total_score": 260,
-    "blue_win_rate_pct": 49.1,
-    "red_win_rate_pct": 50.9,
+    "blue_win_rate_pct": 49.2,
+    "red_win_rate_pct": 50.8,
     "top_performers": [
       {
         "sid": "76561198028376914",
@@ -241,11 +241,11 @@
   },
   {
     "map": "grimdungeons",
-    "games": 587,
+    "games": 588,
     "avg_duration_sec": 1143,
     "avg_total_score": 261,
-    "blue_win_rate_pct": 48.7,
-    "red_win_rate_pct": 51.3,
+    "blue_win_rate_pct": 48.8,
+    "red_win_rate_pct": 51.2,
     "top_performers": [
       {
         "sid": "76561198033439430",
@@ -281,11 +281,11 @@
   },
   {
     "map": "campgrounds",
-    "games": 565,
+    "games": 566,
     "avg_duration_sec": 1148,
     "avg_total_score": 288,
-    "blue_win_rate_pct": 50.6,
-    "red_win_rate_pct": 49.4,
+    "blue_win_rate_pct": 50.5,
+    "red_win_rate_pct": 49.5,
     "top_performers": [
       {
         "sid": "76561198033439430",
@@ -321,8 +321,8 @@
   },
   {
     "map": "tornado",
-    "games": 243,
-    "avg_duration_sec": 1126,
+    "games": 245,
+    "avg_duration_sec": 1127,
     "avg_total_score": 287,
     "blue_win_rate_pct": 49.4,
     "red_win_rate_pct": 50.6,
@@ -361,11 +361,11 @@
   },
   {
     "map": "intervention",
-    "games": 230,
-    "avg_duration_sec": 1163,
-    "avg_total_score": 270,
-    "blue_win_rate_pct": 48.3,
-    "red_win_rate_pct": 51.7,
+    "games": 232,
+    "avg_duration_sec": 1161,
+    "avg_total_score": 269,
+    "blue_win_rate_pct": 48.7,
+    "red_win_rate_pct": 51.3,
     "top_performers": [
       {
         "sid": "76561198033439430",

@@ -3,13 +3,24 @@
     {
       "sid": "76561198032236208",
       "nick": "enesy",
-      "games": 1852,
-      "swingGames": 1063,
+      "games": 1972,
+      "swingGames": 1860,
       "peakFirst": false,
       "stddev": 0.14,
-      "range": 24.38,
-      "peak": 40.57,
+      "range": 25.42,
+      "peak": 41.61,
       "trough": 16.19
+    },
+    {
+      "sid": "76561198151319268",
+      "nick": "CUBA artemis4",
+      "games": 1838,
+      "swingGames": 1713,
+      "peakFirst": false,
+      "stddev": 0.15,
+      "range": 24.05,
+      "peak": 30.25,
+      "trough": 6.2
     },
     {
       "sid": "76561198064199875",
@@ -23,20 +34,9 @@
       "trough": 13.78
     },
     {
-      "sid": "76561198151319268",
-      "nick": "CUBA artemis4",
-      "games": 1592,
-      "swingGames": 1434,
-      "peakFirst": false,
-      "stddev": 0.14,
-      "range": 21.83,
-      "peak": 28.03,
-      "trough": 6.2
-    },
-    {
       "sid": "76561197960736529",
       "nick": "CUBA iOio_",
-      "games": 1940,
+      "games": 2312,
       "swingGames": 1593,
       "peakFirst": false,
       "stddev": 0.14,
@@ -45,9 +45,20 @@
       "trough": 10.7
     },
     {
+      "sid": "76561198062139103",
+      "nick": "pengelephant",
+      "games": 758,
+      "swingGames": 668,
+      "peakFirst": false,
+      "stddev": 0.17,
+      "range": 20.8,
+      "peak": 34.74,
+      "trough": 13.94
+    },
+    {
       "sid": "76561198007335390",
       "nick": "lihensior",
-      "games": 1427,
+      "games": 1678,
       "swingGames": 1142,
       "peakFirst": false,
       "stddev": 0.14,
@@ -56,20 +67,20 @@
       "trough": 17.08
     },
     {
-      "sid": "76561198062139103",
-      "nick": "pengelephant",
-      "games": 648,
-      "swingGames": 589,
+      "sid": "76561198053960733",
+      "nick": "Frigolx",
+      "games": 1062,
+      "swingGames": 1011,
       "peakFirst": false,
-      "stddev": 0.17,
-      "range": 19.4,
-      "peak": 33.34,
-      "trough": 13.94
+      "stddev": 0.16,
+      "range": 18.61,
+      "peak": 40.13,
+      "trough": 21.52
     },
     {
       "sid": "76561198035671947",
       "nick": "jävla snoppdragare",
-      "games": 1285,
+      "games": 1296,
       "swingGames": 885,
       "peakFirst": false,
       "stddev": 0.16,
@@ -80,7 +91,7 @@
     {
       "sid": "76561198346024921",
       "nick": "APH3X",
-      "games": 6531,
+      "games": 6596,
       "swingGames": 3735,
       "peakFirst": false,
       "stddev": 0.11,
@@ -91,24 +102,13 @@
     {
       "sid": "76561198004545167",
       "nick": "Morda",
-      "games": 803,
+      "games": 1043,
       "swingGames": 454,
       "peakFirst": false,
-      "stddev": 0.2,
+      "stddev": 0.19,
       "range": 16.16,
       "peak": 12.86,
       "trough": -3.3
-    },
-    {
-      "sid": "76561198140092774",
-      "nick": "VergiL",
-      "games": 1322,
-      "swingGames": 1099,
-      "peakFirst": false,
-      "stddev": 0.13,
-      "range": 16.06,
-      "peak": 30.01,
-      "trough": 13.95
     }
   ]
 }

@@ -3,23 +3,23 @@
     {
       "sid": "76561198035671947",
       "nick": "jävla snoppdragare",
-      "games": 2252,
-      "swingGames": 2193,
+      "games": 2260,
+      "swingGames": 2204,
       "peakFirst": false,
       "stddev": 0.12,
-      "range": 22.86,
-      "peak": 30.5,
+      "range": 23.15,
+      "peak": 30.79,
       "trough": 7.64
     },
     {
       "sid": "76561197961473367",
       "nick": "*mad BóBr :B",
-      "games": 1771,
-      "swingGames": 1428,
+      "games": 1784,
+      "swingGames": 1702,
       "peakFirst": false,
       "stddev": 0.16,
-      "range": 16.66,
-      "peak": 31.88,
+      "range": 16.67,
+      "peak": 31.89,
       "trough": 15.22
     },
     {
@@ -47,7 +47,7 @@
     {
       "sid": "76561198067064946",
       "nick": "Steve Jobs",
-      "games": 2256,
+      "games": 2286,
       "swingGames": 2165,
       "peakFirst": true,
       "stddev": 0.13,
@@ -67,9 +67,20 @@
       "trough": 22.32
     },
     {
+      "sid": "76561198063034260",
+      "nick": "Insaccato",
+      "games": 320,
+      "swingGames": 253,
+      "peakFirst": true,
+      "stddev": 0.2,
+      "range": 13.78,
+      "peak": 27.23,
+      "trough": 13.45
+    },
+    {
       "sid": "76561198002515349",
       "nick": "rehepapp",
-      "games": 2715,
+      "games": 2830,
       "swingGames": 2479,
       "peakFirst": false,
       "stddev": 0.13,
@@ -80,7 +91,7 @@
     {
       "sid": "76561198062801450",
       "nick": "nm",
-      "games": 1461,
+      "games": 1464,
       "swingGames": 1398,
       "peakFirst": true,
       "stddev": 0.15,
@@ -91,24 +102,13 @@
     {
       "sid": "76561197964623506",
       "nick": "dehumanizeR",
-      "games": 1129,
+      "games": 1140,
       "swingGames": 977,
       "peakFirst": false,
       "stddev": 0.19,
       "range": 13,
       "peak": 35.17,
       "trough": 22.17
-    },
-    {
-      "sid": "76561198149540641",
-      "nick": "chr",
-      "games": 1022,
-      "swingGames": 897,
-      "peakFirst": false,
-      "stddev": 0.16,
-      "range": 12.77,
-      "peak": 41.38,
-      "trough": 28.61
     }
   ]
 }
