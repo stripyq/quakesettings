@@ -739,6 +739,42 @@ function val(v: unknown) {
       });
     }
 
+    // Player dropdowns: place the fixed dropdown under its count, or above it
+    // when there is more room there, and keep it attached while things scroll
+    let openWrapper: HTMLElement | null = null;
+
+    function placeDropdown(wrapper: HTMLElement) {
+      const dropdown = wrapper.querySelector('.player-dropdown') as HTMLElement | null;
+      if (!dropdown) return;
+      const margin = 8;
+      const rect = wrapper.getBoundingClientRect();
+      const viewW = document.documentElement.clientWidth;
+      const viewH = document.documentElement.clientHeight;
+      const below = viewH - rect.bottom - margin;
+      const above = rect.top - margin;
+      const openUp = dropdown.scrollHeight > below && above > below;
+
+      dropdown.style.maxHeight = `${openUp ? above : below}px`;
+      dropdown.style.top = openUp ? '' : `${rect.bottom}px`;
+      dropdown.style.bottom = openUp ? `${viewH - rect.top}px` : '';
+      dropdown.style.right = `${Math.max(margin, Math.min(viewW - rect.right, viewW - dropdown.offsetWidth - margin))}px`;
+    }
+
+    document.querySelectorAll('.usage-wrapper').forEach(el => {
+      const wrapper = el as HTMLElement;
+      wrapper.addEventListener('mouseenter', () => {
+        openWrapper = wrapper;
+        placeDropdown(wrapper);
+      });
+      wrapper.addEventListener('mouseleave', () => {
+        if (openWrapper === wrapper) openWrapper = null;
+      });
+    });
+
+    const replaceOpenDropdown = () => { if (openWrapper) placeDropdown(openWrapper); };
+    window.addEventListener('scroll', replaceOpenDropdown, { capture: true, passive: true });
+    window.addEventListener('resize', replaceOpenDropdown);
+
     // Handle initial hash or default to mice
     function handleHash(isInitialLoad: boolean = false) {
       const rawHash = window.location.hash.replace('#', '');
@@ -943,11 +979,12 @@ function val(v: unknown) {
     color: var(--accent-secondary, #4ecdc4);
   }
 
+  /* Fixed, not absolute, so the table's overflow box can't clip it;
+     the script places it next to its count. */
   .player-dropdown {
     display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
+    position: fixed;
+    overflow-y: auto;
     z-index: 100;
     background: var(--bg-card, #1a1a24);
     border: 1px solid var(--border-color, #2a2a3a);
