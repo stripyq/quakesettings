@@ -236,7 +236,7 @@ const playersCollection = defineCollection({
 
     // Game Settings (optional for unpublished/ratings-only players)
     fov: z.number().optional(),
-    crosshair: z.string().optional().default('2'),
+    crosshair: z.string().optional(),
     crosshairColor: z.string().optional(),
     crosshairSize: z.string().optional(),
     enemyModel: z.string().optional(),

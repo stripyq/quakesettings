@@ -507,9 +507,11 @@ const crosshairColorMap: Record<string, { bg: string; border?: string }> = {
 // Crosshair style distribution
 const crosshairTypes = new Map<string, number>();
 players.forEach(p => {
-  const ch = p.data.crosshair || 'Unknown';
-  crosshairTypes.set(ch, (crosshairTypes.get(ch) || 0) + 1);
+  if (p.data.crosshair) {
+    crosshairTypes.set(p.data.crosshair, (crosshairTypes.get(p.data.crosshair) || 0) + 1);
+  }
 });
+const totalCrosshairStylePlayers = [...crosshairTypes.values()].reduce((a, b) => a + b, 0);
 
 const crosshairVisuals: Record<string, string> = {
   '1': 'Circle with dot',
@@ -533,7 +535,7 @@ const crosshairStyleData = [...crosshairTypes.entries()]
   .map(([type, count]) => ({
     type,
     count,
-    percentage: Math.round((count / players.length) * 100),
+    percentage: Math.round((count / totalCrosshairStylePlayers) * 100),
     description: crosshairVisuals[type] || `Type ${type}`,
   }));
 const maxCrosshairStyleCount = crosshairStyleData.length > 0 ? crosshairStyleData[0].count : 1;
