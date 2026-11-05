@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-11-01",
+  "generatedAt": "2026-11-05",
   "totalPlayers": 2334,
-  "playersWithProfiles": 147,
+  "playersWithProfiles": 148,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -24151,8 +24151,8 @@
     {
       "steamId": "76561198163827733",
       "name": "PAINE",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "paine",
+      "hasProfile": true,
       "ratings": {
         "ctf": 15.35268783569336,
         "tdm": 11.658458709716797,
