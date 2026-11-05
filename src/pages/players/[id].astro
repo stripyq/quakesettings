@@ -764,7 +764,7 @@ const schema = {
         <table class="settings-table">
           <tbody>
             <tr><td>FOV</td><td>{p.fov}</td></tr>
-            <tr><td>Crosshair</td><td>{p.crosshair}</td></tr>
+            <tr><td>Crosshair</td><td>{p.crosshair || <span class="empty-val">—</span>}</td></tr>
             <tr><td>Crosshair Size</td><td>{p.crosshairSize || <span class="empty-val">—</span>}</td></tr>
             <tr><td>Inverted Mouse</td><td>{p.invertedMouse ? 'Yes' : 'No'}</td></tr>
           </tbody>

@@ -782,7 +782,7 @@ const schema = {
         // Section: Game Settings
         html += sectionHeader('Game Settings');
         html += compareRow('FOV', p1.fov, p2.fov, true);
-        html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair));
+        html += compareRow('Crosshair', formatValue(p1.crosshair), formatValue(p2.crosshair), false, true);
         html += compareRow('Enemy Model', formatValue(p1.enemyModel), formatValue(p2.enemyModel));
 
         // Section: Key Bindings
