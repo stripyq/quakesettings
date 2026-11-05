@@ -1,0 +1,12 @@
+name: "EspTiger Chengying"
+brand: "EspTiger"
+surface: "Resin"
+speed: "Balanced"
+dimensions: "480 x 400 x 4mm"
+thickness: "4mm"
+base: "Polyurethane"
+note: "Resin surface, coarse, glide 5/7, stop 3/5. 5-layer PU base. Red 480 x 400mm, Yellow 400 x 320mm."
+variants:
+  - base: "Polyurethane"
+    thickness: "4mm"
+    sizes: ["480 x 400mm", "400 x 320mm"]

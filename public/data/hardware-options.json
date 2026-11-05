@@ -1551,6 +1551,26 @@
       "brand": "Razer"
     },
     {
+      "slug": "razer-deathadder-v4-pro-carbon-fiber",
+      "name": "Razer DeathAdder V4 Pro Carbon Fiber Edition",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-deathadder-v4-pro-esports-green",
+      "name": "Razer DeathAdder V4 Pro Esports Green Edition",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-deathadder-v4-pro-niko-edition",
+      "name": "Razer DeathAdder V4 Pro NiKo Edition",
+      "brand": "Razer"
+    },
+    {
+      "slug": "razer-deathadder-v4-pro-white",
+      "name": "Razer DeathAdder V4 Pro White",
+      "brand": "Razer"
+    },
+    {
       "slug": "razer-hello-kitty-viper-mini",
       "name": "Razer Hello Kitty Viper Mini",
       "brand": "Razer"
@@ -2634,9 +2654,64 @@
       "brand": "Endgame Gear"
     },
     {
+      "slug": "esptiger-blaze-v3",
+      "name": "EspTiger Blaze V3",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-chengying",
+      "name": "EspTiger Chengying",
+      "brand": "EspTiger",
+      "variants": [
+        {
+          "base": "Polyurethane",
+          "thickness": "4mm",
+          "sizes": [
+            "480 x 400mm",
+            "400 x 320mm"
+          ]
+        }
+      ]
+    },
+    {
       "slug": "esptiger-eba",
-      "name": "Esptiger EBA",
-      "brand": "Esptiger"
+      "name": "EspTiger EBA",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-grandmaster-ling",
+      "name": "EspTiger Grandmaster Ling",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-heavy-claw",
+      "name": "EspTiger Heavy Claw",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-hetu-galaxy",
+      "name": "EspTiger HeTu Galaxy",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-lei-ling",
+      "name": "EspTiger Lei Ling",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-lotus",
+      "name": "EspTiger Lotus",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-neon-v2",
+      "name": "EspTiger Neon V2",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-pioneer-kun-lun",
+      "name": "EspTiger Pioneer Kun Lun",
+      "brand": "EspTiger"
     },
     {
       "slug": "esptiger-pioneer-talismans-ya-cheng-v2",
@@ -2646,6 +2721,124 @@
     {
       "slug": "esptiger-pioneer-tang-dao",
       "name": "EspTiger Pioneer Tang Dao",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-pioneer-wuxiang-v2",
+      "name": "EspTiger Pioneer WuXiang V2",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-poying",
+      "name": "EspTiger Poying",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-qingsui-2-pro",
+      "name": "EspTiger QingSui 2 Pro",
+      "brand": "EspTiger",
+      "variants": [
+        {
+          "base": "SCR",
+          "thickness": "6mm",
+          "sizes": [
+            "480 x 400mm"
+          ]
+        },
+        {
+          "base": "Rubber",
+          "thickness": "6mm",
+          "sizes": [
+            "480 x 400mm"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "esptiger-qingsui-3",
+      "name": "EspTiger QingSui 3",
+      "brand": "EspTiger",
+      "variants": [
+        {
+          "base": "SCR",
+          "thickness": "6mm",
+          "sizes": [
+            "480 x 400mm"
+          ]
+        },
+        {
+          "base": "SlimFlex",
+          "thickness": "4mm",
+          "sizes": [
+            "480 x 400mm"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "esptiger-qingsui-3-pro",
+      "name": "EspTiger QingSui 3 Pro",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-qingsui-x-bailu",
+      "name": "EspTiger QingSui X Bailu",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-qingsui-xuanniao",
+      "name": "EspTiger QingSui Xuanniao",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-qingsui-ya-sheng",
+      "name": "EspTiger QingSui Ya Sheng",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-shan-hai-chuan-yun",
+      "name": "EspTiger Shan Hai Chuan Yun",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-shan-hai-feng-ling",
+      "name": "EspTiger Shan Hai Feng Ling",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-shan-hai-kun-lun",
+      "name": "EspTiger Shan Hai Kun Lun",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-sheshejia-balance",
+      "name": "EspTiger SheSheJia Balance",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-sheshejia-speed",
+      "name": "EspTiger SheSheJia Speed",
+      "brand": "EspTiger",
+      "variants": [
+        {
+          "base": "SlimFlex",
+          "thickness": "4mm",
+          "sizes": [
+            "480 x 400mm"
+          ]
+        },
+        {
+          "base": "Rubber",
+          "thickness": "4mm",
+          "sizes": [
+            "1200 x 450mm"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "esptiger-tai-bao",
+      "name": "EspTiger Tai Bao",
       "brand": "EspTiger"
     },
     {
@@ -2671,6 +2864,21 @@
     {
       "slug": "esptiger-tang-dao-x",
       "name": "EspTiger Tang Dao X",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-wu-jie",
+      "name": "EspTiger Wu Jie",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-wuxiang-2",
+      "name": "EspTiger WuXiang 2",
+      "brand": "EspTiger"
+    },
+    {
+      "slug": "esptiger-wuxiang-x-v2",
+      "name": "EspTiger WuXiang X V2",
       "brand": "EspTiger"
     },
     {

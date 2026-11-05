@@ -1,0 +1,13 @@
+name: "Razer DeathAdder V4 Pro Esports Green Edition"
+brand: "Razer"
+dimensions: "128 x 68 x 44mm"
+weight: "58g"
+shape: "Ergonomic"
+sensor: "Focus Pro 45K Gen-2"
+dpiRange: "100-45000"
+pollingRate: "8000Hz"
+connection: "Wireless"
+buttons: 6
+variantOf: "razer-deathadder-v4-pro"
+source: "https://www.razer.com/eu-en/gaming-mice/razer-deathadder-v4-pro (Esports Green Edition, EUR 160.99 on 2026-11-05)"
+checked: "2026-11-05"

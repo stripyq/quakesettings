@@ -1,0 +1,15 @@
+name: "EspTiger QingSui 3"
+brand: "EspTiger"
+surface: "Cloth"
+speed: "Balanced"
+dimensions: "480 x 400 x 6mm"
+thickness: "6mm"
+base: "SCR"
+note: "Smooth, glide 5/7, stop 4/5. Special Edition: smooth, glide 4/7, stop 2/5, SlimFlex base, 4mm."
+variants:
+  - base: "SCR"
+    thickness: "6mm"
+    sizes: ["480 x 400mm"]
+  - base: "SlimFlex"
+    thickness: "4mm"
+    sizes: ["480 x 400mm"]

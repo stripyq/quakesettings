@@ -1,0 +1,13 @@
+name: "EspTiger SheSheJia Speed"
+brand: "EspTiger"
+surface: "Cloth"
+speed: "Fast"
+thickness: "4mm"
+note: "Two speed pads sold under the SheSheJia name. Pink: plain, glide 6/7, stop 3/5, SlimFlex base, 480 x 400 x 4mm. XXL deskmat: coarse, glide 6/7, stop 4/5, natural rubber base, 1200 x 450 x 4mm."
+variants:
+  - base: "SlimFlex"
+    thickness: "4mm"
+    sizes: ["480 x 400mm"]
+  - base: "Rubber"
+    thickness: "4mm"
+    sizes: ["1200 x 450mm"]
