@@ -1,0 +1,15 @@
+name: "EspTiger QingSui 2 Pro"
+brand: "EspTiger"
+surface: "Cloth"
+speed: "Control"
+dimensions: "480 x 400 x 6mm"
+thickness: "6mm"
+base: "SCR"
+note: "Velvety, glide 1/7, stop 1/5. PRO+ (Large): ER acrylic rubber base, same size, thickness and ratings."
+variants:
+  - base: "SCR"
+    thickness: "6mm"
+    sizes: ["480 x 400mm"]
+  - base: "Rubber"
+    thickness: "6mm"
+    sizes: ["480 x 400mm"]
