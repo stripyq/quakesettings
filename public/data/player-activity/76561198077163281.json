@@ -62,5 +62,7 @@
 {"month":"2026-06","games":70},
 {"month":"2026-07","games":57},
 {"month":"2026-08","games":94},
-{"month":"2026-09","games":62}
+{"month":"2026-09","games":62},
+{"month":"2026-10","games":0},
+{"month":"2026-11","games":9}
 ]

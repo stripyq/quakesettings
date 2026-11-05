@@ -2,6 +2,16 @@ name: PAINE
 country: DE
 steamId: "76561198163827733"
 dataSource: player
+hoqCtfRating: 15.146454811096191
+ctfRatingUpdated: "2026-11-05"
+ctfRating: 15.15
+hoqCtfGames: 391
+ctfGames: 391
+hoqTdmRating: 11.658458709716797
+tdmRatingUpdated: "2026-11-05"
+tdmRating: 11.66
+hoqTdmGames: 7
+tdmGames: 7
 lastUpdated: "2026-11-05"
 mouse: logitech-g-pro-x-superlight-2-dex
 mousepad: artisan-zero

@@ -1,7 +1,7 @@
 [
 {"gametype_short":"tdm","map_name":"tornado","rating":31.0992,"games":40,"win_pct":57.5,"percentile":83},
 {"gametype_short":"tdm","map_name":"realmofsteelrats","rating":28.732,"games":21,"win_pct":57.1,"percentile":79},
-{"gametype_short":"tdm","map_name":"deepinside","rating":27.8399,"games":228,"win_pct":57.9,"percentile":69},
+{"gametype_short":"tdm","map_name":"deepinside","rating":28.0154,"games":229,"win_pct":58.1,"percentile":70},
 {"gametype_short":"tdm","map_name":"ragnarok","rating":26.7772,"games":420,"win_pct":52.4,"percentile":62},
 {"gametype_short":"tdm","map_name":"limbus","rating":26.6342,"games":631,"win_pct":52.5,"percentile":61},
 {"gametype_short":"tdm","map_name":"dreadfulplace","rating":25.7376,"games":722,"win_pct":53.9,"percentile":61},

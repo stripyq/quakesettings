@@ -7,8 +7,8 @@ team2024: unreliable dogs
 country: SE
 team: ""
 category: ctf
-hoqCtfRating: 26.085426330566406
-hoqCtfGames: 339
+hoqCtfRating: 26.275718688964844
+hoqCtfGames: 340
 hoqTdmRating: 24.129335403442383
 hoqTdmGames: 43
 lastUpdated: 2025-01
@@ -16,8 +16,8 @@ duelRating: 1547
 duelRatingUpdated: 2026-01-31T00:00:00.000Z
 tdmRating: 24.13
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 26.09
-ctfRatingUpdated: "2026-10-28"
+ctfRating: 26.28
+ctfRatingUpdated: "2026-11-05"
 dataSource: player
 source: ""
 sourceUrl: ""
@@ -52,7 +52,7 @@ enemyModel: Tank Jr.
 crosshairColor: Yellow
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 339
+ctfGames: 340
 tdmGames: 43
 qlrace: null
 favorite_map: campgrounds

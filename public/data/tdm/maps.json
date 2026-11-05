@@ -1,7 +1,7 @@
 [
   {
     "map": "purgatory",
-    "games": 5442,
+    "games": 5444,
     "avg_duration_sec": 1178,
     "avg_total_score": 288,
     "blue_win_rate_pct": 49.6,
@@ -201,11 +201,11 @@
   },
   {
     "map": "deepinside",
-    "games": 1113,
+    "games": 1114,
     "avg_duration_sec": 1158,
     "avg_total_score": 258,
-    "blue_win_rate_pct": 49.2,
-    "red_win_rate_pct": 50.8,
+    "blue_win_rate_pct": 49.3,
+    "red_win_rate_pct": 50.7,
     "top_performers": [
       {
         "sid": "76561198028376914",

@@ -6,8 +6,8 @@ qlstatsNick: ''
 country: GB
 team: ''
 category: ctf
-hoqCtfRating: 27.134994506835938
-hoqCtfGames: 3903
+hoqCtfRating: 27.232006072998047
+hoqCtfGames: 3904
 hoqTdmRating: 20.73134994506836
 hoqTdmGames: 44
 lastUpdated: 2025-01
@@ -15,8 +15,8 @@ duelRating: 1207
 duelRatingUpdated: 2026-02-04
 tdmRating: 20.73
 tdmRatingUpdated: 2026-04-29
-ctfRating: 27.13
-ctfRatingUpdated: "2026-10-31"
+ctfRating: 27.23
+ctfRatingUpdated: "2026-11-05"
 dataSource: player
 source: ''
 sourceUrl: ''
@@ -53,7 +53,7 @@ accuracy_rg: 54
 accuracy_rl: 40
 cpuBrand: AMD
 crosshairColor: Yellow
-ctfGames: 3903
+ctfGames: 3904
 duelGames: 26
 enemyModel: Keel
 favorite_gametype: Capture the Flag

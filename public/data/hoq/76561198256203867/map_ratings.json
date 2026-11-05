@@ -1,8 +1,8 @@
 [
 {"gametype_short":"ctf","map_name":"courtyard","rating":29.6477,"games":24,"win_pct":62.5,"percentile":86},
-{"gametype_short":"ctf","map_name":"infinity","rating":26.2453,"games":109,"win_pct":52.3,"percentile":64},
+{"gametype_short":"ctf","map_name":"infinity","rating":26.2453,"games":109,"win_pct":52.3,"percentile":63},
 {"gametype_short":"ctf","map_name":"japanesecastles","rating":25.0321,"games":221,"win_pct":49.3,"percentile":67},
-{"gametype_short":"ctf","map_name":"ironworks","rating":24.6656,"games":158,"win_pct":46.5,"percentile":54},
+{"gametype_short":"ctf","map_name":"ironworks","rating":24.6656,"games":158,"win_pct":46.5,"percentile":53},
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":24.5827,"games":205,"win_pct":46.8,"percentile":60},
 {"gametype_short":"ctf","map_name":"troubledwaters","rating":20.3721,"games":47,"win_pct":38.3,"percentile":8},
 {"gametype_short":"ctf","map_name":"shiningforces","rating":18.2515,"games":12,"win_pct":33.3,"percentile":5},

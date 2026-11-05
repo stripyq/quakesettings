@@ -224,13 +224,13 @@
       "key": "acc_lg",
       "label": "Shafter",
       "z": 1.72,
-      "value": 40.05
+      "value": 40.09
     },
     "secondary": {
       "key": "acc_rg",
       "label": "Rail Sniper",
-      "z": 1.29,
-      "value": 57.56
+      "z": 1.25,
+      "value": 57.33
     }
   },
   "76561198106787712": {
@@ -272,7 +272,7 @@
       "key": "dmg_per_game",
       "label": "DPS Machine",
       "z": 2.04,
-      "value": 9474.98
+      "value": 9476.34
     }
   },
   "76561198050460290": {

@@ -4,7 +4,7 @@
 {"gametype_short":"ctf","map_name":"japanesecastles","rating":27.4512,"games":124,"win_pct":50,"percentile":85},
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":24.1962,"games":145,"win_pct":44.8,"percentile":56},
 {"gametype_short":"ctf","map_name":"courtyard","rating":23.5202,"games":15,"win_pct":46.7,"percentile":32},
-{"gametype_short":"ctf","map_name":"ironworks","rating":20.7448,"games":101,"win_pct":34,"percentile":21},
+{"gametype_short":"ctf","map_name":"ironworks","rating":20.7448,"games":101,"win_pct":34,"percentile":22},
 {"gametype_short":"ctf","map_name":"troubledwaters","rating":19.1181,"games":22,"win_pct":31.8,"percentile":6},
 {"gametype_short":"tdm","map_name":"campgrounds","rating":39.1505,"games":47,"win_pct":74.5,"percentile":100},
 {"gametype_short":"tdm","map_name":"intervention","rating":30.2184,"games":10,"win_pct":70,"percentile":83},

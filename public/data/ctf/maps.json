@@ -1,7 +1,7 @@
 [
   {
     "map": "japanesecastles",
-    "games": 7507,
+    "games": 7520,
     "pct_of_total": 26.6,
     "avg_duration_sec": 1239,
     "avg_total_score": 5,
@@ -47,19 +47,19 @@
         "avg_frags": 47.8
       },
       {
-        "sid": "76561198053960733",
-        "nick": "Frigolx",
-        "games": 270,
-        "wins": 160,
-        "win_rate_pct": 59.3,
-        "avg_score": 550.4,
-        "avg_frags": 55.2
+        "sid": "76561198275956025",
+        "nick": "Needy",
+        "games": 165,
+        "wins": 98,
+        "win_rate_pct": 59.4,
+        "avg_score": 482.3,
+        "avg_frags": 49.8
       }
     ]
   },
   {
     "map": "q3wcp9",
-    "games": 7014,
+    "games": 7027,
     "pct_of_total": 24.8,
     "avg_duration_sec": 1245,
     "avg_total_score": 5,
@@ -71,9 +71,9 @@
       {
         "sid": "76561198239142044",
         "nick": "SPART1E",
-        "games": 405,
-        "wins": 255,
-        "win_rate_pct": 63,
+        "games": 407,
+        "wins": 256,
+        "win_rate_pct": 62.9,
         "avg_score": 528.5,
         "avg_frags": 67.5
       },
@@ -117,7 +117,7 @@
   },
   {
     "map": "ironworks",
-    "games": 5557,
+    "games": 5568,
     "pct_of_total": 19.7,
     "avg_duration_sec": 1218,
     "avg_total_score": 5,
@@ -147,10 +147,10 @@
       {
         "sid": "76561198001355736",
         "nick": "icemen",
-        "games": 293,
-        "wins": 190,
-        "win_rate_pct": 64.8,
-        "avg_score": 525.4,
+        "games": 295,
+        "wins": 191,
+        "win_rate_pct": 64.7,
+        "avg_score": 525.1,
         "avg_frags": 51.6
       },
       {
@@ -175,12 +175,12 @@
   },
   {
     "map": "infinity",
-    "games": 3756,
+    "games": 3772,
     "pct_of_total": 13.3,
     "avg_duration_sec": 1230,
     "avg_total_score": 5,
     "blue_win_rate_pct": 51.9,
-    "red_win_rate_pct": 48.1,
+    "red_win_rate_pct": 48,
     "top_performer_metric": "win_rate",
     "top_performer_min_games": 30,
     "top_performers": [
@@ -233,12 +233,12 @@
   },
   {
     "map": "troubledwaters",
-    "games": 2109,
+    "games": 2116,
     "pct_of_total": 7.5,
     "avg_duration_sec": 1235,
     "avg_total_score": 4,
-    "blue_win_rate_pct": 50.7,
-    "red_win_rate_pct": 49.3,
+    "blue_win_rate_pct": 50.8,
+    "red_win_rate_pct": 49.2,
     "top_performer_metric": "win_rate",
     "top_performer_min_games": 30,
     "top_performers": [
@@ -261,13 +261,22 @@
         "avg_frags": 46.5
       },
       {
+        "sid": "76561198001355736",
+        "nick": "icemen",
+        "games": 103,
+        "wins": 65,
+        "win_rate_pct": 63.1,
+        "avg_score": 401.8,
+        "avg_frags": 54
+      },
+      {
         "sid": "76561198004545167",
         "nick": "Morda",
-        "games": 115,
-        "wins": 72,
-        "win_rate_pct": 62.6,
-        "avg_score": 311.1,
-        "avg_frags": 44.9
+        "games": 119,
+        "wins": 75,
+        "win_rate_pct": 63,
+        "avg_score": 313.5,
+        "avg_frags": 45
       },
       {
         "sid": "76561198000088567",
@@ -277,15 +286,6 @@
         "win_rate_pct": 62.6,
         "avg_score": 337.7,
         "avg_frags": 66.3
-      },
-      {
-        "sid": "76561198037564581",
-        "nick": "eki22",
-        "games": 48,
-        "wins": 30,
-        "win_rate_pct": 62.5,
-        "avg_score": 258.8,
-        "avg_frags": 52.4
       }
     ]
   },

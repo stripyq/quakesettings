@@ -8,8 +8,8 @@ team2024: wAnnaBees
 team2026: wAnnaBees
 team2026Shortname: wB
 lastUpdated: 2026-02
-ctfRating: 30.48
-ctfGames: 1442
+ctfRating: 30.84
+ctfGames: 1458
 tdmRating: 29.16
 tdmGames: 212
 mouse: logitech-g-pro-x-superlight-ii
@@ -32,11 +32,11 @@ back: s
 left: a
 right: d
 dataSource: player
-hoqCtfRating: 30.479408264160156
-hoqCtfGames: 1442
+hoqCtfRating: 30.843854904174805
+hoqCtfGames: 1458
 hoqTdmRating: 29.156415939331055
 hoqTdmGames: 212
-ctfRatingUpdated: "2026-11-01"
+ctfRatingUpdated: "2026-11-05"
 qllrCtfRating: 32.41
 qllrCtfGames: 95
 

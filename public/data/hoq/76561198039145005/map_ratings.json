@@ -1,10 +1,10 @@
 [
 {"gametype_short":"ctf","map_name":"courtyard","rating":31.8604,"games":93,"win_pct":58.1,"percentile":94},
-{"gametype_short":"ctf","map_name":"troubledwaters","rating":29.9324,"games":243,"win_pct":54.7,"percentile":85},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":30.0904,"games":244,"win_pct":54.9,"percentile":86},
 {"gametype_short":"ctf","map_name":"shiningforces","rating":29.0866,"games":39,"win_pct":59,"percentile":79},
-{"gametype_short":"ctf","map_name":"infinity","rating":27.7639,"games":419,"win_pct":50.4,"percentile":75},
-{"gametype_short":"ctf","map_name":"q3wcp9","rating":26.9008,"games":787,"win_pct":53.4,"percentile":76},
-{"gametype_short":"ctf","map_name":"ironworks","rating":26.1478,"games":543,"win_pct":48.2,"percentile":66},
-{"gametype_short":"ctf","map_name":"japanesecastles","rating":24.5779,"games":723,"win_pct":48.1,"percentile":63},
+{"gametype_short":"ctf","map_name":"infinity","rating":28.0614,"games":423,"win_pct":50.6,"percentile":76},
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":26.9767,"games":788,"win_pct":53.4,"percentile":76},
+{"gametype_short":"ctf","map_name":"ironworks","rating":26.0704,"games":546,"win_pct":48.1,"percentile":66},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":24.4611,"games":727,"win_pct":48,"percentile":63},
 {"gametype_short":"ctf","map_name":"pillbox","rating":22.2805,"games":40,"win_pct":42.5,"percentile":30}
 ]
