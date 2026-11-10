@@ -1,8 +1,8 @@
 {
   "version": "2.0",
-  "generatedAt": "2026-11-05",
+  "generatedAt": "2026-11-10",
   "totalPlayers": 2334,
-  "playersWithProfiles": 148,
+  "playersWithProfiles": 149,
   "players": [
     {
       "steamId": "76561198027167951",
@@ -31575,8 +31575,8 @@
     {
       "steamId": "76561197966348358",
       "name": "tenbit",
-      "slug": null,
-      "hasProfile": false,
+      "slug": "tenbit",
+      "hasProfile": true,
       "ratings": {
         "ctf": -3.929318428039551,
         "tdm": null,
