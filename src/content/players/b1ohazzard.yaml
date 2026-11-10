@@ -4,11 +4,11 @@ country: Unknown
 category: tdm
 hoqCtfRating: 3.25726318359375
 hoqCtfGames: 11
-hoqTdmRating: 21.96632957458496
-hoqTdmGames: 2354
+hoqTdmRating: 22.134302139282227
+hoqTdmGames: 2355
 lastUpdated: 2025-01
-tdmRating: 21.97
-tdmRatingUpdated: "2026-11-05"
+tdmRating: 22.13
+tdmRatingUpdated: "2026-11-10"
 ctfRating: 3.26
 ctfRatingUpdated: "2026-04-29"
 dataSource: player
@@ -38,7 +38,7 @@ crosshairColor: Pink
 gpuBrand: NVIDIA
 cpuBrand: Intel
 ctfGames: 11
-tdmGames: 2354
+tdmGames: 2355
 qlrace: null
 favorite_map: purgatory
 favorite_gametype: Team Deathmatch

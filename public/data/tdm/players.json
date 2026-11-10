@@ -31,9 +31,9 @@
     "nicks": [
       "ne_raketa"
     ],
-    "games": 4625,
+    "games": 4626,
     "wins": 2324,
-    "losses": 2301,
+    "losses": 2302,
     "win_rate_pct": 50.2,
     "avg_frags": 37.1,
     "avg_deaths": 42.5,
@@ -49,9 +49,9 @@
       "pg": 13.6
     },
     "peak_rating": 32.96,
-    "last_rating": 22.14,
+    "last_rating": 21.95,
     "first_ts": 1556564775,
-    "last_ts": 1793386429
+    "last_ts": 1793911818
   },
   {
     "sid": "76561198380825290",
@@ -59,8 +59,8 @@
       "DimebaG",
       "Dime"
     ],
-    "games": 4160,
-    "wins": 2131,
+    "games": 4161,
+    "wins": 2132,
     "losses": 2028,
     "win_rate_pct": 51.2,
     "avg_frags": 40.3,
@@ -77,9 +77,9 @@
       "pg": 12.3
     },
     "peak_rating": 27.04,
-    "last_rating": 22.29,
+    "last_rating": 22.44,
     "first_ts": 1585856204,
-    "last_ts": 1793653795
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198079788427",
@@ -140,9 +140,9 @@
     "nicks": [
       "PETERROR"
     ],
-    "games": 3371,
+    "games": 3372,
     "wins": 1715,
-    "losses": 1656,
+    "losses": 1657,
     "win_rate_pct": 50.9,
     "avg_frags": 38.7,
     "avg_deaths": 39.3,
@@ -158,9 +158,9 @@
       "pg": 12.3
     },
     "peak_rating": 25.81,
-    "last_rating": 22.9,
+    "last_rating": 22.71,
     "first_ts": 1564341338,
-    "last_ts": 1793563767
+    "last_ts": 1794086340
   },
   {
     "sid": "76561197965308771",
@@ -302,13 +302,13 @@
     "nicks": [
       "Bolland"
     ],
-    "games": 2641,
+    "games": 2642,
     "wins": 1273,
-    "losses": 1368,
+    "losses": 1369,
     "win_rate_pct": 48.2,
     "avg_frags": 31.6,
     "avg_deaths": 43.2,
-    "avg_dmg_dealt": 5840,
+    "avg_dmg_dealt": 5839,
     "avg_dmg_taken": 6589,
     "weapon_acc_pct": {
       "gt": null,
@@ -320,9 +320,9 @@
       "pg": 12.8
     },
     "peak_rating": 32.95,
-    "last_rating": 14.67,
+    "last_rating": 14.52,
     "first_ts": 1557350138,
-    "last_ts": 1793563767
+    "last_ts": 1793911818
   },
   {
     "sid": "76561198166603978",
@@ -410,14 +410,14 @@
     "nicks": [
       "☢️biohazzard"
     ],
-    "games": 2365,
-    "wins": 1174,
+    "games": 2366,
+    "wins": 1175,
     "losses": 1190,
-    "win_rate_pct": 49.6,
+    "win_rate_pct": 49.7,
     "avg_frags": 32.3,
     "avg_deaths": 43.1,
-    "avg_dmg_dealt": 6025,
-    "avg_dmg_taken": 6587,
+    "avg_dmg_dealt": 6026,
+    "avg_dmg_taken": 6588,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 29.3,
@@ -428,9 +428,9 @@
       "pg": 13
     },
     "peak_rating": 29.25,
-    "last_rating": 21.97,
+    "last_rating": 22.13,
     "first_ts": 1556566441,
-    "last_ts": 1793653795
+    "last_ts": 1793911818
   },
   {
     "sid": "76561198068047395",
@@ -465,9 +465,9 @@
       "ay",
       "d777"
     ],
-    "games": 2352,
-    "wins": 1175,
-    "losses": 1177,
+    "games": 2354,
+    "wins": 1176,
+    "losses": 1178,
     "win_rate_pct": 50,
     "avg_frags": 35.2,
     "avg_deaths": 45.5,
@@ -476,25 +476,25 @@
     "weapon_acc_pct": {
       "gt": null,
       "mg": 31.9,
-      "sg": 28.2,
+      "sg": 28.3,
       "gl": 19.1,
       "rl": 45.2,
       "rg": 45,
       "pg": 14.9
     },
     "peak_rating": 22.21,
-    "last_rating": 13.88,
+    "last_rating": 13.87,
     "first_ts": 1632421922,
-    "last_ts": 1793653795
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198067064946",
     "nicks": [
       "Steve Jobs"
     ],
-    "games": 2289,
-    "wins": 1068,
-    "losses": 1221,
+    "games": 2291,
+    "wins": 1069,
+    "losses": 1222,
     "win_rate_pct": 46.7,
     "avg_frags": 28.5,
     "avg_deaths": 44.4,
@@ -510,9 +510,9 @@
       "pg": 12.1
     },
     "peak_rating": 30.03,
-    "last_rating": 7.88,
+    "last_rating": 7.9,
     "first_ts": 1558023361,
-    "last_ts": 1793651538
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198035671947",
@@ -657,27 +657,27 @@
       "vendigo",
       "ven"
     ],
-    "games": 1996,
-    "wins": 1016,
+    "games": 1998,
+    "wins": 1018,
     "losses": 980,
-    "win_rate_pct": 50.9,
+    "win_rate_pct": 51,
     "avg_frags": 46.7,
     "avg_deaths": 43.3,
-    "avg_dmg_dealt": 8169,
+    "avg_dmg_dealt": 8170,
     "avg_dmg_taken": 6662,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 34.3,
-      "sg": 27,
+      "sg": 27.1,
       "gl": 12.1,
       "rl": 40.7,
       "rg": 49.8,
       "pg": 14.8
     },
     "peak_rating": 28.06,
-    "last_rating": 26.74,
+    "last_rating": 26.98,
     "first_ts": 1558558710,
-    "last_ts": 1793653795
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198237293132",
@@ -1036,13 +1036,13 @@
     "nicks": [
       "JohnWick"
     ],
-    "games": 1378,
+    "games": 1379,
     "wins": 690,
-    "losses": 688,
-    "win_rate_pct": 50.1,
-    "avg_frags": 42.9,
+    "losses": 689,
+    "win_rate_pct": 50,
+    "avg_frags": 43,
     "avg_deaths": 35.2,
-    "avg_dmg_dealt": 7777,
+    "avg_dmg_dealt": 7778,
     "avg_dmg_taken": 6315,
     "weapon_acc_pct": {
       "gt": null,
@@ -1054,9 +1054,9 @@
       "pg": 15.9
     },
     "peak_rating": 30.57,
-    "last_rating": 27.08,
+    "last_rating": 26.97,
     "first_ts": 1558037399,
-    "last_ts": 1793653795
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198007653853",
@@ -2040,13 +2040,13 @@
     "nicks": [
       "Shinobbi"
     ],
-    "games": 581,
+    "games": 582,
     "wins": 288,
-    "losses": 292,
-    "win_rate_pct": 49.6,
+    "losses": 293,
+    "win_rate_pct": 49.5,
     "avg_frags": 42.1,
     "avg_deaths": 41.3,
-    "avg_dmg_dealt": 7490,
+    "avg_dmg_dealt": 7487,
     "avg_dmg_taken": 6936,
     "weapon_acc_pct": {
       "gt": null,
@@ -2058,9 +2058,9 @@
       "pg": 14.2
     },
     "peak_rating": 28.15,
-    "last_rating": 22.78,
+    "last_rating": 22.56,
     "first_ts": 1558210193,
-    "last_ts": 1791314407
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198079031282",
@@ -5529,6 +5529,34 @@
     "last_ts": 1776694437
   },
   {
+    "sid": "76561198135845109",
+    "nicks": [
+      "cleric",
+      "NOVAUNION cleric"
+    ],
+    "games": 125,
+    "wins": 71,
+    "losses": 54,
+    "win_rate_pct": 56.8,
+    "avg_frags": 39,
+    "avg_deaths": 41.8,
+    "avg_dmg_dealt": 7112,
+    "avg_dmg_taken": 6343,
+    "weapon_acc_pct": {
+      "gt": null,
+      "mg": 39.6,
+      "sg": 29.2,
+      "gl": 16.7,
+      "rl": 41.1,
+      "rg": 57.4,
+      "pg": 14.2
+    },
+    "peak_rating": 24.88,
+    "last_rating": 24.24,
+    "first_ts": 1742415419,
+    "last_ts": 1793911818
+  },
+  {
     "sid": "76561198336074607",
     "nicks": [
       "AC/DC Charv"
@@ -5609,34 +5637,6 @@
     "last_rating": 29.15,
     "first_ts": 1651443743,
     "last_ts": 1781390652
-  },
-  {
-    "sid": "76561198135845109",
-    "nicks": [
-      "cleric",
-      "NOVAUNION cleric"
-    ],
-    "games": 124,
-    "wins": 71,
-    "losses": 53,
-    "win_rate_pct": 57.3,
-    "avg_frags": 39,
-    "avg_deaths": 41.7,
-    "avg_dmg_dealt": 7103,
-    "avg_dmg_taken": 6330,
-    "weapon_acc_pct": {
-      "gt": null,
-      "mg": 39.6,
-      "sg": 29.2,
-      "gl": 16.7,
-      "rl": 41.1,
-      "rg": 57.3,
-      "pg": 14.2
-    },
-    "peak_rating": 24.88,
-    "last_rating": 24.43,
-    "first_ts": 1742415419,
-    "last_ts": 1793653795
   },
   {
     "sid": "76561199142999171",
@@ -5995,27 +5995,27 @@
     "nicks": [
       "dmk1n"
     ],
-    "games": 109,
-    "wins": 52,
+    "games": 111,
+    "wins": 54,
     "losses": 57,
-    "win_rate_pct": 47.7,
-    "avg_frags": 35.8,
-    "avg_deaths": 37.9,
-    "avg_dmg_dealt": 6300,
-    "avg_dmg_taken": 6319,
+    "win_rate_pct": 48.6,
+    "avg_frags": 36,
+    "avg_deaths": 37.6,
+    "avg_dmg_dealt": 6336,
+    "avg_dmg_taken": 6303,
     "weapon_acc_pct": {
       "gt": null,
       "mg": 28.3,
-      "sg": 27.4,
+      "sg": 27.5,
       "gl": 14.4,
-      "rl": 41,
-      "rg": 44.7,
-      "pg": 12.5
+      "rl": 41.1,
+      "rg": 45,
+      "pg": 12.4
     },
     "peak_rating": 26.8,
-    "last_rating": 18.6,
+    "last_rating": 19,
     "first_ts": 1558373971,
-    "last_ts": 1793653795
+    "last_ts": 1794086340
   },
   {
     "sid": "76561198251690480",

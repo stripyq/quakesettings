@@ -4,15 +4,15 @@ aliases:
   - loka
 country: HR
 category: ctf
-hoqCtfRating: 9.523811340332031
-hoqCtfGames: 2619
+hoqCtfRating: 9.314790725708008
+hoqCtfGames: 2621
 hoqTdmRating: 14.09441089630127
 hoqTdmGames: 3
 lastUpdated: "2026-04-23"
 tdmRating: 14.09
 tdmRatingUpdated: "2026-04-29"
-ctfRating: 9.52
-ctfRatingUpdated: "2026-11-05"
+ctfRating: 9.31
+ctfRatingUpdated: "2026-11-10"
 duelRating: 1431
 duelRatingSource: qlstats
 duelGames: 12
@@ -45,7 +45,7 @@ enemyModel: Keel
 crosshairColor: White
 gpuBrand: NVIDIA
 cpuBrand: Intel
-ctfGames: 2619
+ctfGames: 2621
 tdmGames: 3
 qlrace:
   mode: 3

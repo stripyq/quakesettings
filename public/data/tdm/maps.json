@@ -1,7 +1,7 @@
 [
   {
     "map": "purgatory",
-    "games": 5444,
+    "games": 5445,
     "avg_duration_sec": 1178,
     "avg_total_score": 288,
     "blue_win_rate_pct": 49.6,
@@ -81,7 +81,7 @@
   },
   {
     "map": "dreadfulplace",
-    "games": 3746,
+    "games": 3747,
     "avg_duration_sec": 1158,
     "avg_total_score": 301,
     "blue_win_rate_pct": 50.4,

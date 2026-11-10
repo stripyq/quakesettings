@@ -4,7 +4,7 @@
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":27.6703,"games":480,"win_pct":45.8,"percentile":80},
 {"gametype_short":"ctf","map_name":"japanesecastles","rating":27.4707,"games":416,"win_pct":50.1,"percentile":85},
 {"gametype_short":"ctf","map_name":"troubledwaters","rating":26.7276,"games":166,"win_pct":53,"percentile":61},
-{"gametype_short":"ctf","map_name":"pillbox","rating":24.7239,"games":45,"win_pct":47.7,"percentile":46},
+{"gametype_short":"ctf","map_name":"pillbox","rating":24.7239,"games":45,"win_pct":47.7,"percentile":44},
 {"gametype_short":"ctf","map_name":"shiningforces","rating":24.6525,"games":35,"win_pct":48.6,"percentile":44},
 {"gametype_short":"ctf","map_name":"courtyard","rating":22.7528,"games":59,"win_pct":44.1,"percentile":26},
 {"gametype_short":"tdm","map_name":"hiddenfortress","rating":31.779,"games":98,"win_pct":56.1,"percentile":95},

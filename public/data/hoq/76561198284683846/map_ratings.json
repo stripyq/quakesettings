@@ -1,7 +1,7 @@
 [
 {"gametype_short":"tdm","map_name":"campgrounds","rating":26.6187,"games":73,"win_pct":47.9,"percentile":65},
 {"gametype_short":"tdm","map_name":"ragnarok","rating":26.3322,"games":525,"win_pct":54.5,"percentile":58},
-{"gametype_short":"tdm","map_name":"purgatory","rating":25.1963,"games":1167,"win_pct":53.4,"percentile":58},
+{"gametype_short":"tdm","map_name":"purgatory","rating":25.1503,"games":1168,"win_pct":53.3,"percentile":57},
 {"gametype_short":"tdm","map_name":"limbus","rating":24.0439,"games":599,"win_pct":46.1,"percentile":36},
 {"gametype_short":"tdm","map_name":"grimdungeons","rating":23.9561,"games":94,"win_pct":46.8,"percentile":36},
 {"gametype_short":"tdm","map_name":"hiddenfortress","rating":23.6581,"games":980,"win_pct":49.3,"percentile":43},

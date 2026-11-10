@@ -7,7 +7,7 @@
 {"gametype_short":"ctf","map_name":"ironworks","rating":26.4126,"games":335,"win_pct":43.1,"percentile":68},
 {"gametype_short":"ctf","map_name":"shiningforces","rating":24.0802,"games":30,"win_pct":46.7,"percentile":41},
 {"gametype_short":"ctf","map_name":"pillbox","rating":24.0765,"games":22,"win_pct":45.5,"percentile":41},
-{"gametype_short":"ctf","map_name":"infinity","rating":22.3261,"games":184,"win_pct":39.7,"percentile":26},
+{"gametype_short":"ctf","map_name":"infinity","rating":22.3261,"games":184,"win_pct":39.7,"percentile":27},
 {"gametype_short":"tdm","map_name":"campgrounds","rating":29.5571,"games":23,"win_pct":60.9,"percentile":81},
 {"gametype_short":"tdm","map_name":"intervention","rating":28.9497,"games":23,"win_pct":60.9,"percentile":70},
 {"gametype_short":"tdm","map_name":"deepinside","rating":27.5168,"games":12,"win_pct":58.3,"percentile":68},

@@ -6,7 +6,7 @@
 {"gametype_short":"ctf","map_name":"stonekeep","rating":27.6634,"games":11,"win_pct":54.5,"percentile":73},
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":27.3754,"games":663,"win_pct":50.7,"percentile":79},
 {"gametype_short":"ctf","map_name":"troubledwaters","rating":26.0964,"games":228,"win_pct":48.7,"percentile":51},
-{"gametype_short":"ctf","map_name":"pillbox","rating":24.8062,"games":36,"win_pct":52.8,"percentile":49},
+{"gametype_short":"ctf","map_name":"pillbox","rating":24.8062,"games":36,"win_pct":52.8,"percentile":47},
 {"gametype_short":"ctf","map_name":"thedukesgarden","rating":24.0385,"games":18,"win_pct":55.6,"percentile":29},
 {"gametype_short":"ctf","map_name":"shiningforces","rating":18.815,"games":39,"win_pct":30.8,"percentile":6},
 {"gametype_short":"tdm","map_name":"campgrounds","rating":33.0412,"games":11,"win_pct":72.7,"percentile":95},

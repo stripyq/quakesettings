@@ -1,9 +1,9 @@
 [
 {"gametype_short":"ctf","map_name":"ironworks","rating":27.0286,"games":82,"win_pct":50,"percentile":72},
-{"gametype_short":"ctf","map_name":"troubledwaters","rating":26.9493,"games":38,"win_pct":50,"percentile":64},
-{"gametype_short":"ctf","map_name":"infinity","rating":25.01,"games":61,"win_pct":45.9,"percentile":52},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":26.9493,"games":38,"win_pct":50,"percentile":63},
+{"gametype_short":"ctf","map_name":"infinity","rating":25.01,"games":61,"win_pct":45.9,"percentile":53},
 {"gametype_short":"ctf","map_name":"japanesecastles","rating":24.3818,"games":116,"win_pct":50,"percentile":62},
-{"gametype_short":"ctf","map_name":"courtyard","rating":24.0478,"games":12,"win_pct":50,"percentile":37},
+{"gametype_short":"ctf","map_name":"courtyard","rating":24.0478,"games":12,"win_pct":50,"percentile":38},
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":22.813,"games":92,"win_pct":43.5,"percentile":44},
 {"gametype_short":"tdm","map_name":"limbus","rating":31.896,"games":47,"win_pct":55.3,"percentile":94},
 {"gametype_short":"tdm","map_name":"purgatory","rating":28.1859,"games":94,"win_pct":54.3,"percentile":80},

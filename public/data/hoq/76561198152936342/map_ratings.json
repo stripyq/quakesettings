@@ -1,9 +1,9 @@
 [
-{"gametype_short":"ctf","map_name":"courtyard","rating":28.0688,"games":19,"win_pct":63.2,"percentile":74},
-{"gametype_short":"ctf","map_name":"troubledwaters","rating":25.9623,"games":86,"win_pct":51.2,"percentile":50},
-{"gametype_short":"ctf","map_name":"ironworks","rating":23.3352,"games":180,"win_pct":51.7,"percentile":42},
-{"gametype_short":"ctf","map_name":"infinity","rating":22.4533,"games":146,"win_pct":50,"percentile":28},
+{"gametype_short":"ctf","map_name":"courtyard","rating":27.0323,"games":20,"win_pct":60,"percentile":64},
+{"gametype_short":"ctf","map_name":"troubledwaters","rating":25.764,"games":89,"win_pct":50.6,"percentile":49},
+{"gametype_short":"ctf","map_name":"ironworks","rating":23.6594,"games":185,"win_pct":52.4,"percentile":45},
+{"gametype_short":"ctf","map_name":"infinity","rating":22.4023,"games":148,"win_pct":50,"percentile":28},
 {"gametype_short":"ctf","map_name":"industrialrevolution","rating":21.9384,"games":10,"win_pct":40,"percentile":0},
-{"gametype_short":"ctf","map_name":"q3wcp9","rating":20.3931,"games":185,"win_pct":51.4,"percentile":24},
-{"gametype_short":"ctf","map_name":"japanesecastles","rating":18.8753,"games":187,"win_pct":48.1,"percentile":25}
+{"gametype_short":"ctf","map_name":"q3wcp9","rating":20.5335,"games":192,"win_pct":51.6,"percentile":25},
+{"gametype_short":"ctf","map_name":"japanesecastles","rating":19.357,"games":189,"win_pct":48.7,"percentile":27}
 ]
