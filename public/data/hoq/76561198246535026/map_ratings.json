@@ -8,6 +8,6 @@
 {"gametype_short":"ctf","map_name":"siberia","rating":21.1094,"games":10,"win_pct":40,"percentile":15},
 {"gametype_short":"ctf","map_name":"ironworks","rating":20.6322,"games":584,"win_pct":48.6,"percentile":20},
 {"gametype_short":"ctf","map_name":"q3wcp9","rating":20.3176,"games":681,"win_pct":47.1,"percentile":23},
-{"gametype_short":"ctf","map_name":"infinity","rating":19.8944,"games":378,"win_pct":44.2,"percentile":13},
+{"gametype_short":"ctf","map_name":"infinity","rating":19.8944,"games":378,"win_pct":44.2,"percentile":14},
 {"gametype_short":"ctf","map_name":"japanesecastles","rating":19.598,"games":733,"win_pct":49.9,"percentile":30}
 ]

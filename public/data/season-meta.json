@@ -6,13 +6,13 @@
   "startTs": 1790812800000,
   "endTs": "Infinity",
   "source": "hoqstats.vercel.app via public/data/archive (sync-hoqstats-archive.cjs)",
-  "generatedAt": "2026-11-05T17:05:12.775Z",
+  "generatedAt": "2026-11-10T17:40:40.715Z",
   "matches": {
-    "ctf": 479,
-    "tdm": 54
+    "ctf": 541,
+    "tdm": 56
   },
   "players": {
-    "ctf": 102,
+    "ctf": 103,
     "tdm": 55
   }
 }

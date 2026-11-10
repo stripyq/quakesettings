@@ -2,6 +2,11 @@ name: tenbit
 country: GB
 steamId: "76561197966348358"
 dataSource: player
+hoqCtfRating: -5.036667823791504
+ctfRatingUpdated: "2026-11-10"
+ctfRating: -5.04
+hoqCtfGames: 32
+ctfGames: 32
 lastUpdated: "2026-11-10"
 mouse: logitech-g305-x-superlight
 monitor: samsung-odyssey-oled-g60sd

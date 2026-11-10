@@ -14,10 +14,10 @@
     {
       "sid": "76561198151319268",
       "nick": "CUBA artemis4",
-      "games": 1850,
+      "games": 1852,
       "swingGames": 1713,
       "peakFirst": false,
-      "stddev": 0.15,
+      "stddev": 0.14,
       "range": 24.05,
       "peak": 30.25,
       "trough": 6.2
@@ -36,7 +36,7 @@
     {
       "sid": "76561197960736529",
       "nick": "CUBA iOio_",
-      "games": 2323,
+      "games": 2342,
       "swingGames": 1596,
       "peakFirst": false,
       "stddev": 0.14,
@@ -58,7 +58,7 @@
     {
       "sid": "76561198007335390",
       "nick": "lihensior",
-      "games": 1680,
+      "games": 1689,
       "swingGames": 1144,
       "peakFirst": false,
       "stddev": 0.14,
@@ -91,7 +91,7 @@
     {
       "sid": "76561198346024921",
       "nick": "APH3X",
-      "games": 6616,
+      "games": 6622,
       "swingGames": 3736,
       "peakFirst": false,
       "stddev": 0.11,
@@ -102,7 +102,7 @@
     {
       "sid": "76561198004545167",
       "nick": "Morda",
-      "games": 1054,
+      "games": 1066,
       "swingGames": 454,
       "peakFirst": false,
       "stddev": 0.19,
